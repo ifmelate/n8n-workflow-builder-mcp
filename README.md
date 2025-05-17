@@ -3,8 +3,7 @@
 This project provides a Model Context Protocol (MCP) server for building and manipulating n8n workflows JSON in Cursor IDE. It's a way to build n8n workflows just by prompting with AI in chat.
 
 # DEMO VIDEO:
-[![Watch the video](![image](https://github.com/user-attachments/assets/53706f62-7e99-449f-8537-0ce951c727e1)
-)]([https://youtu.be/nTQUwghvy5Q](https://youtu.be/MKEVLM5QmPA?si=8SJQAcYGeAIuhaBm))
+[![Watch the video](https://github.com/user-attachments/assets/53706f62-7e99-449f-8537-0ce951c727e1)](https://youtu.be/MKEVLM5QmPA?si=8SJQAcYGeAIuhaBm)
 ## Current status of implementation
 
 It's in early development stage. Basically, it's working - MCP server creates JSON file with n8n workflow that you can copy and paste to worfklow editor in n8n UI.
