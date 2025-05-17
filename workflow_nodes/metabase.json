@@ -1,0 +1,175 @@
+{
+  "nodeType": "n8n-nodes-base.metabase",
+  "displayName": "Metabase",
+  "description": "Use the Metabase API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "alertId",
+      "displayName": "Alert ID",
+      "type": "string",
+      "default": "",
+      "placeholder": "0",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get specific alert"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many alerts"
+    },
+    {
+      "name": "databaseId",
+      "displayName": "Database ID",
+      "type": "string",
+      "default": "",
+      "placeholder": "0",
+      "required": true
+    },
+    {
+      "name": "engine",
+      "displayName": "Engine",
+      "type": "options",
+      "default": null,
+      "placeholder": "PostgreSQL",
+      "required": true
+    },
+    {
+      "name": "MongoDB",
+      "default": null
+    },
+    {
+      "name": "Mysql",
+      "default": null
+    },
+    {
+      "name": "PostgreSQL",
+      "default": null
+    },
+    {
+      "name": "Redshift",
+      "default": null
+    },
+    {
+      "name": "Sqlite",
+      "default": null
+    },
+    {
+      "name": "host",
+      "displayName": "Host",
+      "type": "string",
+      "default": "",
+      "placeholder": "localhost:5432",
+      "required": true
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "placeholder": "Database 1",
+      "required": true
+    },
+    {
+      "name": "port",
+      "displayName": "Port",
+      "type": "number",
+      "default": 5432,
+      "placeholder": "5432",
+      "required": true
+    },
+    {
+      "name": "user",
+      "displayName": "User",
+      "type": "string",
+      "default": "",
+      "placeholder": "Admin",
+      "required": true
+    },
+    {
+      "name": "password",
+      "displayName": "Password",
+      "type": "string",
+      "default": "",
+      "placeholder": "password",
+      "required": true
+    },
+    {
+      "name": "dbName",
+      "displayName": "Database Name",
+      "type": "string",
+      "default": "",
+      "placeholder": "Users"
+    },
+    {
+      "name": "filePath",
+      "displayName": "File Path",
+      "type": "string",
+      "default": "",
+      "placeholder": "file:/Users/admin/Desktop/Users",
+      "required": true
+    },
+    {
+      "name": "fullSync",
+      "displayName": "Full Sync",
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": null,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    },
+    {
+      "name": "Get Fields",
+      "default": null,
+      "description": "Get fields from database"
+    },
+    {
+      "name": "metricId",
+      "displayName": "Metric ID",
+      "type": "string",
+      "default": "",
+      "placeholder": "0",
+      "required": true
+    },
+    {
+      "name": "questionId",
+      "displayName": "Question ID",
+      "type": "string",
+      "default": "",
+      "placeholder": "0",
+      "required": true
+    },
+    {
+      "name": "format",
+      "displayName": "Format",
+      "type": "options",
+      "default": null,
+      "required": true
+    },
+    {
+      "name": "JSON",
+      "default": null
+    },
+    {
+      "name": "XLSX",
+      "default": null
+    },
+    {
+      "name": "Result Data",
+      "default": null,
+      "description": "Return the result of the question to a specific file format"
+    }
+  ],
+  "credentialsConfig": []
+}

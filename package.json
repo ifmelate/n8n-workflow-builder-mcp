@@ -1,0 +1,50 @@
+{
+    "name": "n8n-workflow-builder-mcp",
+    "version": "0.1.0",
+    "description": "MCP server for building n8n workflows",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node dist/index.js",
+        "dev": "nodemon --watch src --ext ts,json --exec \"npm run build && node dist/index.js\"",
+        "lint": "eslint .",
+        "format": "prettier --write .",
+        "test": "jest",
+        "mcp": "node n8n-workflow-mcp.js",
+        "build": "tsc"
+    },
+    "keywords": [
+        "n8n",
+        "mcp",
+        "workflow",
+        "automation"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.11.3",
+        "@types/uuid": "^10.0.0",
+        "abort-controller": "^3.0.0",
+        "ajv": "^8.12.0",
+        "ajv-formats": "^3.0.1",
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "jsonwebtoken": "^9.0.2",
+        "morgan": "^1.10.0",
+        "node-fetch": "^2.6.7",
+        "uuid": "^9.0.1",
+        "winston": "^3.10.0",
+        "zod": "^3.24.4"
+    },
+    "devDependencies": {
+        "@types/node": "^20.0.0",
+        "chai": "^5.2.0",
+        "eslint": "^8.46.0",
+        "jest": "^29.6.2",
+        "nodemon": "^3.0.1",
+        "prettier": "^3.0.1",
+        "sinon": "^20.0.0",
+        "supertest": "^7.1.1",
+        "typescript": "^5.0.0"
+    }
+}

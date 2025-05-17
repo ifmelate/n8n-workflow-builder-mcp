@@ -1,0 +1,72 @@
+{
+  "nodeType": "n8n-nodes-base.uplead",
+  "displayName": "Uplead",
+  "description": "Consume Uplead API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "company",
+      "displayName": "Company",
+      "type": "string",
+      "default": "",
+      "description": "The name of the company (e.g – amazon)"
+    },
+    {
+      "name": "domain",
+      "displayName": "Domain",
+      "type": "string",
+      "default": "",
+      "description": "The domain name (e.g – amazon.com)"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "Email address (e.g – mbenioff@salesforce.com)",
+      "placeholder": "name@email.com"
+    },
+    {
+      "name": "firstname",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "First name of the person (e.g – Marc)"
+    },
+    {
+      "name": "lastname",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "description": "Last name of the person (e.g – Benioff)"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "description": "Company API lets you lookup company data via a domain name or company name"
+    },
+    {
+      "name": "Person",
+      "default": null,
+      "description": "Person API lets you lookup a person based on an email address OR based on a domain name + first name + last name"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "upleadApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

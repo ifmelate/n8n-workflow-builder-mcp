@@ -1,0 +1,44 @@
+{
+  "nodeType": "n8n-nodes-base.lemlist",
+  "displayName": "Lemlist",
+  "description": null,
+  "version": "2",
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Campaign",
+      "default": null
+    },
+    {
+      "name": "Enrichment",
+      "default": null
+    },
+    {
+      "name": "Lead",
+      "default": null
+    },
+    {
+      "name": "Team",
+      "default": null
+    },
+    {
+      "name": "Unsubscribe",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "lemlistApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+# Product Requirements Document: n8n Workflow Builder MCP Server
+
+## 1. Executive Summary
+
+The n8n Workflow Builder MCP Server is a specialized Model Context Protocol (MCP) server designed to enable AI agents to create, modify, and manage n8n workflows programmatically. This solution bridges the gap between AI language models and n8n's powerful workflow automation capabilities, allowing AI agents to build complex workflows by understanding available nodes, creating workflow structures, and adding or replacing nodes as needed.
+
+## 2. Project Overview
+
+### 2.1 Problem Statement
+
+Currently, building n8n workflows requires manual intervention through the UI or direct JSON manipulation. This process is time-consuming, requires technical knowledge, and cannot be easily automated by AI agents. As organizations increasingly rely on AI for automation, the inability of AI agents to directly create and modify n8n workflows represents a significant limitation.
+
+### 2.2 Solution
+
+Develop an MCP server that exposes a standardized interface for AI agents to interact with n8n workflow structures. The server will provide tools for exploring available nodes, creating new workflows, and modifying existing ones through a structured API that adheres to the Model Context Protocol standard.
+
+### 2.3 Target Users
+
+- AI agents (like Claude, ChatGPT, or other LLMs) that need to create or modify n8n workflows
+- Developers building AI-powered automation solutions
+- Organizations looking to streamline workflow creation through AI
+- n8n administrators managing complex workflow ecosystems
+
+## 3. Key Features and Requirements
+
+### 3.1 Core Functionality
+
+#### 3.1.1 Node Discovery Tool
+- **Tool Name**: search_nodes
+- **Purpose**: Allow AI agents to explore available n8n nodes and their parameters
+- **Requirements**:
+  - Return a comprehensive list of available nodes with IDs
+  - Include parameter details for each node
+  - Support filtering nodes by category or functionality
+  - Return node descriptions to help AI understand node purposes
+
+#### 3.1.2 Workflow Creation Tool
+- **Tool Name**: create_workflow
+- **Purpose**: Generate a new workflow.json file with basic structure
+- **Requirements**:
+  - Create valid n8n workflow JSON structures
+  - Support naming and describing the workflow
+  - Initialize empty connections object
+  - Set up required metadata
+  - Return the workflow ID for future operations
+
+#### 3.1.3 Node Addition Tool
+- **Tool Name**: add_node
+- **Purpose**: Add a specific node to an existing workflow
+- **Requirements**:
+  - Accept node ID from the search_nodes tool
+  - Allow positioning the node in the workflow (x, y coordinates)
+  - Support all required node parameters
+  - Auto-generate node IDs
+  - Update the workflow.json file accordingly
+
+#### 3.1.4 Node Replacement Tool
+- **Tool Name**: replace_node
+- **Purpose**: Replace an existing node in a workflow with a new one
+- **Requirements**:
+  - Accept target node ID to replace
+  - Accept new node ID from the search_nodes tool
+  - Maintain connections where possible
+  - Update parameters for the new node
+  - Update the workflow.json file accordingly
+
+### 3.2 Technical Requirements
+
+#### 3.2.1 MCP Compliance
+- Full compliance with Model Context Protocol standards
+- Support for tool definitions with JSON Schema
+- Proper error handling and reporting in MCP format
+- Support for MCP authentication methods
+
+#### 3.2.2 Security
+- Authentication for accessing the MCP server
+- Authorization controls for workflow operations
+- Validation of all inputs to prevent injection attacks
+- Secure handling of credentials and sensitive data
+
+#### 3.2.3 Performance
+- Response times under 500ms for node search operations
+- Support for handling multiple concurrent AI agent requests
+- Efficient processing of workflow JSON structures
+- Graceful degradation under high load
+
+## 4. User Experience
+
+### 4.1 AI Agent Interaction Flow
+
+1. **Discover Nodes**: AI agent uses search_nodes to understand available functionality
+2. **Create Workflow**: AI agent initializes a workflow structure
+3. **Add Nodes**: AI agent adds necessary nodes with appropriate parameters
+4. **Connect Nodes**: AI agent establishes connections between nodes
+5. **Test Workflow**: AI agent can trigger test executions or preview the workflow
+6. **Iterate**: AI agent can modify, add, or replace nodes as needed
+
+### 4.2 Example Interactions
+
+#### Example 1: Creating a Simple Email Notification Workflow
+```
+AI: "I need to search for email-related nodes"
+MCP Server: [Returns list with Gmail, SMTP, and other email nodes]
+AI: "Create a new workflow called 'Email Notification'"
+MCP Server: [Creates workflow.json with ID]
+AI: "Add a trigger node at position (100, 100)"
+MCP Server: [Adds node to workflow.json]
+AI: "Add a Gmail node at position (300, 100)"
+MCP Server: [Adds Gmail node to workflow.json]
+```
+
+#### Example 2: Modifying an Existing Workflow
+```
+AI: "I need to replace the HTTP Request node with a different node"
+MCP Server: [Returns information about the node]
+AI: "Search for nodes related to API requests"
+MCP Server: [Returns list of API-related nodes]
+AI: "Replace the HTTP Request node with the Stripe node"
+MCP Server: [Updates workflow.json with the replacement]
+```
+
+## 5. Architecture and Implementation
+
+### 5.1 System Architecture
+
+- **MCP Server Layer**: Handles MCP protocol communication with AI agents
+- **Node Management Layer**: Processes node information from workflow_nodes directory
+- **Workflow Operations Layer**: Manages workflow JSON structures
+- **n8n Integration Layer**: Interfaces with n8n APIs or filesystem
+
+### 5.2 Implementation Details
+
+- Node.js-based implementation for compatibility with MCP libraries
+- Use of workflow_nodes directory to extract node information
+- JSON schema validation for all operations
+- Stateless design for scalability
+
+### 5.3 Dependencies
+
+- Model Context Protocol libraries
+- n8n SDK (if available) or direct filesystem access
+- JSON Schema validation libraries
+- Authentication middleware
+
+## 6. Success Metrics
+
+### 6.1 Technical Metrics
+- Number of successful workflow creations by AI agents
+- Average time to create a workflow
+- Error rate in node operations
+- Adoption rate among AI agents
+
+### 6.2 Business Metrics
+- Reduction in manual workflow creation time
+- Increase in workflow complexity achievable by AI
+- User satisfaction with AI-generated workflows
+- Integration success with existing n8n deployments
+
+## 7. Timeline and Milestones
+
+### 7.1 Phase 1: Core Implementation (4 weeks)
+- MCP server setup with authentication
+- Implementation of search_nodes tool
+- Implementation of create_workflow tool
+- Basic documentation
+
+### 7.2 Phase 2: Advanced Operations (4 weeks)
+- Implementation of add_node tool
+- Implementation of replace_node tool
+- Testing with AI agents
+- Documentation updates
+
+### 7.3 Phase 3: Refinement and Release (2 weeks)
+- Performance optimization
+- Security hardening
+- Final documentation
+- Open-source release on GitHub
+
+## 8. Open Issues and Considerations
+
+- Handling complex node configurations with nested parameters
+- Supporting connection creation between nodes
+- Versioning considerations for n8n compatibility
+- Potential for extending to support additional operations (like delete_node, copy_workflow)
+- Integration with credential management
+
+## 9. Future Enhancements
+
+- Support for workflow templates
+- Visual preview generation for AI verification
+- Workflow testing and validation tools
+- Support for importing existing workflows
+- Integration with n8n cloud deployments
+
+## 10. Conclusion
+
+The n8n Workflow Builder MCP Server represents a significant advancement in AI-powered automation by enabling AI agents to create and modify n8n workflows directly. By leveraging the Model Context Protocol, this solution provides a standardized way for AI systems to understand and interact with n8n's powerful workflow capabilities, ultimately saving time and reducing the technical barrier to creating complex automations. 
