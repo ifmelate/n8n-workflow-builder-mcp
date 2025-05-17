@@ -96,16 +96,6 @@ There are two ways to set up the MCP server with Cursor:
 
 3. Restart Cursor IDE for changes to take effect
 
-## Manual Testing
-
-You can test the MCP server outside of Cursor using the provided test script:
-
-```bash
-node test-mcp.js
-```
-
-This will start the MCP server and send test requests to verify it's working correctly.
-
 ## Available MCP Tools
 
 The server provides the following tools for working with n8n workflows:
@@ -121,18 +111,6 @@ The server provides the following tools for working with n8n workflows:
 | **add_connection** | Add a connection between nodes | `workflow_name`, `source_node_id`, `source_node_output_name`, `target_node_id`, `target_node_input_name` |
 | **add_ai_connections** | Add AI connections for LangChain nodes | `workflow_name`, `agent_node_id`, `model_node_id`, `tool_node_ids` |
 | **list_available_nodes** | List available node types with optional filtering | `search_term` (optional) |
-
-## Project Structure
-
-- `/src`: Main source code
-- `/src/tools`: MCP tools implementation
-- `/src/models`: Data models
-- `/src/utils`: Utility functions
-- `/src/middleware`: Authentication and middleware
-- `/config`: Configuration files
-- `/tests`: Test files
-- `/workflow_nodes`: n8n node definitions
-- `/docs`: Additional documentation
 
 ## Troubleshooting Cursor Integration
 
@@ -195,6 +173,18 @@ Try:
 1. Running the test script to check if tools are properly registered
 2. Clicking the refresh button in the MCP server settings in Cursor
 3. Checking the server logs for any errors
+
+## Project Structure
+
+- `/src`: Main source code
+- `/src/tools`: MCP tools implementation
+- `/src/models`: Data models
+- `/src/utils`: Utility functions
+- `/src/middleware`: Authentication and middleware
+- `/config`: Configuration files
+- `/tests`: Test files
+- `/workflow_nodes`: n8n node definitions
+- `/docs`: Additional documentation
 
 ## Contributing
 
