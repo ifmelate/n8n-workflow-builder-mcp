@@ -6,8 +6,10 @@ This project provides a Model Context Protocol (MCP) server for building and man
 
 It's in early development stage. Basically, it's working - MCP server creates JSON file with n8n workflow that you can copy and paste to worfklow editor in n8n UI.
 Current problems:
-- sometimes llm agents put wrong parameters in the request. I plan to find a way to fix this.
-- initial prompt does matter. If it's not clear, the agent will go wrong way.
+- sometimes llm agents put wrong parameters in the request. **I plan to find a way to fix this**.
+- sometimes connection between nodes is not setting. **I'm working to resolve it**.
+- not all types of node are checked working. **I'm working to resolve it**.
+- initial prompt does matter. If it's not clear, the agent will go wrong way. **I plan to find a way to fix this**.
 
 ## Key Features
 
