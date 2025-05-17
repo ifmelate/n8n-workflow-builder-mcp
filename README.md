@@ -136,9 +136,7 @@ If you're having trouble getting the MCP server to work with Cursor, try these s
 
 5. **Check for port conflicts**: If there are other MCP servers running, they might conflict. Check for other processes using the same ports.
 
-6. **Check Cursor version**: Make sure you're using Cursor v0.48 or newer, as earlier versions might have different MCP integration methods.
-
-7. **Try global installation**: Instead of using a local path, you can try installing the server globally:
+6. **Try global installation**: Instead of using a local path, you can try installing the server globally:
    ```bash
    npm install -g n8n-workflow-builder-mcp
    ```
