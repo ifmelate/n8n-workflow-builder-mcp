@@ -2,6 +2,11 @@
 
 This project provides a Model Context Protocol (MCP) server for building and manipulating n8n workflows JSON in Cursor IDE. It's a way to build n8n workflows just by prompting with AI in chat.
 
+## Current status of implementation
+
+It's in early development stage. Basically, it's working, but sometimes llm agents put wrong parameters in the request. I plan to find a way to fix this.
+Also, initial prompt does matter. If it's not clear, the agent will go wrong way.
+
 ## Key Features
 
 - **Workflow Management**: Create, update, and execute n8n workflows programmatically (execute is not implemented yet)
@@ -10,10 +15,6 @@ This project provides a Model Context Protocol (MCP) server for building and man
 - **AI Integration**: Special tools for connecting AI components in workflows
 - **AI-Friendly Interface**: Designed specifically for interaction with AI agents
 
-## Current status of implementation
-
-It's in early development stage. Basically, it's working, but sometimes llm agents put wrong parameters in the request. I plan to find a way to fix this.
-Also, initial prompt does matter. If it's not clear, the agent will go wrong way.
 
 ## Prerequisites
 
