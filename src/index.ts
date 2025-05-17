@@ -91,6 +91,69 @@ interface CachedNodeInfo {
 }
 let nodeInfoCache: Map<string, CachedNodeInfo> = new Map();
 
+// Helper function to normalize LLM parameters from various possible inputs
+function normalizeLLMParameters(params: Record<string, any>): Record<string, any> {
+    const normalized = { ...params };
+
+    // Handle model/modelName variation
+    if (normalized.modelName && !normalized.model) {
+        console.error(`[DEBUG] Normalizing 'modelName' to 'model'`);
+        normalized.model = normalized.modelName;
+        delete normalized.modelName;
+    }
+
+    // Convert model string to required format
+    if (normalized.model && typeof normalized.model === 'string') {
+        console.error(`[DEBUG] Converting model string to required format: ${normalized.model}`);
+        const modelValue = normalized.model;
+        normalized.model = {
+            "__rl": true,
+            "value": modelValue,
+            "mode": "list",
+            "cachedResultName": modelValue
+        };
+    }
+
+    // Handle credentials formatting
+    // Handle at options level
+    if (normalized.options?.credentials?.providerType) {
+        const credType = normalized.options.credentials.providerType;
+        console.error(`[DEBUG] Found credentials in options with type: ${credType}`);
+        delete normalized.options.credentials;
+
+        // Set credentials properly based on provider type
+        if (credType === 'openAi' || credType === 'openAiApi') {
+            normalized.credentials = {
+                "openAiApi": {
+                    "id": generateN8nId(),
+                    "name": "OpenAi account"
+                }
+            };
+        }
+    }
+
+    // Handle at root level
+    if (normalized.credentialsType && !normalized.credentials) {
+        const credType = normalized.credentialsType;
+        console.error(`[DEBUG] Found credentialsType at root level: ${credType}`);
+
+        // Set credentials properly based on provider type
+        if (credType === 'openAi' || credType === 'openAiApi') {
+            normalized.credentials = {
+                "openAiApi": {
+                    "id": generateN8nId(),
+                    "name": "OpenAi account"
+                }
+            };
+        }
+
+        // Remove root level parameter
+        delete normalized.credentialsType;
+    }
+
+    return normalized;
+}
+
 async function loadKnownNodeBaseTypes(): Promise<void> {
     // Corrected path: relative to this script's location, assuming workflow_nodes is at project root
     const workflowNodesDir = path.resolve(__dirname, '../workflow_nodes');
@@ -365,7 +428,7 @@ server.tool(
 
             await fs.writeFile(filePath, JSON.stringify(newN8nWorkflow, null, 2));
             console.error("[DEBUG] Workflow created and saved to:", filePath);
-            return { content: [{ type: "text", text: JSON.stringify({ success: true, workflow: newN8nWorkflow, next_step: "call 'list_available_nodes' tool before add nodes" }) }] };
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, workflow: newN8nWorkflow, recommended_next_step: "YOU NEED TO CALL 'list_available_nodes' TOOL BEFORE starting adding nodes. SEARCH BY SPECIFIC TOPIC USING 'search_term' parameter'." }) }] };
 
         } catch (error: any) {
             console.error("[ERROR] Failed to create workflow:", error);
@@ -502,12 +565,49 @@ server.tool(
             const { finalNodeType, finalTypeVersion } = normalizeNodeTypeAndVersion(params.node_type, params.typeVersion);
             // console.error(`[DEBUG] Node type normalized: "${params.node_type}" -> "${finalNodeType}"`); // Covered by normalizeNodeTypeAndVersion's own log
 
+            // Process parameters for LangChain LLM nodes
+            let nodeParameters = params.parameters || {};
+
+            // Check if this is a LangChain LLM node
+            const isLangChainLLM = finalNodeType.includes('@n8n/n8n-nodes-langchain') &&
+                (finalNodeType.includes('lmChat') || finalNodeType.includes('llm'));
+
+            // Apply normalization for LangChain LLM nodes
+            if (isLangChainLLM) {
+                console.error(`[DEBUG] Applying parameter normalization for LangChain LLM node`);
+                nodeParameters = normalizeLLMParameters(nodeParameters);
+            } else {
+                // Handle OpenAI credentials specifically for non-LangChain nodes
+                if (params.parameters?.options?.credentials?.providerType === 'openAi') {
+                    console.error(`[DEBUG] Setting up proper OpenAI credentials format for standard node`);
+
+                    // Remove credentials from options and set at node level
+                    if (nodeParameters.options?.credentials) {
+                        const credentialsType = nodeParameters.options.credentials.providerType;
+                        delete nodeParameters.options.credentials;
+
+                        // Set a placeholder for credentials that would be filled in the n8n UI
+                        if (!nodeParameters.credentials) {
+                            nodeParameters.credentials = {};
+                        }
+
+                        // Add credentials in the proper format for OpenAI
+                        nodeParameters.credentials = {
+                            "openAiApi": {
+                                "id": generateN8nId(),
+                                "name": "OpenAi account"
+                            }
+                        };
+                    }
+                }
+            }
+
             const newNode: N8nWorkflowNode = {
                 id: generateUUID(),
                 type: finalNodeType,
                 typeVersion: finalTypeVersion, // Use version from normalizeNodeTypeAndVersion
                 position: [defaultPos.x, defaultPos.y],
-                parameters: params.parameters || {},
+                parameters: nodeParameters,
                 name: params.node_name || `${finalNodeType} Node`, // Use finalNodeType for default name
                 ...(params.webhookId && { webhookId: params.webhookId }) // Add webhookId if provided
             };
@@ -593,7 +693,48 @@ server.tool(
 
             if (params.node_name) nodeToEdit.name = params.node_name;
             if (params.position) nodeToEdit.position = [params.position.x, params.position.y];
-            if (params.parameters) nodeToEdit.parameters = params.parameters;
+
+            // Process new parameters if provided
+            if (params.parameters) {
+                let newParameters = params.parameters;
+
+                // Check if this is a LangChain LLM node
+                const isLangChainLLM = newType.includes('@n8n/n8n-nodes-langchain') &&
+                    (newType.includes('lmChat') || newType.includes('llm'));
+
+                // Apply normalization for LangChain LLM nodes
+                if (isLangChainLLM) {
+                    console.error(`[DEBUG] Applying parameter normalization for LangChain LLM node during edit`);
+                    newParameters = normalizeLLMParameters(newParameters);
+                } else {
+                    // Handle OpenAI credentials specifically for non-LangChain nodes
+                    if (newParameters.options?.credentials?.providerType === 'openAi') {
+                        console.error(`[DEBUG] Setting up proper OpenAI credentials format for standard node during edit`);
+
+                        // Remove credentials from options and set at node level
+                        if (newParameters.options?.credentials) {
+                            const credentialsType = newParameters.options.credentials.providerType;
+                            delete newParameters.options.credentials;
+
+                            // Set a placeholder for credentials that would be filled in the n8n UI
+                            if (!newParameters.credentials) {
+                                newParameters.credentials = {};
+                            }
+
+                            // Add credentials in the proper format for OpenAI
+                            newParameters.credentials = {
+                                "openAiApi": {
+                                    "id": generateN8nId(),
+                                    "name": "OpenAi account"
+                                }
+                            };
+                        }
+                    }
+                }
+
+                nodeToEdit.parameters = newParameters;
+            }
+
             if (params.webhookId !== undefined) { // Allow setting or unsetting webhookId
                 if (params.webhookId === null || params.webhookId === "") { // Check for explicit clear
                     delete nodeToEdit.webhookId;
@@ -750,15 +891,27 @@ server.tool(
                 // - Models/Tools point TO Agent (reversed)
                 // - Agent points to regular nodes (forward)
                 // - Triggers point to any node (forward)
+                // - Memory nodes point TO Agent (reversed)
                 if (
-                    // If it's a LLM or Tool node pointing to an agent
+                    // If it's a LLM, Tool, or Memory node pointing to an agent
                     (sourceNode.type.includes('lmChat') ||
                         sourceNode.type.includes('tool') ||
-                        sourceNode.type.toLowerCase().includes('request'))
+                        sourceNode.type.toLowerCase().includes('request') ||
+                        sourceNode.type.includes('memory'))
                     && targetNode.type.includes('agent')
                 ) {
-                    console.warn("[WARN] LangChain AI connection detected. N8n often expects models and tools to connect TO agents rather than agents connecting to models/tools.");
+                    console.warn("[WARN] LangChain AI connection detected. N8n often expects models, tools, and memory to connect TO agents rather than agents connecting to them.");
                     console.warn("[WARN] Connections will be created as specified, but if they don't appear correctly in n8n UI, try reversing the source and target.");
+
+                    // Special hint for memory connections
+                    if (sourceNode.type.includes('memory')) {
+                        if (source_node_output_name !== 'ai_memory') {
+                            console.warn("[WARN] Memory nodes should usually connect to agents using 'ai_memory' output, not '" + source_node_output_name + "'.");
+                        }
+                        if (target_node_input_name !== 'ai_memory') {
+                            console.warn("[WARN] Agents should receive memory connections on 'ai_memory' input, not '" + target_node_input_name + "'.");
+                        }
+                    }
                 }
             }
 
@@ -791,7 +944,10 @@ server.tool(
             // Add a special note for AI connections
             let message = "Connection added successfully";
             if ((isLangChainSource || isLangChainTarget) && isAIConnection) {
-                message += ". Note: For LangChain nodes, connections might need specific output/input names and connection direction. If connections don't appear in n8n UI, check that models/tools connect TO the agent using the correct port names (ai_languageModel, ai_tool).";
+                message += ". Note: For LangChain nodes, connections might need specific output/input names and connection direction. If connections don't appear in n8n UI, check that:";
+                message += "\n- Models connect TO the agent using 'ai_languageModel' ports";
+                message += "\n- Tools connect TO the agent using 'ai_tool' ports";
+                message += "\n- Memory nodes connect TO the agent using 'ai_memory' ports";
             }
 
             return { content: [{ type: "text", text: JSON.stringify({ success: true, message, workflow }) }] };
@@ -808,7 +964,8 @@ const addAIConnectionsParamsSchema = z.object({
     workflow_name: z.string().describe("The Name of the workflow to add the AI connections to"),
     agent_node_id: z.string().describe("The ID of the agent node that will use the model and tools"),
     model_node_id: z.string().optional().describe("The ID of the language model node (optional)"),
-    tool_node_ids: z.array(z.string()).optional().describe("Array of tool node IDs to connect to the agent (optional)")
+    tool_node_ids: z.array(z.string()).optional().describe("Array of tool node IDs to connect to the agent (optional)"),
+    memory_node_id: z.string().optional().describe("The ID of the memory node (optional)")
 });
 
 server.tool(
@@ -816,15 +973,15 @@ server.tool(
     addAIConnectionsParamsSchema.shape,
     async (params: z.infer<typeof addAIConnectionsParamsSchema>, _extra) => {
         console.error("[DEBUG] add_ai_connections called with:", params);
-        const { workflow_name, agent_node_id, model_node_id, tool_node_ids } = params;
+        const { workflow_name, agent_node_id, model_node_id, tool_node_ids, memory_node_id } = params;
 
-        if (!model_node_id && (!tool_node_ids || tool_node_ids.length === 0)) {
+        if (!model_node_id && (!tool_node_ids || tool_node_ids.length === 0) && !memory_node_id) {
             return {
                 content: [{
                     type: "text",
                     text: JSON.stringify({
                         success: false,
-                        error: "At least one of model_node_id or tool_node_ids must be provided"
+                        error: "At least one of model_node_id, memory_node_id, or tool_node_ids must be provided"
                     })
                 }]
             };
@@ -860,6 +1017,14 @@ server.tool(
                 }
             }
 
+            let memoryNode = null;
+            if (memory_node_id) {
+                memoryNode = workflow.nodes.find(node => node.id === memory_node_id);
+                if (!memoryNode) {
+                    return { content: [{ type: "text", text: JSON.stringify({ success: false, error: `Memory node with ID ${memory_node_id} not found in workflow ${workflow_name}` }) }] };
+                }
+            }
+
             const toolNodes: N8nWorkflowNode[] = [];
             if (tool_node_ids && tool_node_ids.length > 0) {
                 for (const toolId of tool_node_ids) {
@@ -878,6 +1043,7 @@ server.tool(
             // For AI nodes in n8n, we need to:
             // 1. Language model connects TO the agent using ai_languageModel ports
             // 2. Tools connect TO the agent using ai_tool ports
+            // 3. Memory nodes connect TO the agent using ai_memory ports
 
             // Create the language model connection if a model node was provided
             if (modelNode) {
@@ -910,6 +1076,40 @@ server.tool(
                     console.error(`[DEBUG] Added AI language model connection from ${modelNodeName} to ${agentNode.name}`);
                 } else {
                     console.error(`[DEBUG] AI language model connection from ${modelNodeName} to ${agentNode.name} already exists`);
+                }
+            }
+
+            // Create memory connection if a memory node was provided
+            if (memoryNode) {
+                const memoryNodeName = memoryNode.name;
+
+                // Initialize memory node's connections if needed
+                if (!workflow.connections[memoryNodeName]) {
+                    workflow.connections[memoryNodeName] = {};
+                }
+
+                // Add the AI memory output
+                if (!workflow.connections[memoryNodeName]["ai_memory"]) {
+                    workflow.connections[memoryNodeName]["ai_memory"] = [];
+                }
+
+                // Add connection from memory to agent
+                const memoryConnection: N8nConnectionDetail = {
+                    node: agentNode.name,
+                    type: "ai_memory",
+                    index: 0
+                };
+
+                // Check if this connection already exists
+                const existingMemoryConnection = workflow.connections[memoryNodeName]["ai_memory"].some(
+                    conn => conn.some(detail => detail.node === agentNode.name && detail.type === "ai_memory")
+                );
+
+                if (!existingMemoryConnection) {
+                    workflow.connections[memoryNodeName]["ai_memory"].push([memoryConnection]);
+                    console.error(`[DEBUG] Added AI memory connection from ${memoryNodeName} to ${agentNode.name}`);
+                } else {
+                    console.error(`[DEBUG] AI memory connection from ${memoryNodeName} to ${agentNode.name} already exists`);
                 }
             }
 
