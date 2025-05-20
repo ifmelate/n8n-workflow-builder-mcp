@@ -2,8 +2,13 @@
 
 This project provides a Model Context Protocol (MCP) server for building and manipulating n8n workflows JSON in Cursor IDE. It's a way to build n8n workflows just by prompting with AI in chat.
 
+<a href="https://glama.ai/mcp/servers/@ifmelate/n8n-workflow-builder-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@ifmelate/n8n-workflow-builder-mcp/badge" alt="n8n-workflow-builder-mcp MCP server" />
+</a>
+
 # DEMO VIDEO:
 [![Watch the video](https://github.com/user-attachments/assets/53706f62-7e99-449f-8537-0ce951c727e1)](https://youtu.be/MKEVLM5QmPA?si=8SJQAcYGeAIuhaBm)
+
 ## Current status of implementation
 
 It's in early development stage. Basically, it's working - MCP server creates JSON file with n8n workflow that you can copy and paste to workflow editor in n8n UI.
