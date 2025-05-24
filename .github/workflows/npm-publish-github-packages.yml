@@ -4,6 +4,7 @@
 name: Node.js Package
 
 on:
+  workflow_dispatch:  # This enables manual workflow runs
   release:
     types: [created]
 
