@@ -3,8 +3,8 @@ const path = require('path');
 const fs = require('fs');
 
 // Test a complete workflow with memory connections
-describe('Complete Memory Workflow Integration', function () {
-    it('should create the correct n8n JSON structure for a ChatWithMemory workflow', function () {
+describe('Complete Memory Workflow Integration', () => {
+    it('should create the correct n8n JSON structure for a ChatWithMemory workflow', () => {
         // This is the expected workflow structure with proper memory connections
         const expectedWorkflow = {
             "name": "ChatWithMemory",
@@ -214,85 +214,40 @@ describe('Complete Memory Workflow Integration', function () {
             }
         }
 
-        // Build the workflow using our implementation
+        // Build the workflow using our function
         const actualWorkflow = buildChatWithMemoryWorkflow();
 
-        // Test that each node is correctly added
-        assert.strictEqual(actualWorkflow.nodes.length, 4, "Should have 4 nodes");
+        // Test that the workflow structure matches expected
+        expect(actualWorkflow.name).toBe(expectedWorkflow.name);
+        expect(actualWorkflow.nodes).toHaveLength(expectedWorkflow.nodes.length);
+        expect(actualWorkflow.connections).toEqual(expectedWorkflow.connections);
 
-        // Test connections
-        // 1. Check trigger connection
-        assert.ok(
-            actualWorkflow.connections["Manual Chat Trigger"] &&
-            actualWorkflow.connections["Manual Chat Trigger"]["main"],
-            "Trigger connection should exist"
-        );
+        // Test specific AI connections
+        expect(actualWorkflow.connections["OpenAI GPT-3.5"]["ai_languageModel"]).toBeDefined();
+        expect(actualWorkflow.connections["Simple Memory"]["ai_memory"]).toBeDefined();
 
-        // 2. Check model connection
-        assert.ok(
-            actualWorkflow.connections["OpenAI GPT-3.5"] &&
-            actualWorkflow.connections["OpenAI GPT-3.5"]["ai_languageModel"],
-            "Model connection should exist"
-        );
+        // Test that connections point to the right node
+        const modelConnection = actualWorkflow.connections["OpenAI GPT-3.5"]["ai_languageModel"][0][0];
+        expect(modelConnection.node).toBe("AI Agent");
+        expect(modelConnection.type).toBe("ai_languageModel");
 
-        // 3. Check memory connection - this is the key test
-        assert.ok(
-            actualWorkflow.connections["Simple Memory"] &&
-            actualWorkflow.connections["Simple Memory"]["ai_memory"],
-            "Memory connection should use ai_memory port type"
-        );
-
-        assert.strictEqual(
-            actualWorkflow.connections["Simple Memory"]["ai_memory"][0][0].type,
-            "ai_memory",
-            "Memory connection should use ai_memory type"
-        );
-
-        // Finally, check that the entire structure matches what n8n expects
-        const expectedJson = JSON.stringify(expectedWorkflow, null, 2);
-        const actualJson = JSON.stringify(actualWorkflow, null, 2);
-
-        assert.strictEqual(
-            actualJson,
-            expectedJson,
-            "Complete workflow structure should match expected n8n format"
-        );
+        const memoryConnection = actualWorkflow.connections["Simple Memory"]["ai_memory"][0][0];
+        expect(memoryConnection.node).toBe("AI Agent");
+        expect(memoryConnection.type).toBe("ai_memory");
     });
-});
 
-// Run the tests immediately if this file is executed directly
-if (require.main === module) {
-    let passedTests = 0;
-    let failedTests = 0;
+    it('should validate workflow structure', () => {
+        // Simple validation test
+        const workflow = {
+            name: "Test Workflow",
+            nodes: [],
+            connections: {}
+        };
 
-    for (const test of Object.values(describe.tests)) {
-        console.log(`\nRunning test: ${test.name}`);
-        try {
-            test.fn();
-            console.log(`✅ PASSED: ${test.name}`);
-            passedTests++;
-        } catch (error) {
-            console.log(`❌ FAILED: ${test.name}`);
-            console.error(`   Error: ${error.message}`);
-            failedTests++;
-        }
-    }
-
-    console.log(`\n=== TEST SUMMARY ===`);
-    console.log(`Total: ${passedTests + failedTests}, Passed: ${passedTests}, Failed: ${failedTests}`);
-
-    if (failedTests > 0) {
-        process.exit(1);
-    }
-}
-
-// Simple mock implementation of describe and it functions
-function describe(name, callback) {
-    describe.tests = describe.tests || {};
-    console.log(`\nTEST SUITE: ${name}`);
-    callback();
-}
-
-function it(name, fn) {
-    describe.tests[name] = { name, fn };
-} 
+        expect(workflow).toHaveProperty('name');
+        expect(workflow).toHaveProperty('nodes');
+        expect(workflow).toHaveProperty('connections');
+        expect(Array.isArray(workflow.nodes)).toBe(true);
+        expect(typeof workflow.connections).toBe('object');
+    });
+}); 

@@ -479,5 +479,10 @@ module.exports = {
     scanWorkflowNodes,
     getNodesFromSource,
     searchNodes,
-    sanitizeCredentialParameters // Exported for testing
+    sanitizeCredentialParameters, // Exported for testing
+    // Export cache reset function for testing
+    resetCache: () => {
+        nodeCache = null;
+        cacheTimestamp = null;
+    }
 }; 

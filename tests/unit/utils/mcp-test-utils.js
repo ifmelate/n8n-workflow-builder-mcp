@@ -1,121 +1,94 @@
 /**
- * MCP Server Testing Utilities
- * 
- * Provides helper functions for testing MCP server tool handlers
+ * MCP Test Utilities
+ * Provides mock filesystem and other utilities for testing
  */
 
-const path = require('path');
-const sinon = require('sinon');
-
-// Create dynamic loading for fs/promises to avoid ESM issues
-let fs;
-
-const initFs = async () => {
-    if (!fs) {
-        try {
-            fs = await import('fs/promises');
-        } catch (error) {
-            // Fallback for older Node versions
-            fs = require('fs/promises');
-        }
-    }
-    return fs;
-};
-
-// Store original fs methods to restore later
-const originalFs = {};
-
-// Mock fs methods
-const mockFs = {
-    mkdir: sinon.stub().resolves(),
-    readFile: sinon.stub(),
-    writeFile: sinon.stub().resolves(),
-    stat: sinon.stub().resolves({ isDirectory: () => true })
-};
+let mockFs;
 
 /**
- * Setup mock fs functions
+ * Setup mock filesystem for testing
+ * @returns {Promise<void>}
  */
-async function setupMockFs() {
-    const fsModule = await initFs();
-
-    // Backup original methods if not already done
-    if (Object.keys(originalFs).length === 0) {
-        originalFs.mkdir = fsModule.mkdir;
-        originalFs.readFile = fsModule.readFile;
-        originalFs.writeFile = fsModule.writeFile;
-        originalFs.stat = fsModule.stat;
-    }
-
-    // Apply mocks
-    fsModule.mkdir = mockFs.mkdir;
-    fsModule.readFile = mockFs.readFile;
-    fsModule.writeFile = mockFs.writeFile;
-    fsModule.stat = mockFs.stat;
-}
-
-/**
- * Restore original fs functions
- */
-async function restoreFs() {
-    const fsModule = await initFs();
-
-    // Only restore if originals were backed up
-    if (Object.keys(originalFs).length > 0) {
-        fsModule.mkdir = originalFs.mkdir;
-        fsModule.readFile = originalFs.readFile;
-        fsModule.writeFile = originalFs.writeFile;
-        fsModule.stat = originalFs.stat;
-    }
-}
-
-/**
- * Reset mock fs stubs
- */
-function resetMockFs() {
-    mockFs.mkdir.reset();
-    mockFs.readFile.reset();
-    mockFs.writeFile.reset();
-    mockFs.stat.reset();
-}
-
-/**
- * Get mockFs stub for testing verification
- */
-function getMockFs() {
-    return mockFs;
-}
-
-/**
- * Create a direct test handler for an MCP tool
- * This extracts the handler function from the server.tool() call in index.ts
- * 
- * @param {string} toolName Name of the tool to mock
- * @returns {Function} Function that can be called directly for testing
- */
-function createToolTestHandler(toolName) {
-    return async (params, _extra = {}) => {
-        // Mock implementation - in a real test you would:
-        // 1. Load the index.ts and intercept the server.tool() call
-        // 2. Extract the handler function for the specific tool
-        // 3. Return a function that calls that handler
-
-        // For now, we'll just check and simulate the response
-        // This would be implemented with proper module mocking
-
-        try {
-            // Simulate the handler response format
-            return { content: [{ type: "text", text: JSON.stringify({ success: true }) }] };
-        } catch (error) {
-            return { content: [{ type: "text", text: JSON.stringify({ success: false, error: error.message }) }] };
-        }
+const setupMockFs = () => {
+    mockFs = {
+        readFile: jest.fn(),
+        writeFile: jest.fn(),
+        mkdir: jest.fn().mockResolvedValue(),
+        access: jest.fn().mockResolvedValue(),
+        readdir: jest.fn(),
+        unlink: jest.fn()
     };
-}
+    return Promise.resolve();
+};
+
+/**
+ * Get the mock filesystem instance
+ * @returns {Object} Mock filesystem object
+ */
+const getMockFs = () => mockFs;
+
+/**
+ * Reset all mock filesystem function calls
+ */
+const resetMockFs = () => {
+    if (mockFs) {
+        Object.keys(mockFs).forEach(key => {
+            if (mockFs[key] && typeof mockFs[key].mockClear === 'function') {
+                mockFs[key].mockClear();
+            }
+        });
+    }
+};
+
+/**
+ * Restore real filesystem (Jest cleanup is automatic)
+ * @returns {Promise<void>}
+ */
+const restoreFs = () => {
+    // Jest cleanup is automatic
+    return Promise.resolve();
+};
+
+/**
+ * Create a mock workflow object
+ * @param {Object} options - Workflow options
+ * @returns {Object} Mock workflow
+ */
+const createMockWorkflow = (options = {}) => {
+    return {
+        name: options.name || "TestWorkflow",
+        nodes: options.nodes || [],
+        connections: options.connections || {},
+        active: options.active || false,
+        pinData: options.pinData || {},
+        settings: options.settings || { executionOrder: "v1" },
+        versionId: options.versionId || "test-version-id",
+        id: options.id || "test-workflow-id",
+        tags: options.tags || []
+    };
+};
+
+/**
+ * Create a mock node object
+ * @param {Object} options - Node options
+ * @returns {Object} Mock node
+ */
+const createMockNode = (options = {}) => {
+    return {
+        id: options.id || `node-${Date.now()}`,
+        name: options.name || "Test Node",
+        type: options.type || "n8n-nodes-base.test",
+        typeVersion: options.typeVersion || 1.0,
+        position: options.position || [240, 300],
+        parameters: options.parameters || {}
+    };
+};
 
 module.exports = {
     setupMockFs,
     restoreFs,
     resetMockFs,
     getMockFs,
-    createToolTestHandler
+    createMockWorkflow,
+    createMockNode
 }; 

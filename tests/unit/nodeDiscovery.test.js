@@ -4,12 +4,13 @@
 
 const fs = require('fs').promises;
 const path = require('path');
+const nodeDiscovery = require('../../src/tools/nodeDiscovery');
 const {
     searchNodes,
     scanWorkflowNodes,
     getNodesFromSource,
     sanitizeCredentialParameters
-} = require('../../src/tools/nodeDiscovery');
+} = nodeDiscovery;
 
 // Mock dependencies
 jest.mock('fs', () => ({
@@ -29,22 +30,58 @@ jest.mock('../../src/utils/logger', () => ({
 }));
 
 describe('Node Discovery Tool', () => {
+    // Sample test data
+    const mockNodes = [
+        {
+            id: 'http',
+            name: 'HTTP Request',
+            description: 'Make HTTP requests',
+            parameters: [
+                { name: 'url', type: 'string', value: '', isCredential: false },
+                { name: 'method', type: 'string', value: 'GET', isCredential: false }
+            ],
+            categories: ['HTTP'],
+            type: 'n8n-nodes-base.http',
+            originalNodeType: 'n8n-nodes-base.http',
+            normalizedType: 'http'
+        },
+        {
+            id: 'telegram',
+            name: 'Telegram',
+            description: 'Send messages via Telegram',
+            parameters: [
+                { name: 'message', type: 'string', value: '', isCredential: false },
+                { name: 'token', type: 'string', value: 'secret', isCredential: true }
+            ],
+            categories: ['Communication'],
+            type: 'n8n-nodes-base.telegram',
+            originalNodeType: 'n8n-nodes-base.telegram',
+            normalizedType: 'telegram'
+        }
+    ];
+
     // Reset mocks before each test
     beforeEach(() => {
         jest.clearAllMocks();
+
+        // Reset cache to avoid test interference
+        if (nodeDiscovery.resetCache) {
+            nodeDiscovery.resetCache();
+        }
     });
 
     describe('scanWorkflowNodes', () => {
         it('should scan and parse workflow nodes directory', async () => {
             // Mock file system functions
             fs.readdir.mockResolvedValue([
-                'n8n-nodes-base.telegram.json',
-                'n8n-nodes-base.http.json',
+                'telegram.json',
+                'http.json',
                 'other-file.txt'
             ]);
 
             // Mock file contents
             const telegramNode = {
+                nodeType: 'n8n-nodes-base.telegram',
                 nodes: [{
                     name: 'Telegram',
                     parameters: {
@@ -57,6 +94,7 @@ describe('Node Discovery Tool', () => {
             };
 
             const httpNode = {
+                nodeType: 'n8n-nodes-base.http',
                 nodes: [{
                     name: 'HTTP Request',
                     parameters: {
@@ -96,91 +134,112 @@ describe('Node Discovery Tool', () => {
     });
 
     describe('searchNodes', () => {
-        // Mock nodes data
-        const mockNodes = [
-            {
-                id: 'telegram',
-                name: 'Telegram',
-                description: 'Send or receive messages with Telegram',
-                categories: ['Communication', 'Trigger'],
-                parameters: [
-                    { name: 'message', type: 'string', value: null, isCredential: false },
-                    { name: 'credentials', type: 'object', value: { type: 'credential' }, isCredential: true }
-                ]
-            },
-            {
-                id: 'http',
-                name: 'HTTP Request',
-                description: 'Make HTTP requests to HTTP API',
-                categories: ['HTTP'],
-                parameters: [
-                    { name: 'url', type: 'string', value: '', isCredential: false },
-                    { name: 'method', type: 'string', value: 'GET', isCredential: false }
-                ]
-            },
-            {
-                id: 'mysql',
-                name: 'MySQL',
-                description: 'Interact with MySQL database',
-                categories: ['Database'],
-                parameters: [
-                    { name: 'operation', type: 'string', value: '', isCredential: false },
-                    { name: 'credentials', type: 'object', value: { type: 'credential' }, isCredential: true }
-                ]
-            }
-        ];
-
-        // Mock getNodesFromSource to return our test data
         beforeEach(() => {
-            jest.spyOn(global, 'getNodesFromSource').mockImplementation(() => Promise.resolve(mockNodes));
-        });
-
-        afterEach(() => {
-            if (global.getNodesFromSource.mockRestore) {
-                global.getNodesFromSource.mockRestore();
+            // Reset cache to ensure fresh state
+            if (nodeDiscovery.resetCache) {
+                nodeDiscovery.resetCache();
             }
+
+            // Mock file system functions for searchNodes tests
+            fs.readdir.mockResolvedValue([
+                'telegram.json',
+                'http.json'
+            ]);
+
+            // Mock file contents
+            const telegramNode = {
+                nodeType: 'n8n-nodes-base.telegram',
+                nodes: [{
+                    name: 'Telegram',
+                    parameters: {
+                        message: null,
+                        chatId: '',
+                        credentials: { token: 'secret' }
+                    },
+                    credentials: {}
+                }]
+            };
+
+            const httpNode = {
+                nodeType: 'n8n-nodes-base.http',
+                nodes: [{
+                    name: 'HTTP Request',
+                    parameters: {
+                        url: '',
+                        method: 'GET'
+                    }
+                }]
+            };
+
+            fs.readFile.mockImplementation((filePath) => {
+                if (filePath.includes('telegram')) {
+                    return Promise.resolve(JSON.stringify(telegramNode));
+                } else if (filePath.includes('http')) {
+                    return Promise.resolve(JSON.stringify(httpNode));
+                }
+                return Promise.reject(new Error('File not found'));
+            });
         });
 
         it('should return all nodes when no filters are provided', async () => {
             const result = await searchNodes({});
-            expect(result.count).toBe(3);
-            expect(result.nodes).toHaveLength(3);
+
+            expect(result).toHaveProperty('count');
+            expect(result).toHaveProperty('nodes');
+            expect(result.count).toBe(2);
+            expect(result.nodes).toHaveLength(2);
         });
 
         it('should filter nodes by category', async () => {
-            const result = await searchNodes({ category: 'database' });
+            const result = await searchNodes({ category: 'HTTP' });
+
+            expect(result).toHaveProperty('count');
+            expect(result).toHaveProperty('nodes');
             expect(result.count).toBe(1);
-            expect(result.nodes[0].id).toBe('mysql');
+            expect(result.nodes[0].id).toBe('http');
         });
 
         it('should filter nodes by keyword', async () => {
             const result = await searchNodes({ keyword: 'telegram' });
+
+            expect(result).toHaveProperty('count');
+            expect(result).toHaveProperty('nodes');
             expect(result.count).toBe(1);
             expect(result.nodes[0].id).toBe('telegram');
         });
 
         it('should filter nodes by functionality', async () => {
-            const result = await searchNodes({ functionality: 'http' });
+            const result = await searchNodes({ functionality: 'message' });
+
+            expect(result).toHaveProperty('count');
+            expect(result).toHaveProperty('nodes');
             expect(result.count).toBe(1);
-            expect(result.nodes[0].id).toBe('http');
+            expect(result.nodes[0].id).toBe('telegram');
         });
 
         it('should combine multiple filters', async () => {
-            // This should return no nodes since there's no match for both filters
             const result = await searchNodes({
-                category: 'database',
+                category: 'Communication',
                 keyword: 'telegram'
             });
-            expect(result.count).toBe(0);
-            expect(result.nodes).toHaveLength(0);
+
+            expect(result).toHaveProperty('count');
+            expect(result).toHaveProperty('nodes');
+            expect(result.count).toBe(1);
+            expect(result.nodes[0].id).toBe('telegram');
         });
 
         it('should sanitize credential parameters in the response', async () => {
-            const result = await searchNodes({ category: 'communication' });
-            expect(result.nodes[0].parameters.some(p => p.name === 'credentials')).toBe(true);
-            const credParam = result.nodes[0].parameters.find(p => p.name === 'credentials');
-            expect(credParam.value).toHaveProperty('credentialType');
-            expect(credParam.value).not.toHaveProperty('token');
+            const result = await searchNodes({ keyword: 'telegram' });
+
+            expect(result).toHaveProperty('count');
+            expect(result).toHaveProperty('nodes');
+            expect(result.count).toBe(1);
+
+            const telegramNode = result.nodes[0];
+            const credentialParam = telegramNode.parameters.find(p => p.isCredential);
+            expect(credentialParam).toBeDefined();
+            expect(credentialParam.value).toEqual({ credentialType: 'credentials' });
         });
     });
 

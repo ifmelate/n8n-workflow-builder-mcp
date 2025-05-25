@@ -2,14 +2,13 @@
  * Workflow Creation Tool Tests
  */
 
-const { createWorkflowTool } = require('../../src/tools/workflowCreation');
-const { WorkflowModel } = require('../../src/models/workflow');
+const { createWorkflowExecute } = require('../../src/tools/workflowCreation');
+const { workflowStorage } = require('../../src/models/storage');
 
 // Mock dependencies
-jest.mock('../../src/models/workflow', () => ({
-    WorkflowModel: {
-        create: jest.fn(),
-        generateId: jest.fn().mockReturnValue('test-uuid')
+jest.mock('../../src/models/storage', () => ({
+    workflowStorage: {
+        saveWorkflow: jest.fn()
     }
 }));
 
@@ -25,6 +24,10 @@ jest.mock('../../src/utils/logger', () => ({
     }
 }));
 
+jest.mock('uuid', () => ({
+    v4: jest.fn().mockReturnValue('test-uuid')
+}));
+
 // Cleanup mocks after each test
 afterEach(() => {
     jest.clearAllMocks();
@@ -33,55 +36,38 @@ afterEach(() => {
 describe('Workflow Creation Tool', () => {
     it('should create a workflow with minimum required parameters', async () => {
         // Setup the mock implementation
-        const mockWorkflow = {
-            id: 'test-uuid',
-            name: 'Test Workflow',
-            description: '',
-            nodes: [],
-            connections: {},
-            active: false
-        };
-
-        WorkflowModel.create.mockResolvedValue(mockWorkflow);
+        workflowStorage.saveWorkflow.mockResolvedValue(true);
 
         // Execute the tool
-        const result = await createWorkflowTool.execute({
+        const result = await createWorkflowExecute({
             name: 'Test Workflow'
         });
 
         // Verify the result
-        expect(result.data).toEqual({
-            workflowId: 'test-uuid',
-            workflowData: mockWorkflow
-        });
+        expect(result.workflowId).toBe('test-uuid');
+        expect(result.workflowData.name).toBe('Test Workflow');
+        expect(result.workflowData.description).toBe('');
+        expect(result.workflowData.active).toBe(false);
+        expect(result.workflowData.nodes).toEqual([]);
+        expect(result.workflowData.connections).toEqual({});
 
-        // Verify the WorkflowModel.create was called with correct parameters
-        expect(WorkflowModel.create).toHaveBeenCalledWith({
-            name: 'Test Workflow',
-            description: undefined,
-            active: false,
-            settings: undefined
-        });
+        // Verify the workflowStorage.saveWorkflow was called
+        expect(workflowStorage.saveWorkflow).toHaveBeenCalledWith(
+            'test-uuid',
+            expect.objectContaining({
+                id: 'test-uuid',
+                name: 'Test Workflow'
+            }),
+            expect.stringContaining('test-uuid.json')
+        );
     });
 
     it('should create a workflow with all parameters', async () => {
         // Setup the mock implementation
-        const mockWorkflow = {
-            id: 'test-uuid',
-            name: 'Test Workflow',
-            description: 'Test Description',
-            nodes: [],
-            connections: {},
-            active: true,
-            settings: {
-                executionTimeout: 7200
-            }
-        };
-
-        WorkflowModel.create.mockResolvedValue(mockWorkflow);
+        workflowStorage.saveWorkflow.mockResolvedValue(true);
 
         // Execute the tool
-        const result = await createWorkflowTool.execute({
+        const result = await createWorkflowExecute({
             name: 'Test Workflow',
             description: 'Test Description',
             active: true,
@@ -92,30 +78,33 @@ describe('Workflow Creation Tool', () => {
         });
 
         // Verify the result
-        expect(result.data).toEqual({
-            workflowId: 'test-uuid',
-            workflowData: mockWorkflow
-        });
+        expect(result.workflowId).toBe('test-uuid');
+        expect(result.workflowData.name).toBe('Test Workflow');
+        expect(result.workflowData.description).toBe('Test Description');
+        expect(result.workflowData.active).toBe(true);
+        expect(result.workflowData.settings.executionTimeout).toBe(7200);
 
-        // Verify the WorkflowModel.create was called with correct parameters
-        expect(WorkflowModel.create).toHaveBeenCalledWith({
-            name: 'Test Workflow',
-            description: 'Test Description',
-            active: true,
-            settings: {
-                executionTimeout: 7200
-            }
-        });
+        // Verify the workflowStorage.saveWorkflow was called
+        expect(workflowStorage.saveWorkflow).toHaveBeenCalledWith(
+            'test-uuid',
+            expect.objectContaining({
+                id: 'test-uuid',
+                name: 'Test Workflow',
+                description: 'Test Description',
+                active: true
+            }),
+            expect.stringContaining('test-uuid.json')
+        );
     });
 
     it('should handle errors properly', async () => {
         // Setup the mock implementation to throw an error
         const errorMessage = 'Test error message';
-        WorkflowModel.create.mockRejectedValue(new Error(errorMessage));
+        workflowStorage.saveWorkflow.mockRejectedValue(new Error(errorMessage));
 
         // Execute the tool and expect it to throw
-        await expect(createWorkflowTool.execute({
+        await expect(createWorkflowExecute({
             name: 'Test Workflow'
-        })).rejects.toThrow(`Failed to create workflow: ${errorMessage}`);
+        })).rejects.toThrow(errorMessage);
     });
 }); 

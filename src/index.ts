@@ -428,7 +428,7 @@ server.tool(
 
             await fs.writeFile(filePath, JSON.stringify(newN8nWorkflow, null, 2));
             console.error("[DEBUG] Workflow created and saved to:", filePath);
-            return { content: [{ type: "text", text: JSON.stringify({ success: true, workflow: newN8nWorkflow, recommended_next_step: "YOU NEED TO CALL 'list_available_nodes' TOOL BEFORE starting adding nodes. SEARCH BY SPECIFIC TOPIC USING 'search_term' parameter'." }) }] };
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, workflow: newN8nWorkflow, recommended_next_step: "YOU NEED TO CALL 'list_available_nodes' TOOL BEFORE starting adding nodes. SEARCH BY SPECIFIC TOPIC USING 'search_term' parameter'. To search AI nodes you can use 'langchain' as the search term and 'ai" }) }] };
 
         } catch (error: any) {
             console.error("[ERROR] Failed to create workflow:", error);

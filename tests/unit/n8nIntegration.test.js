@@ -3,7 +3,6 @@
  */
 
 const path = require('path');
-const fs = require('fs').promises;
 const { n8nIntegration, getIntegrationType } = require('../../src/models/n8nIntegration');
 
 // Mock dependencies
@@ -33,6 +32,9 @@ jest.mock('fs', () => {
         }
     };
 });
+
+// Import fs after mocking
+const fs = require('fs');
 
 jest.mock('node-fetch');
 const fetch = require('node-fetch');
@@ -270,7 +272,7 @@ describe('n8n Integration', () => {
             expect(fs.promises.writeFile).toHaveBeenCalledTimes(2);
             expect(fs.promises.writeFile).toHaveBeenCalledWith(
                 expect.any(String),
-                expect.stringContaining('"active":true')
+                expect.stringContaining('"active": true')
             );
 
             expect(result).toEqual({

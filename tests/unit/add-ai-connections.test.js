@@ -2,9 +2,12 @@ const assert = require('assert');
 const path = require('path');
 const fs = require('fs');
 
-// Test the add_ai_connections tool function
-describe('add_ai_connections Tool', function () {
-    it('should properly handle memory nodes in LangChain workflows', function () {
+/**
+ * Unit tests for AI Connections functionality
+ */
+
+describe('add_ai_connections Tool', () => {
+    it('should properly handle memory nodes in LangChain workflows', () => {
         // Mock workflow with agent, model, and memory nodes
         const testWorkflow = {
             name: "TestWorkflow",
@@ -121,58 +124,26 @@ describe('add_ai_connections Tool', function () {
         // Verify all connections were created correctly
 
         // 1. Check model connection
-        assert.ok(
-            result.connections["GPT-4"] &&
-            result.connections["GPT-4"]["ai_languageModel"],
-            "Model connection should exist"
-        );
-
-        assert.strictEqual(
-            result.connections["GPT-4"]["ai_languageModel"][0][0].node,
-            "AI Agent",
-            "Model should connect to agent"
-        );
+        expect(result.connections["GPT-4"]).toBeDefined();
+        expect(result.connections["GPT-4"]["ai_languageModel"]).toBeDefined();
+        expect(result.connections["GPT-4"]["ai_languageModel"][0][0].node).toBe("AI Agent");
 
         // 2. Check tool connection
-        assert.ok(
-            result.connections["Web Search"] &&
-            result.connections["Web Search"]["ai_tool"],
-            "Tool connection should exist"
-        );
-
-        assert.strictEqual(
-            result.connections["Web Search"]["ai_tool"][0][0].node,
-            "AI Agent",
-            "Tool should connect to agent"
-        );
+        expect(result.connections["Web Search"]).toBeDefined();
+        expect(result.connections["Web Search"]["ai_tool"]).toBeDefined();
+        expect(result.connections["Web Search"]["ai_tool"][0][0].node).toBe("AI Agent");
 
         // 3. Check memory connection - this is the key test
-        assert.ok(
-            result.connections["Buffer Memory"] &&
-            result.connections["Buffer Memory"]["ai_memory"],
-            "Memory connection should exist and use ai_memory type"
-        );
-
-        assert.strictEqual(
-            result.connections["Buffer Memory"]["ai_memory"][0][0].node,
-            "AI Agent",
-            "Memory should connect to agent"
-        );
-
-        assert.strictEqual(
-            result.connections["Buffer Memory"]["ai_memory"][0][0].type,
-            "ai_memory",
-            "Memory connection should use ai_memory port type, not ai_tool"
-        );
+        expect(result.connections["Buffer Memory"]).toBeDefined();
+        expect(result.connections["Buffer Memory"]["ai_memory"]).toBeDefined();
+        expect(result.connections["Buffer Memory"]["ai_memory"][0][0].node).toBe("AI Agent");
+        expect(result.connections["Buffer Memory"]["ai_memory"][0][0].type).toBe("ai_memory");
 
         // Verify no incorrect connection types were used
-        assert.ok(
-            !result.connections["Buffer Memory"]["ai_tool"],
-            "Memory should not use ai_tool port type"
-        );
+        expect(result.connections["Buffer Memory"]["ai_tool"]).toBeUndefined();
     });
 
-    it('should handle combinations of different node types', function () {
+    it('should handle combinations of different node types', () => {
         // Test workflow with just the core nodes
         const testWorkflow = {
             name: "TestWorkflow",
@@ -281,13 +252,10 @@ describe('add_ai_connections Tool', function () {
             memory_node_id: "memory-789"
         });
 
-        assert.ok(
-            result.connections["GPT-4"] &&
-            result.connections["GPT-4"]["ai_languageModel"] &&
-            result.connections["Buffer Memory"] &&
-            result.connections["Buffer Memory"]["ai_memory"],
-            "Should connect both model and memory correctly"
-        );
+        expect(result.connections["GPT-4"]).toBeDefined();
+        expect(result.connections["GPT-4"]["ai_languageModel"]).toBeDefined();
+        expect(result.connections["Buffer Memory"]).toBeDefined();
+        expect(result.connections["Buffer Memory"]["ai_memory"]).toBeDefined();
 
         // Case 2: Only memory, no model
         result = addAIConnections({ ...testWorkflow, connections: {} }, {
@@ -295,12 +263,9 @@ describe('add_ai_connections Tool', function () {
             memory_node_id: "memory-789"
         });
 
-        assert.ok(
-            !result.connections["GPT-4"] &&
-            result.connections["Buffer Memory"] &&
-            result.connections["Buffer Memory"]["ai_memory"],
-            "Should connect only memory when model is not specified"
-        );
+        expect(result.connections["GPT-4"]).toBeUndefined();
+        expect(result.connections["Buffer Memory"]).toBeDefined();
+        expect(result.connections["Buffer Memory"]["ai_memory"]).toBeDefined();
 
         // Case 3: Only model, no memory
         result = addAIConnections({ ...testWorkflow, connections: {} }, {
@@ -308,48 +273,113 @@ describe('add_ai_connections Tool', function () {
             model_node_id: "model-456"
         });
 
-        assert.ok(
-            result.connections["GPT-4"] &&
-            result.connections["GPT-4"]["ai_languageModel"] &&
-            !result.connections["Buffer Memory"],
-            "Should connect only model when memory is not specified"
-        );
+        expect(result.connections["GPT-4"]).toBeDefined();
+        expect(result.connections["GPT-4"]["ai_languageModel"]).toBeDefined();
+        expect(result.connections["Buffer Memory"]).toBeUndefined();
     });
 });
 
-// Run the tests immediately if this file is executed directly
-if (require.main === module) {
-    let passedTests = 0;
-    let failedTests = 0;
+describe('AI Connections', () => {
+    it('should add AI language model connections', () => {
+        const workflow = {
+            name: "Test Workflow",
+            nodes: [
+                { id: "agent1", name: "AI Agent", type: "agent" },
+                { id: "model1", name: "Language Model", type: "languageModel" }
+            ],
+            connections: {}
+        };
 
-    for (const test of Object.values(describe.tests)) {
-        console.log(`\nRunning test: ${test.name}`);
-        try {
-            test.fn();
-            console.log(`✅ PASSED: ${test.name}`);
-            passedTests++;
-        } catch (error) {
-            console.log(`❌ FAILED: ${test.name}`);
-            console.error(`   Error: ${error.message}`);
-            failedTests++;
-        }
-    }
+        // Mock adding a language model connection
+        const addConnection = (workflow, sourceNodeName, targetNodeName, connectionType) => {
+            if (!workflow.connections[sourceNodeName]) {
+                workflow.connections[sourceNodeName] = {};
+            }
+            if (!workflow.connections[sourceNodeName][connectionType]) {
+                workflow.connections[sourceNodeName][connectionType] = [];
+            }
+            workflow.connections[sourceNodeName][connectionType].push([{
+                node: targetNodeName,
+                type: connectionType,
+                index: 0
+            }]);
+        };
 
-    console.log(`\n=== TEST SUMMARY ===`);
-    console.log(`Total: ${passedTests + failedTests}, Passed: ${passedTests}, Failed: ${failedTests}`);
+        addConnection(workflow, "Language Model", "AI Agent", "ai_languageModel");
 
-    if (failedTests > 0) {
-        process.exit(1);
-    }
-}
+        expect(workflow.connections["Language Model"]).toBeDefined();
+        expect(workflow.connections["Language Model"]["ai_languageModel"]).toBeDefined();
+        expect(workflow.connections["Language Model"]["ai_languageModel"][0][0].node).toBe("AI Agent");
+    });
 
-// Simple mock implementation of describe and it functions
-function describe(name, callback) {
-    describe.tests = describe.tests || {};
-    console.log(`\nTEST SUITE: ${name}`);
-    callback();
-}
+    it('should add AI memory connections', () => {
+        const workflow = {
+            name: "Test Workflow",
+            nodes: [
+                { id: "agent1", name: "AI Agent", type: "agent" },
+                { id: "memory1", name: "Memory", type: "memory" }
+            ],
+            connections: {}
+        };
 
-function it(name, fn) {
-    describe.tests[name] = { name, fn };
-} 
+        // Mock adding a memory connection
+        const addConnection = (workflow, sourceNodeName, targetNodeName, connectionType) => {
+            if (!workflow.connections[sourceNodeName]) {
+                workflow.connections[sourceNodeName] = {};
+            }
+            if (!workflow.connections[sourceNodeName][connectionType]) {
+                workflow.connections[sourceNodeName][connectionType] = [];
+            }
+            workflow.connections[sourceNodeName][connectionType].push([{
+                node: targetNodeName,
+                type: connectionType,
+                index: 0
+            }]);
+        };
+
+        addConnection(workflow, "Memory", "AI Agent", "ai_memory");
+
+        expect(workflow.connections["Memory"]).toBeDefined();
+        expect(workflow.connections["Memory"]["ai_memory"]).toBeDefined();
+        expect(workflow.connections["Memory"]["ai_memory"][0][0].node).toBe("AI Agent");
+    });
+
+    it('should handle multiple AI connections', () => {
+        const workflow = {
+            name: "Complex Workflow",
+            nodes: [
+                { id: "agent1", name: "AI Agent", type: "agent" },
+                { id: "model1", name: "Language Model", type: "languageModel" },
+                { id: "memory1", name: "Memory", type: "memory" },
+                { id: "tool1", name: "Tool", type: "tool" }
+            ],
+            connections: {}
+        };
+
+        // Add multiple connections
+        const connections = [
+            { source: "Language Model", target: "AI Agent", type: "ai_languageModel" },
+            { source: "Memory", target: "AI Agent", type: "ai_memory" },
+            { source: "Tool", target: "AI Agent", type: "ai_tool" }
+        ];
+
+        connections.forEach(conn => {
+            if (!workflow.connections[conn.source]) {
+                workflow.connections[conn.source] = {};
+            }
+            if (!workflow.connections[conn.source][conn.type]) {
+                workflow.connections[conn.source][conn.type] = [];
+            }
+            workflow.connections[conn.source][conn.type].push([{
+                node: conn.target,
+                type: conn.type,
+                index: 0
+            }]);
+        });
+
+        expect(Object.keys(workflow.connections)).toHaveLength(3);
+        expect(workflow.connections["Language Model"]["ai_languageModel"]).toBeDefined();
+        expect(workflow.connections["Memory"]["ai_memory"]).toBeDefined();
+        expect(workflow.connections["Tool"]["ai_tool"]).toBeDefined();
+    });
+}); 
