@@ -1,37 +1,55 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
-name: Node.js Package
+name: Publish Package to npmjs
 
 on:
-  workflow_dispatch:  # This enables manual workflow runs
+  workflow_dispatch:
   release:
-    types: [created]
+    types: [published]
+  push:
+    branches:
+      - main
+
+# cancel previous runs if a new one is triggered
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test
-
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
     permissions:
-      contents: read
-      packages: write
+      contents: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
+      # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-          registry-url: https://npm.pkg.github.com/
-      - run: npm ci
-      - run: npm publish
+          node-version: "18.x"
+          registry-url: "https://registry.npmjs.org"
+      - run: npm install
+
+      - name: Get version from package.json
+        id: version
+        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Create Git tag
+        if: ${{ !contains(github.event.head_commit.message, 'chore(release)') && github.event_name != 'workflow_dispatch' }}
+        continue-on-error: true
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git tag -a "v${{ steps.version.outputs.version }}" -m "Release v${{ steps.version.outputs.version }}"
+          git push origin "v${{ steps.version.outputs.version }}"
+
+      - name: Create GitHub Release
+        if: ${{ !contains(github.event.head_commit.message, 'chore(release)') && github.event_name != 'workflow_dispatch' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: Release v${{ steps.version.outputs.version }}
+          generate_release_notes: true
+
+      - run: npm publish --provenance --access public
+        # only if the commit message contains chore(release), or if manually triggered with workflow_dispatch
+        if: ${{ contains(github.event.head_commit.message, 'chore(release)') || github.event_name == 'workflow_dispatch' }}
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }} 
