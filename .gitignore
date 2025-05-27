@@ -12,7 +12,7 @@ yarn-error.log
 .env.production.local
 
 # Build output
-dist/
+# dist/ - Commenting this out for npm package
 build/
 
 # Coverage directory used by tools like istanbul
