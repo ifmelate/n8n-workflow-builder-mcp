@@ -191,6 +191,35 @@ function resolvePath(filepath) {
     const relativePath = filepath.replace(/^[\\/]+/, '');
     return path_1.default.join(WORKSPACE_DIR, relativePath);
 }
+// Helper function to resolve workflow file path with optional direct path
+function resolveWorkflowPath(workflowName, workflowPath) {
+    if (workflowPath) {
+        // If workflow_path is provided, use it directly (can be absolute or relative to cwd)
+        if (path_1.default.isAbsolute(workflowPath)) {
+            return workflowPath;
+        }
+        else {
+            return path_1.default.resolve(process.cwd(), workflowPath);
+        }
+    }
+    else {
+        // Use the standard workflow directory approach
+        const sanitizedName = workflowName.replace(/[^a-z0-9_.-]/gi, '_');
+        return resolvePath(path_1.default.join(WORKFLOW_DATA_DIR_NAME, `${sanitizedName}.json`));
+    }
+}
+// Helper function to ensure the parent directory exists for a workflow file path
+async function ensureWorkflowParentDir(filePath) {
+    try {
+        const parentDir = path_1.default.dirname(filePath);
+        console.error("[DEBUG] Ensuring parent directory exists:", parentDir);
+        await promises_1.default.mkdir(parentDir, { recursive: true });
+    }
+    catch (error) {
+        console.error('[ERROR] Failed to ensure parent directory:', error);
+        throw error;
+    }
+}
 // ID Generation Helpers
 function generateN8nId(length = 16) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -365,15 +394,22 @@ server.tool("list_workflows", {}, async (_params, _extra) => {
 // an ID found in the old workflows.json structure. It should now probably
 // expect workflow_id to be the workflow name (to form the filename) or the new N8n ID.
 const getWorkflowDetailsParamsSchema = zod_1.z.object({
-    workflow_name: zod_1.z.string().describe("The Name of the workflow to get details for")
+    workflow_name: zod_1.z.string().describe("The Name of the workflow to get details for"),
+    workflow_path: zod_1.z.string().optional().describe("Optional direct path to the workflow file (absolute or relative to current working directory). If not provided, uses standard workflow_data directory approach.")
 });
 server.tool("get_workflow_details", getWorkflowDetailsParamsSchema.shape, async (params, _extra) => {
     const workflowName = params.workflow_name;
     console.error("[DEBUG] get_workflow_details called with name:", workflowName);
     try {
-        await ensureWorkflowDir();
-        const sanitizedName = workflowName.replace(/[^a-z0-9_.-]/gi, '_');
-        const filePath = resolvePath(path_1.default.join(WORKFLOW_DATA_DIR_NAME, `${sanitizedName}.json`));
+        const filePath = resolveWorkflowPath(workflowName, params.workflow_path);
+        // Only ensure the default workflow directory if using standard approach
+        if (!params.workflow_path) {
+            await ensureWorkflowDir();
+        }
+        else {
+            // Ensure the parent directory of the custom workflow file exists
+            await ensureWorkflowParentDir(filePath);
+        }
         try {
             const data = await promises_1.default.readFile(filePath, 'utf8');
             const workflow = JSON.parse(data);
@@ -408,7 +444,8 @@ const addNodeParamsSchema = zod_1.z.object({
     parameters: zod_1.z.record(zod_1.z.string(), zod_1.z.any()).optional().describe("The parameters for the node"),
     node_name: zod_1.z.string().optional().describe("The name for the new node (e.g., 'My Gmail Node')"),
     typeVersion: zod_1.z.number().optional().describe("The type version for the node (e.g., 1, 1.1). Defaults to 1 if not specified."),
-    webhookId: zod_1.z.string().optional().describe("Optional webhook ID for certain node types like triggers.")
+    webhookId: zod_1.z.string().optional().describe("Optional webhook ID for certain node types like triggers."),
+    workflow_path: zod_1.z.string().optional().describe("Optional direct path to the workflow file (absolute or relative to current working directory). If not provided, uses standard workflow_data directory approach.")
 });
 server.tool("add_node", addNodeParamsSchema.shape, async (params, _extra) => {
     console.error("[DEBUG] add_node called with:", params);
@@ -420,9 +457,15 @@ server.tool("add_node", addNodeParamsSchema.shape, async (params, _extra) => {
             console.warn("[WARN] nodeInfoCache is empty in add_node. Attempting to reload based on current WORKSPACE_DIR.");
             await loadKnownNodeBaseTypes();
         }
-        await ensureWorkflowDir();
-        const sanitizedName = workflowName.replace(/[^a-z0-9_.-]/gi, '_');
-        const filePath = resolvePath(path_1.default.join(WORKFLOW_DATA_DIR_NAME, `${sanitizedName}.json`));
+        const filePath = resolveWorkflowPath(workflowName, params.workflow_path);
+        // Only ensure the default workflow directory if using standard approach
+        if (!params.workflow_path) {
+            await ensureWorkflowDir();
+        }
+        else {
+            // Ensure the parent directory of the custom workflow file exists
+            await ensureWorkflowParentDir(filePath);
+        }
         let workflow;
         try {
             const data = await promises_1.default.readFile(filePath, 'utf8');
@@ -505,7 +548,8 @@ const editNodeParamsSchema = zod_1.z.object({
     }).optional().describe("The new position {x,y} - will be converted to [x,y]"),
     parameters: zod_1.z.record(zod_1.z.string(), zod_1.z.any()).optional().describe("The new parameters"),
     typeVersion: zod_1.z.number().optional().describe("The new type version for the node"),
-    webhookId: zod_1.z.string().optional().describe("Optional new webhook ID for the node.")
+    webhookId: zod_1.z.string().optional().describe("Optional new webhook ID for the node."),
+    workflow_path: zod_1.z.string().optional().describe("Optional workflow path to the workflow file")
 });
 server.tool("edit_node", editNodeParamsSchema.shape, async (params, _extra) => {
     console.error("[DEBUG] edit_node called with:", params);
@@ -516,9 +560,15 @@ server.tool("edit_node", editNodeParamsSchema.shape, async (params, _extra) => {
             console.warn("[WARN] nodeInfoCache is empty in edit_node. Attempting to reload based on current WORKSPACE_DIR.");
             await loadKnownNodeBaseTypes();
         }
-        await ensureWorkflowDir();
-        const sanitizedName = workflowName.replace(/[^a-z0-9_.-]/gi, '_');
-        const filePath = resolvePath(path_1.default.join(WORKFLOW_DATA_DIR_NAME, `${sanitizedName}.json`));
+        const filePath = resolveWorkflowPath(workflowName, params.workflow_path);
+        // Only ensure the default workflow directory if using standard approach
+        if (!params.workflow_path) {
+            await ensureWorkflowDir();
+        }
+        else {
+            // Ensure the parent directory of the custom workflow file exists
+            await ensureWorkflowParentDir(filePath);
+        }
         let workflow;
         try {
             const data = await promises_1.default.readFile(filePath, 'utf8');
@@ -614,15 +664,22 @@ server.tool("edit_node", editNodeParamsSchema.shape, async (params, _extra) => {
 // NOTE: This tool also needs updates for single-file workflow management.
 const deleteNodeParamsSchema = zod_1.z.object({
     workflow_name: zod_1.z.string().describe("The Name of the workflow containing the node"),
-    node_id: zod_1.z.string().describe("The ID of the node to delete")
+    node_id: zod_1.z.string().describe("The ID of the node to delete"),
+    workflow_path: zod_1.z.string().optional().describe("Optional direct path to the workflow file (absolute or relative to current working directory). If not provided, uses standard workflow_data directory approach.")
 });
 server.tool("delete_node", deleteNodeParamsSchema.shape, async (params, _extra) => {
     console.error("[DEBUG] delete_node called with:", params);
     const workflowName = params.workflow_name;
     try {
-        await ensureWorkflowDir();
-        const sanitizedName = workflowName.replace(/[^a-z0-9_.-]/gi, '_');
-        const filePath = resolvePath(path_1.default.join(WORKFLOW_DATA_DIR_NAME, `${sanitizedName}.json`));
+        const filePath = resolveWorkflowPath(workflowName, params.workflow_path);
+        // Only ensure the default workflow directory if using standard approach
+        if (!params.workflow_path) {
+            await ensureWorkflowDir();
+        }
+        else {
+            // Ensure the parent directory of the custom workflow file exists
+            await ensureWorkflowParentDir(filePath);
+        }
         let workflow;
         try {
             const data = await promises_1.default.readFile(filePath, 'utf8');

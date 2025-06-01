@@ -146,12 +146,12 @@ The server provides the following tools for working with n8n workflows:
 |-----------|-------------|----------------|
 | **create_workflow** | Create a new n8n workflow | `workflow_name`, `workspace_dir` |
 | **list_workflows** | List all existing workflows | (no parameters) |
-| **get_workflow_details** | Get detailed information about a specific workflow | `workflow_name` |
-| **add_node** | Add a new node to a workflow | `workflow_name`, `node_type`, `position`, `parameters`, `node_name`, `typeVersion` |
-| **edit_node** | Edit an existing node in a workflow | `workflow_name`, `node_id`, `node_type`, `node_name`, `position`, `parameters` |
-| **delete_node** | Delete a node from a workflow | `workflow_name`, `node_id` |
-| **add_connection** | Add a connection between nodes | `workflow_name`, `source_node_id`, `source_node_output_name`, `target_node_id`, `target_node_input_name` |
-| **add_ai_connections** | Add AI connections for LangChain nodes | `workflow_name`, `agent_node_id`, `model_node_id`, `tool_node_ids` |
+| **get_workflow_details** | Get detailed information about a specific workflow | `workflow_name`, `workflow_path` (optional) |
+| **add_node** | Add a new node to a workflow | `workflow_name`, `node_type`, `position`, `parameters`, `node_name`, `typeVersion`, `webhookId`, `workflow_path` (optional) |
+| **edit_node** | Edit an existing node in a workflow | `workflow_name`, `node_id`, `node_type`, `node_name`, `position`, `parameters`, `typeVersion`, `webhookId`, `workflow_path` (optional) |
+| **delete_node** | Delete a node from a workflow | `workflow_name`, `node_id`, `workflow_path` (optional) |
+| **add_connection** | Add a connection between nodes | `workflow_name`, `source_node_id`, `source_node_output_name`, `target_node_id`, `target_node_input_name`, `target_node_input_index` |
+| **add_ai_connections** | Add AI connections for LangChain nodes | `workflow_name`, `agent_node_id`, `model_node_id`, `tool_node_ids`, `memory_node_id` |
 | **list_available_nodes** | List available node types with optional filtering | `search_term` (optional) |
 
 ## Troubleshooting Cursor Integration
