@@ -1,0 +1,23 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.tableName",
+  "displayName": "VectorStorePGVector",
+  "description": null,
+  "version": 1,
+  "properties": [
+    {
+      "name": "tableName",
+      "displayName": "Table Name",
+      "type": "string",
+      "default": "n8n_vectors",
+      "description": "The table name to store the vectors in. If table does not exist, it will be created."
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Option"
+    }
+  ],
+  "credentialsConfig": []
+}

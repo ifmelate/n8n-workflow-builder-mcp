@@ -1,0 +1,481 @@
+{
+  "nodeType": "n8n-nodes-base.googleContacts",
+  "displayName": "Google Contacts",
+  "description": "Consume Google Contacts API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "familyName",
+      "displayName": "Family Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "givenName",
+      "displayName": "Given Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "city",
+      "displayName": "City",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "region",
+      "displayName": "Region",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "countryCode",
+      "displayName": "Country Code",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "postalCode",
+      "displayName": "Postal Code",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Work",
+      "default": null
+    },
+    {
+      "name": "Other",
+      "default": null
+    },
+    {
+      "name": "birthday",
+      "displayName": "Birthday",
+      "type": "dateTime",
+      "default": ""
+    },
+    {
+      "name": "companyUi",
+      "displayName": "Company",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Company"
+    },
+    {
+      "name": "domain",
+      "displayName": "Domain",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "customFieldsUi",
+      "displayName": "Custom Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "The end user specified key of the user defined data",
+      "placeholder": "Add Custom Field"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "The end user specified value of the user defined data"
+    },
+    {
+      "name": "emailsUi",
+      "displayName": "Emails",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Email"
+    },
+    {
+      "name": "eventsUi",
+      "displayName": "Events",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "An event related to the person",
+      "placeholder": "Add Event"
+    },
+    {
+      "name": "fileAs",
+      "displayName": "File As",
+      "type": "string",
+      "default": "",
+      "description": "The name that should be used to sort the person in a list"
+    },
+    {
+      "name": "group",
+      "displayName": "Group Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "honorificPrefix",
+      "displayName": "Honorific Prefix",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "honorificSuffix",
+      "displayName": "Honorific Suffix",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "middleName",
+      "displayName": "Middle Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "biographies",
+      "displayName": "Notes",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "phoneUi",
+      "displayName": "Phone",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Phone"
+    },
+    {
+      "name": "Home",
+      "default": null
+    },
+    {
+      "name": "Home Fax",
+      "default": null
+    },
+    {
+      "name": "Main",
+      "default": null
+    },
+    {
+      "name": "Mobile",
+      "default": null
+    },
+    {
+      "name": "Other Fax",
+      "default": null
+    },
+    {
+      "name": "Pager",
+      "default": null
+    },
+    {
+      "name": "Work Fax",
+      "default": null
+    },
+    {
+      "name": "Work Mobile",
+      "default": null
+    },
+    {
+      "name": "Work Pager",
+      "default": null
+    },
+    {
+      "name": "relationsUi",
+      "displayName": "Relations",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "The name of the other person this relation refers to",
+      "placeholder": "Add Relation"
+    },
+    {
+      "name": "Brother",
+      "default": null
+    },
+    {
+      "name": "Child",
+      "default": null
+    },
+    {
+      "name": "Domestic Partner",
+      "default": null
+    },
+    {
+      "name": "Father",
+      "default": null
+    },
+    {
+      "name": "Friend",
+      "default": null
+    },
+    {
+      "name": "Manager",
+      "default": null
+    },
+    {
+      "name": "Mother",
+      "default": null
+    },
+    {
+      "name": "Parent",
+      "default": null
+    },
+    {
+      "name": "Referred By",
+      "default": null
+    },
+    {
+      "name": "Relative",
+      "default": null
+    },
+    {
+      "name": "Sister",
+      "default": null
+    },
+    {
+      "name": "Spouse",
+      "default": null
+    },
+    {
+      "name": "contactId",
+      "displayName": "Contact ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "fields",
+      "displayName": "Fields",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "Addresses",
+      "default": null
+    },
+    {
+      "name": "Biographies",
+      "default": null
+    },
+    {
+      "name": "Birthdays",
+      "default": null
+    },
+    {
+      "name": "Cover Photos",
+      "default": null
+    },
+    {
+      "name": "Email Addresses",
+      "default": null
+    },
+    {
+      "name": "Events",
+      "default": null
+    },
+    {
+      "name": "Genders",
+      "default": null
+    },
+    {
+      "name": "IM Clients",
+      "default": null
+    },
+    {
+      "name": "Interests",
+      "default": null
+    },
+    {
+      "name": "Locales",
+      "default": null
+    },
+    {
+      "name": "Memberships",
+      "default": null
+    },
+    {
+      "name": "Metadata",
+      "default": null
+    },
+    {
+      "name": "Names",
+      "default": null
+    },
+    {
+      "name": "Nicknames",
+      "default": null
+    },
+    {
+      "name": "Occupations",
+      "default": null
+    },
+    {
+      "name": "Organizations",
+      "default": null
+    },
+    {
+      "name": "Phone Numbers",
+      "default": null
+    },
+    {
+      "name": "Photos",
+      "default": null
+    },
+    {
+      "name": "Relations",
+      "default": null
+    },
+    {
+      "name": "Residences",
+      "default": null
+    },
+    {
+      "name": "Sip Addresses",
+      "default": null
+    },
+    {
+      "name": "Skills",
+      "default": null
+    },
+    {
+      "name": "URLs",
+      "default": null
+    },
+    {
+      "name": "User Defined",
+      "default": null
+    },
+    {
+      "name": "rawData",
+      "displayName": "RAW Data",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return the data exactly in the way it got received from the API"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "useQuery",
+      "displayName": "Use Query",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether or not to use a query to filter the results"
+    },
+    {
+      "name": "query",
+      "displayName": "Query",
+      "type": "string",
+      "default": "",
+      "description": "The plain-text query for the request. The query is used to match prefix phrases of the fields on a person. For example, a person with name \"foo name\" matches queries such as \"f\", \"fo\", \"foo\", \"foo n\", \"nam\", etc., but not \"oo n\"."
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Sort people by when they were changed; older entries first",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "Last Modified Descending",
+      "default": null,
+      "description": "Sort people by when they were changed; newer entries first"
+    },
+    {
+      "name": "First Name Ascending",
+      "default": null,
+      "description": "Sort people by first name"
+    },
+    {
+      "name": "Last Name Ascending",
+      "default": null,
+      "description": "Sort people by last name"
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The etag field in the person is nedded to make sure the contact has not changed since your last read",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "addressesUi",
+      "displayName": "Addresses",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Address"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a contact"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a contact"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a contact"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Retrieve many contacts"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a contact"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googleContactsOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "nodeType": "n8n-nodes-base.hunter",
+  "displayName": "Hunter",
+  "description": "Consume Hunter API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get every email address found on the internet using a given domain name, with sources"
+    },
+    {
+      "name": "Email Finder",
+      "default": null,
+      "description": "Generate or retrieve the most likely email address from a domain name, a first name and a last name"
+    },
+    {
+      "name": "Email Verifier",
+      "default": null,
+      "description": "Verify the deliverability of an email address"
+    },
+    {
+      "name": "domain",
+      "displayName": "Domain",
+      "type": "string",
+      "default": "",
+      "description": "Domain name from which you want to find the email addresses. For example, \"stripe.com\".",
+      "required": true
+    },
+    {
+      "name": "onlyEmails",
+      "displayName": "Only Emails",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return only the found emails"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "Generic",
+      "default": null
+    },
+    {
+      "name": "seniority",
+      "displayName": "Seniority",
+      "type": "multiOptions",
+      "default": []
+    },
+    {
+      "name": "Senior",
+      "default": null
+    },
+    {
+      "name": "Executive",
+      "default": null
+    },
+    {
+      "name": "department",
+      "displayName": "Department",
+      "type": "multiOptions",
+      "default": []
+    },
+    {
+      "name": "Finance",
+      "default": null
+    },
+    {
+      "name": "HR",
+      "default": null
+    },
+    {
+      "name": "IT",
+      "default": null
+    },
+    {
+      "name": "Legal",
+      "default": null
+    },
+    {
+      "name": "Management",
+      "default": null
+    },
+    {
+      "name": "Marketing",
+      "default": null
+    },
+    {
+      "name": "Sales",
+      "default": null
+    },
+    {
+      "name": "Support",
+      "default": null
+    },
+    {
+      "name": "firstname",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "The person's first name. It doesn't need to be in lowercase.",
+      "required": true
+    },
+    {
+      "name": "lastname",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "description": "The person's last name. It doesn't need to be in lowercase.",
+      "required": true
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "The email address you want to verify",
+      "placeholder": "name@email.com",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "hunterApi",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "domain",
+      "required": true
+    },
+    {
+      "name": "seniority",
+      "required": false
+    },
+    {
+      "name": "department",
+      "required": false
+    },
+    {
+      "name": "domain",
+      "required": true
+    }
+  ]
+}

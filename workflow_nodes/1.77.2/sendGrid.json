@@ -1,0 +1,351 @@
+{
+  "nodeType": "n8n-nodes-base.sendGrid",
+  "displayName": "SendGrid",
+  "description": "Consume SendGrid API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "The query field accepts valid <a href=\"https://sendgrid.com/docs/for-developers/sending-email/segmentation-query-language/\">SGQL</a> for searching for a contact",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "Primary email for the contact",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "address2",
+      "displayName": "Address Line 2",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "alternateEmails",
+      "displayName": "Alternate Emails",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "city",
+      "displayName": "City",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "country",
+      "displayName": "Country",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "firstName",
+      "displayName": "First Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "lastName",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "postalCode",
+      "displayName": "Postal Code",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "stateProvinceRegion",
+      "displayName": "State/Province/Region",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "listIdsUi",
+      "displayName": "List IDs",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Adds a custom field to set also values which have not been predefined",
+      "placeholder": "List IDs"
+    },
+    {
+      "name": "customFieldsUi",
+      "displayName": "Custom Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Adds custom fields",
+      "placeholder": "Add Custom Fields"
+    },
+    {
+      "name": "fieldValue",
+      "displayName": "Field Value",
+      "type": "string",
+      "default": "",
+      "description": "Value for the field"
+    },
+    {
+      "name": "ids",
+      "displayName": "Contact IDs",
+      "type": "string",
+      "default": "",
+      "description": "ID of the contact. Multiple can be added separated by comma."
+    },
+    {
+      "name": "deleteAll",
+      "displayName": "Delete All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether all contacts will be deleted"
+    },
+    {
+      "name": "Email",
+      "default": null
+    },
+    {
+      "name": "contactId",
+      "displayName": "Contact ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the contact",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a new contact, or update the current one if it already exists (upsert)"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a contact"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a contact by ID"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many contacts"
+    },
+    {
+      "name": "deleteContacts",
+      "displayName": "Delete Contacts",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to delete all contacts on the list",
+      "required": true
+    },
+    {
+      "name": "contactSample",
+      "displayName": "Contact Sample",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return the contact sample",
+      "required": true
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the list",
+      "required": true
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a list"
+    },
+    {
+      "name": "fromEmail",
+      "displayName": "Sender Email",
+      "type": "string",
+      "default": "",
+      "description": "Email address of the sender of the email",
+      "placeholder": "sender@domain.com"
+    },
+    {
+      "name": "fromName",
+      "displayName": "Sender Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the sender of the email",
+      "placeholder": "John Smith"
+    },
+    {
+      "name": "toEmail",
+      "displayName": "Recipient Email",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of recipient email addresses",
+      "placeholder": "recipient@domain.com"
+    },
+    {
+      "name": "subject",
+      "displayName": "Subject",
+      "type": "string",
+      "default": "",
+      "description": "Subject of the email to send"
+    },
+    {
+      "name": "dynamicTemplate",
+      "displayName": "Dynamic Template",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this email will contain a dynamic template",
+      "required": true
+    },
+    {
+      "name": "contentType",
+      "displayName": "MIME Type",
+      "type": "options",
+      "default": "text/plain",
+      "description": "MIME type of the email to send"
+    },
+    {
+      "name": "HTML",
+      "default": null
+    },
+    {
+      "name": "contentValue",
+      "displayName": "Message Body",
+      "type": "string",
+      "default": "",
+      "description": "Message body of the email to send",
+      "required": true
+    },
+    {
+      "name": "templateId",
+      "displayName": "Template Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "dynamicTemplateFields",
+      "displayName": "Dynamic Template Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Key of the dynamic template field",
+      "placeholder": "Add Dynamic Template Fields"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Value for the field"
+    },
+    {
+      "name": "bccEmail",
+      "displayName": "BCC Email",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of emails of the recipients of a blind carbon copy of the email"
+    },
+    {
+      "name": "categories",
+      "displayName": "Categories",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of categories. Each category name may not exceed 255 characters."
+    },
+    {
+      "name": "ccEmail",
+      "displayName": "CC Email",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of emails of the recipients of a carbon copy of the email"
+    },
+    {
+      "name": "enableSandbox",
+      "displayName": "Enable Sandbox",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to use to the sandbox for testing out email-sending functionality"
+    },
+    {
+      "name": "ipPoolName",
+      "displayName": "IP Pool Name",
+      "type": "string",
+      "default": "",
+      "description": "The IP Pool that you would like to send this email from"
+    },
+    {
+      "name": "headers",
+      "displayName": "Headers",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Key to set in the header object",
+      "placeholder": "Add Header"
+    },
+    {
+      "name": "sendAt",
+      "displayName": "Send At",
+      "type": "dateTime",
+      "default": "",
+      "description": "When to deliver the email. Scheduling more than 72 hours in advance is forbidden."
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "List",
+      "default": null
+    },
+    {
+      "name": "Mail",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "sendGridApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

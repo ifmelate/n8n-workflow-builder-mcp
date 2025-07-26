@@ -1,0 +1,65 @@
+{
+  "nodeType": "n8n-nodes-base.executeWorkflowTrigger",
+  "displayName": "Execute Workflow Trigger",
+  "description": "Helpers for calling other n8n workflows. Used for designing modular, microservice-like workflows.",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "events",
+      "displayName": "Events",
+      "type": "hidden",
+      "default": null,
+      "description": "When called by another workflow using Execute Workflow Trigger"
+    },
+    {
+      "name": "notice",
+      "displayName": "When an ‘execute workflow’ node calls this workflow, the execution starts here. Any data passed into the 'execute workflow' node will be output by this node.",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "outdatedVersionWarning",
+      "displayName": "This node is out of date. Please upgrade by removing it and adding a new one",
+      "type": "notice",
+      "default": null
+    },
+    {
+      "name": "Define using fields below",
+      "displayName": "Input data mode",
+      "type": "options",
+      "default": null,
+      "description": "Provide input fields via UI"
+    },
+    {
+      "name": "Define using JSON example",
+      "default": null,
+      "description": "Generate a schema from an example JSON object"
+    },
+    {
+      "name": "Accept all data",
+      "default": null,
+      "description": "Use all incoming data from the parent workflow"
+    },
+    {
+      "name": "name",
+      "displayName": "Values",
+      "type": "string",
+      "default": "",
+      "description": "Name of the field",
+      "placeholder": "e.g. fieldName",
+      "required": true
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": "string",
+      "description": "The field value type",
+      "required": true
+    }
+  ],
+  "credentialsConfig": []
+}

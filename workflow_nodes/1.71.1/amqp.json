@@ -1,0 +1,62 @@
+{
+  "nodeType": "n8n-nodes-base.amqp",
+  "displayName": "AMQP Sender",
+  "description": "Sends a raw-message via AMQP 1.0, executed once per item",
+  "version": 1,
+  "properties": [
+    {
+      "name": "sink",
+      "displayName": "Queue / Topic",
+      "type": "string",
+      "default": "",
+      "description": "Name of the queue of topic to publish to",
+      "placeholder": "e.g. topic://sourcename.something"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Will be used to pass to the RHEA Backend as container_id",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "dataAsObject",
+      "displayName": "Data as Object",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to send the data as an object"
+    },
+    {
+      "name": "reconnect",
+      "displayName": "Reconnect",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to automatically reconnect if disconnected"
+    },
+    {
+      "name": "reconnectLimit",
+      "displayName": "Reconnect Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Maximum number of reconnect attempts"
+    },
+    {
+      "name": "sendOnlyProperty",
+      "displayName": "Send Property",
+      "type": "string",
+      "default": "",
+      "description": "The only property to send. If empty the whole item will be sent."
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "amqp",
+      "required": true
+    },
+    {
+      "name": "sink",
+      "required": false
+    }
+  ]
+}

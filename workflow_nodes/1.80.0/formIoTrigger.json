@@ -1,0 +1,59 @@
+{
+  "nodeType": "n8n-nodes-base.formIoTrigger",
+  "displayName": "Form.io Trigger",
+  "description": "Handle form.io events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "projectId",
+      "displayName": "Project Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "formId",
+      "displayName": "Form Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "events",
+      "displayName": "Trigger Events",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "Submission Updated",
+      "default": null
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "formIoApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "projectId",
+      "required": true
+    },
+    {
+      "name": "simple",
+      "required": false
+    }
+  ]
+}

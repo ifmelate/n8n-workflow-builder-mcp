@@ -1,0 +1,550 @@
+{
+  "nodeType": "n8n-nodes-base.quickbooks",
+  "displayName": "QuickBooks Online",
+  "description": "Consume the QuickBooks Online API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "VendorRef",
+      "displayName": "For Vendor Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "The ID of the vendor who the bill is for. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "Line",
+      "displayName": "Line",
+      "type": "collection",
+      "default": {},
+      "description": "Individual line item of a transaction",
+      "placeholder": "Add Line Item Property",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "Amount",
+      "displayName": "Amount",
+      "type": "number",
+      "default": 0,
+      "description": "Monetary amount of the line item"
+    },
+    {
+      "name": "Description",
+      "displayName": "Description",
+      "type": "string",
+      "default": "",
+      "description": "Textual description of the line item"
+    },
+    {
+      "name": "DetailType",
+      "displayName": "Detail Type",
+      "type": "options",
+      "default": "ItemBasedExpenseLineDetail"
+    },
+    {
+      "name": "Item-Based Expense Line Detail",
+      "default": null
+    },
+    {
+      "name": "itemId",
+      "displayName": "Item Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "LineNum",
+      "displayName": "Position",
+      "type": "number",
+      "default": 1,
+      "description": "Position of the line item relative to others"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The ID of the bill to delete",
+      "placeholder": "Add Field",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "The condition for selecting bills. See the <a href=\"https://developer.intuit.com/app/developer/qbo/docs/develop/explore-the-quickbooks-online-api/data-queries\">guide</a> for supported syntax.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "billId",
+      "displayName": "Bill ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the bill to update",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": "get"
+    },
+    {
+      "name": "Delete",
+      "default": null
+    },
+    {
+      "name": "Get",
+      "default": null
+    },
+    {
+      "name": "Get Many",
+      "default": null
+    },
+    {
+      "name": "Update",
+      "default": null
+    },
+    {
+      "name": "displayName",
+      "displayName": "Display Name",
+      "type": "string",
+      "default": "",
+      "description": "The display name of the customer to create",
+      "required": true
+    },
+    {
+      "name": "customerId",
+      "displayName": "Customer ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the customer to update",
+      "required": true
+    },
+    {
+      "name": "FamilyName",
+      "displayName": "Family Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "GivenName",
+      "displayName": "Given Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "employeeId",
+      "displayName": "Employee ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the employee to update",
+      "required": true
+    },
+    {
+      "name": "CustomerRef",
+      "displayName": "For Customer Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "The ID of the customer who the estimate is for. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "TaxCodeRef",
+      "displayName": "Tax Code Ref Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "download",
+      "displayName": "Download",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to download the estimate as a PDF file",
+      "required": true
+    },
+    {
+      "name": "binaryProperty",
+      "displayName": "Put Output File in Field",
+      "type": "string",
+      "default": "data",
+      "required": true
+    },
+    {
+      "name": "fileName",
+      "displayName": "File Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the file that will be downloaded",
+      "placeholder": "data.pdf",
+      "required": true
+    },
+    {
+      "name": "estimateId",
+      "displayName": "Estimate ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the estimate to send",
+      "required": true
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "The email of the recipient of the estimate",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "Send",
+      "default": null
+    },
+    {
+      "name": "Qty",
+      "displayName": "Quantity",
+      "type": "number",
+      "default": 0,
+      "description": "Number of units of the line item"
+    },
+    {
+      "name": "invoiceId",
+      "displayName": "Invoice ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the invoice to send",
+      "required": true
+    },
+    {
+      "name": "Void",
+      "default": null
+    },
+    {
+      "name": "TotalAmt",
+      "displayName": "Total Amount",
+      "type": "number",
+      "default": 0,
+      "description": "Total amount of the transaction"
+    },
+    {
+      "name": "paymentId",
+      "displayName": "Payment ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the payment to send",
+      "required": true
+    },
+    {
+      "name": "purchaseId",
+      "displayName": "Purchase ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the purchase to retrieve",
+      "required": true
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    },
+    {
+      "name": "arpaid",
+      "displayName": "Accounts Receivable Paid",
+      "type": "options",
+      "default": "All",
+      "options": []
+    },
+    {
+      "name": "cleared",
+      "displayName": "Cleared Status",
+      "type": "options",
+      "default": "Reconciled",
+      "options": []
+    },
+    {
+      "name": "columns",
+      "displayName": "Columns",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Columns to return"
+    },
+    {
+      "name": "customer",
+      "displayName": "Customer Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Customer to filter results by. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "dateRangeCustom",
+      "displayName": "Date Range (Custom)",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Start date of the date range to filter results by",
+      "placeholder": "Add Date Range"
+    },
+    {
+      "name": "end_date",
+      "displayName": "End Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "End date of the date range to filter results by"
+    },
+    {
+      "name": "date_macro",
+      "displayName": "Date Range (Predefined)",
+      "type": "options",
+      "default": "This Month",
+      "description": "Predefined date range to filter results by"
+    },
+    {
+      "name": "dateRangeCreationCustom",
+      "displayName": "Date Range for Creation Date (Custom)",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Start date of the account creation date range to filter results by",
+      "placeholder": "Add Creation Date Range"
+    },
+    {
+      "name": "end_createdate",
+      "displayName": "End Creation Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "End date of the account creation date range to filter results by"
+    },
+    {
+      "name": "createdate_macro",
+      "displayName": "Date Range for Creation Date (Predefined)",
+      "type": "options",
+      "default": "This Month",
+      "description": "Predefined report account creation date range"
+    },
+    {
+      "name": "dateRangeDueCustom",
+      "displayName": "Date Range for Due Date (Custom)",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Start date of the due date range to filter results by",
+      "placeholder": "Add Due Date Range"
+    },
+    {
+      "name": "end_duedate",
+      "displayName": "End Due Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "End date of the due date range to filter results by"
+    },
+    {
+      "name": "duedate_macro",
+      "displayName": "Date Range for Due Date (Predefined)",
+      "type": "options",
+      "default": "This Month",
+      "description": "Predefined due date range to filter results by"
+    },
+    {
+      "name": "dateRangeModificationCustom",
+      "displayName": "Date Range for Modification Date (Custom)",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Start date of the account modification date range to filter results by",
+      "placeholder": "Add Modification Date Range"
+    },
+    {
+      "name": "end_moddate",
+      "displayName": "End Modification Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "End date of the account modification date range to filter results by"
+    },
+    {
+      "name": "moddate_macro",
+      "displayName": "Date Range for Modification Date (Predefined)",
+      "type": "options",
+      "default": "This Month",
+      "description": "Predefined account modifiction date range to filter results by"
+    },
+    {
+      "name": "department",
+      "displayName": "Department Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Department to filter results by. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "docnum",
+      "displayName": "Document Number",
+      "type": "string",
+      "default": "",
+      "description": "Transaction document number to filter results by"
+    },
+    {
+      "name": "group_by",
+      "displayName": "Group By",
+      "type": "options",
+      "default": "Account",
+      "description": "Transaction field to group results by"
+    },
+    {
+      "name": "memo",
+      "displayName": "Memo Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Memo to filter results by. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "payment_Method",
+      "displayName": "Payment Method",
+      "type": "options",
+      "default": "Cash",
+      "description": "Payment method to filter results by"
+    },
+    {
+      "name": "printed",
+      "displayName": "Printed Status",
+      "type": "options",
+      "default": "Printed",
+      "description": "Printed state to filter results by"
+    },
+    {
+      "name": "To Be Printed",
+      "default": null
+    },
+    {
+      "name": "qzurl",
+      "displayName": "Quick Zoom URL",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether Quick Zoom URL information should be generated"
+    },
+    {
+      "name": "sort_by",
+      "displayName": "Sort By",
+      "type": "options",
+      "default": "account_name",
+      "description": "Column to sort results by"
+    },
+    {
+      "name": "sort_order",
+      "displayName": "Sort Order",
+      "type": "options",
+      "default": "Ascend",
+      "options": []
+    },
+    {
+      "name": "source_account_type",
+      "displayName": "Source Account Type",
+      "type": "options",
+      "default": "Bank",
+      "description": "Account type to filter results by"
+    },
+    {
+      "name": "term",
+      "displayName": "Term Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Term to filter results by. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "bothamount",
+      "displayName": "Transaction Amount",
+      "type": "number",
+      "default": 0,
+      "description": "Monetary amount to filter results by"
+    },
+    {
+      "name": "transaction_type",
+      "displayName": "Transaction Type",
+      "type": "options",
+      "default": "CreditCardCharge",
+      "description": "Transaction type to filter results by"
+    },
+    {
+      "name": "vendor",
+      "displayName": "Vendor Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Vendor to filter results by. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "vendorId",
+      "displayName": "Vendor ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the vendor to update",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Customer",
+      "default": null
+    },
+    {
+      "name": "Employee",
+      "default": null
+    },
+    {
+      "name": "Estimate",
+      "default": null
+    },
+    {
+      "name": "Invoice",
+      "default": null
+    },
+    {
+      "name": "Item",
+      "default": null
+    },
+    {
+      "name": "Payment",
+      "default": null
+    },
+    {
+      "name": "Purchase",
+      "default": null
+    },
+    {
+      "name": "Transaction",
+      "default": null
+    },
+    {
+      "name": "Vendor",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "quickBooksOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

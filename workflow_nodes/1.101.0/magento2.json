@@ -1,0 +1,164 @@
+{
+  "nodeType": "n8n-nodes-base.magento2",
+  "displayName": "Magento 2",
+  "description": "Consume Magento API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "Email address of the user to create",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "firstname",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "First name of the user to create",
+      "required": true
+    },
+    {
+      "name": "lastname",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "description": "Last name of the user to create",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "ID of the customer to update",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "firstName",
+      "displayName": "First Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "lastName",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "website_id",
+      "displayName": "Website Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to return all results or only up to a given limit",
+      "placeholder": "Add Field",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a new customer"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a customer"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a customer"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many customers"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a customer"
+    },
+    {
+      "name": "orderId",
+      "displayName": "Order ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "Ship",
+      "default": null,
+      "description": "Ship an order"
+    },
+    {
+      "name": "sku",
+      "displayName": "SKU",
+      "type": "string",
+      "default": "",
+      "description": "Stock-keeping unit of the product",
+      "required": true
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "attributeSetId",
+      "displayName": "Attribute Set Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "price",
+      "displayName": "Price",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Invoice",
+      "default": null
+    },
+    {
+      "name": "Order",
+      "default": null
+    },
+    {
+      "name": "Product",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "magento2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

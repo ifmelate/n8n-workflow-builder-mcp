@@ -1,0 +1,71 @@
+{
+  "nodeType": "n8n-nodes-base.linearTrigger",
+  "displayName": "Linear Trigger",
+  "description": "Starts the workflow when Linear events occur",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "notice",
+      "displayName": "Make sure your credential has the \"Admin\" scope to create webhooks.",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "teamId",
+      "displayName": "Team Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "resources",
+      "displayName": "Listen to Resources",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "Cycle",
+      "default": null
+    },
+    {
+      "name": "Issue Comment",
+      "default": null
+    },
+    {
+      "name": "Issue Label",
+      "default": null
+    },
+    {
+      "name": "Project",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "linearApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "notice",
+      "required": false
+    }
+  ]
+}

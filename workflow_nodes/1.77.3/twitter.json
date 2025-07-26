@@ -1,0 +1,40 @@
+{
+  "nodeType": "n8n-nodes-base.twitter",
+  "displayName": "Twitter",
+  "description": null,
+  "version": "2",
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "description": "Send a direct message to a user"
+    },
+    {
+      "name": "List",
+      "default": null,
+      "description": "Add a user to a list"
+    },
+    {
+      "name": "Tweet",
+      "default": null,
+      "description": "Create, like, search, or delete a tweet"
+    },
+    {
+      "name": "User",
+      "default": null,
+      "description": "Search users by username"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "twitterOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

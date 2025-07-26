@@ -1,0 +1,85 @@
+{
+  "nodeType": "n8n-nodes-base.stackby",
+  "displayName": "Stackby",
+  "description": "Read, write, and delete data in Stackby",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Delete",
+      "default": null
+    },
+    {
+      "name": "List",
+      "default": null
+    },
+    {
+      "name": "Read",
+      "default": null
+    },
+    {
+      "name": "stackId",
+      "displayName": "Stack ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the stack to access",
+      "required": true
+    },
+    {
+      "name": "table",
+      "displayName": "Table",
+      "type": "string",
+      "default": "",
+      "description": "Enter Table Name",
+      "placeholder": "Stories",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 1000,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The name or ID of a view in the Stories table. If set, only the records in that view will be returned. The records will be sorted according to the order of the view.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "columns",
+      "displayName": "Columns",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of the properties which should used as columns for the new rows",
+      "placeholder": "id,name,description",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "stackbyApi",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "stackId",
+      "required": true
+    },
+    {
+      "name": "columns",
+      "required": true
+    }
+  ]
+}

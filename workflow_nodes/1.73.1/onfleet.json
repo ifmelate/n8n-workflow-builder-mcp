@@ -1,0 +1,317 @@
+{
+  "nodeType": "n8n-nodes-base.onfleet",
+  "displayName": "Onfleet",
+  "description": "Consume Onfleet API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "id",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the task object for lookup",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 64,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "success",
+      "displayName": "Complete as a Success",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the task's completion was successful",
+      "required": true
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "The starting time of the range. Tasks created or completed at or after this time will be included.",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "state",
+      "displayName": "State",
+      "type": "multiOptions",
+      "default": null,
+      "options": []
+    },
+    {
+      "name": "Active",
+      "default": null
+    },
+    {
+      "name": "Assigned",
+      "default": null
+    },
+    {
+      "name": "Completed",
+      "default": null
+    },
+    {
+      "name": "Unassigned",
+      "default": null
+    },
+    {
+      "name": "to",
+      "displayName": "To",
+      "type": "dateTime",
+      "default": "",
+      "description": "The ending time of the range. Defaults to current time if not specified."
+    },
+    {
+      "name": "overrideFields",
+      "displayName": "Override Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "includeBarcodes",
+      "displayName": "Include Barcodes",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "includeDependencies",
+      "displayName": "Include Dependencies",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "includeMetadata",
+      "displayName": "Include Metadata",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Completion Notes",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "recipientNotes",
+      "displayName": "Recipient Notes Override",
+      "type": "string",
+      "default": "",
+      "description": "Override the recipient notes for this task only"
+    },
+    {
+      "name": "recipientSkipSMSNotifications",
+      "displayName": "Recipient Skip SMS Notifications Override",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to override the recipient notification settings for this task"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Clone an Onfleet task"
+    },
+    {
+      "name": "Complete",
+      "default": null,
+      "description": "Force-complete a started Onfleet task"
+    },
+    {
+      "name": "Create",
+      "default": null,
+      "description": "Create a new Onfleet task"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete an Onfleet task"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a specific Onfleet task"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many Onfleet tasks"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update an Onfleet task"
+    },
+    {
+      "name": "getBy",
+      "displayName": "Get By",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Phone",
+      "default": null
+    },
+    {
+      "name": "Name",
+      "default": null
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "The name of the recipient for lookup",
+      "required": true
+    },
+    {
+      "name": "phone",
+      "displayName": "Phone",
+      "type": "string",
+      "default": "",
+      "description": "The phone of the recipient for lookup",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to skip validation for this recipient's phone number",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "Get Delegatee Details",
+      "default": null,
+      "description": "Retrieve the details of an organization with which you are connected"
+    },
+    {
+      "name": "schedule",
+      "displayName": "Schedule",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Schedule",
+      "required": true
+    },
+    {
+      "name": "shifts",
+      "displayName": "Shifts",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Shift",
+      "required": true
+    },
+    {
+      "name": "Get Schedule",
+      "default": null,
+      "description": "Get a specific Onfleet worker schedule"
+    },
+    {
+      "name": "Update Tasks",
+      "default": null,
+      "description": "Fully replace a container's tasks"
+    },
+    {
+      "name": "scheduleTimeWindow",
+      "displayName": "Schedule Time Window",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Time Window"
+    },
+    {
+      "name": "endTime",
+      "displayName": "End Time",
+      "type": "dateTime",
+      "default": ""
+    },
+    {
+      "name": "taskTimeWindow",
+      "displayName": "Task Time Window",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Time Window"
+    },
+    {
+      "name": "pickUp",
+      "displayName": "Pick Up",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Pick Up",
+      "required": true
+    },
+    {
+      "name": "Get Time Estimates",
+      "default": null,
+      "description": "Get estimated times for upcoming tasks for a team, returns a selected driver"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Container",
+      "default": null
+    },
+    {
+      "name": "Destination",
+      "default": null
+    },
+    {
+      "name": "Hub",
+      "default": null
+    },
+    {
+      "name": "Organization",
+      "default": null
+    },
+    {
+      "name": "Recipient",
+      "default": null
+    },
+    {
+      "name": "Task",
+      "default": null
+    },
+    {
+      "name": "Team",
+      "default": null
+    },
+    {
+      "name": "Worker",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "onfleetApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

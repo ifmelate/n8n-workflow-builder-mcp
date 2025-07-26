@@ -1,0 +1,10 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.toolVectorStore",
+  "displayName": "Vector Store Question Answer Tool",
+  "description": "Answer questions with a vector store",
+  "version": [
+    1
+  ],
+  "properties": [],
+  "credentialsConfig": []
+}

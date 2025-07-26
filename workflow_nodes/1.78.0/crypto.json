@@ -1,0 +1,147 @@
+{
+  "nodeType": "n8n-nodes-base.crypto",
+  "displayName": "Crypto",
+  "description": "Provide cryptographic utilities",
+  "version": 1,
+  "properties": [
+    {
+      "name": "action",
+      "displayName": "Action",
+      "type": "options",
+      "default": null,
+      "description": "Generate random string"
+    },
+    {
+      "name": "Hash",
+      "default": null,
+      "description": "Hash a text or file in a specified format"
+    },
+    {
+      "name": "Hmac",
+      "default": null,
+      "description": "Hmac a text or file in a specified format"
+    },
+    {
+      "name": "Sign",
+      "default": null,
+      "description": "Sign a string using a private key"
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "SHA256",
+      "default": null
+    },
+    {
+      "name": "SHA3-256",
+      "default": null
+    },
+    {
+      "name": "SHA3-384",
+      "default": null
+    },
+    {
+      "name": "SHA3-512",
+      "default": null
+    },
+    {
+      "name": "SHA384",
+      "default": null
+    },
+    {
+      "name": "SHA512",
+      "default": null
+    },
+    {
+      "name": "binaryData",
+      "displayName": "Binary File",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the data to hashed should be taken from binary field",
+      "required": true
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Binary Property Name",
+      "type": "string",
+      "default": "data",
+      "description": "Name of the binary property which contains the input data",
+      "required": true
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "The value that should be hashed",
+      "required": true
+    },
+    {
+      "name": "dataPropertyName",
+      "displayName": "Property Name",
+      "type": "string",
+      "default": "data",
+      "description": "Name of the property to which to write the hash",
+      "required": true
+    },
+    {
+      "name": "encoding",
+      "displayName": "Encoding",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "HEX",
+      "default": null
+    },
+    {
+      "name": "secret",
+      "displayName": "Secret",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "algorithm",
+      "displayName": "Algorithm Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "privateKey",
+      "displayName": "Private Key",
+      "type": "string",
+      "default": "",
+      "description": "Private key to use when signing the string",
+      "required": true
+    },
+    {
+      "name": "encodingType",
+      "displayName": "Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "BASE64",
+      "default": null
+    },
+    {
+      "name": "UUID",
+      "default": null
+    },
+    {
+      "name": "stringLength",
+      "displayName": "Length",
+      "type": "number",
+      "default": 32,
+      "description": "Length of the generated string"
+    }
+  ],
+  "credentialsConfig": []
+}

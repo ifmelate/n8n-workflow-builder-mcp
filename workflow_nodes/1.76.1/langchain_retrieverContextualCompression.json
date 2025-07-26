@@ -1,0 +1,8 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.retrieverContextualCompression",
+  "displayName": "Contextual Compression Retriever",
+  "description": "Enhances document similarity search by contextual compression.",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

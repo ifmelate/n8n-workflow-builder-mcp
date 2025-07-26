@@ -1,0 +1,8 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.toolThink",
+  "displayName": "Think Tool",
+  "description": "Invite the AI agent to do some thinking",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

@@ -1,0 +1,113 @@
+{
+  "nodeType": "n8n-nodes-base.microsoftGraphSecurity",
+  "displayName": "Microsoft Graph Security",
+  "description": "Consume the Microsoft Graph Security API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "secureScoreControlProfileId",
+      "displayName": "Secure Score Control Profile ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the secure score control profile to retrieve",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "<a href=\"https://docs.microsoft.com/en-us/graph/query-parameters#filter-parameter\">Query parameter</a> to filter results by",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "provider",
+      "displayName": "Provider",
+      "type": "string",
+      "default": "",
+      "description": "Name of the provider of the security product or service",
+      "placeholder": "SecureScore",
+      "required": true
+    },
+    {
+      "name": "vendor",
+      "displayName": "Vendor",
+      "type": "string",
+      "default": "",
+      "description": "Name of the vendor of the security product or service",
+      "placeholder": "Microsoft",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Analyst driven setting on the control",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "Ignored",
+      "default": null
+    },
+    {
+      "name": "Third Party",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Get Many",
+      "default": null
+    },
+    {
+      "name": "Update",
+      "default": null
+    },
+    {
+      "name": "secureScoreId",
+      "displayName": "Secure Score ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the secure score to retrieve",
+      "required": true
+    },
+    {
+      "name": "includeControlScores",
+      "displayName": "Include Control Scores",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Secure Score Control Profile",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "microsoftGraphSecurityOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

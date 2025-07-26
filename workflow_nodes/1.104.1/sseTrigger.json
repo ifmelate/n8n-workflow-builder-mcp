@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.sseTrigger",
+  "displayName": "SSE Trigger",
+  "description": "Triggers the workflow when Server-Sent Events occur",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

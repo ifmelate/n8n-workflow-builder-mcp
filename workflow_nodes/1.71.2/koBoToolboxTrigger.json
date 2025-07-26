@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.koBoToolboxTrigger",
+  "displayName": "KoBoToolbox Trigger",
+  "description": "Process KoBoToolbox submissions",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

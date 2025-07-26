@@ -1,0 +1,103 @@
+{
+  "nodeType": "n8n-nodes-base.mocean",
+  "displayName": "Mocean",
+  "description": "Send SMS and voice messages via Mocean",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Voice",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Send SMS/Voice message"
+    },
+    {
+      "name": "from",
+      "displayName": "From",
+      "type": "string",
+      "default": "",
+      "description": "Number to which to send the message",
+      "placeholder": "Sender Number",
+      "required": true
+    },
+    {
+      "name": "to",
+      "displayName": "To",
+      "type": "string",
+      "default": "",
+      "description": "Number from which to send the message",
+      "placeholder": "Receipient number",
+      "required": true
+    },
+    {
+      "name": "language",
+      "displayName": "Language",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "English (United Kingdom)",
+      "default": null
+    },
+    {
+      "name": "English (United States)",
+      "default": null
+    },
+    {
+      "name": "Japanese (Japan)",
+      "default": null
+    },
+    {
+      "name": "Korean (Korea)",
+      "default": null
+    },
+    {
+      "name": "message",
+      "displayName": "Message",
+      "type": "string",
+      "default": "",
+      "description": "Message to send",
+      "placeholder": "",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "moceanApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "from",
+      "required": true
+    },
+    {
+      "name": "message",
+      "required": true
+    }
+  ]
+}

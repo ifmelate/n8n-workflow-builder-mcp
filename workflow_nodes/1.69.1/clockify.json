@@ -1,0 +1,372 @@
+{
+  "nodeType": "n8n-nodes-base.clockify",
+  "displayName": "Clockify",
+  "description": "Consume Clockify REST API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "name",
+      "displayName": "Client Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of client being created",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "sort-order",
+      "displayName": "Sort Order",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Descending",
+      "default": null
+    },
+    {
+      "name": "clientId",
+      "displayName": "Client ID",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Address of client being created/updated",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "archived",
+      "displayName": "Archived",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a client"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a client"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a client"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many clients"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a client"
+    },
+    {
+      "name": "color",
+      "displayName": "Color",
+      "type": "color",
+      "default": "#0000FF"
+    },
+    {
+      "name": "estimateUi",
+      "displayName": "Estimate",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Estimate"
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Manual",
+      "default": null
+    },
+    {
+      "name": "isPublic",
+      "displayName": "Is Public",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "name": "note",
+      "displayName": "Note",
+      "type": "string",
+      "default": "",
+      "description": "Note about the project"
+    },
+    {
+      "name": "projectId",
+      "displayName": "Project ID",
+      "type": "string",
+      "default": "",
+      "description": "Whether to return all results or only up to a given limit",
+      "required": true
+    },
+    {
+      "name": "billable",
+      "displayName": "Billable",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "name": "clients",
+      "displayName": "Client Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "contains-client",
+      "displayName": "Contains Client",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return only projects having a client"
+    },
+    {
+      "name": "client-status",
+      "displayName": "Client Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Archived",
+      "default": null
+    },
+    {
+      "name": "contains-user",
+      "displayName": "Contains User",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return only projects having users"
+    },
+    {
+      "name": "is-template",
+      "displayName": "Is Template",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return only projects as templates"
+    },
+    {
+      "name": "sort-column",
+      "displayName": "Sort Column",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Client Name",
+      "default": null
+    },
+    {
+      "name": "Duration",
+      "default": null
+    },
+    {
+      "name": "users",
+      "displayName": "User Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "user-status",
+      "displayName": "User Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "tagId",
+      "displayName": "Tag ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "estimate",
+      "displayName": "Estimate",
+      "type": "string",
+      "default": "",
+      "description": "Estimate time the task will take, e.x: 2:30 (2 hours and 30 minutes)",
+      "placeholder": "2:30"
+    },
+    {
+      "name": "taskId",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of task to delete",
+      "required": true
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Done",
+      "default": null
+    },
+    {
+      "name": "start",
+      "displayName": "Start",
+      "type": "dateTime",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "customFieldsUi",
+      "displayName": "Custom Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Filter by custom fields",
+      "placeholder": "Add Custom Field"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "The value to set on custom field"
+    },
+    {
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "end",
+      "displayName": "End",
+      "type": "dateTime",
+      "default": ""
+    },
+    {
+      "name": "tagIds",
+      "displayName": "Tag Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "timeEntryId",
+      "displayName": "Time Entry ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "hydrated",
+      "displayName": "Hydrated",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return the time entry's project, task and tags in full and not just their IDs"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "Inactive",
+      "default": null
+    },
+    {
+      "name": "Pending",
+      "default": null
+    },
+    {
+      "name": "Declined",
+      "default": null
+    },
+    {
+      "name": "Name",
+      "default": null
+    },
+    {
+      "name": "Hourly Rate",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Project",
+      "default": null
+    },
+    {
+      "name": "Tag",
+      "default": null
+    },
+    {
+      "name": "Task",
+      "default": null
+    },
+    {
+      "name": "Time Entry",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    },
+    {
+      "name": "Workspace",
+      "default": null
+    },
+    {
+      "name": "workspaceId",
+      "displayName": "Workspace Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "clockifyApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.manualTrigger",
+  "displayName": "Manual Trigger",
+  "description": "Runs the flow on clicking a button in n8n",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

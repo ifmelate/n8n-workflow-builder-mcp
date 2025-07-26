@@ -1,0 +1,124 @@
+{
+  "nodeType": "n8n-nodes-base.affinityTrigger",
+  "displayName": "Affinity Trigger",
+  "description": "Handle Affinity events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "events",
+      "displayName": "Events",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "field_value.deleted",
+      "default": null
+    },
+    {
+      "name": "field_value.updated",
+      "default": null
+    },
+    {
+      "name": "field.created",
+      "default": null
+    },
+    {
+      "name": "field.deleted",
+      "default": null
+    },
+    {
+      "name": "field.updated",
+      "default": null
+    },
+    {
+      "name": "file.created",
+      "default": null
+    },
+    {
+      "name": "file.deleted",
+      "default": null
+    },
+    {
+      "name": "list_entry.created",
+      "default": null
+    },
+    {
+      "name": "list_entry.deleted",
+      "default": null
+    },
+    {
+      "name": "list.created",
+      "default": null
+    },
+    {
+      "name": "list.deleted",
+      "default": null
+    },
+    {
+      "name": "list.updated",
+      "default": null
+    },
+    {
+      "name": "note.created",
+      "default": null
+    },
+    {
+      "name": "note.deleted",
+      "default": null
+    },
+    {
+      "name": "note.updated",
+      "default": null
+    },
+    {
+      "name": "opportunity.created",
+      "default": null
+    },
+    {
+      "name": "opportunity.deleted",
+      "default": null
+    },
+    {
+      "name": "opportunity.updated",
+      "default": null
+    },
+    {
+      "name": "organization.created",
+      "default": null
+    },
+    {
+      "name": "organization.deleted",
+      "default": null
+    },
+    {
+      "name": "organization.updated",
+      "default": null
+    },
+    {
+      "name": "person.created",
+      "default": null
+    },
+    {
+      "name": "person.deleted",
+      "default": null
+    },
+    {
+      "name": "person.updated",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "affinityApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "events",
+      "required": false
+    }
+  ]
+}

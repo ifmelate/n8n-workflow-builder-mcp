@@ -1,0 +1,406 @@
+{
+  "nodeType": "n8n-nodes-base.zammad",
+  "displayName": "Zammad",
+  "description": "Consume the Zammad API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a group"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a group"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Retrieve a group"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many groups"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a group"
+    },
+    {
+      "name": "name",
+      "displayName": "Group Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "id",
+      "displayName": "Group ID",
+      "type": "string",
+      "default": "",
+      "description": "Group to update. Specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "customFieldsUi",
+      "displayName": "Custom Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Name of the custom field to set. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Custom Field"
+    },
+    {
+      "name": "value",
+      "displayName": "Field Value",
+      "type": "string",
+      "default": "",
+      "description": "Value to set on the custom field"
+    },
+    {
+      "name": "note",
+      "displayName": "Notes",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "domain",
+      "displayName": "Domain",
+      "type": "string",
+      "default": "",
+      "description": "The domain associated with the organization"
+    },
+    {
+      "name": "domain_assignment",
+      "displayName": "Domain Assignment",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to assign users based on their email domain"
+    },
+    {
+      "name": "active",
+      "displayName": "Active",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the organization is active"
+    },
+    {
+      "name": "vip",
+      "displayName": "VIP",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the organization is marked as VIP"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title of the ticket to create",
+      "required": true
+    },
+    {
+      "name": "group",
+      "displayName": "Group Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Group that will own the ticket to create. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "First-Level Helpdesk",
+      "required": true
+    },
+    {
+      "name": "customer",
+      "displayName": "Customer Email Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Email address of the customer concerned in the ticket to create. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "hello@n8n.io",
+      "required": true
+    },
+    {
+      "name": "article",
+      "displayName": "Article",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Article",
+      "required": true
+    },
+    {
+      "name": "body",
+      "displayName": "Body",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "visibility",
+      "displayName": "Visibility",
+      "type": "options",
+      "default": "internal",
+      "description": "Visible to customers"
+    },
+    {
+      "name": "Internal",
+      "default": null,
+      "description": "Visible to help desk"
+    },
+    {
+      "name": "sender",
+      "displayName": "Sender",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Customer",
+      "default": null
+    },
+    {
+      "name": "System",
+      "default": null,
+      "description": "Only subject will be displayed in Zammad"
+    },
+    {
+      "name": "type",
+      "displayName": "Article Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Email",
+      "default": null
+    },
+    {
+      "name": "Fax",
+      "default": null
+    },
+    {
+      "name": "Note",
+      "default": null
+    },
+    {
+      "name": "Phone",
+      "default": null
+    },
+    {
+      "name": "SMS",
+      "default": null
+    },
+    {
+      "name": "reply_to",
+      "displayName": "Reply To",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "Get Self",
+      "default": null,
+      "description": "Retrieve currently logged-in user"
+    },
+    {
+      "name": "firstname",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "placeholder": "John",
+      "required": true
+    },
+    {
+      "name": "lastname",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "placeholder": "Smith",
+      "required": true
+    },
+    {
+      "name": "addressUi",
+      "displayName": "Address",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Address"
+    },
+    {
+      "name": "country",
+      "displayName": "Country",
+      "type": "string",
+      "default": "",
+      "placeholder": "Germany"
+    },
+    {
+      "name": "address",
+      "displayName": "Street & Number",
+      "type": "string",
+      "default": "",
+      "placeholder": "Borsigstr. 27"
+    },
+    {
+      "name": "zip",
+      "displayName": "Zip Code",
+      "type": "string",
+      "default": "",
+      "placeholder": "10115"
+    },
+    {
+      "name": "department",
+      "displayName": "Department",
+      "type": "string",
+      "default": "",
+      "placeholder": "Finance"
+    },
+    {
+      "name": "email",
+      "displayName": "Email Address",
+      "type": "string",
+      "default": "",
+      "placeholder": "name@email.com"
+    },
+    {
+      "name": "fax",
+      "displayName": "Fax",
+      "type": "string",
+      "default": "",
+      "placeholder": "+49 30 901820"
+    },
+    {
+      "name": "organization",
+      "displayName": "Organization Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Name of the organization to assign to the user. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "phone",
+      "displayName": "Phone (Landline)",
+      "type": "string",
+      "default": "",
+      "placeholder": "+49 30 901820"
+    },
+    {
+      "name": "mobile",
+      "displayName": "Phone (Mobile)",
+      "type": "string",
+      "default": "",
+      "placeholder": "+49 1522 3433333"
+    },
+    {
+      "name": "verified",
+      "displayName": "Verified",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the user has been verified"
+    },
+    {
+      "name": "web",
+      "displayName": "Website",
+      "type": "string",
+      "default": "",
+      "placeholder": "https://n8n.io"
+    },
+    {
+      "name": "query",
+      "displayName": "Query",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Query to filter results by",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "sortUi",
+      "displayName": "Sort",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Sort Options"
+    },
+    {
+      "name": "order_by",
+      "displayName": "Sort Order",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Descending",
+      "default": null
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Token Auth",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Organization",
+      "default": null
+    },
+    {
+      "name": "Ticket",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "zammadBasicAuthApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

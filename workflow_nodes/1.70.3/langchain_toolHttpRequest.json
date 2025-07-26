@@ -1,0 +1,232 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+  "displayName": "HTTP Request Tool",
+  "description": "Makes an HTTP request and returns the response data",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null,
+      "description": "Select the type of authentication to use if needed, authentication would be done by n8n and your credentials will not be shared with the LLM"
+    },
+    {
+      "name": "Predefined Credential Type",
+      "default": null,
+      "description": "We've already implemented auth for many services so that you don't have to set it up manually"
+    },
+    {
+      "name": "Generic Credential Type",
+      "default": null,
+      "description": "Fully customizable. Choose between basic, header, OAuth2, etc."
+    },
+    {
+      "name": "nodeCredentialType",
+      "displayName": "Credential Type",
+      "type": "credentialsSelect",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "googleApiWarning",
+      "displayName": "Make sure you have specified the scope(s) for the Service Account in the credential",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "genericAuthType",
+      "displayName": "Generic Auth Type",
+      "type": "credentialsSelect",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "optimizeResponse",
+      "displayName": "Optimize Response",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the optimize the tool response to reduce amount of data passed to the LLM that could lead to better result and reduce cost"
+    },
+    {
+      "name": "responseType",
+      "displayName": "Expected Response Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "HTML",
+      "default": null
+    },
+    {
+      "name": "Text",
+      "default": null
+    },
+    {
+      "name": "dataField",
+      "displayName": "Field Containing Data",
+      "type": "string",
+      "default": "",
+      "description": "Specify the name of the field in the response containing the data",
+      "placeholder": "e.g. records"
+    },
+    {
+      "name": "fieldsToInclude",
+      "displayName": "Include Fields",
+      "type": "options",
+      "default": "all",
+      "description": "What fields response object should include"
+    },
+    {
+      "name": "Selected",
+      "default": null,
+      "description": "Include only fields specified below"
+    },
+    {
+      "name": "Except",
+      "default": null,
+      "description": "Exclude fields specified below"
+    },
+    {
+      "name": "fields",
+      "displayName": "Fields",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of the field names. Supports dot notation. You can drag the selected fields from the input panel.",
+      "placeholder": "e.g. field1,field2"
+    },
+    {
+      "name": "cssSelector",
+      "displayName": "Selector (CSS)",
+      "type": "string",
+      "default": "body",
+      "description": "Select specific element(e.g. body) or multiple elements(e.g. div) of chosen type in the response HTML.",
+      "placeholder": "e.g. body"
+    },
+    {
+      "name": "onlyContent",
+      "displayName": "Return Only Content",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return only content of html elements, stripping html tags and attributes"
+    },
+    {
+      "name": "elementsToOmit",
+      "displayName": "Elements To Omit",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of selectors that would be excluded when extracting content",
+      "placeholder": "e.g. img, .className, #ItemId"
+    },
+    {
+      "name": "truncateResponse",
+      "displayName": "Truncate Response",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "maxLength",
+      "displayName": "Max Response Characters",
+      "type": "number",
+      "default": 1000
+    },
+    {
+      "name": "toolDescription",
+      "displayName": "Description",
+      "type": "string",
+      "default": "",
+      "description": "Explain to LLM what this tool does, better description would allow LLM to produce expected result",
+      "placeholder": "e.g. Get the current weather in the requested city"
+    },
+    {
+      "name": "method",
+      "displayName": "Method",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "GET",
+      "default": null
+    },
+    {
+      "name": "PATCH",
+      "default": null
+    },
+    {
+      "name": "POST",
+      "default": null
+    },
+    {
+      "name": "PUT",
+      "default": null
+    },
+    {
+      "name": "placeholderNotice",
+      "displayName": "Tip: You can use a {placeholder} for any part of the request to be filled by the model. Provide more context about them in the placeholders section",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "url",
+      "displayName": "URL",
+      "type": "string",
+      "default": "",
+      "description": "Whether the request has query params or not",
+      "placeholder": "e.g. http://www.example.com/{path}",
+      "required": true
+    },
+    {
+      "name": "specifyQuery",
+      "displayName": "Specify Query Parameters",
+      "default": null
+    },
+    {
+      "name": "parametersQuery",
+      "displayName": "Query Parameters",
+      "default": null
+    },
+    {
+      "name": "jsonQuery",
+      "displayName": "Send Headers",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the request has headers or not"
+    },
+    {
+      "name": "specifyHeaders",
+      "displayName": "Specify Headers",
+      "default": null
+    },
+    {
+      "name": "parametersHeaders",
+      "displayName": "Header Parameters",
+      "default": null
+    },
+    {
+      "name": "jsonHeaders",
+      "displayName": "Send Body",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the request has body or not"
+    },
+    {
+      "name": "specifyBody",
+      "displayName": "Specify Body",
+      "default": null
+    },
+    {
+      "name": "parametersBody",
+      "displayName": "Body Parameters",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "toolDescription",
+      "required": false
+    }
+  ]
+}

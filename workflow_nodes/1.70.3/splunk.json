@@ -1,0 +1,40 @@
+{
+  "nodeType": "n8n-nodes-base.splunk",
+  "displayName": "Splunk",
+  "description": null,
+  "version": "2",
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Search Configuration",
+      "default": null
+    },
+    {
+      "name": "Search Job",
+      "default": null
+    },
+    {
+      "name": "Search Result",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "splunkApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

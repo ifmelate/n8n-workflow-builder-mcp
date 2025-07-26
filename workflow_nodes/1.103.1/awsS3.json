@@ -1,0 +1,32 @@
+{
+  "nodeType": "n8n-nodes-base.awsS3",
+  "displayName": "AwsS3",
+  "description": null,
+  "version": "2",
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "File",
+      "default": null
+    },
+    {
+      "name": "Folder",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "aws",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

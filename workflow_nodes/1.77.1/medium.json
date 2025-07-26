@@ -1,0 +1,209 @@
+{
+  "nodeType": "n8n-nodes-base.medium",
+  "displayName": "Medium",
+  "description": "Consume Medium API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Publication",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a post"
+    },
+    {
+      "name": "publication",
+      "displayName": "Publication",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether you are posting for a publication"
+    },
+    {
+      "name": "publicationId",
+      "displayName": "Publication Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Publication IDs. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title of the post. Max Length : 100 characters.",
+      "placeholder": "My Open Source Contribution",
+      "required": true
+    },
+    {
+      "name": "contentFormat",
+      "displayName": "Content Format",
+      "type": "options",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "Markdown",
+      "default": null
+    },
+    {
+      "name": "content",
+      "displayName": "Content",
+      "type": "string",
+      "default": "",
+      "description": "The body of the post, in a valid semantic HTML fragment, or Markdown",
+      "placeholder": "My open source contribution",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The original home of this content, if it was originally published elsewhere",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "license",
+      "displayName": "License",
+      "type": "options",
+      "default": "all-rights-reserved"
+    },
+    {
+      "name": "cc-40-by",
+      "default": null
+    },
+    {
+      "name": "cc-40-by-nc",
+      "default": null
+    },
+    {
+      "name": "cc-40-by-nc-nd",
+      "default": null
+    },
+    {
+      "name": "cc-40-by-nc-sa",
+      "default": null
+    },
+    {
+      "name": "cc-40-by-nd",
+      "default": null
+    },
+    {
+      "name": "cc-40-by-sa",
+      "default": null
+    },
+    {
+      "name": "cc-40-zero",
+      "default": null
+    },
+    {
+      "name": "public-domain",
+      "default": null
+    },
+    {
+      "name": "notifyFollowers",
+      "displayName": "Notify Followers",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to notify followers that the user has published"
+    },
+    {
+      "name": "publishStatus",
+      "displayName": "Publish Status",
+      "type": "options",
+      "default": "public"
+    },
+    {
+      "name": "Draft",
+      "default": null
+    },
+    {
+      "name": "Unlisted",
+      "default": null
+    },
+    {
+      "name": "tags",
+      "displayName": "Tags",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated strings to be used as tags for post classification. Max allowed tags: 5. Max tag length: 25 characters.",
+      "placeholder": "open-source,mlh,fellowship"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "mediumApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "publication",
+      "required": true
+    },
+    {
+      "name": "content",
+      "required": true
+    },
+    {
+      "name": "notifyFollowers",
+      "required": false
+    },
+    {
+      "name": "tags",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "returnAll",
+      "required": false
+    }
+  ]
+}

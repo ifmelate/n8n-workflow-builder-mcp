@@ -1,0 +1,188 @@
+{
+  "nodeType": "n8n-nodes-base.clickUpTrigger",
+  "displayName": "ClickUp Trigger",
+  "description": "Handle ClickUp events via webhooks (Beta)",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "team",
+      "displayName": "Team Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "events",
+      "displayName": "Events",
+      "type": "multiOptions",
+      "default": [],
+      "required": true
+    },
+    {
+      "name": "folder.created",
+      "default": null
+    },
+    {
+      "name": "folder.deleted",
+      "default": null
+    },
+    {
+      "name": "folder.updated",
+      "default": null
+    },
+    {
+      "name": "goal.created",
+      "default": null
+    },
+    {
+      "name": "goal.deleted",
+      "default": null
+    },
+    {
+      "name": "goal.updated",
+      "default": null
+    },
+    {
+      "name": "keyResult.created",
+      "default": null
+    },
+    {
+      "name": "keyResult.deleted",
+      "default": null
+    },
+    {
+      "name": "keyResult.updated",
+      "default": null
+    },
+    {
+      "name": "list.created",
+      "default": null
+    },
+    {
+      "name": "list.deleted",
+      "default": null
+    },
+    {
+      "name": "list.updated",
+      "default": null
+    },
+    {
+      "name": "space.created",
+      "default": null
+    },
+    {
+      "name": "space.deleted",
+      "default": null
+    },
+    {
+      "name": "space.updated",
+      "default": null
+    },
+    {
+      "name": "task.assignee.updated",
+      "default": null
+    },
+    {
+      "name": "task.comment.posted",
+      "default": null
+    },
+    {
+      "name": "task.comment.updated",
+      "default": null
+    },
+    {
+      "name": "task.created",
+      "default": null
+    },
+    {
+      "name": "task.deleted",
+      "default": null
+    },
+    {
+      "name": "task.dueDate.updated",
+      "default": null
+    },
+    {
+      "name": "task.moved",
+      "default": null
+    },
+    {
+      "name": "task.status.updated",
+      "default": null
+    },
+    {
+      "name": "task.tag.updated",
+      "default": null
+    },
+    {
+      "name": "task.timeEstimate.updated",
+      "default": null
+    },
+    {
+      "name": "task.timeTracked.updated",
+      "default": null
+    },
+    {
+      "name": "task.updated",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "listId",
+      "displayName": "List ID",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "spaceId",
+      "displayName": "Space ID",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "taskId",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": ""
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "clickUpApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "team",
+      "required": true
+    },
+    {
+      "name": "filters",
+      "required": false
+    }
+  ]
+}

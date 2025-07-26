@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.formstackTrigger",
+  "displayName": "Formstack Trigger",
+  "description": "Starts the workflow on a Formstack form submission.",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

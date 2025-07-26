@@ -1,0 +1,46 @@
+{
+  "nodeType": "n8n-nodes-base.mailcheck",
+  "displayName": "Mailcheck",
+  "description": "Consume Mailcheck API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "Email address to check",
+      "placeholder": "name@email.com"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "mailcheckApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "email",
+      "required": false
+    }
+  ]
+}

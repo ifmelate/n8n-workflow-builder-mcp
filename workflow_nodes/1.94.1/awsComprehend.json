@@ -1,0 +1,125 @@
+{
+  "nodeType": "n8n-nodes-base.awsComprehend",
+  "displayName": "AWS Comprehend",
+  "description": "Sends data to Amazon Comprehend",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Identify the dominant language"
+    },
+    {
+      "name": "Detect Entities",
+      "default": null,
+      "description": "Inspects text for named entities, and returns information about them"
+    },
+    {
+      "name": "Detect Sentiment",
+      "default": null,
+      "description": "Analyse the sentiment of the text"
+    },
+    {
+      "name": "languageCode",
+      "displayName": "Language Code",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Chinese",
+      "default": null
+    },
+    {
+      "name": "Chinese (T)",
+      "default": null
+    },
+    {
+      "name": "English",
+      "default": null
+    },
+    {
+      "name": "French",
+      "default": null
+    },
+    {
+      "name": "German",
+      "default": null
+    },
+    {
+      "name": "Hindi",
+      "default": null
+    },
+    {
+      "name": "Italian",
+      "default": null
+    },
+    {
+      "name": "Japanese",
+      "default": null
+    },
+    {
+      "name": "Korean",
+      "default": null
+    },
+    {
+      "name": "Portuguese",
+      "default": null
+    },
+    {
+      "name": "Spanish",
+      "default": null
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "",
+      "description": "The text to send"
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The Amazon Resource Name of an endpoint that is associated with a custom entity recognition model",
+      "placeholder": "Add Field"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "aws",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "languageCode",
+      "required": false
+    },
+    {
+      "name": "text",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+  "displayName": "Postgres Chat Memory",
+  "description": "Stores the chat history in Postgres table.",
+  "version": [
+    1,
+    1.1,
+    1.2,
+    1.3
+  ],
+  "properties": [],
+  "credentialsConfig": []
+}

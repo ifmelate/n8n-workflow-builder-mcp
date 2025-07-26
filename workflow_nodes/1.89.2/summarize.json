@@ -1,0 +1,124 @@
+{
+  "nodeType": "n8n-nodes-base.summarize",
+  "displayName": "Summarize",
+  "description": "Sum, count, max, etc. across items",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "fieldsToSummarize",
+      "displayName": "Fields to Summarize",
+      "type": "fixedCollection",
+      "default": null,
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "values",
+      "displayName": "",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Average",
+      "default": null
+    },
+    {
+      "name": "Concatenate",
+      "default": null
+    },
+    {
+      "name": "Count",
+      "default": null
+    },
+    {
+      "name": "Count Unique",
+      "default": null
+    },
+    {
+      "name": "Max",
+      "default": null
+    },
+    {
+      "name": "Min",
+      "default": null
+    },
+    {
+      "name": "Sum",
+      "default": null
+    },
+    {
+      "name": "field",
+      "displayName": "Field",
+      "type": "string",
+      "default": "",
+      "description": "The name of an input field that you want to summarize",
+      "placeholder": "e.g. cost"
+    },
+    {
+      "name": "separateBy",
+      "displayName": "Separator",
+      "type": "options",
+      "default": ","
+    },
+    {
+      "name": "Comma and Space",
+      "default": null
+    },
+    {
+      "name": "New Line",
+      "default": null
+    },
+    {
+      "name": "None",
+      "default": null
+    },
+    {
+      "name": "Space",
+      "default": null
+    },
+    {
+      "name": "Other",
+      "default": null
+    },
+    {
+      "name": "customSeparator",
+      "displayName": "Custom Separator",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "fieldsToSplitBy",
+      "displayName": "Fields to Split By",
+      "type": "string",
+      "default": "",
+      "description": "The name of the input fields that you want to split the summary by",
+      "placeholder": "e.g. country, city"
+    },
+    {
+      "name": "disableDotNotation",
+      "displayName": "Disable Dot Notation",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to disallow referencing child fields using `parent.child` in the field name"
+    },
+    {
+      "name": "outputFormat",
+      "displayName": "Output Format",
+      "type": "options",
+      "default": "separateItems"
+    },
+    {
+      "name": "All Splits in a Single Item",
+      "default": null
+    },
+    {
+      "name": "skipEmptySplitFields",
+      "displayName": "Ignore items without valid fields to group by",
+      "type": "boolean",
+      "default": false
+    }
+  ],
+  "credentialsConfig": []
+}

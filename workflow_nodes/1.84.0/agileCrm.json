@@ -1,0 +1,503 @@
+{
+  "nodeType": "n8n-nodes-base.agileCrm",
+  "displayName": "Agile CRM",
+  "description": "Consume Agile CRM API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "companyId",
+      "displayName": "Company ID",
+      "type": "string",
+      "default": "",
+      "description": "Unique identifier for a particular company",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 20,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filterType",
+      "displayName": "Filter",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Build Manually",
+      "default": null
+    },
+    {
+      "name": "JSON",
+      "default": null
+    },
+    {
+      "name": "matchType",
+      "displayName": "Must Match",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "All Filters",
+      "default": null
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Any searchable field",
+      "placeholder": "Add Condition"
+    },
+    {
+      "name": "condition_type",
+      "displayName": "Condition Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Before",
+      "default": null
+    },
+    {
+      "name": "Between",
+      "default": null
+    },
+    {
+      "name": "Equals",
+      "default": null
+    },
+    {
+      "name": "Last",
+      "default": null
+    },
+    {
+      "name": "Not Equal",
+      "default": null
+    },
+    {
+      "name": "On",
+      "default": null
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "value2",
+      "displayName": "Value 2",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "jsonNotice",
+      "displayName": "See <a href=\"https://github.com/agilecrm/rest-api#121-get-contacts-by-dynamic-filter\" target=\"_blank\">Agile CRM guide</a> to creating filters",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "filterJson",
+      "displayName": "Filters (JSON)",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add option"
+    },
+    {
+      "name": "Descending",
+      "default": null
+    },
+    {
+      "name": "field",
+      "displayName": "Field",
+      "type": "string",
+      "default": "",
+      "description": "The sorting field"
+    },
+    {
+      "name": "jsonParameters",
+      "displayName": "JSON Parameters",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "additionalFieldsJson",
+      "displayName": "Additional Fields",
+      "type": "json",
+      "default": "",
+      "description": "Object of values to set as described <a href=\"https://github.com/agilecrm/rest-api#1-companys---companies-api\">here</a>"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Company address",
+      "placeholder": "Add Field",
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "Office",
+      "default": null
+    },
+    {
+      "name": "address",
+      "displayName": "Address",
+      "type": "string",
+      "default": "",
+      "description": "Full address",
+      "required": true
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "Company email",
+      "placeholder": "name@email.com"
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Company name"
+    },
+    {
+      "name": "phone",
+      "displayName": "Phone",
+      "type": "string",
+      "default": "",
+      "description": "Company phone"
+    },
+    {
+      "name": "starValue",
+      "displayName": "Star Value",
+      "type": "options",
+      "default": "",
+      "description": "Rating of company (Max value 5). This is not applicable for companies."
+    },
+    {
+      "name": "1",
+      "default": null
+    },
+    {
+      "name": "2",
+      "default": null
+    },
+    {
+      "name": "3",
+      "default": null
+    },
+    {
+      "name": "4",
+      "default": null
+    },
+    {
+      "name": "5",
+      "default": null
+    },
+    {
+      "name": "tags",
+      "displayName": "Tags",
+      "type": "string",
+      "default": [],
+      "description": "Unique identifiers added to company, for easy management of companys. This is not applicable for companies."
+    },
+    {
+      "name": "websiteOptions",
+      "displayName": "Website",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Companies websites",
+      "required": true
+    },
+    {
+      "name": "Feed",
+      "default": null
+    },
+    {
+      "name": "Flickr",
+      "default": null
+    },
+    {
+      "name": "Github",
+      "default": null
+    },
+    {
+      "name": "Google Plus",
+      "default": null
+    },
+    {
+      "name": "LinkedIn",
+      "default": null
+    },
+    {
+      "name": "Skype",
+      "default": null
+    },
+    {
+      "name": "Twitter",
+      "default": null
+    },
+    {
+      "name": "URL",
+      "default": null
+    },
+    {
+      "name": "Xing",
+      "default": null
+    },
+    {
+      "name": "YouTube",
+      "default": null
+    },
+    {
+      "name": "url",
+      "displayName": "URL",
+      "type": "string",
+      "default": "",
+      "description": "Website URL",
+      "required": true
+    },
+    {
+      "name": "customProperties",
+      "displayName": "Custom Properties",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Property name",
+      "required": true
+    },
+    {
+      "name": "subtype",
+      "displayName": "Sub Type",
+      "type": "string",
+      "default": "",
+      "description": "Property sub type"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a new company"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a company"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a company"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many companies"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update company properties"
+    },
+    {
+      "name": "contactId",
+      "displayName": "Contact ID",
+      "type": "string",
+      "default": "",
+      "description": "Unique identifier for a particular contact",
+      "required": true
+    },
+    {
+      "name": "Postal",
+      "default": null
+    },
+    {
+      "name": "company",
+      "displayName": "Company",
+      "type": "string",
+      "default": "",
+      "description": "Company Name"
+    },
+    {
+      "name": "emailOptions",
+      "displayName": "Email",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Contact email",
+      "required": true
+    },
+    {
+      "name": "Personal",
+      "default": null
+    },
+    {
+      "name": "firstName",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "Contact first name"
+    },
+    {
+      "name": "lastName",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "description": "Contact last name"
+    },
+    {
+      "name": "leadScore",
+      "displayName": "Lead Score",
+      "type": "number",
+      "default": "",
+      "description": "Lead score of contact"
+    },
+    {
+      "name": "phoneOptions",
+      "displayName": "Phone",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Contacts phone",
+      "required": true
+    },
+    {
+      "name": "Home Fax",
+      "default": null
+    },
+    {
+      "name": "Main",
+      "default": null
+    },
+    {
+      "name": "Mobile",
+      "default": null
+    },
+    {
+      "name": "Other",
+      "default": null
+    },
+    {
+      "name": "Work",
+      "default": null
+    },
+    {
+      "name": "Work Fax",
+      "default": null
+    },
+    {
+      "name": "number",
+      "displayName": "Number",
+      "type": "string",
+      "default": "",
+      "description": "Phone number",
+      "required": true
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Professional title"
+    },
+    {
+      "name": "dealId",
+      "displayName": "Deal ID",
+      "type": "string",
+      "default": "",
+      "description": "Unique identifier for a particular deal",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "required": true
+    },
+    {
+      "name": "expectedValue",
+      "displayName": "Expected Value",
+      "type": "number",
+      "default": 1,
+      "description": "Expected Value of deal",
+      "required": true
+    },
+    {
+      "name": "milestone",
+      "displayName": "Milestone",
+      "type": "string",
+      "default": "",
+      "description": "Milestone of deal",
+      "required": true
+    },
+    {
+      "name": "probability",
+      "displayName": "Probability",
+      "type": "number",
+      "default": 50,
+      "description": "Expected probability",
+      "required": true
+    },
+    {
+      "name": "customData",
+      "displayName": "Custom Data",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Property name",
+      "required": true
+    },
+    {
+      "name": "contactIds",
+      "displayName": "Contact IDs",
+      "type": "string",
+      "default": [],
+      "description": "Unique contact identifiers"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Contact",
+      "default": null
+    },
+    {
+      "name": "Deal",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "agileCrmApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

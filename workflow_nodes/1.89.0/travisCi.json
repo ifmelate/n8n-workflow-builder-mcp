@@ -1,0 +1,142 @@
+{
+  "nodeType": "n8n-nodes-base.travisCi",
+  "displayName": "TravisCI",
+  "description": "Consume TravisCI API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "buildId",
+      "displayName": "Build ID",
+      "type": "string",
+      "default": "",
+      "description": "Value uniquely identifying the build"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "List of attributes to eager load",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "order",
+      "displayName": "Order",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "DESC",
+      "default": null
+    },
+    {
+      "name": "sortBy",
+      "displayName": "Sort By",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Finished At",
+      "default": null
+    },
+    {
+      "name": "ID",
+      "default": null
+    },
+    {
+      "name": "Number",
+      "default": null
+    },
+    {
+      "name": "Started At",
+      "default": null
+    },
+    {
+      "name": "branch",
+      "displayName": "Branch",
+      "type": "string",
+      "default": "",
+      "description": "Branch requested to be built",
+      "placeholder": "master"
+    },
+    {
+      "name": "mergeMode",
+      "displayName": "Merge Mode",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Deep Merge Append",
+      "default": null
+    },
+    {
+      "name": "Deep Merge Prepend",
+      "default": null
+    },
+    {
+      "name": "Merge",
+      "default": null
+    },
+    {
+      "name": "Replace",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Cancel a build"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a build"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many builds"
+    },
+    {
+      "name": "Restart",
+      "default": null,
+      "description": "Restart a build"
+    },
+    {
+      "name": "Trigger",
+      "default": null,
+      "description": "Trigger a build"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "travisCiApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

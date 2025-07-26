@@ -1,0 +1,8 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.AI Agent",
+  "displayName": "AgentV2",
+  "description": null,
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

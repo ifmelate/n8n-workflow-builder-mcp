@@ -1,0 +1,34 @@
+{
+  "nodeType": "n8n-nodes-base.emailSend",
+  "displayName": "EmailSend",
+  "description": null,
+  "version": "2.1",
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "hidden",
+      "default": "email"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "hidden",
+      "default": "send"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "smtp",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    }
+  ]
+}

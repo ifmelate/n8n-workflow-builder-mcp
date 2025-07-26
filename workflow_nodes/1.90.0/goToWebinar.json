@@ -1,0 +1,430 @@
+{
+  "nodeType": "n8n-nodes-base.goToWebinar",
+  "displayName": "GoToWebinar",
+  "description": "Consume the GoToWebinar API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "webinarKey",
+      "displayName": "Webinar Key Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Key of the webinar that the attendee attended. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "sessionKey",
+      "displayName": "Session Key Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Key of the session that the attendee attended. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "details",
+      "displayName": "Details",
+      "type": "options",
+      "default": "",
+      "description": "The details to retrieve for the attendee",
+      "required": true
+    },
+    {
+      "name": "Questions",
+      "default": null,
+      "description": "Questions asked by the attendee in a webinar session"
+    },
+    {
+      "name": "Survey Answers",
+      "default": null,
+      "description": "Survey answers from the attendee in a webinar session"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 10,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": "get"
+    },
+    {
+      "name": "Get Many",
+      "default": null
+    },
+    {
+      "name": "Get Details",
+      "default": null
+    },
+    {
+      "name": "isExternal",
+      "displayName": "Is External",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the co-organizer has no GoToWebinar account",
+      "required": true
+    },
+    {
+      "name": "organizerKey",
+      "displayName": "Organizer Key",
+      "type": "string",
+      "default": "",
+      "description": "The co-organizer's organizer key for the webinar"
+    },
+    {
+      "name": "givenName",
+      "displayName": "Given Name",
+      "type": "string",
+      "default": "",
+      "description": "The co-organizer's given name"
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "The co-organizer's email address",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "coorganizerKey",
+      "displayName": "Co-Organizer Key",
+      "type": "string",
+      "default": "",
+      "description": "Key of the co-organizer to delete"
+    },
+    {
+      "name": "Delete",
+      "default": null
+    },
+    {
+      "name": "Reinvite",
+      "default": null
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the panelist to create",
+      "required": true
+    },
+    {
+      "name": "panelistKey",
+      "displayName": "Panelist Key",
+      "type": "string",
+      "default": "",
+      "description": "Key of the panelist to delete",
+      "required": true
+    },
+    {
+      "name": "firstName",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "First name of the registrant to create"
+    },
+    {
+      "name": "lastName",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "description": "Last name of the registrant to create"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Full address of the registrant to create",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "city",
+      "displayName": "City",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "state",
+      "displayName": "State",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "zipCode",
+      "displayName": "Zip Code",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "country",
+      "displayName": "Country",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "industry",
+      "displayName": "Industry",
+      "type": "string",
+      "default": "",
+      "description": "The type of industry the registrant's organization belongs to"
+    },
+    {
+      "name": "jobTitle",
+      "displayName": "Job Title",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "multiChoiceResponses",
+      "displayName": "MultiChoice Responses",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Set the answers to all questions",
+      "placeholder": "Add MultiChoice Response"
+    },
+    {
+      "name": "AnswerKey",
+      "displayName": "Answer Key",
+      "type": "string",
+      "default": "",
+      "description": "Answer ID of the question"
+    },
+    {
+      "name": "numberOfEmployees",
+      "displayName": "Number of Employees",
+      "type": "string",
+      "default": "",
+      "description": "The size in employees of the registrant's organization"
+    },
+    {
+      "name": "organization",
+      "displayName": "Organization",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "phone",
+      "displayName": "Telephone",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "purchasingRole",
+      "displayName": "Purchasing Role",
+      "type": "string",
+      "default": "",
+      "description": "Registrant's role in purchasing the product"
+    },
+    {
+      "name": "purchasingTimeFrame",
+      "displayName": "Purchasing Time Frame",
+      "type": "string",
+      "default": "",
+      "description": "Time frame within which the product will be purchased"
+    },
+    {
+      "name": "questionsAndComments",
+      "displayName": "Questions and Comments",
+      "type": "string",
+      "default": "",
+      "description": "Questions or comments made by the registrant during registration"
+    },
+    {
+      "name": "resendConfirmation",
+      "displayName": "Resend Confirmation",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "simpleResponses",
+      "displayName": "Simple Responses",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Set the answers to all questions",
+      "placeholder": "Add Simple Response"
+    },
+    {
+      "name": "responseText",
+      "displayName": "Response Text",
+      "type": "string",
+      "default": "",
+      "description": "Text of the response to the question"
+    },
+    {
+      "name": "source",
+      "displayName": "Source",
+      "type": "string",
+      "default": "",
+      "description": "The source that led to the registration"
+    },
+    {
+      "name": "registrantKey",
+      "displayName": "Registrant Key",
+      "type": "string",
+      "default": "",
+      "description": "Key of the registrant to delete",
+      "required": true
+    },
+    {
+      "name": "Get",
+      "default": null
+    },
+    {
+      "name": "toTime",
+      "displayName": "End Time",
+      "type": "dateTime",
+      "default": "",
+      "description": "End of the datetime range for the session"
+    },
+    {
+      "name": "Polls",
+      "default": null,
+      "description": "Questions and answers for polls from a webinar session"
+    },
+    {
+      "name": "Surveys",
+      "default": null,
+      "description": "Surveys for a past webinar session"
+    },
+    {
+      "name": "subject",
+      "displayName": "Subject",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "times",
+      "displayName": "Time Range",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Time Range",
+      "required": true
+    },
+    {
+      "name": "endTime",
+      "displayName": "End Time",
+      "type": "dateTime",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "experienceType",
+      "displayName": "Experience Type",
+      "type": "options",
+      "default": "CLASSIC"
+    },
+    {
+      "name": "Broadcast",
+      "default": null
+    },
+    {
+      "name": "Simulive",
+      "default": null
+    },
+    {
+      "name": "isOnDemand",
+      "displayName": "Is On-Demand",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "isPasswordProtected",
+      "displayName": "Is Password Protected",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "timezone",
+      "displayName": "Timezone Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "2020-12-11T09:00:00Z"
+    },
+    {
+      "name": "type",
+      "displayName": "Webinar Type",
+      "type": "options",
+      "default": "single_session",
+      "description": "Webinar with one single meeting"
+    },
+    {
+      "name": "Series",
+      "default": null,
+      "description": "Webinar with multiple meetings times where attendees choose only one to attend"
+    },
+    {
+      "name": "Sequence",
+      "default": null,
+      "description": "Webinar with multiple meeting times where attendees are expected to be the same for all sessions"
+    },
+    {
+      "name": "notifyParticipants",
+      "displayName": "Notify Participants",
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "Update",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Co-Organizer",
+      "default": null
+    },
+    {
+      "name": "Panelist",
+      "default": null
+    },
+    {
+      "name": "Registrant",
+      "default": null
+    },
+    {
+      "name": "Session",
+      "default": null
+    },
+    {
+      "name": "Webinar",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "goToWebinarOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

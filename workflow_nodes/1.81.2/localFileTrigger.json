@@ -1,0 +1,120 @@
+{
+  "nodeType": "n8n-nodes-base.localFileTrigger",
+  "displayName": "Local File Trigger",
+  "description": "Triggers a workflow on file system changes",
+  "version": 1,
+  "properties": [
+    {
+      "name": "triggerOn",
+      "displayName": "Trigger On",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Changes Involving a Specific Folder",
+      "default": null
+    },
+    {
+      "name": "path",
+      "displayName": "File to Watch",
+      "type": "string",
+      "default": "",
+      "placeholder": "/data/invoices/1.pdf"
+    },
+    {
+      "name": "events",
+      "displayName": "Watch for",
+      "type": "multiOptions",
+      "default": null,
+      "description": "Triggers whenever a new file was added"
+    },
+    {
+      "name": "File Changed",
+      "default": null,
+      "description": "Triggers whenever a file was changed"
+    },
+    {
+      "name": "File Deleted",
+      "default": null,
+      "description": "Triggers whenever a file was deleted"
+    },
+    {
+      "name": "Folder Added",
+      "default": null,
+      "description": "Triggers whenever a new folder was added"
+    },
+    {
+      "name": "Folder Deleted",
+      "default": null,
+      "description": "Triggers whenever a folder was deleted"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to wait until files finished writing to avoid partially read",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "followSymlinks",
+      "displayName": "Include Linked Files/Folders",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether linked files/folders will also be watched (this includes symlinks, aliases on MacOS and shortcuts on Windows). Otherwise only the links themselves will be monitored)."
+    },
+    {
+      "name": "ignored",
+      "displayName": "Ignore",
+      "type": "string",
+      "default": "",
+      "description": "Files or paths to ignore. The whole path is tested, not just the filename. Supports <a href=\"https://github.com/micromatch/anymatch\">Anymatch</a>- syntax.",
+      "placeholder": "**/*.txt"
+    },
+    {
+      "name": "ignoreInitial",
+      "displayName": "Ignore Existing Files/Folders",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to ignore existing files/folders to not trigger an event"
+    },
+    {
+      "name": "depth",
+      "displayName": "Max Folder Depth",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "2 Levels Down",
+      "default": null
+    },
+    {
+      "name": "3 Levels Down",
+      "default": null
+    },
+    {
+      "name": "4 Levels Down",
+      "default": null
+    },
+    {
+      "name": "5 Levels Down",
+      "default": null
+    },
+    {
+      "name": "Top Folder Only",
+      "default": null
+    },
+    {
+      "name": "Unlimited",
+      "default": null
+    },
+    {
+      "name": "usePolling",
+      "displayName": "Use Polling",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to use polling for watching. Typically necessary to successfully watch files over a network."
+    }
+  ],
+  "credentialsConfig": []
+}

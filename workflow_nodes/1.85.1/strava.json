@@ -1,0 +1,427 @@
+{
+  "nodeType": "n8n-nodes-base.strava",
+  "displayName": "Strava",
+  "description": "Consume Strava API",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "The name of the activity",
+      "required": true
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "string",
+      "default": "",
+      "description": "Type of activity. For example - Run, Ride etc.",
+      "required": true
+    },
+    {
+      "name": "sport_type",
+      "displayName": "Sport Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Backcountry Ski",
+      "default": null
+    },
+    {
+      "name": "Badminton",
+      "default": null
+    },
+    {
+      "name": "Canoeing",
+      "default": null
+    },
+    {
+      "name": "Crossfit",
+      "default": null
+    },
+    {
+      "name": "EBike Ride",
+      "default": null
+    },
+    {
+      "name": "Elliptical",
+      "default": null
+    },
+    {
+      "name": "EMountain Bike Ride",
+      "default": null
+    },
+    {
+      "name": "Golf",
+      "default": null
+    },
+    {
+      "name": "Gravel Ride",
+      "default": null
+    },
+    {
+      "name": "Handcycle",
+      "default": null
+    },
+    {
+      "name": "HIIT",
+      "default": null
+    },
+    {
+      "name": "Hike",
+      "default": null
+    },
+    {
+      "name": "Ice Skate",
+      "default": null
+    },
+    {
+      "name": "Inline Skate",
+      "default": null
+    },
+    {
+      "name": "Kayaking",
+      "default": null
+    },
+    {
+      "name": "Kitesurf",
+      "default": null
+    },
+    {
+      "name": "Mountain Bike Ride",
+      "default": null
+    },
+    {
+      "name": "Nordic Ski",
+      "default": null
+    },
+    {
+      "name": "Pickleball",
+      "default": null
+    },
+    {
+      "name": "Pilates",
+      "default": null
+    },
+    {
+      "name": "Racquetball",
+      "default": null
+    },
+    {
+      "name": "Ride",
+      "default": null
+    },
+    {
+      "name": "Rock Climbing",
+      "default": null
+    },
+    {
+      "name": "Roller Ski",
+      "default": null
+    },
+    {
+      "name": "Rowing",
+      "default": null
+    },
+    {
+      "name": "Run",
+      "default": null
+    },
+    {
+      "name": "Sail",
+      "default": null
+    },
+    {
+      "name": "Skateboard",
+      "default": null
+    },
+    {
+      "name": "Snowboard",
+      "default": null
+    },
+    {
+      "name": "Snowshoe",
+      "default": null
+    },
+    {
+      "name": "Soccer",
+      "default": null
+    },
+    {
+      "name": "Squash",
+      "default": null
+    },
+    {
+      "name": "Stair Stepper",
+      "default": null
+    },
+    {
+      "name": "Stand Up Paddling",
+      "default": null
+    },
+    {
+      "name": "Surfing",
+      "default": null
+    },
+    {
+      "name": "Swim",
+      "default": null
+    },
+    {
+      "name": "Table Tennis",
+      "default": null
+    },
+    {
+      "name": "Tennis",
+      "default": null
+    },
+    {
+      "name": "Trail Run",
+      "default": null
+    },
+    {
+      "name": "Velomobile",
+      "default": null
+    },
+    {
+      "name": "Virtual Ride",
+      "default": null
+    },
+    {
+      "name": "Virtual Row",
+      "default": null
+    },
+    {
+      "name": "Virtual Run",
+      "default": null
+    },
+    {
+      "name": "Walk",
+      "default": null
+    },
+    {
+      "name": "Weight Training",
+      "default": null
+    },
+    {
+      "name": "Wheelchair",
+      "default": null
+    },
+    {
+      "name": "Windsurf",
+      "default": null
+    },
+    {
+      "name": "Workout",
+      "default": null
+    },
+    {
+      "name": "Yoga",
+      "default": null
+    },
+    {
+      "name": "startDate",
+      "displayName": "Start Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "ISO 8601 formatted date time",
+      "required": true
+    },
+    {
+      "name": "elapsedTime",
+      "displayName": "Elapsed Time (Seconds)",
+      "type": "number",
+      "default": 0,
+      "description": "In seconds",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to mark as commute",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": "",
+      "description": "Description of the activity"
+    },
+    {
+      "name": "distance",
+      "displayName": "Distance",
+      "type": "number",
+      "default": 0,
+      "description": "In meters"
+    },
+    {
+      "name": "trainer",
+      "displayName": "Trainer",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to mark as a trainer activity"
+    },
+    {
+      "name": "activityId",
+      "displayName": "Activity ID",
+      "type": "string",
+      "default": "",
+      "description": "ID or email of activity",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to mark as commute",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "gear_id",
+      "displayName": "Gear ID",
+      "type": "string",
+      "default": "",
+      "description": "Identifier for the gear associated with the activity. ‘none’ clears gear from activity."
+    },
+    {
+      "name": "hide_from_home",
+      "displayName": "Mute Activity",
+      "type": "boolean",
+      "default": false,
+      "description": "Do not publish to Home or Club feeds"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "keys",
+      "displayName": "Keys",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "Cadence",
+      "default": null
+    },
+    {
+      "name": "Distance",
+      "default": null
+    },
+    {
+      "name": "Gradient",
+      "default": null
+    },
+    {
+      "name": "Heartrate",
+      "default": null
+    },
+    {
+      "name": "Latitude / Longitude",
+      "default": null
+    },
+    {
+      "name": "Moving",
+      "default": null
+    },
+    {
+      "name": "Temperature",
+      "default": null
+    },
+    {
+      "name": "Time",
+      "default": null
+    },
+    {
+      "name": "Velocity",
+      "default": null
+    },
+    {
+      "name": "Watts",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a new activity"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get an activity"
+    },
+    {
+      "name": "Get Comments",
+      "default": null,
+      "description": "Get all activity comments"
+    },
+    {
+      "name": "Get Kudos",
+      "default": null,
+      "description": "Get all activity kudos"
+    },
+    {
+      "name": "Get Laps",
+      "default": null,
+      "description": "Get all activity laps"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many activities"
+    },
+    {
+      "name": "Get Streams",
+      "default": null,
+      "description": "Get activity streams"
+    },
+    {
+      "name": "Get Zones",
+      "default": null,
+      "description": "Get all activity zones"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update an activity"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "stravaOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

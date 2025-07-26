@@ -1,0 +1,123 @@
+{
+  "nodeType": "n8n-nodes-base.adalo",
+  "displayName": "Adalo",
+  "description": "Consume Adalo API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "rowId",
+      "displayName": "Row ID",
+      "type": "string",
+      "default": "",
+      "description": "Use when node input properties match destination column names",
+      "required": true
+    },
+    {
+      "name": "Define Below for Each Column",
+      "default": null,
+      "description": "Set the value for each destination column"
+    },
+    {
+      "name": "inputsToIgnore",
+      "displayName": "Inputs to Ignore",
+      "type": "string",
+      "default": "",
+      "description": "List of input properties to avoid sending, separated by commas. Leave empty to send all properties.",
+      "placeholder": "Enter properties..."
+    },
+    {
+      "name": "fieldsUi",
+      "displayName": "Fields to Send",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Field must be defined in the collection, otherwise it will be ignored. If field defined in the collection is not set here, it will be set to null.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "fieldValue",
+      "displayName": "Field Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": "collection"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a row",
+      "options": []
+    },
+    {
+      "name": "Delete",
+      "type": "set",
+      "default": null,
+      "description": "Delete a row"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Retrieve a row"
+    },
+    {
+      "name": "Get Many",
+      "type": "rootProperty",
+      "default": null,
+      "description": "Retrieve many rows"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a row"
+    },
+    {
+      "name": "collectionId",
+      "displayName": "Collection ID",
+      "type": "string",
+      "default": "",
+      "description": "Open your Adalo application and click on the three buttons beside the collection name, then select API Documentation",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "adaloApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "Get",
+      "required": false
+    },
+    {
+      "name": "Update",
+      "required": false
+    }
+  ]
+}

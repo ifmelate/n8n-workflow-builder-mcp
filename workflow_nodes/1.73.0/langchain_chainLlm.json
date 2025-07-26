@@ -1,0 +1,139 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.chainLlm",
+  "displayName": "Basic LLM Chain",
+  "description": "A simple chain to prompt a large language model",
+  "version": [
+    1,
+    1.1,
+    1.2,
+    1.3,
+    1.4,
+    1.5
+  ],
+  "properties": [
+    {
+      "name": "prompt",
+      "displayName": "Prompt",
+      "type": "string",
+      "default": "={{ $json.input }}",
+      "required": true
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. Hello, how can you help me?",
+      "required": true
+    },
+    {
+      "name": "hasOutputParser",
+      "displayName": "Require Specific Output Format",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "messages",
+      "displayName": "Chat Messages (if Using a Chat Model)",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add prompt"
+    },
+    {
+      "name": "System",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    },
+    {
+      "name": "messageType",
+      "displayName": "Message Type",
+      "type": "options",
+      "default": null,
+      "description": "Simple text message"
+    },
+    {
+      "name": "Image (Binary)",
+      "default": null,
+      "description": "Process the binary input from the previous node"
+    },
+    {
+      "name": "Image (URL)",
+      "default": null,
+      "description": "Process the image from the specified URL"
+    },
+    {
+      "name": "binaryImageDataKey",
+      "displayName": "Image Data Field Name",
+      "type": "string",
+      "default": "data",
+      "description": "The name of the field in the chain’s input that contains the binary image file to be processed",
+      "required": true
+    },
+    {
+      "name": "imageUrl",
+      "displayName": "Image URL",
+      "type": "string",
+      "default": "",
+      "description": "URL to the image to be processed",
+      "required": true
+    },
+    {
+      "name": "imageDetail",
+      "displayName": "Image Details",
+      "type": "options",
+      "default": null,
+      "description": "Control how the model processes the image and generates its textual understanding"
+    },
+    {
+      "name": "Low",
+      "default": null,
+      "description": "The model will receive a low-res 512px x 512px version of the image, and represent the image with a budget of 65 tokens. This allows the API to return faster responses and consume fewer input tokens for use cases that do not require high detail."
+    },
+    {
+      "name": "High",
+      "default": null,
+      "description": "Allows the model to see the low res image and then creates detailed crops of input images as 512px squares based on the input image size. Each of the detailed crops uses twice the token budget (65 tokens) for a total of 129 tokens."
+    },
+    {
+      "name": "message",
+      "displayName": "Message",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "notice",
+      "type": "notice",
+      "default": ""
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "prompt",
+      "required": true
+    },
+    {
+      "name": "text",
+      "required": true
+    },
+    {
+      "name": "messageType",
+      "required": false
+    },
+    {
+      "name": "binaryImageDataKey",
+      "required": true
+    },
+    {
+      "name": "message",
+      "required": true
+    },
+    {
+      "name": "notice",
+      "required": false
+    }
+  ]
+}

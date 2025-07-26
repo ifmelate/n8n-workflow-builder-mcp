@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.gumroadTrigger",
+  "displayName": "Gumroad Trigger",
+  "description": "Handle Gumroad events via webhooks",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

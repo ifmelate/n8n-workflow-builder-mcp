@@ -1,0 +1,24 @@
+{
+  "nodeType": "n8n-nodes-base.mistralAi",
+  "displayName": "Mistral AI",
+  "description": "Consume Mistral AI API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "mistralCloudApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

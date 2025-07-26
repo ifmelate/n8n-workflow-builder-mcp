@@ -1,0 +1,122 @@
+{
+  "nodeType": "n8n-nodes-base.postHog",
+  "displayName": "PostHog",
+  "description": "Consume PostHog API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "alias",
+      "displayName": "Alias",
+      "type": "string",
+      "default": "",
+      "description": "The name of the alias",
+      "required": true
+    },
+    {
+      "name": "distinctId",
+      "displayName": "Distinct ID",
+      "type": "string",
+      "default": "",
+      "description": "The user's distinct ID",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "timestamp",
+      "displayName": "Timestamp",
+      "type": "dateTime",
+      "default": "",
+      "description": "If not set, it'll automatically be set to the current time"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create an alias"
+    },
+    {
+      "name": "eventName",
+      "displayName": "Event",
+      "type": "string",
+      "default": "",
+      "description": "The name of the event",
+      "required": true
+    },
+    {
+      "name": "messageId",
+      "displayName": "Message ID",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "contextUi",
+      "displayName": "Context",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Property"
+    },
+    {
+      "name": "propertiesUi",
+      "displayName": "Properties",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Property"
+    },
+    {
+      "name": "Screen",
+      "default": null,
+      "description": "Track a screen"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Event",
+      "default": null
+    },
+    {
+      "name": "Identity",
+      "default": null
+    },
+    {
+      "name": "Track",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "postHogApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

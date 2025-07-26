@@ -1,0 +1,8 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.textSplitterCharacterTextSplitter",
+  "displayName": "Character Text Splitter",
+  "description": "Split text into chunks by characters",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

@@ -1,0 +1,24 @@
+{
+  "nodeType": "n8n-nodes-base.whatsAppTrigger",
+  "displayName": "WhatsApp Trigger",
+  "description": "Handle WhatsApp events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "whatsAppNotice",
+      "displayName": "Due to Facebook API limitations, you can use just one WhatsApp trigger for each Facebook App",
+      "type": "notice",
+      "default": ""
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "whatsAppTriggerApi",
+      "required": true
+    },
+    {
+      "name": "setup",
+      "required": false
+    }
+  ]
+}

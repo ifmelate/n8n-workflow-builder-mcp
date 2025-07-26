@@ -1,0 +1,39 @@
+{
+  "nodeType": "n8n-nodes-base.dateTime",
+  "displayName": "DateTime",
+  "description": null,
+  "version": "2",
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Extract Part of a Date",
+      "default": null
+    },
+    {
+      "name": "Format a Date",
+      "default": null
+    },
+    {
+      "name": "Get Current Date",
+      "default": null
+    },
+    {
+      "name": "Get Time Between Dates",
+      "default": null
+    },
+    {
+      "name": "Round a Date",
+      "default": null
+    },
+    {
+      "name": "Subtract From a Date",
+      "default": null
+    }
+  ],
+  "credentialsConfig": []
+}

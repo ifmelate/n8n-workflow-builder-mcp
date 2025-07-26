@@ -1,0 +1,281 @@
+{
+  "nodeType": "n8n-nodes-base.oneSimpleApi",
+  "displayName": "One Simple API",
+  "description": "A toolbox of no-code utilities",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Social Profile",
+      "default": null
+    },
+    {
+      "name": "Utility",
+      "default": null
+    },
+    {
+      "name": "Website",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Generate a PDF from a webpage"
+    },
+    {
+      "name": "Get SEO Data",
+      "default": null,
+      "description": "Get SEO information from website"
+    },
+    {
+      "name": "Take Screenshot",
+      "default": null,
+      "description": "Create a screenshot from a webpage"
+    },
+    {
+      "name": "Spotify",
+      "default": null,
+      "description": "Get details about a Spotify Artist"
+    },
+    {
+      "name": "Image Metadata",
+      "default": null,
+      "description": "Retrieve image metadata from a URL"
+    },
+    {
+      "name": "Generate QR Code",
+      "default": null,
+      "description": "Generate a QR Code"
+    },
+    {
+      "name": "Validate Email",
+      "default": null,
+      "description": "Validate an email address"
+    },
+    {
+      "name": "link",
+      "displayName": "Webpage URL",
+      "type": "string",
+      "default": "",
+      "description": "Link to webpage to convert",
+      "required": true
+    },
+    {
+      "name": "download",
+      "displayName": "Download PDF?",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to download the PDF or return a link to it",
+      "required": true
+    },
+    {
+      "name": "output",
+      "displayName": "Put Output In Field",
+      "type": "string",
+      "default": "data",
+      "description": "The name of the output field to put the binary file data in",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add option"
+    },
+    {
+      "name": "A1",
+      "default": null
+    },
+    {
+      "name": "A2",
+      "default": null
+    },
+    {
+      "name": "A3",
+      "default": null
+    },
+    {
+      "name": "A4",
+      "default": null
+    },
+    {
+      "name": "A5",
+      "default": null
+    },
+    {
+      "name": "A6",
+      "default": null
+    },
+    {
+      "name": "Ledger",
+      "default": null
+    },
+    {
+      "name": "Legal",
+      "default": null
+    },
+    {
+      "name": "Letter",
+      "default": null
+    },
+    {
+      "name": "Tabloid",
+      "default": null
+    },
+    {
+      "name": "force",
+      "displayName": "Force Refresh",
+      "type": "boolean",
+      "default": false,
+      "description": "Normally the API will reuse a previously taken screenshot of the URL to give a faster response. This option allows you to retake the screenshot at that exact time, for those times when it's necessary."
+    },
+    {
+      "name": "message",
+      "displayName": "QR Content",
+      "type": "string",
+      "default": "",
+      "description": "The text that should be turned into a QR code - like a website URL",
+      "required": true
+    },
+    {
+      "name": "Medium",
+      "default": null
+    },
+    {
+      "name": "Large",
+      "default": null
+    },
+    {
+      "name": "format",
+      "displayName": "Format",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "SVG",
+      "default": null
+    },
+    {
+      "name": "Phone Landscape",
+      "default": null
+    },
+    {
+      "name": "Retina",
+      "default": null
+    },
+    {
+      "name": "Tablet",
+      "default": null
+    },
+    {
+      "name": "Tablet Landscape",
+      "default": null
+    },
+    {
+      "name": "fullpage",
+      "displayName": "Full Page",
+      "type": "boolean",
+      "default": false,
+      "description": "The API takes a screenshot of the viewable area for the desired screen size. If you need a screenshot of the whole length of the page, use this option."
+    },
+    {
+      "name": "profileName",
+      "displayName": "Profile Name",
+      "type": "string",
+      "default": "",
+      "description": "Profile name to get details of",
+      "required": true
+    },
+    {
+      "name": "fromCurrency",
+      "displayName": "From Currency",
+      "type": "string",
+      "default": "",
+      "placeholder": "USD",
+      "required": true
+    },
+    {
+      "name": "toCurrency",
+      "displayName": "To Currency",
+      "type": "string",
+      "default": "",
+      "description": "Image to get metadata from",
+      "placeholder": "EUR",
+      "required": true
+    },
+    {
+      "name": "emailAddress",
+      "displayName": "Email Address",
+      "type": "string",
+      "default": "",
+      "description": "URL to unshorten",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "oneSimpleApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "link",
+      "required": true
+    },
+    {
+      "name": "force",
+      "required": false
+    },
+    {
+      "name": "message",
+      "required": true
+    },
+    {
+      "name": "format",
+      "required": false
+    },
+    {
+      "name": "link",
+      "required": true
+    },
+    {
+      "name": "force",
+      "required": false
+    },
+    {
+      "name": "profileName",
+      "required": true
+    },
+    {
+      "name": "emailAddress",
+      "required": true
+    }
+  ]
+}

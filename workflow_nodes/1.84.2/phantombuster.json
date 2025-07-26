@@ -1,0 +1,172 @@
+{
+  "nodeType": "n8n-nodes-base.phantombuster",
+  "displayName": "Phantombuster",
+  "description": "Consume Phantombuster API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "agentId",
+      "displayName": "Agent Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 25,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "resolveData",
+      "displayName": "Resolve Data",
+      "type": "boolean",
+      "default": true,
+      "description": "By default the outpout is presented as string. If this option gets activated, it will resolve the data automatically."
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "If set, the output will be retrieved from the container after the specified previous container ID",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "prevStatus",
+      "displayName": "Prev Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Launch Error",
+      "default": null
+    },
+    {
+      "name": "Never Launched",
+      "default": null
+    },
+    {
+      "name": "Running",
+      "default": null
+    },
+    {
+      "name": "Starting",
+      "default": null
+    },
+    {
+      "name": "Unknown",
+      "default": null
+    },
+    {
+      "name": "prevRuntimeEventIndex",
+      "displayName": "Pre Runtime Event Index",
+      "type": "number",
+      "default": 0,
+      "description": "If set, the container's runtime events will be returned in the response starting from the provided previous runtime event index"
+    },
+    {
+      "name": "jsonParameters",
+      "displayName": "JSON Parameters",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "argumentsUi",
+      "displayName": "Arguments",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Name of the argument key to add",
+      "placeholder": "Add Argument"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Value to set for the argument key"
+    },
+    {
+      "name": "bonusArgumentUi",
+      "displayName": "Bonus Argument",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Name of the argument key to add",
+      "placeholder": "Add Bonus Argument"
+    },
+    {
+      "name": "bonusArgumentJson",
+      "displayName": "Bonus Argument (JSON)",
+      "type": "string",
+      "default": "",
+      "description": "Agent bonus argument. Can either be a JSON string or a plain object. This bonus argument is single-use, it will only be used for the current launch. If present, it will be merged with the original argument, resulting in an effective argument that can be retrieved with buster.argument in the agent’s script."
+    },
+    {
+      "name": "manualLaunch",
+      "displayName": "Manual Launch",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the agent will be considered as \"launched manually\""
+    },
+    {
+      "name": "maxInstanceCount",
+      "displayName": "Max Instance Count",
+      "type": "number",
+      "default": 0,
+      "description": "If set, the agent will only be launched if the number of already running instances is below the specified number"
+    },
+    {
+      "name": "saveArgument",
+      "displayName": "Save Argument",
+      "type": "string",
+      "default": "",
+      "description": "If true, argument will be saved as the default launch options for the agent"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Delete an agent by ID"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get an agent by ID"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many agents of the current user's organization"
+    },
+    {
+      "name": "Get Output",
+      "default": null,
+      "description": "Get the output of the most recent container of an agent"
+    },
+    {
+      "name": "Launch",
+      "default": null,
+      "description": "Add an agent to the launch queue"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "phantombusterApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

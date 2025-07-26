@@ -1,0 +1,38 @@
+{
+  "nodeType": "n8n-nodes-base.googleBigQuery",
+  "displayName": "GoogleBigQuery",
+  "description": null,
+  "version": "2.1",
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Service Account",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googleApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

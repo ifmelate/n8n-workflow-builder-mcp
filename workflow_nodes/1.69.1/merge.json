@@ -1,0 +1,125 @@
+{
+  "nodeType": "n8n-nodes-base.merge",
+  "displayName": "Merge",
+  "description": null,
+  "version": "3",
+  "properties": [
+    {
+      "name": "mode",
+      "displayName": "Mode",
+      "type": "options",
+      "default": null,
+      "description": "All items of input 1, then all items of input 2"
+    },
+    {
+      "name": "Combine",
+      "default": null,
+      "description": "Merge matching items together"
+    },
+    {
+      "name": "Choose Branch",
+      "default": null,
+      "description": "Output input data, without modifying it"
+    },
+    {
+      "name": "combinationMode",
+      "displayName": "Combination Mode",
+      "type": "options",
+      "default": null,
+      "description": "Combine items with the same field values"
+    },
+    {
+      "name": "Merge By Position",
+      "default": null,
+      "description": "Combine items based on their order"
+    },
+    {
+      "name": "Multiplex",
+      "default": null,
+      "description": "All possible item combinations (cross join)"
+    },
+    {
+      "name": "mergeByFields",
+      "displayName": "Fields to Match",
+      "type": "fixedCollection",
+      "default": null,
+      "placeholder": "Add Fields to Match"
+    },
+    {
+      "name": "values",
+      "displayName": "Values",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. id"
+    },
+    {
+      "name": "field2",
+      "displayName": "Input 2 Field",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. id"
+    },
+    {
+      "name": "joinMode",
+      "displayName": "Output Type",
+      "type": "options",
+      "default": null,
+      "description": "Items that match, merged together (inner join)"
+    },
+    {
+      "name": "Keep Non-Matches",
+      "default": null,
+      "description": "Items that don't match"
+    },
+    {
+      "name": "Keep Everything",
+      "default": null,
+      "description": "Items that match merged together, plus items that don't match (outer join)"
+    },
+    {
+      "name": "Enrich Input 1",
+      "default": null,
+      "description": "All of input 1, with data from input 2 added in (left join)"
+    },
+    {
+      "name": "Enrich Input 2",
+      "default": null,
+      "description": "All of input 2, with data from input 1 added in (right join)"
+    },
+    {
+      "name": "outputDataFrom",
+      "displayName": "Output Data From",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Input 1",
+      "default": null
+    },
+    {
+      "name": "Input 2",
+      "default": null
+    },
+    {
+      "name": "chooseBranchMode",
+      "displayName": "Output Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "output",
+      "displayName": "Output",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Input 2 Data",
+      "default": null
+    },
+    {
+      "name": "A Single, Empty Item",
+      "default": null
+    }
+  ],
+  "credentialsConfig": []
+}

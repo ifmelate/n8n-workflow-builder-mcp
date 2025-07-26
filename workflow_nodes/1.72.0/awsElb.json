@@ -1,0 +1,173 @@
+{
+  "nodeType": "n8n-nodes-base.awsElb",
+  "displayName": "AWS ELB",
+  "description": "Sends data to AWS ELB API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "ipAddressType",
+      "displayName": "IP Address Type",
+      "type": "options",
+      "default": null,
+      "required": true
+    },
+    {
+      "name": "Dualstack",
+      "default": null
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "This name must be unique per region per account, can have a maximum of 32 characters",
+      "required": true
+    },
+    {
+      "name": "schema",
+      "displayName": "Schema",
+      "type": "options",
+      "default": null,
+      "required": true
+    },
+    {
+      "name": "Internet Facing",
+      "default": null
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null,
+      "required": true
+    },
+    {
+      "name": "Network",
+      "default": null
+    },
+    {
+      "name": "subnets",
+      "displayName": "Subnet ID Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "tagsUi",
+      "displayName": "Tags",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "The key of the tag",
+      "placeholder": "Add Tag"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "The value of the tag"
+    },
+    {
+      "name": "loadBalancerId",
+      "displayName": "Load Balancer ARN",
+      "type": "string",
+      "default": "",
+      "description": "Unique identifier for a particular loadBalancer",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "The names of the load balancers. Multiples can be defined separated by comma.",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a load balancer"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a load balancer"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a load balancer"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many load balancers"
+    },
+    {
+      "name": "listenerId",
+      "displayName": "Listener ARN Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Unique identifier for a particular loadBalancer. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "certificateId",
+      "displayName": "Certificate ARN",
+      "type": "string",
+      "default": "",
+      "description": "Unique identifier for a particular loadBalancer",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "Remove",
+      "default": null,
+      "description": "Remove the specified certificate from the certificate list for the specified HTTPS or TLS listener"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Load Balancer",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "aws",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "nodeType": "n8n-nodes-base.quickbase",
+  "displayName": "Quick Base",
+  "description": "Integrate with the Quick Base RESTful API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "tableId",
+      "displayName": "Table ID",
+      "type": "string",
+      "default": "",
+      "description": "The table identifier",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to get back the custom permissions for the field(s)",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get many fields"
+    },
+    {
+      "name": "recordId",
+      "displayName": "Record ID",
+      "type": "string",
+      "default": "",
+      "description": "The unique identifier of the record",
+      "required": true
+    },
+    {
+      "name": "fieldId",
+      "displayName": "Field ID",
+      "type": "string",
+      "default": "",
+      "description": "The unique identifier of the field",
+      "required": true
+    },
+    {
+      "name": "versionNumber",
+      "displayName": "Version Number",
+      "type": "number",
+      "default": 1,
+      "description": "The file attachment version number",
+      "required": true
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Input Binary Field",
+      "type": "string",
+      "default": "data",
+      "required": true
+    },
+    {
+      "name": "Download",
+      "default": null,
+      "description": "Download a file"
+    },
+    {
+      "name": "columns",
+      "displayName": "Columns",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of the properties which should used as columns for the new rows",
+      "placeholder": "Select Fields...",
+      "required": true
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    },
+    {
+      "name": "useFieldIDs",
+      "displayName": "Use Field IDs",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to use Field IDs instead of Field Names in Columns"
+    },
+    {
+      "name": "where",
+      "displayName": "Where",
+      "type": "string",
+      "default": "",
+      "description": "The filter to delete records. To delete all records specify a filter that will include all records, for example {3.GT.0} where 3 is the ID of the Record ID field.",
+      "required": true
+    },
+    {
+      "name": "sortByUi",
+      "displayName": "Sort By",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "The unique identifier of a field in a table. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Sort By"
+    },
+    {
+      "name": "order",
+      "displayName": "Order",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "DESC",
+      "default": null
+    },
+    {
+      "name": "updateKey",
+      "displayName": "Update Key",
+      "type": "string",
+      "default": "",
+      "description": "Update can use the key field on the table, or any other supported unique field"
+    },
+    {
+      "name": "mergeFieldId",
+      "displayName": "Merge Field Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "<p>You're updating records in a Quick Base table with data from an external file. In order for a merge like this to work, Quick Base needs a way to match records in the source data with corresponding records in the destination table.</p><p>You make this possible by choosing the field in the app table that holds unique matching values. This is called a merge field.</p>. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "Create or Update",
+      "default": null,
+      "description": "Create a new record, or update the current one if it already exists (upsert)"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a record"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many records"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a record"
+    },
+    {
+      "name": "reportId",
+      "displayName": "Report ID",
+      "type": "string",
+      "default": "",
+      "description": "The identifier of the report, unique to the table",
+      "required": true
+    },
+    {
+      "name": "Run",
+      "default": null,
+      "description": "Run a report"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "File",
+      "default": null
+    },
+    {
+      "name": "Record",
+      "default": null
+    },
+    {
+      "name": "Report",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "quickbaseApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

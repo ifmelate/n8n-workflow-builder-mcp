@@ -1,0 +1,187 @@
+{
+  "nodeType": "n8n-nodes-base.zendeskTrigger",
+  "displayName": "Zendesk Trigger",
+  "description": "Handle Zendesk events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "field",
+      "displayName": "Field",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Group",
+      "default": null
+    },
+    {
+      "name": "Priority",
+      "default": null
+    },
+    {
+      "name": "Status",
+      "default": null
+    },
+    {
+      "name": "Type",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Changed From",
+      "default": null
+    },
+    {
+      "name": "Changed To",
+      "default": null
+    },
+    {
+      "name": "Greater Than",
+      "default": null
+    },
+    {
+      "name": "Is",
+      "default": null
+    },
+    {
+      "name": "Is Not",
+      "default": null
+    },
+    {
+      "name": "Less Than",
+      "default": null
+    },
+    {
+      "name": "Not Changed",
+      "default": null
+    },
+    {
+      "name": "Not Changed From",
+      "default": null
+    },
+    {
+      "name": "Not Changed To",
+      "default": null
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "New",
+      "default": null
+    },
+    {
+      "name": "Open",
+      "default": null
+    },
+    {
+      "name": "Pending",
+      "default": null
+    },
+    {
+      "name": "Solved",
+      "default": null
+    },
+    {
+      "name": "Incident",
+      "default": null
+    },
+    {
+      "name": "Problem",
+      "default": null
+    },
+    {
+      "name": "Task",
+      "default": null
+    },
+    {
+      "name": "Normal",
+      "default": null
+    },
+    {
+      "name": "High",
+      "default": null
+    },
+    {
+      "name": "Urgent",
+      "default": null
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "service",
+      "displayName": "Service",
+      "type": "options",
+      "default": null,
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "The fields to return the values of. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "conditions",
+      "displayName": "Conditions",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "The condition to set",
+      "placeholder": "Add Condition"
+    },
+    {
+      "name": "any",
+      "displayName": "Any",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "zendeskApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "service",
+      "required": true
+    },
+    {
+      "name": "options",
+      "required": false
+    },
+    {
+      "name": "conditions",
+      "required": false
+    }
+  ]
+}

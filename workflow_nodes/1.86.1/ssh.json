@@ -1,0 +1,105 @@
+{
+  "nodeType": "n8n-nodes-base.ssh",
+  "displayName": "SSH",
+  "description": "Execute commands via SSH",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Private Key",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "File",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Execute a command"
+    },
+    {
+      "name": "command",
+      "displayName": "Command",
+      "type": "string",
+      "default": "",
+      "description": "The command to be executed on a remote device"
+    },
+    {
+      "name": "cwd",
+      "displayName": "Working Directory",
+      "type": "string",
+      "default": "/",
+      "required": true
+    },
+    {
+      "name": "Upload",
+      "default": null,
+      "description": "Upload a file"
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Input Binary Field",
+      "type": "string",
+      "default": "data",
+      "placeholder": "",
+      "required": true
+    },
+    {
+      "name": "path",
+      "displayName": "Target Directory",
+      "type": "string",
+      "default": "",
+      "description": "The directory to upload the file to. The name of the file does not need to be specified, it's taken from the binary data file name. To override this behavior, set the parameter \"File Name\" under options.",
+      "placeholder": "/home/user",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Overrides the binary data file name",
+      "placeholder": "Add option"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "sshPassword",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "command",
+      "required": true
+    },
+    {
+      "name": "binaryPropertyName",
+      "required": true
+    }
+  ]
+}

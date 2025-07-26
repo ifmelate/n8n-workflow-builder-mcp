@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.jinaAi",
+  "displayName": "Jina AI",
+  "description": "Interact with Jina AI API",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

@@ -1,0 +1,100 @@
+{
+  "nodeType": "n8n-nodes-base.hackerNews",
+  "displayName": "Hacker News",
+  "description": "Consume Hacker News API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Article",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get many items"
+    },
+    {
+      "name": "articleId",
+      "displayName": "Article ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the Hacker News article to be returned",
+      "required": true
+    },
+    {
+      "name": "username",
+      "displayName": "Username",
+      "type": "string",
+      "default": "",
+      "description": "The Hacker News user to be returned",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to include all the comments in a Hacker News article",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "tags",
+      "displayName": "Tags",
+      "type": "multiOptions",
+      "default": null,
+      "description": "Returns query results filtered by Ask HN tag"
+    },
+    {
+      "name": "Comment",
+      "default": null,
+      "description": "Returns query results filtered by comment tag"
+    },
+    {
+      "name": "Front Page",
+      "default": null,
+      "description": "Returns query results filtered by Front Page tag"
+    },
+    {
+      "name": "Poll",
+      "default": null,
+      "description": "Returns query results filtered by poll tag"
+    },
+    {
+      "name": "Show HN",
+      "default": null,
+      "description": "Returns query results filtered by Show HN tag"
+    },
+    {
+      "name": "Story",
+      "default": null,
+      "description": "Returns query results filtered by story tag"
+    }
+  ],
+  "credentialsConfig": []
+}

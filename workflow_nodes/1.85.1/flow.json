@@ -1,0 +1,323 @@
+{
+  "nodeType": "n8n-nodes-base.flow",
+  "displayName": "Flow",
+  "description": "Consume Flow API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "workspaceId",
+      "displayName": "Workspace ID",
+      "type": "string",
+      "default": "",
+      "description": "Create resources under the given workspace",
+      "required": true
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "The title of the task",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The ID of the account to whom this task will be assigned",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "listID",
+      "displayName": "List ID",
+      "type": "string",
+      "default": "",
+      "description": "Put the new task in a list (\"project\"). Omit this param to have the task be private."
+    },
+    {
+      "name": "startsOn",
+      "displayName": "Starts On",
+      "type": "dateTime",
+      "default": "",
+      "description": "The date on which the task should start"
+    },
+    {
+      "name": "dueOn",
+      "displayName": "Due On",
+      "type": "dateTime",
+      "default": "",
+      "description": "The date on which the task should be due"
+    },
+    {
+      "name": "mirrorParentSubscribers",
+      "displayName": "Mirror Parent Subscribers",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this task will be a subtask, and this is true, the parent tasks's subscribers will be mirrored to this one"
+    },
+    {
+      "name": "mirrorParentTags",
+      "displayName": "Mirror Parent Tags",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this task will be a subtask, and this is true, the parent tasks's tags will be mirrored to this one"
+    },
+    {
+      "name": "noteContent",
+      "displayName": "Note Content",
+      "type": "string",
+      "default": "",
+      "description": "Provide the content for the task's note"
+    },
+    {
+      "name": "noteMimeType",
+      "displayName": "Note Mime Type",
+      "type": "options",
+      "default": "text/plain"
+    },
+    {
+      "name": "text/x-markdown",
+      "default": null
+    },
+    {
+      "name": "text/html",
+      "default": null
+    },
+    {
+      "name": "parentId",
+      "displayName": "Parent ID",
+      "type": "string",
+      "default": "",
+      "description": "If provided, this task will become a subtask of the given task"
+    },
+    {
+      "name": "positionList",
+      "displayName": "Position List",
+      "type": "number",
+      "default": 0,
+      "description": "Determines the sort order when showing tasks in, or grouped by, a list"
+    },
+    {
+      "name": "positionUpcoming",
+      "displayName": "Position Upcoming",
+      "type": "number",
+      "default": 0,
+      "description": "Determines the sort order when showing tasks grouped by their due_date"
+    },
+    {
+      "name": "position",
+      "displayName": "Position",
+      "type": "number",
+      "default": 0,
+      "description": "Determines the sort order of tasks"
+    },
+    {
+      "name": "sectionId",
+      "displayName": "Section ID",
+      "type": "string",
+      "default": "",
+      "description": "Specify which section under which to create this task"
+    },
+    {
+      "name": "tags",
+      "displayName": "Tags",
+      "type": "string",
+      "default": "",
+      "description": "A list of tag names to apply to the new task separated by a comma (,)"
+    },
+    {
+      "name": "taskId",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The title of the task",
+      "placeholder": "Add Update Field"
+    },
+    {
+      "name": "completed",
+      "displayName": "Completed",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to complete the task"
+    },
+    {
+      "name": "ownerid",
+      "displayName": "Owner ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the account to whom this task will be assigned"
+    },
+    {
+      "name": "Text/html",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "Files",
+      "default": null
+    },
+    {
+      "name": "File Associations",
+      "default": null
+    },
+    {
+      "name": "Parent",
+      "default": null
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "order",
+      "displayName": "Order",
+      "type": "options",
+      "default": "created_at"
+    },
+    {
+      "name": "Completed At",
+      "default": null
+    },
+    {
+      "name": "Created At",
+      "default": null
+    },
+    {
+      "name": "Due On",
+      "default": null
+    },
+    {
+      "name": "List ID",
+      "default": null
+    },
+    {
+      "name": "Name",
+      "default": null
+    },
+    {
+      "name": "Owner ID",
+      "default": null
+    },
+    {
+      "name": "Position",
+      "default": null
+    },
+    {
+      "name": "Section ID",
+      "default": null
+    },
+    {
+      "name": "Starts On",
+      "default": null
+    },
+    {
+      "name": "Updated At",
+      "default": null
+    },
+    {
+      "name": "createdBefore",
+      "displayName": "Created Before",
+      "type": "dateTime",
+      "default": "",
+      "description": "Select resources created before a certain time"
+    },
+    {
+      "name": "createdAfter",
+      "displayName": "Created After",
+      "type": "dateTime",
+      "default": "",
+      "description": "Select resources created after a certain time"
+    },
+    {
+      "name": "updateBefore",
+      "displayName": "Update Before",
+      "type": "dateTime",
+      "default": "",
+      "description": "Select resources updated before a certain time"
+    },
+    {
+      "name": "updateAfter",
+      "displayName": "Update After",
+      "type": "dateTime",
+      "default": "",
+      "description": "Select resources updated after a certain time"
+    },
+    {
+      "name": "deleted",
+      "displayName": "Deleted",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to select deleted resources"
+    },
+    {
+      "name": "cleared",
+      "displayName": "Cleared",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to select cleared resources"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a new task"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a task"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a task"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many tasks"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "description": "Tasks are units of work that can be private or assigned to a list. Through this endpoint, you can manipulate your tasks in Flow, including creating new ones."
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "flowApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

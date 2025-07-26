@@ -1,0 +1,139 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.toolWorkflow",
+  "displayName": "Call n8n Workflow Tool",
+  "description": "Uses another n8n workflow as a tool. Allows packaging any n8n node(s) as a tool.",
+  "version": [
+    1,
+    1.1,
+    1.2,
+    1.3
+  ],
+  "properties": [
+    {
+      "name": "noticeTemplateExample",
+      "displayName": "See an example of a workflow to suggest meeting slots using AI <a href=\"/templates/1953\" target=\"_blank\">here</a>.",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "placeholder": "My_Color_Tool"
+    },
+    {
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": "",
+      "placeholder": "Call this tool to get a random color. The input should be a string with comma separted names of colors to exclude."
+    },
+    {
+      "name": "executeNotice",
+      "displayName": "This tool will call the workflow you define below, and look in the last node for the response. The workflow needs to start with an Execute Workflow trigger",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "source",
+      "displayName": "Source",
+      "type": "options",
+      "default": null,
+      "description": "Load the workflow from the database by ID"
+    },
+    {
+      "name": "Define Below",
+      "default": null,
+      "description": "Pass the JSON code of a workflow"
+    },
+    {
+      "name": "workflowId",
+      "displayName": "Workflow ID",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "workflowJson",
+      "displayName": "Workflow JSON",
+      "type": "json",
+      "default": "\\n\\n\\n\\n\\n\\n\\n\\n\\n",
+      "description": "The workflow JSON code to execute",
+      "required": true
+    },
+    {
+      "name": "fields",
+      "displayName": "Extra Workflow Inputs",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "These will be output by the 'execute workflow' trigger of the workflow being called",
+      "placeholder": "Add Value"
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null,
+      "description": "The field value type"
+    },
+    {
+      "name": "Number",
+      "default": null
+    },
+    {
+      "name": "Boolean",
+      "default": null
+    },
+    {
+      "name": "Array",
+      "default": null
+    },
+    {
+      "name": "Object",
+      "default": null
+    },
+    {
+      "name": "stringValue",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "numberValue",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "booleanValue",
+      "displayName": "Value",
+      "type": "options",
+      "default": "true"
+    },
+    {
+      "name": "False",
+      "default": null
+    },
+    {
+      "name": "arrayValue",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. [ arrayItem1, arrayItem2, arrayItem3 ]"
+    },
+    {
+      "name": "objectValue",
+      "displayName": "Value",
+      "type": "json",
+      "default": "={}"
+    },
+    {
+      "name": "specifyInputSchema",
+      "displayName": "Specify Input Schema",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to specify the schema for the function. This would require the LLM to provide the input in the correct format and would validate it against the schema."
+    }
+  ],
+  "credentialsConfig": []
+}

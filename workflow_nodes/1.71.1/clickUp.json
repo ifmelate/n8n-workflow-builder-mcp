@@ -1,0 +1,826 @@
+{
+  "nodeType": "n8n-nodes-base.clickUp",
+  "displayName": "ClickUp",
+  "description": "Consume ClickUp API (Beta)",
+  "version": 1,
+  "properties": [
+    {
+      "name": "task",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "position",
+      "displayName": "Position",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a checklist"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a checklist"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a checklist"
+    },
+    {
+      "name": "checklist",
+      "displayName": "Checklist ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "checklistItem",
+      "displayName": "Checklist Item ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "parent",
+      "displayName": "Parent Checklist Item ID",
+      "type": "string",
+      "default": "",
+      "description": "Checklist item that you want to nest the target checklist item underneath"
+    },
+    {
+      "name": "resolved",
+      "displayName": "Resolved",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "commentOn",
+      "displayName": "Comment On",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Task",
+      "default": null
+    },
+    {
+      "name": "View",
+      "default": null
+    },
+    {
+      "name": "id",
+      "displayName": "ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "commentText",
+      "displayName": "Comment Text",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "notifyAll",
+      "displayName": "Notify All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether creation notifications will be sent to everyone including the creator of the comment"
+    },
+    {
+      "name": "comment",
+      "displayName": "Comment ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many comments"
+    },
+    {
+      "name": "team",
+      "displayName": "Team Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "space",
+      "displayName": "Space Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "folder",
+      "displayName": "Folder Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a folder"
+    },
+    {
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "dueDate",
+      "displayName": "Due Date",
+      "type": "dateTime",
+      "default": ""
+    },
+    {
+      "name": "multipleOwners",
+      "displayName": "Multiple Owners",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "owners",
+      "displayName": "Owners",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "goal",
+      "displayName": "Goal ID",
+      "type": "string",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "color",
+      "displayName": "Color",
+      "type": "color",
+      "default": ""
+    },
+    {
+      "name": "removeOwners",
+      "displayName": "Remove Owners",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Boolean",
+      "default": null
+    },
+    {
+      "name": "Currency",
+      "default": null
+    },
+    {
+      "name": "Number",
+      "default": null
+    },
+    {
+      "name": "Percentage",
+      "default": null
+    },
+    {
+      "name": "stepsStart",
+      "displayName": "Steps Start",
+      "type": "number",
+      "default": 0,
+      "description": "Required for Percentage, Automatic, Number and Currency"
+    },
+    {
+      "name": "stepsEnd",
+      "displayName": "Steps End",
+      "type": "number",
+      "default": 0,
+      "description": "Required for Percentage, Automatic, Number and Currency"
+    },
+    {
+      "name": "taskIds",
+      "displayName": "Task IDs",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "unit",
+      "displayName": "Unit",
+      "type": "string",
+      "default": "",
+      "description": "Only matters for type Number and Currency. For Currency the unit must be a valid currency code."
+    },
+    {
+      "name": "keyResult",
+      "displayName": "Key Result ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "note",
+      "displayName": "Note",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "stepsCurrent",
+      "displayName": "Steps Current",
+      "type": "number",
+      "default": 1
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "placeholder": "name@email.com"
+    },
+    {
+      "name": "can_see_time_spend",
+      "displayName": "Can See Time Spend",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "can_see_time_estimated",
+      "displayName": "Can See Time Estimated",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "guest",
+      "displayName": "Guest ID",
+      "type": "string",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "username",
+      "displayName": "Username",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "folderless",
+      "displayName": "Folderless List",
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    {
+      "name": "list",
+      "displayName": "List Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "customFieldsJson",
+      "displayName": "Custom Fields JSON",
+      "type": "json",
+      "default": ""
+    },
+    {
+      "name": "content",
+      "displayName": "Content",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "dueDateTime",
+      "displayName": "Due Date Time",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "markdownContent",
+      "displayName": "Is Markdown Content",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "parentId",
+      "displayName": "Parent ID",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "priority",
+      "displayName": "Priority",
+      "type": "number",
+      "default": 3,
+      "description": "Integer mapping as 1 : Urgent, 2 : High, 3 : Normal, 4 : Low"
+    },
+    {
+      "name": "startDate",
+      "displayName": "Start Date",
+      "type": "dateTime",
+      "default": ""
+    },
+    {
+      "name": "startDateTime",
+      "displayName": "Start Date Time",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "status",
+      "displayName": "Status Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "tags",
+      "displayName": "Tag Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "The array of tags applied to this task. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "timeEstimate",
+      "displayName": "Time Estimate",
+      "type": "number",
+      "default": 1,
+      "description": "Time estimate in minutes"
+    },
+    {
+      "name": "removeAssignees",
+      "displayName": "Remove Assignees",
+      "type": "string",
+      "default": "",
+      "description": "Assignees IDs. Multiple ca be added separated by comma."
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "assignees",
+      "displayName": "Assignee Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "customFieldsUi",
+      "displayName": "Custom Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Filter by custom fields",
+      "placeholder": "Add Custom Field"
+    },
+    {
+      "name": "operator",
+      "displayName": "Operator",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "<",
+      "default": null
+    },
+    {
+      "name": "<=",
+      "default": null
+    },
+    {
+      "name": ">",
+      "default": null
+    },
+    {
+      "name": ">=",
+      "default": null
+    },
+    {
+      "name": "Equal",
+      "default": null
+    },
+    {
+      "name": "Is Not Null",
+      "default": null
+    },
+    {
+      "name": "Is Null",
+      "default": null
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "The value to set on custom field"
+    },
+    {
+      "name": "dateCreatedGt",
+      "displayName": "Date Created Greater Than",
+      "type": "dateTime",
+      "default": "",
+      "description": "Filter date created greater"
+    },
+    {
+      "name": "dateCreatedLt",
+      "displayName": "Date Created Less Than",
+      "type": "dateTime",
+      "default": "",
+      "description": "Filter date created less than posix time"
+    },
+    {
+      "name": "dateUpdatedGt",
+      "displayName": "Date Updated Greater Than",
+      "type": "dateTime",
+      "default": "",
+      "description": "Filter date updated greater than"
+    },
+    {
+      "name": "dateUpdatedLt",
+      "displayName": "Date Update Less Than",
+      "type": "dateTime",
+      "default": "",
+      "description": "Filter date updated less than"
+    },
+    {
+      "name": "dueDateGt",
+      "displayName": "Due Date Greater Than",
+      "type": "dateTime",
+      "default": "",
+      "description": "Filter due date greater than"
+    },
+    {
+      "name": "dueDateLt",
+      "displayName": "Due Date Less Than",
+      "type": "dateTime",
+      "default": "",
+      "description": "Filter due date less than"
+    },
+    {
+      "name": "includeClosed",
+      "displayName": "Include Closed",
+      "type": "boolean",
+      "default": false,
+      "description": "The response does by default not include closed tasks. Set this to true and dont send a status filter to include closed tasks."
+    },
+    {
+      "name": "orderBy",
+      "displayName": "Order By",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "Created",
+      "default": null
+    },
+    {
+      "name": "Updated",
+      "default": null
+    },
+    {
+      "name": "Due Date",
+      "default": null
+    },
+    {
+      "name": "statuses",
+      "displayName": "Status Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "subtasks",
+      "displayName": "Subtasks",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to include subtasks, default false"
+    },
+    {
+      "name": "field",
+      "displayName": "Field ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the field to add custom field to",
+      "required": true
+    },
+    {
+      "name": "jsonParse",
+      "displayName": "Value Is JSON",
+      "type": "boolean",
+      "default": false,
+      "description": "The value is JSON and will be parsed as such. Is needed if for example needed for labels which expects the value to be an array."
+    },
+    {
+      "name": "Member",
+      "default": null,
+      "description": "Get task members"
+    },
+    {
+      "name": "Set Custom Field",
+      "default": null,
+      "description": "Set a custom field"
+    },
+    {
+      "name": "taskId",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "listId",
+      "displayName": "List ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "Remove",
+      "default": null,
+      "description": "Remove a task from a list"
+    },
+    {
+      "name": "tagName",
+      "displayName": "Tag Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "team_id",
+      "displayName": "Team Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Only used when the parameter is set to custom_task_ids=true. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "newName",
+      "displayName": "New Name",
+      "type": "string",
+      "default": "",
+      "description": "New name to set for the tag",
+      "required": true
+    },
+    {
+      "name": "foregroundColor",
+      "displayName": "Foreground Color",
+      "type": "color",
+      "default": "#000000",
+      "required": true
+    },
+    {
+      "name": "backgroundColor",
+      "displayName": "Background Color",
+      "type": "color",
+      "default": "#000000",
+      "required": true
+    },
+    {
+      "name": "dependsOnTask",
+      "displayName": "Depends On Task ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "start_date",
+      "displayName": "Start Date",
+      "type": "dateTime",
+      "default": ""
+    },
+    {
+      "name": "running",
+      "displayName": "Running",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return just the current running time entry"
+    },
+    {
+      "name": "timeEntry",
+      "displayName": "Time Entry ID",
+      "type": "string",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "start",
+      "displayName": "Start",
+      "type": "dateTime",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "duration",
+      "displayName": "Duration (Minutes)",
+      "type": "number",
+      "default": 0,
+      "description": "Duration in minutes",
+      "required": true
+    },
+    {
+      "name": "billable",
+      "displayName": "Billable",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "name": "archived",
+      "displayName": "Archived",
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    {
+      "name": "Start",
+      "default": null,
+      "description": "Start a time entry"
+    },
+    {
+      "name": "Stop",
+      "default": null,
+      "description": "Stop the current running timer"
+    },
+    {
+      "name": "timeEntryIds",
+      "displayName": "Time Entry IDs",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "tagsUi",
+      "displayName": "Tags",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Tag"
+    },
+    {
+      "name": "tag_bg",
+      "displayName": "Background Color",
+      "type": "color",
+      "default": "#ff0000"
+    },
+    {
+      "name": "tag_fg",
+      "displayName": "Foreground Color",
+      "type": "color",
+      "default": "#ff0000"
+    },
+    {
+      "name": "tagNames",
+      "displayName": "Tag Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "unsetStatus",
+      "displayName": "Unset Status",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "Custom Fields",
+      "default": null,
+      "description": "Retrieve list's custom fields"
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Checklist Item",
+      "default": null
+    },
+    {
+      "name": "Comment",
+      "default": null
+    },
+    {
+      "name": "Folder",
+      "default": null
+    },
+    {
+      "name": "Goal",
+      "default": null
+    },
+    {
+      "name": "Goal Key Result",
+      "default": null
+    },
+    {
+      "name": "List",
+      "default": null
+    },
+    {
+      "name": "Space Tag",
+      "default": null
+    },
+    {
+      "name": "Task Dependency",
+      "default": null
+    },
+    {
+      "name": "Task List",
+      "default": null
+    },
+    {
+      "name": "Task Tag",
+      "default": null
+    },
+    {
+      "name": "Time Entry",
+      "default": null
+    },
+    {
+      "name": "Time Entry Tag",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "clickUpApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

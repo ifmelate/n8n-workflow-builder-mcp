@@ -1,0 +1,276 @@
+{
+  "nodeType": "n8n-nodes-base.nocoDb",
+  "displayName": "NocoDB",
+  "description": "Read, update, write and delete data from NocoDB",
+  "version": [
+    1,
+    2,
+    3
+  ],
+  "properties": [
+    {
+      "name": "workspaceId",
+      "displayName": "Workspace Name or ID",
+      "type": "options",
+      "default": "none",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "projectId",
+      "displayName": "Base Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "table",
+      "displayName": "Table Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The table to operate on. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "primaryKey",
+      "displayName": "Primary Key Type",
+      "type": "options",
+      "default": "id",
+      "description": "Default, added when table was created from UI by those options: Create new table / Import from Excel / Import from CSV"
+    },
+    {
+      "name": "Imported From Airtable",
+      "default": null,
+      "description": "Select if table was imported from Airtable"
+    },
+    {
+      "name": "Custom",
+      "default": null,
+      "description": "When connecting to existing external database as existing primary key field is retained as is, enter the name of the primary key field below"
+    },
+    {
+      "name": "customPrimaryKey",
+      "displayName": "Field Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "id",
+      "displayName": "Row ID Value",
+      "type": "string",
+      "default": "",
+      "description": "The value of the ID field",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "downloadAttachments",
+      "displayName": "Download Attachments",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the attachment fields define in 'Download Fields' will be downloaded"
+    },
+    {
+      "name": "downloadFieldNames",
+      "displayName": "Download Fields",
+      "type": "string",
+      "default": "",
+      "description": "Name of the fields of type 'attachment' that should be downloaded. Multiple ones can be defined separated by comma. Case sensitive.",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "The select fields of the returned rows",
+      "placeholder": "Add option",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "fields",
+      "displayName": "Fields",
+      "type": "string",
+      "default": [],
+      "description": "The select fields of the returned rows",
+      "placeholder": "Name"
+    },
+    {
+      "name": "sort",
+      "displayName": "Sort",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "The sorting rules for the returned rows",
+      "placeholder": "Add Sort Rule"
+    },
+    {
+      "name": "direction",
+      "displayName": "Direction",
+      "type": "options",
+      "default": null,
+      "description": "Sort in ascending order (small -> large)"
+    },
+    {
+      "name": "DESC",
+      "default": null,
+      "description": "Sort in descending order (large -> small)"
+    },
+    {
+      "name": "where",
+      "displayName": "Filter By Formula",
+      "type": "string",
+      "default": "",
+      "description": "A formula used to filter rows",
+      "placeholder": "(name,like,example%)~or(name,eq,test)"
+    },
+    {
+      "name": "Define Below for Each Column",
+      "default": null,
+      "description": "Set the value for each destination column"
+    },
+    {
+      "name": "info",
+      "displayName": "In this mode, make sure the incoming data fields are named the same as the columns in NocoDB. (Use an 'Edit Fields' node before this node to change them if required.)",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "inputsToIgnore",
+      "displayName": "Inputs to Ignore",
+      "type": "string",
+      "default": "",
+      "description": "List of input properties to avoid sending, separated by commas. Leave empty to send all properties.",
+      "placeholder": "Enter properties..."
+    },
+    {
+      "name": "fieldsUi",
+      "displayName": "Fields to Send",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "binaryData",
+      "displayName": "Is Binary File",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the field data to set is binary and should be taken from a binary property"
+    },
+    {
+      "name": "fieldValue",
+      "displayName": "Field Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "binaryProperty",
+      "displayName": "Take Input From Field",
+      "type": "string",
+      "default": "",
+      "description": "The field containing the binary file data to be uploaded"
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "User Token",
+      "default": null
+    },
+    {
+      "name": "version",
+      "displayName": "API Version",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "v0.90.0 Onwards",
+      "default": null
+    },
+    {
+      "name": "v0.200.0 Onwards",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a row"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a row"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Retrieve a row"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Retrieve many rows"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a row"
+    },
+    {
+      "name": "No Workspace",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "nocoDb",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "version",
+      "required": false
+    },
+    {
+      "name": "version",
+      "required": false
+    },
+    {
+      "name": "version",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "No Workspace",
+      "required": false
+    }
+  ]
+}

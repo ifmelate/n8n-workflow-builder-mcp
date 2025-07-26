@@ -1,0 +1,64 @@
+{
+  "nodeType": "n8n-nodes-base.npm",
+  "displayName": "Npm",
+  "description": "Consume NPM registry API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "packageName",
+      "displayName": "Package Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "packageVersion",
+      "displayName": "Package Version",
+      "type": "string",
+      "default": "latest",
+      "required": true
+    },
+    {
+      "name": "query",
+      "displayName": "Query",
+      "type": "string",
+      "default": "",
+      "description": "The query text used to search for packages",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 10,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "offset",
+      "displayName": "Offset",
+      "type": "number",
+      "default": 0,
+      "description": "Offset to return results from"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": "getMetadata",
+      "description": "Returns all the metadata for a package at a specific version"
+    },
+    {
+      "name": "distTagName",
+      "displayName": "Distribution Tag Name",
+      "type": "string",
+      "default": "latest",
+      "required": true
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a the dist-tags for a package"
+    }
+  ],
+  "credentialsConfig": []
+}

@@ -1,0 +1,89 @@
+{
+  "nodeType": "n8n-nodes-base.circleCi",
+  "displayName": "CircleCI",
+  "description": "Consume CircleCI API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "vcs",
+      "displayName": "Provider",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "GitHub",
+      "default": null
+    },
+    {
+      "name": "projectSlug",
+      "displayName": "Project Slug",
+      "type": "string",
+      "default": "",
+      "description": "Project slug in the form org-name/repo-name",
+      "placeholder": "n8n-io/n8n"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "The name of a vcs branch",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The branch where the pipeline ran. The HEAD commit on this branch was used for the pipeline. Note that branch and tag are mutually exclusive.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "tag",
+      "displayName": "Tag",
+      "type": "string",
+      "default": "",
+      "description": "The tag used by the pipeline. The commit that this tag points to was used for the pipeline. Note that branch and tag are mutually exclusive"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get a pipeline"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many pipelines"
+    },
+    {
+      "name": "Trigger",
+      "default": null,
+      "description": "Trigger a pipeline"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "circleCiApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

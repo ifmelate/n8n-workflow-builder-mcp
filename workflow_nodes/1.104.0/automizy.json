@@ -1,0 +1,195 @@
+{
+  "nodeType": "n8n-nodes-base.automizy",
+  "displayName": "Automizy",
+  "description": "Consume Automizy API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "The email address of the contact",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "listId",
+      "displayName": "List Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The end user specified key of the user defined data. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "The end user specified value of the user defined data"
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Banned",
+      "default": null
+    },
+    {
+      "name": "Bounced",
+      "default": null
+    },
+    {
+      "name": "Inactive",
+      "default": null
+    },
+    {
+      "name": "Unsubscribed",
+      "default": null
+    },
+    {
+      "name": "tags",
+      "displayName": "Tag Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "The tags you want to set to the contact. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "contactId",
+      "displayName": "Contact ID",
+      "type": "string",
+      "default": "",
+      "description": "Can be ID or email",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "DESC",
+      "default": null
+    },
+    {
+      "name": "fields",
+      "displayName": "Fields",
+      "type": "string",
+      "default": "",
+      "description": "A comma-separated list of attributes to include in the response"
+    },
+    {
+      "name": "sortBy",
+      "displayName": "Sort By",
+      "type": "string",
+      "default": "Defines the field in which search results are sort by. Note: It has to be using with the Direcction parameter"
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The tags you want to add to the contact. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "customFieldsUi",
+      "displayName": "Custom Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "The end user specified key of the user defined data. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Custom Field"
+    },
+    {
+      "name": "removeTags",
+      "displayName": "Remove Tags",
+      "type": "multiOptions",
+      "default": [],
+      "description": "The tags you want to add to the contact. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a contact"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a contact"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a contact"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many contacts"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a contact"
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Whether to return all results or only up to a given limit",
+      "required": true
+    },
+    {
+      "name": "deprecated",
+      "displayName": "This service may no longer exist and will be removed from n8n in a future release.",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "List",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "automizyApi",
+      "required": true
+    },
+    {
+      "name": "deprecated",
+      "required": false
+    }
+  ]
+}

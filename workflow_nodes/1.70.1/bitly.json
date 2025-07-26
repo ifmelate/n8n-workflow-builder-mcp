@@ -1,0 +1,130 @@
+{
+  "nodeType": "n8n-nodes-base.bitly",
+  "displayName": "Bitly",
+  "description": "Consume Bitly API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "longUrl",
+      "displayName": "Long URL",
+      "type": "string",
+      "default": "",
+      "placeholder": "https://example.com",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "group",
+      "displayName": "Group Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "tags",
+      "displayName": "Tag Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "deeplink",
+      "displayName": "Deeplinks",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Deep Link"
+    },
+    {
+      "name": "appUriPath",
+      "displayName": "App URI Path",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "installType",
+      "displayName": "Install Type",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "installUrl",
+      "displayName": "Install URL",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "id",
+      "displayName": "Bitlink",
+      "type": "string",
+      "default": "",
+      "placeholder": "bit.ly/22u3ypK",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a link"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a link"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a link"
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "bitlyApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

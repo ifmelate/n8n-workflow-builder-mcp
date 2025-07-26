@@ -1,0 +1,312 @@
+{
+  "nodeType": "n8n-nodes-base.googleDocs",
+  "displayName": "Google Docs",
+  "description": "Consume Google Docs API.",
+  "version": [
+    1,
+    2
+  ],
+  "properties": [
+    {
+      "name": "driveId",
+      "displayName": "Drive Name or ID",
+      "type": "options",
+      "default": "myDrive",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "folderId",
+      "displayName": "Folder Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "The ID in the document URL (or just paste the whole URL)",
+      "required": true
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "required": true
+    },
+    {
+      "name": "actionsUi",
+      "displayName": "Actions",
+      "type": "fixedCollection",
+      "default": null,
+      "description": "Actions applied to update the document",
+      "placeholder": "Add Action"
+    },
+    {
+      "name": "actionFields",
+      "displayName": "Action Fields",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Header",
+      "default": null
+    },
+    {
+      "name": "Named Range",
+      "default": null
+    },
+    {
+      "name": "Page Break",
+      "default": null
+    },
+    {
+      "name": "Paragraph Bullets",
+      "default": null
+    },
+    {
+      "name": "Positioned Object",
+      "default": null
+    },
+    {
+      "name": "Table",
+      "default": null
+    },
+    {
+      "name": "Table Column",
+      "default": null
+    },
+    {
+      "name": "Table Row",
+      "default": null
+    },
+    {
+      "name": "Text",
+      "default": null
+    },
+    {
+      "name": "action",
+      "displayName": "Action",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Insert",
+      "default": null
+    },
+    {
+      "name": "Delete",
+      "default": null
+    },
+    {
+      "name": "insertSegment",
+      "displayName": "Insert Segment",
+      "type": "options",
+      "default": "",
+      "description": "The update action"
+    },
+    {
+      "name": "Body",
+      "default": null
+    },
+    {
+      "name": "Footer",
+      "default": null
+    },
+    {
+      "name": "segmentId",
+      "displayName": "Segment ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the header, footer or footnote. The <code>Document → Get</code> operation lists all segment IDs (make sure you disable the <code>simple</code> toggle)."
+    },
+    {
+      "name": "startIndex",
+      "displayName": "Start Index",
+      "type": "number",
+      "default": 0,
+      "description": "The zero-based start index of this range"
+    },
+    {
+      "name": "endIndex",
+      "displayName": "End Index",
+      "type": "number",
+      "default": 0,
+      "description": "The zero-based end index of this range"
+    },
+    {
+      "name": "Checkbox List",
+      "default": null,
+      "description": "A bulleted list with CHECKBOX bullet glyphs for all list nesting levels"
+    },
+    {
+      "name": "Numbered List",
+      "default": null,
+      "description": "A numbered list with <code>DECIMAL</code> numeric glyphs separated by periods, where each nesting level uses the previous nesting level's glyph as a prefix. For example: 1., 1.1., 2., 2.2 ."
+    },
+    {
+      "name": "footerId",
+      "displayName": "Footer ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the footer to delete. To retrieve it, use the <code>get document</code> where you can find under <code>footers</code> attribute."
+    },
+    {
+      "name": "Name",
+      "default": null
+    },
+    {
+      "name": "value",
+      "displayName": "ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the range"
+    },
+    {
+      "name": "At Index",
+      "default": null
+    },
+    {
+      "name": "index",
+      "displayName": "Index",
+      "type": "number",
+      "default": 1,
+      "description": "The zero-based index, relative to the beginning of the specified segment"
+    },
+    {
+      "name": "rows",
+      "displayName": "Rows",
+      "type": "number",
+      "default": 0,
+      "description": "The number of rows in the table"
+    },
+    {
+      "name": "columns",
+      "displayName": "Columns",
+      "type": "number",
+      "default": 0,
+      "description": "The number of columns in the table"
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "",
+      "description": "The text to insert in the document"
+    },
+    {
+      "name": "replaceText",
+      "displayName": "New Text",
+      "type": "string",
+      "default": "",
+      "description": "The text that will replace the matched text"
+    },
+    {
+      "name": "matchCase",
+      "displayName": "Match Case",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the search should respect case sensitivity"
+    },
+    {
+      "name": "After Content at Index",
+      "default": null
+    },
+    {
+      "name": "rowIndex",
+      "displayName": "Row Index",
+      "type": "number",
+      "default": 0,
+      "description": "The zero-based row index"
+    },
+    {
+      "name": "columnIndex",
+      "displayName": "Column Index",
+      "type": "number",
+      "default": 0,
+      "description": "The zero-based column index"
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Apply changes to the latest revision. Otherwise changes will not be processed.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "Required",
+      "default": null,
+      "description": "Apply changes to the provided revision while incorporating other collaborators' changes. This mode is used for the recent revision, Otherwise changes will not be processed."
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Get",
+      "default": null
+    },
+    {
+      "name": "Update",
+      "default": null
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "Service Account",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "My Drive",
+      "default": null
+    },
+    {
+      "name": "Shared with Me",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googleApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "My Drive",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "nodeType": "n8n-nodes-base.extractFromFile",
+  "displayName": "Extract from File",
+  "description": "Convert binary data to JSON",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Transform a CSV file into output items"
+    },
+    {
+      "name": "Extract From HTML",
+      "default": null,
+      "description": "Transform a table in an HTML file into output items"
+    },
+    {
+      "name": "Extract From ICS",
+      "default": null,
+      "description": "Transform a ICS file into output items"
+    },
+    {
+      "name": "Extract From JSON",
+      "default": null,
+      "description": "Transform a JSON file into output items"
+    },
+    {
+      "name": "Extract From ODS",
+      "default": null,
+      "description": "Transform an ODS file into output items"
+    },
+    {
+      "name": "Extract From PDF",
+      "default": null,
+      "description": "Extracts the content and metadata from a PDF file"
+    },
+    {
+      "name": "Extract From RTF",
+      "default": null,
+      "description": "Transform a table in an RTF file into output items"
+    },
+    {
+      "name": "Extract From Text File",
+      "default": null,
+      "description": "Extracts the content of a text file"
+    },
+    {
+      "name": "Extract From XML",
+      "default": null,
+      "description": "Extracts the content of an XML file"
+    },
+    {
+      "name": "Extract From XLS",
+      "default": null,
+      "description": "Transform an Excel file into output items"
+    },
+    {
+      "name": "Extract From XLSX",
+      "default": null,
+      "description": "Transform an Excel file into output items"
+    },
+    {
+      "name": "Move File to Base64 String",
+      "default": null,
+      "description": "Convert a file into a base64-encoded string"
+    }
+  ],
+  "credentialsConfig": []
+}

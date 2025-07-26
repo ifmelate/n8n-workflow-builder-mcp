@@ -1,0 +1,65 @@
+{
+  "nodeType": "n8n-nodes-base.msg91",
+  "displayName": "MSG91",
+  "description": "Sends transactional SMS via MSG91",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Send SMS"
+    },
+    {
+      "name": "from",
+      "displayName": "Sender ID",
+      "type": "string",
+      "default": "",
+      "description": "The number from which to send the message",
+      "placeholder": "4155238886",
+      "required": true
+    },
+    {
+      "name": "to",
+      "displayName": "To",
+      "type": "string",
+      "default": "",
+      "description": "The number, with coutry code, to which to send the message",
+      "placeholder": "+14155238886",
+      "required": true
+    },
+    {
+      "name": "message",
+      "displayName": "Message",
+      "type": "string",
+      "default": "",
+      "description": "The message to send",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "msg91Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "from",
+      "required": true
+    }
+  ]
+}

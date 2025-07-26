@@ -1,0 +1,143 @@
+{
+  "nodeType": "n8n-nodes-base.seaTable",
+  "displayName": "SeaTable",
+  "description": "Consume the SeaTable API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "tableName",
+      "displayName": "Table Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The name of SeaTable table to access. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Name of table",
+      "required": true
+    },
+    {
+      "name": "tableId",
+      "displayName": "Table Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The name of SeaTable table to access. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Name of table",
+      "required": true
+    },
+    {
+      "name": "Define Below for Each Column",
+      "default": null,
+      "description": "Set the value for each destination column"
+    },
+    {
+      "name": "inputsToIgnore",
+      "displayName": "Inputs to Ignore",
+      "type": "string",
+      "default": "",
+      "description": "List of input properties to avoid sending, separated by commas. Leave empty to send all properties.",
+      "placeholder": "Enter properties..."
+    },
+    {
+      "name": "columnsUi",
+      "displayName": "Columns to Send",
+      "type": "fixedCollection",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Column"
+    },
+    {
+      "name": "columnValue",
+      "displayName": "Column Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "rowId",
+      "displayName": "Row ID",
+      "type": "string",
+      "default": {},
+      "description": "Add destination column with its value"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether the link column in the returned row is the ID of the linked row or the name of the linked row",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "direction",
+      "displayName": "Direction",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Descending",
+      "default": null
+    },
+    {
+      "name": "order_by",
+      "displayName": "Order By",
+      "type": "options",
+      "default": "",
+      "description": "A column's name or ID, use this column to sort the rows. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a row"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a row"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a row"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many rows"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a row"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "seaTableApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

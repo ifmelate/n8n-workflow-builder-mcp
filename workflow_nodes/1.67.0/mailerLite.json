@@ -1,0 +1,162 @@
+{
+  "nodeType": "n8n-nodes-base.mailerLite",
+  "displayName": "MailerLite",
+  "description": "Consume Mailer Lite API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "Email of new subscriber",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "confirmation_ip",
+      "displayName": "Confirmation IP",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "customFieldsUi",
+      "displayName": "Custom Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Filter by custom fields",
+      "placeholder": "Add Custom Field"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "The value to set on custom field"
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "resubscribe",
+      "displayName": "Resubscribe",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to reactivate subscriber"
+    },
+    {
+      "name": "signup_ip",
+      "displayName": "Signup IP",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "signup_timestamp",
+      "displayName": "Signup Timestamp",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Unsubscribed",
+      "default": null
+    },
+    {
+      "name": "Unconfirmed",
+      "default": null
+    },
+    {
+      "name": "subscriberId",
+      "displayName": "Subscriber Email",
+      "type": "string",
+      "default": "",
+      "description": "Email of subscriber",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Filter by custom fields",
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "resend_autoresponders",
+      "displayName": "Resend Autoresponders",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether it is needed to resend autoresponders"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a new subscriber"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get an subscriber"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many subscribers"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update an subscriber"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "mailerLiteApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "nodeType": "n8n-nodes-base.theHiveTrigger",
+  "displayName": "TheHive Trigger",
+  "description": "Starts the workflow when TheHive events occur",
+  "version": [
+    1,
+    2
+  ],
+  "properties": [
+    {
+      "name": "events",
+      "displayName": "Events",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Events types",
+      "required": true
+    },
+    {
+      "name": "Alert Created",
+      "default": null,
+      "description": "Triggered when an alert is created"
+    },
+    {
+      "name": "Alert Deleted",
+      "default": null,
+      "description": "Triggered when an alert is deleted"
+    },
+    {
+      "name": "Alert Updated",
+      "default": null,
+      "description": "Triggered when an alert is updated"
+    },
+    {
+      "name": "Case Created",
+      "default": null,
+      "description": "Triggered when a case is created"
+    },
+    {
+      "name": "Case Deleted",
+      "default": null,
+      "description": "Triggered when a case is deleted"
+    },
+    {
+      "name": "Case Updated",
+      "default": null,
+      "description": "Triggered when a case is updated"
+    },
+    {
+      "name": "Log Created",
+      "default": null,
+      "description": "Triggered when a task log is created"
+    },
+    {
+      "name": "Log Deleted",
+      "default": null,
+      "description": "Triggered when a task log is deleted"
+    },
+    {
+      "name": "Log Updated",
+      "default": null,
+      "description": "Triggered when a task log is updated"
+    },
+    {
+      "name": "Observable Created",
+      "default": null,
+      "description": "Triggered when an observable is created"
+    },
+    {
+      "name": "Observable Deleted",
+      "default": null,
+      "description": "Triggered when an observable is deleted"
+    },
+    {
+      "name": "Observable Updated",
+      "default": null,
+      "description": "Triggered when an observable is updated"
+    },
+    {
+      "name": "Task Created",
+      "default": null,
+      "description": "Triggered when a task is created"
+    },
+    {
+      "name": "Task Deleted",
+      "default": null,
+      "description": "Triggered when a task is deleted"
+    },
+    {
+      "name": "Task Updated",
+      "default": null,
+      "description": "Triggered when a task is updated"
+    },
+    {
+      "name": "notice",
+      "displayName": "You must set up the webhook in TheHive — instructions <a href=\"https://docs.n8n.io/integrations/builtin/trigger-nodes/n8n-nodes-base.thehivetrigger/#configure-a-webhook-in-thehive\" target=\"_blank\">here</a>",
+      "type": "notice",
+      "default": ""
+    }
+  ],
+  "credentialsConfig": []
+}

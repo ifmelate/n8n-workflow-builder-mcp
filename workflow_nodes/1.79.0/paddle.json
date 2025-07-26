@@ -1,0 +1,403 @@
+{
+  "nodeType": "n8n-nodes-base.paddle",
+  "displayName": "Paddle",
+  "description": "Consume Paddle API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "couponType",
+      "displayName": "Coupon Type",
+      "type": "options",
+      "default": "checkout",
+      "description": "Either product (valid for specified products or subscription plans) or checkout (valid for any checkout)"
+    },
+    {
+      "name": "Product",
+      "default": null
+    },
+    {
+      "name": "productIds",
+      "displayName": "Product Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Comma-separated list of product IDs. Required if coupon_type is product. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "discountType",
+      "displayName": "Discount Type",
+      "type": "options",
+      "default": "flat",
+      "description": "Either flat or percentage"
+    },
+    {
+      "name": "Percentage",
+      "default": null
+    },
+    {
+      "name": "discountAmount",
+      "displayName": "Discount Amount Currency",
+      "type": "number",
+      "default": 1,
+      "description": "Discount amount in currency"
+    },
+    {
+      "name": "currency",
+      "displayName": "Currency",
+      "type": "options",
+      "default": "EUR",
+      "description": "The currency must match the balance currency specified in your account"
+    },
+    {
+      "name": "AUD",
+      "default": null
+    },
+    {
+      "name": "BRL",
+      "default": null
+    },
+    {
+      "name": "CAD",
+      "default": null
+    },
+    {
+      "name": "CHF",
+      "default": null
+    },
+    {
+      "name": "CNY",
+      "default": null
+    },
+    {
+      "name": "CZK",
+      "default": null
+    },
+    {
+      "name": "DKK",
+      "default": null
+    },
+    {
+      "name": "EUR",
+      "default": null
+    },
+    {
+      "name": "GBP",
+      "default": null
+    },
+    {
+      "name": "HKD",
+      "default": null
+    },
+    {
+      "name": "HUF",
+      "default": null
+    },
+    {
+      "name": "INR",
+      "default": null
+    },
+    {
+      "name": "JPY",
+      "default": null
+    },
+    {
+      "name": "KRW",
+      "default": null
+    },
+    {
+      "name": "MXN",
+      "default": null
+    },
+    {
+      "name": "NOK",
+      "default": null
+    },
+    {
+      "name": "NZD",
+      "default": null
+    },
+    {
+      "name": "PLN",
+      "default": null
+    },
+    {
+      "name": "RUB",
+      "default": null
+    },
+    {
+      "name": "SEK",
+      "default": null
+    },
+    {
+      "name": "SGD",
+      "default": null
+    },
+    {
+      "name": "THB",
+      "default": null
+    },
+    {
+      "name": "TWD",
+      "default": null
+    },
+    {
+      "name": "USD",
+      "default": null
+    },
+    {
+      "name": "ZAR",
+      "default": null
+    },
+    {
+      "name": "jsonParameters",
+      "displayName": "JSON Parameters",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "additionalFieldsJson",
+      "displayName": "Additional Fields",
+      "type": "json",
+      "default": "",
+      "description": "Attributes in JSON form"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Number of times a coupon can be used in a checkout. This will be set to 999,999 by default, if not specified.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "couponCode",
+      "displayName": "Coupon Code",
+      "type": "string",
+      "default": "",
+      "description": "Will be randomly generated if not specified"
+    },
+    {
+      "name": "couponPrefix",
+      "displayName": "Coupon Prefix",
+      "type": "string",
+      "default": "",
+      "description": "Prefix for generated codes. Not valid if coupon_code is specified."
+    },
+    {
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": "",
+      "description": "Description of the coupon. This will be displayed in the Seller Dashboard."
+    },
+    {
+      "name": "expires",
+      "displayName": "Expires",
+      "type": "dateTime",
+      "default": "",
+      "description": "The coupon will expire on the date at 00:00:00 UTC"
+    },
+    {
+      "name": "group",
+      "displayName": "Group",
+      "type": "string",
+      "default": "",
+      "description": "The name of the coupon group this coupon should be assigned to"
+    },
+    {
+      "name": "numberOfCoupons",
+      "displayName": "Number of Coupons",
+      "type": "number",
+      "default": 1,
+      "description": "Number of coupons to generate. Not valid if coupon_code is specified."
+    },
+    {
+      "name": "recurring",
+      "displayName": "Recurring",
+      "type": "boolean",
+      "default": false,
+      "description": "If the coupon is used on subscription products, this indicates whether the discount should apply to recurring payments after the initial purchase"
+    },
+    {
+      "name": "productId",
+      "displayName": "Product ID",
+      "type": "string",
+      "default": "",
+      "description": "The specific product/subscription ID",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "Group",
+      "default": null
+    },
+    {
+      "name": "discount",
+      "displayName": "Discount",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "The currency must match the balance currency specified in your account"
+    },
+    {
+      "name": "newCouponCode",
+      "displayName": "New Coupon Code",
+      "type": "string",
+      "default": "",
+      "description": "New code to rename the coupon to"
+    },
+    {
+      "name": "newGroup",
+      "displayName": "New Group Name",
+      "type": "string",
+      "default": "",
+      "description": "New group name to move coupon to"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a coupon"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many coupons"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a coupon"
+    },
+    {
+      "name": "to",
+      "displayName": "Date To",
+      "type": "dateTime",
+      "default": "",
+      "description": "Payment up until date"
+    },
+    {
+      "name": "isPaid",
+      "displayName": "Is Paid",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether payment is paid"
+    },
+    {
+      "name": "plan",
+      "displayName": "Plan ID",
+      "type": "string",
+      "default": "",
+      "description": "Filter: The product/plan ID (single or comma-separated values)"
+    },
+    {
+      "name": "subscriptionId",
+      "displayName": "Subscription ID",
+      "type": "number",
+      "default": "",
+      "description": "A specific user subscription ID"
+    },
+    {
+      "name": "state",
+      "displayName": "State",
+      "type": "options",
+      "default": "active",
+      "description": "Filter: The user subscription status. Returns all active, past_due, trialing and paused subscription plans if not specified."
+    },
+    {
+      "name": "Past Due",
+      "default": null
+    },
+    {
+      "name": "Paused",
+      "default": null
+    },
+    {
+      "name": "Trialing",
+      "default": null
+    },
+    {
+      "name": "isOneOffCharge",
+      "displayName": "One Off Charge",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "paymentId",
+      "displayName": "Payment Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The upcoming subscription payment ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "date",
+      "displayName": "Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Date you want to move the payment to"
+    },
+    {
+      "name": "Reschedule",
+      "default": null,
+      "description": "Reschedule payment"
+    },
+    {
+      "name": "planId",
+      "displayName": "Plan ID",
+      "type": "string",
+      "default": "",
+      "description": "Filter: The subscription plan ID",
+      "required": true
+    },
+    {
+      "name": "checkoutId",
+      "displayName": "Checkout ID",
+      "type": "string",
+      "default": "",
+      "description": "The identifier of the buyer’s checkout",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Payment",
+      "default": null
+    },
+    {
+      "name": "Plan",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "paddleApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

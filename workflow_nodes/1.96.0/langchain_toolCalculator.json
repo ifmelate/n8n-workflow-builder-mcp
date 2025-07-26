@@ -1,0 +1,8 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.toolCalculator",
+  "displayName": "Calculator",
+  "description": "Make it easier for AI agents to perform arithmetic",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

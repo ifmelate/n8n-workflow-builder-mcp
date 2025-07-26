@@ -1,0 +1,147 @@
+{
+  "nodeType": "n8n-nodes-base.apiTemplateIo",
+  "displayName": "APITemplate.io",
+  "description": "Consume the APITemplate.io API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Image",
+      "default": null
+    },
+    {
+      "name": "PDF",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": "create",
+      "required": true
+    },
+    {
+      "name": "imageTemplateId",
+      "displayName": "Template Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the image template to use. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "pdfTemplateId",
+      "displayName": "Template Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the PDF template to use. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "jsonParameters",
+      "displayName": "JSON Parameters",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "download",
+      "displayName": "Download",
+      "type": "boolean",
+      "default": false,
+      "description": "Name of the binary property to which to write the data of the read file"
+    },
+    {
+      "name": "binaryProperty",
+      "displayName": "Put Output File in Field",
+      "type": "string",
+      "default": "data",
+      "required": true
+    },
+    {
+      "name": "overridesJson",
+      "displayName": "Overrides (JSON)",
+      "type": "json",
+      "default": ""
+    },
+    {
+      "name": "propertiesJson",
+      "displayName": "Properties (JSON)",
+      "type": "json",
+      "default": "",
+      "placeholder": "{ \"name\": \"text_1\" }"
+    },
+    {
+      "name": "overridesUi",
+      "displayName": "Overrides",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Name of the property",
+      "placeholder": "Add Override"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Value to the property"
+    },
+    {
+      "name": "propertiesUi",
+      "displayName": "Properties",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Name of the property",
+      "placeholder": "Add Property"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "The name of the downloaded image/pdf. It has to include the extension. For example: report.pdf",
+      "placeholder": "Add Field"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "apiTemplateIoApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": true
+    },
+    {
+      "name": "imageTemplateId",
+      "required": true
+    },
+    {
+      "name": "propertiesJson",
+      "required": false
+    },
+    {
+      "name": "propertiesUi",
+      "required": false
+    },
+    {
+      "name": "options",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "nodeType": "n8n-nodes-base.googleBusinessProfileTrigger",
+  "displayName": "Google Business Profile Trigger",
+  "description": "Fetches reviews from Google Business Profile and starts the workflow on specified polling intervals.",
+  "version": 1,
+  "properties": [
+    {
+      "name": "event",
+      "displayName": "Event",
+      "type": "options",
+      "default": "reviewAdded",
+      "required": true
+    },
+    {
+      "name": "account",
+      "displayName": "Account",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "description": "The Google Business Profile account",
+      "required": true
+    },
+    {
+      "name": "name",
+      "displayName": "By name",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "location",
+      "displayName": "Location",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "description": "The specific location or business associated with the account",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googleBusinessProfileOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "event",
+      "required": true
+    },
+    {
+      "name": "account",
+      "required": true
+    },
+    {
+      "name": "location",
+      "required": true
+    }
+  ]
+}

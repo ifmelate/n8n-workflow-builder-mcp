@@ -1,0 +1,165 @@
+{
+  "nodeType": "n8n-nodes-base.rabbitmq",
+  "displayName": "RabbitMQ",
+  "description": "Sends messages to a RabbitMQ topic",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "hidden",
+      "default": "sendMessage"
+    },
+    {
+      "name": "Delete From Queue",
+      "default": null
+    },
+    {
+      "name": "deleteMessage",
+      "displayName": "Will delete an item from the queue triggered earlier in the workflow by a RabbitMQ Trigger node",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "mode",
+      "displayName": "Mode",
+      "type": "options",
+      "default": null,
+      "description": "Publish data to queue"
+    },
+    {
+      "name": "Exchange",
+      "default": null,
+      "description": "Publish data to exchange"
+    },
+    {
+      "name": "queue",
+      "displayName": "Queue / Topic",
+      "type": "string",
+      "default": "",
+      "description": "Name of the queue to publish to",
+      "placeholder": "queue-name"
+    },
+    {
+      "name": "exchangeType",
+      "displayName": "Type",
+      "type": "options",
+      "default": null,
+      "description": "Direct exchange type"
+    },
+    {
+      "name": "Topic",
+      "default": null,
+      "description": "Topic exchange type"
+    },
+    {
+      "name": "Headers",
+      "default": null,
+      "description": "Headers exchange type"
+    },
+    {
+      "name": "Fanout",
+      "default": null,
+      "description": "Fanout exchange type"
+    },
+    {
+      "name": "routingKey",
+      "displayName": "Routing Key",
+      "type": "string",
+      "default": "",
+      "description": "The routing key for the message",
+      "placeholder": "routing-key"
+    },
+    {
+      "name": "message",
+      "displayName": "Message",
+      "type": "string",
+      "default": "",
+      "description": "The message to be sent"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "An exchange to send messages to if this exchange can’t route them to any queues",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "arguments",
+      "displayName": "Arguments",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Arguments to add, See <a href=\"https://amqp-node.github.io/amqplib/channel_api.html#channel_publish\" target=\"_blank\">here</a> for valid options",
+      "placeholder": "Add Argument"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "autoDelete",
+      "displayName": "Auto Delete Queue",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the queue will be deleted when the number of consumers drops to zero"
+    },
+    {
+      "name": "durable",
+      "displayName": "Durable",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the queue will survive broker restarts"
+    },
+    {
+      "name": "exclusive",
+      "displayName": "Exclusive",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to scope the queue to the connection"
+    },
+    {
+      "name": "headers",
+      "displayName": "Headers",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Headers to add",
+      "placeholder": "Add Header"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "rabbitmq",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "deleteMessage",
+      "required": false
+    },
+    {
+      "name": "queue",
+      "required": false
+    },
+    {
+      "name": "routingKey",
+      "required": false
+    },
+    {
+      "name": "autoDelete",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,467 @@
+{
+  "nodeType": "n8n-nodes-base.salesmate",
+  "displayName": "Salesmate",
+  "description": "Consume Salesmate API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "owner",
+      "displayName": "Owner Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "string",
+      "default": "",
+      "description": "This field displays activity type such as call, meeting etc",
+      "required": true
+    },
+    {
+      "name": "rawData",
+      "displayName": "RAW Data",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the data should include the fields details"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "This field contains details related to the activity",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "tags",
+      "displayName": "Tags",
+      "type": "string",
+      "default": "",
+      "description": "This field contains tags associated with an activity"
+    },
+    {
+      "name": "dueDate",
+      "displayName": "Due Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Expiry date of an activity"
+    },
+    {
+      "name": "duration",
+      "displayName": "Duration",
+      "type": "number",
+      "default": "",
+      "description": "Time duration of an activity"
+    },
+    {
+      "name": "isCalendarInvite",
+      "displayName": "Is Calendar Invite",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to send calendar invite"
+    },
+    {
+      "name": "isCompleted",
+      "displayName": "Is Completed",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the activity is completed or not"
+    },
+    {
+      "name": "id",
+      "displayName": "Activity ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": "",
+      "description": "This field contains details related to the activity"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 10,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "jsonParameters",
+      "displayName": "JSON Parameters",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Comma-separated list of fields to return",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "sortBy",
+      "displayName": "Sort By",
+      "type": "string",
+      "default": "",
+      "description": "The field to sort by"
+    },
+    {
+      "name": "sortOrder",
+      "displayName": "Sort Order",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "DESC",
+      "default": null
+    },
+    {
+      "name": "filtersJson",
+      "displayName": "Filters",
+      "type": "json",
+      "default": ""
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add filter"
+    },
+    {
+      "name": "OR",
+      "default": null
+    },
+    {
+      "name": "conditions",
+      "displayName": "Conditions",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Condition"
+    },
+    {
+      "name": "Tags",
+      "default": null
+    },
+    {
+      "name": "condition",
+      "displayName": "Condition",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Not Equals",
+      "default": null
+    },
+    {
+      "name": "CONTAINS",
+      "default": null
+    },
+    {
+      "name": "Does Not Contains",
+      "default": null
+    },
+    {
+      "name": "Empty",
+      "default": null
+    },
+    {
+      "name": "Not Empty",
+      "default": null
+    },
+    {
+      "name": "Starts With",
+      "default": null
+    },
+    {
+      "name": "Ends With",
+      "default": null
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create an activity"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete an activity"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get an activity"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many companies"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update an activity"
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "phone",
+      "displayName": "Phone",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "otherPhone",
+      "displayName": "Other Phone",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "facebookHandle",
+      "displayName": "Facebook Handle",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "googlePlusHandle",
+      "displayName": "Google Plus Handle",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "linkedInHandle",
+      "displayName": "LinkedIn Handle",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "skypeId",
+      "displayName": "Skype ID",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "twitterHandle",
+      "displayName": "Twitter Handle",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "currency",
+      "displayName": "Currency",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "billingAddressLine1",
+      "displayName": "Billing Address Line 1",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "billingAddressLine2",
+      "displayName": "Billing Address Line 2",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "billingCity",
+      "displayName": "Billing City",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "billingZipCode",
+      "displayName": "Billing Zip Code",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "billingState",
+      "displayName": "Billing State",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "website",
+      "displayName": "Website",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "Email",
+      "default": null
+    },
+    {
+      "name": "Phone",
+      "default": null
+    },
+    {
+      "name": "primaryContact",
+      "displayName": "Primary Contact Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Primary contact for the deal. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "pipeline",
+      "displayName": "Pipeline",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": "Open"
+    },
+    {
+      "name": "Close",
+      "default": null
+    },
+    {
+      "name": "Lost",
+      "default": null
+    },
+    {
+      "name": "stage",
+      "displayName": "Stage",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "Contacted",
+      "default": null
+    },
+    {
+      "name": "Qualified",
+      "default": null
+    },
+    {
+      "name": "In Negotiation",
+      "default": null
+    },
+    {
+      "name": "Proposal Presented",
+      "default": null
+    },
+    {
+      "name": "primaryCompany",
+      "displayName": "Primary Company Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "source",
+      "displayName": "Source",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Referrals",
+      "default": null
+    },
+    {
+      "name": "Website",
+      "default": null
+    },
+    {
+      "name": "Word of Mouth",
+      "default": null
+    },
+    {
+      "name": "estimatedCloseDate",
+      "displayName": "Estimated Close Date",
+      "type": "dateTime",
+      "default": ""
+    },
+    {
+      "name": "dealValue",
+      "displayName": "Deal Value",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "name": "priority",
+      "displayName": "Priority",
+      "type": "options",
+      "default": "Medium"
+    },
+    {
+      "name": "Medium",
+      "default": null
+    },
+    {
+      "name": "Low",
+      "default": null
+    },
+    {
+      "name": "New (Untouched)",
+      "default": null
+    },
+    {
+      "name": "Last Communication Mode",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Company",
+      "default": null
+    },
+    {
+      "name": "Deal",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "salesmateApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

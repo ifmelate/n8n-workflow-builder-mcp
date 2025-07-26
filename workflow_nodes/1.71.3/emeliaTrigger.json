@@ -1,0 +1,57 @@
+{
+  "nodeType": "n8n-nodes-base.emeliaTrigger",
+  "displayName": "Emelia Trigger",
+  "description": "Handle Emelia campaign activity events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "campaignId",
+      "displayName": "Campaign Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "events",
+      "displayName": "Events",
+      "type": "multiOptions",
+      "default": [],
+      "required": true
+    },
+    {
+      "name": "Email Opened",
+      "default": null
+    },
+    {
+      "name": "Email Replied",
+      "default": null
+    },
+    {
+      "name": "Email Sent",
+      "default": null
+    },
+    {
+      "name": "Link Clicked",
+      "default": null
+    },
+    {
+      "name": "Unsubscribed Contact",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "emeliaApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "campaignId",
+      "required": true
+    }
+  ]
+}

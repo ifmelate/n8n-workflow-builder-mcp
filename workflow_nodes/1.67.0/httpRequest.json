@@ -1,0 +1,472 @@
+{
+  "nodeType": "n8n-nodes-base.httpRequest",
+  "displayName": "HttpRequest",
+  "description": null,
+  "version": "4.2",
+  "properties": [
+    {
+      "name": "curlImport",
+      "displayName": "",
+      "type": "curlImport",
+      "default": ""
+    },
+    {
+      "name": "method",
+      "displayName": "Method",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "GET",
+      "default": null
+    },
+    {
+      "name": "HEAD",
+      "default": null
+    },
+    {
+      "name": "OPTIONS",
+      "default": null
+    },
+    {
+      "name": "PATCH",
+      "default": null
+    },
+    {
+      "name": "POST",
+      "default": null
+    },
+    {
+      "name": "PUT",
+      "default": null
+    },
+    {
+      "name": "url",
+      "displayName": "URL",
+      "type": "string",
+      "default": "",
+      "description": "The URL to make the request to",
+      "placeholder": "http://example.com/index.html",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Predefined Credential Type",
+      "default": null,
+      "description": "We've already implemented auth for many services so that you don't have to set it up manually"
+    },
+    {
+      "name": "Generic Credential Type",
+      "default": null,
+      "description": "Fully customizable. Choose between basic, header, OAuth2, etc."
+    },
+    {
+      "name": "nodeCredentialType",
+      "displayName": "Credential Type",
+      "type": "credentialsSelect",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "googleApiWarning",
+      "displayName": "Make sure you have specified the scope(s) for the Service Account in the credential",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "genericAuthType",
+      "displayName": "Generic Auth Type",
+      "type": "credentialsSelect",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "provideSslCertificates",
+      "displayName": "SSL Certificates",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "provideSslCertificatesNotice",
+      "displayName": "Provide certificates in node's 'Credential for SSL Certificates' parameter",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "sslCertificate",
+      "displayName": "SSL Certificate",
+      "type": "credentials",
+      "default": ""
+    },
+    {
+      "name": "sendQuery",
+      "displayName": "Send Query Parameters",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the request has query params or not"
+    },
+    {
+      "name": "specifyQuery",
+      "displayName": "Specify Query Parameters",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Using JSON",
+      "default": null
+    },
+    {
+      "name": "queryParameters",
+      "displayName": "Query Parameters",
+      "type": "fixedCollection",
+      "default": null,
+      "placeholder": "Add Parameter"
+    },
+    {
+      "name": "parameters",
+      "displayName": "Parameter",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "jsonQuery",
+      "displayName": "JSON",
+      "type": "json",
+      "default": ""
+    },
+    {
+      "name": "sendHeaders",
+      "displayName": "Send Headers",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the request has headers or not"
+    },
+    {
+      "name": "specifyHeaders",
+      "displayName": "Specify Headers",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "headerParameters",
+      "displayName": "Header Parameters",
+      "type": "fixedCollection",
+      "default": null,
+      "placeholder": "Add Parameter"
+    },
+    {
+      "name": "jsonHeaders",
+      "displayName": "JSON",
+      "type": "json",
+      "default": ""
+    },
+    {
+      "name": "sendBody",
+      "displayName": "Send Body",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the request has a body or not"
+    },
+    {
+      "name": "contentType",
+      "displayName": "Body Content Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Form-Data",
+      "default": null
+    },
+    {
+      "name": "JSON",
+      "default": null
+    },
+    {
+      "name": "n8n Binary File",
+      "default": null
+    },
+    {
+      "name": "Raw",
+      "default": null
+    },
+    {
+      "name": "specifyBody",
+      "displayName": "Specify Body",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "bodyParameters",
+      "displayName": "Body Parameters",
+      "type": "fixedCollection",
+      "default": null,
+      "placeholder": "Add Parameter"
+    },
+    {
+      "name": "jsonBody",
+      "displayName": "JSON",
+      "type": "json",
+      "default": ""
+    },
+    {
+      "name": "Form Data",
+      "default": null
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "ID of the field to set. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "inputDataFieldName",
+      "displayName": "Input Data Field Name",
+      "type": "string",
+      "default": "",
+      "description": "The name of the incoming field containing the binary file data to be processed"
+    },
+    {
+      "name": "Using Single Field",
+      "default": null
+    },
+    {
+      "name": "body",
+      "displayName": "Body",
+      "type": "string",
+      "default": "",
+      "placeholder": "field1=value1&field2=value2"
+    },
+    {
+      "name": "rawContentType",
+      "displayName": "Content Type",
+      "type": "string",
+      "default": "",
+      "placeholder": "text/html"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Input will be split in batches to throttle requests. -1 for disabled. 0 will be treated as 1.",
+      "placeholder": "Add option",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "batchInterval",
+      "displayName": "Batch Interval (ms)",
+      "type": "number",
+      "default": 1000,
+      "description": "Time (in milliseconds) between each batch of requests. 0 for disabled."
+    },
+    {
+      "name": "allowUnauthorizedCerts",
+      "displayName": "Ignore SSL Issues",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to download the response even if SSL certificate validation is not possible"
+    },
+    {
+      "name": "queryParameterArrays",
+      "displayName": "Array Format in Query Parameters",
+      "type": "options",
+      "default": null,
+      "description": "e.g. foo=bar&foo=qux"
+    },
+    {
+      "name": "Brackets Only",
+      "default": null,
+      "description": "e.g. foo[]=bar&foo[]=qux"
+    },
+    {
+      "name": "Brackets with Indices",
+      "default": null,
+      "description": "e.g. foo[0]=bar&foo[1]=qux"
+    },
+    {
+      "name": "lowercaseHeaders",
+      "displayName": "Lowercase Headers",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to lowercase header names"
+    },
+    {
+      "name": "redirect",
+      "displayName": "Redirects",
+      "type": "fixedCollection",
+      "default": "{ redirect: {}",
+      "description": "Whether to follow all redirects",
+      "placeholder": "Add Redirect"
+    },
+    {
+      "name": "maxRedirects",
+      "displayName": "Max Redirects",
+      "type": "number",
+      "default": 21,
+      "description": "Max number of redirects to follow"
+    },
+    {
+      "name": "response",
+      "displayName": "Response",
+      "type": "fixedCollection",
+      "default": "{\n\t\t\t\t\tresponse: {}",
+      "description": "Whether to return the full response (headers and response status code) data instead of only the body",
+      "placeholder": "Add response"
+    },
+    {
+      "name": "neverError",
+      "displayName": "Never Error",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to succeeds also when status code is not 2xx"
+    },
+    {
+      "name": "responseFormat",
+      "displayName": "Response Format",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "File",
+      "default": null
+    },
+    {
+      "name": "Text",
+      "default": null
+    },
+    {
+      "name": "outputPropertyName",
+      "displayName": "Put Output in Field",
+      "type": "string",
+      "default": "data",
+      "description": "Name of the binary property to which to write the data of the read file",
+      "required": true
+    },
+    {
+      "name": "pagination",
+      "displayName": "Pagination",
+      "type": "fixedCollection",
+      "default": "{\n\t\t\t\t\tpagination: {}",
+      "placeholder": "Add pagination"
+    },
+    {
+      "name": "Update a Parameter in Each Request",
+      "default": null
+    },
+    {
+      "name": "Response Contains Next URL",
+      "default": null
+    },
+    {
+      "name": "webhookNotice",
+      "displayName": "Use the $response variables to access the data of the previous response. Refer to the <a href=\"https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest/#pagination/?utm_source=n8n_app&utm_medium=node_settings_modal-credential_link&utm_campaign=n8n-nodes-base.httpRequest\" target=\"_blank\">docs</a> for more info about pagination/",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "nextURL",
+      "displayName": "Next URL",
+      "type": "string",
+      "default": "",
+      "description": "Should evaluate to the URL of the next page. <a href=\"https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest/#pagination\" target=\"_blank\">More info</a>."
+    },
+    {
+      "name": "Header",
+      "default": null
+    },
+    {
+      "name": "Query",
+      "default": null
+    },
+    {
+      "name": "paginationCompleteWhen",
+      "displayName": "Pagination Complete When",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Receive Specific Status Code(s)",
+      "default": null
+    },
+    {
+      "name": "Other",
+      "default": null
+    },
+    {
+      "name": "statusCodesWhenComplete",
+      "displayName": "Status Code(s) when Complete",
+      "type": "string",
+      "default": "",
+      "description": "Accepts comma-separated values"
+    },
+    {
+      "name": "completeExpression",
+      "displayName": "Complete Expression",
+      "type": "string",
+      "default": "",
+      "description": "Should evaluate to true when pagination is complete. <a href=\"https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest/#pagination\" target=\"_blank\">More info</a>."
+    },
+    {
+      "name": "limitPagesFetched",
+      "displayName": "Limit Pages Fetched",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the number of requests should be limited"
+    },
+    {
+      "name": "maxRequests",
+      "displayName": "Max Pages",
+      "type": "number",
+      "default": 100,
+      "description": "Maximum amount of request to be make"
+    },
+    {
+      "name": "requestInterval",
+      "displayName": "Interval Between Requests (ms)",
+      "type": "number",
+      "default": 0,
+      "description": "Time in milliseconds to wait between requests"
+    },
+    {
+      "name": "proxy",
+      "displayName": "Proxy",
+      "type": "string",
+      "default": "",
+      "description": "HTTP proxy to use",
+      "placeholder": "e.g. http://myproxy:3128"
+    },
+    {
+      "name": "timeout",
+      "displayName": "Timeout",
+      "type": "number",
+      "default": 10000,
+      "description": "Time in ms to wait for the server to send response headers (and start the response body) before aborting the request"
+    },
+    {
+      "name": "infoMessage",
+      "displayName": "You can view the raw requests this node makes in your browser's developer console",
+      "type": "notice",
+      "default": ""
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "httpSslAuth",
+      "required": true
+    }
+  ]
+}

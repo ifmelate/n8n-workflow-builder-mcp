@@ -1,0 +1,62 @@
+{
+  "nodeType": "n8n-nodes-base.hubspot",
+  "displayName": "Hubspot",
+  "description": null,
+  "version": "2.1",
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "APP Token",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Contact",
+      "default": null
+    },
+    {
+      "name": "Contact List",
+      "default": null
+    },
+    {
+      "name": "Deal",
+      "default": null
+    },
+    {
+      "name": "Engagement",
+      "default": null
+    },
+    {
+      "name": "Ticket",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "hubspotApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

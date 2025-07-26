@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.azureCosmosDb",
+  "displayName": "Azure Cosmos DB",
+  "description": "Interact with Azure Cosmos DB API",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

@@ -1,0 +1,75 @@
+{
+  "nodeType": "n8n-nodes-base.notionTrigger",
+  "displayName": "Notion Trigger",
+  "description": "Starts the workflow when Notion events occur",
+  "version": 1,
+  "properties": [
+    {
+      "name": "event",
+      "displayName": "Event",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Page Updated in Database",
+      "default": null
+    },
+    {
+      "name": "notionNotice",
+      "displayName": "In Notion, make sure to <a href=\"https://www.notion.so/help/add-and-manage-connections-with-the-api\" target=\"_blank\">add your connection</a> to the pages you want to access.",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "databaseId",
+      "displayName": "Database",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "placeholder": "Select a Database...",
+      "required": true
+    },
+    {
+      "name": "url",
+      "displayName": "Link",
+      "type": "string",
+      "default": null,
+      "placeholder": "https://www.notion.so/0fe2f7de558b471eab07e9d871cdf4a9?v=f2d424ba0c404733a3f500c78c881610"
+    },
+    {
+      "name": "id",
+      "displayName": "ID",
+      "type": "string",
+      "default": null,
+      "placeholder": "ab1545b247fb49fa92d6f4b49f4d8116"
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "notionApi",
+      "required": true
+    },
+    {
+      "name": "event",
+      "required": false
+    },
+    {
+      "name": "notionNotice",
+      "required": true
+    },
+    {
+      "name": "id",
+      "required": false
+    },
+    {
+      "name": "simple",
+      "required": false
+    }
+  ]
+}

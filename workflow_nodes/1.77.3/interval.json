@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.interval",
+  "displayName": "Interval",
+  "description": "Triggers the workflow in a given interval",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

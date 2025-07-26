@@ -1,0 +1,220 @@
+{
+  "nodeType": "n8n-nodes-base.egoi",
+  "displayName": "E-goi",
+  "description": "Consume E-goi API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "required": true
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a member",
+      "required": true
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a member"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many members"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a member"
+    },
+    {
+      "name": "list",
+      "displayName": "List Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of list to operate on. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "Email address for a subscriber",
+      "placeholder": "name@email.com"
+    },
+    {
+      "name": "contactId",
+      "displayName": "Contact ID",
+      "type": "string",
+      "default": "",
+      "description": "Contact ID of the subscriber"
+    },
+    {
+      "name": "resolveData",
+      "displayName": "Resolve Data",
+      "type": "boolean",
+      "default": true,
+      "description": "By default the response just includes the contact ID. If this option gets activated, it will resolve the data automatically."
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Birth date of a subscriber",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "cellphone",
+      "displayName": "Cellphone",
+      "type": "string",
+      "default": "",
+      "description": "Cellphone of a subscriber"
+    },
+    {
+      "name": "extraFieldsUi",
+      "displayName": "Extra Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "first_name",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of a subscriber"
+    },
+    {
+      "name": "last_name",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of a subscriber"
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Active",
+      "default": null
+    },
+    {
+      "name": "Inactive",
+      "default": null
+    },
+    {
+      "name": "Removed",
+      "default": null
+    },
+    {
+      "name": "tagIds",
+      "displayName": "Tag Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "List of tag IDs to be added. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Birth date of subscriber",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "by",
+      "displayName": "By",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Email",
+      "default": null
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "egoiApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": true
+    },
+    {
+      "name": "list",
+      "required": false
+    },
+    {
+      "name": "first_name",
+      "required": false
+    },
+    {
+      "name": "tagIds",
+      "required": false
+    },
+    {
+      "name": "updateFields",
+      "required": false
+    },
+    {
+      "name": "first_name",
+      "required": false
+    },
+    {
+      "name": "tagIds",
+      "required": false
+    },
+    {
+      "name": "by",
+      "required": false
+    },
+    {
+      "name": "contactId",
+      "required": false
+    }
+  ]
+}

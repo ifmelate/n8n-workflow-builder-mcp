@@ -1,0 +1,28 @@
+{
+  "nodeType": "n8n-nodes-base.googleAnalytics",
+  "displayName": "GoogleAnalytics",
+  "description": null,
+  "version": "2",
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "User Activity",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googleAnalyticsOAuth2",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "nodeType": "n8n-nodes-base.twake",
+  "displayName": "Twake",
+  "description": "Consume Twake API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "twakeVersion",
+      "displayName": "Twake Version",
+      "type": "options",
+      "default": "cloud",
+      "options": []
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "description": "Send data to the message app"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Send a message"
+    },
+    {
+      "name": "channelId",
+      "displayName": "Channel Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Channel's ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "content",
+      "displayName": "Content",
+      "type": "string",
+      "default": "",
+      "description": "Message content",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "URL of the image/icon",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "senderName",
+      "displayName": "Sender Name",
+      "type": "string",
+      "default": ""
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "twakeCloudApi",
+      "required": true
+    },
+    {
+      "name": "twakeVersion",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "channelId",
+      "required": true
+    }
+  ]
+}

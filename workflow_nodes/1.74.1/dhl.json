@@ -1,0 +1,53 @@
+{
+  "nodeType": "n8n-nodes-base.dhl",
+  "displayName": "DHL",
+  "description": "Consume DHL API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "hidden",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "trackingNumber",
+      "displayName": "Tracking Number",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "DHL will return more detailed information on the shipment when you provide the Recipient's Postal Code - it acts as a verification step",
+      "placeholder": "Add option"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "dhlApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "trackingNumber",
+      "required": true
+    }
+  ]
+}

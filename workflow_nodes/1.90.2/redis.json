@@ -1,0 +1,183 @@
+{
+  "nodeType": "n8n-nodes-base.redis",
+  "displayName": "Redis",
+  "description": "Get, send and update data in Redis",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Delete a key from Redis"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get the value of a key from Redis"
+    },
+    {
+      "name": "Increment",
+      "default": null,
+      "description": "Atomically increments a key by 1. Creates the key if it does not exist."
+    },
+    {
+      "name": "Info",
+      "default": null,
+      "description": "Returns generic information about the Redis instance"
+    },
+    {
+      "name": "Keys",
+      "default": null,
+      "description": "Returns all the keys matching a pattern"
+    },
+    {
+      "name": "Pop",
+      "default": null,
+      "description": "Pop data from a redis list"
+    },
+    {
+      "name": "Publish",
+      "default": null,
+      "description": "Publish message to redis channel"
+    },
+    {
+      "name": "Push",
+      "default": null,
+      "description": "Push data to a redis list"
+    },
+    {
+      "name": "Set",
+      "default": null,
+      "description": "Set the value of a key in redis"
+    },
+    {
+      "name": "key",
+      "displayName": "Key",
+      "type": "string",
+      "default": "",
+      "description": "Name of the key to delete from Redis",
+      "required": true
+    },
+    {
+      "name": "keyType",
+      "displayName": "Key Type",
+      "type": "options",
+      "default": null,
+      "description": "Requests the type before requesting the data (slower)"
+    },
+    {
+      "name": "Hash",
+      "default": null,
+      "description": "Data in key is of type 'hash'"
+    },
+    {
+      "name": "List",
+      "default": null,
+      "description": "Data in key is of type 'lists'"
+    },
+    {
+      "name": "Sets",
+      "default": null,
+      "description": "Data in key is of type 'sets'"
+    },
+    {
+      "name": "String",
+      "default": null,
+      "description": "Data in key is of type 'string'"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "<p>By default, dot-notation is used in property names. This means that \"a.b\" will set the property \"b\" underneath \"a\" so { \"a\": { \"b\": value} }.<p></p>If that is not intended this can be deactivated, it will then set { \"a.b\": value } instead.</p>.",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "expire",
+      "displayName": "Expire",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to set a timeout on key"
+    },
+    {
+      "name": "ttl",
+      "displayName": "TTL",
+      "type": "number",
+      "default": 60,
+      "description": "Number of seconds before key expiration",
+      "required": true
+    },
+    {
+      "name": "getValues",
+      "displayName": "Get Values",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to get the value of matching keys",
+      "required": true
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "The value to write in Redis"
+    },
+    {
+      "name": "valueIsJSON",
+      "displayName": "Value Is JSON",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the value is JSON or key value pairs"
+    },
+    {
+      "name": "messageData",
+      "displayName": "Data",
+      "type": "string",
+      "default": "",
+      "description": "Data to publish",
+      "required": true
+    },
+    {
+      "name": "tail",
+      "displayName": "Tail",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to push or pop data from the end of the list"
+    },
+    {
+      "name": "propertyName",
+      "displayName": "Name",
+      "type": "string",
+      "default": "propertyName",
+      "description": "Optional name of the property to write received data to. Supports dot-notation. Example: \"data.person[0].name\"."
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "redis",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "key",
+      "required": true
+    },
+    {
+      "name": "options",
+      "required": false
+    },
+    {
+      "name": "key",
+      "required": true
+    },
+    {
+      "name": "valueIsJSON",
+      "required": true
+    }
+  ]
+}

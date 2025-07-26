@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.pushcutTrigger",
+  "displayName": "Pushcut Trigger",
+  "description": "Starts the workflow when Pushcut events occur",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

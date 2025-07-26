@@ -1,0 +1,51 @@
+{
+  "nodeType": "n8n-nodes-base.workableTrigger",
+  "displayName": "Workable Trigger",
+  "description": "Starts the workflow when Workable events occur",
+  "version": 1,
+  "properties": [
+    {
+      "name": "triggerOn",
+      "displayName": "Trigger On",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Candidate Moved",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Get notifications only for one job. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "stage",
+      "displayName": "Stage Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Get notifications for specific stages. e.g. 'hired'. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "workableApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "triggerOn",
+      "required": false
+    },
+    {
+      "name": "filters",
+      "required": false
+    }
+  ]
+}

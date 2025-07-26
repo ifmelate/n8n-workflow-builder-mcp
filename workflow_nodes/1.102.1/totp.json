@@ -1,0 +1,86 @@
+{
+  "nodeType": "n8n-nodes-base.totp",
+  "displayName": "TOTP",
+  "description": "Generate a time-based one-time password",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "HMAC hashing algorithm. Defaults to SHA1.",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "SHA224",
+      "default": null
+    },
+    {
+      "name": "SHA256",
+      "default": null
+    },
+    {
+      "name": "SHA3-224",
+      "default": null
+    },
+    {
+      "name": "SHA3-256",
+      "default": null
+    },
+    {
+      "name": "SHA3-384",
+      "default": null
+    },
+    {
+      "name": "SHA3-512",
+      "default": null
+    },
+    {
+      "name": "SHA384",
+      "default": null
+    },
+    {
+      "name": "SHA512",
+      "default": null
+    },
+    {
+      "name": "digits",
+      "displayName": "Digits",
+      "type": "number",
+      "default": 6,
+      "description": "Number of digits in the generated TOTP code. Defaults to 6 digits."
+    },
+    {
+      "name": "period",
+      "displayName": "Period",
+      "type": "number",
+      "default": 30,
+      "description": "How many seconds the generated TOTP code is valid for. Defaults to 30 seconds."
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "totpApi",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "options",
+      "required": false
+    },
+    {
+      "name": "digits",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "nodeType": "n8n-nodes-base.pushcut",
+  "displayName": "Pushcut",
+  "description": "Consume Pushcut API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Send a notification"
+    },
+    {
+      "name": "notificationName",
+      "displayName": "Notification Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "List of devices this notification is sent to. (default is all devices). Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "input",
+      "displayName": "Input",
+      "type": "string",
+      "default": "",
+      "description": "Value that is passed as input to the notification action"
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "",
+      "description": "Text that is used instead of the one defined in the app"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title that is used instead of the one defined in the app"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "pushcutApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "notificationName",
+      "required": false
+    }
+  ]
+}

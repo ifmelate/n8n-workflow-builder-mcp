@@ -1,0 +1,173 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.allowFileUploads",
+  "displayName": "Chat Trigger",
+  "description": "Runs the workflow when an n8n generated webchat is submitted",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "public",
+      "displayName": "Make Chat Publicly Available",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the chat should be publicly available or only accessible through the manual chat interface"
+    },
+    {
+      "name": "mode",
+      "displayName": "Mode",
+      "type": "options",
+      "default": null,
+      "description": "Chat on a page served by n8n"
+    },
+    {
+      "name": "Embedded Chat",
+      "default": null,
+      "description": "Chat through a widget embedded in another page, or by calling a webhook"
+    },
+    {
+      "name": "hostedChatNotice",
+      "displayName": "Chat will be live at the URL above once you activate this workflow. Live executions will show up in the ‘executions’ tab",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "embeddedChatNotice",
+      "displayName": "Follow the instructions <a href=\"https://www.npmjs.com/package/@n8n/chat\" target=\"_blank\">here</a> to embed chat in a webpage (or just call the webhook URL at the top of this section). Chat will be live once you activate this workflow",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null,
+      "description": "Simple username and password (the same one for all users)"
+    },
+    {
+      "name": "n8n User Auth",
+      "default": null,
+      "description": "Require user to be logged in with their n8n account"
+    },
+    {
+      "name": "None",
+      "default": null
+    },
+    {
+      "name": "initialMessages",
+      "displayName": "Initial Message(s)",
+      "type": "string",
+      "default": "Hi there! 👋\\nMy name is Nathan. How can I assist you today?",
+      "description": "Default messages shown at the start of the chat, one per line"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": null
+    },
+    {
+      "name": "inputPlaceholder",
+      "displayName": "Input Placeholder",
+      "type": "string",
+      "default": "Type your question..",
+      "description": "Shown as placeholder text in the chat input field",
+      "placeholder": "e.g. Type your message here"
+    },
+    {
+      "name": "loadPreviousSession",
+      "displayName": "Load Previous Session",
+      "type": "options",
+      "default": null,
+      "description": "Loading messages of previous session is turned off"
+    },
+    {
+      "name": "From Memory",
+      "default": null,
+      "description": "Load session messages from memory"
+    },
+    {
+      "name": "Manually",
+      "default": null,
+      "description": "Manually return messages of session"
+    },
+    {
+      "name": "responseMode",
+      "displayName": "Response Mode",
+      "type": "options",
+      "default": null,
+      "description": "Returns data of the last-executed node"
+    },
+    {
+      "name": "Using 'Respond to Webhook' Node",
+      "default": null,
+      "description": "Response defined in that node"
+    },
+    {
+      "name": "showWelcomeScreen",
+      "displayName": "Require Button Click to Start Chat",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to show the welcome screen at the start of the chat"
+    },
+    {
+      "name": "getStarted",
+      "displayName": "Start Conversation Button Text",
+      "type": "string",
+      "default": "New Conversation",
+      "description": "Shown as part of the welcome screen, in the middle of the chat window",
+      "placeholder": "e.g. New Conversation"
+    },
+    {
+      "name": "subtitle",
+      "displayName": "Subtitle",
+      "type": "string",
+      "default": "Start a chat. We're here to help you 24/7.",
+      "description": "Shown at the top of the chat, under the title",
+      "placeholder": "e.g. We're here for you"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "Hi there! 👋",
+      "description": "Shown at the top of the chat",
+      "placeholder": "e.g. Welcome"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "httpBasicAuth",
+      "required": true
+    },
+    {
+      "name": "setup",
+      "required": false
+    },
+    {
+      "name": "public",
+      "required": false
+    },
+    {
+      "name": "hostedChatNotice",
+      "required": false
+    },
+    {
+      "name": "initialMessages",
+      "required": false
+    },
+    {
+      "name": "options",
+      "required": false
+    },
+    {
+      "name": "responseMode",
+      "required": false
+    },
+    {
+      "name": "showWelcomeScreen",
+      "required": false
+    }
+  ]
+}

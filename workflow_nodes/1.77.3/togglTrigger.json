@@ -1,0 +1,24 @@
+{
+  "nodeType": "n8n-nodes-base.togglTrigger",
+  "displayName": "Toggl Trigger",
+  "description": "Starts the workflow when Toggl events occur",
+  "version": 1,
+  "properties": [
+    {
+      "name": "event",
+      "displayName": "Event",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "togglApi",
+      "required": true
+    },
+    {
+      "name": "event",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.helpScoutTrigger",
+  "displayName": "Help Scout Trigger",
+  "description": "Starts the workflow when Help Scout events occur",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

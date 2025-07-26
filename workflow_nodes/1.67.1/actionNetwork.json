@@ -1,0 +1,218 @@
+{
+  "nodeType": "n8n-nodes-base.actionNetwork",
+  "displayName": "Action Network",
+  "description": "Consume the Action Network API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "personId",
+      "displayName": "Person ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the person to create an attendance for",
+      "required": true
+    },
+    {
+      "name": "eventId",
+      "displayName": "Event ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the event to create an attendance for",
+      "required": true
+    },
+    {
+      "name": "attendanceId",
+      "displayName": "Attendance ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the attendance to retrieve",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Get",
+      "default": null
+    },
+    {
+      "name": "Get Many",
+      "default": null
+    },
+    {
+      "name": "originSystem",
+      "displayName": "Origin System",
+      "type": "string",
+      "default": "",
+      "description": "Source where the event originated",
+      "required": true
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title of the event to create",
+      "placeholder": "Add Field",
+      "required": true
+    },
+    {
+      "name": "email_addresses",
+      "displayName": "Email Address",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Person’s email addresses",
+      "placeholder": "Add Email Address Field"
+    },
+    {
+      "name": "primary",
+      "displayName": "Primary",
+      "type": "hidden",
+      "default": true,
+      "description": "Whether this is the person's primary email address"
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": "subscribed",
+      "description": "Subscription status of this email address"
+    },
+    {
+      "name": "Previous Bounce",
+      "default": null
+    },
+    {
+      "name": "Previous Spam Complaint",
+      "default": null
+    },
+    {
+      "name": "Spam Complaint",
+      "default": null
+    },
+    {
+      "name": "Subscribed",
+      "default": null
+    },
+    {
+      "name": "Unsubscribed",
+      "default": null
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "ID of the person to retrieve",
+      "placeholder": "Add Field",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 25,
+      "description": "Max number of results to return",
+      "placeholder": "Add Field",
+      "required": true
+    },
+    {
+      "name": "Update",
+      "default": null
+    },
+    {
+      "name": "tagId",
+      "displayName": "Tag Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "ID of the tag to add. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "taggingId",
+      "displayName": "Tagging Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "ID of the tagging to remove. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "Remove",
+      "default": null
+    },
+    {
+      "name": "petitionId",
+      "displayName": "Petition ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the petition to sign",
+      "required": true
+    },
+    {
+      "name": "signatureId",
+      "displayName": "Signature ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the signature to retrieve",
+      "required": true
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the tag to create",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Event",
+      "default": null
+    },
+    {
+      "name": "Person",
+      "default": null
+    },
+    {
+      "name": "Person Tag",
+      "default": null
+    },
+    {
+      "name": "Petition",
+      "default": null
+    },
+    {
+      "name": "Signature",
+      "default": null
+    },
+    {
+      "name": "Tag",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "actionNetworkApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

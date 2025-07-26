@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.stopAndError",
+  "displayName": "Stop and Error",
+  "description": "Throw an error in the workflow",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

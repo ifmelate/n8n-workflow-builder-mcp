@@ -1,0 +1,31 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+  "displayName": "Google Gemini Chat Model",
+  "description": "Chat Model Google Gemini",
+  "version": 1,
+  "properties": [
+    {
+      "name": "modelName",
+      "displayName": "Model",
+      "type": "options",
+      "default": null,
+      "description": "The model which will generate the completion. <a href=\"https://developers.generativeai.google/api/rest/generativelanguage/models/list\">Learn more</a>."
+    },
+    {
+      "name": "={{$responseItem.name}}",
+      "type": "setKeyValue",
+      "default": null,
+      "description": "={{$responseItem.description}}"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googlePalmApi",
+      "required": true
+    },
+    {
+      "name": "modelName",
+      "required": false
+    }
+  ]
+}

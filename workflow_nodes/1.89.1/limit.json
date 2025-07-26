@@ -1,0 +1,26 @@
+{
+  "nodeType": "n8n-nodes-base.limit",
+  "displayName": "Limit",
+  "description": "Restrict the number of items",
+  "version": 1,
+  "properties": [
+    {
+      "name": "maxItems",
+      "displayName": "Max Items",
+      "type": "number",
+      "default": 1,
+      "description": "If there are more items than this number, some are removed"
+    },
+    {
+      "name": "keep",
+      "displayName": "Keep",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Last Items",
+      "default": null
+    }
+  ],
+  "credentialsConfig": []
+}

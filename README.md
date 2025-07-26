@@ -25,6 +25,7 @@ Current problems:
 - **Connection Management**: Create connections between workflow nodes
 - **AI Integration**: Special tools for connecting AI components in workflows
 - **AI-Friendly Interface**: Designed specifically for interaction with AI agents
+- **N8N Version Management**: Automatic version detection and compatibility handling - supports 123+ N8N versions with dynamic node filtering and "closest lower version" matching for backward compatibility
 
 ## Prerequisites
 
@@ -49,7 +50,8 @@ The recommended way to install this MCP server is using npx directly in your `.c
       ],
       "env": {
         "N8N_API_URL": "http://localhost:5678",
-        "N8N_API_KEY": "your-n8n-api-key-here"
+        "N8N_API_KEY": "your-n8n-api-key-here",
+       // "N8N_VERSION": "1.72.1" // optional, if not set, the server will try to detect the version automatically
       }
     }
   }
@@ -71,6 +73,7 @@ This approach:
 3. Create or update `.cursor/mcp.json` with the configuration above, replacing:
    - `N8N_API_URL`: Your n8n instance URL (default: `http://localhost:5678`)
    - `N8N_API_KEY`: Your n8n API key from the n8n settings
+   - `N8N_VERSION`: (Optional) Override N8N version - if not set, auto-detects from API
 
 4. Restart Cursor IDE for changes to take effect
 
@@ -110,7 +113,8 @@ For development or local testing, you can clone and build from source:
          "args": ["/absolute/path/to/n8n-workflow-builder-mcp/dist/index.js"],
          "env": {
            "N8N_API_URL": "http://localhost:5678",
-           "N8N_API_KEY": "your-n8n-api-key-here"
+           "N8N_API_KEY": "your-n8n-api-key-here",
+           "N8N_VERSION": "1.72.1"
          }
        }
      }
@@ -135,6 +139,7 @@ Alternatively, you can set up the MCP server through Cursor's interface:
 5. Add environment variables:
    - `N8N_API_URL`: `http://localhost:5678`
    - `N8N_API_KEY`: `your-n8n-api-key-here`
+   - `N8N_VERSION`: `1.72.1` (optional - auto-detects if not set)
 6. Make sure the server is enabled
 7. Restart Cursor IDE for changes to take effect
 
@@ -152,7 +157,8 @@ The server provides the following tools for working with n8n workflows:
 | **delete_node** | Delete a node from a workflow | `workflow_name`, `node_id`, `workflow_path` (optional) |
 | **add_connection** | Add a connection between nodes | `workflow_name`, `source_node_id`, `source_node_output_name`, `target_node_id`, `target_node_input_name`, `target_node_input_index` |
 | **add_ai_connections** | Add AI connections for LangChain nodes | `workflow_name`, `agent_node_id`, `model_node_id`, `tool_node_ids`, `memory_node_id` |
-| **list_available_nodes** | List available node types with optional filtering | `search_term` (optional) |
+| **list_available_nodes** | List available node types with optional filtering | `search_term` (optional), `n8n_version` (optional) |
+| **get_n8n_version_info** | Get current N8N version and capabilities | (no parameters) |
 
 ## Troubleshooting Cursor Integration
 

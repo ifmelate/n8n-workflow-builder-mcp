@@ -1,0 +1,57 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.chainRetrievalQa",
+  "displayName": "Question and Answer Chain",
+  "description": "Answer questions about retrieved documents",
+  "version": [
+    1,
+    1.1,
+    1.2,
+    1.3
+  ],
+  "properties": [
+    {
+      "name": "query",
+      "displayName": "Query",
+      "type": "string",
+      "default": "={{ $json.input }}",
+      "required": true
+    },
+    {
+      "name": "promptType",
+      "displayName": "Prompt",
+      "type": "options",
+      "default": null,
+      "description": "Looks for an input field called chatInput"
+    },
+    {
+      "name": "Define below",
+      "default": null,
+      "description": "Use an expression to reference data in previous nodes or enter static text"
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Template string used for the system prompt. This should include the variable `{context}` for the provided context. For text completion models, you should also include the variable `{question}` for the user’s query.",
+      "placeholder": "Add Option"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "query",
+      "required": true
+    },
+    {
+      "name": "text",
+      "required": true
+    }
+  ]
+}

@@ -14,6 +14,386 @@ const path_1 = __importDefault(require("path"));
 // Global workspace configuration
 let WORKSPACE_DIR = process.cwd();
 console.error(`[DEBUG] Default workspace directory: ${WORKSPACE_DIR}`);
+let currentN8nVersion = null;
+let n8nVersionInfo = null;
+let supportedN8nVersions = new Map();
+// Environment configuration for N8N version
+const N8N_VERSION_OVERRIDE = process.env.N8N_VERSION; // User can override via env
+const N8N_API_URL = process.env.N8N_API_URL; // For auto-detection
+// Initialize supported N8N versions and their node capabilities
+async function initializeN8nVersionSupport() {
+    try {
+        console.error("[DEBUG] Initializing N8N version support...");
+        const workflowNodesDir = path_1.default.resolve(__dirname, '../workflow_nodes');
+        // Dynamically discover available N8N versions from directory structure
+        const versionMappings = {};
+        try {
+            const entries = await promises_1.default.readdir(workflowNodesDir, { withFileTypes: true });
+            const versionDirs = entries.filter(entry => entry.isDirectory()).map(entry => entry.name);
+            console.error(`[DEBUG] Found version directories: ${versionDirs.join(', ')}`);
+            // Process each version directory
+            for (const versionDir of versionDirs) {
+                const versionPath = path_1.default.join(workflowNodesDir, versionDir);
+                const supportedNodes = new Map();
+                // Analyze nodes in this version to determine capabilities
+                const capabilities = new Set();
+                capabilities.add("basic_nodes"); // All versions have basic nodes
+                try {
+                    const nodeFiles = await promises_1.default.readdir(versionPath);
+                    const jsonFiles = nodeFiles.filter(file => file.endsWith('.json'));
+                    console.error(`[DEBUG] Processing ${jsonFiles.length} nodes for version ${versionDir}`);
+                    let langchainCount = 0;
+                    let aiCount = 0;
+                    let triggerCount = 0;
+                    for (const nodeFile of jsonFiles) {
+                        try {
+                            const nodeFilePath = path_1.default.join(versionPath, nodeFile);
+                            const nodeContent = await promises_1.default.readFile(nodeFilePath, 'utf8');
+                            const nodeDefinition = JSON.parse(nodeContent);
+                            if (nodeDefinition.nodeType && nodeDefinition.version) {
+                                const nodeType = nodeDefinition.nodeType;
+                                const versions = Array.isArray(nodeDefinition.version)
+                                    ? nodeDefinition.version
+                                    : [nodeDefinition.version];
+                                // Add node to supported nodes
+                                if (!supportedNodes.has(nodeType)) {
+                                    supportedNodes.set(nodeType, new Set());
+                                }
+                                versions.forEach((v) => supportedNodes.get(nodeType).add(v));
+                                // Analyze node type for capability detection
+                                const nodeTypeStr = nodeType.toLowerCase();
+                                const displayName = (nodeDefinition.displayName || '').toLowerCase();
+                                const fileName = nodeFile.toLowerCase();
+                                // Detect LangChain nodes
+                                if (nodeTypeStr.includes('langchain') || fileName.includes('langchain')) {
+                                    langchainCount++;
+                                }
+                                // Detect AI-related nodes
+                                if (nodeTypeStr.includes('ai') || nodeTypeStr.includes('openai') ||
+                                    nodeTypeStr.includes('llm') || nodeTypeStr.includes('agent') ||
+                                    displayName.includes('ai') || fileName.includes('ai') ||
+                                    fileName.includes('openai') || fileName.includes('llm')) {
+                                    aiCount++;
+                                }
+                                // Detect trigger nodes
+                                if (nodeTypeStr.includes('trigger') || fileName.includes('trigger')) {
+                                    triggerCount++;
+                                }
+                            }
+                        }
+                        catch (error) {
+                            console.warn(`[WARN] Could not parse node file ${nodeFile} in version ${versionDir}:`, error);
+                        }
+                    }
+                    // Determine capabilities based on node analysis
+                    if (triggerCount > 0) {
+                        capabilities.add("webhook_triggers");
+                    }
+                    if (langchainCount > 0) {
+                        if (langchainCount < 10) {
+                            capabilities.add("langchain_basic");
+                        }
+                        else {
+                            capabilities.add("langchain_full");
+                        }
+                    }
+                    if (aiCount > 0) {
+                        capabilities.add("ai_nodes");
+                        if (aiCount > 5) {
+                            capabilities.add("advanced_ai");
+                        }
+                    }
+                    console.error(`[DEBUG] Version ${versionDir} analysis: ${jsonFiles.length} nodes, ${langchainCount} langchain, ${aiCount} ai, ${triggerCount} triggers`);
+                }
+                catch (error) {
+                    console.warn(`[WARN] Could not read nodes for version ${versionDir}:`, error);
+                }
+                // Create version info
+                versionMappings[versionDir] = {
+                    version: versionDir,
+                    supportedNodes,
+                    capabilities: Array.from(capabilities)
+                };
+            }
+        }
+        catch (error) {
+            console.warn("[WARN] Could not read workflow_nodes directory, falling back to single version:", error);
+            // Fallback: treat workflow_nodes as a flat directory (single version)
+            const supportedNodes = new Map();
+            const capabilities = ["basic_nodes", "webhook_triggers"];
+            try {
+                const files = await promises_1.default.readdir(workflowNodesDir);
+                const jsonFiles = files.filter(file => file.endsWith('.json'));
+                for (const file of jsonFiles) {
+                    try {
+                        const filePath = path_1.default.join(workflowNodesDir, file);
+                        const fileContent = await promises_1.default.readFile(filePath, 'utf8');
+                        const nodeDefinition = JSON.parse(fileContent);
+                        if (nodeDefinition.nodeType && nodeDefinition.version) {
+                            const nodeType = nodeDefinition.nodeType;
+                            const versions = Array.isArray(nodeDefinition.version)
+                                ? nodeDefinition.version
+                                : [nodeDefinition.version];
+                            if (!supportedNodes.has(nodeType)) {
+                                supportedNodes.set(nodeType, new Set());
+                            }
+                            versions.forEach((v) => supportedNodes.get(nodeType).add(v));
+                        }
+                    }
+                    catch (error) {
+                        console.warn(`[WARN] Could not parse node file ${file}:`, error);
+                    }
+                }
+            }
+            catch (error) {
+                console.warn("[WARN] Could not read flat workflow_nodes directory:", error);
+            }
+            // Use a default version for flat structure
+            versionMappings["latest"] = {
+                version: "latest",
+                supportedNodes,
+                capabilities
+            };
+        }
+        // Convert to Map for global use
+        supportedN8nVersions.clear();
+        for (const [version, info] of Object.entries(versionMappings)) {
+            supportedN8nVersions.set(version, info);
+        }
+        console.error(`[DEBUG] Initialized ${supportedN8nVersions.size} N8N versions: ${Array.from(supportedN8nVersions.keys()).join(', ')}`);
+    }
+    catch (error) {
+        console.error("[ERROR] Failed to initialize N8N version support:", error);
+    }
+}
+// Detect N8N version from API or environment
+async function detectN8nVersion() {
+    try {
+        // Check for manual override first
+        if (N8N_VERSION_OVERRIDE) {
+            console.error(`[DEBUG] Using N8N version override: ${N8N_VERSION_OVERRIDE}`);
+            return N8N_VERSION_OVERRIDE;
+        }
+        // Try to detect from N8N API if URL is provided
+        if (N8N_API_URL) {
+            console.error(`[DEBUG] Attempting to detect N8N version from API: ${N8N_API_URL}`);
+            try {
+                // Extract base URL from N8N_API_URL (remove /api/ suffix if present)
+                const baseUrl = N8N_API_URL.replace(/\/api\/?$/, '').replace(/\/$/, '');
+                // First try the settings endpoint which contains version info
+                const settingsEndpoint = `${baseUrl}/rest/settings`;
+                try {
+                    const response = await fetch(settingsEndpoint, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        // Add timeout
+                        signal: AbortSignal.timeout(5000)
+                    });
+                    if (response.ok) {
+                        const data = await response.json();
+                        console.error(`[DEBUG] Settings API response from ${settingsEndpoint}:`, JSON.stringify(data.data || data, null, 2));
+                        // Look for version in settings data
+                        const settingsData = data.data || data;
+                        const version = settingsData.versionCli || settingsData.version || settingsData.n8nVersion;
+                        if (version) {
+                            console.error(`[DEBUG] Detected N8N version from settings API: ${version}`);
+                            return version;
+                        }
+                    }
+                }
+                catch (settingsError) {
+                    console.warn(`[WARN] Failed to check settings endpoint ${settingsEndpoint}:`, settingsError);
+                }
+                // Fallback to other endpoints using the original API URL
+                const endpoints = [
+                    `${N8N_API_URL.replace(/\/$/, '')}/version`,
+                    `${baseUrl}/healthz`,
+                    `${baseUrl}/status`,
+                    `${baseUrl}/info`
+                ];
+                for (const endpoint of endpoints) {
+                    try {
+                        const response = await fetch(endpoint, {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                ...(process.env.N8N_API_KEY && { 'X-N8N-API-KEY': process.env.N8N_API_KEY })
+                            },
+                            // Add timeout
+                            signal: AbortSignal.timeout(5000)
+                        });
+                        if (response.ok) {
+                            const data = await response.json();
+                            console.error(`[DEBUG] API response from ${endpoint}:`, data);
+                            // Look for version in various possible fields
+                            const version = data.version || data.n8nVersion || data.build?.version || data.info?.version;
+                            if (version) {
+                                console.error(`[DEBUG] Detected N8N version from API: ${version}`);
+                                return version;
+                            }
+                        }
+                    }
+                    catch (endpointError) {
+                        console.warn(`[WARN] Failed to check endpoint ${endpoint}:`, endpointError);
+                    }
+                }
+            }
+            catch (apiError) {
+                console.warn("[WARN] Failed to detect N8N version from API:", apiError);
+            }
+        }
+        // Default to latest supported version if detection fails
+        const latestVersion = Array.from(supportedN8nVersions.keys()).sort((a, b) => parseFloat(b) - parseFloat(a))[0];
+        console.error(`[DEBUG] Could not detect N8N version, defaulting to: ${latestVersion}`);
+        return latestVersion || "1.30.0";
+    }
+    catch (error) {
+        console.error("[ERROR] Error during N8N version detection:", error);
+        return "1.30.0"; // Safe default
+    }
+}
+// Set current N8N version and update node filtering
+async function setN8nVersion(version) {
+    try {
+        currentN8nVersion = version;
+        n8nVersionInfo = supportedN8nVersions.get(version) || supportedN8nVersions.get("1.30.0") || null;
+        if (!n8nVersionInfo) {
+            console.warn(`[WARN] N8N version ${version} not found in supported versions, using latest`);
+            const latestVersion = Array.from(supportedN8nVersions.keys()).sort((a, b) => parseFloat(b) - parseFloat(a))[0];
+            n8nVersionInfo = supportedN8nVersions.get(latestVersion) || null;
+            currentN8nVersion = latestVersion;
+        }
+        console.error(`[DEBUG] Set N8N version to: ${currentN8nVersion}`);
+        console.error(`[DEBUG] Available capabilities: ${n8nVersionInfo?.capabilities.join(', ')}`);
+        // Update node cache to reflect version compatibility
+        await updateNodeCacheForVersion();
+    }
+    catch (error) {
+        console.error("[ERROR] Failed to set N8N version:", error);
+    }
+}
+// Update node cache based on current N8N version
+async function updateNodeCacheForVersion() {
+    if (!n8nVersionInfo)
+        return;
+    try {
+        console.error(`[DEBUG] Updating node cache for N8N version ${currentN8nVersion}`);
+        // Filter the existing nodeInfoCache based on version compatibility
+        const filteredCache = new Map();
+        for (const [key, nodeInfo] of nodeInfoCache.entries()) {
+            const supportedVersions = n8nVersionInfo.supportedNodes.get(nodeInfo.officialType);
+            if (supportedVersions && supportedVersions.size > 0) {
+                // Node is supported in current N8N version
+                const compatibleVersions = Array.isArray(nodeInfo.version)
+                    ? nodeInfo.version.filter(v => supportedVersions.has(v))
+                    : supportedVersions.has(nodeInfo.version) ? [nodeInfo.version] : [];
+                if (compatibleVersions.length > 0) {
+                    // Update with the highest compatible version
+                    const maxVersion = Math.max(...compatibleVersions);
+                    filteredCache.set(key, {
+                        ...nodeInfo,
+                        version: maxVersion
+                    });
+                }
+            }
+            else {
+                // For backward compatibility, if no specific version mapping exists,
+                // assume basic nodes are always supported
+                const isBasicNode = !nodeInfo.officialType.includes('@n8n/n8n-nodes-langchain') &&
+                    !nodeInfo.officialType.toLowerCase().includes('ai');
+                if (isBasicNode) {
+                    filteredCache.set(key, nodeInfo);
+                }
+            }
+        }
+        // Update the global cache
+        nodeInfoCache = filteredCache;
+        console.error(`[DEBUG] Node cache updated: ${nodeInfoCache.size} compatible nodes available`);
+    }
+    catch (error) {
+        console.error("[ERROR] Failed to update node cache for version:", error);
+    }
+}
+// Find the best matching version for a target N8N version
+// Returns exact match if available, otherwise closest lower version
+function findBestMatchingVersion(targetVersion, availableVersions) {
+    if (availableVersions.length === 0) {
+        return null;
+    }
+    // Check for exact match first
+    if (availableVersions.includes(targetVersion)) {
+        return targetVersion;
+    }
+    // Parse version numbers for comparison
+    const parseVersion = (version) => {
+        const parts = version.split('.').map(part => parseInt(part, 10) || 0);
+        // Ensure we have at least 3 parts (major.minor.patch)
+        while (parts.length < 3) {
+            parts.push(0);
+        }
+        return parts;
+    };
+    const targetParts = parseVersion(targetVersion);
+    // Find all versions that are less than or equal to target version
+    const candidateVersions = availableVersions.filter(version => {
+        const versionParts = parseVersion(version);
+        // Compare version parts (major.minor.patch)
+        for (let i = 0; i < Math.max(targetParts.length, versionParts.length); i++) {
+            const targetPart = targetParts[i] || 0;
+            const versionPart = versionParts[i] || 0;
+            if (versionPart < targetPart) {
+                return true; // This version is lower
+            }
+            else if (versionPart > targetPart) {
+                return false; // This version is higher
+            }
+            // If equal, continue to next part
+        }
+        return true; // Versions are equal (this shouldn't happen since we checked exact match above)
+    });
+    if (candidateVersions.length === 0) {
+        return null; // No suitable lower version found
+    }
+    // Sort candidates in descending order and return the highest (closest to target)
+    candidateVersions.sort((a, b) => {
+        const aParts = parseVersion(a);
+        const bParts = parseVersion(b);
+        for (let i = 0; i < Math.max(aParts.length, bParts.length); i++) {
+            const aPart = aParts[i] || 0;
+            const bPart = bParts[i] || 0;
+            if (aPart !== bPart) {
+                return bPart - aPart; // Descending order
+            }
+        }
+        return 0;
+    });
+    return candidateVersions[0];
+}
+// Check if a node type is supported in current N8N version
+function isNodeTypeSupported(nodeType, nodeVersion) {
+    if (!n8nVersionInfo)
+        return true; // Default to allowing if no version info
+    const supportedVersions = n8nVersionInfo.supportedNodes.get(nodeType);
+    if (!supportedVersions) {
+        // For unknown nodes, apply heuristics
+        const isLangChainNode = nodeType.includes('@n8n/n8n-nodes-langchain');
+        const isAINode = nodeType.toLowerCase().includes('ai') ||
+            nodeType.toLowerCase().includes('openai') ||
+            nodeType.toLowerCase().includes('llm');
+        const currentVersionNum = parseFloat(currentN8nVersion || "1.30.0");
+        if (isLangChainNode && currentVersionNum < 1.10)
+            return false;
+        if (isAINode && currentVersionNum < 1.20)
+            return false;
+        return true; // Assume basic nodes are always supported
+    }
+    if (nodeVersion !== undefined) {
+        return supportedVersions.has(nodeVersion);
+    }
+    return supportedVersions.size > 0;
+}
 let nodeInfoCache = new Map();
 // Helper function to normalize LLM parameters from various possible inputs
 function normalizeLLMParameters(params) {
@@ -70,21 +450,67 @@ function normalizeLLMParameters(params) {
     return normalized;
 }
 async function loadKnownNodeBaseTypes() {
-    // Corrected path: relative to this script's location, assuming workflow_nodes is at project root
+    // Support both flat structure and version-based structure
     const workflowNodesDir = path_1.default.resolve(__dirname, '../workflow_nodes');
     try {
         console.error(`[DEBUG] Attempting to load known node types from server resource path: ${workflowNodesDir}`);
-        const files = await promises_1.default.readdir(workflowNodesDir);
-        const suffix = ".json";
-        // knownNodeBaseCasings.clear(); // Clear any previous entries // OLD MAP
+        // Check if we have version directories or flat structure
+        const entries = await promises_1.default.readdir(workflowNodesDir, { withFileTypes: true });
+        const versionDirs = entries.filter(entry => entry.isDirectory()).map(entry => entry.name);
+        let searchDirs = [];
+        if (versionDirs.length > 0) {
+            // Version-based structure detected
+            console.error(`[DEBUG] Version-based structure detected. Found versions: ${versionDirs.join(', ')}`);
+            // Use current N8N version if set, otherwise use latest available
+            const targetVersion = currentN8nVersion || versionDirs.sort((a, b) => parseFloat(b) - parseFloat(a))[0];
+            console.error(`[DEBUG] Loading nodes for N8N version: ${targetVersion}`);
+            // Find the best matching version (exact match or closest lower version)
+            const bestMatchVersion = findBestMatchingVersion(targetVersion, versionDirs);
+            if (bestMatchVersion) {
+                if (bestMatchVersion === targetVersion) {
+                    console.error(`[DEBUG] Exact match found: ${bestMatchVersion}`);
+                }
+                else {
+                    console.warn(`[WARN] N8N version ${targetVersion} not found, using closest lower version: ${bestMatchVersion}`);
+                }
+                searchDirs = [path_1.default.join(workflowNodesDir, bestMatchVersion)];
+            }
+            else {
+                // Fallback to highest available version if no suitable lower version found
+                const fallbackVersion = versionDirs.sort((a, b) => parseFloat(b) - parseFloat(a))[0];
+                console.warn(`[WARN] No suitable version found for ${targetVersion}, using latest available: ${fallbackVersion}`);
+                searchDirs = [path_1.default.join(workflowNodesDir, fallbackVersion)];
+            }
+        }
+        else {
+            // Flat structure (legacy)
+            console.error(`[DEBUG] Flat structure detected`);
+            searchDirs = [workflowNodesDir];
+        }
         nodeInfoCache.clear();
+        // Load nodes from all search directories
+        for (const searchDir of searchDirs) {
+            await loadNodesFromDirectory(searchDir);
+        }
+        console.error(`[DEBUG] Loaded ${nodeInfoCache.size} cache entries for node types.`);
+        if (nodeInfoCache.size === 0) {
+            console.warn("[WARN] No node type information loaded into cache. Check 'workflow_nodes' directory and naming convention.");
+        }
+    }
+    catch (error) {
+        console.warn(`[WARN] Could not load known node types from ${workflowNodesDir}: ${error.message}. Node type normalization might rely on defaults.`);
+        nodeInfoCache = new Map(); // Ensure map is empty if loading fails
+    }
+}
+// Helper function to load nodes from a specific directory
+async function loadNodesFromDirectory(directory) {
+    try {
+        const files = await promises_1.default.readdir(directory);
+        const suffix = ".json";
         for (const file of files) {
             if (file.endsWith(suffix)) {
                 try {
-                    // Extract base type from filename like "MyNode.json" -> "MyNode"
-                    // const correctCaseBaseType = file.substring(0, file.length - suffix.length); // Not directly used for cache keys anymore
-                    // Also read the JSON file to get the nodeType property with correct casing
-                    const filePath = path_1.default.join(workflowNodesDir, file);
+                    const filePath = path_1.default.join(directory, file);
                     const fileContent = await promises_1.default.readFile(filePath, 'utf8');
                     const nodeDefinition = JSON.parse(fileContent);
                     if (nodeDefinition.nodeType) {
@@ -110,14 +536,9 @@ async function loadKnownNodeBaseTypes() {
                 }
             }
         }
-        console.error(`[DEBUG] Loaded ${nodeInfoCache.size} cache entries for node types.`);
-        if (nodeInfoCache.size === 0) {
-            console.warn("[WARN] No node type information loaded into cache. Check 'workflow_nodes' directory and naming convention.");
-        }
     }
     catch (error) {
-        console.warn(`[WARN] Could not load known node types from ${workflowNodesDir}: ${error.message}. Node type normalization might rely on defaults.`);
-        nodeInfoCache = new Map(); // Ensure map is empty if loading fails
+        console.warn(`[WARN] Could not read directory ${directory}: ${error.message}`);
     }
 }
 // Helper function to normalize node types (OLD - to be replaced)
@@ -483,7 +904,20 @@ server.tool("add_node", addNodeParamsSchema.shape, async (params, _extra) => {
         }
         const defaultPos = params.position || { x: Math.floor(Math.random() * 500), y: Math.floor(Math.random() * 500) };
         const { finalNodeType, finalTypeVersion } = normalizeNodeTypeAndVersion(params.node_type, params.typeVersion);
-        // console.error(`[DEBUG] Node type normalized: "${params.node_type}" -> "${finalNodeType}"`); // Covered by normalizeNodeTypeAndVersion's own log
+        // Check if node type is supported in current N8N version
+        if (!isNodeTypeSupported(finalNodeType, finalTypeVersion)) {
+            const supportedVersions = n8nVersionInfo?.supportedNodes.get(finalNodeType);
+            const supportedVersionsList = supportedVersions ? Array.from(supportedVersions).join(', ') : 'none';
+            return {
+                content: [{
+                        type: "text",
+                        text: JSON.stringify({
+                            success: false,
+                            error: `Node type '${finalNodeType}' version ${finalTypeVersion} is not supported in N8N version ${currentN8nVersion}. Supported versions: ${supportedVersionsList}. Check 'list_available_nodes' for compatible alternatives or set N8N_VERSION environment variable.`
+                        })
+                    }]
+            };
+        }
         // Process parameters for LangChain LLM nodes
         let nodeParameters = params.parameters || {};
         // Check if this is a LangChain LLM node
@@ -1022,7 +1456,8 @@ server.tool("add_ai_connections", addAIConnectionsParamsSchema.shape, async (par
 });
 // List Available Nodes
 const listAvailableNodesParamsSchema = zod_1.z.object({
-    search_term: zod_1.z.string().optional().describe("An optional search term to filter nodes by their name, type, or description.")
+    search_term: zod_1.z.string().optional().describe("An optional search term to filter nodes by their name, type, or description."),
+    n8n_version: zod_1.z.string().optional().describe("Filter nodes by N8N version compatibility. If not provided, uses current configured N8N version.")
 });
 server.tool("list_available_nodes", listAvailableNodesParamsSchema.shape, async (params, _extra) => {
     console.error("[DEBUG] list_available_nodes called with params:", params);
@@ -1126,8 +1561,51 @@ server.tool("list_available_nodes", listAvailableNodesParamsSchema.shape, async 
         else if (allParsedNodes.length === 0) {
             console.warn("[WARN] No node definitions found in workflow_nodes. Ensure the directory is populated with JSON files from the scraper.");
         }
+        // Filter by N8N version compatibility if specified
+        const targetVersion = params.n8n_version || currentN8nVersion;
+        let versionFilteredNodes = availableNodes;
+        if (targetVersion) {
+            versionFilteredNodes = availableNodes.filter(node => {
+                // Check if node is supported in the target N8N version
+                const targetVersionInfo = supportedN8nVersions.get(targetVersion);
+                if (!targetVersionInfo) {
+                    // If target version is unknown, use heuristics
+                    const isLangChainNode = node.nodeType.includes('@n8n/n8n-nodes-langchain');
+                    const isAINode = node.nodeType.toLowerCase().includes('ai') ||
+                        node.nodeType.toLowerCase().includes('openai') ||
+                        node.nodeType.toLowerCase().includes('llm');
+                    const targetVersionNum = parseFloat(targetVersion);
+                    if (isLangChainNode && targetVersionNum < 1.10)
+                        return false;
+                    if (isAINode && targetVersionNum < 1.20)
+                        return false;
+                    return true; // Assume basic nodes are supported
+                }
+                const supportedVersions = targetVersionInfo.supportedNodes.get(node.nodeType);
+                if (!supportedVersions) {
+                    // Apply same heuristics as above
+                    const isLangChainNode = node.nodeType.includes('@n8n/n8n-nodes-langchain');
+                    const isAINode = node.nodeType.toLowerCase().includes('ai') ||
+                        node.nodeType.toLowerCase().includes('openai') ||
+                        node.nodeType.toLowerCase().includes('llm');
+                    const targetVersionNum = parseFloat(targetVersion);
+                    if (isLangChainNode && targetVersionNum < 1.10)
+                        return false;
+                    if (isAINode && targetVersionNum < 1.20)
+                        return false;
+                    return true;
+                }
+                // Check if any of the node's versions are supported
+                const nodeVersions = Array.isArray(node.version) ? node.version : [node.version];
+                return nodeVersions.some((v) => supportedVersions.has(v));
+            });
+            console.error(`[DEBUG] Filtered ${availableNodes.length} nodes to ${versionFilteredNodes.length} compatible with N8N ${targetVersion}`);
+        }
         // Format the results to be more user-friendly and informative
-        const formattedNodes = availableNodes.map(node => {
+        const formattedNodes = versionFilteredNodes.map(node => {
+            const targetVersionInfo = supportedN8nVersions.get(targetVersion || currentN8nVersion || "1.30.0");
+            const supportedVersions = targetVersionInfo?.supportedNodes.get(node.nodeType);
+            const compatibleVersions = supportedVersions ? Array.from(supportedVersions) : [];
             return {
                 // Keep only the most relevant information
                 nodeType: node.nodeType, // Full node type with correct casing
@@ -1136,6 +1614,7 @@ server.tool("list_available_nodes", listAvailableNodesParamsSchema.shape, async 
                 simpleName: node.simpleName, // The part after n8n-nodes-base
                 categories: node.categories || [],
                 version: node.version,
+                compatibleVersions: compatibleVersions.length > 0 ? compatibleVersions : [node.version],
                 // Count parameters but don't include details to keep response size manageable
                 parameterCount: node.properties ? node.properties.length : 0
             };
@@ -1158,6 +1637,8 @@ server.tool("list_available_nodes", listAvailableNodesParamsSchema.shape, async 
                         success: true,
                         nodes: formattedNodes,
                         total: formattedNodes.length,
+                        filteredFor: targetVersion ? `N8N ${targetVersion}` : "All versions",
+                        currentN8nVersion: currentN8nVersion,
                         usageGuidance: usageGuidance
                     })
                 }]
@@ -1172,6 +1653,45 @@ server.tool("list_available_nodes", listAvailableNodesParamsSchema.shape, async 
         return { content: [{ type: "text", text: JSON.stringify({ success: false, error: "Failed to list available nodes: " + error.message }) }] };
     }
 });
+// N8N Version Management Tools
+// Get N8N Version Info
+server.tool("get_n8n_version_info", {}, async (_params, _extra) => {
+    console.error("[DEBUG] get_n8n_version_info called");
+    try {
+        const supportedVersionsList = Array.from(supportedN8nVersions.keys()).sort((a, b) => parseFloat(b) - parseFloat(a));
+        const currentInfo = n8nVersionInfo ? {
+            version: currentN8nVersion,
+            capabilities: n8nVersionInfo.capabilities,
+            supportedNodesCount: n8nVersionInfo.supportedNodes.size
+        } : null;
+        return {
+            content: [{
+                    type: "text",
+                    text: JSON.stringify({
+                        success: true,
+                        currentVersion: currentN8nVersion,
+                        currentVersionInfo: currentInfo,
+                        supportedVersions: supportedVersionsList,
+                        versionSource: N8N_VERSION_OVERRIDE ? "environment_override" :
+                            (N8N_API_URL ? "api_detection" : "default"),
+                        capabilities: n8nVersionInfo?.capabilities || []
+                    })
+                }]
+        };
+    }
+    catch (error) {
+        console.error("[ERROR] Failed to get N8N version info:", error);
+        return {
+            content: [{
+                    type: "text",
+                    text: JSON.stringify({
+                        success: false,
+                        error: "Failed to get N8N version info: " + error.message
+                    })
+                }]
+        };
+    }
+});
 // Create and configure the transport
 const transport = new stdio_js_1.StdioServerTransport();
 // Start the server
@@ -1182,6 +1702,9 @@ async function main() {
         // If called before create_workflow, it might use process.cwd() or fail if workflow_nodes isn't there.
         // This is a known limitation for now; ideally, WORKSPACE_DIR is configured at MCP server init more globally.
         await loadKnownNodeBaseTypes(); // Attempt to load node types at startup
+        await initializeN8nVersionSupport(); // Initialize N8N version support
+        const detectedVersion = await detectN8nVersion(); // Detect the current N8N version
+        await setN8nVersion(detectedVersion || "1.30.0"); // Set the current N8N version
         await server.connect(transport);
         console.error("[DEBUG] N8N Workflow Builder MCP Server started (TypeScript version)");
         // Debugging tool schemas might need update if params changed significantly for other tools

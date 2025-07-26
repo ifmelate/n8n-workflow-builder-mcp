@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.rabbitmqTrigger",
+  "displayName": "RabbitMQ Trigger",
+  "description": "Listens to RabbitMQ messages",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

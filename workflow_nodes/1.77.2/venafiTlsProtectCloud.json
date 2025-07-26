@@ -1,0 +1,310 @@
+{
+  "nodeType": "n8n-nodes-base.venafiTlsProtectCloud",
+  "displayName": "Venafi TLS Protect Cloud",
+  "description": "Consume Venafi TLS Protect Cloud API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "certificateId",
+      "displayName": "Certificate ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "downloadItem",
+      "displayName": "Download Item",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Keystore",
+      "default": null
+    },
+    {
+      "name": "keystoreType",
+      "displayName": "Keystore Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "PKCS12",
+      "default": null
+    },
+    {
+      "name": "PEM",
+      "default": null
+    },
+    {
+      "name": "certificateLabel",
+      "displayName": "Certificate Label",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "privateKeyPassphrase",
+      "displayName": "Private Key Passphrase",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "keystorePassphrase",
+      "displayName": "Keystore Passphrase",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "binaryProperty",
+      "displayName": "Input Data Field Name",
+      "type": "string",
+      "default": "data",
+      "description": "The name of the input field containing the binary file data to be uploaded",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Download the certificate with the end-entity portion of the chain first",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "EE_ONLY",
+      "default": null,
+      "description": "Download only the end-entity certificate"
+    },
+    {
+      "name": "ROOT_FIRST",
+      "default": null,
+      "description": "Download the certificate with root portion of the chain first"
+    },
+    {
+      "name": "format",
+      "displayName": "Format",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "DER",
+      "default": null
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "applicationId",
+      "displayName": "Application Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "existingCertificateId",
+      "displayName": "Existing Certificate ID",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "certificateIssuingTemplateId",
+      "displayName": "Certificate Issuing Template Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "certificateSigningRequest",
+      "displayName": "Certificate Signing Request",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "10 Days",
+      "default": null
+    },
+    {
+      "name": "12 Hours",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Delete a certificate"
+    },
+    {
+      "name": "Download",
+      "default": null,
+      "description": "Download a certificate"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Retrieve a certificate"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Retrieve many certificates"
+    },
+    {
+      "name": "Renew",
+      "default": null,
+      "description": "Renew a certificate"
+    },
+    {
+      "name": "generateCsr",
+      "displayName": "Generate CSR",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "commonName",
+      "displayName": "Common Name",
+      "type": "string",
+      "default": "n8n.io",
+      "description": "The Common Name field for the certificate Subject (CN)",
+      "placeholder": "Add Field",
+      "required": true
+    },
+    {
+      "name": "RSA",
+      "default": null,
+      "description": "Rivest, Shamir, Adleman key (RSA)"
+    },
+    {
+      "name": "keyCurve",
+      "displayName": "Key Curve",
+      "type": "options",
+      "default": null,
+      "description": "Use Edwards-curve Digital Signature Algorithm (EdDSA)"
+    },
+    {
+      "name": "P256",
+      "default": null,
+      "description": "Use Elliptic Prime Curve 256 bit encryption"
+    },
+    {
+      "name": "P384",
+      "default": null,
+      "description": "Use Elliptic Prime Curve 384 bit encryption"
+    },
+    {
+      "name": "P521",
+      "default": null,
+      "description": "Use Elliptic Prime Curve 521 bit encryption"
+    },
+    {
+      "name": "UNKNOWN",
+      "default": null
+    },
+    {
+      "name": "keyLength",
+      "displayName": "Key Length",
+      "type": "number",
+      "default": 2048,
+      "description": "The number of bits to allow for key generation"
+    },
+    {
+      "name": "organization",
+      "displayName": "(O) Organization",
+      "type": "string",
+      "default": "",
+      "description": "The name of a company or organization"
+    },
+    {
+      "name": "organizationalUnits",
+      "displayName": "(OU) Organizational Unit(s)",
+      "type": "string",
+      "default": "",
+      "description": "The name of a department or section"
+    },
+    {
+      "name": "locality",
+      "displayName": "(L) City/Locality",
+      "type": "string",
+      "default": "",
+      "description": "The name of a city or town"
+    },
+    {
+      "name": "state",
+      "displayName": "(ST) State",
+      "type": "string",
+      "default": "",
+      "description": "The name of a state or province"
+    },
+    {
+      "name": "country",
+      "displayName": "(C) Country",
+      "type": "string",
+      "default": "",
+      "description": "A 2 letter country code"
+    },
+    {
+      "name": "SubjectAltNamesUi",
+      "displayName": "Subject Alt Names",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Subject"
+    },
+    {
+      "name": "RFC822 Names",
+      "default": null
+    },
+    {
+      "name": "URI",
+      "default": "dnsNames",
+      "description": "What type of SAN is being used"
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "community.n8n.io",
+      "description": "The SAN friendly name that corresponds to the Type or TypeName parameter. For example, if a TypeName is IPAddress, the Name value is a valid IP address."
+    },
+    {
+      "name": "certificateRequestId",
+      "displayName": "Certificate Request ID",
+      "type": "string",
+      "default": "",
+      "description": "Whether to return all results or only up to a given limit",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Certificate Request",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "venafiTlsProtectCloudApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

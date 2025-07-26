@@ -1,0 +1,8 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.vectorStorePineconeLoad",
+  "displayName": "Pinecone: Load",
+  "description": "Load data from Pinecone Vector Store index",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

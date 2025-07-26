@@ -1,0 +1,251 @@
+{
+  "nodeType": "n8n-nodes-base.awsDynamoDb",
+  "displayName": "AWS DynamoDB",
+  "description": "Consume the AWS DynamoDB API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "tableName",
+      "displayName": "Table Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "Table to operate on. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "Define Below for Each Column",
+      "default": null,
+      "description": "Set the value for each destination column"
+    },
+    {
+      "name": "inputsToIgnore",
+      "displayName": "Inputs to Ignore",
+      "type": "string",
+      "default": "",
+      "description": "List of input properties to avoid sending, separated by commas. Leave empty to send all properties.",
+      "placeholder": "Enter properties..."
+    },
+    {
+      "name": "fieldsUi",
+      "displayName": "Fields to Send",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "fieldValue",
+      "displayName": "Field Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Substitution tokens for attribute names in an expression. Only needed when the parameter \"condition expression\" is set.",
+      "placeholder": "Add Field",
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "String",
+      "default": null
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "conditionExpression",
+      "displayName": "Condition Expression",
+      "type": "string",
+      "default": "",
+      "description": "A condition that must be satisfied in order for a conditional upsert to succeed. <a href=\"https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_PutItem.html\">View details</a>."
+    },
+    {
+      "name": "eanUi",
+      "displayName": "Expression Attribute Names",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Expression"
+    },
+    {
+      "name": "returnValues",
+      "displayName": "Return",
+      "type": "options",
+      "default": null,
+      "description": "The content of the old item is returned"
+    },
+    {
+      "name": "Nothing",
+      "default": null,
+      "description": "Nothing is returned"
+    },
+    {
+      "name": "keysUi",
+      "displayName": "Keys",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Key"
+    },
+    {
+      "name": "Number",
+      "default": null
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    },
+    {
+      "name": "expressionAttributeUi",
+      "displayName": "Expression Attribute Values",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Substitution tokens for attribute names in an expression. Only needed when the parameter \"condition expression\" is set.",
+      "placeholder": "Add Attribute Value",
+      "required": true
+    },
+    {
+      "name": "select",
+      "displayName": "Select",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "All Projected Attributes",
+      "default": null
+    },
+    {
+      "name": "Specific Attributes",
+      "default": null,
+      "description": "Select them in Attributes to Select under Additional Fields"
+    },
+    {
+      "name": "readType",
+      "displayName": "Read Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Eventually Consistent Read",
+      "default": null
+    },
+    {
+      "name": "scan",
+      "displayName": "Scan",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to do an scan or query. Check <a href=\"https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-query-scan.html\" >differences</a>."
+    },
+    {
+      "name": "filterExpression",
+      "displayName": "Filter Expression",
+      "type": "string",
+      "default": "",
+      "description": "A filter expression determines which items within the Scan results should be returned to you. All of the other results are discarded. Empty value will return all Scan results."
+    },
+    {
+      "name": "keyConditionExpression",
+      "displayName": "Key Condition Expression",
+      "type": "string",
+      "default": "",
+      "description": "Condition to determine the items to be retrieved. The condition must perform an equality test on a single partition key value, in this format: <code>partitionKeyName = :partitionkeyval</code>",
+      "placeholder": "id = :id",
+      "required": true
+    },
+    {
+      "name": "eavUi",
+      "displayName": "Expression Attribute Values",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Substitution tokens for attribute names in an expression",
+      "placeholder": "Add Attribute Value",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "Count",
+      "default": null
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Name of the index to query. It can be any secondary local or global index on the table.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "projectionExpression",
+      "displayName": "Attributes to Select",
+      "type": "string",
+      "default": "",
+      "description": "Text that identifies one or more attributes to retrieve from the table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas."
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a new record, or update the current one if it already exists (upsert)"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete an item"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get an item"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many items"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "aws",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

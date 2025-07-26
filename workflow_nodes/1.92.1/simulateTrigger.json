@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.simulateTrigger",
+  "displayName": "Simulate Trigger",
+  "description": "Simulate a trigger node",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

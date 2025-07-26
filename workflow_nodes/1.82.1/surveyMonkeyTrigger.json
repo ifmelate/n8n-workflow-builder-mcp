@@ -1,0 +1,160 @@
+{
+  "nodeType": "n8n-nodes-base.surveyMonkeyTrigger",
+  "displayName": "SurveyMonkey Trigger",
+  "description": "Starts the workflow when Survey Monkey events occur",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "objectType",
+      "displayName": "Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Survey",
+      "default": null
+    },
+    {
+      "name": "event",
+      "displayName": "Event",
+      "type": "options",
+      "default": null,
+      "description": "A collector is created"
+    },
+    {
+      "name": "Collector Deleted",
+      "default": null,
+      "description": "A collector is deleted"
+    },
+    {
+      "name": "Collector Updated",
+      "default": null,
+      "description": "A collector is updated"
+    },
+    {
+      "name": "Response Completed",
+      "default": null,
+      "description": "A survey response is completed"
+    },
+    {
+      "name": "Response Created",
+      "default": null,
+      "description": "A respondent begins a survey"
+    },
+    {
+      "name": "Response Deleted",
+      "default": null,
+      "description": "A response is deleted"
+    },
+    {
+      "name": "Response Disqualified",
+      "default": null,
+      "description": "A survey response is disqualified"
+    },
+    {
+      "name": "Response Overquota",
+      "default": null,
+      "description": "A response is over a survey’s quota"
+    },
+    {
+      "name": "Response Updated",
+      "default": null,
+      "description": "A survey response is updated"
+    },
+    {
+      "name": "Survey Created",
+      "default": null,
+      "description": "A survey is created"
+    },
+    {
+      "name": "Survey Deleted",
+      "default": null,
+      "description": "A survey is deleted"
+    },
+    {
+      "name": "Survey Updated",
+      "default": null,
+      "description": "A survey is updated"
+    },
+    {
+      "name": "surveyIds",
+      "displayName": "Survey Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true,
+      "options": []
+    },
+    {
+      "name": "surveyId",
+      "displayName": "Survey Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "collectorIds",
+      "displayName": "Collector Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true,
+      "options": []
+    },
+    {
+      "name": "resolveData",
+      "displayName": "Resolve Data",
+      "type": "boolean",
+      "default": true,
+      "description": "By default the webhook-data only contain the IDs. If this option gets activated, it will resolve the data automatically."
+    },
+    {
+      "name": "onlyAnswers",
+      "displayName": "Only Answers",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return only the answers of the form and not any of the other data"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "surveyMonkeyApi",
+      "required": true
+    },
+    {
+      "name": "setup",
+      "required": false
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "objectType",
+      "required": false
+    },
+    {
+      "name": "event",
+      "required": false
+    },
+    {
+      "name": "event",
+      "required": false
+    },
+    {
+      "name": "surveyIds",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.perplexity",
+  "displayName": "Perplexity",
+  "description": "Interact with the Perplexity API to generate AI responses with citations",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

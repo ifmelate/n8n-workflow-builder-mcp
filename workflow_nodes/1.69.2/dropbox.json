@@ -1,0 +1,258 @@
+{
+  "nodeType": "n8n-nodes-base.dropbox",
+  "displayName": "Dropbox",
+  "description": "Access data on Dropbox",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Folder",
+      "default": null
+    },
+    {
+      "name": "Search",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Copy a file"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a file"
+    },
+    {
+      "name": "Download",
+      "default": null,
+      "description": "Download a file"
+    },
+    {
+      "name": "Move",
+      "default": null,
+      "description": "Move a file"
+    },
+    {
+      "name": "Upload",
+      "default": null,
+      "description": "Upload a file"
+    },
+    {
+      "name": "Create",
+      "default": null,
+      "description": "Create a folder"
+    },
+    {
+      "name": "List",
+      "default": null,
+      "description": "Return the files and folders in a given folder"
+    },
+    {
+      "name": "path",
+      "displayName": "From Path",
+      "type": "string",
+      "default": "",
+      "description": "The path of file or folder to copy",
+      "placeholder": "/invoices/original.txt",
+      "required": true
+    },
+    {
+      "name": "toPath",
+      "displayName": "To Path",
+      "type": "string",
+      "default": "",
+      "description": "The destination path of file or folder",
+      "placeholder": "/invoices/copy.txt",
+      "required": true
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Put Output File in Field",
+      "type": "string",
+      "default": "data",
+      "description": "The file path of the file to upload. Has to contain the full path. The parent folder has to exist. Existing files get overwritten.",
+      "placeholder": "/invoices/2019/invoice_1.pdf",
+      "required": true
+    },
+    {
+      "name": "binaryData",
+      "displayName": "Binary File",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the data to upload should be taken from binary field"
+    },
+    {
+      "name": "fileContent",
+      "displayName": "File Content",
+      "type": "string",
+      "default": "",
+      "description": "The text content of the file to upload",
+      "placeholder": ""
+    },
+    {
+      "name": "fileStatus",
+      "displayName": "File Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Deleted",
+      "default": null
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "Document (doc, docx, txt, etc.)",
+      "default": null
+    },
+    {
+      "name": "Dropbox Paper",
+      "default": null
+    },
+    {
+      "name": "Image (jpg, png, gif, etc.)",
+      "default": null
+    },
+    {
+      "name": "Other",
+      "default": null
+    },
+    {
+      "name": "PDF",
+      "default": null
+    },
+    {
+      "name": "Presentation (ppt, pptx, key, etc.)",
+      "default": null
+    },
+    {
+      "name": "Spreadsheet (xlsx, xls, csv, etc.)",
+      "default": null
+    },
+    {
+      "name": "Video (avi, wmv, mp4, etc.)",
+      "default": null
+    },
+    {
+      "name": "file_extensions",
+      "displayName": "File Extensions",
+      "type": "string",
+      "default": "",
+      "description": "Multiple file extensions can be set separated by comma. Example: jpg,pdf."
+    },
+    {
+      "name": "include_has_explicit_shared_members",
+      "displayName": "Include Shared Members",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the results will include a flag for each file indicating whether or not that file has any explicit members. The default for this field is False."
+    },
+    {
+      "name": "include_mounted_folders",
+      "displayName": "Include Mounted Folders",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the results will include entries under mounted folders which includes app folder, shared folder and team folder. The default for this field is True."
+    },
+    {
+      "name": "include_non_downloadable_files",
+      "displayName": "Include Non Downloadable Files",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to include files that are not downloadable, i.e. Google Docs. The default for this field is True."
+    },
+    {
+      "name": "recursive",
+      "displayName": "Recursive",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the list folder operation will be applied recursively to all subfolders and the response will contain contents of all subfolders. The default for this field is False."
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "dropboxApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "path",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "required": false
+    },
+    {
+      "name": "file_extensions",
+      "required": false
+    },
+    {
+      "name": "path",
+      "required": true
+    }
+  ]
+}

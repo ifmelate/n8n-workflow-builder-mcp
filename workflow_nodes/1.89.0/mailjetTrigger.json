@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.mailjetTrigger",
+  "displayName": "Mailjet Trigger",
+  "description": "Handle Mailjet events via webhooks",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

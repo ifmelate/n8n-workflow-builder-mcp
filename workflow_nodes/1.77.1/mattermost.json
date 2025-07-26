@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.mattermost",
+  "displayName": "Mattermost",
+  "description": null,
+  "version": "1",
+  "properties": [],
+  "credentialsConfig": []
+}

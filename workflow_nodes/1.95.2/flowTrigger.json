@@ -1,0 +1,52 @@
+{
+  "nodeType": "n8n-nodes-base.flowTrigger",
+  "displayName": "Flow Trigger",
+  "description": "Handle Flow events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "Task",
+      "default": null
+    },
+    {
+      "name": "listIds",
+      "displayName": "Project ID",
+      "type": "string",
+      "default": "",
+      "description": "Lists IDs, perhaps known better as \"Projects\" separated by a comma (,)",
+      "required": true
+    },
+    {
+      "name": "taskIds",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": "",
+      "description": "Task IDs separated by a comma (,)",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "flowApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "listIds",
+      "required": true
+    }
+  ]
+}

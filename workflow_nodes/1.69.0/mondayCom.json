@@ -1,0 +1,290 @@
+{
+  "nodeType": "n8n-nodes-base.mondayCom",
+  "displayName": "Monday.com",
+  "description": "Consume Monday.com API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "boardId",
+      "displayName": "Board Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Board unique identifiers. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "kind",
+      "displayName": "Kind",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Public",
+      "default": null
+    },
+    {
+      "name": "Private",
+      "default": null
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Optional board template ID",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Archive a board"
+    },
+    {
+      "name": "Create",
+      "default": null,
+      "description": "Create a new board"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a board"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many boards"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "columnType",
+      "displayName": "Column Type",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "Country",
+      "default": null
+    },
+    {
+      "name": "Date",
+      "default": null
+    },
+    {
+      "name": "Dropdown",
+      "default": null
+    },
+    {
+      "name": "Email",
+      "default": null
+    },
+    {
+      "name": "Hour",
+      "default": null
+    },
+    {
+      "name": "Link",
+      "default": null
+    },
+    {
+      "name": "Long Text",
+      "default": null
+    },
+    {
+      "name": "Numbers",
+      "default": null
+    },
+    {
+      "name": "People",
+      "default": null
+    },
+    {
+      "name": "Person",
+      "default": null
+    },
+    {
+      "name": "Phone",
+      "default": null
+    },
+    {
+      "name": "Rating",
+      "default": null
+    },
+    {
+      "name": "Status",
+      "default": null
+    },
+    {
+      "name": "Tags",
+      "default": null
+    },
+    {
+      "name": "Team",
+      "default": null
+    },
+    {
+      "name": "Text",
+      "default": null
+    },
+    {
+      "name": "Timeline",
+      "default": null
+    },
+    {
+      "name": "Timezone",
+      "default": null
+    },
+    {
+      "name": "Week",
+      "default": null
+    },
+    {
+      "name": "World Clock",
+      "default": null
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "The group name",
+      "required": true
+    },
+    {
+      "name": "groupId",
+      "displayName": "Group Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "itemId",
+      "displayName": "Item ID",
+      "type": "string",
+      "default": "",
+      "description": "The unique identifier of the item to add update to",
+      "required": true
+    },
+    {
+      "name": "value",
+      "displayName": "Update Text",
+      "type": "string",
+      "default": "",
+      "description": "The update text to add",
+      "required": true
+    },
+    {
+      "name": "columnId",
+      "displayName": "Column Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The column's unique identifier. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "columnValues",
+      "displayName": "Column Values",
+      "type": "json",
+      "default": "",
+      "description": "The column fields and values in JSON format. Documentation can be found <a href=\"https://monday.com/developers/v2#mutations-section-columns-change-multiple-column-values\">here</a>.",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "columnValue",
+      "displayName": "Column Value",
+      "type": "string",
+      "default": "",
+      "description": "The column value to search items by",
+      "required": true
+    },
+    {
+      "name": "Change Column Value",
+      "default": null,
+      "description": "Change a column value for a board item"
+    },
+    {
+      "name": "Change Multiple Column Values",
+      "default": null,
+      "description": "Change multiple column values for a board item"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete an item"
+    },
+    {
+      "name": "Get By Column Value",
+      "default": null,
+      "description": "Get items by column value"
+    },
+    {
+      "name": "Move",
+      "default": null,
+      "description": "Move item to group"
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Board Column",
+      "default": null
+    },
+    {
+      "name": "Board Group",
+      "default": null
+    },
+    {
+      "name": "Board Item",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "mondayComApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

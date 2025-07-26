@@ -1,0 +1,310 @@
+{
+  "nodeType": "n8n-nodes-base.nasa",
+  "displayName": "NASA",
+  "description": "Retrieve data from the NASA API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Asteroid Neo-Feed",
+      "default": null
+    },
+    {
+      "name": "Asteroid Neo-Lookup",
+      "default": null
+    },
+    {
+      "name": "Astronomy Picture of the Day",
+      "default": null
+    },
+    {
+      "name": "DONKI Coronal Mass Ejection",
+      "default": null
+    },
+    {
+      "name": "DONKI High Speed Stream",
+      "default": null
+    },
+    {
+      "name": "DONKI Interplanetary Shock",
+      "default": null
+    },
+    {
+      "name": "DONKI Magnetopause Crossing",
+      "default": null
+    },
+    {
+      "name": "DONKI Notification",
+      "default": null
+    },
+    {
+      "name": "DONKI Radiation Belt Enhancement",
+      "default": null
+    },
+    {
+      "name": "DONKI Solar Energetic Particle",
+      "default": null
+    },
+    {
+      "name": "DONKI Solar Flare",
+      "default": null
+    },
+    {
+      "name": "DONKI WSA+EnlilSimulation",
+      "default": null
+    },
+    {
+      "name": "Earth Asset",
+      "default": null
+    },
+    {
+      "name": "Earth Imagery",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get the Astronomy Picture of the Day"
+    },
+    {
+      "name": "asteroidId",
+      "displayName": "Asteroid ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the asteroid to be returned",
+      "placeholder": "3542519",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to include all the close approach data in the asteroid lookup",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "download",
+      "displayName": "Download Image",
+      "type": "boolean",
+      "default": true,
+      "description": "By default just the URL of the image is returned. When set to true the image will be downloaded."
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Put Output File in Field",
+      "type": "string",
+      "default": "data",
+      "placeholder": "Add field",
+      "required": true
+    },
+    {
+      "name": "endDate",
+      "displayName": "End Date",
+      "type": "dateTime",
+      "default": "",
+      "placeholder": "YYYY-MM-DD"
+    },
+    {
+      "name": "location",
+      "displayName": "Location",
+      "type": "options",
+      "default": "ALL",
+      "description": "The location of the geomagnetic storm"
+    },
+    {
+      "name": "Earth",
+      "default": null
+    },
+    {
+      "name": "Messenger",
+      "default": null
+    },
+    {
+      "name": "Stereo A",
+      "default": null
+    },
+    {
+      "name": "Stereo B",
+      "default": null
+    },
+    {
+      "name": "catalog",
+      "displayName": "Catalog",
+      "type": "options",
+      "default": "ALL",
+      "description": "The catalog of the geomagnetic storm"
+    },
+    {
+      "name": "SWRC Catalog",
+      "default": null
+    },
+    {
+      "name": "Winslow Messenger ICME Catalog",
+      "default": null
+    },
+    {
+      "name": "lat",
+      "displayName": "Latitude",
+      "type": "number",
+      "default": "",
+      "description": "Latitude for the location of the image",
+      "placeholder": "47.751076"
+    },
+    {
+      "name": "lon",
+      "displayName": "Longitude",
+      "type": "number",
+      "default": "",
+      "description": "Longitude for the location of the image",
+      "placeholder": "-120.740135"
+    },
+    {
+      "name": "dim",
+      "displayName": "Degrees",
+      "type": "number",
+      "default": "",
+      "description": "Width and height of the image in degrees",
+      "placeholder": "0.025"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 20,
+      "description": "Max number of results to return"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "nasaApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "asteroidId",
+      "required": true
+    },
+    {
+      "name": "download",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "required": false
+    },
+    {
+      "name": "additionalFields",
+      "required": false
+    },
+    {
+      "name": "catalog",
+      "required": false
+    },
+    {
+      "name": "lat",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "required": false
+    }
+  ]
+}

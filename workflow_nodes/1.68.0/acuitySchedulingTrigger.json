@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.acuitySchedulingTrigger",
+  "displayName": "Acuity Scheduling Trigger",
+  "description": "Handle Acuity Scheduling events via webhooks",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

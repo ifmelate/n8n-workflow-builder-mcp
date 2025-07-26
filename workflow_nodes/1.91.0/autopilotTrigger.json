@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.autopilotTrigger",
+  "displayName": "Autopilot Trigger",
+  "description": "Handle Autopilot events via webhooks",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

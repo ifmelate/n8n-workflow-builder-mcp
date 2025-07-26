@@ -1,0 +1,82 @@
+{
+  "nodeType": "n8n-nodes-base.humanticAi",
+  "displayName": "Humantic AI",
+  "description": "Consume Humantic AI API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "userId",
+      "displayName": "User ID",
+      "type": "string",
+      "default": "",
+      "description": "The LinkedIn profile URL or email ID for creating a Humantic profile. If you are sending the resume, this should be a unique string.",
+      "required": true
+    },
+    {
+      "name": "sendResume",
+      "displayName": "Send Resume",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to send a resume for a resume based analysis"
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Input Binary Field",
+      "type": "string",
+      "default": "data",
+      "description": "This value is the same as the User ID that was provided when the analysis was created. This could be a LinkedIn URL, email ID, or a unique string in case of resume based analysis.",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add option"
+    },
+    {
+      "name": "Hiring",
+      "default": null
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "",
+      "description": "Additional text written by the user"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a profile"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Retrieve a profile"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a profile"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "humanticAiApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "nodeType": "n8n-nodes-base.lonescale",
+  "displayName": "LoneScale",
+  "description": "Create List, add / delete items",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "description": "Manipulate list"
+    },
+    {
+      "name": "Item",
+      "default": null,
+      "description": "Manipulate item"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a list"
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null,
+      "description": "List of company",
+      "required": true
+    },
+    {
+      "name": "Contact",
+      "default": null,
+      "description": "List of contact"
+    },
+    {
+      "name": "list",
+      "displayName": "List Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "first_name",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "Contact first name",
+      "required": true
+    },
+    {
+      "name": "last_name",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "description": "Contact last name",
+      "required": true
+    },
+    {
+      "name": "company_name",
+      "displayName": "Company Name",
+      "type": "string",
+      "default": "",
+      "description": "Contact company name"
+    },
+    {
+      "name": "peopleAdditionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Contact full name",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "email",
+      "displayName": "Contact Email",
+      "type": "string",
+      "default": "",
+      "placeholder": "name@email.com"
+    },
+    {
+      "name": "current_position",
+      "displayName": "Current Position",
+      "type": "string",
+      "default": "",
+      "description": "Contact current position"
+    },
+    {
+      "name": "domain",
+      "displayName": "Company Domain",
+      "type": "string",
+      "default": "",
+      "description": "Contact company domain"
+    },
+    {
+      "name": "linkedin_url",
+      "displayName": "Linkedin Url",
+      "type": "string",
+      "default": "",
+      "description": "Contact Linkedin URL"
+    },
+    {
+      "name": "location",
+      "displayName": "Contact Location",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "contact_id",
+      "displayName": "Contact ID",
+      "type": "string",
+      "default": "",
+      "description": "Contact ID from your source"
+    },
+    {
+      "name": "companyAdditionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Company Linkedin URL",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of your list",
+      "placeholder": "list name",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "loneScaleApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "type",
+      "required": true
+    },
+    {
+      "name": "list",
+      "required": true
+    },
+    {
+      "name": "companyAdditionalFields",
+      "required": false
+    },
+    {
+      "name": "name",
+      "required": true
+    }
+  ]
+}

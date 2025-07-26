@@ -1,0 +1,47 @@
+{
+  "nodeType": "n8n-nodes-base.awsSnsTrigger",
+  "displayName": "AWS SNS Trigger",
+  "description": "Handle AWS SNS events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "topic",
+      "displayName": "Topic",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "placeholder": "Select a topic...",
+      "required": true
+    },
+    {
+      "name": "url",
+      "displayName": "By URL",
+      "type": "string",
+      "default": null,
+      "placeholder": "https://us-east-1.console.aws.amazon.com/sns/v3/home?region=us-east-1#/topic/arn:aws:sns:us-east-1:777777777777:your_topic"
+    },
+    {
+      "name": "id",
+      "displayName": "ID",
+      "type": "string",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "aws",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "topic",
+      "required": true
+    },
+    {
+      "name": "id",
+      "required": false
+    }
+  ]
+}

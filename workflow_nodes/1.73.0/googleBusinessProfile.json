@@ -1,0 +1,277 @@
+{
+  "nodeType": "n8n-nodes-base.googleBusinessProfile",
+  "displayName": "Google Business Profile",
+  "description": "Consume Google Business Profile API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "account",
+      "displayName": "Account",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "description": "The Google Business Profile account",
+      "required": true
+    },
+    {
+      "name": "name",
+      "displayName": "By name",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "location",
+      "displayName": "Location",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "description": "The specific location or business associated with the account",
+      "required": true
+    },
+    {
+      "name": "postType",
+      "displayName": "Post Type",
+      "type": "options",
+      "default": "STANDARD",
+      "description": "The type of post to create (standard, event, offer, or alert)",
+      "required": true
+    },
+    {
+      "name": "Event",
+      "default": null
+    },
+    {
+      "name": "Offer",
+      "default": null
+    },
+    {
+      "name": "Alert",
+      "default": null
+    },
+    {
+      "name": "summary",
+      "displayName": "Summary",
+      "type": "string",
+      "default": "",
+      "description": "The main text of the post",
+      "required": true
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "E.g. Sales this week.",
+      "required": true
+    },
+    {
+      "name": "startDateTime",
+      "displayName": "Start Date and Time",
+      "type": "dateTime",
+      "default": "",
+      "description": "The start date and time of the event",
+      "required": true
+    },
+    {
+      "name": "endDateTime",
+      "displayName": "End Date and Time",
+      "type": "dateTime",
+      "default": "",
+      "description": "The end date and time of the event",
+      "required": true
+    },
+    {
+      "name": "startDate",
+      "displayName": "Start Date",
+      "type": "string",
+      "default": "",
+      "description": "The start date of the offer",
+      "placeholder": "YYYY-MM-DD",
+      "required": true
+    },
+    {
+      "name": "endDate",
+      "displayName": "End Date",
+      "type": "string",
+      "default": "",
+      "description": "The end date of the offer",
+      "placeholder": "YYYY-MM-DD",
+      "required": true
+    },
+    {
+      "name": "alertType",
+      "displayName": "Alert Type",
+      "type": "options",
+      "default": "COVID_19",
+      "description": "The sub-type of the alert",
+      "required": true
+    },
+    {
+      "name": "additionalOptions",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "The language code of the post content. <a href=\"https://cloud.google.com/translate/docs/languages\" target=\"_blank\">More info</a>.",
+      "placeholder": "Add Option"
+    },
+    {
+      "name": "callToActionType",
+      "displayName": "Call to Action Type",
+      "type": "options",
+      "default": "ACTION_TYPE_UNSPECIFIED",
+      "description": "The type of call to action"
+    },
+    {
+      "name": "Book",
+      "default": null,
+      "description": "This post wants a user to book an appointment/table/etc"
+    },
+    {
+      "name": "Call",
+      "default": null,
+      "description": "This post wants a user to call the business"
+    },
+    {
+      "name": "Learn More",
+      "default": null,
+      "description": "This post wants a user to learn more (at their website)"
+    },
+    {
+      "name": "Order",
+      "default": null,
+      "description": "This post wants a user to order something"
+    },
+    {
+      "name": "Shop",
+      "default": null,
+      "description": "This post wants a user to browse a product catalog"
+    },
+    {
+      "name": "Sign Up",
+      "default": null,
+      "description": "This post wants a user to register/sign up/join something"
+    },
+    {
+      "name": "url",
+      "displayName": "Call to Action Url",
+      "type": "string",
+      "default": "",
+      "description": "The URL that users are sent to when clicking through the promotion"
+    },
+    {
+      "name": "couponCode",
+      "displayName": "Coupon Code",
+      "type": "string",
+      "default": "",
+      "description": "The coupon code for the offer"
+    },
+    {
+      "name": "redeemOnlineUrl",
+      "displayName": "Redeem Online Url",
+      "type": "string",
+      "default": "",
+      "description": "Link to redeem the offer"
+    },
+    {
+      "name": "termsConditions",
+      "displayName": "Terms and Conditions",
+      "type": "string",
+      "default": "",
+      "description": "The terms and conditions of the offer"
+    },
+    {
+      "name": "post",
+      "displayName": "Post",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "description": "Select the post to retrieve its details"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 20,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "notice",
+      "displayName": "Make sure that the updated options are supported by the post type. <a target='_blank' href='https://developers.google.com/my-business/reference/rest/v4/accounts.locations.localPosts#resource:-localpost'>More info</a>.",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "languageCode",
+      "displayName": "Language",
+      "type": "string",
+      "default": "",
+      "description": "The language code of the post content. <a href=\"https://cloud.google.com/translate/docs/languages\" target=\"_blank\">More info</a>.",
+      "placeholder": "e.g. en"
+    },
+    {
+      "name": "Get Offer",
+      "default": null,
+      "description": "Deprecated. Use OFFER in LocalPostTopicType to create a post with offer content."
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": "create",
+      "description": "Create a new post on Google Business Profile",
+      "options": []
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete an existing post"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Retrieve details of a specific post"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Retrieve multiple posts"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update an existing post"
+    },
+    {
+      "name": "review",
+      "displayName": "Review",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "description": "Select the review to retrieve its details",
+      "required": true
+    },
+    {
+      "name": "id",
+      "displayName": "By ID",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "reply",
+      "displayName": "Reply",
+      "type": "string",
+      "default": "",
+      "description": "The body of the reply (up to 4096 characters)"
+    },
+    {
+      "name": "Reply",
+      "default": null,
+      "description": "Reply to a review"
+    }
+  ],
+  "credentialsConfig": []
+}

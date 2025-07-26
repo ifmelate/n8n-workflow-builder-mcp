@@ -1,0 +1,239 @@
+{
+  "nodeType": "n8n-nodes-base.copper",
+  "displayName": "Copper",
+  "description": "Consume the Copper API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the company to create",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Description of the company to create",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "email_domain",
+      "displayName": "Email Domain",
+      "type": "string",
+      "default": "",
+      "description": "ID of the company to delete",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 5,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filterFields",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Country of the company to filter by",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "companyId",
+      "displayName": "Company ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the company to update",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Description to set for the company",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Delete",
+      "default": null
+    },
+    {
+      "name": "Get",
+      "default": null
+    },
+    {
+      "name": "Get Many",
+      "default": null
+    },
+    {
+      "name": "Update",
+      "default": null
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "leadId",
+      "displayName": "Lead ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the lead to update",
+      "required": true
+    },
+    {
+      "name": "customerSourceId",
+      "displayName": "Customer Source ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the customer source that generated this opportunity"
+    },
+    {
+      "name": "primaryContactId",
+      "displayName": "Primary Contact ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the primary company associated with this opportunity",
+      "required": true
+    },
+    {
+      "name": "customer_source_ids",
+      "displayName": "Customer Source IDs",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated IDs of the customer sources to filter by"
+    },
+    {
+      "name": "opportunityId",
+      "displayName": "Opportunity ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the opportunity to update",
+      "required": true
+    },
+    {
+      "name": "primary_contact_id",
+      "displayName": "Primary Contact ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the customer source that generated this opportunity"
+    },
+    {
+      "name": "personId",
+      "displayName": "Person ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the person to update",
+      "required": true
+    },
+    {
+      "name": "details",
+      "displayName": "Details",
+      "type": "string",
+      "default": "",
+      "description": "Description of the project to create"
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": "Open"
+    },
+    {
+      "name": "Open",
+      "default": null
+    },
+    {
+      "name": "projectId",
+      "displayName": "Project ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the project to delete",
+      "required": true
+    },
+    {
+      "name": "priority",
+      "displayName": "Priority",
+      "type": "options",
+      "default": "High"
+    },
+    {
+      "name": "None",
+      "default": null
+    },
+    {
+      "name": "taskId",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the task to delete",
+      "required": true
+    },
+    {
+      "name": "project_ids",
+      "displayName": "Project IDs",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated IDs of project IDs to filter by"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Customer Source",
+      "default": null
+    },
+    {
+      "name": "Lead",
+      "default": null
+    },
+    {
+      "name": "Opportunity",
+      "default": null
+    },
+    {
+      "name": "Person",
+      "default": null
+    },
+    {
+      "name": "Project",
+      "default": null
+    },
+    {
+      "name": "Task",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "copperApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

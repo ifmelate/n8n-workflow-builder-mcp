@@ -1,0 +1,74 @@
+{
+  "nodeType": "n8n-nodes-base.oura",
+  "displayName": "Oura",
+  "description": "Consume Oura API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get the user's personal information"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 5,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "End date for the summary retrieval. If omitted, it defaults to the current day.",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "start",
+      "displayName": "Start Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Start date for the summary retrieval. If omitted, it defaults to a week ago."
+    },
+    {
+      "name": "Get Readiness Summary",
+      "default": null,
+      "description": "Get the user's readiness summary"
+    },
+    {
+      "name": "Get Sleep Periods",
+      "default": null,
+      "description": "Get the user's sleep summary"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Summary",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "ouraApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

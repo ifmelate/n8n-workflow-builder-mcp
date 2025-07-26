@@ -1,0 +1,80 @@
+{
+  "nodeType": "n8n-nodes-base.microsoftOneDriveTrigger",
+  "displayName": "Microsoft OneDrive Trigger",
+  "description": "Trigger for Microsoft OneDrive API.",
+  "version": 1,
+  "properties": [
+    {
+      "name": "event",
+      "displayName": "Trigger On",
+      "type": "options",
+      "default": "fileCreated",
+      "description": "When a new file is created"
+    },
+    {
+      "name": "File Updated",
+      "default": null,
+      "description": "When an existing file is modified"
+    },
+    {
+      "name": "Folder Created",
+      "default": null,
+      "description": "When a new folder is created"
+    },
+    {
+      "name": "Folder Updated",
+      "default": null,
+      "description": "When an existing folder is modified"
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    },
+    {
+      "name": "watchFolder",
+      "displayName": "Watch Folder",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to watch for the created file in a given folder, rather than the entire OneDrive"
+    },
+    {
+      "name": "watch",
+      "displayName": "Watch",
+      "type": "options",
+      "default": "anyFile",
+      "description": "How to select which file to watch"
+    },
+    {
+      "name": "Inside a Folder",
+      "default": null,
+      "description": "Watch for updated files inside a selected folder"
+    },
+    {
+      "name": "A Selected File",
+      "default": null,
+      "description": "Watch a specific file for updates"
+    },
+    {
+      "name": "A Selected Folder",
+      "default": null,
+      "description": "Watch a specific folder for updates"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to look for modified files/folders in all nested folders, rather than only direct descendants",
+      "placeholder": "Add option"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "microsoftOneDriveOAuth2Api",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.code",
+  "displayName": "LangChain Code",
+  "description": "LangChain Code Node",
+  "version": 1,
+  "properties": [
+    {
+      "name": "code",
+      "displayName": "Code",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Code"
+    },
+    {
+      "name": "supplyData",
+      "displayName": "Supply Data",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "notice",
+      "displayName": "You can import LangChain and use all available functionality. Debug by using <code>console.log()</code> statements and viewing their output in the browser console.",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "inputs",
+      "displayName": "Inputs",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "The input to add",
+      "placeholder": "Add Input",
+      "required": true
+    },
+    {
+      "name": "maxConnections",
+      "displayName": "Max Connections",
+      "type": "number",
+      "default": null,
+      "description": "How many nodes of this type are allowed to be connected. Set it to -1 for unlimited.",
+      "required": true
+    },
+    {
+      "name": "required",
+      "displayName": "Required",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the input needs a connection",
+      "required": true
+    },
+    {
+      "name": "outputs",
+      "displayName": "Outputs",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "The output to add",
+      "placeholder": "Add Output",
+      "required": true
+    }
+  ],
+  "credentialsConfig": []
+}

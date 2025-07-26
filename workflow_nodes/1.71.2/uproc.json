@@ -1,0 +1,26 @@
+{
+  "nodeType": "n8n-nodes-base.uproc",
+  "displayName": "uProc",
+  "description": "Consume uProc API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "additionalOptions",
+      "displayName": "Additional Options",
+      "type": "collection",
+      "default": {},
+      "description": "URL to send tool response when tool has resolved your request",
+      "placeholder": "Add option"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "uprocApi",
+      "required": true
+    },
+    {
+      "name": "additionalOptions",
+      "required": false
+    }
+  ]
+}

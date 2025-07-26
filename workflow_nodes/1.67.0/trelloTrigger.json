@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.trelloTrigger",
+  "displayName": "Trello Trigger",
+  "description": "Starts the workflow when Trello events occur",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

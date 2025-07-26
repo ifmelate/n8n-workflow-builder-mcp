@@ -1,0 +1,30 @@
+{
+  "nodeType": "n8n-nodes-base.aiTransform",
+  "displayName": "AI Transform",
+  "description": "Modify data based on instructions written in plain english",
+  "version": 1,
+  "properties": [
+    {
+      "name": "instructions",
+      "displayName": "Instructions",
+      "type": "button",
+      "default": "",
+      "description": "Provide instructions on how you want to transform the data, then click 'Generate code'. Use dot notation to refer to nested fields (e.g. address.street).",
+      "placeholder": "Example: Merge 'firstname' and 'lastname' into a field 'details.name' and sort by 'email'"
+    },
+    {
+      "name": "jsCode",
+      "displayName": "Transformation Code",
+      "type": "string",
+      "default": "",
+      "description": "Read-only. To edit this code, adjust the prompt or copy and paste it into a Code node."
+    },
+    {
+      "name": "hint",
+      "displayName": "Click on 'Test step' to run the transformation code. Further executions will use the generated code (and not invoke AI again).",
+      "type": "notice",
+      "default": ""
+    }
+  ],
+  "credentialsConfig": []
+}

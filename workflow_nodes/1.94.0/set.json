@@ -1,0 +1,124 @@
+{
+  "nodeType": "n8n-nodes-base.set",
+  "displayName": "Set",
+  "description": null,
+  "version": "3.4",
+  "properties": [
+    {
+      "name": "mode",
+      "displayName": "Mode",
+      "type": "options",
+      "default": null,
+      "description": "Edit item fields one by one"
+    },
+    {
+      "name": "JSON",
+      "default": null,
+      "description": "Customize item output with JSON"
+    },
+    {
+      "name": "duplicateItem",
+      "displayName": "Duplicate Item",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "duplicateCount",
+      "displayName": "Duplicate Item Count",
+      "type": "number",
+      "default": 0,
+      "description": "How many times the item should be duplicated, mainly used for testing and debugging"
+    },
+    {
+      "name": "duplicateWarning",
+      "displayName": "Item duplication is set in the node settings. This option will be ignored when the workflow runs automatically.",
+      "type": "notice",
+      "default": "",
+      "description": "How to select the fields you want to include in your output items"
+    },
+    {
+      "name": "No Input Fields",
+      "default": null,
+      "description": "Include only the fields specified above"
+    },
+    {
+      "name": "Selected Input Fields",
+      "default": null,
+      "description": "Also include the fields listed in the parameter “Fields to Include”"
+    },
+    {
+      "name": "All Input Fields Except",
+      "default": null,
+      "description": "Exclude the fields listed in the parameter “Fields to Exclude”"
+    },
+    {
+      "name": "includeOtherFields",
+      "displayName": "Include Other Input Fields",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to pass to the output all the input fields (along with the fields set in 'Fields to Set')"
+    },
+    {
+      "name": "include",
+      "displayName": "Input Fields to Include",
+      "type": "options",
+      "default": "all",
+      "description": "How to select the fields you want to include in your output items"
+    },
+    {
+      "name": "Selected",
+      "default": null,
+      "description": "Also include the fields listed in the parameter “Fields to Include”"
+    },
+    {
+      "name": "All Except",
+      "default": null,
+      "description": "Exclude the fields listed in the parameter “Fields to Exclude”"
+    },
+    {
+      "name": "includeFields",
+      "displayName": "Fields to Include",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of the field names you want to include in the output. You can drag the selected fields from the input panel.",
+      "placeholder": "e.g. fieldToInclude1,fieldToInclude2"
+    },
+    {
+      "name": "excludeFields",
+      "displayName": "Fields to Exclude",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of the field names you want to exclude from the output. You can drag the selected fields from the input panel.",
+      "placeholder": "e.g. fieldToExclude1,fieldToExclude2"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add option"
+    },
+    {
+      "name": "stripBinary",
+      "displayName": "Strip Binary Data",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether binary data should be stripped from the input item. Only applies when \"Include Other Input Fields\" is enabled."
+    },
+    {
+      "name": "ignoreConversionErrors",
+      "displayName": "Ignore Type Conversion Errors",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to ignore field type errors and apply a less strict type conversion"
+    },
+    {
+      "name": "dotNotation",
+      "displayName": "Support Dot Notation",
+      "type": "boolean",
+      "default": true,
+      "description": "By default, dot-notation is used in property names. This means that \"a.b\" will set the property \"b\" underneath \"a\" so { \"a\": { \"b\": value} }. If that is not intended this can be deactivated, it will then set { \"a.b\": value } instead."
+    }
+  ],
+  "credentialsConfig": []
+}

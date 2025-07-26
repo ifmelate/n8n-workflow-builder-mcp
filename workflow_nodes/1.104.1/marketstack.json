@@ -1,0 +1,126 @@
+{
+  "nodeType": "n8n-nodes-base.marketstack",
+  "displayName": "Marketstack",
+  "description": "Consume Marketstack API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "symbols",
+      "displayName": "Ticker",
+      "type": "string",
+      "default": "",
+      "description": "One or multiple comma-separated stock symbols (tickers) to retrieve, e.g. <code>AAPL</code> or <code>AAPL,MSFT</code>",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Stock exchange to filter results by, specified by <a href=\"https://en.wikipedia.org/wiki/Market_Identifier_Code\">Market Identifier Code</a>, e.g. <code>XNAS</code>",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "latest",
+      "displayName": "Latest",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to fetch the most recent stock market data"
+    },
+    {
+      "name": "sort",
+      "displayName": "Sort Order",
+      "type": "options",
+      "default": null,
+      "description": "Order to sort results in"
+    },
+    {
+      "name": "Descending",
+      "default": null
+    },
+    {
+      "name": "specificDate",
+      "displayName": "Specific Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Date in YYYY-MM-DD format, e.g. <code>2020-01-01</code>, or in ISO-8601 date format, e.g. <code>2020-05-21T00:00:00+0000</code>"
+    },
+    {
+      "name": "dateFrom",
+      "displayName": "Timeframe Start Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Timeframe start date in YYYY-MM-DD format, e.g. <code>2020-01-01</code>, or in ISO-8601 date format, e.g. <code>2020-05-21T00:00:00+0000</code>"
+    },
+    {
+      "name": "dateTo",
+      "displayName": "Timeframe End Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Timeframe end date in YYYY-MM-DD format, e.g. <code>2020-01-01</code>, or in ISO-8601 date format, e.g. <code>2020-05-21T00:00:00+0000</code>"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "exchange",
+      "displayName": "Exchange",
+      "type": "string",
+      "default": "",
+      "description": "Stock exchange to retrieve, specified by <a href=\"https://en.wikipedia.org/wiki/Market_Identifier_Code\">Market Identifier Code</a>, e.g. <code>XNAS</code>",
+      "required": true
+    },
+    {
+      "name": "symbol",
+      "displayName": "Ticker",
+      "type": "string",
+      "default": "",
+      "description": "Stock symbol (ticker) to retrieve, e.g. <code>AAPL</code>",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "description": "Stock market closing data"
+    },
+    {
+      "name": "Exchange",
+      "default": null,
+      "description": "Stock market exchange"
+    },
+    {
+      "name": "Ticker",
+      "default": null,
+      "description": "Stock market symbol"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "marketstackApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "nodeType": "n8n-nodes-base.microsoftExcel",
+  "displayName": "MicrosoftExcel",
+  "description": null,
+  "version": "2.1",
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "description": "Represents an Excel table"
+    },
+    {
+      "name": "Workbook",
+      "default": null,
+      "description": "Workbook is the top level object which contains related workbook objects such as worksheets, tables, ranges, etc"
+    },
+    {
+      "name": "Worksheet",
+      "default": null,
+      "description": "An Excel worksheet is a grid of cells. It can contain data, tables, charts, etc."
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "microsoftExcelOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

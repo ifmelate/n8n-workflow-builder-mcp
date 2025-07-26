@@ -1,0 +1,543 @@
+{
+  "nodeType": "n8n-nodes-base.monicaCrm",
+  "displayName": "Monica CRM",
+  "description": "Consume the Monica CRM API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "activityTypeId",
+      "displayName": "Activity Type Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "contacts",
+      "displayName": "Contacts",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of IDs of the contacts to associate the activity with",
+      "required": true
+    },
+    {
+      "name": "happenedAt",
+      "displayName": "Happened At",
+      "type": "dateTime",
+      "default": "",
+      "description": "Date when the activity happened",
+      "required": true
+    },
+    {
+      "name": "summary",
+      "displayName": "Summary",
+      "type": "string",
+      "default": "",
+      "description": "Brief description of the activity - max 255 characters",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Description of the activity - max 100,000 characters",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "activityId",
+      "displayName": "Activity ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the activity to delete",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": "",
+      "description": "Description to add more details on the activity - max 100,000 characters"
+    },
+    {
+      "name": "happened_at",
+      "displayName": "Happened At",
+      "type": "dateTime",
+      "default": "",
+      "description": "Date when the activity happened"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create an activity"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete an activity"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Retrieve an activity"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Retrieve many activities"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update an activity"
+    },
+    {
+      "name": "contactId",
+      "displayName": "Contact ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the contact to associate the call with",
+      "required": true
+    },
+    {
+      "name": "calledAt",
+      "displayName": "Called At",
+      "type": "dateTime",
+      "default": "",
+      "description": "Date when the call happened",
+      "required": true
+    },
+    {
+      "name": "content",
+      "displayName": "Description",
+      "type": "string",
+      "default": "",
+      "description": "Description of the call - max 100,000 characters",
+      "required": true
+    },
+    {
+      "name": "contactFieldTypeId",
+      "displayName": "Contact Field Type Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "data",
+      "displayName": "Content",
+      "type": "string",
+      "default": "",
+      "description": "Content of the contact field - max 255 characters",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "contactFieldId",
+      "displayName": "Contact Field ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the contact field to update",
+      "required": true
+    },
+    {
+      "name": "firstName",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "genderId",
+      "displayName": "Gender Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "deceasedDate",
+      "displayName": "Deceased Date",
+      "type": "dateTime",
+      "default": ""
+    },
+    {
+      "name": "isDeceased",
+      "displayName": "Is Deceased",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the contact has passed away"
+    },
+    {
+      "name": "last_name",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "nickname",
+      "displayName": "Nickname",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "is_partial",
+      "displayName": "Type",
+      "type": "options",
+      "default": false,
+      "description": "Contact with their own contact sheet"
+    },
+    {
+      "name": "Partial",
+      "default": null,
+      "description": "Contact without their own contact sheet"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Search term to filter results by",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "sort",
+      "displayName": "Sort",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Descended Created At",
+      "default": null
+    },
+    {
+      "name": "Ascended Updated At",
+      "default": null
+    },
+    {
+      "name": "Descended Updated At",
+      "default": null
+    },
+    {
+      "name": "deceased_date",
+      "displayName": "Deceased Date",
+      "type": "dateTime",
+      "default": ""
+    },
+    {
+      "name": "first_name",
+      "displayName": "First Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "gender_id",
+      "displayName": "Gender Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "is_deceased",
+      "displayName": "Is Deceased",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the contact has passed away"
+    },
+    {
+      "name": "tagsToAdd",
+      "displayName": "Tag Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Tags to add to the contact. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "tagsToRemove",
+      "displayName": "Tag Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Tags to remove from the contact. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "Remove",
+      "default": null
+    },
+    {
+      "name": "conversationId",
+      "displayName": "Conversation ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the contact whose conversation",
+      "required": true
+    },
+    {
+      "name": "writtenAt",
+      "displayName": "Written At",
+      "type": "dateTime",
+      "default": "",
+      "description": "Date when the message was written",
+      "required": true
+    },
+    {
+      "name": "writtenByMe",
+      "displayName": "Written By",
+      "type": "options",
+      "default": true,
+      "description": "Author of the message",
+      "required": true
+    },
+    {
+      "name": "Contact",
+      "default": null
+    },
+    {
+      "name": "messageId",
+      "displayName": "Message ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the message to update",
+      "required": true
+    },
+    {
+      "name": "written_at",
+      "displayName": "Written At",
+      "type": "dateTime",
+      "default": "",
+      "description": "Date when the message was written"
+    },
+    {
+      "name": "written_by_me",
+      "displayName": "Written By",
+      "type": "options",
+      "default": true,
+      "description": "Author of the message"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title of the journal entry - max 250 characters",
+      "required": true
+    },
+    {
+      "name": "post",
+      "displayName": "Content",
+      "type": "string",
+      "default": "",
+      "description": "Content of the journal entry - max 100,000 characters",
+      "required": true
+    },
+    {
+      "name": "body",
+      "displayName": "Body",
+      "type": "string",
+      "default": "",
+      "description": "Body of the note - max 100,000 characters",
+      "required": true
+    },
+    {
+      "name": "noteId",
+      "displayName": "Note ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the note to delete",
+      "required": true
+    },
+    {
+      "name": "contact_id",
+      "displayName": "Contact ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the contact to associate the note with"
+    },
+    {
+      "name": "is_favorited",
+      "displayName": "Is Favorited",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the note has been favorited"
+    },
+    {
+      "name": "frequencyType",
+      "displayName": "Frequency Type",
+      "type": "options",
+      "default": "one_time",
+      "description": "Type of frequency of the reminder",
+      "required": true
+    },
+    {
+      "name": "Weekly",
+      "default": null
+    },
+    {
+      "name": "Monthly",
+      "default": null
+    },
+    {
+      "name": "Yearly",
+      "default": null
+    },
+    {
+      "name": "frequencyNumber",
+      "displayName": "Recurring Interval",
+      "type": "number",
+      "default": 0,
+      "description": "Interval for the reminder"
+    },
+    {
+      "name": "initialDate",
+      "displayName": "Initial Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Date of the reminder",
+      "required": true
+    },
+    {
+      "name": "reminderId",
+      "displayName": "Reminder ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the reminder to delete",
+      "required": true
+    },
+    {
+      "name": "frequency_type",
+      "displayName": "Frequency Type",
+      "type": "options",
+      "default": "one_time",
+      "description": "Frequency of the reminder"
+    },
+    {
+      "name": "Week",
+      "default": null
+    },
+    {
+      "name": "Month",
+      "default": null
+    },
+    {
+      "name": "Year",
+      "default": null
+    },
+    {
+      "name": "initial_data",
+      "displayName": "Initial Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Date of the reminder"
+    },
+    {
+      "name": "frequency_number",
+      "displayName": "Recurring Interval",
+      "type": "number",
+      "default": 0,
+      "description": "Interval for the reminder"
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the tag - max 250 characters",
+      "required": true
+    },
+    {
+      "name": "taskId",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the task to delete",
+      "required": true
+    },
+    {
+      "name": "completed",
+      "displayName": "Completed",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the task has been completed"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Call",
+      "default": null
+    },
+    {
+      "name": "Contact Field",
+      "default": null
+    },
+    {
+      "name": "Contact Tag",
+      "default": null
+    },
+    {
+      "name": "Conversation",
+      "default": null
+    },
+    {
+      "name": "Conversation Message",
+      "default": null
+    },
+    {
+      "name": "Journal Entry",
+      "default": null
+    },
+    {
+      "name": "Note",
+      "default": null
+    },
+    {
+      "name": "Reminder",
+      "default": null
+    },
+    {
+      "name": "Tag",
+      "default": null
+    },
+    {
+      "name": "Task",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "monicaCrmApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

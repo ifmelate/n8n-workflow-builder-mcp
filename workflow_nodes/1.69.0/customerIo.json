@@ -1,0 +1,206 @@
+{
+  "nodeType": "n8n-nodes-base.customerIo",
+  "displayName": "Customer.io",
+  "description": "Consume Customer.io API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "campaignId",
+      "displayName": "Campaign ID",
+      "type": "number",
+      "default": 0,
+      "description": "The unique identifier for the campaign",
+      "required": true
+    },
+    {
+      "name": "period",
+      "displayName": "Period",
+      "type": "options",
+      "default": "days",
+      "description": "Specify metric period"
+    },
+    {
+      "name": "Days",
+      "default": null
+    },
+    {
+      "name": "Weeks",
+      "default": null
+    },
+    {
+      "name": "Months",
+      "default": null
+    },
+    {
+      "name": "jsonParameters",
+      "displayName": "JSON Parameters",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Integer specifying how many steps to return. Defaults to the maximum number of timeperiods available, or 12 when using the months period. Maximum timeperiods available are 24 hours, 45 days, 12 weeks and 120 months",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": "empty",
+      "description": "Specify metric type"
+    },
+    {
+      "name": "Empty",
+      "default": null
+    },
+    {
+      "name": "Push",
+      "default": null
+    },
+    {
+      "name": "Slack",
+      "default": null
+    },
+    {
+      "name": "Twilio",
+      "default": null
+    },
+    {
+      "name": "Urban Airship",
+      "default": null
+    },
+    {
+      "name": "Webhook",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Get Many",
+      "default": null
+    },
+    {
+      "name": "Get Metrics",
+      "default": null
+    },
+    {
+      "name": "id",
+      "displayName": "ID",
+      "type": "string",
+      "default": "",
+      "description": "The unique identifier for the customer",
+      "required": true
+    },
+    {
+      "name": "additionalFieldsJson",
+      "displayName": "Additional Fields",
+      "type": "json",
+      "default": "",
+      "description": "Object of values to set as described <a href=\"https://github.com/agilecrm/rest-api#1-companys---companies-api\">here</a>"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Property value",
+      "placeholder": "Basic",
+      "required": true
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "The email address of the user",
+      "placeholder": "name@email.com"
+    },
+    {
+      "name": "createdAt",
+      "displayName": "Created At",
+      "type": "dateTime",
+      "default": "",
+      "description": "The UNIX timestamp from when the user was created"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a customer"
+    },
+    {
+      "name": "customerId",
+      "displayName": "Customer ID",
+      "type": "string",
+      "default": "",
+      "description": "The unique identifier for the customer",
+      "required": true
+    },
+    {
+      "name": "eventName",
+      "displayName": "Event Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the event to track"
+    },
+    {
+      "name": "Track Anonymous",
+      "default": null,
+      "description": "Track an anonymous event"
+    },
+    {
+      "name": "segmentId",
+      "displayName": "Segment ID",
+      "type": "number",
+      "default": 0,
+      "description": "The unique identifier of the segment",
+      "required": true
+    },
+    {
+      "name": "customerIds",
+      "displayName": "Customer IDs",
+      "type": "string",
+      "default": "",
+      "description": "A list of customer IDs to add to the segment",
+      "required": true
+    },
+    {
+      "name": "Remove Customer",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Event",
+      "default": null
+    },
+    {
+      "name": "Campaign",
+      "default": null
+    },
+    {
+      "name": "Segment",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "customerIoApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

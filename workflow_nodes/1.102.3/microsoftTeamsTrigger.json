@@ -1,0 +1,123 @@
+{
+  "nodeType": "n8n-nodes-base.microsoftTeamsTrigger",
+  "displayName": "Microsoft Teams Trigger",
+  "description": "Triggers workflows in n8n based on events from Microsoft Teams, such as new messages or team updates, using specified configurations.",
+  "version": 1,
+  "properties": [
+    {
+      "name": "event",
+      "displayName": "Trigger On",
+      "type": "options",
+      "default": "newChannelMessage",
+      "description": "A new channel is created"
+    },
+    {
+      "name": "New Channel Message",
+      "default": null,
+      "description": "A message is posted to a channel"
+    },
+    {
+      "name": "New Chat",
+      "default": null,
+      "description": "A new chat is created"
+    },
+    {
+      "name": "New Chat Message",
+      "default": null,
+      "description": "A message is posted to a chat"
+    },
+    {
+      "name": "New Team Member",
+      "default": null,
+      "description": "A new member is added to a team"
+    },
+    {
+      "name": "watchAllTeams",
+      "displayName": "Watch All Teams",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to watch for the event in all the available teams"
+    },
+    {
+      "name": "teamId",
+      "displayName": "Team",
+      "type": "resourceLocator",
+      "default": "{\n\t\t\t\t\tmode: 'list',\n\t\t\t\t\tvalue: '',\n\t\t\t\t}",
+      "description": "Select a team from the list, enter an ID or a URL",
+      "placeholder": "Select a team...",
+      "required": true
+    },
+    {
+      "name": "id",
+      "displayName": "By ID",
+      "type": "string",
+      "default": null,
+      "placeholder": "e.g., 61165b04-e4cc-4026-b43f-926b4e2a7182"
+    },
+    {
+      "name": "url",
+      "displayName": "By URL",
+      "type": "string",
+      "default": null,
+      "placeholder": "e.g., https://teams.microsoft.com/l/team/19%3A=your-team-id&tenantId=..."
+    },
+    {
+      "name": "watchAllChannels",
+      "displayName": "Watch All Channels",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to watch for the event in all the available channels"
+    },
+    {
+      "name": "channelId",
+      "displayName": "Channel",
+      "type": "resourceLocator",
+      "default": "{\n\t\t\t\t\tmode: 'list',\n\t\t\t\t\tvalue: '',\n\t\t\t\t}",
+      "description": "Select a channel from the list, enter an ID or a URL",
+      "placeholder": "Select a channel...",
+      "required": true
+    },
+    {
+      "name": "watchAllChats",
+      "displayName": "Watch All Chats",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to watch for the event in all the available chats"
+    },
+    {
+      "name": "chatId",
+      "displayName": "Chat",
+      "type": "resourceLocator",
+      "default": "{\n\t\t\t\t\tmode: 'list',\n\t\t\t\t\tvalue: '',\n\t\t\t\t}",
+      "description": "Select a chat from the list, enter an ID or a URL",
+      "placeholder": "Select a chat...",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "microsoftTeamsOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "event",
+      "required": false
+    },
+    {
+      "name": "watchAllTeams",
+      "required": true
+    },
+    {
+      "name": "watchAllChannels",
+      "required": true
+    },
+    {
+      "name": "watchAllChats",
+      "required": true
+    }
+  ]
+}

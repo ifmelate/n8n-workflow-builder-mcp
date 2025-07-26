@@ -1,0 +1,87 @@
+{
+  "nodeType": "n8n-nodes-base.htmlExtract",
+  "displayName": "HTML Extract",
+  "description": "Extracts data from HTML",
+  "version": 1,
+  "properties": [
+    {
+      "name": "sourceData",
+      "displayName": "Source Data",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "JSON",
+      "default": null
+    },
+    {
+      "name": "dataPropertyName",
+      "displayName": "Input Binary Field",
+      "type": "string",
+      "default": "data",
+      "required": true
+    },
+    {
+      "name": "extractionValues",
+      "displayName": "Extraction Values",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "The key under which the extracted value should be saved",
+      "placeholder": "Add Value"
+    },
+    {
+      "name": "cssSelector",
+      "displayName": "CSS Selector",
+      "type": "string",
+      "default": "",
+      "description": "The CSS selector to use",
+      "placeholder": ".price"
+    },
+    {
+      "name": "returnValue",
+      "displayName": "Return Value",
+      "type": "options",
+      "default": null,
+      "description": "Get an attribute value like \"class\" from an element"
+    },
+    {
+      "name": "HTML",
+      "default": null,
+      "description": "Get the HTML the element contains"
+    },
+    {
+      "name": "Text",
+      "default": null,
+      "description": "Get only the text content of the element"
+    },
+    {
+      "name": "Value",
+      "default": null,
+      "description": "Get value of an input, select or textarea"
+    },
+    {
+      "name": "attribute",
+      "displayName": "Attribute",
+      "type": "string",
+      "default": "",
+      "description": "The name of the attribute to return the value off",
+      "placeholder": "class"
+    },
+    {
+      "name": "returnArray",
+      "displayName": "Return Array",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return the values as an array so if multiple ones get found they also get returned separately. If not set all will be returned as a single string."
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to remove automatically all spaces and newlines from the beginning and end of the values",
+      "placeholder": "Add option"
+    }
+  ],
+  "credentialsConfig": []
+}
