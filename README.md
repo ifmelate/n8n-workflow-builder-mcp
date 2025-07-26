@@ -114,7 +114,7 @@ For development or local testing, you can clone and build from source:
          "env": {
            "N8N_API_URL": "http://localhost:5678",
            "N8N_API_KEY": "your-n8n-api-key-here",
-           "N8N_VERSION": "1.72.1"
+           //"N8N_VERSION": "1.72.1" - optional
          }
        }
      }
