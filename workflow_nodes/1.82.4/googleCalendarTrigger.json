@@ -1,0 +1,72 @@
+{
+  "nodeType": "n8n-nodes-base.googleCalendarTrigger",
+  "displayName": "Google Calendar Trigger",
+  "description": "Starts the workflow when Google Calendar events occur",
+  "version": 1,
+  "properties": [
+    {
+      "name": "calendarId",
+      "displayName": "Calendar",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "description": "Google Calendar to operate on",
+      "placeholder": "Select a Calendar...",
+      "required": true
+    },
+    {
+      "name": "id",
+      "displayName": "ID",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "triggerOn",
+      "displayName": "Trigger On",
+      "type": "options",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "Event Created",
+      "default": null
+    },
+    {
+      "name": "Event Ended",
+      "default": null
+    },
+    {
+      "name": "Event Started",
+      "default": null
+    },
+    {
+      "name": "Event Updated",
+      "default": null
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Free text search terms to filter events that match these terms in any field, except for extended properties",
+      "placeholder": "Add option"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googleCalendarOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "calendarId",
+      "required": true
+    },
+    {
+      "name": "triggerOn",
+      "required": true
+    },
+    {
+      "name": "options",
+      "required": false
+    }
+  ]
+}

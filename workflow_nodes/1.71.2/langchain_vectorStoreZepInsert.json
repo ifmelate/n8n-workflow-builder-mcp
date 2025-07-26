@@ -1,0 +1,46 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.vectorStoreZepInsert",
+  "displayName": "Zep Vector Store: Insert",
+  "description": "Insert data into Zep Vector Store index",
+  "version": 1,
+  "properties": [
+    {
+      "name": "collectionName",
+      "displayName": "Collection Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "notice",
+      "displayName": "Specify the document to load in the document loader sub-node",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to allow using characters from the Unicode surrogate blocks",
+      "placeholder": "Add Option"
+    },
+    {
+      "name": "isAutoEmbedded",
+      "displayName": "Is Auto Embedded",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to automatically embed documents when they are added"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "zepApi",
+      "required": true
+    },
+    {
+      "name": "collectionName",
+      "required": true
+    }
+  ]
+}

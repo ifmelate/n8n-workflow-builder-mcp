@@ -1,0 +1,187 @@
+{
+  "nodeType": "n8n-nodes-base.demio",
+  "displayName": "Demio",
+  "description": "Consume the Demio API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "Past",
+      "default": null
+    },
+    {
+      "name": "Upcoming",
+      "default": null
+    },
+    {
+      "name": "eventId",
+      "displayName": "Event ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to return only active dates in series",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "date_id",
+      "displayName": "Session ID",
+      "type": "string",
+      "default": "",
+      "description": "Event Date ID"
+    },
+    {
+      "name": "firstName",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "The registrant's first name",
+      "required": true
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "The registrant's email address",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "customFieldsUi",
+      "displayName": "Custom Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Each custom field's unique identifier can be found within the Event's Registration block in the Customize tab",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "The value to set on custom field"
+    },
+    {
+      "name": "ref_url",
+      "displayName": "Event Registration URL",
+      "type": "string",
+      "default": "",
+      "description": "Event Registration page URL. It can be useful when you do not know Event ID, but have Event link."
+    },
+    {
+      "name": "gdpr",
+      "displayName": "GDPR",
+      "type": "string",
+      "default": "",
+      "description": "The value for the predefined GDPR field"
+    },
+    {
+      "name": "last_name",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "description": "The value for the predefined Last Name field"
+    },
+    {
+      "name": "phone_number",
+      "displayName": "Phone Number",
+      "type": "string",
+      "default": "",
+      "description": "The value for the predefined Phone Number field"
+    },
+    {
+      "name": "website",
+      "displayName": "Website",
+      "type": "string",
+      "default": "",
+      "description": "The value for the predefined Website field"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get an event"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many events"
+    },
+    {
+      "name": "Register",
+      "default": null,
+      "description": "Register someone to an event"
+    },
+    {
+      "name": "dateId",
+      "displayName": "Session Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the session. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "Banned",
+      "default": null
+    },
+    {
+      "name": "Completed",
+      "default": null
+    },
+    {
+      "name": "Did Not Attend",
+      "default": null
+    },
+    {
+      "name": "Left Early",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Report",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "demioApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

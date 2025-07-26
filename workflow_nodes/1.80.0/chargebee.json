@@ -1,0 +1,217 @@
+{
+  "nodeType": "n8n-nodes-base.chargebee",
+  "displayName": "Chargebee",
+  "description": "Retrieve data from Chargebee API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Invoice",
+      "default": null
+    },
+    {
+      "name": "Subscription",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a customer"
+    },
+    {
+      "name": "properties",
+      "displayName": "Properties",
+      "type": "collection",
+      "default": {},
+      "description": "Properties to set on the new user",
+      "placeholder": "Add Property"
+    },
+    {
+      "name": "first_name",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "The first name of the customer"
+    },
+    {
+      "name": "last_name",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "description": "The last name of the customer"
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "The email address of the customer",
+      "placeholder": "name@email.com"
+    },
+    {
+      "name": "phone",
+      "displayName": "Phone",
+      "type": "string",
+      "default": "",
+      "description": "The phone number of the customer"
+    },
+    {
+      "name": "company",
+      "displayName": "Company",
+      "type": "string",
+      "default": "",
+      "description": "The company of the customer"
+    },
+    {
+      "name": "customProperties",
+      "displayName": "Custom Properties",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Adds a custom property to set also values which have not been predefined",
+      "placeholder": "Add Custom Property"
+    },
+    {
+      "name": "value",
+      "displayName": "Property Value",
+      "type": "string",
+      "default": "",
+      "description": "Value of the property to set"
+    },
+    {
+      "name": "PDF Invoice URL",
+      "default": null,
+      "description": "Get URL for the invoice PDF"
+    },
+    {
+      "name": "maxResults",
+      "displayName": "Max Results",
+      "type": "number",
+      "default": 10,
+      "description": "Max. amount of results to return(< 100)."
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Filter for invoices",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "Is Not",
+      "default": null
+    },
+    {
+      "name": "After",
+      "default": null
+    },
+    {
+      "name": "Before",
+      "default": null
+    },
+    {
+      "name": "total",
+      "displayName": "Invoice Amount",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Greater Than",
+      "default": null
+    },
+    {
+      "name": "Is",
+      "default": null
+    },
+    {
+      "name": "Less Equal Than",
+      "default": null
+    },
+    {
+      "name": "Less Than",
+      "default": null
+    },
+    {
+      "name": "invoiceId",
+      "displayName": "Invoice ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the invoice to get",
+      "required": true
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a subscription"
+    },
+    {
+      "name": "subscriptionId",
+      "displayName": "Subscription ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the subscription to cancel",
+      "required": true
+    },
+    {
+      "name": "endOfTerm",
+      "displayName": "Schedule End of Term",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether it will not cancel it directly in will instead schedule the cancelation for the end of the term",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "chargebeeApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "properties",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "maxResults",
+      "required": false
+    },
+    {
+      "name": "value",
+      "required": false
+    },
+    {
+      "name": "total",
+      "required": false
+    },
+    {
+      "name": "value",
+      "required": false
+    },
+    {
+      "name": "invoiceId",
+      "required": true
+    },
+    {
+      "name": "subscriptionId",
+      "required": true
+    }
+  ]
+}

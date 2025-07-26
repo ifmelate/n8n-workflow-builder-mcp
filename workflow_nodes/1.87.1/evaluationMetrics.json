@@ -1,0 +1,21 @@
+{
+  "nodeType": "n8n-nodes-base.evaluationMetrics",
+  "displayName": "Evaluation Metrics",
+  "description": "Define the metrics returned for workflow evaluation",
+  "version": 1,
+  "properties": [
+    {
+      "name": "notice",
+      "displayName": "Define the evaluation metrics returned in your report. Only numeric values are supported. <a href='https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.evaluationmetric/' target='_blank'>More Info</a>",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "metrics",
+      "displayName": "Metrics to Return",
+      "type": "assignmentCollection",
+      "default": null
+    }
+  ],
+  "credentialsConfig": []
+}

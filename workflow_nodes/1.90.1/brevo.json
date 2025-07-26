@@ -1,0 +1,41 @@
+{
+  "nodeType": "n8n-nodes-base.brevo",
+  "displayName": "Brevo",
+  "description": "Consume Brevo API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Update",
+      "default": null
+    },
+    {
+      "name": "Delete",
+      "type": "set",
+      "default": null
+    },
+    {
+      "name": "Get Many",
+      "type": "rootProperty",
+      "default": null
+    },
+    {
+      "name": "Create or Update",
+      "default": null
+    },
+    {
+      "name": "Get",
+      "default": null
+    },
+    {
+      "name": "Send Template",
+      "default": null
+    }
+  ],
+  "credentialsConfig": []
+}

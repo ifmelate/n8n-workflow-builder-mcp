@@ -1,0 +1,66 @@
+{
+  "nodeType": "n8n-nodes-base.compression",
+  "displayName": "Compression",
+  "description": "Compress and decompress files",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Compress files into a zip or gzip archive"
+    },
+    {
+      "name": "Decompress",
+      "default": null,
+      "description": "Decompress zip or gzip archives"
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Input Binary Field(s)",
+      "type": "string",
+      "default": "data",
+      "description": "To process more than one file, use a comma-separated list of the binary fields names",
+      "placeholder": "e.g. data,data2,data3",
+      "required": true
+    },
+    {
+      "name": "outputFormat",
+      "displayName": "Output Format",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "Zip",
+      "default": null
+    },
+    {
+      "name": "fileName",
+      "displayName": "File Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the output file",
+      "placeholder": "e.g. data.zip",
+      "required": true
+    },
+    {
+      "name": "binaryPropertyOutput",
+      "displayName": "Put Output File in Field",
+      "type": "string",
+      "default": "data"
+    },
+    {
+      "name": "outputPrefix",
+      "displayName": "Output File Prefix",
+      "type": "string",
+      "default": "data",
+      "description": "Prefix to add to the gzip file",
+      "required": true
+    }
+  ],
+  "credentialsConfig": []
+}

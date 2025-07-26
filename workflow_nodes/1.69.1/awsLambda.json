@@ -1,0 +1,69 @@
+{
+  "nodeType": "n8n-nodes-base.awsLambda",
+  "displayName": "AWS Lambda",
+  "description": "Invoke functions on AWS Lambda",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Invoke a function"
+    },
+    {
+      "name": "function",
+      "displayName": "Function Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The function you want to invoke. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true,
+      "options": []
+    },
+    {
+      "name": "qualifier",
+      "displayName": "Qualifier",
+      "type": "string",
+      "default": "$LATEST",
+      "description": "Specify a version or alias to invoke a published version of the function",
+      "required": true
+    },
+    {
+      "name": "invocationType",
+      "displayName": "Invocation Type",
+      "type": "options",
+      "default": null,
+      "description": "Invoke the function synchronously and wait for the response"
+    },
+    {
+      "name": "Continue Workflow",
+      "default": null,
+      "description": "Invoke the function and immediately continue the workflow"
+    },
+    {
+      "name": "payload",
+      "displayName": "JSON Input",
+      "type": "string",
+      "default": "",
+      "description": "The JSON that you want to provide to your Lambda function as input"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "aws",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "function",
+      "required": true
+    },
+    {
+      "name": "payload",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "nodeType": "n8n-nodes-base.yourls",
+  "displayName": "Yourls",
+  "description": "Consume Yourls API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "url",
+      "displayName": "URL",
+      "type": "string",
+      "default": "",
+      "description": "The URL to shorten",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title for custom short URLs"
+    },
+    {
+      "name": "shortUrl",
+      "displayName": "Short URL",
+      "type": "string",
+      "default": "",
+      "description": "The short URL to expand",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Expand a URL"
+    },
+    {
+      "name": "Shorten",
+      "default": null,
+      "description": "Shorten a URL"
+    },
+    {
+      "name": "Stats",
+      "default": null,
+      "description": "Get stats about one short URL"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "yourlsApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

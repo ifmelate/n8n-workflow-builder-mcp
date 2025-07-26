@@ -1,0 +1,132 @@
+{
+  "nodeType": "n8n-nodes-base.editImage",
+  "displayName": "Edit Image",
+  "description": "Edits an image like blur, resize or adding border and text",
+  "version": 1,
+  "properties": [
+    {
+      "name": "Blur",
+      "default": null,
+      "description": "Adds a blur to the image and so makes it less sharp"
+    },
+    {
+      "name": "Border",
+      "default": null,
+      "description": "Adds a border to the image"
+    },
+    {
+      "name": "Composite",
+      "default": null,
+      "description": "Composite image on top of another one"
+    },
+    {
+      "name": "Create",
+      "default": null,
+      "description": "Create a new image"
+    },
+    {
+      "name": "Crop",
+      "default": null,
+      "description": "Crops the image"
+    },
+    {
+      "name": "Draw",
+      "default": null,
+      "description": "Draw on image"
+    },
+    {
+      "name": "Rotate",
+      "default": null,
+      "description": "Rotate image"
+    },
+    {
+      "name": "Resize",
+      "default": null,
+      "description": "Change the size of image"
+    },
+    {
+      "name": "Shear",
+      "default": null,
+      "description": "Shear image along the X or Y axis"
+    },
+    {
+      "name": "Text",
+      "default": null,
+      "description": "Adds text to image"
+    },
+    {
+      "name": "Transparent",
+      "default": null,
+      "description": "Make a color in image transparent"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Returns image information like resolution"
+    },
+    {
+      "name": "Multi Step",
+      "default": null,
+      "description": "Perform multiple operations"
+    },
+    {
+      "name": "dataPropertyName",
+      "displayName": "Property Name",
+      "type": "string",
+      "default": "data",
+      "description": "Name of the binary property in which the image data can be found",
+      "placeholder": "Add Operation"
+    },
+    {
+      "name": "font",
+      "displayName": "Font Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The font to use. Defaults to Arial. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "File name to set in binary data",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "format",
+      "displayName": "Format",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "gif",
+      "default": null
+    },
+    {
+      "name": "jpeg",
+      "default": null
+    },
+    {
+      "name": "png",
+      "default": null
+    },
+    {
+      "name": "tiff",
+      "default": null
+    },
+    {
+      "name": "WebP",
+      "default": null
+    },
+    {
+      "name": "quality",
+      "displayName": "Quality",
+      "type": "number",
+      "default": 100,
+      "description": "Sets the jpeg|png|tiff compression level from 0 to 100 (best)"
+    }
+  ],
+  "credentialsConfig": []
+}

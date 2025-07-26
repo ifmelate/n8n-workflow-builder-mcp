@@ -1,0 +1,29 @@
+{
+  "nodeType": "n8n-nodes-base.contentful",
+  "displayName": "Contentful",
+  "description": "Consume Contentful API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "source",
+      "displayName": "Source",
+      "type": "options",
+      "default": "deliveryApi",
+      "description": "Pick where your data comes from, delivery or preview API"
+    },
+    {
+      "name": "Preview API",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "contentfulApi",
+      "required": true
+    },
+    {
+      "name": "source",
+      "required": false
+    }
+  ]
+}

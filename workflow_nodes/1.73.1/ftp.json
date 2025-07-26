@@ -1,0 +1,127 @@
+{
+  "nodeType": "n8n-nodes-base.ftp",
+  "displayName": "FTP",
+  "description": "Transfer files via FTP or SFTP",
+  "version": 1,
+  "properties": [
+    {
+      "name": "protocol",
+      "displayName": "Protocol",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "SFTP",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Delete a file/folder"
+    },
+    {
+      "name": "Download",
+      "default": null,
+      "description": "Download a file"
+    },
+    {
+      "name": "List",
+      "default": null,
+      "description": "List folder content"
+    },
+    {
+      "name": "Rename",
+      "default": null,
+      "description": "Rename/move oldPath to newPath"
+    },
+    {
+      "name": "Upload",
+      "default": null,
+      "description": "Upload a file"
+    },
+    {
+      "name": "path",
+      "displayName": "Path",
+      "type": "string",
+      "default": "",
+      "description": "The file path of the file to delete. Has to contain the full path.",
+      "placeholder": "e.g. /public/documents/file-to-delete.txt",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether folders can be deleted",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "recursive",
+      "displayName": "Recursive",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to remove all files and directories in target directory"
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Put Output File in Field",
+      "type": "string",
+      "default": "data",
+      "placeholder": "e.g. /public/documents/old-file.txt",
+      "required": true
+    },
+    {
+      "name": "newPath",
+      "displayName": "New Path",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. /public/documents/new-file.txt",
+      "required": true
+    },
+    {
+      "name": "binaryData",
+      "displayName": "Binary File",
+      "type": "boolean",
+      "default": true,
+      "description": "The text content of the file to upload"
+    },
+    {
+      "name": "fileContent",
+      "displayName": "File Content",
+      "type": "string",
+      "default": "",
+      "description": "The text content of the file to upload",
+      "placeholder": "e.g. /public/folder",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "ftp",
+      "required": true
+    },
+    {
+      "name": "protocol",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "path",
+      "required": true
+    },
+    {
+      "name": "path",
+      "required": true
+    },
+    {
+      "name": "path",
+      "required": true
+    }
+  ]
+}

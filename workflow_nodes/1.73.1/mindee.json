@@ -1,0 +1,86 @@
+{
+  "nodeType": "n8n-nodes-base.mindee",
+  "displayName": "Mindee",
+  "description": "Consume Mindee API",
+  "version": [
+    1,
+    2,
+    3
+  ],
+  "properties": [
+    {
+      "name": "apiVersion",
+      "displayName": "API Version",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "3",
+      "default": null
+    },
+    {
+      "name": "4",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Receipt",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Input Binary Field",
+      "type": "string",
+      "default": "data",
+      "required": true
+    },
+    {
+      "name": "rawData",
+      "displayName": "RAW Data",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return the data exactly in the way it got received from the API"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "mindeeReceiptApi",
+      "required": true
+    },
+    {
+      "name": "apiVersion",
+      "required": false
+    },
+    {
+      "name": "apiVersion",
+      "required": false
+    },
+    {
+      "name": "apiVersion",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "binaryPropertyName",
+      "required": true
+    }
+  ]
+}

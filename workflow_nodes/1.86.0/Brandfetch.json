@@ -1,0 +1,85 @@
+{
+  "nodeType": "n8n-nodes-base.Brandfetch",
+  "displayName": "Brandfetch",
+  "description": "Consume Brandfetch API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Return a company's colors"
+    },
+    {
+      "name": "Company",
+      "default": null,
+      "description": "Return a company's data"
+    },
+    {
+      "name": "Font",
+      "default": null,
+      "description": "Return a company's fonts"
+    },
+    {
+      "name": "Industry",
+      "default": null,
+      "description": "Return a company's industry"
+    },
+    {
+      "name": "Logo",
+      "default": null,
+      "description": "Return a company's logo & icon"
+    },
+    {
+      "name": "domain",
+      "displayName": "Domain",
+      "type": "string",
+      "default": "",
+      "description": "The domain name of the company",
+      "required": true
+    },
+    {
+      "name": "download",
+      "displayName": "Download",
+      "type": "boolean",
+      "default": false,
+      "description": "Name of the binary property to which to write the data of the read file",
+      "required": true
+    },
+    {
+      "name": "imageTypes",
+      "displayName": "Image Type",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "imageFormats",
+      "displayName": "Image Format",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "SVG",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "brandfetchApi",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "domain",
+      "required": true
+    },
+    {
+      "name": "imageFormats",
+      "required": false
+    }
+  ]
+}

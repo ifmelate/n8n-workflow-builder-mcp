@@ -1,0 +1,224 @@
+{
+  "nodeType": "n8n-nodes-base.bitwarden",
+  "displayName": "Bitwarden",
+  "description": "Consume the Bitwarden API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "collectionId",
+      "displayName": "Collection ID",
+      "type": "string",
+      "default": "",
+      "description": "The identifier of the collection",
+      "placeholder": "5e59c8c7-e05a-4d17-8e85-acc301343926",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 10,
+      "description": "Max number of results to return",
+      "placeholder": "Add Field",
+      "required": true
+    },
+    {
+      "name": "externalId",
+      "displayName": "External ID",
+      "type": "string",
+      "default": "",
+      "description": "The external identifier to set to this collection"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": "get"
+    },
+    {
+      "name": "Get",
+      "default": null
+    },
+    {
+      "name": "Get Many",
+      "default": null
+    },
+    {
+      "name": "Update",
+      "default": null
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "The unique identifier of the acting user",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "end",
+      "displayName": "End Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "The end date for the search"
+    },
+    {
+      "name": "itemID",
+      "displayName": "Item ID",
+      "type": "string",
+      "default": "",
+      "description": "The unique identifier of the item that the event describes",
+      "placeholder": "5e59c8c7-e05a-4d17-8e85-acc301343926"
+    },
+    {
+      "name": "start",
+      "displayName": "Start Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "The start date for the search"
+    },
+    {
+      "name": "groupId",
+      "displayName": "Group ID",
+      "type": "string",
+      "default": "",
+      "description": "The identifier of the group",
+      "placeholder": "5e59c8c7-e05a-4d17-8e85-acc301343926",
+      "required": true
+    },
+    {
+      "name": "accessAll",
+      "displayName": "Access All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to allow this group to access all collections within the organization, instead of only its associated collections. If set to true, this option overrides any collection assignments."
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The collections to assign to this group. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to allow this group to access all collections within the organization, instead of only its associated collections. If set to true, this option overrides any collection assignments.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "collections",
+      "displayName": "Collection Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "The collections to assign to this group. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "The name of the group to update"
+    },
+    {
+      "name": "memberIds",
+      "displayName": "Member IDs",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of IDs of members to set in a group"
+    },
+    {
+      "name": "Delete",
+      "default": null
+    },
+    {
+      "name": "Get Members",
+      "default": null
+    },
+    {
+      "name": "Update Members",
+      "default": null
+    },
+    {
+      "name": "memberId",
+      "displayName": "Member ID",
+      "type": "string",
+      "default": "",
+      "description": "The identifier of the member",
+      "placeholder": "5e59c8c7-e05a-4d17-8e85-acc301343926",
+      "required": true
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": 2,
+      "required": true
+    },
+    {
+      "name": "Admin",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    },
+    {
+      "name": "Manager",
+      "default": null
+    },
+    {
+      "name": "groupIds",
+      "displayName": "Group IDs",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of IDs of groups to set for a member"
+    },
+    {
+      "name": "Get Groups",
+      "default": null
+    },
+    {
+      "name": "Update Groups",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Event",
+      "default": null
+    },
+    {
+      "name": "Group",
+      "default": null
+    },
+    {
+      "name": "Member",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "bitwardenApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

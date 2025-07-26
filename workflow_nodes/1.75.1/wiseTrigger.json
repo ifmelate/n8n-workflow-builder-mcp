@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.wiseTrigger",
+  "displayName": "Wise Trigger",
+  "description": "Handle Wise events via webhooks",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

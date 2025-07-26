@@ -1,0 +1,223 @@
+{
+  "nodeType": "n8n-nodes-base.awsCertificateManager",
+  "displayName": "AWS Certificate Manager",
+  "description": "Sends data to AWS Certificate Manager",
+  "version": 1,
+  "properties": [
+    {
+      "name": "certificateArn",
+      "displayName": "Certificate ARN",
+      "type": "string",
+      "default": "",
+      "description": "String that contains the ARN of the ACM certificate to be renewed. This must be of the form: arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012.",
+      "required": true
+    },
+    {
+      "name": "certificateKey",
+      "displayName": "Certificate Key",
+      "type": "string",
+      "default": "",
+      "description": "Whether to return all results or only up to a given limit",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "Failed",
+      "default": null
+    },
+    {
+      "name": "Inactive",
+      "default": null
+    },
+    {
+      "name": "Issued",
+      "default": null
+    },
+    {
+      "name": "Pending Validation",
+      "default": null
+    },
+    {
+      "name": "Revoked",
+      "default": null
+    },
+    {
+      "name": "Validation Timed Out",
+      "default": null
+    },
+    {
+      "name": "extendedKeyUsage",
+      "displayName": "Extended Key Usage",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "Code Signing",
+      "default": null
+    },
+    {
+      "name": "Custom",
+      "default": null
+    },
+    {
+      "name": "Email Protection",
+      "default": null
+    },
+    {
+      "name": "IPSEC End System",
+      "default": null
+    },
+    {
+      "name": "IPSEC Tunnel",
+      "default": null
+    },
+    {
+      "name": "IPSEC User",
+      "default": null
+    },
+    {
+      "name": "None",
+      "default": null
+    },
+    {
+      "name": "OCSP Signing",
+      "default": null
+    },
+    {
+      "name": "Time Stamping",
+      "default": null
+    },
+    {
+      "name": "TLS Web Client Authentication",
+      "default": null
+    },
+    {
+      "name": "TLS Web Server Authentication",
+      "default": null
+    },
+    {
+      "name": "keyTypes",
+      "displayName": "Key Types",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "EC Secp384r1",
+      "default": null
+    },
+    {
+      "name": "EC Secp521r1",
+      "default": null
+    },
+    {
+      "name": "RSA 1024",
+      "default": null
+    },
+    {
+      "name": "RSA 2048",
+      "default": null
+    },
+    {
+      "name": "RSA 4096",
+      "default": null
+    },
+    {
+      "name": "keyUsage",
+      "displayName": "Key Usage",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "Certificate Signing",
+      "default": null
+    },
+    {
+      "name": "CRL Signing",
+      "default": null
+    },
+    {
+      "name": "Data Encipherment",
+      "default": null
+    },
+    {
+      "name": "Decipher Only",
+      "default": null
+    },
+    {
+      "name": "Digital Signature",
+      "default": null
+    },
+    {
+      "name": "Encipher Only",
+      "default": null
+    },
+    {
+      "name": "Key Agreement",
+      "default": null
+    },
+    {
+      "name": "Key Encipherment",
+      "default": null
+    },
+    {
+      "name": "Non Repudiation",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Delete a certificate"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a certificate"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many certificates"
+    },
+    {
+      "name": "Get Metadata",
+      "default": null,
+      "description": "Get certificate metadata"
+    },
+    {
+      "name": "Renew",
+      "default": null,
+      "description": "Renew a certificate"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "aws",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

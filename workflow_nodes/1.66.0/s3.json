@@ -1,0 +1,427 @@
+{
+  "nodeType": "n8n-nodes-base.s3",
+  "displayName": "S3",
+  "description": "Sends data to any S3-compatible service",
+  "version": 1,
+  "properties": [
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "A succinct description of the nature, symptoms, cause, or effect of the bucket",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "Private",
+      "default": null
+    },
+    {
+      "name": "Public Read",
+      "default": null
+    },
+    {
+      "name": "Public Read Write",
+      "default": null
+    },
+    {
+      "name": "bucketObjectLockEnabled",
+      "displayName": "Bucket Object Lock Enabled",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether you want S3 Object Lock to be enabled for the new bucket"
+    },
+    {
+      "name": "grantFullControl",
+      "displayName": "Grant Full Control",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to allow grantee the read, write, read ACP, and write ACP permissions on the bucket"
+    },
+    {
+      "name": "grantRead",
+      "displayName": "Grant Read",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to allow grantee to list the objects in the bucket"
+    },
+    {
+      "name": "grantReadAcp",
+      "displayName": "Grant Read ACP",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to allow grantee to read the bucket ACL"
+    },
+    {
+      "name": "grantWrite",
+      "displayName": "Grant Write",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to allow grantee to create, overwrite, and delete any object in the bucket"
+    },
+    {
+      "name": "grantWriteAcp",
+      "displayName": "Grant Write ACP",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to allow grantee to write the ACL for the applicable bucket"
+    },
+    {
+      "name": "region",
+      "displayName": "Region",
+      "type": "string",
+      "default": "",
+      "description": "Region you want to create the bucket in, by default the buckets are created on the region defined on the credentials"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "encodingType",
+      "displayName": "Encoding Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "fetchOwner",
+      "displayName": "Fetch Owner",
+      "type": "boolean",
+      "default": false,
+      "description": "The owner field is not present in listV2 by default, if you want to return owner field with each key in the result then set the fetch owner field to true"
+    },
+    {
+      "name": "prefix",
+      "displayName": "Prefix",
+      "type": "string",
+      "default": "",
+      "description": "Limits the response to keys that begin with the specified prefix"
+    },
+    {
+      "name": "requesterPays",
+      "displayName": "Requester Pays",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the requester will pay for requests and data transfer. While Requester Pays is enabled, anonymous access to this bucket is disabled."
+    },
+    {
+      "name": "startAfter",
+      "displayName": "Start After",
+      "type": "string",
+      "default": "",
+      "description": "StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after this specified key."
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a bucket"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a bucket"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many buckets"
+    },
+    {
+      "name": "Search",
+      "default": null,
+      "description": "Search within a bucket"
+    },
+    {
+      "name": "bucketName",
+      "displayName": "Bucket Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "folderName",
+      "displayName": "Folder Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "storageClass",
+      "displayName": "Storage Class",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Glacier",
+      "default": null
+    },
+    {
+      "name": "Intelligent Tiering",
+      "default": null
+    },
+    {
+      "name": "One Zone IA",
+      "default": null
+    },
+    {
+      "name": "Reduced Redundancy",
+      "default": null
+    },
+    {
+      "name": "Standard",
+      "default": null
+    },
+    {
+      "name": "Standard IA",
+      "default": null
+    },
+    {
+      "name": "folderKey",
+      "displayName": "Folder Key",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "The owner field is not present in listV2 by default, if you want to return owner field with each key in the result then set the fetch owner field to true",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "sourcePath",
+      "displayName": "Source Path",
+      "type": "string",
+      "default": "",
+      "description": "The name of the source bucket should start with (/) and key name of the source object, separated by a slash (/)",
+      "placeholder": "/bucket/my-image.jpg",
+      "required": true
+    },
+    {
+      "name": "destinationPath",
+      "displayName": "Destination Path",
+      "type": "string",
+      "default": "",
+      "description": "The name of the destination bucket and key name of the destination object, separated by a slash (/)",
+      "placeholder": "/bucket/my-second-image.jpg",
+      "required": true
+    },
+    {
+      "name": "AWS Exec Read",
+      "default": null
+    },
+    {
+      "name": "Bucket Owner Full Control",
+      "default": null
+    },
+    {
+      "name": "Bucket Owner Read",
+      "default": null
+    },
+    {
+      "name": "lockLegalHold",
+      "displayName": "Lock Legal Hold",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether a legal hold will be applied to this object"
+    },
+    {
+      "name": "lockMode",
+      "displayName": "Lock Mode",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Compliance",
+      "default": null
+    },
+    {
+      "name": "lockRetainUntilDate",
+      "displayName": "Lock Retain Until Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "The date and time when you want this object's Object Lock to expire"
+    },
+    {
+      "name": "metadataDirective",
+      "displayName": "Metadata Directive",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Replace",
+      "default": null
+    },
+    {
+      "name": "serverSideEncryption",
+      "displayName": "Server Side Encryption",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "AWS:KMS",
+      "default": null
+    },
+    {
+      "name": "serverSideEncryptionContext",
+      "displayName": "Server Side Encryption Context",
+      "type": "string",
+      "default": "",
+      "description": "Specifies the AWS KMS Encryption Context to use for object encryption"
+    },
+    {
+      "name": "encryptionAwsKmsKeyId",
+      "displayName": "Server Side Encryption AWS KMS Key ID",
+      "type": "string",
+      "default": "",
+      "description": "If x-amz-server-side-encryption is present and has the value of aws:kms"
+    },
+    {
+      "name": "serversideEncryptionCustomerAlgorithm",
+      "displayName": "Server Side Encryption Customer Algorithm",
+      "type": "string",
+      "default": "",
+      "description": "Specifies the algorithm to use to when encrypting the object (for example, AES256)"
+    },
+    {
+      "name": "serversideEncryptionCustomerKey",
+      "displayName": "Server Side Encryption Customer Key",
+      "type": "string",
+      "default": "",
+      "description": "Specifies the customer-provided encryption key for Amazon S3 to use in encrypting data"
+    },
+    {
+      "name": "serversideEncryptionCustomerKeyMD5",
+      "displayName": "Server Side Encryption Customer Key MD5",
+      "type": "string",
+      "default": "",
+      "description": "Specifies the 128-bit MD5 digest of the encryption key according to RFC 1321"
+    },
+    {
+      "name": "taggingDirective",
+      "displayName": "Tagging Directive",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "fileName",
+      "displayName": "File Name",
+      "type": "string",
+      "default": "",
+      "placeholder": "hello.txt",
+      "required": true
+    },
+    {
+      "name": "binaryData",
+      "displayName": "Binary File",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the data to upload should be taken from binary field"
+    },
+    {
+      "name": "fileContent",
+      "displayName": "File Content",
+      "type": "string",
+      "default": "",
+      "description": "The text content of the file to upload",
+      "placeholder": ""
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Input Binary Field",
+      "type": "string",
+      "default": "data",
+      "placeholder": "",
+      "required": true
+    },
+    {
+      "name": "parentFolderKey",
+      "displayName": "Parent Folder Key",
+      "type": "string",
+      "default": "",
+      "description": "Parent folder you want to create the file in"
+    },
+    {
+      "name": "tagsUi",
+      "displayName": "Tags",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Tag"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "fileKey",
+      "displayName": "File Key",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "Download",
+      "default": null,
+      "description": "Download a file"
+    },
+    {
+      "name": "Upload",
+      "default": null,
+      "description": "Upload a file"
+    },
+    {
+      "name": "s3StandardNotice",
+      "displayName": "This node is for services that use the S3 standard, e.g. Minio or Digital Ocean Spaces. For AWS S3 use the 'AWS S3' node.",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "File",
+      "default": null
+    },
+    {
+      "name": "Folder",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "s3",
+      "required": true
+    },
+    {
+      "name": "s3StandardNotice",
+      "required": false
+    }
+  ]
+}

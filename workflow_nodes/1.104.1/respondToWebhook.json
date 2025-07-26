@@ -1,0 +1,147 @@
+{
+  "nodeType": "n8n-nodes-base.respondToWebhook",
+  "displayName": "Respond to Webhook",
+  "description": "Returns data for Webhook",
+  "version": [
+    1,
+    1.1,
+    1.2,
+    1.3,
+    1.4,
+    1.5
+  ],
+  "properties": [
+    {
+      "name": "enableResponseOutput",
+      "displayName": "Enable Response Output Branch",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to provide an additional output branch with the response sent to the webhook"
+    },
+    {
+      "name": "generalNotice",
+      "displayName": "Verify that the \"Webhook\" node's \"Respond\" parameter is set to \"Using Respond to Webhook Node\". <a href=\"https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.respondtowebhook/\" target=\"_blank\">More details",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "credentials",
+      "displayName": "Credentials",
+      "type": "credentials",
+      "default": ""
+    },
+    {
+      "name": "webhookNotice",
+      "displayName": "When using expressions, note that this node will only run for the first item in the input data",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "redirectURL",
+      "displayName": "Redirect URL",
+      "type": "string",
+      "default": "",
+      "description": "The URL to redirect to",
+      "placeholder": "e.g. http://www.n8n.io",
+      "required": true
+    },
+    {
+      "name": "responseBody",
+      "displayName": "Response Body",
+      "type": "json",
+      "default": "{\\n  \"myField\": \"value\"\\n}",
+      "description": "The HTTP response JSON data"
+    },
+    {
+      "name": "payload",
+      "displayName": "Payload",
+      "type": "json",
+      "default": "{\\n  \"myField\": \"value\"\\n}",
+      "description": "The payload to include in the JWT token"
+    },
+    {
+      "name": "responseDataSource",
+      "displayName": "Response Data Source",
+      "type": "options",
+      "default": null,
+      "description": "Use if input data will contain a single piece of binary data"
+    },
+    {
+      "name": "Specify Myself",
+      "default": null,
+      "description": "Enter the name of the input field the binary data will be in"
+    },
+    {
+      "name": "inputFieldName",
+      "displayName": "Input Field Name",
+      "type": "string",
+      "default": "data",
+      "description": "The name of the node input field with the binary data",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "The HTTP response code to return. Defaults to 200.",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "responseHeaders",
+      "displayName": "Response Headers",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Add headers to the webhook response",
+      "placeholder": "Add Response Header"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Value of the header"
+    },
+    {
+      "name": "responseKey",
+      "displayName": "Put Response in Field",
+      "type": "string",
+      "default": "",
+      "description": "The name of the response field to put all items in",
+      "placeholder": "e.g. data"
+    },
+    {
+      "name": "enableStreaming",
+      "displayName": "Enable Streaming",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to enable streaming to the response"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "jwtAuth",
+      "required": true
+    },
+    {
+      "name": "enableResponseOutput",
+      "required": false
+    },
+    {
+      "name": "generalNotice",
+      "required": false
+    },
+    {
+      "name": "credentials",
+      "required": true
+    },
+    {
+      "name": "inputFieldName",
+      "required": true
+    },
+    {
+      "name": "responseKey",
+      "required": false
+    }
+  ]
+}

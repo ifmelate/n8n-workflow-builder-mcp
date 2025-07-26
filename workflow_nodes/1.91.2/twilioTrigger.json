@@ -1,0 +1,46 @@
+{
+  "nodeType": "n8n-nodes-base.twilioTrigger",
+  "displayName": "Twilio Trigger",
+  "description": "Starts the workflow on a Twilio update",
+  "version": [
+    1
+  ],
+  "properties": [
+    {
+      "name": "updates",
+      "displayName": "Trigger On",
+      "type": "multiOptions",
+      "default": null,
+      "description": "When an SMS message is received"
+    },
+    {
+      "name": "New Call",
+      "default": null,
+      "description": "When a call is received"
+    },
+    {
+      "name": "callTriggerNotice",
+      "displayName": "The 'New Call' event may take up to thirty minutes to be triggered",
+      "type": "notice",
+      "default": ""
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "twilioApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "updates",
+      "required": false
+    },
+    {
+      "name": "callTriggerNotice",
+      "required": false
+    }
+  ]
+}

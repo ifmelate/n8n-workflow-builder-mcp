@@ -1,0 +1,61 @@
+{
+  "nodeType": "n8n-nodes-base.gitlabTrigger",
+  "displayName": "GitLab Trigger",
+  "description": "Starts the workflow when GitLab events occur",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "owner",
+      "displayName": "Repository Owner",
+      "type": "string",
+      "default": "",
+      "description": "Owner of the repository",
+      "placeholder": "n8n-io",
+      "required": true
+    },
+    {
+      "name": "repository",
+      "displayName": "Repository Name",
+      "type": "string",
+      "default": "",
+      "description": "The name of the repository",
+      "placeholder": "n8n",
+      "required": true
+    },
+    {
+      "name": "events",
+      "displayName": "Events",
+      "type": "multiOptions",
+      "default": null,
+      "description": "Any time any event is triggered (Wildcard Event)"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "gitlabApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "owner",
+      "required": true
+    }
+  ]
+}

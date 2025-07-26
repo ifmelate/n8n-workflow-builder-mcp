@@ -1,0 +1,772 @@
+{
+  "nodeType": "n8n-nodes-base.freshworksCrm",
+  "displayName": "Freshworks CRM",
+  "description": "Consume the Freshworks CRM API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the account",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Address of the account",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "annual_revenue",
+      "displayName": "Annual Revenue",
+      "type": "number",
+      "default": 0,
+      "description": "Annual revenue of the account"
+    },
+    {
+      "name": "business_type_id",
+      "displayName": "Business Type Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the business that the account belongs to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "city",
+      "displayName": "City",
+      "type": "string",
+      "default": "",
+      "description": "City that the account belongs to"
+    },
+    {
+      "name": "country",
+      "displayName": "Country",
+      "type": "string",
+      "default": "",
+      "description": "Country that the account belongs to"
+    },
+    {
+      "name": "facebook",
+      "displayName": "Facebook",
+      "type": "string",
+      "default": "",
+      "description": "Facebook username of the account"
+    },
+    {
+      "name": "industry_type_id",
+      "displayName": "Industry Type Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the industry that the account belongs to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "linkedin",
+      "displayName": "LinkedIn",
+      "type": "string",
+      "default": "",
+      "description": "LinkedIn account of the account"
+    },
+    {
+      "name": "number_of_employees",
+      "displayName": "Number of Employees",
+      "type": "number",
+      "default": 0,
+      "description": "Number of employees in the account"
+    },
+    {
+      "name": "owner_id",
+      "displayName": "Owner Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the user to whom the account is assigned. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "parent_sales_account_id",
+      "displayName": "Parent Sales Account ID",
+      "type": "string",
+      "default": "",
+      "description": "Parent account ID of the account"
+    },
+    {
+      "name": "phone",
+      "displayName": "Phone",
+      "type": "string",
+      "default": "",
+      "description": "Phone number of the account"
+    },
+    {
+      "name": "state",
+      "displayName": "State",
+      "type": "string",
+      "default": "",
+      "description": "State that the account belongs to"
+    },
+    {
+      "name": "territory_id",
+      "displayName": "Territory Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the territory that the account belongs to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "twitter",
+      "displayName": "Twitter",
+      "type": "string",
+      "default": "",
+      "description": "Twitter username of the account"
+    },
+    {
+      "name": "website",
+      "displayName": "Website",
+      "type": "string",
+      "default": "",
+      "description": "Website of the account"
+    },
+    {
+      "name": "zipcode",
+      "displayName": "Zipcode",
+      "type": "string",
+      "default": "",
+      "description": "Zipcode of the region that the account belongs to"
+    },
+    {
+      "name": "accountId",
+      "displayName": "Account ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the account to delete",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Address of the account",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create an account"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete an account"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Retrieve an account"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Retrieve many accounts"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update an account"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title of the appointment",
+      "required": true
+    },
+    {
+      "name": "fromDate",
+      "displayName": "Start Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Timestamp that denotes the start of appointment. Start date if this is an all-day appointment.",
+      "required": true
+    },
+    {
+      "name": "endDate",
+      "displayName": "End Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Timestamp that denotes the end of appointment. End date if this is an all-day appointment.",
+      "required": true
+    },
+    {
+      "name": "attendees",
+      "displayName": "Attendees",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Attendee"
+    },
+    {
+      "name": "User",
+      "default": null
+    },
+    {
+      "name": "userId",
+      "displayName": "User Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "contactId",
+      "displayName": "Contact ID",
+      "type": "['contact']",
+      "default": ""
+    },
+    {
+      "name": "is_allday",
+      "displayName": "Is All-Day",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether it is an all-day appointment or not"
+    },
+    {
+      "name": "latitude",
+      "displayName": "Latitude",
+      "type": "string",
+      "default": "",
+      "description": "Latitude of the location when you check in for an appointment"
+    },
+    {
+      "name": "location",
+      "displayName": "Location",
+      "type": "string",
+      "default": "",
+      "description": "Location of the appointment"
+    },
+    {
+      "name": "longitude",
+      "displayName": "Longitude",
+      "type": "string",
+      "default": "",
+      "description": "Longitude of the location when you check in for an appointment"
+    },
+    {
+      "name": "outcome_id",
+      "displayName": "Outcome Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of outcome of Appointment sales activity type. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "targetable_id",
+      "displayName": "Target ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of contact/account against whom appointment is created"
+    },
+    {
+      "name": "targetable_type",
+      "displayName": "Target Type",
+      "type": "options",
+      "default": "Contact"
+    },
+    {
+      "name": "Deal",
+      "default": null
+    },
+    {
+      "name": "SalesAccount",
+      "default": null
+    },
+    {
+      "name": "time_zone",
+      "displayName": "Time Zone",
+      "type": "options",
+      "default": "",
+      "description": "Timezone that the appointment is scheduled in"
+    },
+    {
+      "name": "appointmentId",
+      "displayName": "Appointment ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the appointment to delete",
+      "required": true
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "Creator",
+      "default": null
+    },
+    {
+      "name": "Target",
+      "default": null
+    },
+    {
+      "name": "filter",
+      "displayName": "Time",
+      "type": "options",
+      "default": "upcoming"
+    },
+    {
+      "name": "Upcoming",
+      "default": null
+    },
+    {
+      "name": "creater_id",
+      "displayName": "Creator Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "ID of the user who created the appointment. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "firstName",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "First name of the contact",
+      "required": true
+    },
+    {
+      "name": "lastName",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "description": "Last name of the contact",
+      "required": true
+    },
+    {
+      "name": "emails",
+      "displayName": "Email Address",
+      "type": "string",
+      "default": "",
+      "description": "Email addresses of the contact",
+      "required": true
+    },
+    {
+      "name": "campaign_id",
+      "displayName": "Campaign Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the campaign that led your contact to your webapp. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "contact_status_id",
+      "displayName": "Contact Status Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the contact status that the contact belongs to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "external_id",
+      "displayName": "External ID",
+      "type": "string",
+      "default": "",
+      "description": "External ID of the contact"
+    },
+    {
+      "name": "job_title",
+      "displayName": "Job Title",
+      "type": "string",
+      "default": "",
+      "description": "Designation of the contact in the account they belong to"
+    },
+    {
+      "name": "keyword",
+      "displayName": "Keywords",
+      "type": "string",
+      "default": "",
+      "description": "Keywords that the contact used to reach your website/web app"
+    },
+    {
+      "name": "lead_source_id",
+      "displayName": "Lead Source ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the source where contact came from"
+    },
+    {
+      "name": "lifecycle_stage_id",
+      "displayName": "Lifecycle Stage Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the lifecycle stage that the contact belongs to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "medium",
+      "displayName": "Medium",
+      "type": "string",
+      "default": "",
+      "description": "Medium that led your contact to your website/webapp"
+    },
+    {
+      "name": "mobile_number",
+      "displayName": "Mobile Number",
+      "type": "string",
+      "default": "",
+      "description": "Mobile phone number of the contact"
+    },
+    {
+      "name": "sales_accounts",
+      "displayName": "Sales Account Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Accounts which contact belongs to. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "subscription_status",
+      "displayName": "Subscription Status",
+      "type": "string",
+      "default": "",
+      "description": "Status of subscription that the contact is in"
+    },
+    {
+      "name": "subscription_types",
+      "displayName": "Subscription Types",
+      "type": "string",
+      "default": "",
+      "description": "Type of subscription that the contact is in"
+    },
+    {
+      "name": "work_number",
+      "displayName": "Work Number",
+      "type": "string",
+      "default": "",
+      "description": "Work phone number of the contact"
+    },
+    {
+      "name": "first_name",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "First name of the contact"
+    },
+    {
+      "name": "last_name",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "description": "Last name of the contact"
+    },
+    {
+      "name": "amount",
+      "displayName": "Amount",
+      "type": "number",
+      "default": 0,
+      "description": "Value of the deal",
+      "required": true
+    },
+    {
+      "name": "currency_id",
+      "displayName": "Currency Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the currency that the deal belongs to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "deal_payment_status_id",
+      "displayName": "Deal Payment Status Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the mode of payment for the deal. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "deal_pipeline_id",
+      "displayName": "Deal Pipeline Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the deal pipeline that it belongs to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "deal_product_id",
+      "displayName": "Deal Product Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the product that the deal belongs to (in a multi-product company). Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "deal_reason_id",
+      "displayName": "Deal Reason Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the reason for losing the deal. Can only be set if the deal is in 'Lost' stage. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "deal_stage_id",
+      "displayName": "Deal Stage Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the deal stage that the deal belongs to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "deal_type_id",
+      "displayName": "Deal Type Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the deal type that the deal belongs to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "probability",
+      "displayName": "Probability",
+      "type": "number",
+      "default": 0,
+      "description": "Probability of winning the deal as a number between 0 and 100"
+    },
+    {
+      "name": "sales_account_id",
+      "displayName": "Sales Account Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the account that the deal belongs to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "dealId",
+      "displayName": "Deal ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the deal to delete",
+      "required": true
+    },
+    {
+      "name": "base_currency_amount",
+      "displayName": "Base Currency Amount",
+      "type": "number",
+      "default": 0,
+      "description": "Value of the deal in base currency"
+    },
+    {
+      "name": "description",
+      "displayName": "Content",
+      "type": "string",
+      "default": "",
+      "description": "Content of the note",
+      "required": true
+    },
+    {
+      "name": "targetableType",
+      "displayName": "Target Type",
+      "type": "options",
+      "default": "Contact",
+      "description": "Type of the entity for which the note is created",
+      "required": true
+    },
+    {
+      "name": "Sales Account",
+      "default": null
+    },
+    {
+      "name": "sales_activity_type_id",
+      "displayName": "Sales Activity Type Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of a sales activity type for which the sales activity is created. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "ownerId",
+      "displayName": "Owner Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the user who owns the sales activity. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "from_date",
+      "displayName": "Start Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Timestamp that denotes the end of sales activity",
+      "required": true
+    },
+    {
+      "name": "end_date",
+      "displayName": "End Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Timestamp that denotes the end of sales activity",
+      "required": true
+    },
+    {
+      "name": "notes",
+      "displayName": "Notes",
+      "type": "string",
+      "default": "",
+      "description": "Description about the sales activity"
+    },
+    {
+      "name": "sales_activity_outcome_id",
+      "displayName": "Sales Activity Outcome Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of a sales activity's outcome. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "salesActivityId",
+      "displayName": "Sales Activity ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the salesActivity to delete",
+      "required": true
+    },
+    {
+      "name": "query",
+      "displayName": "Search Term",
+      "type": "string",
+      "default": "",
+      "description": "Enter a term that will be used for searching entities",
+      "required": true
+    },
+    {
+      "name": "entities",
+      "displayName": "Search on Entities",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "Name",
+      "default": null
+    },
+    {
+      "name": "Custom Field",
+      "default": null,
+      "description": "Only allowed custom fields of type \"Text field\", \"Number\", \"Dropdown\" or \"Radio button\""
+    },
+    {
+      "name": "customFieldName",
+      "displayName": "Custom Field Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "customFieldValue",
+      "displayName": "Custom Field Value",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "fieldValue",
+      "displayName": "Field Value",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add option"
+    },
+    {
+      "name": "Lookup",
+      "default": null,
+      "description": "Search for the name or email address of records"
+    },
+    {
+      "name": "dueDate",
+      "displayName": "Due Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Timestamp that denotes when the task is due to be completed",
+      "required": true
+    },
+    {
+      "name": "task_type_id",
+      "displayName": "Task Type ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the type of task"
+    },
+    {
+      "name": "taskId",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the task to delete",
+      "required": true
+    },
+    {
+      "name": "Users",
+      "default": null
+    },
+    {
+      "name": "Due Today",
+      "default": null
+    },
+    {
+      "name": "Due Tomorrow",
+      "default": null
+    },
+    {
+      "name": "Open",
+      "default": null
+    },
+    {
+      "name": "Overdue",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Appointment",
+      "default": null
+    },
+    {
+      "name": "Contact",
+      "default": null
+    },
+    {
+      "name": "Note",
+      "default": null
+    },
+    {
+      "name": "Sales Activity",
+      "default": null
+    },
+    {
+      "name": "Search",
+      "default": null
+    },
+    {
+      "name": "Task",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "freshworksCrmApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

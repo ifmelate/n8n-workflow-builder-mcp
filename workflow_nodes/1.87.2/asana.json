@@ -1,0 +1,446 @@
+{
+  "nodeType": "n8n-nodes-base.asana",
+  "displayName": "Asana",
+  "description": "Consume Asana REST API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Subtask",
+      "default": null
+    },
+    {
+      "name": "Task",
+      "default": null
+    },
+    {
+      "name": "Task Comment",
+      "default": null
+    },
+    {
+      "name": "Task Project",
+      "default": null
+    },
+    {
+      "name": "Task Tag",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a subtask"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many subtasks"
+    },
+    {
+      "name": "taskId",
+      "displayName": "Parent Task ID",
+      "type": "string",
+      "default": "",
+      "description": "The task to operate on",
+      "required": true
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "The name of the subtask to create",
+      "required": true
+    },
+    {
+      "name": "otherProperties",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Set Assignee on the subtask. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "assignee_status",
+      "displayName": "Assignee Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Today",
+      "default": null
+    },
+    {
+      "name": "Upcoming",
+      "default": null
+    },
+    {
+      "name": "Later",
+      "default": null
+    },
+    {
+      "name": "completed",
+      "displayName": "Completed",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the subtask should be marked completed"
+    },
+    {
+      "name": "due_on",
+      "displayName": "Due On",
+      "type": "dateTime",
+      "default": "",
+      "description": "Date on which the time is due"
+    },
+    {
+      "name": "liked",
+      "displayName": "Liked",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the task is liked by the authorized user"
+    },
+    {
+      "name": "notes",
+      "displayName": "Notes",
+      "type": "string",
+      "default": "",
+      "description": "The task notes"
+    },
+    {
+      "name": "workspace",
+      "displayName": "Workspace Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The workspace to create the subtask in. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Defines fields to return. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "opt_pretty",
+      "displayName": "Pretty",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to provide “pretty” output"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a task"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a task"
+    },
+    {
+      "name": "Move",
+      "default": null,
+      "description": "Move a task"
+    },
+    {
+      "name": "Search",
+      "default": null,
+      "description": "Search for tasks"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a task"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Properties to search for",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "opt_fields",
+      "displayName": "Field Names or IDs",
+      "type": "multiOptions",
+      "default": "['gid', 'name', 'resource_type']",
+      "description": "Defines fields to return. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "project",
+      "displayName": "Project Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The project to filter tasks on. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "section",
+      "displayName": "Section Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The section to filter tasks on. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "completed_since",
+      "displayName": "Completed Since",
+      "type": "dateTime",
+      "default": "",
+      "description": "Only return tasks that are either incomplete or that have been completed since this time"
+    },
+    {
+      "name": "modified_since",
+      "displayName": "Modified Since",
+      "type": "dateTime",
+      "default": "",
+      "description": "Only return tasks that have been modified since the given time"
+    },
+    {
+      "name": "id",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the task to be moved",
+      "required": true
+    },
+    {
+      "name": "projectId",
+      "displayName": "Project Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Project to show the sections of. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true,
+      "options": []
+    },
+    {
+      "name": "searchTaskProperties",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Properties to search for",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "",
+      "description": "Text to search for in name or notes"
+    },
+    {
+      "name": "projects",
+      "displayName": "Project Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "The project to filter tasks on. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "Remove",
+      "default": null,
+      "description": "Remove a comment from a task"
+    },
+    {
+      "name": "isTextHtml",
+      "displayName": "Is Text HTML",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether body is HTML or simple text"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Properties of the task comment",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "insert_before",
+      "displayName": "Insert Before",
+      "type": "string",
+      "default": "",
+      "description": "A task in the project to insert the task before, or null to insert at the end of the list"
+    },
+    {
+      "name": "tag",
+      "displayName": "Tags Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The tag that should be added. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "userId",
+      "displayName": "User ID",
+      "type": "string",
+      "default": "",
+      "description": "An identifier for the user to get data of. Can be one of an email address,the globally unique identifier for the user, or the keyword me to indicate the current user making the request.",
+      "required": true
+    },
+    {
+      "name": "team",
+      "displayName": "Team Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The team this project will be assigned to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "privacy_setting",
+      "displayName": "Privacy Setting",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Private to Team",
+      "default": null
+    },
+    {
+      "name": "Public to Workspace",
+      "default": null
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Other properties to set",
+      "placeholder": "Add Property"
+    },
+    {
+      "name": "owner",
+      "displayName": "Owner",
+      "type": "string",
+      "default": "",
+      "description": "The new assignee/cardinal for this project"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "asanaApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "taskId",
+      "required": true
+    },
+    {
+      "name": "completed",
+      "required": false
+    },
+    {
+      "name": "taskId",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "workspace",
+      "required": true
+    },
+    {
+      "name": "id",
+      "required": true
+    },
+    {
+      "name": "otherProperties",
+      "required": false
+    },
+    {
+      "name": "completed",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "id",
+      "required": true
+    },
+    {
+      "name": "id",
+      "required": true
+    },
+    {
+      "name": "id",
+      "required": true
+    },
+    {
+      "name": "id",
+      "required": true
+    },
+    {
+      "name": "id",
+      "required": true
+    },
+    {
+      "name": "userId",
+      "required": true
+    },
+    {
+      "name": "name",
+      "required": true
+    },
+    {
+      "name": "id",
+      "required": true
+    },
+    {
+      "name": "workspace",
+      "required": true
+    },
+    {
+      "name": "team",
+      "required": false
+    }
+  ]
+}

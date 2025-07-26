@@ -1,0 +1,119 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.chainSummarization",
+  "displayName": "ChainSummarization",
+  "description": null,
+  "version": "2.1",
+  "properties": [
+    {
+      "name": "operationMode",
+      "displayName": "Data to Summarize",
+      "type": "options",
+      "default": "nodeInputJson",
+      "description": "How to pass data into the summarization chain"
+    },
+    {
+      "name": "Use Node Input (Binary)",
+      "default": null,
+      "description": "Summarize the binary data coming into this node from the previous one"
+    },
+    {
+      "name": "Use Document Loader",
+      "default": null,
+      "description": "Use a loader sub-node with more configuration options"
+    },
+    {
+      "name": "chunkingMode",
+      "displayName": "Chunking Strategy",
+      "type": "options",
+      "default": "simple",
+      "description": "Chunk splitting strategy"
+    },
+    {
+      "name": "Advanced",
+      "default": null,
+      "description": "Use a splitter sub-node with more configuration options"
+    },
+    {
+      "name": "chunkSize",
+      "displayName": "Characters Per Chunk",
+      "type": "number",
+      "default": 1000,
+      "description": "Controls the max size (in terms of number of characters) of the final document chunk"
+    },
+    {
+      "name": "chunkOverlap",
+      "displayName": "Chunk Overlap (Characters)",
+      "type": "number",
+      "default": 200,
+      "description": "Specifies how much characters overlap there should be between chunks"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "The name of the field in the agent or chain’s input that contains the binary file to be processed",
+      "placeholder": "Add Option"
+    },
+    {
+      "name": "summarizationMethodAndPrompts",
+      "displayName": "Summarization Method and Prompts",
+      "type": "fixedCollection",
+      "default": "{\n\t\t\t\t\t\t\t\tvalues: {\n\t\t\t\t\t\t\t\t\tsummarizationMethod: 'map_reduce',\n\t\t\t\t\t\t\t\t\tprompt: DEFAULT_PROMPT_TEMPLATE,\n\t\t\t\t\t\t\t\t\tcombineMapPrompt: DEFAULT_PROMPT_TEMPLATE,\n\t\t\t\t\t\t\t\t}",
+      "description": "The type of summarization to run",
+      "placeholder": "Add Option"
+    },
+    {
+      "name": "Refine",
+      "default": null,
+      "description": "Summarize the first document (or chunk). Then update that summary based on the next document (or chunk), and repeat."
+    },
+    {
+      "name": "Stuff",
+      "default": null,
+      "description": "Pass all documents (or chunks) at once. Ideal for small datasets."
+    },
+    {
+      "name": "combineMapPrompt",
+      "displayName": "Individual Summary Prompt",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "prompt",
+      "displayName": "Final Prompt to Combine",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "refinePrompt",
+      "displayName": "Subsequent (Refine) Prompt",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "refineQuestionPrompt",
+      "displayName": "Initial Prompt",
+      "type": "string",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "operationMode",
+      "required": false
+    },
+    {
+      "name": "chunkingMode",
+      "required": false
+    },
+    {
+      "name": "chunkSize",
+      "required": false
+    },
+    {
+      "name": "combineMapPrompt",
+      "required": false
+    }
+  ]
+}

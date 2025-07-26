@@ -1,0 +1,81 @@
+{
+  "nodeType": "n8n-nodes-base.taigaTrigger",
+  "displayName": "Taiga Trigger",
+  "description": "Handle Taiga events via webhook",
+  "version": 1,
+  "properties": [
+    {
+      "name": "projectId",
+      "displayName": "Project Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "resources",
+      "displayName": "Resources",
+      "type": "multiOptions",
+      "default": "['all']",
+      "required": true
+    },
+    {
+      "name": "Issue",
+      "default": null
+    },
+    {
+      "name": "Milestone (Sprint)",
+      "default": null
+    },
+    {
+      "name": "Task",
+      "default": null
+    },
+    {
+      "name": "User Story",
+      "default": null
+    },
+    {
+      "name": "Wikipage",
+      "default": null
+    },
+    {
+      "name": "operations",
+      "displayName": "Operations",
+      "type": "multiOptions",
+      "default": "['all']",
+      "description": "Operations to listen to",
+      "required": true
+    },
+    {
+      "name": "Create",
+      "default": null
+    },
+    {
+      "name": "Delete",
+      "default": null
+    },
+    {
+      "name": "Update",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "taigaApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "projectId",
+      "required": true
+    },
+    {
+      "name": "operations",
+      "required": true
+    }
+  ]
+}

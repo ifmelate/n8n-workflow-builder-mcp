@@ -1,0 +1,52 @@
+{
+  "nodeType": "n8n-nodes-base.activeCampaignTrigger",
+  "displayName": "ActiveCampaign Trigger",
+  "description": "Handle ActiveCampaign events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "events",
+      "displayName": "Event Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "options": []
+    },
+    {
+      "name": "sources",
+      "displayName": "Source",
+      "type": "multiOptions",
+      "default": null,
+      "description": "Run the hooks when a contact triggers the action"
+    },
+    {
+      "name": "Admin",
+      "default": null,
+      "description": "Run the hooks when an admin user triggers the action"
+    },
+    {
+      "name": "Api",
+      "default": null,
+      "description": "Run the hooks when an API call triggers the action"
+    },
+    {
+      "name": "System",
+      "default": null,
+      "description": "Run the hooks when automated systems triggers the action"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "activeCampaignApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "events",
+      "required": false
+    }
+  ]
+}

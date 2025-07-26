@@ -1,0 +1,181 @@
+{
+  "nodeType": "n8n-nodes-base.microsoftToDo",
+  "displayName": "Microsoft To Do",
+  "description": "Consume Microsoft To Do API.",
+  "version": 1,
+  "properties": [
+    {
+      "name": "taskListId",
+      "displayName": "Task List Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "taskId",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": "",
+      "description": "Field indicating title of the linked entity",
+      "required": true
+    },
+    {
+      "name": "applicationName",
+      "displayName": "Application Name",
+      "type": "string",
+      "default": "",
+      "description": "App name of the source that is sending the linked entity",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "ID of the object that is associated with this task on the third-party/partner system",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "webUrl",
+      "displayName": "Web URL",
+      "type": "string",
+      "default": "",
+      "description": "Deeplink to the linked entity"
+    },
+    {
+      "name": "linkedResourceId",
+      "displayName": "Linked Resource ID",
+      "type": "string",
+      "default": "",
+      "description": "Whether to return all results or only up to a given limit",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "displayName",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Field indicating title of the linked entity"
+    },
+    {
+      "name": "externalId",
+      "displayName": "External ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the object that is associated with this task on the third-party/partner system"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Delete",
+      "default": null
+    },
+    {
+      "name": "Get",
+      "default": null
+    },
+    {
+      "name": "Get Many",
+      "default": null
+    },
+    {
+      "name": "Update",
+      "default": null
+    },
+    {
+      "name": "title",
+      "displayName": "Subject",
+      "type": "string",
+      "default": "",
+      "description": "A brief description of the task",
+      "required": true
+    },
+    {
+      "name": "dueDateTime",
+      "displayName": "Due",
+      "type": "dateTime",
+      "default": "",
+      "description": "The date in the specified time zone that the task is to be finished"
+    },
+    {
+      "name": "reminderDateTime",
+      "displayName": "Reminder",
+      "type": "dateTime",
+      "default": "",
+      "description": "The date in the specified time zone that the task is to be reminded"
+    },
+    {
+      "name": "importance",
+      "displayName": "Importance",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Normal",
+      "default": null
+    },
+    {
+      "name": "High",
+      "default": null
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "In Progress",
+      "default": null
+    },
+    {
+      "name": "Completed",
+      "default": null
+    },
+    {
+      "name": "Waiting On Others",
+      "default": null
+    },
+    {
+      "name": "Deferred",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "List",
+      "default": null
+    },
+    {
+      "name": "Task",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "microsoftToDoOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

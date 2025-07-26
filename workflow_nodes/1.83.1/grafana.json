@@ -1,0 +1,155 @@
+{
+  "nodeType": "n8n-nodes-base.grafana",
+  "displayName": "Grafana",
+  "description": "Consume the Grafana API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title of the dashboard to create",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Folder to create the dashboard in - if the folder is unspecified, the dashboard will be saved to the General folder. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "dashboardUidOrUrl",
+      "displayName": "Dashboard UID or URL",
+      "type": "string",
+      "default": "",
+      "description": "Unique alphabetic identifier or URL of the dashboard to delete",
+      "placeholder": "cIBgcSjkk",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Folder to move the dashboard into - if the folder is unspecified, the dashboard will be saved to the General folder. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a dashboard"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a dashboard"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a dashboard"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many dashboards"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a dashboard"
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the team to create",
+      "placeholder": "Engineering",
+      "required": true
+    },
+    {
+      "name": "teamId",
+      "displayName": "Team ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the team to delete",
+      "required": true
+    },
+    {
+      "name": "userId",
+      "displayName": "User Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "User to add to a team. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "Remove",
+      "default": null,
+      "description": "Remove a member from a team"
+    },
+    {
+      "name": "Editor",
+      "default": null
+    },
+    {
+      "name": "Viewer",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Team",
+      "default": null
+    },
+    {
+      "name": "Team Member",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "grafanaApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

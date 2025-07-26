@@ -1,0 +1,67 @@
+{
+  "nodeType": "n8n-nodes-base.whatsAppTrigger",
+  "displayName": "WhatsApp Trigger",
+  "description": "Handle WhatsApp events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "updates",
+      "displayName": "Trigger On",
+      "type": "multiOptions",
+      "default": [],
+      "required": true
+    },
+    {
+      "name": "Account Update",
+      "default": null
+    },
+    {
+      "name": "Business Capability Update",
+      "default": null
+    },
+    {
+      "name": "Message Template Quality Update",
+      "default": null
+    },
+    {
+      "name": "Message Template Status Update",
+      "default": null
+    },
+    {
+      "name": "Messages",
+      "default": null
+    },
+    {
+      "name": "Phone Number Name Update",
+      "default": null
+    },
+    {
+      "name": "Phone Number Quality Update",
+      "default": null
+    },
+    {
+      "name": "Security",
+      "default": null
+    },
+    {
+      "name": "Template Category Update",
+      "default": null
+    },
+    {
+      "name": "whatsAppNotice",
+      "displayName": "Due to Facebook API limitations, you can use just one WhatsApp trigger for each Facebook App",
+      "type": "notice",
+      "default": ""
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "whatsAppTriggerApi",
+      "required": true
+    },
+    {
+      "name": "setup",
+      "required": false
+    }
+  ]
+}

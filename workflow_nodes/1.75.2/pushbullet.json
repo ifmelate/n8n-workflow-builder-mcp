@@ -1,0 +1,186 @@
+{
+  "nodeType": "n8n-nodes-base.pushbullet",
+  "displayName": "Pushbullet",
+  "description": "Consume Pushbullet API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a push"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a push"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many pushes"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a push"
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Link",
+      "default": null
+    },
+    {
+      "name": "Note",
+      "default": null
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title of the push",
+      "required": true
+    },
+    {
+      "name": "body",
+      "displayName": "Body",
+      "type": "string",
+      "default": "",
+      "description": "Body of the push",
+      "required": true
+    },
+    {
+      "name": "url",
+      "displayName": "URL",
+      "type": "string",
+      "default": "",
+      "description": "URL of the push",
+      "required": true
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Input Binary Field",
+      "type": "string",
+      "default": "data",
+      "placeholder": "",
+      "required": true
+    },
+    {
+      "name": "target",
+      "displayName": "Target",
+      "type": "options",
+      "default": null,
+      "description": "Send the push to all subscribers to your channel that has this tag"
+    },
+    {
+      "name": "Default",
+      "default": null,
+      "description": "Broadcast it to all of the user's devices"
+    },
+    {
+      "name": "Device ID",
+      "default": null,
+      "description": "Send the push to a specific device"
+    },
+    {
+      "name": "Email",
+      "default": null,
+      "description": "Send the push to this email address"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "The value to be set depending on the target selected. For example, if the target selected is email then this field would take the email address of the person you are trying to send the push to.",
+      "required": true
+    },
+    {
+      "name": "pushId",
+      "displayName": "Push ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Don't return deleted pushes",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "modified_after",
+      "displayName": "Modified After",
+      "type": "dateTime",
+      "default": "",
+      "description": "Request pushes modified after this timestamp"
+    },
+    {
+      "name": "dismissed",
+      "displayName": "Dismissed",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to mark a push as having been dismissed by the user, will cause any notifications for the push to be hidden if possible",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "pushbulletOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "type",
+      "required": false
+    },
+    {
+      "name": "title",
+      "required": true
+    },
+    {
+      "name": "value",
+      "required": true
+    },
+    {
+      "name": "pushId",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.vectorStoreSupabaseInsert",
+  "displayName": "Supabase: Insert",
+  "description": "Insert data into Supabase Vector Store index [https://supabase.com/docs/guides/ai/langchain]",
+  "version": 1,
+  "properties": [
+    {
+      "name": "setupNotice",
+      "displayName": "Please refer to the <a href=\"https://supabase.com/docs/guides/ai/langchain\" target=\"_blank\">Supabase documentation</a> for more information on how to setup your database as a Vector Store.",
+      "type": "notice",
+      "default": "",
+      "description": "Name of the query to use for matching documents",
+      "required": true
+    },
+    {
+      "name": "notice",
+      "displayName": "Specify the document to load in the document loader sub-node",
+      "type": "notice",
+      "default": ""
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "supabaseApi",
+      "required": true
+    },
+    {
+      "name": "setupNotice",
+      "required": true
+    }
+  ]
+}

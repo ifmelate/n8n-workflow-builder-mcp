@@ -1,0 +1,24 @@
+{
+  "nodeType": "n8n-nodes-base.filter",
+  "displayName": "Filter",
+  "description": null,
+  "version": "2.2",
+  "properties": [
+    {
+      "name": "conditions",
+      "displayName": "Conditions",
+      "type": "filter",
+      "default": {},
+      "placeholder": "Add Condition"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to ignore letter case when evaluating conditions",
+      "placeholder": "Add option"
+    }
+  ],
+  "credentialsConfig": []
+}

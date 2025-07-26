@@ -1,0 +1,91 @@
+{
+  "nodeType": "n8n-nodes-base.plivo",
+  "displayName": "Plivo",
+  "description": "Send SMS/MMS messages or make phone calls",
+  "version": 1,
+  "properties": [
+    {
+      "name": "from",
+      "displayName": "From",
+      "type": "string",
+      "default": "",
+      "description": "Caller ID for the call to make",
+      "placeholder": "+14156667777",
+      "required": true
+    },
+    {
+      "name": "to",
+      "displayName": "To",
+      "type": "string",
+      "default": "",
+      "description": "Phone number to make the call to",
+      "placeholder": "+14156667778",
+      "required": true
+    },
+    {
+      "name": "answer_method",
+      "displayName": "Answer Method",
+      "type": "options",
+      "default": "POST",
+      "description": "HTTP verb to be used when invoking the Answer URL",
+      "required": true
+    },
+    {
+      "name": "POST",
+      "default": null
+    },
+    {
+      "name": "answer_url",
+      "displayName": "Answer URL",
+      "type": "string",
+      "default": "",
+      "description": "URL to be invoked by Plivo once the call is answered. It should return the XML to handle the call once answered.",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Make a voice call"
+    },
+    {
+      "name": "message",
+      "displayName": "Message",
+      "type": "string",
+      "default": "",
+      "description": "Message to send"
+    },
+    {
+      "name": "media_urls",
+      "displayName": "Media URLs",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of media URLs of the files from your file server"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "MMS",
+      "default": null
+    },
+    {
+      "name": "SMS",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "plivoApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

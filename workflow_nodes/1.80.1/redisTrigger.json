@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.redisTrigger",
+  "displayName": "Redis Trigger",
+  "description": "Subscribe to redis channel",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

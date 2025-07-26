@@ -1,0 +1,135 @@
+{
+  "nodeType": "n8n-nodes-base.slackTrigger",
+  "displayName": "Slack Trigger",
+  "description": "Handle Slack events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "hidden",
+      "default": "accessToken"
+    },
+    {
+      "name": "notice",
+      "displayName": "Set up a webhook in your Slack app to enable this node. <a href=\"https://docs.n8n.io/integrations/builtin/trigger-nodes/n8n-nodes-base.slacktrigger/#configure-a-webhook-in-slack\" target=\"_blank\">More info</a>",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "trigger",
+      "displayName": "Trigger On",
+      "type": "multiOptions",
+      "default": null,
+      "description": "Triggers on any event"
+    },
+    {
+      "name": "Bot / App Mention",
+      "default": null,
+      "description": "When your bot or app is mentioned in a channel the app is added to"
+    },
+    {
+      "name": "File Made Public",
+      "default": null,
+      "description": "When a file is made public"
+    },
+    {
+      "name": "File Shared",
+      "default": null,
+      "description": "When a file is shared in a channel the app is added to"
+    },
+    {
+      "name": "New Message Posted to Channel",
+      "default": null,
+      "description": "When a message is posted to a channel the app is added to"
+    },
+    {
+      "name": "New Public Channel Created",
+      "default": null,
+      "description": "When a new public channel is created"
+    },
+    {
+      "name": "New User",
+      "default": null,
+      "description": "When a new user is added to Slack"
+    },
+    {
+      "name": "Reaction Added",
+      "default": null,
+      "description": "When a reaction is added to a message the app is added to"
+    },
+    {
+      "name": "watchWorkspace",
+      "displayName": "Watch Whole Workspace",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to watch for the event in the whole workspace, rather than a specific channel"
+    },
+    {
+      "name": "channelId",
+      "displayName": "Channel to Watch",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "description": "The Slack channel to listen to events from. Applies to events: Bot/App mention, File Shared, New Message Posted on Channel, Reaction Added.",
+      "placeholder": "Select a channel...",
+      "required": true
+    },
+    {
+      "name": "id",
+      "displayName": "By ID",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "url",
+      "displayName": "By URL",
+      "type": "string",
+      "default": null,
+      "placeholder": "https://app.slack.com/client/TS9594PZK/B0556F47Z3A"
+    },
+    {
+      "name": "downloadFiles",
+      "displayName": "Download Files",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to download the files and add it to the output"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to resolve the IDs to their respective names and return them",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "userIds",
+      "displayName": "Usernames or IDs to Ignore",
+      "type": "multiOptions",
+      "default": [],
+      "description": "A comma-separated string of encoded user IDs. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "slackApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "watchWorkspace",
+      "required": true
+    },
+    {
+      "name": "url",
+      "required": false
+    },
+    {
+      "name": "downloadFiles",
+      "required": false
+    }
+  ]
+}

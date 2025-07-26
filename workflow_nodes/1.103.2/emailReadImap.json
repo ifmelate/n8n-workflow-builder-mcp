@@ -1,0 +1,88 @@
+{
+  "nodeType": "n8n-nodes-base.emailReadImap",
+  "displayName": "EmailReadImap",
+  "description": null,
+  "version": "2.1",
+  "properties": [
+    {
+      "name": "mailbox",
+      "displayName": "Mailbox Name",
+      "type": "string",
+      "default": "INBOX"
+    },
+    {
+      "name": "postProcessAction",
+      "displayName": "Action",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Nothing",
+      "default": null
+    },
+    {
+      "name": "downloadAttachments",
+      "displayName": "Download Attachments",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether attachments of emails should be downloaded. Only set if needed as it increases processing."
+    },
+    {
+      "name": "format",
+      "displayName": "Format",
+      "type": "options",
+      "default": null,
+      "description": "Returns the full email message data with body content in the raw field as a base64url encoded string; the payload field is not used"
+    },
+    {
+      "name": "Resolved",
+      "default": null,
+      "description": "Returns the full email with all data resolved and attachments saved as binary data"
+    },
+    {
+      "name": "Simple",
+      "default": null,
+      "description": "Returns the full email; do not use if you wish to gather inline attachments"
+    },
+    {
+      "name": "dataPropertyAttachmentsPrefixName",
+      "displayName": "Property Prefix Name",
+      "type": "string",
+      "default": "attachment_",
+      "description": "Prefix for name of the binary property to which to write the attachments. An index starting with 0 will be added. So if name is \"attachment_\" the first attachment is saved to \"attachment_0\""
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Custom email fetching rules. See <a href=\"https://github.com/mscdex/node-imap\">node-imap</a>'s search function for more details.",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "forceReconnect",
+      "displayName": "Force Reconnect Every Minutes",
+      "type": "number",
+      "default": 60,
+      "description": "Sets an interval (in minutes) to force a reconnection"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "imap",
+      "required": true
+    },
+    {
+      "name": "mailbox",
+      "required": false
+    },
+    {
+      "name": "downloadAttachments",
+      "required": false
+    },
+    {
+      "name": "dataPropertyAttachmentsPrefixName",
+      "required": false
+    }
+  ]
+}

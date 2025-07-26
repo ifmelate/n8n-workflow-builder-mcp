@@ -1,0 +1,201 @@
+{
+  "nodeType": "n8n-nodes-base.emelia",
+  "displayName": "Emelia",
+  "description": "Consume the Emelia API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "campaignId",
+      "displayName": "Campaign Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "The ID of the campaign to add the contact to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "contactEmail",
+      "displayName": "Contact Email",
+      "type": "string",
+      "default": "",
+      "description": "The email of the contact to add to the campaign",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Filter by custom fields",
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "The value to set on custom field"
+    },
+    {
+      "name": "firstName",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "First name of the contact to add"
+    },
+    {
+      "name": "lastContacted",
+      "displayName": "Last Contacted",
+      "type": "dateTime",
+      "default": "",
+      "description": "Last contacted date of the contact to add"
+    },
+    {
+      "name": "lastName",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "description": "Last name of the contact to add"
+    },
+    {
+      "name": "lastOpen",
+      "displayName": "Last Open",
+      "type": "dateTime",
+      "default": "",
+      "description": "Last opened date of the contact to add"
+    },
+    {
+      "name": "lastReplied",
+      "displayName": "Last Replied",
+      "type": "dateTime",
+      "default": "",
+      "description": "Last replied date of the contact to add"
+    },
+    {
+      "name": "mailsSent",
+      "displayName": "Mails Sent",
+      "type": "number",
+      "default": 0,
+      "description": "Number of emails sent to the contact to add"
+    },
+    {
+      "name": "phoneNumber",
+      "displayName": "Phone Number",
+      "type": "string",
+      "default": "",
+      "description": "Phone number of the contact to add"
+    },
+    {
+      "name": "campaignName",
+      "displayName": "Campaign Name",
+      "type": "string",
+      "default": "",
+      "description": "The name of the campaign to create",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to copy all the contacts from the original campaign",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "copyProvider",
+      "displayName": "Copy Email Provider",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to set the same email provider than the original campaign"
+    },
+    {
+      "name": "copyMails",
+      "displayName": "Copy Email Sequence",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to copy all the steps of the email sequence from the original campaign"
+    },
+    {
+      "name": "copySettings",
+      "displayName": "Copy Global Settings",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to copy all the general settings from the original campaign"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": "get"
+    },
+    {
+      "name": "Create",
+      "default": null
+    },
+    {
+      "name": "Duplicate",
+      "default": null
+    },
+    {
+      "name": "Get",
+      "default": null
+    },
+    {
+      "name": "Get Many",
+      "default": null
+    },
+    {
+      "name": "Pause",
+      "default": null
+    },
+    {
+      "name": "Start",
+      "default": null
+    },
+    {
+      "name": "contactListId",
+      "displayName": "Contact List Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "The ID of the contact list to add the contact to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Contact List",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "emeliaApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,812 @@
+{
+  "nodeType": "n8n-nodes-base.wooCommerce",
+  "displayName": "WooCommerce",
+  "description": "Consume WooCommerce API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "ID of the customer to delete",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Email address to filter customers by",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "order",
+      "displayName": "Sort Order",
+      "type": "options",
+      "default": null,
+      "description": "Order to sort customers in"
+    },
+    {
+      "name": "Descending",
+      "default": null
+    },
+    {
+      "name": "orderby",
+      "displayName": "Order By",
+      "type": "options",
+      "default": null,
+      "description": "Field to sort customers by"
+    },
+    {
+      "name": "Include",
+      "default": null
+    },
+    {
+      "name": "Name",
+      "default": null
+    },
+    {
+      "name": "Registered Date",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a customer"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a customer"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Retrieve a customer"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Retrieve many customers"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a customer"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Currency the order was created with",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "customerId",
+      "displayName": "Customer ID",
+      "type": "string",
+      "default": "",
+      "description": "User ID who owns the order. 0 for guests."
+    },
+    {
+      "name": "customerNote",
+      "displayName": "Customer Note",
+      "type": "string",
+      "default": "",
+      "description": "Note left by customer during checkout"
+    },
+    {
+      "name": "parentId",
+      "displayName": "Parent ID",
+      "type": "string",
+      "default": "",
+      "description": "Parent order ID"
+    },
+    {
+      "name": "paymentMethodId",
+      "displayName": "Payment Method ID",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "paymentMethodTitle",
+      "displayName": "Payment Method Title",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "setPaid",
+      "displayName": "Set Paid",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the order is paid. It will set the status to processing and reduce stock items."
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Completed",
+      "default": null
+    },
+    {
+      "name": "Failed",
+      "default": null
+    },
+    {
+      "name": "on-hold",
+      "default": null
+    },
+    {
+      "name": "Pending",
+      "default": null
+    },
+    {
+      "name": "Processing",
+      "default": null
+    },
+    {
+      "name": "Refunded",
+      "default": null
+    },
+    {
+      "name": "Trash",
+      "default": null
+    },
+    {
+      "name": "transactionID",
+      "displayName": "Transaction ID",
+      "type": "string",
+      "default": "",
+      "description": "Unique transaction ID"
+    },
+    {
+      "name": "billingUi",
+      "displayName": "Billing",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Billing address",
+      "placeholder": "Add Billing"
+    },
+    {
+      "name": "lastName",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "company",
+      "displayName": "Company",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "address_1",
+      "displayName": "Address Line 1",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "address_2",
+      "displayName": "Address Line 2",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "city",
+      "displayName": "City",
+      "type": "string",
+      "default": "",
+      "description": "ISO code or name of the state, province or district"
+    },
+    {
+      "name": "postcode",
+      "displayName": "Postal Code",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "country",
+      "displayName": "Country",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "phone",
+      "displayName": "Phone",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "couponLinesUi",
+      "displayName": "Coupon Lines",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Coupons line data",
+      "placeholder": "Add Coupon Line"
+    },
+    {
+      "name": "metadataUi",
+      "displayName": "Metadata",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Meta data",
+      "placeholder": "Add Metadata"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Value to set for the metadata key"
+    },
+    {
+      "name": "feeLinesUi",
+      "displayName": "Fee Lines",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Fee line data",
+      "placeholder": "Add Fee Line"
+    },
+    {
+      "name": "taxClass",
+      "displayName": "Tax Class",
+      "type": "string",
+      "default": "",
+      "description": "Tax class of fee"
+    },
+    {
+      "name": "taxStatus",
+      "displayName": "Tax Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "None",
+      "default": null
+    },
+    {
+      "name": "total",
+      "displayName": "Total",
+      "type": "string",
+      "default": "",
+      "description": "Line total (after discounts)"
+    },
+    {
+      "name": "lineItemsUi",
+      "displayName": "Line Items",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Line item data",
+      "placeholder": "Add Line Item"
+    },
+    {
+      "name": "productId",
+      "displayName": "Product ID",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "name": "variationId",
+      "displayName": "Variation ID",
+      "type": "number",
+      "default": 0,
+      "description": "Variation ID, if applicable"
+    },
+    {
+      "name": "quantity",
+      "displayName": "Quantity",
+      "type": "number",
+      "default": 1,
+      "description": "Quantity ordered"
+    },
+    {
+      "name": "subtotal",
+      "displayName": "Subtotal",
+      "type": "string",
+      "default": "",
+      "description": "Line subtotal (before discounts)"
+    },
+    {
+      "name": "shippingUi",
+      "displayName": "Shipping",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Shipping address",
+      "placeholder": "Add Shipping"
+    },
+    {
+      "name": "shippingLinesUi",
+      "displayName": "Shipping Lines",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Shipping line data",
+      "placeholder": "Add Shipping Line"
+    },
+    {
+      "name": "method ID",
+      "displayName": "Method ID",
+      "type": "string",
+      "default": "",
+      "description": "Shipping method ID"
+    },
+    {
+      "name": "orderId",
+      "displayName": "Order ID",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Currency the order was created with",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "postalCode",
+      "displayName": "Postal Code",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Limit response to resources published after a given ISO8601 compliant date",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "before",
+      "displayName": "Before",
+      "type": "dateTime",
+      "default": "",
+      "description": "Limit response to resources published before a given ISO8601 compliant date"
+    },
+    {
+      "name": "customer",
+      "displayName": "Customer",
+      "type": "string",
+      "default": "",
+      "description": "Limit result set to orders assigned a specific customer"
+    },
+    {
+      "name": "decimalPoints",
+      "displayName": "Decimal Points",
+      "type": "number",
+      "default": 2,
+      "description": "Number of decimal points to use in each resource"
+    },
+    {
+      "name": "DESC",
+      "default": null
+    },
+    {
+      "name": "product",
+      "displayName": "Product",
+      "type": "string",
+      "default": "",
+      "description": "Limit result set to orders assigned a specific product"
+    },
+    {
+      "name": "orderBy",
+      "displayName": "Order By",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "ID",
+      "default": null
+    },
+    {
+      "name": "Slug",
+      "default": null
+    },
+    {
+      "name": "Title",
+      "default": null
+    },
+    {
+      "name": "search",
+      "displayName": "Search",
+      "type": "string",
+      "default": "",
+      "description": "Limit results to those matching a string"
+    },
+    {
+      "name": "Cancelled",
+      "default": null
+    },
+    {
+      "name": "On-Hold",
+      "default": null
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Product name",
+      "required": true
+    },
+    {
+      "name": "Notify",
+      "default": null
+    },
+    {
+      "name": "Yes",
+      "default": null
+    },
+    {
+      "name": "buttonText",
+      "displayName": "Button Text",
+      "type": "string",
+      "default": "",
+      "description": "Product external button text. Only for external products."
+    },
+    {
+      "name": "catalogVisibility",
+      "displayName": "Catalog Visibility",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Hidden",
+      "default": null
+    },
+    {
+      "name": "Search",
+      "default": null
+    },
+    {
+      "name": "Visible",
+      "default": null
+    },
+    {
+      "name": "categories",
+      "displayName": "Category Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "List of categories. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "crossSellIds",
+      "displayName": "Cross Sell IDs",
+      "type": "string",
+      "default": "",
+      "description": "List of cross-sell products IDs. Multiple can be added separated by ,."
+    },
+    {
+      "name": "dateOnSaleFrom",
+      "displayName": "Date On Sale From",
+      "type": "dateTime",
+      "default": "",
+      "description": "Start date of sale price, in the site's timezone"
+    },
+    {
+      "name": "dateOnSaleTo",
+      "displayName": "Date On Sale To",
+      "type": "dateTime",
+      "default": "",
+      "description": "Ennd date of sale price, in the site's timezone"
+    },
+    {
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": "",
+      "description": "Product description"
+    },
+    {
+      "name": "downloadable",
+      "displayName": "Downloadable",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the product is downloadable"
+    },
+    {
+      "name": "externalUrl",
+      "displayName": "External URL",
+      "type": "string",
+      "default": "",
+      "description": "Product external URL. Only for external products."
+    },
+    {
+      "name": "featured",
+      "displayName": "Featured",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the product is featured"
+    },
+    {
+      "name": "manageStock",
+      "displayName": "Manage Stock",
+      "type": "boolean",
+      "default": false,
+      "description": "Stock management at product level"
+    },
+    {
+      "name": "menuOrder",
+      "displayName": "Menu Order",
+      "type": "number",
+      "default": 1,
+      "description": "Menu order, used to custom sort products"
+    },
+    {
+      "name": "purchaseNote",
+      "displayName": "Purchase Note",
+      "type": "string",
+      "default": "",
+      "description": "Optional note to send the customer after purchase"
+    },
+    {
+      "name": "regularPrice",
+      "displayName": "Regular Price",
+      "type": "string",
+      "default": "",
+      "description": "Product regular price"
+    },
+    {
+      "name": "reviewsAllowed",
+      "displayName": "Reviews Allowed",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to allow reviews"
+    },
+    {
+      "name": "salePrice",
+      "displayName": "Sale Price",
+      "type": "string",
+      "default": "",
+      "description": "Product sale price"
+    },
+    {
+      "name": "shippingClass",
+      "displayName": "Shipping Class",
+      "type": "string",
+      "default": "",
+      "description": "Shipping class slug"
+    },
+    {
+      "name": "shortDescription",
+      "displayName": "Short Description",
+      "type": "string",
+      "default": "",
+      "description": "Product short description"
+    },
+    {
+      "name": "sku",
+      "displayName": "SKU",
+      "type": "string",
+      "default": "",
+      "description": "Unique identifier"
+    },
+    {
+      "name": "slug",
+      "displayName": "Slug",
+      "type": "string",
+      "default": "",
+      "description": "Product slug"
+    },
+    {
+      "name": "soldIndividually",
+      "displayName": "Sold Individually",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to allow one item to be bought in a single order"
+    },
+    {
+      "name": "Private",
+      "default": null
+    },
+    {
+      "name": "Publish",
+      "default": null
+    },
+    {
+      "name": "stockQuantity",
+      "displayName": "Stock Quantity",
+      "type": "number",
+      "default": 1
+    },
+    {
+      "name": "stockStatus",
+      "displayName": "Stock Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Out Of Stock",
+      "default": null
+    },
+    {
+      "name": "On Back Order",
+      "default": null
+    },
+    {
+      "name": "tags",
+      "displayName": "Tag Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "List of tags. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "Shipping",
+      "default": null
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Grouped",
+      "default": null
+    },
+    {
+      "name": "External",
+      "default": null
+    },
+    {
+      "name": "Variable",
+      "default": null
+    },
+    {
+      "name": "upsellIds",
+      "displayName": "Upsell IDs",
+      "type": "string",
+      "default": "",
+      "description": "List of up-sell products IDs. Multiple can be added separated by ,."
+    },
+    {
+      "name": "virtual",
+      "displayName": "Virtual",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the product is virtual"
+    },
+    {
+      "name": "weight",
+      "displayName": "Weight",
+      "type": "string",
+      "default": "",
+      "description": "Product weight"
+    },
+    {
+      "name": "dimensionsUi",
+      "displayName": "Dimensions",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Product dimensions",
+      "placeholder": "Add Dimension"
+    },
+    {
+      "name": "length",
+      "displayName": "Length",
+      "type": "string",
+      "default": "",
+      "description": "Product length"
+    },
+    {
+      "name": "width",
+      "displayName": "Width",
+      "type": "string",
+      "default": "",
+      "description": "Product width"
+    },
+    {
+      "name": "imagesUi",
+      "displayName": "Images",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Product Image",
+      "placeholder": "Add Image"
+    },
+    {
+      "name": "src",
+      "displayName": "Src",
+      "type": "string",
+      "default": "",
+      "description": "Image URL"
+    },
+    {
+      "name": "Catalog",
+      "default": null
+    },
+    {
+      "name": "category",
+      "displayName": "Category Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Limit result set to products assigned a specific category ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "context",
+      "displayName": "Context",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Embed",
+      "default": null
+    },
+    {
+      "name": "Edit",
+      "default": null
+    },
+    {
+      "name": "maxPrice",
+      "displayName": "Max Price",
+      "type": "string",
+      "default": "",
+      "description": "Limit result set to products based on a maximun price"
+    },
+    {
+      "name": "minPrice",
+      "displayName": "Min Price",
+      "type": "string",
+      "default": "",
+      "description": "Limit result set to products based on a minimum price"
+    },
+    {
+      "name": "Draft",
+      "default": null
+    },
+    {
+      "name": "tag",
+      "displayName": "Tag Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "Limit result set to products assigned a specific tag ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "Reduced Rate",
+      "default": null
+    },
+    {
+      "name": "Zero Rate",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Order",
+      "default": null
+    },
+    {
+      "name": "Product",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "wooCommerceApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

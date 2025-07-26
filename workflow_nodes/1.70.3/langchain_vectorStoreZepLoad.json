@@ -1,0 +1,8 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.vectorStoreZepLoad",
+  "displayName": "Zep Vector Store: Load",
+  "description": "Load data from Zep Vector Store index",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

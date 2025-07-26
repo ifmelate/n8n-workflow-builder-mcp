@@ -1,0 +1,95 @@
+{
+  "nodeType": "n8n-nodes-base.twilio",
+  "displayName": "Twilio",
+  "description": "Send SMS and WhatsApp messages or make phone calls",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "SMS",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Send SMS/MMS/WhatsApp message"
+    },
+    {
+      "name": "from",
+      "displayName": "From",
+      "type": "string",
+      "default": "",
+      "description": "The number from which to send the message",
+      "placeholder": "+14155238886",
+      "required": true
+    },
+    {
+      "name": "to",
+      "displayName": "To",
+      "type": "string",
+      "default": "",
+      "description": "The number to which to send the message",
+      "placeholder": "+14155238886",
+      "required": true
+    },
+    {
+      "name": "toWhatsapp",
+      "displayName": "To Whatsapp",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the message should be sent to WhatsApp"
+    },
+    {
+      "name": "message",
+      "displayName": "Message",
+      "type": "string",
+      "default": "",
+      "description": "The message to send",
+      "required": true
+    },
+    {
+      "name": "twiml",
+      "displayName": "Use TwiML",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to use the <a href=\"https://www.twilio.com/docs/voice/twiml\">Twilio Markup Language</a> in the message"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Status Callbacks allow you to receive events related to the REST resources managed by Twilio: Rooms, Recordings and Compositions",
+      "placeholder": "Add Field"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "twilioApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "from",
+      "required": true
+    }
+  ]
+}

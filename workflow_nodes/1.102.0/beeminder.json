@@ -1,0 +1,146 @@
+{
+  "nodeType": "n8n-nodes-base.beeminder",
+  "displayName": "Beeminder",
+  "description": "Consume Beeminder API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "required": true
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create datapoint for goal"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a datapoint"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many datapoints for a goal"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a datapoint"
+    },
+    {
+      "name": "goalName",
+      "displayName": "Goal Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The name of the goal. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 30,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "number",
+      "default": 1,
+      "description": "Datapoint value to send",
+      "placeholder": "",
+      "required": true
+    },
+    {
+      "name": "datapointId",
+      "displayName": "Datapoint ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "timestamp",
+      "displayName": "Timestamp",
+      "type": "dateTime",
+      "default": "",
+      "description": "Defaults to \"now\" if none is passed in, or the existing timestamp if the datapoint is being updated rather than created",
+      "placeholder": ""
+    },
+    {
+      "name": "requestid",
+      "displayName": "Request ID",
+      "type": "string",
+      "default": "",
+      "description": "String to uniquely identify a datapoint",
+      "placeholder": ""
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Attribute to sort on",
+      "placeholder": "Add field"
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Datapoint value to send",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "comment",
+      "displayName": "Comment",
+      "type": "string",
+      "default": ""
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "beeminderApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "goalName",
+      "required": true
+    },
+    {
+      "name": "options",
+      "required": false
+    },
+    {
+      "name": "updateFields",
+      "required": false
+    }
+  ]
+}

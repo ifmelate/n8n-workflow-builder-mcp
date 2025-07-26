@@ -1,0 +1,132 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.openAiAssistant",
+  "displayName": "OpenAI Assistant",
+  "description": "Utilizes Assistant API from Open AI.",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "mode",
+      "displayName": "Operation",
+      "type": "options",
+      "default": "existing"
+    },
+    {
+      "name": "Use Existing Assistant",
+      "default": null
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "instructions",
+      "displayName": "Instructions",
+      "type": "string",
+      "default": "",
+      "description": "How the Assistant and model should behave or respond"
+    },
+    {
+      "name": "model",
+      "displayName": "Model",
+      "type": "options",
+      "default": null,
+      "description": "The model which will be used to power the assistant. <a href=\"https://beta.openai.com/docs/models/overview\">Learn more</a>. The Retrieval tool requires gpt-3.5-turbo-1106 and gpt-4-1106-preview models.",
+      "required": true
+    },
+    {
+      "name": "={{$responseItem.id}}",
+      "type": "setKeyValue",
+      "default": null
+    },
+    {
+      "name": "assistantId",
+      "displayName": "Assistant",
+      "type": "options",
+      "default": null,
+      "description": "The assistant to use. <a href=\"https://beta.openai.com/docs/assistants/overview\">Learn more</a>."
+    },
+    {
+      "name": "={{$responseItem.name}}",
+      "type": "setKeyValue",
+      "default": null,
+      "description": "={{$responseItem.model}}"
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "={{ $json.chat_input }}",
+      "required": true
+    },
+    {
+      "name": "nativeTools",
+      "displayName": "OpenAI Tools",
+      "type": "multiOptions",
+      "default": []
+    },
+    {
+      "name": "Knowledge Retrieval",
+      "default": null
+    },
+    {
+      "name": "noticeTools",
+      "displayName": "Connect your own custom tools to this node on the canvas",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Additional options to add",
+      "placeholder": "Add Option"
+    },
+    {
+      "name": "maxRetries",
+      "displayName": "Max Retries",
+      "type": "number",
+      "default": 2,
+      "description": "Maximum number of retries to attempt"
+    },
+    {
+      "name": "timeout",
+      "displayName": "Timeout",
+      "type": "number",
+      "default": 10000,
+      "description": "Maximum amount of time a request is allowed to take in milliseconds"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "openAiApi",
+      "required": true
+    },
+    {
+      "name": "mode",
+      "required": false
+    },
+    {
+      "name": "name",
+      "required": true
+    },
+    {
+      "name": "assistantId",
+      "required": false
+    },
+    {
+      "name": "text",
+      "required": true
+    },
+    {
+      "name": "noticeTools",
+      "required": false
+    }
+  ]
+}

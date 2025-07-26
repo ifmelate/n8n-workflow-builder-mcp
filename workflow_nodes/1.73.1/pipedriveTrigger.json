@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.pipedriveTrigger",
+  "displayName": "Pipedrive Trigger",
+  "description": "Starts the workflow when Pipedrive events occur",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

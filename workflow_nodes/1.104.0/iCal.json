@@ -1,0 +1,20 @@
+{
+  "nodeType": "n8n-nodes-base.iCal",
+  "displayName": "iCalendar",
+  "description": "Create iCalendar file",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "operation",
+      "required": false
+    }
+  ]
+}

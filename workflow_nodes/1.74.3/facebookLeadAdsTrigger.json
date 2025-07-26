@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.facebookLeadAdsTrigger",
+  "displayName": "Facebook Lead Ads Trigger",
+  "description": "Handle Facebook Lead Ads events via webhooks",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

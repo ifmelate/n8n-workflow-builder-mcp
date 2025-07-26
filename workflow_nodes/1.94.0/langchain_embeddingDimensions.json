@@ -1,0 +1,17 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.embeddingDimensions",
+  "displayName": "VectorStoreZep",
+  "description": null,
+  "version": 1,
+  "properties": [
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to automatically embed documents when they are added",
+      "placeholder": "Add Option"
+    }
+  ],
+  "credentialsConfig": []
+}

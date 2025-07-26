@@ -1,0 +1,74 @@
+{
+  "nodeType": "n8n-nodes-base.mailerLiteTrigger",
+  "displayName": "MailerLiteTrigger",
+  "description": null,
+  "version": "2",
+  "properties": [
+    {
+      "name": "events",
+      "displayName": "Events",
+      "type": "multiOptions",
+      "default": null,
+      "description": "Fired when campaign is sent"
+    },
+    {
+      "name": "Subscriber Added to Group",
+      "default": null,
+      "description": "Fired when a subscriber is added to a group"
+    },
+    {
+      "name": "Subscriber Automation Completed",
+      "default": null,
+      "description": "Fired when subscriber finishes automation"
+    },
+    {
+      "name": "Subscriber Automation Triggered",
+      "default": null,
+      "description": "Fired when subscriber starts automation"
+    },
+    {
+      "name": "Subscriber Bounced",
+      "default": null,
+      "description": "Fired when an email address bounces"
+    },
+    {
+      "name": "Subscriber Created",
+      "default": null,
+      "description": "Fired when a new subscriber is added to an account"
+    },
+    {
+      "name": "Subscriber Removed From Group",
+      "default": null,
+      "description": "Fired when a subscriber is removed from a group"
+    },
+    {
+      "name": "Subscriber Spam Reported",
+      "default": null,
+      "description": "Fired when subscriber marks a campaign as a spam"
+    },
+    {
+      "name": "Subscriber Unsubscribe",
+      "default": null,
+      "description": "Fired when a subscriber becomes unsubscribed"
+    },
+    {
+      "name": "Subscriber Updated",
+      "default": null,
+      "description": "Fired when any of the subscriber's custom fields are updated"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "mailerLiteApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "events",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "nodeType": "n8n-nodes-base.slack",
+  "displayName": "Slack",
+  "description": null,
+  "version": "2.2",
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "File",
+      "default": null
+    },
+    {
+      "name": "Message",
+      "default": null
+    },
+    {
+      "name": "Reaction",
+      "default": null
+    },
+    {
+      "name": "Star",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    },
+    {
+      "name": "User Group",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "slackApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

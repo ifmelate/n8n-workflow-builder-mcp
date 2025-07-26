@@ -1,0 +1,8 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+  "displayName": "Embeddings Google Gemini",
+  "description": "Use Google Gemini Embeddings",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

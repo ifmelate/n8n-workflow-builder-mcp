@@ -1,0 +1,8 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.toolSearXng",
+  "displayName": "SearXNG",
+  "description": "Search in SearXNG",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

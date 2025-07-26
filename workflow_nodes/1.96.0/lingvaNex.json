@@ -1,0 +1,66 @@
+{
+  "nodeType": "n8n-nodes-base.lingvaNex",
+  "displayName": "LingvaNex",
+  "description": "Consume LingvaNex API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Translate data"
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "",
+      "description": "The input text to translate",
+      "required": true
+    },
+    {
+      "name": "translateTo",
+      "displayName": "Translate To",
+      "type": "options",
+      "default": "",
+      "description": "The language to use for translation of the input text, set to one of the language codes listed in <a href=\"https://cloud.google.com/translate/docs/languages\">Language Support</a>. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Additional Options",
+      "type": "collection",
+      "default": {},
+      "description": "The language code in the format “language code_code of the country”. If this parameter is not present, the auto-detect language mode is enabled. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "platform",
+      "displayName": "Platform",
+      "type": "string",
+      "default": "api"
+    },
+    {
+      "name": "translateMode",
+      "displayName": "Translate Mode",
+      "type": "string",
+      "default": "",
+      "description": "Describe the input text format. Possible value is \"html\" for translating and preserving html structure. If value is not specified or is other than \"html\" than plain text is translating."
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "lingvaNexApi",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "text",
+      "required": true
+    }
+  ]
+}

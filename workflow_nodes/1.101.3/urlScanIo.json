@@ -1,0 +1,113 @@
+{
+  "nodeType": "n8n-nodes-base.urlScanIo",
+  "displayName": "urlscan.io",
+  "description": "Provides various utilities for monitoring websites like health checks or screenshots",
+  "version": 1,
+  "properties": [
+    {
+      "name": "scanId",
+      "displayName": "Scan ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the scan to retrieve"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Query using the <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-dsl-query-string-query\">Elastic Search Query String syntax</a>. See <a href=\"https://urlscan.io/docs/search/\">supported fields</a> in the documentation.",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "url",
+      "displayName": "URL",
+      "type": "string",
+      "default": "",
+      "description": "URL to scan",
+      "placeholder": "https://n8n.io"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "<code>User-Agent</code> header to set for this scan. Defaults to <code>n8n</code>",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "overrideSafety",
+      "displayName": "Override Safety",
+      "type": "string",
+      "default": "",
+      "description": "Disable reclassification of URLs with potential PII in them"
+    },
+    {
+      "name": "referer",
+      "displayName": "Referer",
+      "type": "string",
+      "default": "",
+      "description": "HTTP referer to set for this scan",
+      "placeholder": "https://n8n.io"
+    },
+    {
+      "name": "tags",
+      "displayName": "Tags",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of user-defined tags to add to this scan. Limited to 10 tags.",
+      "placeholder": "phishing, malicious"
+    },
+    {
+      "name": "visibility",
+      "displayName": "Visibility",
+      "type": "options",
+      "default": "private"
+    },
+    {
+      "name": "Public",
+      "default": null
+    },
+    {
+      "name": "Unlisted",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Get Many",
+      "default": null
+    },
+    {
+      "name": "Perform",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "urlScanIoApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

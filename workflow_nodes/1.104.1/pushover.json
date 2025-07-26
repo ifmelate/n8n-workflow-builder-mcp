@@ -1,0 +1,159 @@
+{
+  "nodeType": "n8n-nodes-base.pushover",
+  "displayName": "Pushover",
+  "description": "Consume Pushover API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "userKey",
+      "displayName": "User Key",
+      "type": "string",
+      "default": "",
+      "description": "The user/group key (not e-mail address) of your user (or you), viewable when logged into the <a href=\"https://pushover.net/\">dashboard</a> (often referred to as <code>USER_KEY</code> in the <a href=\"https://support.pushover.net/i44-example-code-and-pushover-libraries\">libraries</a> and code examples)",
+      "required": true
+    },
+    {
+      "name": "message",
+      "displayName": "Message",
+      "type": "string",
+      "default": "",
+      "description": "Your message",
+      "required": true
+    },
+    {
+      "name": "priority",
+      "displayName": "Priority",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Low Priority",
+      "default": null
+    },
+    {
+      "name": "Normal Priority",
+      "default": null
+    },
+    {
+      "name": "High Priority",
+      "default": null
+    },
+    {
+      "name": "Emergency Priority",
+      "default": null
+    },
+    {
+      "name": "retry",
+      "displayName": "Retry (Seconds)",
+      "type": "number",
+      "default": 30,
+      "description": "Specifies how often (in seconds) the Pushover servers will send the same notification to the user. This parameter must have a value of at least 30 seconds between retries.",
+      "required": true
+    },
+    {
+      "name": "expire",
+      "displayName": "Expire (Seconds)",
+      "type": "number",
+      "default": 30,
+      "description": "Specifies how many seconds your notification will continue to be retried for (every retry seconds)",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "device",
+      "displayName": "Device",
+      "type": "string",
+      "default": "",
+      "description": "Your user's device name to send the message directly to that device, rather than all of the user's devices (multiple devices may be separated by a comma)"
+    },
+    {
+      "name": "html",
+      "displayName": "HTML Formatting",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to enable messages formatting with HTML tags"
+    },
+    {
+      "name": "sound",
+      "displayName": "Sound Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The name of one of the sounds supported by device clients to override the user's default sound choice. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "timestamp",
+      "displayName": "Timestamp",
+      "type": "dateTime",
+      "default": "",
+      "description": "A Unix timestamp of your message's date and time to display to the user, rather than the time your message is received by our API"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Your message's title, otherwise your app's name is used"
+    },
+    {
+      "name": "url",
+      "displayName": "URL",
+      "type": "string",
+      "default": "",
+      "description": "A supplementary URL to show with your message"
+    },
+    {
+      "name": "url_title",
+      "displayName": "URL Title",
+      "type": "string",
+      "default": "",
+      "description": "A title for your supplementary URL, otherwise just the URL is shown"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "pushoverApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "userKey",
+      "required": true
+    },
+    {
+      "name": "retry",
+      "required": true
+    },
+    {
+      "name": "device",
+      "required": false
+    }
+  ]
+}

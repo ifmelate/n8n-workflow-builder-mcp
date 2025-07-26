@@ -1,0 +1,8 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.embeddingsCohere",
+  "displayName": "Embeddings Cohere",
+  "description": "Use Cohere Embeddings",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

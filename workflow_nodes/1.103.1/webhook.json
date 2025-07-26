@@ -1,0 +1,61 @@
+{
+  "nodeType": "n8n-nodes-base.webhook",
+  "displayName": "Webhook",
+  "description": "Starts the workflow when a webhook is called",
+  "version": [
+    1,
+    1.1,
+    2,
+    2.1
+  ],
+  "properties": [
+    {
+      "name": "multipleMethods",
+      "displayName": "Allow Multiple HTTP Methods",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to allow the webhook to listen for multiple HTTP methods"
+    },
+    {
+      "name": "httpMethod",
+      "displayName": "HTTP Methods",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "GET",
+      "default": null
+    },
+    {
+      "name": "HEAD",
+      "default": null
+    },
+    {
+      "name": "PATCH",
+      "default": null
+    },
+    {
+      "name": "POST",
+      "default": null
+    },
+    {
+      "name": "PUT",
+      "default": null
+    },
+    {
+      "name": "path",
+      "displayName": "Path",
+      "type": "string",
+      "default": "",
+      "description": "The path to listen to, dynamic values could be specified by using ':', e.g. 'your-path/:dynamic-value'. If dynamic values are set 'webhookId' would be prepended to path.",
+      "placeholder": "webhook"
+    },
+    {
+      "name": "webhookStreamingNotice",
+      "displayName": "Insert a node that supports streaming (e.g. 'AI Agent') and enable streaming to stream directly to the response while the workflow is executed. <a href=\"https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.respondtowebhook/\" target=\"_blank\">More details</a>",
+      "type": "notice",
+      "default": ""
+    }
+  ],
+  "credentialsConfig": []
+}

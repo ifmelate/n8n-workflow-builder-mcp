@@ -1,0 +1,72 @@
+{
+  "nodeType": "n8n-nodes-base.postmarkTrigger",
+  "displayName": "Postmark Trigger",
+  "description": "Starts the workflow when Postmark events occur",
+  "version": 1,
+  "properties": [
+    {
+      "name": "events",
+      "displayName": "Events",
+      "type": "multiOptions",
+      "default": null,
+      "description": "Trigger on bounce"
+    },
+    {
+      "name": "Click",
+      "default": null,
+      "description": "Trigger on click"
+    },
+    {
+      "name": "Delivery",
+      "default": null,
+      "description": "Trigger on delivery"
+    },
+    {
+      "name": "Open",
+      "default": null,
+      "description": "Trigger webhook on open"
+    },
+    {
+      "name": "Spam Complaint",
+      "default": null,
+      "description": "Trigger on spam complaint"
+    },
+    {
+      "name": "Subscription Change",
+      "default": null,
+      "description": "Trigger on subscription change"
+    },
+    {
+      "name": "firstOpen",
+      "displayName": "First Open",
+      "type": "boolean",
+      "default": false,
+      "description": "Only fires on first open for event \"Open\""
+    },
+    {
+      "name": "includeContent",
+      "displayName": "Include Content",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to include message content for events \"Bounce\" and \"Spam Complaint\""
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "postmarkApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "events",
+      "required": false
+    },
+    {
+      "name": "firstOpen",
+      "required": false
+    }
+  ]
+}

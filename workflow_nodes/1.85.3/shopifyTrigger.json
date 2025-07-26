@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.shopifyTrigger",
+  "displayName": "Shopify Trigger",
+  "description": "Handle Shopify events via webhooks",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

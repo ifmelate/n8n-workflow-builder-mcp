@@ -1,0 +1,45 @@
+{
+  "nodeType": "n8n-nodes-base.lemlistTrigger",
+  "displayName": "Lemlist Trigger",
+  "description": "Handle Lemlist events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "event",
+      "displayName": "Event",
+      "type": "options",
+      "default": "",
+      "required": true,
+      "options": []
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "We'll call this hook only for this campaignId. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "isFirst",
+      "displayName": "Is First",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to call this hook only the first time this activity happened"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "lemlistApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "event",
+      "required": true
+    }
+  ]
+}

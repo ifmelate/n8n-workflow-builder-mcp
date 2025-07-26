@@ -1,0 +1,139 @@
+{
+  "nodeType": "n8n-nodes-base.erpNext",
+  "displayName": "ERPNext",
+  "description": "Consume ERPNext API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "docType",
+      "displayName": "DocType Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "DocType whose documents to retrieve. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Customer"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 10,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Comma-separated list of fields to return. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Custom Properties",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "operator",
+      "displayName": "Operator",
+      "type": "options",
+      "default": "is"
+    },
+    {
+      "name": "EQUALS, or LESS",
+      "default": null
+    },
+    {
+      "name": "IS",
+      "default": null
+    },
+    {
+      "name": "IS GREATER",
+      "default": null
+    },
+    {
+      "name": "IS LESS",
+      "default": null
+    },
+    {
+      "name": "IS NOT",
+      "default": null
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Value of the operator condition"
+    },
+    {
+      "name": "properties",
+      "displayName": "Properties",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Property",
+      "required": true
+    },
+    {
+      "name": "documentName",
+      "displayName": "Document Name",
+      "type": "string",
+      "default": "",
+      "description": "The name (ID) of document you would like to get",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a document"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a document"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Retrieve a document"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Retrieve many documents"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a document"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "erpNextApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

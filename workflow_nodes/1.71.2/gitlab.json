@@ -1,0 +1,544 @@
+{
+  "nodeType": "n8n-nodes-base.gitlab",
+  "displayName": "GitLab",
+  "description": "Retrieve data from GitLab API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Issue",
+      "default": null
+    },
+    {
+      "name": "Release",
+      "default": null
+    },
+    {
+      "name": "Repository",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a new issue"
+    },
+    {
+      "name": "Create Comment",
+      "default": null,
+      "description": "Create a new comment on an issue"
+    },
+    {
+      "name": "Edit",
+      "default": null,
+      "description": "Edit an issue"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get the data of a single issue"
+    },
+    {
+      "name": "Lock",
+      "default": null,
+      "description": "Lock an issue"
+    },
+    {
+      "name": "Get Issues",
+      "default": null,
+      "description": "Returns issues of a repository"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a release"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many releases"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a release"
+    },
+    {
+      "name": "List",
+      "default": null,
+      "description": "List contents of a folder"
+    },
+    {
+      "name": "owner",
+      "displayName": "Project Owner",
+      "type": "string",
+      "default": "",
+      "description": "User, group or namespace of the project",
+      "placeholder": "n8n-io",
+      "required": true
+    },
+    {
+      "name": "repository",
+      "displayName": "Project Name",
+      "type": "string",
+      "default": "",
+      "description": "The name of the project",
+      "placeholder": "n8n",
+      "required": true
+    },
+    {
+      "name": "body",
+      "displayName": "Body",
+      "type": "string",
+      "default": "",
+      "description": "The body of the issue"
+    },
+    {
+      "name": "due_date",
+      "displayName": "Due Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Due Date for issue"
+    },
+    {
+      "name": "labels",
+      "displayName": "Labels",
+      "type": "collection",
+      "default": "{ label: '' }",
+      "description": "Label to add to issue",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "assignee_ids",
+      "displayName": "Assignees",
+      "type": "collection",
+      "default": "{ assignee: '' }",
+      "description": "User ID to assign issue to",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "issueNumber",
+      "displayName": "Issue Number",
+      "type": "number",
+      "default": 0,
+      "description": "The number of the issue on which to create the comment on",
+      "required": true
+    },
+    {
+      "name": "editFields",
+      "displayName": "Edit Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The title of the issue"
+    },
+    {
+      "name": "description",
+      "displayName": "Body",
+      "type": "string",
+      "default": "",
+      "description": "The body of the issue"
+    },
+    {
+      "name": "state",
+      "displayName": "State",
+      "type": "options",
+      "default": null,
+      "description": "Set the state to \"closed\""
+    },
+    {
+      "name": "Open",
+      "default": null,
+      "description": "Set the state to \"open\""
+    },
+    {
+      "name": "lockReason",
+      "displayName": "Lock Reason",
+      "type": "options",
+      "default": null,
+      "description": "The issue is Off-Topic"
+    },
+    {
+      "name": "Too Heated",
+      "default": null,
+      "description": "The discussion is too heated"
+    },
+    {
+      "name": "Resolved",
+      "default": null,
+      "description": "The issue got resolved"
+    },
+    {
+      "name": "Spam",
+      "default": null,
+      "description": "The issue is spam"
+    },
+    {
+      "name": "releaseTag",
+      "displayName": "Tag",
+      "type": "string",
+      "default": "",
+      "description": "The tag of the release",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The name of the release"
+    },
+    {
+      "name": "ref",
+      "displayName": "Ref",
+      "type": "string",
+      "default": "",
+      "description": "If Tag doesn’t exist, the release will be created from Ref. It can be a commit SHA, another tag name, or a branch name."
+    },
+    {
+      "name": "projectId",
+      "displayName": "Project ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID or URL-encoded path of the project",
+      "required": true
+    },
+    {
+      "name": "tag_name",
+      "displayName": "Tag Name",
+      "type": "string",
+      "default": "",
+      "description": "The Git tag the release is associated with",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 20,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "Released At",
+      "default": null
+    },
+    {
+      "name": "sort",
+      "displayName": "Sort",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "DESC",
+      "default": null
+    },
+    {
+      "name": "milestones",
+      "displayName": "Milestones",
+      "type": "string",
+      "default": "",
+      "description": "The title of each milestone to associate with the release (provide a titles list spearated with comma)"
+    },
+    {
+      "name": "released_at",
+      "displayName": "Released At",
+      "type": "dateTime",
+      "default": "",
+      "description": "The date when the release is/was ready"
+    },
+    {
+      "name": "getRepositoryIssuesFilters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Return only issues which are assigned to a specific user"
+    },
+    {
+      "name": "author_username",
+      "displayName": "Creator",
+      "type": "string",
+      "default": "",
+      "description": "Return only issues which were created by a specific user"
+    },
+    {
+      "name": "search",
+      "displayName": "Search",
+      "type": "string",
+      "default": "",
+      "description": "Search issues against their title and description"
+    },
+    {
+      "name": "updated_after",
+      "displayName": "Updated After",
+      "type": "dateTime",
+      "default": "",
+      "description": "Return only issues updated at or after this time"
+    },
+    {
+      "name": "Closed",
+      "default": null,
+      "description": "Return issues with \"closed\" state"
+    },
+    {
+      "name": "order_by",
+      "displayName": "Sort",
+      "type": "options",
+      "default": null,
+      "description": "Sort by created date"
+    },
+    {
+      "name": "Updated At",
+      "default": null,
+      "description": "Sort by updated date"
+    },
+    {
+      "name": "Priority",
+      "default": null,
+      "description": "Sort by priority"
+    },
+    {
+      "name": "Descending",
+      "default": null,
+      "description": "Sort in descending order"
+    },
+    {
+      "name": "filePath",
+      "displayName": "File Path",
+      "type": "string",
+      "default": "",
+      "description": "The file path of the file. Has to contain the full path or leave it empty for root folder.",
+      "placeholder": "docs/README.md"
+    },
+    {
+      "name": "page",
+      "displayName": "Page",
+      "type": "number",
+      "default": 1,
+      "description": "Page of results to display"
+    },
+    {
+      "name": "additionalParameters",
+      "displayName": "Additional Parameters",
+      "type": "collection",
+      "default": {},
+      "description": "Additional fields to add",
+      "placeholder": "Add Parameter"
+    },
+    {
+      "name": "recursive",
+      "displayName": "Recursive",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether or not to get a recursive file tree. Default is false."
+    },
+    {
+      "name": "asBinaryProperty",
+      "displayName": "As Binary Property",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to set the data of the file as binary property instead of returning the raw API response"
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Put Output File in Field",
+      "type": "string",
+      "default": "data",
+      "placeholder": "",
+      "required": true
+    },
+    {
+      "name": "binaryData",
+      "displayName": "Binary File",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the data to upload should be taken from binary field",
+      "required": true
+    },
+    {
+      "name": "fileContent",
+      "displayName": "File Content",
+      "type": "string",
+      "default": "",
+      "description": "The text content of the file",
+      "placeholder": "",
+      "required": true
+    },
+    {
+      "name": "commitMessage",
+      "displayName": "Commit Message",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "branch",
+      "displayName": "Branch",
+      "type": "string",
+      "default": "",
+      "description": "Name of the new branch to create. The commit is added to this branch.",
+      "required": true
+    },
+    {
+      "name": "author",
+      "displayName": "Author",
+      "type": "string",
+      "default": "",
+      "description": "The name of the author of the commit"
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "The email of the author of the commit",
+      "placeholder": "name@email.com"
+    },
+    {
+      "name": "encoding",
+      "displayName": "Encoding",
+      "type": "string",
+      "default": "text",
+      "description": "Change encoding to base64. Default is text."
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "gitlabApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "owner",
+      "required": true
+    },
+    {
+      "name": "assignee_ids",
+      "required": false
+    },
+    {
+      "name": "issueNumber",
+      "required": true
+    },
+    {
+      "name": "labels",
+      "required": false
+    },
+    {
+      "name": "assignee_ids",
+      "required": false
+    },
+    {
+      "name": "due_date",
+      "required": false
+    },
+    {
+      "name": "issueNumber",
+      "required": true
+    },
+    {
+      "name": "releaseTag",
+      "required": true
+    },
+    {
+      "name": "projectId",
+      "required": true
+    },
+    {
+      "name": "sort",
+      "required": false
+    },
+    {
+      "name": "projectId",
+      "required": true
+    },
+    {
+      "name": "getRepositoryIssuesFilters",
+      "required": false
+    },
+    {
+      "name": "order_by",
+      "required": false
+    },
+    {
+      "name": "sort",
+      "required": false
+    },
+    {
+      "name": "filePath",
+      "required": false
+    },
+    {
+      "name": "asBinaryProperty",
+      "required": true
+    },
+    {
+      "name": "binaryData",
+      "required": true
+    },
+    {
+      "name": "author",
+      "required": false
+    },
+    {
+      "name": "encoding",
+      "required": false
+    }
+  ]
+}

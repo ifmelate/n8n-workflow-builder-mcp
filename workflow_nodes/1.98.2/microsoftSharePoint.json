@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.microsoftSharePoint",
+  "displayName": "Microsoft SharePoint",
+  "description": "Interact with Microsoft SharePoint API",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

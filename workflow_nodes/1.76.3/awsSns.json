@@ -1,0 +1,110 @@
+{
+  "nodeType": "n8n-nodes-base.awsSns",
+  "displayName": "AWS SNS",
+  "description": "Sends data to AWS SNS",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a topic"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a topic"
+    },
+    {
+      "name": "Publish",
+      "default": null,
+      "description": "Publish a message to a topic"
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "The display name to use for a topic with SMS subscriptions",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "fifoTopic",
+      "displayName": "Fifo Topic",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the topic you want to create is a FIFO (first-in-first-out) topic"
+    },
+    {
+      "name": "topic",
+      "displayName": "Topic",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "placeholder": "Select a topic...",
+      "required": true
+    },
+    {
+      "name": "url",
+      "displayName": "By URL",
+      "type": "string",
+      "default": null,
+      "placeholder": "https://us-east-1.console.aws.amazon.com/sns/v3/home?region=us-east-1#/topic/arn:aws:sns:us-east-1:777777777777:your_topic"
+    },
+    {
+      "name": "id",
+      "displayName": "ID",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "subject",
+      "displayName": "Subject",
+      "type": "string",
+      "default": "",
+      "description": "Subject when the message is delivered to email endpoints",
+      "required": true
+    },
+    {
+      "name": "message",
+      "displayName": "Message",
+      "type": "string",
+      "default": "",
+      "description": "The message you want to send",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "aws",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "name",
+      "required": true
+    },
+    {
+      "name": "topic",
+      "required": true
+    },
+    {
+      "name": "id",
+      "required": false
+    },
+    {
+      "name": "subject",
+      "required": true
+    }
+  ]
+}

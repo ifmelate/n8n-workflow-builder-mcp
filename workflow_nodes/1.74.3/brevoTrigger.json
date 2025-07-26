@@ -1,0 +1,145 @@
+{
+  "nodeType": "n8n-nodes-base.brevoTrigger",
+  "displayName": "Brevo Trigger",
+  "description": "Starts the workflow when Brevo events occur",
+  "version": 1,
+  "properties": [
+    {
+      "name": "type",
+      "displayName": "Resource",
+      "default": "transactional"
+    },
+    {
+      "name": "Marketing",
+      "default": null
+    },
+    {
+      "name": "Transactional",
+      "default": null
+    },
+    {
+      "name": "events",
+      "displayName": "Trigger On",
+      "type": "['transactional']",
+      "default": null,
+      "description": "Triggers when transactional email is blocked",
+      "placeholder": "Add Event"
+    },
+    {
+      "name": "Email Clicked",
+      "default": null,
+      "description": "Triggers when transactional email is clicked"
+    },
+    {
+      "name": "Email Deferred",
+      "default": null,
+      "description": "Triggers when transactional email is deferred"
+    },
+    {
+      "name": "Email Delivered",
+      "default": null,
+      "description": "Triggers when transactional email is delivered"
+    },
+    {
+      "name": "Email Hard Bounce",
+      "default": null,
+      "description": "Triggers when transactional email is hard bounced"
+    },
+    {
+      "name": "Email Invalid",
+      "default": null,
+      "description": "Triggers when transactional email is invalid"
+    },
+    {
+      "name": "Email Marked Spam",
+      "default": null,
+      "description": "Triggers when transactional email is set to spam"
+    },
+    {
+      "name": "Email Opened",
+      "default": null,
+      "description": "Triggers when transactional email is opened"
+    },
+    {
+      "name": "Email Sent",
+      "default": null,
+      "description": "Triggers when transactional email is sent"
+    },
+    {
+      "name": "Email Soft-Bounce",
+      "default": null,
+      "description": "Triggers when transactional email is soft bounced"
+    },
+    {
+      "name": "Email Unique Open",
+      "default": null,
+      "description": "Triggers when transactional email is unique opened"
+    },
+    {
+      "name": "Email Unsubscribed",
+      "default": null,
+      "description": "Triggers when transactional email is unsubscribed"
+    },
+    {
+      "name": "Marketing Email Delivered",
+      "default": null,
+      "description": "Triggers when marketing email is delivered"
+    },
+    {
+      "name": "Marketing Email Hard Bounce",
+      "default": null,
+      "description": "Triggers when marketing email is hard bounced"
+    },
+    {
+      "name": "Marketing Email List Addition",
+      "default": null,
+      "description": "Triggers when marketing email is clicked"
+    },
+    {
+      "name": "Marketing Email Opened",
+      "default": null,
+      "description": "Triggers when marketing email is opened"
+    },
+    {
+      "name": "Marketing Email Soft Bounce",
+      "default": null,
+      "description": "Triggers when marketing email is soft bounced"
+    },
+    {
+      "name": "Marketing Email Spam",
+      "default": null,
+      "description": "Triggers when marketing email is spam"
+    },
+    {
+      "name": "Marketing Email Unsubscribed",
+      "default": null,
+      "description": "Triggers when marketing email is unsubscribed"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "sendInBlueApi",
+      "required": true
+    },
+    {
+      "name": "Brevo Trigger",
+      "required": false
+    },
+    {
+      "name": "type",
+      "required": false
+    },
+    {
+      "name": "events",
+      "required": false
+    },
+    {
+      "name": "events",
+      "required": false
+    },
+    {
+      "name": "events",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.noOp",
+  "displayName": "No Operation, do nothing",
+  "description": "No Operation",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

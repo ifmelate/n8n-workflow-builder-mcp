@@ -1,0 +1,8 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.toolWorkflow",
+  "displayName": "ToolWorkflow",
+  "description": null,
+  "version": "2",
+  "properties": [],
+  "credentialsConfig": []
+}

@@ -1,0 +1,51 @@
+{
+  "nodeType": "n8n-nodes-base.microsoftEntra",
+  "displayName": "Microsoft Entra ID",
+  "description": "Interact with Micosoft Entra ID API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a group",
+      "options": []
+    },
+    {
+      "name": "Delete",
+      "type": "set",
+      "default": null,
+      "description": "Delete a group"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Retrieve data for a specific group"
+    },
+    {
+      "name": "Get Many",
+      "type": "rootProperty",
+      "default": null,
+      "description": "Retrieve a list of groups"
+    },
+    {
+      "name": "Update",
+      "type": "set",
+      "default": null,
+      "description": "Update a group"
+    },
+    {
+      "name": "Create",
+      "default": null,
+      "description": "Create a user"
+    },
+    {
+      "name": "Remove from Group",
+      "type": "set",
+      "default": null,
+      "description": "Remove user from group"
+    }
+  ],
+  "credentialsConfig": []
+}

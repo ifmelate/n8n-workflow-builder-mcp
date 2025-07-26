@@ -1,0 +1,23 @@
+{
+  "nodeType": "n8n-nodes-base.toolExecutor",
+  "displayName": "Tool Executor",
+  "description": "Parameters to pass to the tool as JSON or string",
+  "version": 1,
+  "properties": [
+    {
+      "name": "query",
+      "displayName": "Query",
+      "type": "json",
+      "default": "{}",
+      "description": "Parameters to pass to the tool as JSON or string"
+    },
+    {
+      "name": "toolName",
+      "displayName": "Tool Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the tool to execute if the connected tool is a toolkit"
+    }
+  ],
+  "credentialsConfig": []
+}

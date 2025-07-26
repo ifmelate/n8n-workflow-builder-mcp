@@ -1,0 +1,57 @@
+{
+  "nodeType": "n8n-nodes-base.sort",
+  "displayName": "Sort",
+  "description": "Change items order",
+  "version": 1,
+  "properties": [
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Random",
+      "default": null
+    },
+    {
+      "name": "Code",
+      "default": null
+    },
+    {
+      "name": "sortFieldsUi",
+      "displayName": "Fields To Sort By",
+      "type": "fixedCollection",
+      "default": "",
+      "description": "The field to sort by",
+      "placeholder": "Add Field To Sort By",
+      "required": true
+    },
+    {
+      "name": "order",
+      "displayName": "Order",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Descending",
+      "default": null
+    },
+    {
+      "name": "code",
+      "displayName": "Code",
+      "type": "string",
+      "default": null,
+      "description": "Javascript code to determine the order of any two items"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to disallow referencing child fields using `parent.child` in the field name",
+      "placeholder": "Add Field"
+    }
+  ],
+  "credentialsConfig": []
+}

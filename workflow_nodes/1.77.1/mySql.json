@@ -1,0 +1,111 @@
+{
+  "nodeType": "n8n-nodes-base.mySql",
+  "displayName": "MySql",
+  "description": null,
+  "version": "2.4",
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Execute an SQL query"
+    },
+    {
+      "name": "Insert",
+      "default": null,
+      "description": "Insert rows in database"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update rows in database"
+    },
+    {
+      "name": "query",
+      "displayName": "Query",
+      "type": "string",
+      "default": "",
+      "description": "The SQL query to execute",
+      "placeholder": "SELECT id, name FROM product WHERE id < 40",
+      "required": true
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": null,
+      "placeholder": "table_name"
+    },
+    {
+      "name": "columns",
+      "displayName": "Columns",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of the properties which should used as columns for the new rows",
+      "placeholder": "id,name,description"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Modifiers for INSERT statement",
+      "placeholder": "Add modifiers"
+    },
+    {
+      "name": "priority",
+      "displayName": "Priority",
+      "type": "options",
+      "default": null,
+      "description": "Delays execution of the INSERT until no other clients are reading from the table"
+    },
+    {
+      "name": "High Priority",
+      "default": null,
+      "description": "Overrides the effect of the --low-priority-updates option if the server was started with that option. It also causes concurrent inserts not to be used."
+    },
+    {
+      "name": "table",
+      "displayName": "Table",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "placeholder": "Select a Table...",
+      "required": true
+    },
+    {
+      "name": "updateKey",
+      "displayName": "Update Key",
+      "type": "string",
+      "default": "id",
+      "description": "Name of the property which decides which rows in the database should be updated. Normally that would be \"id\".",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "mySql",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "query",
+      "required": true
+    },
+    {
+      "name": "columns",
+      "required": false
+    },
+    {
+      "name": "table",
+      "required": true
+    },
+    {
+      "name": "updateKey",
+      "required": true
+    }
+  ]
+}

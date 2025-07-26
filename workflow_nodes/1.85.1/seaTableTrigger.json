@@ -1,0 +1,87 @@
+{
+  "nodeType": "n8n-nodes-base.seaTableTrigger",
+  "displayName": "SeaTableTrigger",
+  "description": null,
+  "version": "2",
+  "properties": [
+    {
+      "name": "event",
+      "displayName": "Event",
+      "type": "options",
+      "default": null,
+      "description": "Trigger on newly created rows"
+    },
+    {
+      "name": "New or Updated Row",
+      "default": null,
+      "description": "Trigger has recently created or modified rows"
+    },
+    {
+      "name": "New Signature",
+      "default": null,
+      "description": "Trigger on new signatures"
+    },
+    {
+      "name": "tableName",
+      "displayName": "Table Name",
+      "type": "options",
+      "default": "",
+      "description": "The name of SeaTable table to access. Choose from the list, or specify the name using an <a href=\"https://docs.n8n.io/code-examples/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "viewName",
+      "displayName": "View Name",
+      "type": "options",
+      "default": "",
+      "description": "The name of SeaTable view to access. Choose from the list, or specify the name using an <a href=\"https://docs.n8n.io/code-examples/expressions/\">expression</a>."
+    },
+    {
+      "name": "assetColumn",
+      "displayName": "Signature Column",
+      "type": "options",
+      "default": "",
+      "description": "Select the digital-signature column that should be tracked. Choose from the list, or specify the name using an <a href=\"https://docs.n8n.io/code-examples/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "placeholder": "Add Option"
+    },
+    {
+      "name": "convert",
+      "displayName": "Return Column Names",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return the column keys (false) or the column names (true)"
+    },
+    {
+      "name": "notice",
+      "displayName": "\"Fetch Test Event\" returns max. three items of the last hour.",
+      "type": "notice",
+      "default": ""
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "seaTableApi",
+      "required": true
+    },
+    {
+      "name": "event",
+      "required": false
+    },
+    {
+      "name": "tableName",
+      "required": true
+    },
+    {
+      "name": "notice",
+      "required": false
+    }
+  ]
+}

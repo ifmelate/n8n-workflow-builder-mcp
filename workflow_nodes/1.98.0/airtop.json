@@ -1,0 +1,10 @@
+{
+  "nodeType": "n8n-nodes-base.airtop",
+  "displayName": "Airtop",
+  "description": "Scrape and control any site with Airtop",
+  "version": [
+    1
+  ],
+  "properties": [],
+  "credentialsConfig": []
+}

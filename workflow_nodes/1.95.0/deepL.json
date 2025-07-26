@@ -1,0 +1,103 @@
+{
+  "nodeType": "n8n-nodes-base.deepL",
+  "displayName": "DeepL",
+  "description": "Translate data using DeepL",
+  "version": 1,
+  "properties": [
+    {
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "",
+      "description": "Input text to translate",
+      "required": true
+    },
+    {
+      "name": "translateTo",
+      "displayName": "Target Language Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Language to translate to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Language to translate from. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "splitSentences",
+      "displayName": "Split Sentences",
+      "type": "options",
+      "default": "1",
+      "description": "How the translation engine should split sentences"
+    },
+    {
+      "name": "No Splitting",
+      "default": null,
+      "description": "Treat all text as a single sentence"
+    },
+    {
+      "name": "On Punctuation and Newlines",
+      "default": null,
+      "description": "Split text on interpunction and newlines"
+    },
+    {
+      "name": "preserveFormatting",
+      "displayName": "Preserve Formatting",
+      "type": "options",
+      "default": "0",
+      "description": "Whether the translation engine should respect the original formatting, even if it would usually correct some aspects"
+    },
+    {
+      "name": "Do Not Correct",
+      "default": null,
+      "description": "Keep text as similar as possible to the original"
+    },
+    {
+      "name": "formality",
+      "displayName": "Formality",
+      "type": "options",
+      "default": "default",
+      "description": "How formal or informal the target text should be. May not be supported with all languages."
+    },
+    {
+      "name": "Informal",
+      "default": null
+    },
+    {
+      "name": "Neutral",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Translate data"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "deepLApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    }
+  ]
+}

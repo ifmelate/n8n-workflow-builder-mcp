@@ -1,0 +1,159 @@
+{
+  "nodeType": "n8n-nodes-base.ciscoWebexTrigger",
+  "displayName": "Webex by Cisco Trigger",
+  "description": "Starts the workflow when Cisco Webex events occur.",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "options": []
+    },
+    {
+      "name": "Attachment Action",
+      "default": null
+    },
+    {
+      "name": "Meeting",
+      "default": null
+    },
+    {
+      "name": "Membership",
+      "default": null
+    },
+    {
+      "name": "Message",
+      "default": null
+    },
+    {
+      "name": "Recording",
+      "default": null
+    },
+    {
+      "name": "Room",
+      "default": null
+    },
+    {
+      "name": "resolveData",
+      "displayName": "Resolve Data",
+      "type": "boolean",
+      "default": true,
+      "description": "By default the response only contain a reference to the data the user inputed. If this option gets activated, it will resolve the data automatically."
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to limit to messages which contain file content attachments",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "isLocked",
+      "displayName": "Is Locked",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to limit to rooms that are locked"
+    },
+    {
+      "name": "isModerator",
+      "displayName": "Is Moderator",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to limit to moderators of a room"
+    },
+    {
+      "name": "mentionedPeople",
+      "displayName": "Mentioned People",
+      "type": "string",
+      "default": "",
+      "description": "Limit to messages which contain these mentioned people, by person ID; accepts me as a shorthand for your own person ID; separate multiple values with commas"
+    },
+    {
+      "name": "messageId",
+      "displayName": "Message ID",
+      "type": "string",
+      "default": "",
+      "description": "Limit to a particular message, by ID"
+    },
+    {
+      "name": "ownedBy",
+      "displayName": "Owned By",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "personEmail",
+      "displayName": "Person Email",
+      "type": "string",
+      "default": "",
+      "description": "Limit to a particular person, by email"
+    },
+    {
+      "name": "personId",
+      "displayName": "Person ID",
+      "type": "string",
+      "default": "",
+      "description": "Limit to a particular person, by ID"
+    },
+    {
+      "name": "roomId",
+      "displayName": "Room ID",
+      "type": "string",
+      "default": "",
+      "description": "Limit to a particular room, by ID"
+    },
+    {
+      "name": "roomType",
+      "displayName": "Room Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Group",
+      "default": null
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "callType",
+      "displayName": "Call Type",
+      "type": "options",
+      "default": "",
+      "description": "Limit to a particular room type",
+      "options": []
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "ciscoWebexOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "resolveData",
+      "required": false
+    },
+    {
+      "name": "type",
+      "required": false
+    },
+    {
+      "name": "callType",
+      "required": false
+    }
+  ]
+}

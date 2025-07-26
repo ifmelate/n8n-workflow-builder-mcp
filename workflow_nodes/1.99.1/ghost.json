@@ -1,0 +1,290 @@
+{
+  "nodeType": "n8n-nodes-base.ghost",
+  "displayName": "Ghost",
+  "description": "Consume Ghost API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Post's title",
+      "required": true
+    },
+    {
+      "name": "contentFormat",
+      "displayName": "Content Format",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Mobile Doc",
+      "default": null
+    },
+    {
+      "name": "Lexical",
+      "default": null
+    },
+    {
+      "name": "content",
+      "displayName": "Content",
+      "type": "string",
+      "default": "",
+      "description": "The content of the post to create"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "canonical_url",
+      "displayName": "Cannonical URL",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "codeinjection_foot",
+      "displayName": "Code Injection Foot",
+      "type": "string",
+      "default": "",
+      "description": "The Code Injection allows you inject a small snippet into your Ghost site"
+    },
+    {
+      "name": "codeinjection_head",
+      "displayName": "Code Injection Head",
+      "type": "string",
+      "default": "",
+      "description": "The Code Injection allows you inject a small snippet into your Ghost site"
+    },
+    {
+      "name": "featured",
+      "displayName": "Featured",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "meta_description",
+      "displayName": "Meta Description",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "meta_title",
+      "displayName": "Meta Title",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "og_description",
+      "displayName": "Open Graph Description",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "og_image",
+      "displayName": "Open Graph Image",
+      "type": "string",
+      "default": "",
+      "description": "URL of the image"
+    },
+    {
+      "name": "og_title",
+      "displayName": "Open Graph Title",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "published_at",
+      "displayName": "Published At",
+      "type": "dateTime",
+      "default": ""
+    },
+    {
+      "name": "slug",
+      "displayName": "Slug",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Published",
+      "default": null
+    },
+    {
+      "name": "Scheduled",
+      "default": null
+    },
+    {
+      "name": "tags",
+      "displayName": "Tag Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "twitter_description",
+      "displayName": "Twitter Description",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "twitter_image",
+      "displayName": "Twitter Image",
+      "type": "string",
+      "default": "",
+      "description": "URL of the image"
+    },
+    {
+      "name": "twitter_title",
+      "displayName": "Twitter Title",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "postId",
+      "displayName": "Post ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the post to delete",
+      "required": true
+    },
+    {
+      "name": "Slug",
+      "default": null
+    },
+    {
+      "name": "identifier",
+      "displayName": "Identifier",
+      "type": "string",
+      "default": "",
+      "description": "The ID or slug of the post to get",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Limit the fields returned in the response object. E.g. for posts fields=title,url.",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "formats",
+      "displayName": "Formats",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "Plaintext",
+      "default": null
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "Tags",
+      "default": null
+    },
+    {
+      "name": "fields",
+      "displayName": "Fields",
+      "type": "string",
+      "default": "",
+      "description": "Limit the fields returned in the response object. E.g. for posts fields=title,url."
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "contentJson",
+      "displayName": "Content (JSON)",
+      "type": "json",
+      "default": "",
+      "description": "Mobiledoc is the raw JSON format that Ghost uses to store post contents. <a href=\"https://ghost.org/docs/concepts/posts/#document-storage\">Info.</a>."
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get a post"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many posts"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a post"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a post"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a post"
+    },
+    {
+      "name": "source",
+      "displayName": "Source",
+      "type": "options",
+      "default": null,
+      "description": "Pick where your data comes from, Content or Admin API"
+    },
+    {
+      "name": "Content API",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "ghostAdminApi",
+      "required": true
+    },
+    {
+      "name": "source",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

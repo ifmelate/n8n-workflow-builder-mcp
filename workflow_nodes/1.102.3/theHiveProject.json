@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.theHiveProject",
+  "displayName": "TheHiveProject",
+  "description": null,
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

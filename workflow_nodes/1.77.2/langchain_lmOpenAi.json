@@ -1,0 +1,251 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.lmOpenAi",
+  "displayName": "OpenAI Model",
+  "description": "For advanced usage with an AI chain",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": "chat",
+      "description": "The OpenAI resource to use",
+      "required": true,
+      "options": [
+        {
+          "name": "Chat",
+          "value": "chat"
+        },
+        {
+          "name": "Completion",
+          "value": "completion"
+        },
+        {
+          "name": "Image",
+          "value": "image"
+        },
+        {
+          "name": "Embedding",
+          "value": "embedding"
+        },
+        {
+          "name": "Audio",
+          "value": "audio"
+        }
+      ]
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": "apiKey",
+      "description": "Authentication method to use",
+      "options": [
+        {
+          "name": "API Key",
+          "value": "apiKey"
+        }
+      ]
+    },
+    {
+      "name": "deprecated",
+      "displayName": "This node is using OpenAI completions which are now deprecated. Please use the OpenAI Chat Model node instead.",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "model",
+      "displayName": "Model",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: 'gpt-3.5-turbo-instruct' }",
+      "description": "The model which will generate the completion. <a href=\"https://beta.openai.com/docs/models/overview\">Learn more</a>.",
+      "required": true
+    },
+    {
+      "name": "id",
+      "displayName": "ID",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "notice",
+      "displayName": "When using non OpenAI models via Base URL override, not all models might be chat-compatible or support other features, like tools calling or JSON response format.",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Additional options to add",
+      "placeholder": "Add Option"
+    },
+    {
+      "name": "frequencyPenalty",
+      "displayName": "Frequency Penalty",
+      "type": "number",
+      "default": 0,
+      "description": "Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim"
+    },
+    {
+      "name": "maxTokens",
+      "displayName": "Maximum Number of Tokens",
+      "type": "number",
+      "default": null,
+      "description": "The maximum number of tokens to generate in the completion. Most models have a context length of 2048 tokens (except for the newest models, which support 32,768)."
+    },
+    {
+      "name": "presencePenalty",
+      "displayName": "Presence Penalty",
+      "type": "number",
+      "default": 0,
+      "description": "Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics"
+    },
+    {
+      "name": "temperature",
+      "displayName": "Sampling Temperature",
+      "type": "number",
+      "default": 0.7,
+      "description": "Controls randomness: Lowering results in less random completions. As the temperature approaches zero, the model will become deterministic and repetitive."
+    },
+    {
+      "name": "timeout",
+      "displayName": "Timeout",
+      "type": "number",
+      "default": 60000,
+      "description": "Maximum amount of time a request is allowed to take in milliseconds"
+    },
+    {
+      "name": "maxRetries",
+      "displayName": "Max Retries",
+      "type": "number",
+      "default": 2,
+      "description": "Maximum number of retries to attempt"
+    },
+    {
+      "name": "topP",
+      "displayName": "Top P",
+      "type": "number",
+      "default": 1,
+      "description": "Controls diversity via nucleus sampling: 0.5 means half of all likelihood-weighted options are considered. We generally recommend altering this or temperature but not both."
+    },
+    {
+      "name": "prompt",
+      "displayName": "Chat Messages",
+      "type": "collection",
+      "default": null,
+      "options": [
+        {
+          "name": "messages",
+          "displayName": "Messages",
+          "type": "fixedCollection",
+          "typeOptions": {
+            "multipleValues": true
+          },
+          "options": [
+            {
+              "name": "role",
+              "displayName": "Role",
+              "type": "options",
+              "options": [
+                {
+                  "name": "System",
+                  "value": "system"
+                },
+                {
+                  "name": "User",
+                  "value": "user"
+                },
+                {
+                  "name": "Assistant",
+                  "value": "assistant"
+                }
+              ],
+              "default": "user",
+              "description": "The role of the message sender"
+            },
+            {
+              "name": "content",
+              "displayName": "Content",
+              "type": "string",
+              "typeOptions": {
+                "rows": 4
+              },
+              "description": "The content of the message"
+            }
+          ]
+        }
+      ],
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "model",
+      "displayName": "Model",
+      "type": "string",
+      "default": "gpt-3.5-turbo",
+      "description": "The ID of the model to use",
+      "options": [
+        {
+          "name": "gpt-3.5-turbo",
+          "value": "gpt-3.5-turbo"
+        },
+        {
+          "name": "gpt-4",
+          "value": "gpt-4"
+        },
+        {
+          "name": "gpt-4-turbo",
+          "value": "gpt-4-turbo"
+        }
+      ]
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": null,
+      "placeholder": "Add Option",
+      "options": [
+        {
+          "name": "temperature",
+          "displayName": "Temperature",
+          "type": "number",
+          "typeOptions": {
+            "minValue": 0,
+            "maxValue": 2
+          },
+          "default": 1,
+          "description": "Controls randomness: Lowering results in less random completions"
+        },
+        {
+          "name": "max_tokens",
+          "displayName": "Maximum Tokens",
+          "type": "number",
+          "default": 1024,
+          "description": "The maximum number of tokens to generate"
+        }
+      ]
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "openAiApi",
+      "required": true
+    },
+    {
+      "name": "deprecated",
+      "required": true
+    },
+    {
+      "name": "notice",
+      "required": false
+    },
+    {
+      "name": "options",
+      "required": false
+    }
+  ]
+}

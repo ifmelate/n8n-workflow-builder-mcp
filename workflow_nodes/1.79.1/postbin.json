@@ -1,0 +1,60 @@
+{
+  "nodeType": "n8n-nodes-base.postbin",
+  "displayName": "PostBin",
+  "description": "Consume PostBin API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "binId",
+      "displayName": "Bin ID",
+      "type": "string",
+      "default": "",
+      "description": "Unique identifier for each bin",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create bin",
+      "options": []
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a bin"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a bin"
+    },
+    {
+      "name": "binContent",
+      "displayName": "Bin Content",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "requestId",
+      "displayName": "Request ID",
+      "type": "string",
+      "default": "",
+      "description": "Unique identifier for each request",
+      "required": true
+    },
+    {
+      "name": "Remove First",
+      "default": null,
+      "description": "Remove the first request from bin"
+    },
+    {
+      "name": "Send",
+      "type": "set",
+      "default": null,
+      "description": "Send a test request to the bin"
+    }
+  ],
+  "credentialsConfig": []
+}

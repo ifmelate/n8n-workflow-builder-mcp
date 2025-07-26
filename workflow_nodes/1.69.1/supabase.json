@@ -1,0 +1,122 @@
+{
+  "nodeType": "n8n-nodes-base.supabase",
+  "displayName": "Supabase",
+  "description": "Add, get, delete and update data in a table",
+  "version": 1,
+  "properties": [
+    {
+      "name": "tableId",
+      "displayName": "Table Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "All Select Conditions",
+      "default": null
+    },
+    {
+      "name": "dataToSend",
+      "displayName": "Data to Send",
+      "type": "options",
+      "default": null,
+      "description": "Use when node input properties match destination column names"
+    },
+    {
+      "name": "Define Below for Each Column",
+      "default": null,
+      "description": "Set the value for each destination column"
+    },
+    {
+      "name": "inputsToIgnore",
+      "displayName": "Inputs to Ignore",
+      "type": "string",
+      "default": "",
+      "description": "List of input properties to avoid sending, separated by commas. Leave empty to send all properties.",
+      "placeholder": "Enter properties..."
+    },
+    {
+      "name": "fieldsUi",
+      "displayName": "Fields to Send",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "fieldValue",
+      "displayName": "Field Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "Any Select Condition",
+      "default": null
+    },
+    {
+      "name": "filters",
+      "displayName": "Select Conditions",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Condition"
+    },
+    {
+      "name": "keyValue",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a new row"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a row"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a row"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many rows"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a row"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "supabaseApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

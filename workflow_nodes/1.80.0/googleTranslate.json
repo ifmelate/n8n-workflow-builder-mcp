@@ -1,0 +1,80 @@
+{
+  "nodeType": "n8n-nodes-base.googleTranslate",
+  "displayName": "Google Translate",
+  "description": "Translate data using Google Translate",
+  "version": [
+    1,
+    2
+  ],
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "Service Account",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Translate data"
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "",
+      "description": "The input text to translate",
+      "required": true
+    },
+    {
+      "name": "translateTo",
+      "displayName": "Translate To",
+      "type": "options",
+      "default": "",
+      "description": "The language to use for translation of the input text, set to one of the language codes listed in <a href=\"https://cloud.google.com/translate/docs/languages\">Language Support</a>. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googleApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "text",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,562 @@
+{
+  "nodeType": "n8n-nodes-base.gSuiteAdmin",
+  "displayName": "Google Workspace Admin",
+  "description": "Consume Google Workspace Admin API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "deviceId",
+      "displayName": "Device",
+      "type": "resourceLocator",
+      "default": "{\n\t\t\tmode: 'list',\n\t\t\tvalue: '',\n\t\t}",
+      "description": "Select the device you want to retrieve",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "projection",
+      "displayName": "Output",
+      "type": "options",
+      "default": null,
+      "description": "Do not include any custom fields for the user",
+      "required": true
+    },
+    {
+      "name": "Full",
+      "default": null,
+      "description": "Include all fields associated with this user"
+    },
+    {
+      "name": "includeChildOrgunits",
+      "displayName": "Include Children",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to include devices from organizational units below your specified organizational unit"
+    },
+    {
+      "name": "filter",
+      "displayName": "Filter",
+      "type": "collection",
+      "default": {},
+      "description": "Specify the organizational unit name or ID. Choose from the list or use an expression. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "query",
+      "displayName": "Query",
+      "type": "string",
+      "default": "",
+      "description": "Use Google's querying syntax to filter results",
+      "placeholder": "e.g. name:contact* email:contact*"
+    },
+    {
+      "name": "sort",
+      "displayName": "Sort",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Sort Rule"
+    },
+    {
+      "name": "Annotated User",
+      "default": null
+    },
+    {
+      "name": "Last Sync",
+      "default": null
+    },
+    {
+      "name": "Notes",
+      "default": null
+    },
+    {
+      "name": "Serial Number",
+      "default": null
+    },
+    {
+      "name": "Status",
+      "default": null
+    },
+    {
+      "name": "sortBy",
+      "displayName": "Sort Order",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Descending",
+      "default": null
+    },
+    {
+      "name": "updateOptions",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The full path to the organizational unit. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Option"
+    },
+    {
+      "name": "annotatedUser",
+      "displayName": "Annotated User",
+      "type": "string",
+      "default": "",
+      "description": "The annotated user of the device",
+      "placeholder": "e.g. help desk"
+    },
+    {
+      "name": "annotatedLocation",
+      "displayName": "Annotated Location",
+      "type": "string",
+      "default": "",
+      "description": "The annotated location of the device",
+      "placeholder": "e.g. Mountain View help desk Chromebook"
+    },
+    {
+      "name": "annotatedAssetId",
+      "displayName": "Annotated Asset ID",
+      "type": "string",
+      "default": "",
+      "description": "The annotated asset ID of a device",
+      "placeholder": "e.g. 1234567890"
+    },
+    {
+      "name": "notes",
+      "displayName": "Notes",
+      "type": "string",
+      "default": "",
+      "description": "Add notes to a device",
+      "placeholder": "e.g. Loaned from support"
+    },
+    {
+      "name": "action",
+      "displayName": "Status",
+      "type": "options",
+      "default": null,
+      "description": "Re-enable a disabled chromebook",
+      "required": true
+    },
+    {
+      "name": "Disabled",
+      "default": null,
+      "description": "Disable a chromebook"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get a ChromeOS device"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many ChromeOS devices"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a ChromeOS device"
+    },
+    {
+      "name": "Change Status",
+      "default": null,
+      "description": "Change the status of a ChromeOS device"
+    },
+    {
+      "name": "groupId",
+      "displayName": "Group",
+      "type": "list",
+      "default": "{\n\t\t\tmode: 'list',\n\t\t\tvalue: '',\n\t\t}",
+      "description": "Select the group to perform the operation on"
+    },
+    {
+      "name": "GroupId",
+      "displayName": "By ID",
+      "type": "string",
+      "default": null,
+      "placeholder": "e.g. 0123kx3o1habcdf"
+    },
+    {
+      "name": "name",
+      "displayName": "Group Name",
+      "type": "string",
+      "default": "",
+      "description": "The group's display name",
+      "placeholder": "e.g. Sales"
+    },
+    {
+      "name": "email",
+      "displayName": "Group Email",
+      "type": "string",
+      "default": "",
+      "description": "The group's email address. If your account has multiple domains, select the appropriate domain for the email address. The email must be unique",
+      "placeholder": "e.g. sales@example.com",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "An extended description to help users determine the purpose of a group. For example, you can include information about who should join the group, the types of messages to send to the group, links to FAQs about the group, or related groups.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "domain",
+      "displayName": "Domain",
+      "type": "string",
+      "default": "",
+      "description": "The domain name. Use this field to get groups from a specific domain."
+    },
+    {
+      "name": "userId",
+      "displayName": "User ID",
+      "type": "string",
+      "default": "",
+      "description": "Email or immutable ID of a user to list groups they are a member of"
+    },
+    {
+      "name": "sortOrder",
+      "displayName": "Sort Order",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "An extended description to help users determine the purpose of a group. For example, you can include information about who should join the group, the types of messages to send to the group, links to FAQs about the group, or related groups.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a group"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a group"
+    },
+    {
+      "name": "userEmail",
+      "displayName": "By Email",
+      "type": "string",
+      "default": null,
+      "placeholder": "e.g. sales@example.com"
+    },
+    {
+      "name": "firstName",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. Nathan",
+      "required": true
+    },
+    {
+      "name": "lastName",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. Smith",
+      "required": true
+    },
+    {
+      "name": "password",
+      "displayName": "Password",
+      "type": "string",
+      "default": "",
+      "description": "Stores the password for the user account. A minimum of 8 characters is required. The maximum length is 100 characters.",
+      "required": true
+    },
+    {
+      "name": "username",
+      "displayName": "Username",
+      "type": "string",
+      "default": "",
+      "description": "The username that will be set to the user. Example: If you domain is example.com and you set the username to n.smith then the user's final email address will be n.smith@example.com.",
+      "placeholder": "e.g. n.smith"
+    },
+    {
+      "name": "phoneUi",
+      "displayName": "Phones",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Phone"
+    },
+    {
+      "name": "Callback",
+      "default": null
+    },
+    {
+      "name": "Car",
+      "default": null
+    },
+    {
+      "name": "Company Main",
+      "default": null
+    },
+    {
+      "name": "Custom",
+      "default": null
+    },
+    {
+      "name": "Grand Central",
+      "default": null
+    },
+    {
+      "name": "Home",
+      "default": null
+    },
+    {
+      "name": "Home Fax",
+      "default": null
+    },
+    {
+      "name": "ISDN",
+      "default": null
+    },
+    {
+      "name": "Main",
+      "default": null
+    },
+    {
+      "name": "Mobile",
+      "default": null
+    },
+    {
+      "name": "Other",
+      "default": null
+    },
+    {
+      "name": "Other Fax",
+      "default": null
+    },
+    {
+      "name": "Pager",
+      "default": null
+    },
+    {
+      "name": "Radio",
+      "default": null
+    },
+    {
+      "name": "Telex",
+      "default": null
+    },
+    {
+      "name": "TTY TDD",
+      "default": null
+    },
+    {
+      "name": "Work",
+      "default": null
+    },
+    {
+      "name": "Work Fax",
+      "default": null
+    },
+    {
+      "name": "Work Mobile",
+      "default": null
+    },
+    {
+      "name": "Work Pager",
+      "default": null
+    },
+    {
+      "name": "value",
+      "displayName": "Phone Number",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "primary",
+      "displayName": "Primary",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this is the user's primary phone number"
+    },
+    {
+      "name": "emailUi",
+      "displayName": "Secondary Emails",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Email"
+    },
+    {
+      "name": "address",
+      "displayName": "Email",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "roles",
+      "displayName": "Roles",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Select the roles you want to assign to the user"
+    },
+    {
+      "name": "customFields",
+      "displayName": "Custom Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Allows editing and adding of custom fields",
+      "placeholder": "Add or Edit Custom Fields"
+    },
+    {
+      "name": "fieldName",
+      "displayName": "Field Name or ID",
+      "type": "string",
+      "default": "",
+      "description": "Enter a field name from the selected schema",
+      "required": true
+    },
+    {
+      "name": "output",
+      "displayName": "Output",
+      "type": "options",
+      "default": "simplified",
+      "description": "Only return specific fields: kind, ID, primaryEmail, name (with subfields), isAdmin, lastLoginTime, creationTime, and suspended",
+      "required": true
+    },
+    {
+      "name": "Raw",
+      "default": null,
+      "description": "Return all fields from the API response"
+    },
+    {
+      "name": "Select Included Fields",
+      "default": null,
+      "description": "Choose specific fields to include"
+    },
+    {
+      "name": "fields",
+      "displayName": "Fields",
+      "type": "multiOptions",
+      "default": []
+    },
+    {
+      "name": "Is Admin",
+      "default": null
+    },
+    {
+      "name": "Kind",
+      "default": null
+    },
+    {
+      "name": "Last Login Time",
+      "default": null
+    },
+    {
+      "name": "Name",
+      "default": null
+    },
+    {
+      "name": "Primary Email",
+      "default": null
+    },
+    {
+      "name": "Suspended",
+      "default": null
+    },
+    {
+      "name": "Include All",
+      "default": null,
+      "description": "Include all fields associated with this user"
+    },
+    {
+      "name": "customFieldMask",
+      "displayName": "Custom Schema Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "A comma-separated list of schema names. All fields from these schemas are fetched. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "showDeleted",
+      "displayName": "Show Deleted",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether retrieve the list of deleted users"
+    },
+    {
+      "name": "Family Name",
+      "default": null
+    },
+    {
+      "name": "Given Name",
+      "default": null
+    },
+    {
+      "name": "suspendUi",
+      "displayName": "Suspend",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to set the user as suspended. If set to OFF, the user will be reactivated. If not added, the status will remain unchanged."
+    },
+    {
+      "name": "changePasswordAtNextLogin",
+      "displayName": "Change Password at Next Login",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the user is forced to change their password at next login"
+    },
+    {
+      "name": "primaryEmail",
+      "displayName": "Primary Email",
+      "type": "string",
+      "default": "",
+      "description": "The user's primary email address. This property is required in a request to create a user account. The primaryEmail must be unique and cannot be an alias of another user.",
+      "placeholder": "e.g. john.doe@example.com"
+    },
+    {
+      "name": "Create",
+      "default": null,
+      "description": "Create a user"
+    },
+    {
+      "name": "Remove From Group",
+      "default": null,
+      "description": "Remove a user from a group"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Group",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "gSuiteAdminOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

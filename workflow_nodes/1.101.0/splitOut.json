@@ -1,0 +1,62 @@
+{
+  "nodeType": "n8n-nodes-base.splitOut",
+  "displayName": "Split Out",
+  "description": "Turn a list inside item(s) into separate items",
+  "version": 1,
+  "properties": [
+    {
+      "name": "fieldToSplitOut",
+      "displayName": "Fields To Split Out",
+      "type": "string",
+      "default": "",
+      "description": "The name of the input fields to break out into separate items. Separate multiple field names by commas. For binary data, use $binary.",
+      "placeholder": "Drag fields from the left or type their names",
+      "required": true
+    },
+    {
+      "name": "include",
+      "displayName": "Include",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "All Other Fields",
+      "default": null
+    },
+    {
+      "name": "Selected Other Fields",
+      "default": null
+    },
+    {
+      "name": "fieldsToInclude",
+      "displayName": "Fields To Include",
+      "type": "string",
+      "default": "",
+      "description": "Fields in the input items to aggregate together",
+      "placeholder": "e.g. email, name"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to disallow referencing child fields using `parent.child` in the field name",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "destinationFieldName",
+      "displayName": "Destination Field Name",
+      "type": "string",
+      "default": "",
+      "description": "The field in the output under which to put the split field contents"
+    },
+    {
+      "name": "includeBinary",
+      "displayName": "Include Binary",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to include the binary data in the new items"
+    }
+  ],
+  "credentialsConfig": []
+}

@@ -1,0 +1,286 @@
+{
+  "nodeType": "n8n-nodes-base.haloPSA",
+  "displayName": "HaloPSA",
+  "description": "Consume HaloPSA API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "clientName",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Enter client name",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "Inactive",
+      "default": null
+    },
+    {
+      "name": "notes",
+      "displayName": "Notes",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "is_vip",
+      "displayName": "VIP",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the client is VIP or not"
+    },
+    {
+      "name": "website",
+      "displayName": "Website",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "reasign",
+      "displayName": "Reasign tickets before deleting",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether tickets assigned to client sould be reasigned",
+      "required": true
+    },
+    {
+      "name": "simplify",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to include active customers in the response",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "All",
+      "default": null,
+      "description": "Whether to include active and inactive customers in the response"
+    },
+    {
+      "name": "Inactive Only",
+      "default": null,
+      "description": "Whether to include inactive Customers in the response"
+    },
+    {
+      "name": "search",
+      "displayName": "Text To Filter By",
+      "type": "string",
+      "default": "",
+      "description": "Filter clients by your search string"
+    },
+    {
+      "name": "clientId",
+      "displayName": "Client ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a client"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a client"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a client"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many clients"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a client"
+    },
+    {
+      "name": "siteName",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Enter site name",
+      "required": true
+    },
+    {
+      "name": "selectOption",
+      "displayName": "Select Client by ID",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether client can be selected by ID"
+    },
+    {
+      "name": "phonenumber",
+      "displayName": "Phone Number",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "siteId",
+      "displayName": "Site ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "maincontact_name",
+      "displayName": "Main Contact",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "ticketType",
+      "displayName": "Ticket Type Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "summary",
+      "displayName": "Summary",
+      "type": "string",
+      "default": "",
+      "placeholder": "",
+      "required": true
+    },
+    {
+      "name": "details",
+      "displayName": "Details",
+      "type": "string",
+      "default": "",
+      "placeholder": "",
+      "required": true
+    },
+    {
+      "name": "startdate",
+      "displayName": "Start Date",
+      "type": "dateTime",
+      "default": ""
+    },
+    {
+      "name": "targetdate",
+      "displayName": "Target Date",
+      "type": "dateTime",
+      "default": ""
+    },
+    {
+      "name": "ticketId",
+      "displayName": "Ticket ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "userName",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Enter user name",
+      "required": true
+    },
+    {
+      "name": "password",
+      "displayName": "Password",
+      "type": "string",
+      "default": "",
+      "description": "Your new password must be at least 8 characters long and contain at least one letter, one number or symbol, one upper case character and one lower case character"
+    },
+    {
+      "name": "surname",
+      "displayName": "Surname",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "inactive",
+      "displayName": "User Is Inactive",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "userId",
+      "displayName": "User ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "site_id",
+      "displayName": "Site Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Site",
+      "default": null
+    },
+    {
+      "name": "Ticket",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "haloPSAApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

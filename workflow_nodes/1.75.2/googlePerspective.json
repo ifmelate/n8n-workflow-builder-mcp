@@ -1,0 +1,94 @@
+{
+  "nodeType": "n8n-nodes-base.googlePerspective",
+  "displayName": "Google Perspective",
+  "description": "Consume Google Perspective API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "requestedAttributesUi",
+      "displayName": "Attributes to Analyze",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Atrribute",
+      "required": true
+    },
+    {
+      "name": "Identity Attack",
+      "default": null
+    },
+    {
+      "name": "Insult",
+      "default": null
+    },
+    {
+      "name": "Profanity",
+      "default": null
+    },
+    {
+      "name": "Severe Toxicity",
+      "default": null
+    },
+    {
+      "name": "Sexually Explicit",
+      "default": null
+    },
+    {
+      "name": "Threat",
+      "default": null
+    },
+    {
+      "name": "Toxicity",
+      "default": null
+    },
+    {
+      "name": "scoreThreshold",
+      "displayName": "Score Threshold",
+      "type": "number",
+      "default": 0,
+      "description": "Score above which to return results. At zero, all scores are returned."
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Languages of the text input. If unspecified, the API will auto-detect the comment language. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add option"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googlePerspectiveOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "text",
+      "required": true
+    },
+    {
+      "name": "scoreThreshold",
+      "required": false
+    },
+    {
+      "name": "options",
+      "required": false
+    }
+  ]
+}

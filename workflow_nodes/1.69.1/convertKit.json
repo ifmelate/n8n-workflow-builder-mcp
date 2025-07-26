@@ -1,0 +1,159 @@
+{
+  "nodeType": "n8n-nodes-base.convertKit",
+  "displayName": "ConvertKit",
+  "description": "Consume ConvertKit API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "id",
+      "displayName": "Field ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of your custom field",
+      "required": true
+    },
+    {
+      "name": "label",
+      "displayName": "Label",
+      "type": "string",
+      "default": "",
+      "description": "The label of the custom field",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a field"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a field"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many fields"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a field"
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "The subscriber's email address",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Object of key/value pairs for custom fields (the custom field must exist before you can use it here)",
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "value",
+      "displayName": "Field Value",
+      "type": "string",
+      "default": "",
+      "description": "Value of the field",
+      "placeholder": "Doe"
+    },
+    {
+      "name": "firstName",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "The subscriber's first name"
+    },
+    {
+      "name": "Cancelled",
+      "default": null
+    },
+    {
+      "name": "Get Subscriptions",
+      "default": null,
+      "description": "List subscriptions to a form including subscriber data"
+    },
+    {
+      "name": "tags",
+      "displayName": "Tag Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Tags. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Tag name, multiple can be added separated by comma",
+      "required": true
+    },
+    {
+      "name": "tagId",
+      "displayName": "Tag Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Form",
+      "default": null
+    },
+    {
+      "name": "Sequence",
+      "default": null
+    },
+    {
+      "name": "Tag",
+      "default": null
+    },
+    {
+      "name": "Tag Subscriber",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "convertKitApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "nodeType": "n8n-nodes-base.googleDriveTrigger",
+  "displayName": "Google Drive Trigger",
+  "description": "Starts the workflow when Google Drive events occur",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Credential Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Service Account",
+      "default": null
+    },
+    {
+      "name": "triggerOn",
+      "displayName": "Trigger On",
+      "type": "options",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "Changes Involving a Specific Folder",
+      "default": null
+    },
+    {
+      "name": "fileToWatch",
+      "displayName": "File",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "placeholder": "Select a file...",
+      "required": true
+    },
+    {
+      "name": "url",
+      "displayName": "Link",
+      "type": "string",
+      "default": null,
+      "placeholder": "https://drive.google.com/file/d/1wroCSfK-hupQIYf_xzeoUEzOhvfTFH2P/edit"
+    },
+    {
+      "name": "id",
+      "displayName": "ID",
+      "type": "string",
+      "default": null,
+      "placeholder": "1anGBg0b5re2VtF2bKu201_a-Vnz5BHq9Y4r-yBDAj5A"
+    },
+    {
+      "name": "event",
+      "displayName": "Watch For",
+      "type": "options",
+      "default": "fileUpdated",
+      "required": true
+    },
+    {
+      "name": "folderToWatch",
+      "displayName": "Folder",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "placeholder": "Select a folder...",
+      "required": true
+    },
+    {
+      "name": "File Updated",
+      "default": null,
+      "description": "When a file is updated in the watched folder"
+    },
+    {
+      "name": "Folder Created",
+      "default": null,
+      "description": "When a folder is created in the watched folder"
+    },
+    {
+      "name": "Folder Updated",
+      "default": null,
+      "description": "When a folder is updated in the watched folder"
+    },
+    {
+      "name": "Watch Folder Updated",
+      "default": null,
+      "description": "When the watched folder itself is modified"
+    },
+    {
+      "name": "asas",
+      "displayName": "Changes within subfolders won't trigger this node",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "driveToWatch",
+      "displayName": "Drive To Watch",
+      "type": "options",
+      "default": "root",
+      "description": "The drive to monitor. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add option"
+    },
+    {
+      "name": "Audio",
+      "default": null
+    },
+    {
+      "name": "Google Docs",
+      "default": null
+    },
+    {
+      "name": "Google Drawings",
+      "default": null
+    },
+    {
+      "name": "Google Slides",
+      "default": null
+    },
+    {
+      "name": "Google Spreadsheets",
+      "default": null
+    },
+    {
+      "name": "Photos and Images",
+      "default": null
+    },
+    {
+      "name": "Videos",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googleApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "triggerOn",
+      "required": true
+    },
+    {
+      "name": "fileToWatch",
+      "required": true
+    },
+    {
+      "name": "id",
+      "required": false
+    },
+    {
+      "name": "event",
+      "required": true
+    },
+    {
+      "name": "folderToWatch",
+      "required": true
+    },
+    {
+      "name": "id",
+      "required": false
+    },
+    {
+      "name": "event",
+      "required": true
+    },
+    {
+      "name": "asas",
+      "required": true
+    },
+    {
+      "name": "options",
+      "required": false
+    }
+  ]
+}

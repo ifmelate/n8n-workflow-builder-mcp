@@ -1,0 +1,319 @@
+{
+  "nodeType": "n8n-nodes-base.discourse",
+  "displayName": "Discourse",
+  "description": "Consume Discourse API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the category",
+      "required": true
+    },
+    {
+      "name": "color",
+      "displayName": "Color",
+      "type": "color",
+      "default": "0000FF",
+      "description": "Color of the category",
+      "required": true
+    },
+    {
+      "name": "textColor",
+      "displayName": "Text Color",
+      "type": "color",
+      "default": "0000FF",
+      "description": "Text color of the category",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Color of the category",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Choose an operation",
+      "required": true
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many categories"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a category"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a group"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title of the post"
+    },
+    {
+      "name": "content",
+      "displayName": "Content",
+      "type": "string",
+      "default": "",
+      "description": "Content of the post",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "ID of the category. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "reply_to_post_number",
+      "displayName": "Reply To Post Number",
+      "type": "string",
+      "default": "",
+      "description": "The number of the post to reply to"
+    },
+    {
+      "name": "topic_id",
+      "displayName": "Topic ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the topic"
+    },
+    {
+      "name": "postId",
+      "displayName": "Post ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the post",
+      "required": true
+    },
+    {
+      "name": "cooked",
+      "displayName": "Cooked",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "Email of the user to create",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "username",
+      "displayName": "Username",
+      "type": "string",
+      "default": "",
+      "description": "The username of the user to create",
+      "required": true
+    },
+    {
+      "name": "password",
+      "displayName": "Password",
+      "type": "string",
+      "default": "",
+      "description": "The password of the user to create",
+      "required": true
+    },
+    {
+      "name": "approved",
+      "displayName": "Approved",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "by",
+      "displayName": "By",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "SSO External ID",
+      "default": null
+    },
+    {
+      "name": "externalId",
+      "displayName": "SSO External ID",
+      "type": "string",
+      "default": "",
+      "description": "Discourse SSO external ID",
+      "required": true
+    },
+    {
+      "name": "Blocked",
+      "default": null
+    },
+    {
+      "name": "New",
+      "default": null
+    },
+    {
+      "name": "Staff",
+      "default": null
+    },
+    {
+      "name": "Suspect",
+      "default": null
+    },
+    {
+      "name": "Suspended",
+      "default": null
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to sort ascending",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "order",
+      "displayName": "Order",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Days Visited",
+      "default": null
+    },
+    {
+      "name": "Email",
+      "default": null
+    },
+    {
+      "name": "Last Emailed",
+      "default": null
+    },
+    {
+      "name": "Posts",
+      "default": null
+    },
+    {
+      "name": "Posts Read",
+      "default": null
+    },
+    {
+      "name": "Read Time",
+      "default": null
+    },
+    {
+      "name": "Seen",
+      "default": null
+    },
+    {
+      "name": "Topics Viewed",
+      "default": null
+    },
+    {
+      "name": "Trust Level",
+      "default": null
+    },
+    {
+      "name": "Username",
+      "default": null
+    },
+    {
+      "name": "showEmails",
+      "displayName": "Show Emails",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to include user email addresses"
+    },
+    {
+      "name": "stats",
+      "displayName": "Stats",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return user stats"
+    },
+    {
+      "name": "usernames",
+      "displayName": "Usernames",
+      "type": "string",
+      "default": "",
+      "description": "Usernames to add to group. Multiples can be defined separated by comma.",
+      "required": true
+    },
+    {
+      "name": "groupId",
+      "displayName": "Group ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the group",
+      "required": true
+    },
+    {
+      "name": "Remove",
+      "default": null,
+      "description": "Remove user from group"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Group",
+      "default": null
+    },
+    {
+      "name": "Post",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    },
+    {
+      "name": "User Group",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "discourseApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

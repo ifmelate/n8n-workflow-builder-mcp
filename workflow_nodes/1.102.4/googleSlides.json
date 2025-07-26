@@ -1,0 +1,186 @@
+{
+  "nodeType": "n8n-nodes-base.googleSlides",
+  "displayName": "Google Slides",
+  "description": "Consume the Google Slides API",
+  "version": [
+    1,
+    2
+  ],
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Service Account",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Presentation",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a presentation"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a presentation"
+    },
+    {
+      "name": "Get Slides",
+      "default": null,
+      "description": "Get presentation slides"
+    },
+    {
+      "name": "Replace Text",
+      "default": null,
+      "description": "Replace text in a presentation"
+    },
+    {
+      "name": "Get Thumbnail",
+      "default": null,
+      "description": "Get a thumbnail"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title of the presentation to create",
+      "required": true
+    },
+    {
+      "name": "presentationId",
+      "displayName": "Presentation ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the presentation to retrieve. Found in the presentation URL: <code>https://docs.google.com/presentation/d/PRESENTATION_ID/edit</code>",
+      "placeholder": "1wZtNFZ8MO-WKrxhYrOLMvyiqSgFwdSz5vn8_l_7eNqw",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "pageObjectId",
+      "displayName": "Page Object ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the page object to retrieve",
+      "required": true
+    },
+    {
+      "name": "textUi",
+      "displayName": "Texts To Replace",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Whether the search should respect case. True : the search is case sensitive. False : the search is case insensitive.",
+      "placeholder": "Add Text"
+    },
+    {
+      "name": "pageObjectIds",
+      "displayName": "Slide Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "If non-empty, limits the matches to slide elements only on the given slides. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "text",
+      "displayName": "Search For",
+      "type": "string",
+      "default": "",
+      "description": "The text to search for in the slide"
+    },
+    {
+      "name": "replaceText",
+      "displayName": "Replace With",
+      "type": "string",
+      "default": "",
+      "description": "The text that will replace the matched text"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "The revision ID of the presentation required for the write request. If specified and the requiredRevisionId doesn't exactly match the presentation's current revisionId, the request will not be processed and will return a 400 bad request error.",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "download",
+      "displayName": "Download",
+      "type": "boolean",
+      "default": false,
+      "description": "Name of the binary property to which to write the data of the read page"
+    },
+    {
+      "name": "binaryProperty",
+      "displayName": "Put Output File in Field",
+      "type": "string",
+      "default": "data",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googleApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "title",
+      "required": true
+    },
+    {
+      "name": "options",
+      "required": false
+    },
+    {
+      "name": "download",
+      "required": true
+    }
+  ]
+}

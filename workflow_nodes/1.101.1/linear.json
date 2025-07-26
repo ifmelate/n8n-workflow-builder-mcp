@@ -1,0 +1,173 @@
+{
+  "nodeType": "n8n-nodes-base.linear",
+  "displayName": "Linear",
+  "description": "Consume Linear API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "issueId",
+      "displayName": "Issue ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "comment",
+      "displayName": "Comment",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "ID of the parent comment if this is a reply",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Add a comment to an issue"
+    },
+    {
+      "name": "teamId",
+      "displayName": "Team Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "priorityId",
+      "displayName": "Priority",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "High",
+      "default": null
+    },
+    {
+      "name": "Normal",
+      "default": null
+    },
+    {
+      "name": "Low",
+      "default": null
+    },
+    {
+      "name": "No Priority",
+      "default": null
+    },
+    {
+      "name": "stateId",
+      "displayName": "State Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "Medium",
+      "default": null
+    },
+    {
+      "name": "link",
+      "displayName": "Link",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "Create",
+      "default": null,
+      "description": "Create an issue"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete an issue"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get an issue"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many issues"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update an issue"
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Issue",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "linearApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

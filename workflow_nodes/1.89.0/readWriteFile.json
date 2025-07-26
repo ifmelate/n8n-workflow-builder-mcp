@@ -1,0 +1,27 @@
+{
+  "nodeType": "n8n-nodes-base.readWriteFile",
+  "displayName": "Read/Write Files from Disk",
+  "description": "Read or write files from the computer that runs n8n",
+  "version": 1,
+  "properties": [
+    {
+      "name": "info",
+      "displayName": "Use this node to read and write files on the same computer running n8n. To handle files between different computers please use other nodes (e.g. FTP, HTTP Request, AWS).",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Retrieve one or more files from the computer that runs n8n"
+    },
+    {
+      "name": "Write File to Disk",
+      "default": null,
+      "description": "Create a binary file on the computer that runs n8n"
+    }
+  ],
+  "credentialsConfig": []
+}

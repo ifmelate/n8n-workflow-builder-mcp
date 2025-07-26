@@ -1,0 +1,125 @@
+{
+  "nodeType": "n8n-nodes-base.eventbriteTrigger",
+  "displayName": "Eventbrite Trigger",
+  "description": "Handle Eventbrite events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "organization",
+      "displayName": "Organization Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The Eventbrite Organization to work on. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "event",
+      "displayName": "Event Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Limit the triggers to this event. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "actions",
+      "displayName": "Actions",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "attendee.checked_out",
+      "default": null
+    },
+    {
+      "name": "attendee.updated",
+      "default": null
+    },
+    {
+      "name": "event.created",
+      "default": null
+    },
+    {
+      "name": "event.published",
+      "default": null
+    },
+    {
+      "name": "event.unpublished",
+      "default": null
+    },
+    {
+      "name": "event.updated",
+      "default": null
+    },
+    {
+      "name": "order.placed",
+      "default": null
+    },
+    {
+      "name": "order.refunded",
+      "default": null
+    },
+    {
+      "name": "order.updated",
+      "default": null
+    },
+    {
+      "name": "organizer.updated",
+      "default": null
+    },
+    {
+      "name": "ticket_class.created",
+      "default": null
+    },
+    {
+      "name": "ticket_class.deleted",
+      "default": null
+    },
+    {
+      "name": "ticket_class.updated",
+      "default": null
+    },
+    {
+      "name": "venue.updated",
+      "default": null
+    },
+    {
+      "name": "resolveData",
+      "displayName": "Resolve Data",
+      "type": "boolean",
+      "default": true,
+      "description": "By default does the webhook-data only contain the URL to receive the object data manually. If this option gets activated, it will resolve the data automatically."
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "eventbriteApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "organization",
+      "required": true
+    },
+    {
+      "name": "resolveData",
+      "required": false
+    }
+  ]
+}

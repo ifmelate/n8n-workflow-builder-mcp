@@ -1,0 +1,287 @@
+{
+  "nodeType": "n8n-nodes-base.autopilot",
+  "displayName": "Autopilot",
+  "description": "Consume Autopilot API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "Email address of the contact",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "customFieldsUi",
+      "displayName": "Custom Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "User-specified key of user-defined data. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Custom Field"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "User-specified value of user-defined data"
+    },
+    {
+      "name": "Fax",
+      "displayName": "Fax",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "FirstName",
+      "displayName": "First Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "Industry",
+      "displayName": "Industry",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "LastName",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "LeadSource",
+      "displayName": "Lead Source",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "LinkedIn",
+      "displayName": "LinkedIn URL",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "autopilotList",
+      "displayName": "List Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "List to which this contact will be added on creation. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "MailingCountry",
+      "displayName": "Mailing Country",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "MailingPostalCode",
+      "displayName": "Mailing Postal Code",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "MailingState",
+      "displayName": "Mailing State",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "MailingStreet",
+      "displayName": "Mailing Street",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "MailingCity",
+      "displayName": "Mailing City",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "MobilePhone",
+      "displayName": "Mobile Phone",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "newEmail",
+      "displayName": "New Email",
+      "type": "string",
+      "default": "",
+      "description": "If provided, will change the email address of the contact identified by the Email field"
+    },
+    {
+      "name": "notify",
+      "displayName": "Notify",
+      "type": "boolean",
+      "default": true,
+      "description": "By default Autopilot notifies registered REST hook endpoints for contact_added/contact_updated events when a new contact is added or an existing contact is updated via API. Disable to skip notifications."
+    },
+    {
+      "name": "NumberOfEmployees",
+      "displayName": "Number of Employees",
+      "type": "number",
+      "default": 0
+    },
+    {
+      "name": "owner_name",
+      "displayName": "Owner Name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "Phone",
+      "displayName": "Phone",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "Salutation",
+      "displayName": "Salutation",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "autopilotSessionId",
+      "displayName": "Session ID",
+      "type": "string",
+      "default": "",
+      "description": "Used to associate a contact with a session"
+    },
+    {
+      "name": "Status",
+      "displayName": "Status",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "Title",
+      "displayName": "Title",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "unsubscribed",
+      "displayName": "Subscribe",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to subscribe or un-subscribe a contact"
+    },
+    {
+      "name": "Website",
+      "displayName": "Website URL",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "contactId",
+      "displayName": "Contact ID",
+      "type": "string",
+      "default": "",
+      "description": "Can be ID or email",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a new contact, or update the current one if it already exists (upsert)"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a contact"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a contact"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many contacts"
+    },
+    {
+      "name": "triggerId",
+      "displayName": "Trigger Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "List ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "listId",
+      "displayName": "List Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the list to operate on. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "Exist",
+      "default": null,
+      "description": "Check if contact is on list"
+    },
+    {
+      "name": "Remove",
+      "default": null,
+      "description": "Remove a contact from a list"
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the list to create",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Contact Journey",
+      "default": null
+    },
+    {
+      "name": "Contact List",
+      "default": null
+    },
+    {
+      "name": "List",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "autopilotApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

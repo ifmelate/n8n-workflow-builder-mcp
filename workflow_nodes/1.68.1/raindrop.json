@@ -1,0 +1,216 @@
+{
+  "nodeType": "n8n-nodes-base.raindrop",
+  "displayName": "Raindrop",
+  "description": "Consume the Raindrop API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "collectionId",
+      "displayName": "Collection Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "link",
+      "displayName": "Link",
+      "type": "string",
+      "default": "",
+      "description": "Link of the bookmark to be created",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Whether this bookmark is marked as favorite",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "order",
+      "displayName": "Order",
+      "type": "number",
+      "default": 0,
+      "description": "Sort order for the bookmark. For example, to move it to first place, enter 0."
+    },
+    {
+      "name": "pleaseParse",
+      "displayName": "Parse Metadata",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether Raindrop should load cover, description and HTML for the URL"
+    },
+    {
+      "name": "tags",
+      "displayName": "Tags",
+      "type": "string",
+      "default": "",
+      "description": "Bookmark tags. Multiple tags can be set separated by comma."
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title of the bookmark to create"
+    },
+    {
+      "name": "bookmarkId",
+      "displayName": "Bookmark ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the bookmark to delete",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 5,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "important",
+      "displayName": "Important",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this bookmark is marked as favorite"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": "get"
+    },
+    {
+      "name": "Delete",
+      "default": null
+    },
+    {
+      "name": "Get",
+      "default": null
+    },
+    {
+      "name": "Get Many",
+      "default": null
+    },
+    {
+      "name": "Update",
+      "default": null
+    },
+    {
+      "name": "public",
+      "displayName": "Public",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the collection will be accessible without authentication"
+    },
+    {
+      "name": "parentId",
+      "displayName": "Parent ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of this collection's parent collection, if it is a child collection"
+    },
+    {
+      "name": "sort",
+      "displayName": "Sort Order",
+      "type": "number",
+      "default": 1,
+      "description": "Descending sort order of this collection. The number is the position of the collection among all the collections with the same parent ID."
+    },
+    {
+      "name": "view",
+      "displayName": "View",
+      "type": "options",
+      "default": "list",
+      "description": "View style of this collection"
+    },
+    {
+      "name": "Simple",
+      "default": null
+    },
+    {
+      "name": "Grid",
+      "default": null
+    },
+    {
+      "name": "Masonry",
+      "default": null
+    },
+    {
+      "name": "Children",
+      "default": null,
+      "description": "Nested collections"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "self",
+      "displayName": "Self",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return details on the logged-in user",
+      "required": true
+    },
+    {
+      "name": "userId",
+      "displayName": "User ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the user to retrieve",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Collection",
+      "default": null
+    },
+    {
+      "name": "Tag",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "raindropOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

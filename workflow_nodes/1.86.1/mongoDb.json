@@ -1,0 +1,16 @@
+{
+  "nodeType": "n8n-nodes-base.mongoDb",
+  "displayName": "MongoDB",
+  "description": "Find, insert and update documents in MongoDB",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [],
+  "credentialsConfig": [
+    {
+      "name": "mongoDb",
+      "required": true
+    }
+  ]
+}

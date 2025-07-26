@@ -1,0 +1,497 @@
+{
+  "nodeType": "n8n-nodes-base.theHive",
+  "displayName": "TheHive",
+  "description": "Consume TheHive API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "caseId",
+      "displayName": "Case ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title of the alert",
+      "required": true
+    },
+    {
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": "",
+      "description": "Description of the alert",
+      "required": true
+    },
+    {
+      "name": "severity",
+      "displayName": "Severity",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Medium",
+      "default": null
+    },
+    {
+      "name": "High",
+      "default": null
+    },
+    {
+      "name": "date",
+      "displayName": "Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Date and time when the alert was raised default=now",
+      "required": true
+    },
+    {
+      "name": "tags",
+      "displayName": "Tags",
+      "type": "string",
+      "default": "",
+      "description": "Case Tags",
+      "placeholder": "tag,tag2,tag3...",
+      "required": true
+    },
+    {
+      "name": "tlp",
+      "displayName": "TLP",
+      "type": "options",
+      "default": 2,
+      "required": true
+    },
+    {
+      "name": "Green",
+      "default": null
+    },
+    {
+      "name": "Amber",
+      "default": null
+    },
+    {
+      "name": "Red",
+      "default": null
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": null,
+      "required": true
+    },
+    {
+      "name": "Updated",
+      "default": null
+    },
+    {
+      "name": "Ignored",
+      "default": null
+    },
+    {
+      "name": "Imported",
+      "default": null
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "string",
+      "default": "",
+      "description": "Type of the alert",
+      "required": true
+    },
+    {
+      "name": "source",
+      "displayName": "Source",
+      "type": "string",
+      "default": "",
+      "description": "Source of the alert",
+      "required": true
+    },
+    {
+      "name": "sourceRef",
+      "displayName": "SourceRef",
+      "type": "string",
+      "default": "",
+      "description": "Source reference of the alert",
+      "required": true
+    },
+    {
+      "name": "follow",
+      "displayName": "Follow",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the alert becomes active when updated default=true",
+      "required": true
+    },
+    {
+      "name": "artifactUi",
+      "displayName": "Artifacts",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Type of the observable. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Artifact"
+    },
+    {
+      "name": "data",
+      "displayName": "Data",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "binaryProperty",
+      "displayName": "Input Binary Field",
+      "type": "string",
+      "default": "data"
+    },
+    {
+      "name": "message",
+      "displayName": "Message",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "responder",
+      "displayName": "Responder Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "jsonParameters",
+      "displayName": "JSON Parameters",
+      "type": "boolean",
+      "default": true,
+      "description": "Case template to use when a case is created from this alert",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "customFieldsUi",
+      "displayName": "Custom Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Custom Field"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Custom Field value. Use an expression if the type is not a string."
+    },
+    {
+      "name": "customFieldsJson",
+      "displayName": "Custom Fields (JSON)",
+      "type": "string",
+      "default": "",
+      "description": "Custom fields in JSON format. Overrides Custom Fields UI if set."
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Case template to use when a case is created from this alert",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Type of the observable. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "caseTemplate",
+      "displayName": "Case Template",
+      "type": "string",
+      "default": "",
+      "description": "Case template to use when a case is created from this alert"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add option"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Filter",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation Name or ID",
+      "type": "options",
+      "default": "create",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "dataType",
+      "displayName": "Data Type Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "startDate",
+      "displayName": "Start Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Date and time of the begin of the case default=now",
+      "required": true
+    },
+    {
+      "name": "ioc",
+      "displayName": "IOC",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the observable is an IOC (Indicator of compromise)",
+      "required": true
+    },
+    {
+      "name": "sighted",
+      "displayName": "Sighted",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether sighted previously",
+      "required": true
+    },
+    {
+      "name": "Deleted",
+      "default": null
+    },
+    {
+      "name": "analyzers",
+      "displayName": "Analyzer Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Status of the observable. Default=Ok.",
+      "placeholder": "Add option",
+      "required": true
+    },
+    {
+      "name": "range",
+      "displayName": "Date Range",
+      "type": "fixedCollection",
+      "default": {}
+    },
+    {
+      "name": "toDate",
+      "displayName": "To Date",
+      "type": "dateTime",
+      "default": ""
+    },
+    {
+      "name": "keyword",
+      "displayName": "Keyword",
+      "type": "string",
+      "default": "",
+      "placeholder": "exp,freetext"
+    },
+    {
+      "name": "Status",
+      "displayName": "Status",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "owner",
+      "displayName": "Owner",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "flag",
+      "displayName": "Flag",
+      "type": "boolean",
+      "default": false,
+      "description": "Flag of the case default=false",
+      "required": true
+    },
+    {
+      "name": "endDate",
+      "displayName": "End Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Resolution date"
+    },
+    {
+      "name": "summary",
+      "displayName": "Summary",
+      "type": "string",
+      "default": "",
+      "description": "Summary of the case, to be provided when closing a case"
+    },
+    {
+      "name": "metrics",
+      "displayName": "Metrics (JSON)",
+      "type": "json",
+      "default": "[]",
+      "description": "List of metrics"
+    },
+    {
+      "name": "impactStatus",
+      "displayName": "Impact Status",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "With Impact",
+      "default": null
+    },
+    {
+      "name": "Not Applicable",
+      "default": null
+    },
+    {
+      "name": "resolutionStatus",
+      "displayName": "Resolution Status",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "False Positive",
+      "default": null
+    },
+    {
+      "name": "Indeterminate",
+      "default": null
+    },
+    {
+      "name": "Other",
+      "default": null
+    },
+    {
+      "name": "True Positive",
+      "default": null
+    },
+    {
+      "name": "Resolved",
+      "default": null
+    },
+    {
+      "name": "FalsePositive",
+      "default": null
+    },
+    {
+      "name": "TruePositive",
+      "default": null
+    },
+    {
+      "name": "id",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the taks",
+      "required": true
+    },
+    {
+      "name": "Completed",
+      "default": null
+    },
+    {
+      "name": "InProgress",
+      "default": null
+    },
+    {
+      "name": "Waiting",
+      "default": null
+    },
+    {
+      "name": "In Progress",
+      "default": null
+    },
+    {
+      "name": "taskId",
+      "displayName": "Task ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the task",
+      "required": true
+    },
+    {
+      "name": "Execute Responder",
+      "default": null,
+      "description": "Execute a responder on a selected log"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many task logs"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a single log"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "required": true
+    },
+    {
+      "name": "Case",
+      "default": null
+    },
+    {
+      "name": "Log",
+      "default": null
+    },
+    {
+      "name": "Observable",
+      "default": null
+    },
+    {
+      "name": "Task",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "theHiveApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": true
+    }
+  ]
+}

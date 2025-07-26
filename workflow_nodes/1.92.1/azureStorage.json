@@ -1,0 +1,17 @@
+{
+  "nodeType": "n8n-nodes-base.azureStorage",
+  "displayName": "Azure Storage",
+  "description": "Interact with Azure Storage API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a new blob or replace an existing one",
+      "options": []
+    }
+  ],
+  "credentialsConfig": []
+}

@@ -1,0 +1,87 @@
+{
+  "nodeType": "n8n-nodes-base.netlify",
+  "displayName": "Netlify",
+  "description": "Consume Netlify API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "siteId",
+      "displayName": "Site Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Enter the Site ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "deployId",
+      "displayName": "Deploy ID",
+      "type": "string",
+      "default": "",
+      "description": "Whether to return all results or only up to a given limit",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return",
+      "placeholder": "Add Fields"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Cancel a deployment"
+    },
+    {
+      "name": "Create",
+      "default": null,
+      "description": "Create a new deployment"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a deployment"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many deployments"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Site",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "netlifyApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,376 @@
+{
+  "nodeType": "n8n-nodes-base.twist",
+  "displayName": "Twist",
+  "description": "Consume Twist API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "workspaceId",
+      "displayName": "Workspace Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The ID of the workspace. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "The name of the channel",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "Blue",
+      "default": null
+    },
+    {
+      "name": "Green",
+      "default": null
+    },
+    {
+      "name": "Grey",
+      "default": null
+    },
+    {
+      "name": "Magenta",
+      "default": null
+    },
+    {
+      "name": "Mint Green",
+      "default": null
+    },
+    {
+      "name": "Red",
+      "default": null
+    },
+    {
+      "name": "Salmon",
+      "default": null
+    },
+    {
+      "name": "Sky Blue",
+      "default": null
+    },
+    {
+      "name": "Teal Blue",
+      "default": null
+    },
+    {
+      "name": "Turquoise",
+      "default": null
+    },
+    {
+      "name": "Yellow",
+      "default": null
+    },
+    {
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": "",
+      "description": "The description of the channel"
+    },
+    {
+      "name": "public",
+      "displayName": "Public",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the channel will be marked as public"
+    },
+    {
+      "name": "temp_id",
+      "displayName": "Temp ID",
+      "type": "number",
+      "default": null,
+      "description": "The temporary ID of the channel. It needs to be a negative number."
+    },
+    {
+      "name": "user_ids",
+      "displayName": "User Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "The users that will participate in the channel. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "channelId",
+      "displayName": "Channel ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the channel",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Whether only archived conversations are returned",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Archive a channel"
+    },
+    {
+      "name": "Create",
+      "default": null,
+      "description": "Initiates a public or private channel-based conversation"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a channel"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get information about a channel"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many channels"
+    },
+    {
+      "name": "Unarchive",
+      "default": null,
+      "description": "Unarchive a channel"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a channel"
+    },
+    {
+      "name": "conversationId",
+      "displayName": "Conversation Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The ID of the conversation. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "content",
+      "displayName": "Content",
+      "type": "string",
+      "default": "",
+      "description": "The content of the new message. Mentions can be used as <code>[Name](twist-mention://user_id)</code> for users or <code>[Group name](twist-group-mention://group_id)</code> for groups."
+    },
+    {
+      "name": "Prefill Message",
+      "default": null
+    },
+    {
+      "name": "Send Reply",
+      "default": null
+    },
+    {
+      "name": "button_text",
+      "displayName": "Button Text",
+      "type": "string",
+      "default": "",
+      "description": "The text for the action button"
+    },
+    {
+      "name": "message",
+      "displayName": "Message",
+      "type": "string",
+      "default": "",
+      "description": "The text for the action button"
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null,
+      "description": "The type of the button. (Currently only <code>action</code> is available)."
+    },
+    {
+      "name": "url",
+      "displayName": "URL",
+      "type": "string",
+      "default": "",
+      "description": "URL to redirect"
+    },
+    {
+      "name": "binaryProperties",
+      "displayName": "Attachments",
+      "type": "string",
+      "default": "data",
+      "description": "Name of the property that holds the binary data. Multiple can be defined separated by comma."
+    },
+    {
+      "name": "direct_mentions",
+      "displayName": "Direct Mention Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "The users that are directly mentioned. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "order_by",
+      "displayName": "Order By",
+      "type": "options",
+      "default": "ASC",
+      "description": "The order of the conversations returned - one of DESC or ASC"
+    },
+    {
+      "name": "DESC",
+      "default": null
+    },
+    {
+      "name": "from_obj_index",
+      "displayName": "Starting Object Index",
+      "type": "number",
+      "default": 0,
+      "description": "Limit messages starting at the specified object index"
+    },
+    {
+      "name": "id",
+      "displayName": "Message ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the conversation message",
+      "required": true
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "The title of the new thread (1 < length < 300)",
+      "required": true
+    },
+    {
+      "name": "recipients",
+      "displayName": "Recipient Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "The users that will attached to the thread. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "send_as_integration",
+      "displayName": "Send as Integration",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to display the integration as the thread creator"
+    },
+    {
+      "name": "threadId",
+      "displayName": "Thread ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the thread",
+      "required": true
+    },
+    {
+      "name": "filter_by",
+      "displayName": "Filter By",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Everyone",
+      "default": null
+    },
+    {
+      "name": "Starred",
+      "default": null
+    },
+    {
+      "name": "newer_than_ts",
+      "displayName": "Newer Than",
+      "type": "dateTime",
+      "default": "",
+      "description": "Limits threads to those newer when the specified Unix time"
+    },
+    {
+      "name": "older_than_ts",
+      "displayName": "Older Than",
+      "type": "dateTime",
+      "default": "",
+      "description": "Limits threads to those older than the specified Unix time"
+    },
+    {
+      "name": "mark_thread_position",
+      "displayName": "Mark Thread Position",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the position of the thread is marked"
+    },
+    {
+      "name": "commentId",
+      "displayName": "Comment ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the comment",
+      "required": true
+    },
+    {
+      "name": "to_obj_index",
+      "displayName": "Ending Object Index",
+      "type": "number",
+      "default": 50,
+      "description": "Limit comments ending at the specified object index"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Comment",
+      "default": null
+    },
+    {
+      "name": "Message Conversation",
+      "default": null
+    },
+    {
+      "name": "Thread",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "twistOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

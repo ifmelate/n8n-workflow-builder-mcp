@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.postgresTrigger",
+  "displayName": "Postgres Trigger",
+  "description": "Listens to Postgres messages",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

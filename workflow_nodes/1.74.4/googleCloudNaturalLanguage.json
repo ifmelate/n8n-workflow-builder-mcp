@@ -1,0 +1,171 @@
+{
+  "nodeType": "n8n-nodes-base.googleCloudNaturalLanguage",
+  "displayName": "Google Cloud Natural Language",
+  "description": "Consume Google Cloud Natural Language API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "source",
+      "displayName": "Source",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Google Cloud Storage URI",
+      "default": null
+    },
+    {
+      "name": "content",
+      "displayName": "Content",
+      "type": "string",
+      "default": "",
+      "description": "The content of the input in string format. Cloud audit logging exempt since it is based on user data.",
+      "required": true
+    },
+    {
+      "name": "gcsContentUri",
+      "displayName": "Google Cloud Storage URI",
+      "type": "string",
+      "default": "",
+      "description": "The Google Cloud Storage URI where the file content is located. This URI must be of the form: <code>gs://bucket_name/object_name</code>. For more details, see <a href=\"https://cloud.google.com/storage/docs/reference-uris.\">reference</a>.",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add option"
+    },
+    {
+      "name": "Plain Text",
+      "default": null
+    },
+    {
+      "name": "encodingType",
+      "displayName": "Encoding Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "UTF-8",
+      "default": null
+    },
+    {
+      "name": "UTF-16",
+      "default": null
+    },
+    {
+      "name": "UTF-32",
+      "default": null
+    },
+    {
+      "name": "language",
+      "displayName": "Language",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Chinese (Simplified)",
+      "default": null
+    },
+    {
+      "name": "Chinese (Traditional)",
+      "default": null
+    },
+    {
+      "name": "Dutch",
+      "default": null
+    },
+    {
+      "name": "English",
+      "default": null
+    },
+    {
+      "name": "French",
+      "default": null
+    },
+    {
+      "name": "German",
+      "default": null
+    },
+    {
+      "name": "Indonesian",
+      "default": null
+    },
+    {
+      "name": "Italian",
+      "default": null
+    },
+    {
+      "name": "Japanese",
+      "default": null
+    },
+    {
+      "name": "Korean",
+      "default": null
+    },
+    {
+      "name": "Portuguese (Brazilian & Continental)",
+      "default": null
+    },
+    {
+      "name": "Spanish",
+      "default": null
+    },
+    {
+      "name": "Thai",
+      "default": null
+    },
+    {
+      "name": "Turkish",
+      "default": null
+    },
+    {
+      "name": "Vietnamese",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googleCloudNaturalLanguageOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "source",
+      "required": false
+    },
+    {
+      "name": "content",
+      "required": true
+    },
+    {
+      "name": "encodingType",
+      "required": false
+    },
+    {
+      "name": "language",
+      "required": false
+    }
+  ]
+}

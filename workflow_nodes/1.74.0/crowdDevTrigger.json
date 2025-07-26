@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.crowdDevTrigger",
+  "displayName": "crowd.dev Trigger",
+  "description": "Starts the workflow when crowd.dev events occur.",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

@@ -8,6 +8,7 @@ module.exports = {
         apiKey: process.env.N8N_API_KEY,
         workflowsPath: process.env.N8N_WORKFLOWS_PATH || './n8n-workflows',
         integrationType: process.env.N8N_INTEGRATION_TYPE || 'auto', // 'api', 'filesystem', or 'auto'
+        version: process.env.N8N_VERSION, // Override N8N version detection
     },
     auth: {
         jwtSecret: process.env.JWT_SECRET || 'default-dev-secret',

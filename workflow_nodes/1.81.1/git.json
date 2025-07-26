@@ -1,0 +1,184 @@
+{
+  "nodeType": "n8n-nodes-base.git",
+  "displayName": "Git",
+  "description": "Control git.",
+  "version": 1,
+  "properties": [
+    {
+      "name": "key",
+      "displayName": "Key",
+      "type": "string",
+      "default": "",
+      "description": "Name of the key to set",
+      "placeholder": "user.email",
+      "required": true
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Value of the key to set",
+      "placeholder": "name@example.com",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add option"
+    },
+    {
+      "name": "Set",
+      "default": null
+    },
+    {
+      "name": "pathsToAdd",
+      "displayName": "Paths to Add",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of paths (absolute or relative to Repository Path) of files or folders to add",
+      "placeholder": "README.md",
+      "required": true
+    },
+    {
+      "name": "sourceRepository",
+      "displayName": "Source Repository",
+      "type": "string",
+      "default": "",
+      "description": "The URL or path of the repository to clone",
+      "placeholder": "https://github.com/n8n-io/n8n",
+      "required": true
+    },
+    {
+      "name": "message",
+      "displayName": "Message",
+      "type": "string",
+      "default": "",
+      "description": "The commit message to use"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "The name of the tag to create",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "None",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": "log",
+      "description": "Add a file or folder to commit"
+    },
+    {
+      "name": "Add Config",
+      "default": null,
+      "description": "Add configuration property"
+    },
+    {
+      "name": "Clone",
+      "default": null,
+      "description": "Clone a repository"
+    },
+    {
+      "name": "Commit",
+      "default": null,
+      "description": "Commit files or folders to git"
+    },
+    {
+      "name": "Fetch",
+      "default": null,
+      "description": "Fetch from remote repository"
+    },
+    {
+      "name": "List Config",
+      "default": null,
+      "description": "Return current configuration"
+    },
+    {
+      "name": "Log",
+      "default": null,
+      "description": "Return git commit history"
+    },
+    {
+      "name": "Pull",
+      "default": null,
+      "description": "Pull from remote repository"
+    },
+    {
+      "name": "Push",
+      "default": null,
+      "description": "Push to remote repository"
+    },
+    {
+      "name": "Push Tags",
+      "default": null,
+      "description": "Push Tags to remote repository"
+    },
+    {
+      "name": "Status",
+      "default": null,
+      "description": "Return status of current repository"
+    },
+    {
+      "name": "Tag",
+      "default": null,
+      "description": "Create a new tag"
+    },
+    {
+      "name": "User Setup",
+      "default": null,
+      "description": "Set the user"
+    },
+    {
+      "name": "repositoryPath",
+      "displayName": "Repository Path",
+      "type": "string",
+      "default": "",
+      "description": "Local path of the git repository to operate on",
+      "placeholder": "/tmp/repository",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "gitPassword",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    }
+  ]
+}

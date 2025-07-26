@@ -1,0 +1,153 @@
+{
+  "nodeType": "n8n-nodes-base.graphql",
+  "displayName": "GraphQL",
+  "description": "Makes a GraphQL request and returns the received data",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Custom Auth",
+      "default": null
+    },
+    {
+      "name": "Digest Auth",
+      "default": null
+    },
+    {
+      "name": "Header Auth",
+      "default": null
+    },
+    {
+      "name": "None",
+      "default": null
+    },
+    {
+      "name": "OAuth1",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "Query Auth",
+      "default": null
+    },
+    {
+      "name": "requestMethod",
+      "displayName": "HTTP Request Method",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "POST",
+      "default": null
+    },
+    {
+      "name": "endpoint",
+      "displayName": "Endpoint",
+      "type": "string",
+      "default": "",
+      "description": "The GraphQL endpoint",
+      "placeholder": "http://example.com/graphql",
+      "required": true
+    },
+    {
+      "name": "allowUnauthorizedCerts",
+      "displayName": "Ignore SSL Issues (Insecure)",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to download the response even if SSL certificate validation is not possible"
+    },
+    {
+      "name": "requestFormat",
+      "displayName": "Request Format",
+      "type": "options",
+      "default": null,
+      "required": true
+    },
+    {
+      "name": "JSON",
+      "default": null
+    },
+    {
+      "name": "query",
+      "displayName": "Query",
+      "type": "json",
+      "default": "",
+      "description": "GraphQL query",
+      "required": true
+    },
+    {
+      "name": "variables",
+      "displayName": "Variables",
+      "type": "json",
+      "default": "",
+      "description": "Query variables"
+    },
+    {
+      "name": "operationName",
+      "displayName": "Operation Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of operation to execute"
+    },
+    {
+      "name": "responseFormat",
+      "displayName": "Response Format",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "String",
+      "default": null
+    },
+    {
+      "name": "dataPropertyName",
+      "displayName": "Response Data Property Name",
+      "type": "string",
+      "default": "data",
+      "description": "Name of the property to which to write the response data",
+      "placeholder": "Add Header",
+      "required": true
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Value to set for the header"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "httpBasicAuth",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "requestMethod",
+      "required": false
+    },
+    {
+      "name": "endpoint",
+      "required": true
+    },
+    {
+      "name": "query",
+      "required": true
+    },
+    {
+      "name": "dataPropertyName",
+      "required": true
+    }
+  ]
+}

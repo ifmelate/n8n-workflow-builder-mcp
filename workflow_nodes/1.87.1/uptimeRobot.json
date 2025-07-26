@@ -1,0 +1,453 @@
+{
+  "nodeType": "n8n-nodes-base.uptimeRobot",
+  "displayName": "UptimeRobot",
+  "description": "Consume UptimeRobot API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "friendlyName",
+      "displayName": "Friendly Name",
+      "type": "string",
+      "default": "",
+      "description": "The friendly name of the alert contact",
+      "required": true
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "E-Mail",
+      "default": null
+    },
+    {
+      "name": "Pushbullet",
+      "default": null
+    },
+    {
+      "name": "Pushover",
+      "default": null
+    },
+    {
+      "name": "SMS",
+      "default": null
+    },
+    {
+      "name": "Twitter DM",
+      "default": null
+    },
+    {
+      "name": "Webhook",
+      "default": null
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "The correspondent value for the alert contact type",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Alert contact IDs separated with dash, e.g. 236-1782-4790",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "id",
+      "displayName": "ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the alert contact",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The friendly name of the alert contact",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create an alert contact"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete an alert contact"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get an alert contact"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many alert contacts"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update an alert contact"
+    },
+    {
+      "name": "duration",
+      "displayName": "Duration (Minutes)",
+      "type": "number",
+      "default": 1,
+      "description": "The maintenance window activation period (minutes)",
+      "required": true
+    },
+    {
+      "name": "Daily",
+      "default": null
+    },
+    {
+      "name": "Weekly",
+      "default": null
+    },
+    {
+      "name": "Monthly",
+      "default": null
+    },
+    {
+      "name": "weekDay",
+      "displayName": "Week Day",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Tuesday",
+      "default": null
+    },
+    {
+      "name": "Wednesday",
+      "default": null
+    },
+    {
+      "name": "Thursday",
+      "default": null
+    },
+    {
+      "name": "Friday",
+      "default": null
+    },
+    {
+      "name": "Saturday",
+      "default": null
+    },
+    {
+      "name": "Sunday",
+      "default": null
+    },
+    {
+      "name": "monthDay",
+      "displayName": "Month Day",
+      "type": "number",
+      "default": 1
+    },
+    {
+      "name": "start_time",
+      "displayName": "Start Time",
+      "type": "dateTime",
+      "default": "",
+      "description": "The maintenance window start datetime",
+      "required": true
+    },
+    {
+      "name": "HTTP(S)",
+      "default": null
+    },
+    {
+      "name": "Keyword",
+      "default": null
+    },
+    {
+      "name": "Ping",
+      "default": null
+    },
+    {
+      "name": "Port",
+      "default": null
+    },
+    {
+      "name": "url",
+      "displayName": "URL",
+      "type": "string",
+      "default": "",
+      "description": "The URL/IP of the monitor",
+      "required": true
+    },
+    {
+      "name": "logs",
+      "displayName": "Logs",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the logs of each monitor will be returned"
+    },
+    {
+      "name": "mwindow",
+      "displayName": "Maintenance Window",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return the maintenance windows for the monitors"
+    },
+    {
+      "name": "monitors",
+      "displayName": "Monitor IDs",
+      "type": "string",
+      "default": "",
+      "description": "Monitors IDs separated with dash, e.g. 15830-32696-83920"
+    },
+    {
+      "name": "response_times",
+      "displayName": "Response Times",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the response time data of each monitor will be returned"
+    },
+    {
+      "name": "search",
+      "displayName": "Search",
+      "type": "string",
+      "default": "",
+      "description": "A keyword to be matched against URL and friendly name"
+    },
+    {
+      "name": "statuses",
+      "displayName": "Statuses",
+      "type": "multiOptions",
+      "default": []
+    },
+    {
+      "name": "Not Checked Yet",
+      "default": null
+    },
+    {
+      "name": "Up",
+      "default": null
+    },
+    {
+      "name": "Seems Down",
+      "default": null
+    },
+    {
+      "name": "Down",
+      "default": null
+    },
+    {
+      "name": "types",
+      "displayName": "Types",
+      "type": "multiOptions",
+      "default": []
+    },
+    {
+      "name": "http_auth_type",
+      "displayName": "HTTP Auth Type",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "Digest",
+      "default": null
+    },
+    {
+      "name": "http_method",
+      "displayName": "HTTP Method",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "GET",
+      "default": null
+    },
+    {
+      "name": "HEAD",
+      "default": null
+    },
+    {
+      "name": "OPTIONS",
+      "default": null
+    },
+    {
+      "name": "PATCH",
+      "default": null
+    },
+    {
+      "name": "POST",
+      "default": null
+    },
+    {
+      "name": "PUT",
+      "default": null
+    },
+    {
+      "name": "http_password",
+      "displayName": "HTTP Password",
+      "type": "string",
+      "default": "",
+      "description": "The password used for password-protected web pages"
+    },
+    {
+      "name": "http_username",
+      "displayName": "HTTP Username",
+      "type": "string",
+      "default": "",
+      "description": "The username used for password-protected web pages"
+    },
+    {
+      "name": "interval",
+      "displayName": "Interval",
+      "type": "number",
+      "default": "",
+      "description": "The interval for the monitoring check"
+    },
+    {
+      "name": "port",
+      "displayName": "Port",
+      "type": "number",
+      "default": "",
+      "description": "The monitored port"
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "Resume",
+      "default": null
+    },
+    {
+      "name": "sub_type",
+      "displayName": "Sub Type",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "FTP (21)",
+      "default": null
+    },
+    {
+      "name": "HTTP (80)",
+      "default": null
+    },
+    {
+      "name": "HTTPS (443)",
+      "default": null
+    },
+    {
+      "name": "IMAP (143)",
+      "default": null
+    },
+    {
+      "name": "POP3 (110)",
+      "default": null
+    },
+    {
+      "name": "SMTP (25)",
+      "default": null
+    },
+    {
+      "name": "Reset",
+      "default": null,
+      "description": "Reset a monitor"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The domain or subdomain that the status page will run on",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "password",
+      "displayName": "Password",
+      "type": "string",
+      "default": "",
+      "description": "The password for the status page"
+    },
+    {
+      "name": "sort",
+      "displayName": "Sort",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "Friendly Name (Z-A)",
+      "default": null
+    },
+    {
+      "name": "Status (Up-Down-Paused)",
+      "default": null
+    },
+    {
+      "name": "Status (Down-Up-Paused)",
+      "default": null
+    },
+    {
+      "name": "friendly_name",
+      "displayName": "Friendly Name",
+      "type": "string",
+      "default": "",
+      "description": "The friendly name of the status page"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Alert Contact",
+      "default": null
+    },
+    {
+      "name": "Maintenance Window",
+      "default": null
+    },
+    {
+      "name": "Monitor",
+      "default": null
+    },
+    {
+      "name": "Public Status Page",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "uptimeRobotApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "operation",
+      "required": false
+    }
+  ]
+}

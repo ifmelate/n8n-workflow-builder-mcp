@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.highLevel",
+  "displayName": "HighLevel",
+  "description": null,
+  "version": "2",
+  "properties": [],
+  "credentialsConfig": []
+}

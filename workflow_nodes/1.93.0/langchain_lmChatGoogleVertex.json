@@ -1,0 +1,32 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.lmChatGoogleVertex",
+  "displayName": "Google Vertex Chat Model",
+  "description": "Chat Model Google Vertex",
+  "version": 1,
+  "properties": [
+    {
+      "name": "projectId",
+      "displayName": "Project ID",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "description": "Select or enter your Google Cloud project ID",
+      "required": true
+    },
+    {
+      "name": "id",
+      "displayName": "ID",
+      "type": "string",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googleApi",
+      "required": true
+    },
+    {
+      "name": "projectId",
+      "required": true
+    }
+  ]
+}

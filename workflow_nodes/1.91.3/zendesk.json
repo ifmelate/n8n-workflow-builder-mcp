@@ -1,0 +1,526 @@
+{
+  "nodeType": "n8n-nodes-base.zendesk",
+  "displayName": "Zendesk",
+  "description": "Consume Zendesk API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Details about the organization, such as the address",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "domain_names",
+      "displayName": "Domain Names",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated domain names associated with this organization"
+    },
+    {
+      "name": "notes",
+      "displayName": "Notes",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "organizationFieldsUi",
+      "displayName": "Organization Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Values of custom fields in the organization's profile",
+      "placeholder": "Add Organization Field"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "tags",
+      "displayName": "Tag Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "IDs of tags applied to this organization. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "id",
+      "displayName": "Organization ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Details about the organization, such as the address",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Count organizations"
+    },
+    {
+      "name": "Create",
+      "default": null,
+      "description": "Create an organization"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete an organization"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get an organization"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many organizations"
+    },
+    {
+      "name": "Get Related Data",
+      "default": null,
+      "description": "Get data related to the organization"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a organization"
+    },
+    {
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": "",
+      "description": "The first comment on the ticket",
+      "required": true
+    },
+    {
+      "name": "jsonParameters",
+      "displayName": "JSON Parameters",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "externalId",
+      "displayName": "External ID",
+      "type": "string",
+      "default": "",
+      "description": "An ID you can use to link Zendesk Support tickets to local records"
+    },
+    {
+      "name": "group",
+      "displayName": "Group Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The group this ticket is assigned to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "recipient",
+      "displayName": "Recipient",
+      "type": "string",
+      "default": "",
+      "description": "The original recipient e-mail address of the ticket"
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "New",
+      "default": null
+    },
+    {
+      "name": "On-Hold",
+      "default": null
+    },
+    {
+      "name": "Open",
+      "default": null
+    },
+    {
+      "name": "Pending",
+      "default": null
+    },
+    {
+      "name": "Solved",
+      "default": null
+    },
+    {
+      "name": "subject",
+      "displayName": "Subject",
+      "type": "string",
+      "default": "",
+      "description": "The value of the subject field for this ticket"
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Incident",
+      "default": null
+    },
+    {
+      "name": "Problem",
+      "default": null
+    },
+    {
+      "name": "Task",
+      "default": null
+    },
+    {
+      "name": "additionalFieldsJson",
+      "displayName": "Additional Fields",
+      "type": "json",
+      "default": "",
+      "description": "Object of values to set as described <a href=\"https://developer.zendesk.com/rest_api/docs/support/tickets\">here</a>",
+      "required": true
+    },
+    {
+      "name": "customFieldsUi",
+      "displayName": "Custom Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Custom field ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Custom Field"
+    },
+    {
+      "name": "internalNote",
+      "displayName": "Internal Note",
+      "type": "string",
+      "default": "",
+      "description": "Internal Ticket Note (Accepts HTML)"
+    },
+    {
+      "name": "publicReply",
+      "displayName": "Public Reply",
+      "type": "string",
+      "default": "",
+      "description": "Public ticket reply"
+    },
+    {
+      "name": "updateFieldsJson",
+      "displayName": "Update Fields",
+      "type": "json",
+      "default": "",
+      "description": "Object of values to update as described <a href=\"https://developer.zendesk.com/rest_api/docs/support/tickets\">here</a>"
+    },
+    {
+      "name": "ticketType",
+      "displayName": "Ticket Type",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Suspended",
+      "default": null
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "The group to search. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "query",
+      "displayName": "Query",
+      "type": "string",
+      "default": "",
+      "description": "<a href=\"https://developer.zendesk.com/api-reference/ticketing/ticket-management/search/#syntax-examples\">Query syntax</a> to search tickets"
+    },
+    {
+      "name": "sortBy",
+      "displayName": "Sort By",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Priority",
+      "default": null
+    },
+    {
+      "name": "Status",
+      "default": null
+    },
+    {
+      "name": "Ticket Type",
+      "default": null
+    },
+    {
+      "name": "Updated At",
+      "default": null
+    },
+    {
+      "name": "sortOrder",
+      "displayName": "Sort Order",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Descending",
+      "default": null
+    },
+    {
+      "name": "Recover",
+      "default": null,
+      "description": "Recover a suspended ticket"
+    },
+    {
+      "name": "ticketFieldId",
+      "displayName": "Ticket Field ID",
+      "type": "string",
+      "default": "",
+      "description": "Whether to return all results or only up to a given limit",
+      "required": true
+    },
+    {
+      "name": "custom_role_id",
+      "displayName": "Custom Role ID",
+      "type": "number",
+      "default": 0,
+      "description": "A custom role if the user is an agent on the Enterprise plan"
+    },
+    {
+      "name": "details",
+      "displayName": "Details",
+      "type": "string",
+      "default": "",
+      "description": "Any details you want to store about the user, such as an address"
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "The user's primary email address",
+      "placeholder": "name@email.com"
+    },
+    {
+      "name": "external_id",
+      "displayName": "External ID",
+      "type": "string",
+      "default": "",
+      "description": "A unique identifier from another system"
+    },
+    {
+      "name": "locale",
+      "displayName": "Locale",
+      "type": "options",
+      "default": "",
+      "description": "The user's locale. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "moderator",
+      "displayName": "Moderator",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the user has forum moderation capabilities"
+    },
+    {
+      "name": "only_private_comments",
+      "displayName": "Only Private Comments",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the user can only create private comments"
+    },
+    {
+      "name": "organization_id",
+      "displayName": "Organization Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The ID of the user's organization. If the user has more than one organization memberships, the ID of the user's default organization. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "phone",
+      "displayName": "Phone",
+      "type": "string",
+      "default": "",
+      "description": "The user's primary phone number"
+    },
+    {
+      "name": "report_csv",
+      "displayName": "Report CSV",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether or not the user can access the CSV report on the Search tab of the Reporting page in the Support admin interface"
+    },
+    {
+      "name": "restricted_agent",
+      "displayName": "Restricted Agent",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the agent has any restrictions; false for admins and unrestricted agents, true for other agents"
+    },
+    {
+      "name": "role",
+      "displayName": "Role",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Agent",
+      "default": null
+    },
+    {
+      "name": "Admin",
+      "default": null
+    },
+    {
+      "name": "signature",
+      "displayName": "Signature",
+      "type": "string",
+      "default": "",
+      "description": "The user's signature. Only agents and admins can have signatures."
+    },
+    {
+      "name": "suspended",
+      "displayName": "Suspended",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the agent is suspended. Tickets from suspended users are also suspended, and these users cannot sign in to the end user portal."
+    },
+    {
+      "name": "ticket_restriction",
+      "displayName": "Ticket Restriction",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Groups",
+      "default": null
+    },
+    {
+      "name": "Assigned",
+      "default": null
+    },
+    {
+      "name": "Requested",
+      "default": null
+    },
+    {
+      "name": "time_zone",
+      "displayName": "Timezone",
+      "type": "string",
+      "default": "",
+      "description": "The user's time zone"
+    },
+    {
+      "name": "userFieldsUi",
+      "displayName": "User Fields",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Values of custom fields in the user's profile",
+      "placeholder": "Add User Field"
+    },
+    {
+      "name": "verified",
+      "displayName": "Verified",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the user's primary identity is verified or not"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "Get Organizations",
+      "default": null,
+      "description": "Get a user's organizations"
+    },
+    {
+      "name": "Search",
+      "default": null,
+      "description": "Search users"
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "description": "Tickets are the means through which your end users (customers) communicate with agents in Zendesk Support"
+    },
+    {
+      "name": "Ticket Field",
+      "default": null,
+      "description": "Manage system and custom ticket fields"
+    },
+    {
+      "name": "User",
+      "default": null,
+      "description": "Manage users"
+    },
+    {
+      "name": "Organization",
+      "default": null,
+      "description": "Manage organizations"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "zendeskApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

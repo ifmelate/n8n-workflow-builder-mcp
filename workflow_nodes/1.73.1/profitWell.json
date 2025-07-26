@@ -1,0 +1,305 @@
+{
+  "nodeType": "n8n-nodes-base.profitWell",
+  "displayName": "ProfitWell",
+  "description": "Consume ProfitWell API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get your company's ProfitWell account settings"
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null,
+      "description": "Retrieve financial metric broken down by day for either the current month or the last"
+    },
+    {
+      "name": "Monthly",
+      "default": null,
+      "description": "Retrieve all monthly financial metric for your company"
+    },
+    {
+      "name": "month",
+      "displayName": "Month",
+      "type": "string",
+      "default": "",
+      "description": "Can only be the current or previous month. Format should be YYYY-MM.",
+      "placeholder": "YYYY-MM",
+      "required": true
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Only return the metric for this Plan ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "dailyMetrics",
+      "displayName": "Metrics",
+      "type": "multiOptions",
+      "default": null,
+      "description": "Number of paying customers"
+    },
+    {
+      "name": "Churned Customers",
+      "default": null,
+      "description": "Number of paying customers who churned"
+    },
+    {
+      "name": "Churned Recurring Revenue",
+      "default": null,
+      "description": "MRR lost to churn (voluntary and delinquent)"
+    },
+    {
+      "name": "Cumulative Net New MRR",
+      "default": null,
+      "description": "New + Upgrades - Downgrades - Churn MRR, cumulative for the month up through the given day"
+    },
+    {
+      "name": "Cumulative New Trialing Customers",
+      "default": null,
+      "description": "Number of new trialing customers, cumulative for the month up through the given day"
+    },
+    {
+      "name": "Downgraded Customers",
+      "default": null,
+      "description": "Number of existing customers who net downgraded"
+    },
+    {
+      "name": "Downgraded Recurring Revenue",
+      "default": null,
+      "description": "How much downgrades and plan length decreases affect your MRR"
+    },
+    {
+      "name": "Future Churn MRR",
+      "default": null,
+      "description": "MRR that will be lost when users who are currently cancelled actually churn"
+    },
+    {
+      "name": "New Customers",
+      "default": null,
+      "description": "Number of new, paying customers you have"
+    },
+    {
+      "name": "New Recurring Revenue",
+      "default": null,
+      "description": "MRR from new users"
+    },
+    {
+      "name": "Reactivated Customers",
+      "default": null,
+      "description": "Number of customers who have reactivated"
+    },
+    {
+      "name": "Reactivated Recurring Revenue",
+      "default": null,
+      "description": "How much MRR comes from reactivated customers"
+    },
+    {
+      "name": "Recurring Revenue",
+      "default": null,
+      "description": "Your company's MRR"
+    },
+    {
+      "name": "Upgraded Customers",
+      "default": null,
+      "description": "Number of existing customers who net upgraded"
+    },
+    {
+      "name": "Upgraded Recurring Revenue",
+      "default": null,
+      "description": "How much upgrades and plan length increases affect your MRR"
+    },
+    {
+      "name": "monthlyMetrics",
+      "displayName": "Metrics",
+      "type": "multiOptions",
+      "default": null,
+      "description": "Number of paying customers"
+    },
+    {
+      "name": "Active Trialing Customers",
+      "default": null,
+      "description": "Number of trialing customers"
+    },
+    {
+      "name": "Average Revenue Per User",
+      "default": null,
+      "description": "ARPU"
+    },
+    {
+      "name": "Churned Customers Cancellations",
+      "default": null,
+      "description": "Number of customers who churned by cancelling their subscription(s)"
+    },
+    {
+      "name": "Churned Customers Delinquent",
+      "default": null,
+      "description": "Number of customers who churned because they failed to pay you"
+    },
+    {
+      "name": "Churned Recurring Revenue Cancellations",
+      "default": null,
+      "description": "Revenue lost to customers who churned by cancelling their subscription(s)"
+    },
+    {
+      "name": "Churned Recurring Revenue Delinquent",
+      "default": null,
+      "description": "Revenue lost to customers who churned delinquent"
+    },
+    {
+      "name": "Churned Trialing Customers",
+      "default": null,
+      "description": "Number of trialling customers who churned"
+    },
+    {
+      "name": "Converted Customers",
+      "default": null,
+      "description": "Number of customers who converted from trialing to active"
+    },
+    {
+      "name": "Converted Recurring Revenue",
+      "default": null,
+      "description": "How much MRR comes from users who converted from trialing to active"
+    },
+    {
+      "name": "Customer Churn Cancellations Rate",
+      "default": null,
+      "description": "Percentage of paying customers who churned by cancelling their subscription(s)"
+    },
+    {
+      "name": "Customer Churn Delinquent Rate",
+      "default": null,
+      "description": "Percentage of paying customers who churned because they failed to pay you"
+    },
+    {
+      "name": "Customer Churn Rate",
+      "default": null,
+      "description": "Percentage of paying customers who churned"
+    },
+    {
+      "name": "Customer Conversion Rate",
+      "default": null,
+      "description": "Percent of trialing customers who converted"
+    },
+    {
+      "name": "Customer Retention Rate",
+      "default": null,
+      "description": "Percent of customers active last month who are still active this month"
+    },
+    {
+      "name": "Downgrade Customers",
+      "default": null,
+      "description": "Number of existing customers who net downgraded"
+    },
+    {
+      "name": "Downgrade Rate",
+      "default": null,
+      "description": "Downgrade revenue as a percent of existing revenue"
+    },
+    {
+      "name": "Downgrade Recurring Revenue",
+      "default": null,
+      "description": "How much downgrades and plan length decreases affect your MRR"
+    },
+    {
+      "name": "Existing Customers",
+      "default": null,
+      "description": "Number of paying customers you had at the start of the given month"
+    },
+    {
+      "name": "Existing Recurring Revenue",
+      "default": null,
+      "description": "Your company's MRR at the start of the given month"
+    },
+    {
+      "name": "Existing Trialing Customers",
+      "default": null,
+      "description": "Number of trialing customers who existed at the start of the month"
+    },
+    {
+      "name": "Growth_Rate",
+      "default": null,
+      "description": "Rate at which your company's MRR has grown over the previous month"
+    },
+    {
+      "name": "Lifetime Value",
+      "default": null,
+      "description": "Average LTV, as calculated at the end of the given period"
+    },
+    {
+      "name": "New Trailing Customers",
+      "default": null,
+      "description": "Number of new trialing customers"
+    },
+    {
+      "name": "Plan Changed Rate",
+      "default": null,
+      "description": "Net change in revenue as a percentage of existing revenue"
+    },
+    {
+      "name": "Plan Changed Recurring Revenue",
+      "default": null,
+      "description": "Net change in revenue for this plan"
+    },
+    {
+      "name": "Revenue Churn Cancellations Rate",
+      "default": null,
+      "description": "Voluntary churn revenue as a percent of the month's starting revenue"
+    },
+    {
+      "name": "Revenue Churn Delinquent_ Rate",
+      "default": null,
+      "description": "Delinquent churn revenue as a percent of the month's starting revenue"
+    },
+    {
+      "name": "Revenue Churn Rate",
+      "default": null,
+      "description": "Revenue lost to churn as a percentage of existing revenue"
+    },
+    {
+      "name": "Revenue Retention Rate",
+      "default": null,
+      "description": "Percent of revenue coming from existing customers that was retained by the end of the month"
+    },
+    {
+      "name": "Upgrade Rate",
+      "default": null,
+      "description": "Upgrade revenue as a percent of existing revenue"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Metric",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "profitWellApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

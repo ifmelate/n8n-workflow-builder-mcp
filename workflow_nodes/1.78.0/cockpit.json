@@ -1,0 +1,161 @@
+{
+  "nodeType": "n8n-nodes-base.cockpit",
+  "displayName": "Cockpit",
+  "description": "Consume Cockpit API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "collection",
+      "displayName": "Collection Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Name of the collection to operate on. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Comma-separated list of fields to get",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "filter",
+      "displayName": "Filter Query",
+      "type": "json",
+      "default": "",
+      "description": "Filter query in <a href=\"https://jeroen.github.io/mongolite/query-data.html\">Mongolite format</a>",
+      "placeholder": "{\"name\": \"Jim\"}"
+    },
+    {
+      "name": "language",
+      "displayName": "Language",
+      "type": "string",
+      "default": "",
+      "description": "Return normalized language fields"
+    },
+    {
+      "name": "populate",
+      "displayName": "Populate",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to resolve linked collection items"
+    },
+    {
+      "name": "rawData",
+      "displayName": "RAW Data",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return the data exactly in the way it got received from the API"
+    },
+    {
+      "name": "skip",
+      "displayName": "Skip",
+      "type": "number",
+      "default": "",
+      "description": "Skip number of entries"
+    },
+    {
+      "name": "sort",
+      "displayName": "Sort Query",
+      "type": "json",
+      "default": "",
+      "description": "Sort query in <a href=\"https://jeroen.github.io/mongolite/query-data.html\">Mongolite format</a>",
+      "placeholder": "{\"price\": -1}"
+    },
+    {
+      "name": "id",
+      "displayName": "Entry ID",
+      "type": "string",
+      "default": "",
+      "description": "Whether new entry fields should be set via the value-key pair UI or JSON",
+      "required": true
+    },
+    {
+      "name": "dataFieldsJson",
+      "displayName": "Entry Data",
+      "type": "json",
+      "default": "",
+      "description": "Entry data to send as JSON"
+    },
+    {
+      "name": "dataFieldsUi",
+      "displayName": "Entry Data",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Name of the field"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Value of the field"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a collection entry"
+    },
+    {
+      "name": "Get Many Entries",
+      "default": null,
+      "description": "Get many collection entries"
+    },
+    {
+      "name": "Update an Entry",
+      "default": null,
+      "description": "Update a collection entry"
+    },
+    {
+      "name": "form",
+      "displayName": "Form",
+      "type": "string",
+      "default": "",
+      "description": "Name of the form to operate on",
+      "required": true
+    },
+    {
+      "name": "singleton",
+      "displayName": "Singleton Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Name of the singleton to operate on. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": "collection"
+    },
+    {
+      "name": "Form",
+      "default": null
+    },
+    {
+      "name": "Singleton",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "cockpitApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

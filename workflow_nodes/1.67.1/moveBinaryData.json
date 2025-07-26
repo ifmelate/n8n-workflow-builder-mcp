@@ -1,0 +1,121 @@
+{
+  "nodeType": "n8n-nodes-base.moveBinaryData",
+  "displayName": "Convert to/from binary data",
+  "description": "Move data between binary and JSON properties",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "mode",
+      "displayName": "Mode",
+      "type": "options",
+      "default": null,
+      "description": "Move data from Binary to JSON"
+    },
+    {
+      "name": "JSON to Binary",
+      "default": null,
+      "description": "Move data from JSON to Binary"
+    },
+    {
+      "name": "setAllData",
+      "displayName": "Set All Data",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether all JSON data should be replaced with the data retrieved from binary key. Else the data will be written to a single key."
+    },
+    {
+      "name": "sourceKey",
+      "displayName": "Source Key",
+      "type": "string",
+      "default": "data",
+      "description": "The name of the binary key to get data from. It is also possible to define deep keys by using dot-notation like for example: \"level1.level2.currentKey\".",
+      "placeholder": "data",
+      "required": true
+    },
+    {
+      "name": "destinationKey",
+      "displayName": "Destination Key",
+      "type": "string",
+      "default": "data",
+      "description": "The name the JSON key to copy data to. It is also possible to define deep keys by using dot-notation like for example: \"level1.level2.newKey\".",
+      "placeholder": "",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to add special marker at the start of your text file. This marker helps some programs understand how to read the file correctly.",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "dataIsBase64",
+      "displayName": "Data Is Base64",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to keep the binary data as base64 string"
+    },
+    {
+      "name": "encoding",
+      "displayName": "Encoding",
+      "type": "options",
+      "default": "utf8",
+      "description": "Choose the character set to use to encode the data"
+    },
+    {
+      "name": "stripBOM",
+      "displayName": "Strip BOM",
+      "type": "boolean",
+      "default": true
+    },
+    {
+      "name": "fileName",
+      "displayName": "File Name",
+      "type": "string",
+      "default": "",
+      "description": "The file name to set",
+      "placeholder": "example.json"
+    },
+    {
+      "name": "jsonParse",
+      "displayName": "JSON Parse",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to run JSON parse on the data to get proper object data"
+    },
+    {
+      "name": "keepSource",
+      "displayName": "Keep Source",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the source key should be kept. By default it will be deleted."
+    },
+    {
+      "name": "keepAsBase64",
+      "displayName": "Keep As Base64",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to keep the binary data as base64 string"
+    },
+    {
+      "name": "mimeType",
+      "displayName": "MIME Type",
+      "type": "string",
+      "default": "application/json",
+      "description": "The mime-type to set. By default will the mime-type for JSON be set.",
+      "placeholder": "application/json"
+    },
+    {
+      "name": "useRawData",
+      "displayName": "Use Raw Data",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to use data as is and do not JSON.stringify it"
+    }
+  ],
+  "credentialsConfig": []
+}

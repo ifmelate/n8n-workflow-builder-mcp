@@ -1,0 +1,27 @@
+{
+  "nodeType": "n8n-nodes-base.n8nTrigger",
+  "displayName": "n8n Trigger",
+  "description": "Handle events and perform actions on your n8n instance",
+  "version": 1,
+  "properties": [
+    {
+      "name": "events",
+      "displayName": "Events",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Triggers when this workflow is updated",
+      "required": true
+    },
+    {
+      "name": "Instance Started",
+      "default": null,
+      "description": "Triggers when this n8n instance is started or re-started"
+    },
+    {
+      "name": "Workflow Activated",
+      "default": null,
+      "description": "Triggers when this workflow is activated"
+    }
+  ],
+  "credentialsConfig": []
+}

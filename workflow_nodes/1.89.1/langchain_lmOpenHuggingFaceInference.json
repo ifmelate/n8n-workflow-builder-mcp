@@ -1,0 +1,8 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.lmOpenHuggingFaceInference",
+  "displayName": "Hugging Face Inference Model",
+  "description": "Language Model HuggingFaceInference",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

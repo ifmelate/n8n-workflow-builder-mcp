@@ -1,0 +1,459 @@
+{
+  "nodeType": "n8n-nodes-base.securityScorecard",
+  "displayName": "SecurityScorecard",
+  "description": "Consume SecurityScorecard API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "scorecardIdentifier",
+      "displayName": "Scorecard Identifier",
+      "type": "string",
+      "default": "",
+      "description": "Primary identifier of a company or scorecard, i.e. domain.",
+      "required": true
+    },
+    {
+      "name": "score",
+      "displayName": "Score",
+      "type": "number",
+      "default": 0,
+      "description": "Score target",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "severity_in",
+      "displayName": "Severity In",
+      "type": "string",
+      "default": "",
+      "description": "Filter issues by comma-separated severity list",
+      "placeholder": ""
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "History start date",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "date_to",
+      "displayName": "Date To",
+      "type": "dateTime",
+      "default": "",
+      "description": "History end date"
+    },
+    {
+      "name": "timing",
+      "displayName": "Timing",
+      "type": "options",
+      "default": null,
+      "description": "Date granularity"
+    },
+    {
+      "name": "Weekly",
+      "default": null
+    },
+    {
+      "name": "Monthly",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get company factor scores and issue counts",
+      "required": true
+    },
+    {
+      "name": "Get Historical Factor Scores",
+      "default": null,
+      "description": "Get company's historical factor scores"
+    },
+    {
+      "name": "Get Historical Scores",
+      "default": null,
+      "description": "Get company's historical scores"
+    },
+    {
+      "name": "Get Information and Scorecard",
+      "default": null,
+      "description": "Get company information and summary of their scorecard"
+    },
+    {
+      "name": "Get Score Plan",
+      "default": null,
+      "description": "Get company's score improvement plan"
+    },
+    {
+      "name": "industry",
+      "displayName": "Industry",
+      "type": "options",
+      "default": "food"
+    },
+    {
+      "name": "Healthcare",
+      "default": null
+    },
+    {
+      "name": "Manofacturing",
+      "default": null
+    },
+    {
+      "name": "Retail",
+      "default": null
+    },
+    {
+      "name": "Technology",
+      "default": null
+    },
+    {
+      "name": "to",
+      "displayName": "Date To",
+      "type": "dateTime",
+      "default": "",
+      "description": "History end date"
+    },
+    {
+      "name": "Get Score",
+      "default": null
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "firstName",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "lastName",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "message",
+      "displayName": "Message",
+      "type": "string",
+      "default": "",
+      "description": "Message for the invitee",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Minimum days to resolve a scorecard issue",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "domain",
+      "displayName": "Domain",
+      "type": "string",
+      "default": "",
+      "description": "Invitee company domain"
+    },
+    {
+      "name": "grade_to_maintain",
+      "displayName": "Grade to Maintain",
+      "type": "string",
+      "default": "",
+      "description": "Request the invitee's organisation to maintain a minimum grade"
+    },
+    {
+      "name": "is_organization_point_of_contact",
+      "displayName": "Is Organisation Point of Contact",
+      "type": "boolean",
+      "default": false,
+      "description": "Is the invitee organisation's point of contact"
+    },
+    {
+      "name": "issue_desc",
+      "displayName": "Issue Description",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "issue_title",
+      "displayName": "Issue Title",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "issue_type",
+      "displayName": "Issue Type",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "sendme_copy",
+      "displayName": "Send Me a Copy",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to send a copy of the invite to the requesting user"
+    },
+    {
+      "name": "target_url",
+      "displayName": "Target URL",
+      "type": "string",
+      "default": "",
+      "description": "Optional URL to take the invitee to when arriving to the platform"
+    },
+    {
+      "name": "portfolioId",
+      "displayName": "Portfolio ID",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "name",
+      "displayName": "Portfolio Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the portfolio",
+      "required": true
+    },
+    {
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "privacy",
+      "displayName": "Privacy",
+      "type": "options",
+      "default": null,
+      "description": "Only visible to you"
+    },
+    {
+      "name": "Shared",
+      "default": null,
+      "description": "Visible to everyone in your company"
+    },
+    {
+      "name": "Team",
+      "default": null,
+      "description": "Visible to the people on your team"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a portfolio"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many portfolios"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a portfolio"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Company score grade filter",
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "issueType",
+      "displayName": "Issue Type",
+      "type": "string",
+      "default": "",
+      "description": "Issue type filter",
+      "placeholder": ""
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Inactive",
+      "default": null
+    },
+    {
+      "name": "vulnerability",
+      "displayName": "Vulnerability",
+      "type": "string",
+      "default": "",
+      "description": "CVE vulnerability filter",
+      "placeholder": ""
+    },
+    {
+      "name": "Remove",
+      "default": null,
+      "description": "Remove a company from portfolio"
+    },
+    {
+      "name": "report",
+      "displayName": "Report",
+      "type": "options",
+      "default": null,
+      "required": true
+    },
+    {
+      "name": "Company Events",
+      "default": null
+    },
+    {
+      "name": "Company Issues",
+      "default": null
+    },
+    {
+      "name": "Company Partnership",
+      "default": null
+    },
+    {
+      "name": "Company Summary",
+      "default": null
+    },
+    {
+      "name": "Full Scorecard",
+      "default": null
+    },
+    {
+      "name": "Portfolio",
+      "default": null
+    },
+    {
+      "name": "Scorecard Footprint",
+      "default": null
+    },
+    {
+      "name": "branding",
+      "displayName": "Branding",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Company and SecurityScorecard",
+      "default": null
+    },
+    {
+      "name": "Company",
+      "default": null
+    },
+    {
+      "name": "date",
+      "displayName": "Date",
+      "type": "dateTime",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "PDF",
+      "default": null
+    },
+    {
+      "name": "format",
+      "displayName": "Format",
+      "type": "options",
+      "default": "pdf"
+    },
+    {
+      "name": "ips",
+      "displayName": "IPs",
+      "type": "string",
+      "default": []
+    },
+    {
+      "name": "subdomains",
+      "displayName": "Subdomains",
+      "type": "string",
+      "default": []
+    },
+    {
+      "name": "url",
+      "displayName": "Report URL",
+      "type": "string",
+      "default": "",
+      "description": "URL to a generated report",
+      "required": true
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Put Output File in Field",
+      "type": "string",
+      "default": "data",
+      "required": true
+    },
+    {
+      "name": "Generate",
+      "default": null,
+      "description": "Generate a report"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "required": true
+    },
+    {
+      "name": "Industry",
+      "default": null
+    },
+    {
+      "name": "Invite",
+      "default": null
+    },
+    {
+      "name": "Portfolio Company",
+      "default": null
+    },
+    {
+      "name": "Report",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "securityScorecardApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "nodeType": "n8n-nodes-base.microsoftTeams",
+  "displayName": "MicrosoftTeams",
+  "description": null,
+  "version": "2",
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Channel Message (Beta)",
+      "default": null
+    },
+    {
+      "name": "Chat Message",
+      "default": null
+    },
+    {
+      "name": "Task",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "microsoftTeamsOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.removeDuplicates",
+  "displayName": "RemoveDuplicates",
+  "description": null,
+  "version": "2",
+  "properties": [],
+  "credentialsConfig": []
+}

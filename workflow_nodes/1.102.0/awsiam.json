@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.awsiam",
+  "displayName": "AWS IAM",
+  "description": "Interacts with Amazon IAM",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

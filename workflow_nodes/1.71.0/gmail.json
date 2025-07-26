@@ -1,0 +1,66 @@
+{
+  "nodeType": "n8n-nodes-base.gmail",
+  "displayName": "Gmail",
+  "description": null,
+  "version": "2.1",
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Service Account",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Label",
+      "default": null
+    },
+    {
+      "name": "Draft",
+      "default": null
+    },
+    {
+      "name": "Thread",
+      "default": null
+    },
+    {
+      "name": "sendTo",
+      "displayName": "To",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. info@example.com",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googleApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    },
+    {
+      "name": "sendTo",
+      "required": true
+    }
+  ]
+}

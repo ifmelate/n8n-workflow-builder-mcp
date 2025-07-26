@@ -1,0 +1,97 @@
+{
+  "nodeType": "n8n-nodes-base.okta",
+  "displayName": "Okta",
+  "description": "Use the Okta API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "userId",
+      "displayName": "User",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "placeholder": "Select a user...",
+      "required": true
+    },
+    {
+      "name": "login",
+      "displayName": "By username",
+      "type": "string",
+      "default": null,
+      "placeholder": ""
+    },
+    {
+      "name": "id",
+      "displayName": "ID",
+      "type": "string",
+      "default": null,
+      "placeholder": "e.g. 00u1abcd2345EfGHIjk6"
+    },
+    {
+      "name": "firstName",
+      "displayName": "First Name",
+      "type": "string",
+      "default": "",
+      "description": "The user you want to operate on. Choose from the list, or specify an ID.",
+      "placeholder": "e.g. Nathan",
+      "required": true
+    },
+    {
+      "name": "lastName",
+      "displayName": "Last Name",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. Smith",
+      "required": true
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. nathan@example.com",
+      "required": true
+    },
+    {
+      "name": "activate",
+      "displayName": "Activate",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to activate the user and allow access to all assigned applications"
+    },
+    {
+      "name": "getCreateFields",
+      "displayName": "Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add field"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 20,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a new user",
+      "options": []
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get details of a user"
+    }
+  ],
+  "credentialsConfig": []
+}

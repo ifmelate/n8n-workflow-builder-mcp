@@ -1,0 +1,158 @@
+{
+  "nodeType": "n8n-nodes-base.vero",
+  "displayName": "Vero",
+  "description": "Consume Vero API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "id",
+      "displayName": "ID",
+      "type": "string",
+      "default": "",
+      "description": "The unique identifier of the customer",
+      "required": true
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "eventName",
+      "displayName": "Event Name",
+      "type": "string",
+      "default": "",
+      "description": "The name of the event tracked",
+      "required": true
+    },
+    {
+      "name": "jsonParameters",
+      "displayName": "JSON Parameters",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "dataAttributesUi",
+      "displayName": "Data",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Key value pairs that represent any properties you want to track with this event",
+      "placeholder": "Add Data"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Value of the property to set"
+    },
+    {
+      "name": "extraAttributesUi",
+      "displayName": "Extra",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Key value pairs that represent reserved, Vero-specific operators. Refer to the note on “deduplication” below.",
+      "placeholder": "Add Extra"
+    },
+    {
+      "name": "dataAttributesJson",
+      "displayName": "Data",
+      "type": "json",
+      "default": "",
+      "description": "Key value pairs that represent the custom user properties you want to update"
+    },
+    {
+      "name": "extraAttributesJson",
+      "displayName": "Extra",
+      "type": "json",
+      "default": "",
+      "description": "Key value pairs that represent reserved, Vero-specific operators. Refer to the note on “deduplication” below."
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Track an event for a specific customer"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The table to create the row in",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "newId",
+      "displayName": "New ID",
+      "type": "string",
+      "default": "",
+      "description": "The new unique identifier of the user",
+      "required": true
+    },
+    {
+      "name": "tags",
+      "displayName": "Tags",
+      "type": "string",
+      "default": "",
+      "description": "Tags to add separated by \",\"",
+      "required": true
+    },
+    {
+      "name": "Alias",
+      "default": null,
+      "description": "Change a users identifier"
+    },
+    {
+      "name": "Create or Update",
+      "default": null,
+      "description": "Create or update a user profile"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a user"
+    },
+    {
+      "name": "Re-Subscribe",
+      "default": null,
+      "description": "Resubscribe a user"
+    },
+    {
+      "name": "Remove Tags",
+      "default": null,
+      "description": "Removes a tag from a users profile"
+    },
+    {
+      "name": "Unsubscribe",
+      "default": null,
+      "description": "Unsubscribe a user"
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "description": "Create, update and manage the subscription status of your users"
+    },
+    {
+      "name": "Event",
+      "default": null,
+      "description": "Track events based on actions your customers take in real time"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "veroApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

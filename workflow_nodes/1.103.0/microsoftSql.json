@@ -1,0 +1,81 @@
+{
+  "nodeType": "n8n-nodes-base.microsoftSql",
+  "displayName": "Microsoft SQL",
+  "description": "Get, add and update data in Microsoft SQL",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Execute an SQL query"
+    },
+    {
+      "name": "Insert",
+      "default": null,
+      "description": "Insert rows in database"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update rows in database"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete rows in database"
+    },
+    {
+      "name": "query",
+      "displayName": "Query",
+      "type": "string",
+      "default": "",
+      "description": "The SQL query to execute",
+      "placeholder": "SELECT id, name FROM product WHERE id < 40",
+      "required": true
+    },
+    {
+      "name": "columns",
+      "displayName": "Columns",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of the properties which should used as columns for the new rows",
+      "placeholder": "id,name,description",
+      "required": true
+    },
+    {
+      "name": "updateKey",
+      "displayName": "Update Key",
+      "type": "string",
+      "default": "id",
+      "description": "Name of the property which decides which rows in the database should be updated. Normally that would be \"id\".",
+      "required": true
+    },
+    {
+      "name": "deleteKey",
+      "displayName": "Delete Key",
+      "type": "string",
+      "default": "id",
+      "description": "Name of the property which decides which rows in the database should be deleted. Normally that would be \"id\".",
+      "required": true
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "microsoftSql",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "required": false
+    },
+    {
+      "name": "query",
+      "required": true
+    }
+  ]
+}

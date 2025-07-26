@@ -1,0 +1,226 @@
+{
+  "nodeType": "n8n-nodes-base.airtable",
+  "displayName": "Airtable",
+  "description": null,
+  "version": "2.1",
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "API Key (Deprecated)",
+      "default": null
+    },
+    {
+      "name": "deprecated",
+      "displayName": "This type of connection (API Key) was deprecated and can't be used anymore. Please create a new credential of type 'Access Token' instead.",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Append the data to a table"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete data from a table"
+    },
+    {
+      "name": "List",
+      "default": null,
+      "description": "List data from a table"
+    },
+    {
+      "name": "Read",
+      "default": null,
+      "description": "Read data from a table"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update data in a table"
+    },
+    {
+      "name": "application",
+      "displayName": "Base",
+      "type": "resourceLocator",
+      "default": "{ mode: 'url', value: '' }",
+      "description": "The Airtable Base in which to operate on",
+      "placeholder": "https://airtable.com/app12DiScdfes/tblAAAAAAAAAAAAA/viwHdfasdfeieg5p",
+      "required": true
+    },
+    {
+      "name": "id",
+      "displayName": "ID",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "table",
+      "displayName": "Table",
+      "type": "resourceLocator",
+      "default": "{ mode: 'url', value: '' }",
+      "placeholder": "https://airtable.com/app12DiScdfes/tblAAAAAAAAAAAAA/viwHdfasdfeieg5p",
+      "required": true
+    },
+    {
+      "name": "addAllFields",
+      "displayName": "Add All Fields",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether all fields should be sent to Airtable or only specific ones"
+    },
+    {
+      "name": "fields",
+      "displayName": "Fields",
+      "type": "string",
+      "default": [],
+      "description": "The name of fields for which data should be sent to Airtable",
+      "placeholder": "Name",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "downloadAttachments",
+      "displayName": "Download Attachments",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the attachment fields define in 'Download Fields' will be downloaded"
+    },
+    {
+      "name": "downloadFieldNames",
+      "displayName": "Download Fields",
+      "type": "string",
+      "default": "",
+      "description": "Name of the fields of type 'attachment' that should be downloaded. Multiple ones can be defined separated by comma. Case sensitive and cannot include spaces after a comma.",
+      "required": true
+    },
+    {
+      "name": "additionalOptions",
+      "displayName": "Additional Options",
+      "type": "collection",
+      "default": {},
+      "description": "Additional options which decide which records should be returned",
+      "placeholder": "Add option",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "filterByFormula",
+      "displayName": "Filter By Formula",
+      "type": "string",
+      "default": "",
+      "description": "A formula used to filter records. The formula will be evaluated for each record, and if the result is not 0, false, \"\", NaN, [], or #Error! the record will be included in the response.",
+      "placeholder": "NOT({Name} = '')"
+    },
+    {
+      "name": "sort",
+      "displayName": "Sort",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Defines how the returned records should be ordered",
+      "placeholder": "Add Sort Rule"
+    },
+    {
+      "name": "direction",
+      "displayName": "Direction",
+      "type": "options",
+      "default": null,
+      "description": "Sort in ascending order (small -> large)"
+    },
+    {
+      "name": "DESC",
+      "default": null,
+      "description": "Sort in descending order (large -> small)"
+    },
+    {
+      "name": "view",
+      "displayName": "View",
+      "type": "string",
+      "default": "",
+      "description": "The name or ID of a view in the Stories table. If set, only the records in that view will be returned. The records will be sorted according to the order of the view.",
+      "placeholder": "All Stories"
+    },
+    {
+      "name": "updateAllFields",
+      "displayName": "Update All Fields",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether all fields should be sent to Airtable or only specific ones"
+    },
+    {
+      "name": "ignoreFields",
+      "displayName": "Ignore Fields",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of fields to ignore"
+    },
+    {
+      "name": "typecast",
+      "displayName": "Typecast",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the Airtable API should attempt mapping of string values for linked records & select options"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "airtableApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "deprecated",
+      "required": false
+    },
+    {
+      "name": "application",
+      "required": true
+    },
+    {
+      "name": "id",
+      "required": false
+    },
+    {
+      "name": "table",
+      "required": true
+    },
+    {
+      "name": "id",
+      "required": false
+    },
+    {
+      "name": "addAllFields",
+      "required": true
+    },
+    {
+      "name": "view",
+      "required": false
+    },
+    {
+      "name": "id",
+      "required": true
+    }
+  ]
+}

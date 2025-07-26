@@ -1,0 +1,203 @@
+{
+  "nodeType": "n8n-nodes-base.homeAssistant",
+  "displayName": "Home Assistant",
+  "description": "Consume Home Assistant API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get the configuration"
+    },
+    {
+      "name": "Check Configuration",
+      "default": null,
+      "description": "Check the configuration"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "service",
+      "displayName": "Service Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "serviceAttributes",
+      "displayName": "Service Attributes",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Name of the field",
+      "placeholder": "Add Attribute"
+    },
+    {
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Value of the field"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many services"
+    },
+    {
+      "name": "entityId",
+      "displayName": "Entity Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "state",
+      "displayName": "State",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "stateAttributes",
+      "displayName": "State Attributes",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Name of the attribute",
+      "placeholder": "Add Attribute"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a state for a specific entity"
+    },
+    {
+      "name": "eventAttributes",
+      "displayName": "Event Attributes",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Name of the attribute",
+      "placeholder": "Add Attribute"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The end of the period",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "startTime",
+      "displayName": "Start Time",
+      "type": "dateTime",
+      "default": "",
+      "description": "The beginning of the period"
+    },
+    {
+      "name": "Get Logbook Entries",
+      "default": null,
+      "description": "Get all logs"
+    },
+    {
+      "name": "template",
+      "displayName": "Template",
+      "type": "string",
+      "default": "",
+      "description": "Render a Home Assistant template. <a href=\"https://www.home-assistant.io/docs/configuration/templating/\">See template docs for more information.</a>.",
+      "required": true
+    },
+    {
+      "name": "entityIds",
+      "displayName": "Entity IDs",
+      "type": "string",
+      "default": "",
+      "description": "The entities IDs separated by comma"
+    },
+    {
+      "name": "minimalResponse",
+      "displayName": "Minimal Response",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to only return <code>last_changed</code> and state for states"
+    },
+    {
+      "name": "significantChangesOnly",
+      "displayName": "Significant Changes Only",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to only return significant state changes"
+    },
+    {
+      "name": "cameraEntityId",
+      "displayName": "Camera Entity Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Put Output File in Field",
+      "type": "string",
+      "default": "data",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Config",
+      "default": null
+    },
+    {
+      "name": "Event",
+      "default": null
+    },
+    {
+      "name": "Log",
+      "default": null
+    },
+    {
+      "name": "Service",
+      "default": null
+    },
+    {
+      "name": "State",
+      "default": null
+    },
+    {
+      "name": "Template",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "homeAssistantApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

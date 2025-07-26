@@ -1,0 +1,103 @@
+{
+  "nodeType": "n8n-nodes-base.whatsAppTrigger",
+  "displayName": "WhatsApp Trigger",
+  "description": "Handle WhatsApp events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "whatsAppNotice",
+      "displayName": "Due to Facebook API limitations, you can use just one WhatsApp trigger for each Facebook App",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "updates",
+      "displayName": "Trigger On",
+      "type": "multiOptions",
+      "default": [],
+      "required": true
+    },
+    {
+      "name": "Account Update",
+      "default": null
+    },
+    {
+      "name": "Business Capability Update",
+      "default": null
+    },
+    {
+      "name": "Message Template Quality Update",
+      "default": null
+    },
+    {
+      "name": "Message Template Status Update",
+      "default": null
+    },
+    {
+      "name": "Messages",
+      "default": null
+    },
+    {
+      "name": "Phone Number Name Update",
+      "default": null
+    },
+    {
+      "name": "Phone Number Quality Update",
+      "default": null
+    },
+    {
+      "name": "Security",
+      "default": null
+    },
+    {
+      "name": "Template Category Update",
+      "default": null
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "WhatsApp sends notifications to the Trigger when the status of a message changes (for example from Sent to Delivered and from Delivered to Read). To avoid multiple executions for one WhatsApp message, you can set the Trigger to execute only on selected message status updates.",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "Deleted",
+      "default": null
+    },
+    {
+      "name": "Delivered",
+      "default": null
+    },
+    {
+      "name": "Failed",
+      "default": null
+    },
+    {
+      "name": "Read",
+      "default": null
+    },
+    {
+      "name": "Sent",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "whatsAppTriggerApi",
+      "required": true
+    },
+    {
+      "name": "setup",
+      "required": false
+    },
+    {
+      "name": "whatsAppNotice",
+      "required": true
+    },
+    {
+      "name": "options",
+      "required": false
+    }
+  ]
+}

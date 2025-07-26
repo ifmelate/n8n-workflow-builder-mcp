@@ -1,0 +1,95 @@
+{
+  "nodeType": "n8n-nodes-base.line",
+  "displayName": "Line",
+  "description": "Consume Line API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "message",
+      "displayName": "Message",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      }
+    },
+    {
+      "name": "imageFullsize",
+      "displayName": "Image Full Size",
+      "type": "string",
+      "default": "",
+      "description": "HTTP/HTTPS URL. Maximum size of 2048×2048px JPEG."
+    },
+    {
+      "name": "imageThumbnail",
+      "displayName": "Image Thumbnail",
+      "type": "string",
+      "default": "",
+      "description": "HTTP/HTTPS URL. Maximum size of 240×240px JPEG."
+    },
+    {
+      "name": "binaryProperty",
+      "displayName": "Input Binary Field",
+      "type": "string",
+      "default": "data"
+    },
+    {
+      "name": "notificationDisabled",
+      "displayName": "Notification Disabled",
+      "type": "boolean",
+      "default": false,
+      "description": "<p>true: The user doesn't receive a push notification when the message is sent.</p><p>false: The user receives a push notification when the message is sent</p>"
+    },
+    {
+      "name": "stickerUi",
+      "displayName": "Sticker",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Sticker"
+    },
+    {
+      "name": "stickerPackageId",
+      "displayName": "Sticker Package ID",
+      "type": "number",
+      "default": "",
+      "description": "Package ID"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Sends notifications to users or groups"
+    },
+    {
+      "name": "notice",
+      "displayName": "End of service: LINE Notify will be discontinued from April 1st 2025, You can find more information <a href=\"https://notify-bot.line.me/closing-announce\" target=\"_blank\">here</a>",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "lineNotifyOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "notice",
+      "required": false
+    }
+  ]
+}

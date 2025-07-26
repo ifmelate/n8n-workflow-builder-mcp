@@ -1,0 +1,142 @@
+{
+  "nodeType": "n8n-nodes-base.linkedIn",
+  "displayName": "LinkedIn",
+  "description": "Consume LinkedIn API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "postAs",
+      "displayName": "Post As",
+      "type": "options",
+      "default": "person",
+      "description": "If to post on behalf of a user or an organization"
+    },
+    {
+      "name": "Organization",
+      "default": null
+    },
+    {
+      "name": "person",
+      "displayName": "Person Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Person as which the post should be posted as. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "organization",
+      "displayName": "Organization URN",
+      "type": "string",
+      "default": "",
+      "description": "URN of Organization as which the post should be posted as",
+      "placeholder": "1234567"
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "",
+      "description": "The primary content of the post"
+    },
+    {
+      "name": "shareMediaCategory",
+      "displayName": "Media Category",
+      "type": "options",
+      "default": "NONE",
+      "description": "The post does not contain any media, and will only consist of text"
+    },
+    {
+      "name": "Article",
+      "default": null,
+      "description": "The post contains an article URL"
+    },
+    {
+      "name": "Image",
+      "default": null,
+      "description": "The post contains an image"
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Input Binary Field",
+      "type": "string",
+      "default": "data",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Provide a short description for your image or article",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "originalUrl",
+      "displayName": "Original URL",
+      "type": "string",
+      "default": "",
+      "description": "Provide the URL of the article you would like to share here"
+    },
+    {
+      "name": "thumbnailBinaryPropertyName",
+      "displayName": "Input Binary Field",
+      "type": "string",
+      "default": "data"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Customize the title of your image or article"
+    },
+    {
+      "name": "visibility",
+      "displayName": "Visibility",
+      "type": "options",
+      "default": "PUBLIC",
+      "description": "Dictate if post will be seen by the public or only connections"
+    },
+    {
+      "name": "Public",
+      "default": null
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create a new post"
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Community Management",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "linkedInOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

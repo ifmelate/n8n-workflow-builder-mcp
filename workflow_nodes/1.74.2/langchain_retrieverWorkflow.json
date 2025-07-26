@@ -1,0 +1,103 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.retrieverWorkflow",
+  "displayName": "Workflow Retriever",
+  "description": "Use an n8n Workflow as Retriever",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "executeNotice",
+      "displayName": "The workflow will receive \"query\" as input and the output of the last node will be returned and converted to Documents",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "source",
+      "displayName": "Source",
+      "type": "options",
+      "default": null,
+      "description": "Load the workflow from the database by ID"
+    },
+    {
+      "name": "Parameter",
+      "default": null,
+      "description": "Load the workflow from a parameter"
+    },
+    {
+      "name": "workflowId",
+      "displayName": "Workflow ID",
+      "type": "string",
+      "default": null
+    },
+    {
+      "name": "workflowJson",
+      "displayName": "Workflow JSON",
+      "type": "json",
+      "default": "\\n\\n\\n",
+      "description": "The workflow JSON code to execute",
+      "placeholder": "Add Value",
+      "required": true
+    },
+    {
+      "name": "type",
+      "displayName": "Type",
+      "type": "options",
+      "default": null,
+      "description": "The field value type"
+    },
+    {
+      "name": "Number",
+      "default": null
+    },
+    {
+      "name": "Boolean",
+      "default": null
+    },
+    {
+      "name": "Array",
+      "default": null
+    },
+    {
+      "name": "Object",
+      "default": null
+    },
+    {
+      "name": "stringValue",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "numberValue",
+      "displayName": "Value",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "booleanValue",
+      "displayName": "Value",
+      "type": "options",
+      "default": "true"
+    },
+    {
+      "name": "False",
+      "default": null
+    },
+    {
+      "name": "arrayValue",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. [ arrayItem1, arrayItem2, arrayItem3 ]"
+    },
+    {
+      "name": "objectValue",
+      "displayName": "Value",
+      "type": "json",
+      "default": "={}"
+    }
+  ],
+  "credentialsConfig": []
+}

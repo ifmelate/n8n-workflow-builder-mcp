@@ -1,0 +1,8 @@
+{
+  "nodeType": "n8n-nodes-base.copperTrigger",
+  "displayName": "Copper Trigger",
+  "description": "Handle Copper events via webhooks",
+  "version": 1,
+  "properties": [],
+  "credentialsConfig": []
+}

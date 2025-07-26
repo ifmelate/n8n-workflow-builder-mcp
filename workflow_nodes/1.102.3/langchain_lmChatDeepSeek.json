@@ -1,0 +1,10 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+  "displayName": "DeepSeek Chat Model",
+  "description": "For advanced usage with an AI chain",
+  "version": [
+    1
+  ],
+  "properties": [],
+  "credentialsConfig": []
+}

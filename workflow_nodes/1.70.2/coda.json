@@ -1,0 +1,242 @@
+{
+  "nodeType": "n8n-nodes-base.coda",
+  "displayName": "Coda",
+  "description": "Consume Coda API",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "docId",
+      "displayName": "Doc Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "ID of the doc. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "tableId",
+      "displayName": "Table Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The table to create the row in. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether the API will not attempt to parse the data in any way",
+      "placeholder": "Add option"
+    },
+    {
+      "name": "keyColumns",
+      "displayName": "Key Columns",
+      "type": "string",
+      "default": "",
+      "description": "Optional column IDs, URLs, or names (fragile and discouraged), specifying columns to be used as upsert keys. If more than one separate by a comma (,)."
+    },
+    {
+      "name": "rowId",
+      "displayName": "Row ID",
+      "type": "string",
+      "default": "",
+      "description": "ID or name of the row. Names are discouraged because they're easily prone to being changed by users. If you're using a name, be sure to URI-encode it. If there are multiple rows with the same value in the identifying column, an arbitrary one will be selected",
+      "required": true
+    },
+    {
+      "name": "useColumnNames",
+      "displayName": "Use Column Names",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to use column names instead of column IDs in the returned output. This is generally discouraged as it is fragile. If columns are renamed, code using original names may throw errors."
+    },
+    {
+      "name": "valueFormat",
+      "displayName": "ValueFormat",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "Simple With Arrays",
+      "default": null
+    },
+    {
+      "name": "Rich",
+      "default": null
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "rawData",
+      "displayName": "RAW Data",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return the data exactly in the way it got received from the API"
+    },
+    {
+      "name": "sortBy",
+      "displayName": "Sort By",
+      "type": "options",
+      "default": ""
+    },
+    {
+      "name": "Natural",
+      "default": null
+    },
+    {
+      "name": "visibleOnly",
+      "displayName": "Visible Only",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return only visible rows and columns for the table"
+    },
+    {
+      "name": "columnId",
+      "displayName": "Column Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Create/Insert a row"
+    },
+    {
+      "name": "Delete Row",
+      "default": null,
+      "description": "Delete one or multiple rows"
+    },
+    {
+      "name": "Get All Columns",
+      "default": null,
+      "description": "Get all columns in a table"
+    },
+    {
+      "name": "Get All Rows",
+      "default": null,
+      "description": "Get all rows in a table"
+    },
+    {
+      "name": "Get Column",
+      "default": null,
+      "description": "Get a column"
+    },
+    {
+      "name": "Get Row",
+      "default": null,
+      "description": "Get a row"
+    },
+    {
+      "name": "Push Button",
+      "default": null,
+      "description": "Pushes a button"
+    },
+    {
+      "name": "formulaId",
+      "displayName": "Formula ID",
+      "type": "string",
+      "default": "",
+      "description": "The formula to get the row from",
+      "required": true
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many formulas"
+    },
+    {
+      "name": "controlId",
+      "displayName": "Control ID",
+      "type": "string",
+      "default": "",
+      "description": "The control to get the row from",
+      "required": true
+    },
+    {
+      "name": "viewId",
+      "displayName": "View ID",
+      "type": "string",
+      "default": "",
+      "description": "The view to get the row from",
+      "required": true
+    },
+    {
+      "name": "keyName",
+      "displayName": "Key Name",
+      "type": "string",
+      "default": "columns",
+      "description": "The view to get the row from",
+      "required": true
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a view"
+    },
+    {
+      "name": "Get Columns",
+      "default": null,
+      "description": "Get all views columns"
+    },
+    {
+      "name": "Get Rows",
+      "default": null,
+      "description": "Get all views rows"
+    },
+    {
+      "name": "Update Row",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null,
+      "description": "Controls provide a user-friendly way to input a value that can affect other parts of the doc"
+    },
+    {
+      "name": "Formula",
+      "default": null,
+      "description": "Formulas can be great for performing one-off computations"
+    },
+    {
+      "name": "Table",
+      "default": null,
+      "description": "Access data of tables in documents"
+    },
+    {
+      "name": "View",
+      "default": null,
+      "description": "Access data of views in documents"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "codaApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

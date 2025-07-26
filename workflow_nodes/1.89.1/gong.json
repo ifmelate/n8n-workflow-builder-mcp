@@ -1,0 +1,22 @@
+{
+  "nodeType": "n8n-nodes-base.gong",
+  "displayName": "Gong",
+  "description": "Interact with Gong API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Retrieve data for a specific call",
+      "options": []
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Retrieve a list of calls"
+    }
+  ],
+  "credentialsConfig": []
+}

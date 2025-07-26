@@ -1,0 +1,40 @@
+{
+  "nodeType": "n8n-nodes-base.microsoftOutlook",
+  "displayName": "MicrosoftOutlook",
+  "description": null,
+  "version": "2",
+  "properties": [
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": "message"
+    },
+    {
+      "name": "Folder",
+      "default": null
+    },
+    {
+      "name": "Folder Message",
+      "default": null
+    },
+    {
+      "name": "Message",
+      "default": null
+    },
+    {
+      "name": "Message Attachment",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "microsoftOutlookOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

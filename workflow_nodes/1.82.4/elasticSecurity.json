@@ -1,0 +1,401 @@
+{
+  "nodeType": "n8n-nodes-base.elasticSecurity",
+  "displayName": "Elastic Security",
+  "description": "Consume the Elastic Security API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "caseId",
+      "displayName": "Case ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the case containing the comment to retrieve",
+      "required": true
+    },
+    {
+      "name": "comment",
+      "displayName": "Comment",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data"
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Valid application owner registered within the Cases Role Based Access Control system",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "commentId",
+      "displayName": "Comment ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the case comment to retrieve",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return",
+      "required": true
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Add a comment to a case"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a case comment"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Retrieve many case comments"
+    },
+    {
+      "name": "Remove",
+      "default": null,
+      "description": "Remove a comment from a case"
+    },
+    {
+      "name": "Update",
+      "default": null,
+      "description": "Update a comment in a case"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "required": true
+    },
+    {
+      "name": "connectorId",
+      "displayName": "Connector Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Connectors allow you to send Elastic Security cases into other systems (only ServiceNow, Jira, or IBM Resilient). Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "connectorType",
+      "displayName": "Connector Type",
+      "type": "options",
+      "default": ".jira",
+      "required": true
+    },
+    {
+      "name": "Jira",
+      "default": null
+    },
+    {
+      "name": "ServiceNow ITSM",
+      "default": null
+    },
+    {
+      "name": "issueType",
+      "displayName": "Issue Type",
+      "type": "string",
+      "default": "",
+      "description": "Type of the Jira issue to create for this case",
+      "placeholder": "Task",
+      "required": true
+    },
+    {
+      "name": "priority",
+      "displayName": "Priority",
+      "type": "string",
+      "default": "",
+      "description": "Priority of the Jira issue to create for this case",
+      "placeholder": "High",
+      "required": true
+    },
+    {
+      "name": "urgency",
+      "displayName": "Urgency",
+      "type": "options",
+      "default": 1,
+      "description": "Urgency of the ServiceNow ITSM issue to create for this case",
+      "required": true
+    },
+    {
+      "name": "Medium",
+      "default": null
+    },
+    {
+      "name": "High",
+      "default": null
+    },
+    {
+      "name": "severity",
+      "displayName": "Severity",
+      "type": "options",
+      "default": 1,
+      "description": "Severity of the ServiceNow ITSM issue to create for this case",
+      "required": true
+    },
+    {
+      "name": "impact",
+      "displayName": "Impact",
+      "type": "options",
+      "default": 1,
+      "description": "Impact of the ServiceNow ITSM issue to create for this case",
+      "required": true
+    },
+    {
+      "name": "category",
+      "displayName": "Category",
+      "type": "string",
+      "default": "",
+      "description": "Category of the ServiceNow ITSM issue to create for this case",
+      "placeholder": "Helpdesk",
+      "required": true
+    },
+    {
+      "name": "issueTypes",
+      "displayName": "Issue Types",
+      "type": "string",
+      "default": "",
+      "description": "Comma-separated list of numerical types of the IBM Resilient issue to create for this case",
+      "placeholder": "123,456",
+      "required": true
+    },
+    {
+      "name": "severityCode",
+      "displayName": "Severity Code",
+      "type": "number",
+      "default": 1,
+      "description": "Severity code of the IBM Resilient issue to create for this case",
+      "required": true
+    },
+    {
+      "name": "owner",
+      "displayName": "Owner",
+      "type": "string",
+      "default": "",
+      "description": "Valid application owner registered within the Cases Role Based Access Control system"
+    },
+    {
+      "name": "syncAlerts",
+      "displayName": "Sync Alerts",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to synchronize with alerts"
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Filter"
+    },
+    {
+      "name": "In Progress",
+      "default": null
+    },
+    {
+      "name": "Closed",
+      "default": null
+    },
+    {
+      "name": "tags",
+      "displayName": "Tag Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "sortOptions",
+      "displayName": "Sort",
+      "type": "fixedCollection",
+      "default": {},
+      "placeholder": "Add Sort Options"
+    },
+    {
+      "name": "Updated At",
+      "default": null
+    },
+    {
+      "name": "sortOrder",
+      "displayName": "Sort Order",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Descending",
+      "default": null
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": "open"
+    },
+    {
+      "name": "Open",
+      "default": null
+    },
+    {
+      "name": "version",
+      "displayName": "Version",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a case"
+    },
+    {
+      "name": "Get Status",
+      "default": null,
+      "description": "Retrieve a summary of all case activity"
+    },
+    {
+      "name": "tag",
+      "displayName": "Tag Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Tag to attach to the case. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "name",
+      "displayName": "Connector Name",
+      "type": "string",
+      "default": "",
+      "description": "Connectors allow you to send Elastic Security cases into other systems (only ServiceNow, Jira, or IBM Resilient)",
+      "required": true
+    },
+    {
+      "name": "apiUrl",
+      "displayName": "API URL",
+      "type": "string",
+      "default": "",
+      "description": "URL of the third-party instance",
+      "required": true
+    },
+    {
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "Jira-registered email",
+      "placeholder": "name@email.com",
+      "required": true
+    },
+    {
+      "name": "apiToken",
+      "displayName": "API Token",
+      "type": "string",
+      "default": "",
+      "description": "Jira API token",
+      "required": true
+    },
+    {
+      "name": "projectKey",
+      "displayName": "Project Key",
+      "type": "string",
+      "default": "",
+      "description": "Jira Project Key",
+      "required": true
+    },
+    {
+      "name": "username",
+      "displayName": "Username",
+      "type": "string",
+      "default": "",
+      "description": "ServiceNow ITSM username",
+      "required": true
+    },
+    {
+      "name": "password",
+      "displayName": "Password",
+      "type": "string",
+      "default": "",
+      "description": "ServiceNow ITSM password",
+      "required": true
+    },
+    {
+      "name": "apiKeyId",
+      "displayName": "API Key ID",
+      "type": "string",
+      "default": "",
+      "description": "IBM Resilient API key ID",
+      "required": true
+    },
+    {
+      "name": "apiKeySecret",
+      "displayName": "API Key Secret",
+      "type": "string",
+      "default": "",
+      "description": "IBM Resilient API key secret",
+      "required": true
+    },
+    {
+      "name": "orgId",
+      "displayName": "Organization ID",
+      "type": "string",
+      "default": "",
+      "description": "IBM Resilient organization ID",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Case Comment",
+      "default": null
+    },
+    {
+      "name": "Case Tag",
+      "default": null
+    },
+    {
+      "name": "Connector",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "elasticSecurityApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,308 @@
+{
+  "nodeType": "n8n-nodes-base.jiraTrigger",
+  "displayName": "Jira Trigger",
+  "description": "Starts the workflow when Jira events occur",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "jiraVersion",
+      "displayName": "Jira Version",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Server (Self Hosted)",
+      "default": null
+    },
+    {
+      "name": "Server (Pat) (Self Hosted)",
+      "default": null
+    },
+    {
+      "name": "authenticateWebhook",
+      "displayName": "Authenticate Incoming Webhook",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether authentication should be activated for the incoming webhooks (makes it more secure)"
+    },
+    {
+      "name": "incomingAuthentication",
+      "displayName": "Authenticate Webhook With",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "None",
+      "default": null
+    },
+    {
+      "name": "events",
+      "displayName": "Events",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "Board Configuration Changed",
+      "default": null
+    },
+    {
+      "name": "Board Created",
+      "default": null
+    },
+    {
+      "name": "Board Deleted",
+      "default": null
+    },
+    {
+      "name": "Board Updated",
+      "default": null
+    },
+    {
+      "name": "Comment Created",
+      "default": null
+    },
+    {
+      "name": "Comment Deleted",
+      "default": null
+    },
+    {
+      "name": "Comment Updated",
+      "default": null
+    },
+    {
+      "name": "Issue Created",
+      "default": null
+    },
+    {
+      "name": "Issue Deleted",
+      "default": null
+    },
+    {
+      "name": "Issue Link Created",
+      "default": null
+    },
+    {
+      "name": "Issue Link Deleted",
+      "default": null
+    },
+    {
+      "name": "Issue Updated",
+      "default": null
+    },
+    {
+      "name": "Option Attachments Changed",
+      "default": null
+    },
+    {
+      "name": "Option Issue Links Changed",
+      "default": null
+    },
+    {
+      "name": "Option Subtasks Changed",
+      "default": null
+    },
+    {
+      "name": "Option Timetracking Changed",
+      "default": null
+    },
+    {
+      "name": "Option Unassigned Issues Changed",
+      "default": null
+    },
+    {
+      "name": "Option Voting Changed",
+      "default": null
+    },
+    {
+      "name": "Option Watching Changed",
+      "default": null
+    },
+    {
+      "name": "Project Created",
+      "default": null
+    },
+    {
+      "name": "Project Deleted",
+      "default": null
+    },
+    {
+      "name": "Project Updated",
+      "default": null
+    },
+    {
+      "name": "Sprint Closed",
+      "default": null
+    },
+    {
+      "name": "Sprint Created",
+      "default": null
+    },
+    {
+      "name": "Sprint Deleted",
+      "default": null
+    },
+    {
+      "name": "Sprint Started",
+      "default": null
+    },
+    {
+      "name": "Sprint Updated",
+      "default": null
+    },
+    {
+      "name": "User Created",
+      "default": null
+    },
+    {
+      "name": "User Deleted",
+      "default": null
+    },
+    {
+      "name": "User Updated",
+      "default": null
+    },
+    {
+      "name": "Version Created",
+      "default": null
+    },
+    {
+      "name": "Version Deleted",
+      "default": null
+    },
+    {
+      "name": "Version Moved",
+      "default": null
+    },
+    {
+      "name": "Version Released",
+      "default": null
+    },
+    {
+      "name": "Version Unreleased",
+      "default": null
+    },
+    {
+      "name": "Version Updated",
+      "default": null
+    },
+    {
+      "name": "Worklog Created",
+      "default": null
+    },
+    {
+      "name": "Worklog Deleted",
+      "default": null
+    },
+    {
+      "name": "Worklog Updated",
+      "default": null
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Whether a request with empty body will be sent to the URL. Leave unchecked if you want to receive JSON.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "filter",
+      "displayName": "Filter",
+      "type": "string",
+      "default": "",
+      "description": "You can specify a JQL query to send only events triggered by matching issues. The JQL filter only applies to events under the Issue and Comment columns.",
+      "placeholder": "Project = JRA AND resolution = Fixed"
+    },
+    {
+      "name": "includeFields",
+      "displayName": "Include Fields",
+      "type": "multiOptions",
+      "default": null
+    },
+    {
+      "name": "Board ID",
+      "default": null
+    },
+    {
+      "name": "Comment ID",
+      "default": null
+    },
+    {
+      "name": "Issue ID",
+      "default": null
+    },
+    {
+      "name": "Merge Version ID",
+      "default": null
+    },
+    {
+      "name": "Modified User Account ID",
+      "default": null
+    },
+    {
+      "name": "Modified User Key",
+      "default": null
+    },
+    {
+      "name": "Modified User Name",
+      "default": null
+    },
+    {
+      "name": "Project ID",
+      "default": null
+    },
+    {
+      "name": "Project Key",
+      "default": null
+    },
+    {
+      "name": "Propery Key",
+      "default": null
+    },
+    {
+      "name": "Sprint ID",
+      "default": null
+    },
+    {
+      "name": "Version ID",
+      "default": null
+    },
+    {
+      "name": "Worklog ID",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "jiraSoftwareCloudApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "jiraVersion",
+      "required": false
+    },
+    {
+      "name": "authenticateWebhook",
+      "required": false
+    },
+    {
+      "name": "incomingAuthentication",
+      "required": false
+    },
+    {
+      "name": "events",
+      "required": false
+    },
+    {
+      "name": "additionalFields",
+      "required": false
+    }
+  ]
+}

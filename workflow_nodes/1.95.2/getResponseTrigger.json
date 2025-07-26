@@ -1,0 +1,82 @@
+{
+  "nodeType": "n8n-nodes-base.getResponseTrigger",
+  "displayName": "GetResponse Trigger",
+  "description": "Starts the workflow when GetResponse events occur",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "OAuth2",
+      "default": null
+    },
+    {
+      "name": "events",
+      "displayName": "Events",
+      "type": "multiOptions",
+      "default": null,
+      "description": "Receive notifications when a customer is subscribed to a list"
+    },
+    {
+      "name": "Customer Unsubscribed",
+      "default": null,
+      "description": "Receive notifications when a customer is unsubscribed from a list"
+    },
+    {
+      "name": "Email Clicked",
+      "default": null,
+      "description": "Receive notifications when a email is clicked"
+    },
+    {
+      "name": "Email Opened",
+      "default": null,
+      "description": "Receive notifications when a email is opened"
+    },
+    {
+      "name": "Survey Submitted",
+      "default": null,
+      "description": "Receive notifications when a survey is submitted"
+    },
+    {
+      "name": "listIds",
+      "displayName": "List Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to delete the current subscription",
+      "placeholder": "Add option"
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "getResponseApi",
+      "required": true
+    },
+    {
+      "name": "default",
+      "required": false
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "events",
+      "required": false
+    },
+    {
+      "name": "listIds",
+      "required": false
+    }
+  ]
+}

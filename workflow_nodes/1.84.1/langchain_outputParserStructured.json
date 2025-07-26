@@ -1,0 +1,12 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.outputParserStructured",
+  "displayName": "Structured Output Parser",
+  "description": "Return data in a defined JSON format",
+  "version": [
+    1,
+    1.1,
+    1.2
+  ],
+  "properties": [],
+  "credentialsConfig": []
+}

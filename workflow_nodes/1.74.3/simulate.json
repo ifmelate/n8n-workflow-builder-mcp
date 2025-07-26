@@ -1,0 +1,30 @@
+{
+  "nodeType": "n8n-nodes-base.simulate",
+  "displayName": "Simulate",
+  "description": "Simulate a node",
+  "version": 1,
+  "properties": [
+    {
+      "name": "output",
+      "displayName": "Output",
+      "type": "options",
+      "default": "all"
+    },
+    {
+      "name": "Specify how many of input items to return",
+      "default": null
+    },
+    {
+      "name": "Specify output as JSON",
+      "default": null
+    },
+    {
+      "name": "numberOfItems",
+      "displayName": "Number of Items",
+      "type": "number",
+      "default": 1,
+      "description": "Number input of items to return, if greater then input length all items will be returned"
+    }
+  ],
+  "credentialsConfig": []
+}

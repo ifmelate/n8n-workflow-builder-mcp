@@ -1,0 +1,153 @@
+{
+  "nodeType": "n8n-nodes-base.kitemaker",
+  "displayName": "Kitemaker",
+  "description": "Consume the Kitemaker GraphQL API",
+  "version": 1,
+  "properties": [
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": "get",
+      "description": "Retrieve data on the logged-in user's organization"
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit"
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 5,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "Title of the work item to create",
+      "required": true
+    },
+    {
+      "name": "spaceId",
+      "displayName": "Space Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "ID of the space to retrieve the work items from. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "statusId",
+      "displayName": "Status Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "ID of the status to set on the item to create. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Description of the item to create. Markdown supported.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "effort",
+      "displayName": "Effort",
+      "type": "options",
+      "default": "SMALL",
+      "description": "Effort to set for the item to create"
+    },
+    {
+      "name": "Medium",
+      "default": null
+    },
+    {
+      "name": "Large",
+      "default": null
+    },
+    {
+      "name": "impact",
+      "displayName": "Impact",
+      "type": "options",
+      "default": "SMALL",
+      "description": "Impact to set for the item to create"
+    },
+    {
+      "name": "labelIds",
+      "displayName": "Label Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "ID of the label to set on the item to create. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "memberIds",
+      "displayName": "Member Names or IDs",
+      "type": "multiOptions",
+      "default": [],
+      "description": "ID of the user to assign to the item to create. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+    },
+    {
+      "name": "workItemId",
+      "displayName": "Work Item ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the work item to retrieve",
+      "required": true
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Description of the item to update. Markdown supported.",
+      "placeholder": "Add Field"
+    },
+    {
+      "name": "Get",
+      "default": null
+    },
+    {
+      "name": "Get Many",
+      "default": null
+    },
+    {
+      "name": "Update",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Space",
+      "default": null
+    },
+    {
+      "name": "User",
+      "default": null
+    },
+    {
+      "name": "Work Item",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "kitemakerApi",
+      "required": true
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

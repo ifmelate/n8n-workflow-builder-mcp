@@ -1,0 +1,156 @@
+{
+  "nodeType": "n8n-nodes-base.googleFirebaseCloudFirestore",
+  "displayName": "Google Cloud Firestore",
+  "description": "Interact with Google Firebase - Cloud Firestore API",
+  "version": [
+    1,
+    1.1
+  ],
+  "properties": [
+    {
+      "name": "projectId",
+      "displayName": "Project Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "As displayed in firebase console URL. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true
+    },
+    {
+      "name": "database",
+      "displayName": "Database",
+      "type": "string",
+      "default": "(default)",
+      "description": "Usually the provided default value will work",
+      "required": true
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "required": true
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return"
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": null,
+      "description": "Get many root collections"
+    },
+    {
+      "name": "collection",
+      "displayName": "Collection",
+      "type": "string",
+      "default": "",
+      "description": "Collection name",
+      "required": true
+    },
+    {
+      "name": "documentId",
+      "displayName": "Document ID",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "columns",
+      "displayName": "Columns / Attributes",
+      "type": "string",
+      "default": "",
+      "description": "List of attributes to save",
+      "placeholder": "productId, modelName, description",
+      "required": true
+    },
+    {
+      "name": "simple",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "required": true
+    },
+    {
+      "name": "updateKey",
+      "displayName": "Update Key",
+      "type": "string",
+      "default": "",
+      "description": "Must correspond to a document ID",
+      "placeholder": "documentId",
+      "required": true
+    },
+    {
+      "name": "query",
+      "displayName": "Query JSON",
+      "type": "string",
+      "default": "",
+      "description": "JSON query to execute",
+      "required": true
+    },
+    {
+      "name": "Create or Update",
+      "default": null,
+      "description": "Create a new document, or update the current one if it already exists (upsert)"
+    },
+    {
+      "name": "Delete",
+      "default": null,
+      "description": "Delete a document"
+    },
+    {
+      "name": "Get",
+      "default": null,
+      "description": "Get a document"
+    },
+    {
+      "name": "Get Many",
+      "default": null,
+      "description": "Get many documents from a collection"
+    },
+    {
+      "name": "Query",
+      "default": null,
+      "description": "Runs a query against your documents"
+    },
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Service Account",
+      "default": null
+    },
+    {
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": null
+    },
+    {
+      "name": "Collection",
+      "default": null
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "googleFirebaseCloudFirestoreOAuth2Api",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "required": false
+    }
+  ]
+}

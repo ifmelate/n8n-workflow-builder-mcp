@@ -1,0 +1,17 @@
+{
+  "nodeType": "n8n-nodes-base.rssFeedReadTrigger",
+  "displayName": "RSS Feed Trigger",
+  "description": "Starts a workflow when an RSS feed is updated",
+  "version": 1,
+  "properties": [
+    {
+      "name": "feedUrl",
+      "displayName": "Feed URL",
+      "type": "string",
+      "default": "https://blog.n8n.io/rss/",
+      "description": "URL of the RSS feed to poll",
+      "required": true
+    }
+  ],
+  "credentialsConfig": []
+}
