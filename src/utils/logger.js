@@ -57,17 +57,19 @@ const transports = [
                 (info) => `${info.timestamp} ${info.level}: ${info.message}`,
             ),
         ),
-    }),
-    // Always log to combined.log
-    new winston.transports.File({
-        filename: path.join(LOGS_DIR, 'combined.log'),
-    }),
-    // Error logs to error.log
-    new winston.transports.File({
-        filename: path.join(LOGS_DIR, 'error.log'),
-        level: 'error',
-    }),
+    })
 ];
+
+// Optional file logging controlled by env
+const LOG_TO_FILE = process.env.LOG_TO_FILE !== 'false'; // default true
+if (LOG_TO_FILE) {
+    transports.push(
+        new winston.transports.File({ filename: path.join(LOGS_DIR, 'combined.log') })
+    );
+    transports.push(
+        new winston.transports.File({ filename: path.join(LOGS_DIR, 'error.log'), level: 'error' })
+    );
+}
 
 // Create the logger
 const logger = winston.createLogger({
@@ -79,6 +81,30 @@ const logger = winston.createLogger({
     exitOnError: false,
 });
 
+// Sensitive logger writes only when explicitly enabled
+const ENABLE_SENSITIVE_LOGS = process.env.ENABLE_SENSITIVE_LOGS === 'true';
+const sensitiveTransports = [];
+if (LOG_TO_FILE && ENABLE_SENSITIVE_LOGS) {
+    sensitiveTransports.push(new winston.transports.File({ filename: path.join(LOGS_DIR, 'sensitive.log'), level: 'debug' }));
+}
+const sensitiveLogger = winston.createLogger({
+    level: process.env.SENSITIVE_LOG_LEVEL || 'debug',
+    levels,
+    format,
+    transports: sensitiveTransports.length > 0 ? sensitiveTransports : [
+        // Default to console if no file transport is configured, but still respect ENABLE_SENSITIVE_LOGS
+        new winston.transports.Console({
+            silent: !ENABLE_SENSITIVE_LOGS,
+            format: winston.format.combine(
+                winston.format.colorize({ all: true }),
+                winston.format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`),
+            ),
+        })
+    ],
+    exitOnError: false,
+});
+
 module.exports = {
     logger,
+    sensitiveLogger,
 }; 
