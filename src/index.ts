@@ -8,439 +8,18 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod';
 import fs from 'fs/promises';
 import path from 'path';
+import { Workflow, N8nWorkflow, N8nWorkflowNode, N8nConnections, N8nConnectionDetail } from './types/n8n';
+import { ensureWorkflowDir, ensureWorkflowParentDir, resolvePath, resolveWorkflowPath, WORKFLOW_DATA_DIR_NAME, WORKFLOWS_FILE_NAME, setWorkspaceDir, getWorkspaceDir } from './utils/workspace';
+import { generateInstanceId, generateN8nId, generateUUID } from './utils/id';
+import { normalizeLLMParameters } from './utils/llm';
+import { initializeN8nVersionSupport, detectN8nVersion, setN8nVersion, getSupportedN8nVersions, getCurrentN8nVersion, getN8nVersionInfo } from './nodes/versioning';
+import { loadKnownNodeBaseTypes, normalizeNodeTypeAndVersion, isNodeTypeSupported, updateNodeCacheForVersion, getNodeInfoCache } from './nodes/cache';
 
-// Define types for workflow and node structures
-// Old Workflow interface (kept for reference or other tools not yet updated)
-interface WorkflowNode {
-    id: string;
-    type: string;
-    position: { x: number; y: number };
-    parameters: Record<string, any>;
-}
-
-interface WorkflowConnection {
-    sourceNodeId: string;
-    targetNodeId: string;
-}
-
-interface Workflow {
-    id: string;
-    name: string;
-    description: string;
-    created: string;
-    nodes: WorkflowNode[];
-    connections: WorkflowConnection[];
-}
-
-// New N8N specific interfaces
-interface N8nWorkflowNode {
-    parameters: Record<string, any>;
-    type: string;
-    typeVersion: number;
-    position: [number, number]; // [x, y]
-    id: string; // UUID
-    name: string;
-    webhookId?: string; // Added for nodes like ChatTrigger
-}
-
-interface N8nConnectionDetail {
-    node: string; // Name of the target node
-    type: string; // e.g., "main"
-    index: number;
-}
-
-interface N8nConnections {
-    [sourceNodeName: string]: {
-        [outputType: string]: N8nConnectionDetail[][];
-    };
-}
-
-interface N8nWorkflowSettings {
-    executionOrder: "v1";
-    // Future settings can be added here
-}
-
-interface N8nWorkflowMeta {
-    instanceId: string;
-    // Future meta fields can be added here
-}
-
-interface N8nWorkflow {
-    name: string;
-    nodes: N8nWorkflowNode[];
-    pinData: Record<string, any>;
-    connections: N8nConnections;
-    active: boolean;
-    settings: N8nWorkflowSettings;
-    versionId: string; // UUID
-    meta?: N8nWorkflowMeta;
-    id: string; // Short, unique ID (e.g., "Y6sBMxxyJQtgCCBQ")
-    tags: string[];
-}
-
-// Global workspace configuration
-let WORKSPACE_DIR: string = process.cwd();
-console.error(`[DEBUG] Default workspace directory: ${WORKSPACE_DIR}`);
-
-// N8N Version Management
-interface N8nVersionInfo {
-    version: string;
-    supportedNodes: Map<string, Set<number>>; // nodeType -> Set of supported versions
-    capabilities: string[];
-}
-
-let currentN8nVersion: string | null = null;
-let n8nVersionInfo: N8nVersionInfo | null = null;
-let supportedN8nVersions: Map<string, N8nVersionInfo> = new Map();
-
-// Environment configuration for N8N version
-const N8N_VERSION_OVERRIDE = process.env.N8N_VERSION; // User can override via env
-const N8N_API_URL = process.env.N8N_API_URL; // For auto-detection
+// Log initial workspace
+console.error(`[DEBUG] Default workspace directory: ${getWorkspaceDir()}`);
 
 // Initialize supported N8N versions and their node capabilities
-async function initializeN8nVersionSupport(): Promise<void> {
-    try {
-        console.error("[DEBUG] Initializing N8N version support...");
-
-        const workflowNodesDir = path.resolve(__dirname, '../workflow_nodes');
-
-        // Dynamically discover available N8N versions from directory structure
-        const versionMappings: Record<string, N8nVersionInfo> = {};
-
-        try {
-            const entries = await fs.readdir(workflowNodesDir, { withFileTypes: true });
-            const versionDirs = entries.filter(entry => entry.isDirectory()).map(entry => entry.name);
-
-            console.error(`[DEBUG] Found version directories: ${versionDirs.join(', ')}`);
-
-            // Process each version directory
-            for (const versionDir of versionDirs) {
-                const versionPath = path.join(workflowNodesDir, versionDir);
-                const supportedNodes = new Map<string, Set<number>>();
-
-                // Analyze nodes in this version to determine capabilities
-                const capabilities = new Set<string>();
-                capabilities.add("basic_nodes"); // All versions have basic nodes
-
-                try {
-                    const nodeFiles = await fs.readdir(versionPath);
-                    const jsonFiles = nodeFiles.filter(file => file.endsWith('.json'));
-
-                    console.error(`[DEBUG] Processing ${jsonFiles.length} nodes for version ${versionDir}`);
-
-                    let langchainCount = 0;
-                    let aiCount = 0;
-                    let triggerCount = 0;
-
-                    for (const nodeFile of jsonFiles) {
-                        try {
-                            const nodeFilePath = path.join(versionPath, nodeFile);
-                            const nodeContent = await fs.readFile(nodeFilePath, 'utf8');
-                            const nodeDefinition = JSON.parse(nodeContent);
-
-                            if (nodeDefinition.nodeType && nodeDefinition.version) {
-                                const nodeType = nodeDefinition.nodeType;
-                                const versions = Array.isArray(nodeDefinition.version)
-                                    ? nodeDefinition.version
-                                    : [nodeDefinition.version];
-
-                                // Add node to supported nodes
-                                if (!supportedNodes.has(nodeType)) {
-                                    supportedNodes.set(nodeType, new Set());
-                                }
-                                versions.forEach((v: number) => supportedNodes.get(nodeType)!.add(v));
-
-                                // Analyze node type for capability detection
-                                const nodeTypeStr = nodeType.toLowerCase();
-                                const displayName = (nodeDefinition.displayName || '').toLowerCase();
-                                const fileName = nodeFile.toLowerCase();
-
-                                // Detect LangChain nodes
-                                if (nodeTypeStr.includes('langchain') || fileName.includes('langchain')) {
-                                    langchainCount++;
-                                }
-
-                                // Detect AI-related nodes
-                                if (nodeTypeStr.includes('ai') || nodeTypeStr.includes('openai') ||
-                                    nodeTypeStr.includes('llm') || nodeTypeStr.includes('agent') ||
-                                    displayName.includes('ai') || fileName.includes('ai') ||
-                                    fileName.includes('openai') || fileName.includes('llm')) {
-                                    aiCount++;
-                                }
-
-                                // Detect trigger nodes
-                                if (nodeTypeStr.includes('trigger') || fileName.includes('trigger')) {
-                                    triggerCount++;
-                                }
-                            }
-                        } catch (error) {
-                            console.warn(`[WARN] Could not parse node file ${nodeFile} in version ${versionDir}:`, error);
-                        }
-                    }
-
-                    // Determine capabilities based on node analysis
-                    if (triggerCount > 0) {
-                        capabilities.add("webhook_triggers");
-                    }
-
-                    if (langchainCount > 0) {
-                        if (langchainCount < 10) {
-                            capabilities.add("langchain_basic");
-                        } else {
-                            capabilities.add("langchain_full");
-                        }
-                    }
-
-                    if (aiCount > 0) {
-                        capabilities.add("ai_nodes");
-                        if (aiCount > 5) {
-                            capabilities.add("advanced_ai");
-                        }
-                    }
-
-                    console.error(`[DEBUG] Version ${versionDir} analysis: ${jsonFiles.length} nodes, ${langchainCount} langchain, ${aiCount} ai, ${triggerCount} triggers`);
-
-                } catch (error) {
-                    console.warn(`[WARN] Could not read nodes for version ${versionDir}:`, error);
-                }
-
-                // Create version info
-                versionMappings[versionDir] = {
-                    version: versionDir,
-                    supportedNodes,
-                    capabilities: Array.from(capabilities)
-                };
-            }
-
-        } catch (error) {
-            console.warn("[WARN] Could not read workflow_nodes directory, falling back to single version:", error);
-
-            // Fallback: treat workflow_nodes as a flat directory (single version)
-            const supportedNodes = new Map<string, Set<number>>();
-            const capabilities = ["basic_nodes", "webhook_triggers"];
-
-            try {
-                const files = await fs.readdir(workflowNodesDir);
-                const jsonFiles = files.filter(file => file.endsWith('.json'));
-
-                for (const file of jsonFiles) {
-                    try {
-                        const filePath = path.join(workflowNodesDir, file);
-                        const fileContent = await fs.readFile(filePath, 'utf8');
-                        const nodeDefinition = JSON.parse(fileContent);
-
-                        if (nodeDefinition.nodeType && nodeDefinition.version) {
-                            const nodeType = nodeDefinition.nodeType;
-                            const versions = Array.isArray(nodeDefinition.version)
-                                ? nodeDefinition.version
-                                : [nodeDefinition.version];
-
-                            if (!supportedNodes.has(nodeType)) {
-                                supportedNodes.set(nodeType, new Set());
-                            }
-                            versions.forEach((v: number) => supportedNodes.get(nodeType)!.add(v));
-                        }
-                    } catch (error) {
-                        console.warn(`[WARN] Could not parse node file ${file}:`, error);
-                    }
-                }
-            } catch (error) {
-                console.warn("[WARN] Could not read flat workflow_nodes directory:", error);
-            }
-
-            // Use a default version for flat structure
-            versionMappings["latest"] = {
-                version: "latest",
-                supportedNodes,
-                capabilities
-            };
-        }
-
-        // Convert to Map for global use
-        supportedN8nVersions.clear();
-        for (const [version, info] of Object.entries(versionMappings)) {
-            supportedN8nVersions.set(version, info);
-        }
-
-        console.error(`[DEBUG] Initialized ${supportedN8nVersions.size} N8N versions: ${Array.from(supportedN8nVersions.keys()).join(', ')}`);
-    } catch (error) {
-        console.error("[ERROR] Failed to initialize N8N version support:", error);
-    }
-}
-
-// Detect N8N version from API or environment
-async function detectN8nVersion(): Promise<string | null> {
-    try {
-        // Check for manual override first
-        if (N8N_VERSION_OVERRIDE) {
-            console.error(`[DEBUG] Using N8N version override: ${N8N_VERSION_OVERRIDE}`);
-            return N8N_VERSION_OVERRIDE;
-        }
-
-        // Try to detect from N8N API if URL is provided
-        if (N8N_API_URL) {
-            console.error(`[DEBUG] Attempting to detect N8N version from API: ${N8N_API_URL}`);
-
-            try {
-                // Extract base URL from N8N_API_URL (remove /api/ suffix if present)
-                const baseUrl = N8N_API_URL.replace(/\/api\/?$/, '').replace(/\/$/, '');
-
-                // First try the settings endpoint which contains version info
-                const settingsEndpoint = `${baseUrl}/rest/settings`;
-
-                try {
-                    const response = await fetch(settingsEndpoint, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        // Add timeout
-                        signal: AbortSignal.timeout(5000)
-                    });
-
-                    if (response.ok) {
-                        const data = await response.json();
-                        console.error(`[DEBUG] Settings API response from ${settingsEndpoint}:`, JSON.stringify(data.data || data, null, 2));
-
-                        // Look for version in settings data
-                        const settingsData = data.data || data;
-                        const version = settingsData.versionCli || settingsData.version || settingsData.n8nVersion;
-                        if (version) {
-                            console.error(`[DEBUG] Detected N8N version from settings API: ${version}`);
-                            return version;
-                        }
-                    }
-                } catch (settingsError) {
-                    console.warn(`[WARN] Failed to check settings endpoint ${settingsEndpoint}:`, settingsError);
-                }
-
-                // Fallback to other endpoints using the original API URL
-                const endpoints = [
-                    `${N8N_API_URL.replace(/\/$/, '')}/version`,
-                    `${baseUrl}/healthz`,
-                    `${baseUrl}/status`,
-                    `${baseUrl}/info`
-                ];
-
-                for (const endpoint of endpoints) {
-                    try {
-                        const response = await fetch(endpoint, {
-                            method: 'GET',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                ...(process.env.N8N_API_KEY && { 'X-N8N-API-KEY': process.env.N8N_API_KEY })
-                            },
-                            // Add timeout
-                            signal: AbortSignal.timeout(5000)
-                        });
-
-                        if (response.ok) {
-                            const data = await response.json();
-                            console.error(`[DEBUG] API response from ${endpoint}:`, data);
-
-                            // Look for version in various possible fields
-                            const version = data.version || data.n8nVersion || data.build?.version || data.info?.version;
-                            if (version) {
-                                console.error(`[DEBUG] Detected N8N version from API: ${version}`);
-                                return version;
-                            }
-                        }
-                    } catch (endpointError) {
-                        console.warn(`[WARN] Failed to check endpoint ${endpoint}:`, endpointError);
-                    }
-                }
-            } catch (apiError) {
-                console.warn("[WARN] Failed to detect N8N version from API:", apiError);
-            }
-        }
-
-        // Default to latest supported version if detection fails
-        const latestVersion = Array.from(supportedN8nVersions.keys()).sort((a, b) =>
-            parseFloat(b) - parseFloat(a)
-        )[0];
-
-        console.error(`[DEBUG] Could not detect N8N version, defaulting to: ${latestVersion}`);
-        return latestVersion || "1.30.0";
-
-    } catch (error) {
-        console.error("[ERROR] Error during N8N version detection:", error);
-        return "1.30.0"; // Safe default
-    }
-}
-
-// Set current N8N version and update node filtering
-async function setN8nVersion(version: string): Promise<void> {
-    try {
-        currentN8nVersion = version;
-        n8nVersionInfo = supportedN8nVersions.get(version) || supportedN8nVersions.get("1.30.0") || null;
-
-        if (!n8nVersionInfo) {
-            console.warn(`[WARN] N8N version ${version} not found in supported versions, using latest`);
-            const latestVersion = Array.from(supportedN8nVersions.keys()).sort((a, b) =>
-                parseFloat(b) - parseFloat(a)
-            )[0];
-            n8nVersionInfo = supportedN8nVersions.get(latestVersion) || null;
-            currentN8nVersion = latestVersion;
-        }
-
-        console.error(`[DEBUG] Set N8N version to: ${currentN8nVersion}`);
-        console.error(`[DEBUG] Available capabilities: ${n8nVersionInfo?.capabilities.join(', ')}`);
-
-        // Update node cache to reflect version compatibility
-        await updateNodeCacheForVersion();
-
-    } catch (error) {
-        console.error("[ERROR] Failed to set N8N version:", error);
-    }
-}
-
-// Update node cache based on current N8N version
-async function updateNodeCacheForVersion(): Promise<void> {
-    if (!n8nVersionInfo) return;
-
-    try {
-        console.error(`[DEBUG] Updating node cache for N8N version ${currentN8nVersion}`);
-
-        // Filter the existing nodeInfoCache based on version compatibility
-        const filteredCache = new Map<string, CachedNodeInfo>();
-
-        for (const [key, nodeInfo] of nodeInfoCache.entries()) {
-            const supportedVersions = n8nVersionInfo.supportedNodes.get(nodeInfo.officialType);
-
-            if (supportedVersions && supportedVersions.size > 0) {
-                // Node is supported in current N8N version
-                const compatibleVersions = Array.isArray(nodeInfo.version)
-                    ? nodeInfo.version.filter(v => supportedVersions.has(v))
-                    : supportedVersions.has(nodeInfo.version) ? [nodeInfo.version] : [];
-
-                if (compatibleVersions.length > 0) {
-                    // Update with the highest compatible version
-                    const maxVersion = Math.max(...compatibleVersions);
-                    filteredCache.set(key, {
-                        ...nodeInfo,
-                        version: maxVersion
-                    });
-                }
-            } else {
-                // For backward compatibility, if no specific version mapping exists,
-                // assume basic nodes are always supported
-                const isBasicNode = !nodeInfo.officialType.includes('@n8n/n8n-nodes-langchain') &&
-                    !nodeInfo.officialType.toLowerCase().includes('ai');
-
-                if (isBasicNode) {
-                    filteredCache.set(key, nodeInfo);
-                }
-            }
-        }
-
-        // Update the global cache
-        nodeInfoCache = filteredCache;
-        console.error(`[DEBUG] Node cache updated: ${nodeInfoCache.size} compatible nodes available`);
-
-    } catch (error) {
-        console.error("[ERROR] Failed to update node cache for version:", error);
-    }
-}
+// Remove in-file type/interface/utility definitions in favor of imports
 
 // Find the best matching version for a target N8N version
 // Returns exact match if available, otherwise closest lower version
@@ -511,31 +90,7 @@ function findBestMatchingVersion(targetVersion: string, availableVersions: strin
 }
 
 // Check if a node type is supported in current N8N version
-function isNodeTypeSupported(nodeType: string, nodeVersion?: number): boolean {
-    if (!n8nVersionInfo) return true; // Default to allowing if no version info
-
-    const supportedVersions = n8nVersionInfo.supportedNodes.get(nodeType);
-    if (!supportedVersions) {
-        // For unknown nodes, apply heuristics
-        const isLangChainNode = nodeType.includes('@n8n/n8n-nodes-langchain');
-        const isAINode = nodeType.toLowerCase().includes('ai') ||
-            nodeType.toLowerCase().includes('openai') ||
-            nodeType.toLowerCase().includes('llm');
-
-        const currentVersionNum = parseFloat(currentN8nVersion || "1.30.0");
-
-        if (isLangChainNode && currentVersionNum < 1.10) return false;
-        if (isAINode && currentVersionNum < 1.20) return false;
-
-        return true; // Assume basic nodes are always supported
-    }
-
-    if (nodeVersion !== undefined) {
-        return supportedVersions.has(nodeVersion);
-    }
-
-    return supportedVersions.size > 0;
-}
+// moved isNodeTypeSupported to nodes/cache
 
 // Store for known node type casings (lowercase -> CorrectCase)
 // let knownNodeBaseCasings: Map<string, string> = new Map(); // OLD MAP
@@ -546,312 +101,37 @@ interface CachedNodeInfo {
 }
 let nodeInfoCache: Map<string, CachedNodeInfo> = new Map();
 
-// Helper function to normalize LLM parameters from various possible inputs
-function normalizeLLMParameters(params: Record<string, any>): Record<string, any> {
-    const normalized = { ...params };
+// normalizeLLMParameters imported from utils/llm
 
-    // Handle model/modelName variation
-    if (normalized.modelName && !normalized.model) {
-        console.error(`[DEBUG] Normalizing 'modelName' to 'model'`);
-        normalized.model = normalized.modelName;
-        delete normalized.modelName;
-    }
-
-    // Convert model string to required format
-    if (normalized.model && typeof normalized.model === 'string') {
-        console.error(`[DEBUG] Converting model string to required format: ${normalized.model}`);
-        const modelValue = normalized.model;
-        normalized.model = {
-            "__rl": true,
-            "value": modelValue,
-            "mode": "list",
-            "cachedResultName": modelValue
-        };
-    }
-
-    // Handle credentials formatting
-    // Handle at options level
-    if (normalized.options?.credentials?.providerType) {
-        const credType = normalized.options.credentials.providerType;
-        console.error(`[DEBUG] Found credentials in options with type: ${credType}`);
-        delete normalized.options.credentials;
-
-        // Set credentials properly based on provider type
-        if (credType === 'openAi' || credType === 'openAiApi') {
-            normalized.credentials = {
-                "openAiApi": {
-                    "id": generateN8nId(),
-                    "name": "OpenAi account"
-                }
-            };
-        }
-    }
-
-    // Handle at root level
-    if (normalized.credentialsType && !normalized.credentials) {
-        const credType = normalized.credentialsType;
-        console.error(`[DEBUG] Found credentialsType at root level: ${credType}`);
-
-        // Set credentials properly based on provider type
-        if (credType === 'openAi' || credType === 'openAiApi') {
-            normalized.credentials = {
-                "openAiApi": {
-                    "id": generateN8nId(),
-                    "name": "OpenAi account"
-                }
-            };
-        }
-
-        // Remove root level parameter
-        delete normalized.credentialsType;
-    }
-
-    return normalized;
-}
-
-async function loadKnownNodeBaseTypes(): Promise<void> {
-    // Support both flat structure and version-based structure
-    const workflowNodesDir = path.resolve(__dirname, '../workflow_nodes');
-    try {
-        console.error(`[DEBUG] Attempting to load known node types from server resource path: ${workflowNodesDir}`);
-
-        // Check if we have version directories or flat structure
-        const entries = await fs.readdir(workflowNodesDir, { withFileTypes: true });
-        const versionDirs = entries.filter(entry => entry.isDirectory()).map(entry => entry.name);
-
-        let searchDirs: string[] = [];
-
-        if (versionDirs.length > 0) {
-            // Version-based structure detected
-            console.error(`[DEBUG] Version-based structure detected. Found versions: ${versionDirs.join(', ')}`);
-
-            // Use current N8N version if set, otherwise use latest available
-            const targetVersion = currentN8nVersion || versionDirs.sort((a, b) => parseFloat(b) - parseFloat(a))[0];
-            console.error(`[DEBUG] Loading nodes for N8N version: ${targetVersion}`);
-
-            // Find the best matching version (exact match or closest lower version)
-            const bestMatchVersion = findBestMatchingVersion(targetVersion, versionDirs);
-
-            if (bestMatchVersion) {
-                if (bestMatchVersion === targetVersion) {
-                    console.error(`[DEBUG] Exact match found: ${bestMatchVersion}`);
-                } else {
-                    console.warn(`[WARN] N8N version ${targetVersion} not found, using closest lower version: ${bestMatchVersion}`);
-                }
-                searchDirs = [path.join(workflowNodesDir, bestMatchVersion)];
-            } else {
-                // Fallback to highest available version if no suitable lower version found
-                const fallbackVersion = versionDirs.sort((a, b) => parseFloat(b) - parseFloat(a))[0];
-                console.warn(`[WARN] No suitable version found for ${targetVersion}, using latest available: ${fallbackVersion}`);
-                searchDirs = [path.join(workflowNodesDir, fallbackVersion)];
-            }
-        } else {
-            // Flat structure (legacy)
-            console.error(`[DEBUG] Flat structure detected`);
-            searchDirs = [workflowNodesDir];
-        }
-
-        nodeInfoCache.clear();
-
-        // Load nodes from all search directories
-        for (const searchDir of searchDirs) {
-            await loadNodesFromDirectory(searchDir);
-        }
-
-        console.error(`[DEBUG] Loaded ${nodeInfoCache.size} cache entries for node types.`);
-        if (nodeInfoCache.size === 0) {
-            console.warn("[WARN] No node type information loaded into cache. Check 'workflow_nodes' directory and naming convention.");
-        }
-    } catch (error: any) {
-        console.warn(`[WARN] Could not load known node types from ${workflowNodesDir}: ${error.message}. Node type normalization might rely on defaults.`);
-        nodeInfoCache = new Map(); // Ensure map is empty if loading fails
-    }
-}
+// loadKnownNodeBaseTypes handled in nodes/cache
 
 // Helper function to load nodes from a specific directory
-async function loadNodesFromDirectory(directory: string): Promise<void> {
-    try {
-        const files = await fs.readdir(directory);
-        const suffix = ".json";
-
-        for (const file of files) {
-            if (file.endsWith(suffix)) {
-                try {
-                    const filePath = path.join(directory, file);
-                    const fileContent = await fs.readFile(filePath, 'utf8');
-                    const nodeDefinition = JSON.parse(fileContent);
-
-                    if (nodeDefinition.nodeType) {
-                        const officialType = nodeDefinition.nodeType;
-                        const version = nodeDefinition.version || 1; // Default to 1 if version is missing/falsy
-
-                        // Map by lowercase full official type
-                        nodeInfoCache.set(officialType.toLowerCase(), { officialType, version });
-                        console.error(`[DEBUG] Cached node info for key '${officialType.toLowerCase()}': { officialType: '${officialType}', version: ${JSON.stringify(version)} }`);
-
-                        // If it's a prefixed type (n8n-nodes-base), also map by its lowercase base name
-                        const prefix = "n8n-nodes-base.";
-                        if (officialType.startsWith(prefix)) {
-                            const baseName = officialType.substring(prefix.length);
-                            if (baseName) { // Ensure baseName is not empty
-                                nodeInfoCache.set(baseName.toLowerCase(), { officialType, version });
-                                console.error(`[DEBUG] Cached node info for base key '${baseName.toLowerCase()}': { officialType: '${officialType}', version: ${JSON.stringify(version)} }`);
-                            }
-                        }
-                    }
-                } catch (parseError) {
-                    console.warn(`[WARN] Error parsing node definition in ${file}:`, parseError);
-                    // Continue with other files if one fails to parse
-                }
-            }
-        }
-    } catch (error: any) {
-        console.warn(`[WARN] Could not read directory ${directory}: ${error.message}`);
-    }
-}
+// loadNodesFromDirectory handled in nodes/cache
 
 // Helper function to normalize node types (OLD - to be replaced)
 // function normalizeNodeType(inputType: string): string { ... } // OLD FUNCTION
 
 // New function to get normalized type and version
-function normalizeNodeTypeAndVersion(inputType: string, inputVersion?: number): { finalNodeType: string; finalTypeVersion: number } {
-    if (nodeInfoCache.size === 0 && WORKSPACE_DIR !== process.cwd()) { // Check if cache is empty and workspace might have changed
-        console.warn("[WARN] nodeInfoCache is empty in normalizeNodeTypeAndVersion. Attempting to reload based on current WORKSPACE_DIR.");
-        // This reload should be awaited if called from an async context.
-        // For now, assuming loadKnownNodeBaseTypes was called at startup or by a previous async tool.
-        // Synchronous reload attempt (not ideal but matches previous knownNodeBaseCasings logic):
-        // await loadKnownNodeBaseTypes(); // Making this async would require normalizeNodeTypeAndVersion to be async too.
-        // For now, we proceed, and if cache is empty, warnings will be issued.
-    }
-
-    const lowerInputType = inputType.toLowerCase();
-    const prefix = "n8n-nodes-base.";
-    const cacheEntry = nodeInfoCache.get(lowerInputType);
-
-    let finalNodeType: string;
-    let versionSource: number | number[] = 1; // Default version if not found in cache
-
-    if (cacheEntry) {
-        finalNodeType = cacheEntry.officialType; // This is the correctly cased, full type name
-        versionSource = cacheEntry.version;
-    } else {
-        // Not in cache. Determine type based on structure.
-        if (inputType.includes('/') && !lowerInputType.startsWith(prefix)) {
-            // Likely a namespaced type not in cache (e.g. user typed it, or it's new)
-            finalNodeType = inputType; // Use user's casing
-            console.warn(`[WARN] Namespaced node type ${inputType} not in cache. Using as-is with default version.`);
-        } else {
-            // Assumed to be a base type needing a prefix, or a prefixed type not in cache.
-            // Use inputType for casing if it already seems prefixed, otherwise prefix the original inputType
-            finalNodeType = lowerInputType.startsWith(prefix) ? inputType : `${prefix}${inputType}`;
-            console.warn(`[WARN] Node type ${inputType} (assumed base/prefixed) not in cache. Result: ${finalNodeType} with default version.`);
-        }
-        // versionSource remains 1 (default)
-    }
-
-    let finalTypeVersion: number;
-    if (inputVersion !== undefined && !isNaN(Number(inputVersion))) {
-        finalTypeVersion = Number(inputVersion);
-    } else { // inputVersion was not provided or was NaN, use versionSource
-        if (inputVersion !== undefined && isNaN(Number(inputVersion))) {
-            console.warn(`[WARN] Provided inputVersion '${inputVersion}' is NaN for node ${finalNodeType}. Determining from cache/default.`);
-        }
-        if (Array.isArray(versionSource)) {
-            if (versionSource.length > 0) {
-                const numericVersions = versionSource.map(v => Number(v)).filter(v => !isNaN(v));
-                finalTypeVersion = numericVersions.length > 0 ? Math.max(...numericVersions) : 1;
-            } else {
-                finalTypeVersion = 1; // Empty array in cache
-            }
-        } else { // It's a number or was defaulted to 1
-            finalTypeVersion = Number(versionSource);
-        }
-        if (isNaN(finalTypeVersion)) finalTypeVersion = 1; // Fallback for bad data from cache
-    }
-    if (isNaN(finalTypeVersion)) finalTypeVersion = 1; // Final check, e.g. if inputVersion was NaN and versionSource also led to NaN.
-
-    console.error(`[DEBUG] normalizeNodeTypeAndVersion: input='${inputType}', inputVersion=${inputVersion} -> finalNodeType='${finalNodeType}', finalTypeVersion=${finalTypeVersion}`);
-    return { finalNodeType, finalTypeVersion };
-}
+// normalizeNodeTypeAndVersion handled in nodes/cache
 
 // Helper function to resolve paths against workspace
 // Always treat paths as relative to WORKSPACE_DIR by stripping leading slashes
-function resolvePath(filepath: string): string {
-    // Remove any leading path separators to prevent absolute path resolution
-    const relativePath = filepath.replace(/^[\\/]+/, '');
-    return path.join(WORKSPACE_DIR, relativePath);
-}
+// resolvePath handled in utils/workspace
 
 // Helper function to resolve workflow file path with optional direct path
-function resolveWorkflowPath(workflowName: string, workflowPath?: string): string {
-    if (workflowPath) {
-        // If workflow_path is provided, use it directly (can be absolute or relative to cwd)
-        if (path.isAbsolute(workflowPath)) {
-            return workflowPath;
-        } else {
-            return path.resolve(process.cwd(), workflowPath);
-        }
-    } else {
-        // Use the standard workflow directory approach
-        const sanitizedName = workflowName.replace(/[^a-z0-9_.-]/gi, '_');
-        return resolvePath(path.join(WORKFLOW_DATA_DIR_NAME, `${sanitizedName}.json`));
-    }
-}
+// resolveWorkflowPath handled in utils/workspace
 
 // Helper function to ensure the parent directory exists for a workflow file path
-async function ensureWorkflowParentDir(filePath: string): Promise<void> {
-    try {
-        const parentDir = path.dirname(filePath);
-        console.error("[DEBUG] Ensuring parent directory exists:", parentDir);
-        await fs.mkdir(parentDir, { recursive: true });
-    } catch (error) {
-        console.error('[ERROR] Failed to ensure parent directory:', error);
-        throw error;
-    }
-}
+// ensureWorkflowParentDir handled in utils/workspace
 
 // ID Generation Helpers
-function generateN8nId(length: number = 16): string {
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return result;
-}
-
-function generateUUID(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        const r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-    });
-}
-
-function generateInstanceId(length: number = 64): string {
-    const chars = 'abcdef0123456789';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return result;
-}
+// id helpers handled in utils/id
 
 // Constants
-const WORKFLOW_DATA_DIR_NAME = 'workflow_data';
-const WORKFLOWS_FILE_NAME = 'workflows.json'; // Kept for now, but create_workflow won't use it.
+// constants handled in utils/workspace
 
 // Helper functions
-async function ensureWorkflowDir(): Promise<void> {
-    try {
-        const resolvedDir = resolvePath(WORKFLOW_DATA_DIR_NAME);
-        console.error("[DEBUG] Ensuring workflow directory at:", resolvedDir);
-        await fs.mkdir(resolvedDir, { recursive: true });
-        // Removed creation of workflows.json as each workflow is a separate file now.
-    } catch (error) {
-        console.error('[ERROR] Failed to ensure workflow directory:', error);
-        throw error;
-    }
-}
+// ensureWorkflowDir handled in utils/workspace
 
 async function loadWorkflows(): Promise<Workflow[]> {
     // This function will need to be updated if list_workflows is to work with the new format.
@@ -905,7 +185,7 @@ const createWorkflowParamsSchema = z.object({
 server.tool(
     "create_workflow",
     createWorkflowParamsSchema.shape,
-    async (params: z.infer<typeof createWorkflowParamsSchema>, _extra) => {
+    async (params: z.infer<typeof createWorkflowParamsSchema>, _extra: any) => {
         console.error("[DEBUG] create_workflow called with params:", params);
         const workflowName = params.workflow_name;
         const workspaceDir = params.workspace_dir;
@@ -929,7 +209,7 @@ server.tool(
                 return { content: [{ type: "text", text: JSON.stringify({ success: false, error: "'workspace_dir' cannot be the root directory. Please specify a project subdirectory." }) }] };
             }
 
-            WORKSPACE_DIR = workspaceDir; // Set current workspace for resolvePath
+            setWorkspaceDir(workspaceDir);
             await ensureWorkflowDir(); // Ensures WORKFLOW_DATA_DIR_NAME exists
 
             const newN8nWorkflow: N8nWorkflow = {
@@ -956,7 +236,7 @@ server.tool(
 
             await fs.writeFile(filePath, JSON.stringify(newN8nWorkflow, null, 2));
             console.error("[DEBUG] Workflow created and saved to:", filePath);
-            return { content: [{ type: "text", text: JSON.stringify({ success: true, workflow: newN8nWorkflow, recommended_next_step: "YOU NEED TO CALL 'list_available_nodes' TOOL BEFORE starting adding nodes. SEARCH BY SPECIFIC TOPIC USING 'search_term' parameter'. To search AI nodes you can use 'langchain' as the search term and 'ai" }) }] };
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, workflow: newN8nWorkflow, recommended_next_step: "Call 'list_available_nodes' before adding nodes. Use 'search_term' (e.g., 'langchain') to find AI nodes." }) }] };
 
         } catch (error: any) {
             console.error("[ERROR] Failed to create workflow:", error);
@@ -966,12 +246,15 @@ server.tool(
 );
 
 // List Workflows
-// NOTE: This tool will need to be updated to read individual .json files
-// from the workflow_data directory and parse them into N8nWorkflow[]
+// NOTE: This tool reads individual .json files from the workflow_data directory.
+const listWorkflowsParamsSchema = z.object({
+    limit: z.number().int().positive().max(1000).optional().describe("Maximum number of workflows to return"),
+    cursor: z.string().optional().describe("Opaque cursor for pagination; pass back to get the next page")
+});
 server.tool(
     "list_workflows",
-    {},
-    async (_params: Record<string, never>, _extra) => {
+    listWorkflowsParamsSchema.shape,
+    async (params: z.infer<typeof listWorkflowsParamsSchema>, _extra: any) => {
         console.error("[DEBUG] list_workflows called - (current impl uses old format and might be broken)");
         try {
             // This implementation needs to change to scan directory for .json files
@@ -993,7 +276,14 @@ server.tool(
                 }
             }
             console.error(`[DEBUG] Retrieved ${workflows.length} workflows from individual files.`);
-            return { content: [{ type: "text", text: JSON.stringify({ success: true, workflows }) }] };
+            // Apply simple offset cursor pagination
+            const startIndex = params?.cursor ? Number(params.cursor) || 0 : 0;
+            const limit = params?.limit ?? workflows.length;
+            const page = workflows.slice(startIndex, startIndex + limit);
+            const nextIndex = startIndex + limit;
+            const nextCursor = nextIndex < workflows.length ? String(nextIndex) : null;
+
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, workflows: page, nextCursor, total: workflows.length }) }] };
         } catch (error: any) {
             console.error("[ERROR] Failed to list workflows:", error);
             return { content: [{ type: "text", text: JSON.stringify({ success: false, error: "Failed to list workflows: " + error.message }) }] };
@@ -1012,7 +302,7 @@ const getWorkflowDetailsParamsSchema = z.object({
 server.tool(
     "get_workflow_details",
     getWorkflowDetailsParamsSchema.shape,
-    async (params: z.infer<typeof getWorkflowDetailsParamsSchema>, _extra) => {
+    async (params: z.infer<typeof getWorkflowDetailsParamsSchema>, _extra: any) => {
         const workflowName = params.workflow_name;
         console.error("[DEBUG] get_workflow_details called with name:", workflowName);
         try {
@@ -1065,13 +355,12 @@ const addNodeParamsSchema = z.object({
 server.tool(
     "add_node",
     addNodeParamsSchema.shape,
-    async (params: z.infer<typeof addNodeParamsSchema>, _extra) => {
+    async (params: z.infer<typeof addNodeParamsSchema>, _extra: any) => {
         console.error("[DEBUG] add_node called with:", params);
         const workflowName = params.workflow_name;
         try {
-            // Attempt to reload node types if cache is empty and WORKSPACE_DIR is set by a previous call (e.g. create_workflow)
-            // This helps if server started with default WORKSPACE_DIR and cache was empty.
-            if (nodeInfoCache.size === 0 && WORKSPACE_DIR !== process.cwd()) {
+            // Attempt to reload node types if cache is empty and workspace changed
+            if (getNodeInfoCache().size === 0 && getWorkspaceDir() !== process.cwd()) {
                 console.warn("[WARN] nodeInfoCache is empty in add_node. Attempting to reload based on current WORKSPACE_DIR.");
                 await loadKnownNodeBaseTypes();
             }
@@ -1108,14 +397,14 @@ server.tool(
 
             // Check if node type is supported in current N8N version
             if (!isNodeTypeSupported(finalNodeType, finalTypeVersion)) {
-                const supportedVersions = n8nVersionInfo?.supportedNodes.get(finalNodeType);
+                const supportedVersions = getN8nVersionInfo()?.supportedNodes.get(finalNodeType);
                 const supportedVersionsList = supportedVersions ? Array.from(supportedVersions).join(', ') : 'none';
                 return {
                     content: [{
                         type: "text",
                         text: JSON.stringify({
                             success: false,
-                            error: `Node type '${finalNodeType}' version ${finalTypeVersion} is not supported in N8N version ${currentN8nVersion}. Supported versions: ${supportedVersionsList}. Check 'list_available_nodes' for compatible alternatives or set N8N_VERSION environment variable.`
+                            error: `Node type '${finalNodeType}' version ${finalTypeVersion} is not supported in N8N version ${getCurrentN8nVersion()}. Supported versions: ${supportedVersionsList}. Check 'list_available_nodes' for compatible alternatives or set N8N_VERSION environment variable.`
                         })
                     }]
                 };
@@ -1197,12 +486,12 @@ const editNodeParamsSchema = z.object({
 server.tool(
     "edit_node",
     editNodeParamsSchema.shape,
-    async (params: z.infer<typeof editNodeParamsSchema>, _extra) => {
+    async (params: z.infer<typeof editNodeParamsSchema>, _extra: any) => {
         console.error("[DEBUG] edit_node called with:", params);
         const workflowName = params.workflow_name;
         try {
             // Similar cache reload logic as in add_node
-            if (nodeInfoCache.size === 0 && WORKSPACE_DIR !== process.cwd()) {
+            if (getNodeInfoCache().size === 0 && getWorkspaceDir() !== process.cwd()) {
                 console.warn("[WARN] nodeInfoCache is empty in edit_node. Attempting to reload based on current WORKSPACE_DIR.");
                 await loadKnownNodeBaseTypes();
             }
@@ -1328,7 +617,7 @@ const deleteNodeParamsSchema = z.object({
 server.tool(
     "delete_node",
     deleteNodeParamsSchema.shape,
-    async (params: z.infer<typeof deleteNodeParamsSchema>, _extra) => {
+    async (params: z.infer<typeof deleteNodeParamsSchema>, _extra: any) => {
         console.error("[DEBUG] delete_node called with:", params);
         const workflowName = params.workflow_name;
         try {
@@ -1413,7 +702,7 @@ const addConnectionParamsSchema = z.object({
 server.tool(
     "add_connection",
     addConnectionParamsSchema.shape,
-    async (params: z.infer<typeof addConnectionParamsSchema>, _extra) => {
+    async (params: z.infer<typeof addConnectionParamsSchema>, _extra: any) => {
         console.error("[DEBUG] add_connection called with:", params);
         const { workflow_name, source_node_id, source_node_output_name, target_node_id, target_node_input_name, target_node_input_index } = params;
 
@@ -1541,7 +830,7 @@ const addAIConnectionsParamsSchema = z.object({
 server.tool(
     "add_ai_connections",
     addAIConnectionsParamsSchema.shape,
-    async (params: z.infer<typeof addAIConnectionsParamsSchema>, _extra) => {
+    async (params: z.infer<typeof addAIConnectionsParamsSchema>, _extra: any) => {
         console.error("[DEBUG] add_ai_connections called with:", params);
         const { workflow_name, agent_node_id, model_node_id, tool_node_ids, memory_node_id } = params;
 
@@ -1750,30 +1039,79 @@ server.tool(
 // List Available Nodes
 const listAvailableNodesParamsSchema = z.object({
     search_term: z.string().optional().describe("An optional search term to filter nodes by their name, type, or description."),
-    n8n_version: z.string().optional().describe("Filter nodes by N8N version compatibility. If not provided, uses current configured N8N version.")
+    n8n_version: z.string().optional().describe("Filter nodes by N8N version compatibility. If not provided, uses current configured N8N version."),
+    limit: z.number().int().positive().max(1000).optional().describe("Maximum number of nodes to return"),
+    cursor: z.string().optional().describe("Opaque cursor for pagination; pass back to get the next page")
 });
 
 server.tool(
     "list_available_nodes",
     listAvailableNodesParamsSchema.shape,
-    async (params: z.infer<typeof listAvailableNodesParamsSchema>, _extra) => {
+    async (params: z.infer<typeof listAvailableNodesParamsSchema>, _extra: any) => {
         console.error("[DEBUG] list_available_nodes called with params:", params);
         let availableNodes: any[] = [];
 
-        // Corrected path: relative to this script's location
-        const workflowNodesDir = path.resolve(__dirname, '../workflow_nodes');
+        // Root directory that contains either JSON files or versioned subdirectories
+        // When compiled, this file lives in dist, so workflow_nodes is one level up
+        const workflowNodesRootDir = path.resolve(__dirname, '../workflow_nodes');
+        // We'll compute an "effective" version to use both for reading files and filtering
+        let effectiveVersion: string | undefined = params.n8n_version || getCurrentN8nVersion() || undefined;
+        const hasExplicitVersion = !!params.n8n_version && params.n8n_version.trim() !== '';
 
         try {
             // knownNodeBaseCasings should ideally be populated at startup by loadKnownNodeBaseTypes.
             // If it's empty here, it means initial load failed or directory wasn't found then.
             // We might not need to reload it here if startup handles it, but a check doesn't hurt.
-            if (nodeInfoCache.size === 0 && WORKSPACE_DIR !== process.cwd()) {
+            if (getNodeInfoCache().size === 0 && getWorkspaceDir() !== process.cwd()) {
                 console.warn("[WARN] nodeInfoCache is empty in list_available_nodes. Attempting to reload node type information.");
                 // For now, if cache is empty, it means startup failed to load them.
                 // The function will proceed and likely return an empty list or whatever it finds if workflowNodesDir is accessible now.
             }
 
-            console.error(`[DEBUG] Reading node definitions from server resource path: ${workflowNodesDir}`);
+            // Determine if we have versioned subdirectories and pick the exact version directory when available
+            let workflowNodesDir = workflowNodesRootDir;
+            try {
+                const entries = await fs.readdir(workflowNodesRootDir, { withFileTypes: true });
+                const versionDirs = entries.filter(e => (e as any).isDirectory?.() === true).map(e => (e as any).name);
+
+                if (versionDirs.length > 0) {
+                    const targetVersion = params.n8n_version || getCurrentN8nVersion();
+                    if (targetVersion && versionDirs.includes(targetVersion)) {
+                        workflowNodesDir = path.join(workflowNodesRootDir, targetVersion);
+                        effectiveVersion = targetVersion;
+                    } else if (!targetVersion) {
+                        // No target specified: choose highest semver directory
+                        const parse = (v: string) => v.split('.').map(n => parseInt(n, 10) || 0);
+                        versionDirs.sort((a, b) => {
+                            const [a0, a1, a2] = parse(a);
+                            const [b0, b1, b2] = parse(b);
+                            if (a0 !== b0) return b0 - a0;
+                            if (a1 !== b1) return b1 - a1;
+                            return b2 - a2;
+                        });
+                        workflowNodesDir = path.join(workflowNodesRootDir, versionDirs[0]);
+                        effectiveVersion = versionDirs[0];
+                    } else {
+                        // Exact version requested but not found; keep root to avoid false empty, but log a clear warning
+                        console.warn(`[WARN] Requested N8N version directory '${targetVersion}' not found under workflow_nodes. Available: ${versionDirs.join(', ')}`);
+                        // Fallback: if there is a latest dir, use it so we still return something
+                        const parse = (v: string) => v.split('.').map(n => parseInt(n, 10) || 0);
+                        versionDirs.sort((a, b) => {
+                            const [a0, a1, a2] = parse(a);
+                            const [b0, b1, b2] = parse(b);
+                            if (a0 !== b0) return b0 - a0;
+                            if (a1 !== b1) return b1 - a1;
+                            return b2 - a2;
+                        });
+                        workflowNodesDir = path.join(workflowNodesRootDir, versionDirs[0]);
+                        effectiveVersion = versionDirs[0];
+                    }
+                }
+            } catch {
+                // If reading entries fails, fall back to root and let the next readdir handle errors
+            }
+
+            console.error(`[DEBUG] Reading node definitions from: ${workflowNodesDir}`);
             const files = await fs.readdir(workflowNodesDir);
             const suffix = ".json";
             const allParsedNodes: any[] = []; // Temporary array to hold all nodes before filtering
@@ -1856,6 +1194,12 @@ server.tool(
                 availableNodes = allParsedNodes; // No search term, return all nodes
             }
 
+            // Additional sensitive diagnostic log for search inputs and derived counts
+            try {
+                const { sensitiveLogger } = require('./utils/logger');
+                sensitiveLogger.debug(`list_available_nodes diagnostics: search_term='${params.search_term || ''}', totalParsed=${allParsedNodes.length}, matched=${availableNodes.length}`);
+            } catch { }
+
             if (availableNodes.length === 0 && allParsedNodes.length > 0 && params.search_term) {
                 console.warn(`[WARN] No nodes matched the search term: '${params.search_term}'.`);
             } else if (allParsedNodes.length === 0) {
@@ -1863,41 +1207,21 @@ server.tool(
             }
 
             // Filter by N8N version compatibility if specified
-            const targetVersion = params.n8n_version || currentN8nVersion;
+            const targetVersion = effectiveVersion || undefined;
             let versionFilteredNodes = availableNodes;
 
-            if (targetVersion) {
+            if (targetVersion && targetVersion !== 'latest') {
                 versionFilteredNodes = availableNodes.filter(node => {
                     // Check if node is supported in the target N8N version
-                    const targetVersionInfo = supportedN8nVersions.get(targetVersion);
+                    const targetVersionInfo = getSupportedN8nVersions().get(targetVersion);
                     if (!targetVersionInfo) {
-                        // If target version is unknown, use heuristics
-                        const isLangChainNode = node.nodeType.includes('@n8n/n8n-nodes-langchain');
-                        const isAINode = node.nodeType.toLowerCase().includes('ai') ||
-                            node.nodeType.toLowerCase().includes('openai') ||
-                            node.nodeType.toLowerCase().includes('llm');
-
-                        const targetVersionNum = parseFloat(targetVersion);
-
-                        if (isLangChainNode && targetVersionNum < 1.10) return false;
-                        if (isAINode && targetVersionNum < 1.20) return false;
-
-                        return true; // Assume basic nodes are supported
+                        // If target version info isn't loaded yet, don't over-filter
+                        return true;
                     }
 
                     const supportedVersions = targetVersionInfo.supportedNodes.get(node.nodeType);
                     if (!supportedVersions) {
-                        // Apply same heuristics as above
-                        const isLangChainNode = node.nodeType.includes('@n8n/n8n-nodes-langchain');
-                        const isAINode = node.nodeType.toLowerCase().includes('ai') ||
-                            node.nodeType.toLowerCase().includes('openai') ||
-                            node.nodeType.toLowerCase().includes('llm');
-
-                        const targetVersionNum = parseFloat(targetVersion);
-
-                        if (isLangChainNode && targetVersionNum < 1.10) return false;
-                        if (isAINode && targetVersionNum < 1.20) return false;
-
+                        // If specific node type not present, assume supported to avoid false negatives
                         return true;
                     }
 
@@ -1911,7 +1235,7 @@ server.tool(
 
             // Format the results to be more user-friendly and informative
             const formattedNodes = versionFilteredNodes.map(node => {
-                const targetVersionInfo = supportedN8nVersions.get(targetVersion || currentN8nVersion || "1.30.0");
+                const targetVersionInfo = getSupportedN8nVersions().get(targetVersion || getCurrentN8nVersion() || "1.30.0");
                 const supportedVersions = targetVersionInfo?.supportedNodes.get(node.nodeType);
                 const compatibleVersions = supportedVersions ? Array.from(supportedVersions) : [];
 
@@ -1941,15 +1265,23 @@ server.tool(
                 note: "The system will automatically handle proper casing and prefixing for you based on the official node definitions."
             };
 
+            // Apply pagination
+            const startIndex = params?.cursor ? Number(params.cursor) || 0 : 0;
+            const limit = params?.limit ?? formattedNodes.length;
+            const page = formattedNodes.slice(startIndex, startIndex + limit);
+            const nextIndex = startIndex + limit;
+            const nextCursor = nextIndex < formattedNodes.length ? String(nextIndex) : null;
+
             // Return the formatted response
             return {
                 content: [{
                     type: "text", text: JSON.stringify({
                         success: true,
-                        nodes: formattedNodes,
+                        nodes: page,
                         total: formattedNodes.length,
+                        nextCursor,
                         filteredFor: targetVersion ? `N8N ${targetVersion}` : "All versions",
-                        currentN8nVersion: currentN8nVersion,
+                        currentN8nVersion: targetVersion || getCurrentN8nVersion(),
                         usageGuidance: usageGuidance
                     })
                 }]
@@ -1972,17 +1304,17 @@ server.tool(
 server.tool(
     "get_n8n_version_info",
     {},
-    async (_params: Record<string, never>, _extra) => {
+    async (_params: Record<string, never>, _extra: any) => {
         console.error("[DEBUG] get_n8n_version_info called");
         try {
-            const supportedVersionsList = Array.from(supportedN8nVersions.keys()).sort((a, b) =>
+            const supportedVersionsList = Array.from(getSupportedN8nVersions().keys()).sort((a, b) =>
                 parseFloat(b) - parseFloat(a)
             );
 
-            const currentInfo = n8nVersionInfo ? {
-                version: currentN8nVersion,
-                capabilities: n8nVersionInfo.capabilities,
-                supportedNodesCount: n8nVersionInfo.supportedNodes.size
+            const currentInfo = getN8nVersionInfo() ? {
+                version: getCurrentN8nVersion(),
+                capabilities: getN8nVersionInfo()!.capabilities,
+                supportedNodesCount: getN8nVersionInfo()!.supportedNodes.size
             } : null;
 
             return {
@@ -1990,12 +1322,12 @@ server.tool(
                     type: "text",
                     text: JSON.stringify({
                         success: true,
-                        currentVersion: currentN8nVersion,
+                        currentVersion: getCurrentN8nVersion(),
                         currentVersionInfo: currentInfo,
                         supportedVersions: supportedVersionsList,
-                        versionSource: N8N_VERSION_OVERRIDE ? "environment_override" :
-                            (N8N_API_URL ? "api_detection" : "default"),
-                        capabilities: n8nVersionInfo?.capabilities || []
+                        versionSource: process.env.N8N_VERSION ? "environment_override" :
+                            (process.env.N8N_API_URL ? "api_detection" : "default"),
+                        capabilities: getN8nVersionInfo()?.capabilities || []
                     })
                 }]
             };
