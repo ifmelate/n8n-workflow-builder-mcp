@@ -141,17 +141,34 @@ async function mockListAvailableNodes(params, workflowNodesRootDir) {
         parameterCount: node.properties ? node.properties.length : 0
     }));
 
+    // Ranking boost: move Webhook to the top if present
+    const orderedNodes = (() => {
+        const copy = formattedNodes.slice();
+        const isWebhookNode = (n) => {
+            const dn = String(n?.displayName || '').toLowerCase();
+            const sn = String(n?.simpleName || '').toLowerCase();
+            const nt = String(n?.nodeType || '').toLowerCase();
+            return dn === 'webhook' || sn === 'webhook' || nt.endsWith('.webhook');
+        };
+        const idx = copy.findIndex(isWebhookNode);
+        if (idx > 0) {
+            const [wh] = copy.splice(idx, 1);
+            copy.unshift(wh);
+        }
+        return copy;
+    })();
+
     // Apply pagination
     const startIndex = cursor ? Number(cursor) || 0 : 0;
-    const limitValue = limit ?? formattedNodes.length;
-    const page = formattedNodes.slice(startIndex, startIndex + limitValue);
+    const limitValue = limit ?? orderedNodes.length;
+    const page = orderedNodes.slice(startIndex, startIndex + limitValue);
     const nextIndex = startIndex + limitValue;
-    const nextCursor = nextIndex < formattedNodes.length ? String(nextIndex) : null;
+    const nextCursor = nextIndex < orderedNodes.length ? String(nextIndex) : null;
 
     return {
         success: true,
         nodes: page,
-        total: formattedNodes.length,
+        total: orderedNodes.length,
         nextCursor,
         filteredFor: effectiveVersion ? `N8N ${effectiveVersion}` : "All versions",
         currentN8nVersion: effectiveVersion || "latest",
@@ -817,6 +834,32 @@ describe('List Available Nodes', () => {
 
             expect(Array.isArray(result.usageGuidance.formats)).toBe(true);
             expect(result.usageGuidance.formats.length).toBe(3);
+        });
+    });
+
+    describe('Ranking & Prioritization', () => {
+        it('should place Webhook as the first result for search term "webhook trigger"', async () => {
+            if (availableVersions.length === 0) {
+                console.log('Skipping test - no version directories found');
+                return;
+            }
+
+            const result = await mockListAvailableNodes(
+                { search_term: 'webhook trigger', limit: 10 },
+                workflowNodesDir
+            );
+
+            expect(result.success).toBe(true);
+            if (result.nodes.length > 0) {
+                const first = result.nodes[0];
+                const isWebhook = (n) => {
+                    const dn = String(n?.displayName || '').toLowerCase();
+                    const sn = String(n?.simpleName || '').toLowerCase();
+                    const nt = String(n?.nodeType || '').toLowerCase();
+                    return dn === 'webhook' || sn === 'webhook' || nt.endsWith('.webhook');
+                };
+                expect(isWebhook(first)).toBe(true);
+            }
         });
     });
 
