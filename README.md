@@ -150,15 +150,16 @@ The server provides the following tools for working with n8n workflows:
 | Tool Name | Description | Key Parameters |
 |-----------|-------------|----------------|
 | **create_workflow** | Create a new n8n workflow | `workflow_name`, `workspace_dir` |
-| **list_workflows** | List all existing workflows | (no parameters) |
+| **list_workflows** | List workflows in the workspace | `limit` (optional), `cursor` (optional) |
 | **get_workflow_details** | Get detailed information about a specific workflow | `workflow_name`, `workflow_path` (optional) |
-| **add_node** | Add a new node to a workflow | `workflow_name`, `node_type`, `position`, `parameters`, `node_name`, `typeVersion`, `webhookId`, `workflow_path` (optional), `connect_from` (optional), `connect_to` (optional) |
-| **edit_node** | Edit an existing node in a workflow | `workflow_name`, `node_id`, `node_type`, `node_name`, `position`, `parameters`, `typeVersion`, `webhookId`, `workflow_path` (optional), `connect_from` (optional), `connect_to` (optional) |
+| **add_node** | Add a new node to a workflow | `workflow_name`, `node_type`, `position` (optional), `parameters` (optional), `node_name` (optional), `typeVersion` (optional), `webhookId` (optional), `workflow_path` (optional), `connect_from` (optional), `connect_to` (optional) |
+| **edit_node** | Edit an existing node in a workflow | `workflow_name`, `node_id`, `node_type` (optional), `node_name` (optional), `position` (optional), `parameters` (optional), `typeVersion` (optional), `webhookId` (optional), `workflow_path` (optional), `connect_from` (optional), `connect_to` (optional) |
 | **delete_node** | Delete a node from a workflow | `workflow_name`, `node_id`, `workflow_path` (optional) |
-| **add_connection** | Add a connection between nodes | `workflow_name`, `source_node_id`, `source_node_output_name`, `target_node_id`, `target_node_input_name`, `target_node_input_index` |
-| **add_ai_connections** | Add AI connections for LangChain nodes | `workflow_name`, `agent_node_id`, `model_node_id`, `tool_node_ids`, `memory_node_id` |
-| **list_available_nodes** | List available node types with optional filtering. Supports tag-style synonyms and multi-token OR/AND logic. | `search_term` (optional), `n8n_version` (optional), `limit` (optional), `cursor` (optional), `tags` (optional, default: true), `token_logic` (optional: 'or' default, or 'and') |
-| **get_n8n_version_info** | Get current N8N version and capabilities | (no parameters) |
+| **add_connection** | Create a connection between two nodes | `workflow_name`, `source_node_id`, `source_node_output_name`, `target_node_id`, `target_node_input_name`, `target_node_input_index` (optional), `workflow_path` (optional) |
+| **add_ai_connections** | Wire AI model, tools, and memory to an agent | `workflow_name`, `agent_node_id`, `model_node_id` (optional), `tool_node_ids` (optional), `memory_node_id` (optional), `embeddings_node_id` (optional), `vector_store_node_id` (optional), `vector_insert_node_id` (optional), `vector_tool_node_id` (optional), `workflow_path` (optional) |
+| **compose_ai_workflow** | Compose a complex AI workflow (agent + model + memory + embeddings + vector + tools + trigger) in one call, including wiring and basic validation | `workflow_name`, `plan`, `n8n_version` (optional) |
+| **list_available_nodes** | List available node types with optional filtering. Supports tag-style synonyms and multi-token OR/AND logic | `search_term` (optional), `n8n_version` (optional), `limit` (optional), `cursor` (optional), `tags` (optional, default: true), `token_logic` (optional: 'or' default, or 'and') |
+| **get_n8n_version_info** | Get current N8N version and capabilities | `random_string` |
 | **validate_workflow** | Validate a workflow file against node schemas and connectivity | `workflow_name`, `workflow_path` (optional) |
 
 ### Validation behavior
