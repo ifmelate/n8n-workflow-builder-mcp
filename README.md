@@ -140,7 +140,7 @@ Alternatively, you can set up the MCP server through Cursor's interface:
 5. Add environment variables:
    - `N8N_API_URL`: `http://localhost:5678`
    - `N8N_API_KEY`: `your-n8n-api-key-here`
-   - `N8N_VERSION`: `1.72.1` (optional - auto-detects if not set)
+   - `N8N_VERSION`: `1.76.1` (optional - auto-detects if not set)
 6. Make sure the server is enabled
 7. Restart Cursor IDE for changes to take effect
 
