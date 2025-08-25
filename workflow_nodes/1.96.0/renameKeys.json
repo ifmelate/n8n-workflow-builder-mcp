@@ -10,15 +10,10 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Adds a key which should be renamed",
-      "placeholder": "Add new key"
-    },
-    {
-      "name": "newKey",
-      "displayName": "New Key Name",
-      "type": "string",
-      "default": "",
-      "description": "The name the key should be renamed to. It is also possible to define deep keys by using dot-notation like for example: \"level1.level2.newKey\".",
-      "placeholder": "newKey"
+      "placeholder": "Add new key",
+      "typeOptions": {
+        "multipleValues": true
+      }
     },
     {
       "name": "additionalOptions",
@@ -30,38 +25,29 @@
       "typeOptions": {
         "multipleValues": true
       }
-    },
-    {
-      "name": "searchRegex",
-      "displayName": "Regular Expression",
-      "type": "string",
-      "default": "",
-      "description": "Regex to match the key name",
-      "placeholder": "e.g. [N-n]ame"
-    },
-    {
-      "name": "replaceRegex",
-      "displayName": "Replace With",
-      "type": "string",
-      "default": "",
-      "description": "The name the key/s should be renamed to. It's possible to use regex captures e.g. $1, $2, ...",
-      "placeholder": "replacedName"
-    },
-    {
-      "name": "options",
-      "displayName": "Options",
-      "type": "collection",
-      "default": {},
-      "description": "Whether to use case insensitive match",
-      "placeholder": "Add Regex Option"
-    },
-    {
-      "name": "depth",
-      "displayName": "Max Depth",
-      "type": "number",
-      "default": null,
-      "description": "Maximum depth to replace keys"
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

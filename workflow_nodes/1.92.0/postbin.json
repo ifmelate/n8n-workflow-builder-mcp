@@ -10,31 +10,51 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for each bin",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "bin"
+          ],
+          "operation": [
+            "get",
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
+      "default": "create",
       "description": "Create bin",
-      "options": []
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a bin"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a bin"
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "bin"
+          ]
+        }
+      }
     },
     {
       "name": "binContent",
       "displayName": "Bin Content",
       "type": "string",
-      "default": ""
+      "default": "",
+      "typeOptions": {
+        "rows": 5
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "request"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "requestId",
@@ -42,19 +62,40 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for each request",
-      "required": true
-    },
-    {
-      "name": "Remove First",
-      "default": null,
-      "description": "Remove the first request from bin"
-    },
-    {
-      "name": "Send",
-      "type": "set",
-      "default": null,
-      "description": "Send a test request to the bin"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "request"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

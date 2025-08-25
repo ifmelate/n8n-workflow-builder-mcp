@@ -8,11 +8,30 @@
       "name": "vcs",
       "displayName": "Provider",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "GitHub",
-      "default": null
+      "default": "",
+      "description": "Source control system",
+      "options": [
+        {
+          "name": "Bitbucket",
+          "value": "bitbucket"
+        },
+        {
+          "name": "GitHub",
+          "value": "github"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get",
+            "getAll",
+            "trigger"
+          ],
+          "resource": [
+            "pipeline"
+          ]
+        }
+      }
     },
     {
       "name": "projectSlug",
@@ -20,14 +39,80 @@
       "type": "string",
       "default": "",
       "description": "Project slug in the form org-name/repo-name",
-      "placeholder": "n8n-io/n8n"
+      "placeholder": "n8n-io/n8n",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get",
+            "getAll",
+            "trigger"
+          ],
+          "resource": [
+            "pipeline"
+          ]
+        }
+      }
+    },
+    {
+      "name": "pipelineNumber",
+      "displayName": "Pipeline Number",
+      "type": "number",
+      "default": 1,
+      "description": "The number of the pipeline",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "pipeline"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "pipeline"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "pipeline"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -35,7 +120,26 @@
       "type": "collection",
       "default": {},
       "description": "The name of a vcs branch",
-      "placeholder": "Add Filter"
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "branch",
+          "displayName": "Branch",
+          "type": "string",
+          "default": "",
+          "description": "The name of a vcs branch"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "pipeline"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -43,37 +147,76 @@
       "type": "collection",
       "default": {},
       "description": "The branch where the pipeline ran. The HEAD commit on this branch was used for the pipeline. Note that branch and tag are mutually exclusive.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "tag",
-      "displayName": "Tag",
-      "type": "string",
-      "default": "",
-      "description": "The tag used by the pipeline. The commit that this tag points to was used for the pipeline. Note that branch and tag are mutually exclusive"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "branch",
+          "displayName": "Branch",
+          "type": "string",
+          "default": "",
+          "description": "The branch where the pipeline ran. The HEAD commit on this branch was used for the pipeline. Note that branch and tag are mutually exclusive."
+        },
+        {
+          "name": "tag",
+          "displayName": "Tag",
+          "type": "string",
+          "default": "",
+          "description": "The tag used by the pipeline. The commit that this tag points to was used for the pipeline. Note that branch and tag are mutually exclusive"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "pipeline"
+          ],
+          "operation": [
+            "trigger"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Get a pipeline"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many pipelines"
-    },
-    {
-      "name": "Trigger",
-      "default": null,
-      "description": "Trigger a pipeline"
+      "default": "get",
+      "description": "Get a pipeline",
+      "options": [
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a pipeline"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many pipelines"
+        },
+        {
+          "name": "Trigger",
+          "value": "trigger",
+          "description": "Trigger a pipeline"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "pipeline"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "pipeline",
+      "options": [
+        {
+          "name": "Pipeline",
+          "value": "pipeline"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -85,5 +228,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

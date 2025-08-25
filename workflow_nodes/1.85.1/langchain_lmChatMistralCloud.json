@@ -4,5 +4,33 @@
   "description": "For advanced usage with an AI chain",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "AiLanguageModel"
+    ],
+    "outputNames": [
+      "Model"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiChain",
+        "AiAgent"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "model",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent",
+      "AiChain"
+    ],
+    "consumes": [],
+    "produces": [
+      "AiLanguageModel"
+    ]
+  }
 }

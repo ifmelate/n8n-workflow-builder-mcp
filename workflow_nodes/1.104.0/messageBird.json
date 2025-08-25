@@ -8,18 +8,38 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Balance",
-      "default": null
+      "default": "sms",
+      "options": [
+        {
+          "name": "SMS",
+          "value": "sms"
+        },
+        {
+          "name": "Balance",
+          "value": "balance"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Send text messages (SMS)"
+      "default": "send",
+      "description": "Send text messages (SMS)",
+      "options": [
+        {
+          "name": "Send",
+          "value": "send",
+          "description": "Send text messages (SMS)"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     },
     {
       "name": "originator",
@@ -28,7 +48,17 @@
       "default": "",
       "description": "The number from which to send the message",
       "placeholder": "14155238886",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     },
     {
       "name": "recipients",
@@ -37,7 +67,17 @@
       "default": "",
       "description": "All recipients separated by commas",
       "placeholder": "14155238886/+14155238886",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     },
     {
       "name": "message",
@@ -45,7 +85,17 @@
       "type": "string",
       "default": "",
       "description": "The message to be send",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -53,96 +103,29 @@
       "type": "collection",
       "default": {},
       "description": "The date and time of the creation of the message in RFC3339 format (Y-m-dTH:i:sP)",
-      "placeholder": "Add Fields"
-    },
-    {
-      "name": "datacoding",
-      "displayName": "Datacoding",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Plain",
-      "default": null
-    },
-    {
-      "name": "Unicode",
-      "default": null
-    },
-    {
-      "name": "gateway",
-      "displayName": "Gateway",
-      "type": "number",
-      "default": "",
-      "description": "The SMS route that is used to send the message"
-    },
-    {
-      "name": "groupIds",
-      "displayName": "Group IDs",
-      "type": "string",
-      "default": "",
-      "description": "Group IDs separated by commas, If provided recipients can be omitted",
-      "placeholder": "1,2"
-    },
-    {
-      "name": "mclass",
-      "displayName": "Message Type",
-      "type": "options",
-      "default": null,
-      "placeholder": "Permissible values from 0-3"
-    },
-    {
-      "name": "Normal",
-      "default": null
-    },
-    {
-      "name": "reference",
-      "displayName": "Reference",
-      "type": "string",
-      "default": "",
-      "description": "A client reference"
-    },
-    {
-      "name": "reportUrl",
-      "displayName": "Report Url",
-      "type": "string",
-      "default": "",
-      "description": "The status report URL to be used on a per-message basis. Reference is required for a status report webhook to be sent."
-    },
-    {
-      "name": "scheduledDatetime",
-      "displayName": "Scheduled Date-Time",
-      "type": "dateTime",
-      "default": "",
-      "description": "The scheduled date and time of the message in RFC3339 format (Y-m-dTH:i:sP)"
-    },
-    {
-      "name": "type",
-      "displayName": "Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Flash",
-      "default": null
-    },
-    {
-      "name": "SMS",
-      "default": null
-    },
-    {
-      "name": "typeDetails",
-      "displayName": "Type Details",
-      "type": "string",
-      "default": "",
-      "description": "A hash with extra information. Is only used when a binary message is sent."
-    },
-    {
-      "name": "validity",
-      "displayName": "Validity",
-      "type": "number",
-      "default": 1,
-      "description": "The amount of seconds that the message is valid"
+      "placeholder": "Add Fields",
+      "options": [
+        {
+          "name": "createdDatetime",
+          "displayName": "Created Date-Time",
+          "type": "dateTime",
+          "default": "",
+          "description": "The date and time of the creation of the message in RFC3339 format (Y-m-dTH:i:sP)"
+        }
+      ],
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -178,5 +161,27 @@
       "name": "typeDetails",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

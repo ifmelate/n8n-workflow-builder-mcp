@@ -8,7 +8,13 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "hidden",
-      "default": null
+      "default": "triggerOAuth2",
+      "options": [
+        {
+          "name": "OAuth2 (recommended)",
+          "value": "triggerOAuth2"
+        }
+      ]
     },
     {
       "name": "documentId",
@@ -16,18 +22,6 @@
       "type": "resourceLocator",
       "default": "{ mode: 'list', value: '' }",
       "required": true
-    },
-    {
-      "name": "url",
-      "displayName": "By URL",
-      "type": "string",
-      "default": null
-    },
-    {
-      "name": "id",
-      "displayName": "By ID",
-      "type": "string",
-      "default": null
     },
     {
       "name": "sheetName",
@@ -40,31 +34,51 @@
       "name": "event",
       "displayName": "Trigger On",
       "type": "options",
-      "default": null,
-      "description": "It will be triggered also by newly created columns (if the 'Columns to Watch' option is not set)"
-    },
-    {
-      "name": "Row Updated",
-      "default": null
-    },
-    {
-      "name": "Row Added or Updated",
-      "default": null
+      "default": "anyUpdate",
+      "description": "It will be triggered also by newly created columns (if the 'Columns to Watch' option is not set)",
+      "required": true,
+      "options": [
+        {
+          "name": "Row Added",
+          "value": "rowAdded"
+        },
+        {
+          "name": "Row Updated",
+          "value": "rowUpdate"
+        },
+        {
+          "name": "Row Added or Updated",
+          "value": "anyUpdate"
+        }
+      ]
     },
     {
       "name": "includeInOutput",
       "displayName": "Include in Output",
       "type": "options",
       "default": "new",
-      "description": "This option will be effective only when automatically executing the workflow"
-    },
-    {
-      "name": "Old Version",
-      "default": null
-    },
-    {
-      "name": "Both Versions",
-      "default": null
+      "description": "This option will be effective only when automatically executing the workflow",
+      "options": [
+        {
+          "name": "New Version",
+          "value": "new"
+        },
+        {
+          "name": "Old Version",
+          "value": "old"
+        },
+        {
+          "name": "Both Versions",
+          "value": "both"
+        }
+      ],
+      "displayOptions": {
+        "hide": {
+          "event": [
+            "rowAdded"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -72,71 +86,15 @@
       "type": "collection",
       "default": {},
       "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "dataLocationOnSheet",
-      "displayName": "Data Location on Sheet",
-      "type": "fixedCollection",
-      "default": "{ values: { rangeDefinition: 'specifyRangeA1' }",
-      "description": "Manually specify the data range",
-      "placeholder": "Select Range"
-    },
-    {
-      "name": "Specify Range (Rows)",
-      "default": null,
-      "description": "Manually specify the data range"
-    },
-    {
-      "name": "headerRow",
-      "displayName": "Header Row",
-      "type": "number",
-      "default": 1,
-      "description": "Index of the row which contains the keys. Starts at 1. The incoming node data is matched to the keys for assignment. The matching is case sensitive."
-    },
-    {
-      "name": "firstDataRow",
-      "displayName": "First Data Row",
-      "type": "number",
-      "default": 2,
-      "description": "Index of the first row which contains the actual data and not the keys. Starts with 1."
-    },
-    {
-      "name": "range",
-      "displayName": "Range",
-      "type": "string",
-      "default": "",
-      "description": "The table range to read from or to append data to. See the Google <a href=\"https://developers.google.com/sheets/api/guides/values#writing\">documentation</a> for the details.",
-      "placeholder": "A:Z"
-    },
-    {
-      "name": "valueRender",
-      "displayName": "Value Render",
-      "type": "options",
-      "default": null,
-      "description": "Values will be calculated, but not formatted in the reply"
-    },
-    {
-      "name": "Formatted",
-      "default": null,
-      "description": "Values will be formatted and calculated according to the cell's formatting (based on the spreadsheet's locale)"
-    },
-    {
-      "name": "Formula",
-      "default": null,
-      "description": "Values will not be calculated. The reply will include the formulas."
-    },
-    {
-      "name": "dateTimeRenderOption",
-      "displayName": "DateTime Render",
-      "type": "options",
-      "default": null,
-      "description": "Fields will be returned as doubles in \"serial number\" format (as popularized by Lotus 1-2-3)"
-    },
-    {
-      "name": "Formatted String",
-      "default": null,
-      "description": "Fields will be rendered as strings in their given number format (which depends on the spreadsheet locale)"
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "/event": [
+            "anyUpdate",
+            "rowUpdate"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -188,5 +146,19 @@
       "name": "dateTimeRenderOption",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -8,25 +8,39 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a topic"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a topic"
-    },
-    {
-      "name": "Publish",
-      "default": null,
-      "description": "Publish a message to a topic"
+      "default": "publish",
+      "description": "Create a topic",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a topic"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a topic"
+        },
+        {
+          "name": "Publish",
+          "value": "publish",
+          "description": "Publish a message to a topic"
+        }
+      ]
     },
     {
       "name": "name",
       "displayName": "Name",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -34,14 +48,30 @@
       "type": "collection",
       "default": {},
       "description": "The display name to use for a topic with SMS subscriptions",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "fifoTopic",
-      "displayName": "Fifo Topic",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the topic you want to create is a FIFO (first-in-first-out) topic"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "displayName",
+          "displayName": "Display Name",
+          "type": "string",
+          "default": "",
+          "description": "The display name to use for a topic with SMS subscriptions"
+        },
+        {
+          "name": "fifoTopic",
+          "displayName": "Fifo Topic",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the topic you want to create is a FIFO (first-in-first-out) topic"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "topic",
@@ -49,20 +79,15 @@
       "type": "resourceLocator",
       "default": "{ mode: 'list', value: '' }",
       "placeholder": "Select a topic...",
-      "required": true
-    },
-    {
-      "name": "url",
-      "displayName": "By URL",
-      "type": "string",
-      "default": null,
-      "placeholder": "https://us-east-1.console.aws.amazon.com/sns/v3/home?region=us-east-1#/topic/arn:aws:sns:us-east-1:777777777777:your_topic"
-    },
-    {
-      "name": "id",
-      "displayName": "ID",
-      "type": "string",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "publish",
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "subject",
@@ -70,7 +95,14 @@
       "type": "string",
       "default": "",
       "description": "Subject when the message is delivered to email endpoints",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "publish"
+          ]
+        }
+      }
     },
     {
       "name": "message",
@@ -78,7 +110,14 @@
       "type": "string",
       "default": "",
       "description": "The message you want to send",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "publish"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -106,5 +145,19 @@
       "name": "subject",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

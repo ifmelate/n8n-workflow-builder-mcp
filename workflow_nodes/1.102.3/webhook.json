@@ -20,27 +20,41 @@
       "name": "httpMethod",
       "displayName": "HTTP Methods",
       "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "GET",
-      "default": null
-    },
-    {
-      "name": "HEAD",
-      "default": null
-    },
-    {
-      "name": "PATCH",
-      "default": null
-    },
-    {
-      "name": "POST",
-      "default": null
-    },
-    {
-      "name": "PUT",
-      "default": null
+      "default": "['GET', 'POST']",
+      "description": "The HTTP methods to listen to",
+      "options": [
+        {
+          "name": "DELETE",
+          "value": "DELETE"
+        },
+        {
+          "name": "GET",
+          "value": "GET"
+        },
+        {
+          "name": "HEAD",
+          "value": "HEAD"
+        },
+        {
+          "name": "PATCH",
+          "value": "PATCH"
+        },
+        {
+          "name": "POST",
+          "value": "POST"
+        },
+        {
+          "name": "PUT",
+          "value": "PUT"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "multipleMethods": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "path",
@@ -51,11 +65,45 @@
       "placeholder": "webhook"
     },
     {
+      "name": "webhookNotice",
+      "displayName": "Insert a 'Respond to Webhook' node to control when and how you respond. <a href=\"https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.respondtowebhook/\" target=\"_blank\">More details</a>",
+      "type": "notice",
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "responseMode": [
+            "responseNode"
+          ]
+        }
+      }
+    },
+    {
       "name": "webhookStreamingNotice",
       "displayName": "Insert a node that supports streaming (e.g. 'AI Agent') and enable streaming to stream directly to the response while the workflow is executed. <a href=\"https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.respondtowebhook/\" target=\"_blank\">More details</a>",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "responseMode": [
+            "streaming"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

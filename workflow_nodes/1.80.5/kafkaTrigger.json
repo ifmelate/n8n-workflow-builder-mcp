@@ -39,7 +39,14 @@
       "default": "",
       "description": "URL of the schema registry",
       "placeholder": "https://schema-registry-domain:8081",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "useSchemaRegistry": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -47,77 +54,65 @@
       "type": "collection",
       "default": {},
       "description": "Whether to allow sending message to a previously non exisiting topic",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "autoCommitThreshold",
-      "displayName": "Auto Commit Threshold",
-      "type": "number",
-      "default": 0,
-      "description": "The consumer will commit offsets after resolving a given number of messages"
-    },
-    {
-      "name": "autoCommitInterval",
-      "displayName": "Auto Commit Interval",
-      "type": "number",
-      "default": 0,
-      "description": "The consumer will commit offsets after a given period, for example, five seconds"
-    },
-    {
-      "name": "heartbeatInterval",
-      "displayName": "Heartbeat Interval",
-      "type": "number",
-      "default": 3000,
-      "description": "Heartbeats are used to ensure that the consumer's session stays active"
-    },
-    {
-      "name": "maxInFlightRequests",
-      "displayName": "Max Number of Requests",
-      "type": "number",
-      "default": 1,
-      "description": "The maximum number of unacknowledged requests the client will send on a single connection"
-    },
-    {
-      "name": "fromBeginning",
-      "displayName": "Read Messages From Beginning",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to read message from beginning"
-    },
-    {
-      "name": "jsonParseMessage",
-      "displayName": "JSON Parse Message",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to try to parse the message to an object"
-    },
-    {
-      "name": "parallelProcessing",
-      "displayName": "Parallel Processing",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to process messages in parallel or by keeping the message in order"
-    },
-    {
-      "name": "onlyMessage",
-      "displayName": "Only Message",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return only the message property"
-    },
-    {
-      "name": "returnHeaders",
-      "displayName": "Return Headers",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return the headers received from Kafka"
-    },
-    {
-      "name": "sessionTimeout",
-      "displayName": "Session Timeout",
-      "type": "number",
-      "default": 30000,
-      "description": "The time to await a response in ms"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "allowAutoTopicCreation",
+          "displayName": "Allow Topic Creation",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to allow sending message to a previously non exisiting topic"
+        },
+        {
+          "name": "autoCommitThreshold",
+          "displayName": "Auto Commit Threshold",
+          "type": "number",
+          "default": 0,
+          "description": "The consumer will commit offsets after resolving a given number of messages"
+        },
+        {
+          "name": "autoCommitInterval",
+          "displayName": "Auto Commit Interval",
+          "type": "number",
+          "default": 0,
+          "description": "The consumer will commit offsets after a given period, for example, five seconds"
+        },
+        {
+          "name": "heartbeatInterval",
+          "displayName": "Heartbeat Interval",
+          "type": "number",
+          "default": 3000,
+          "description": "Heartbeats are used to ensure that the consumer's session stays active"
+        },
+        {
+          "name": "maxInFlightRequests",
+          "displayName": "Max Number of Requests",
+          "type": "number",
+          "default": 1,
+          "description": "The maximum number of unacknowledged requests the client will send on a single connection"
+        },
+        {
+          "name": "fromBeginning",
+          "displayName": "Read Messages From Beginning",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to read message from beginning"
+        },
+        {
+          "name": "jsonParseMessage",
+          "displayName": "JSON Parse Message",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to try to parse the message to an object"
+        }
+      ],
+      "displayOptions": {
+        "hide": {
+          "@version": [
+            1
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -129,5 +124,19 @@
       "name": "topic",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -8,18 +8,25 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "description": "Represents an Excel table"
-    },
-    {
-      "name": "Workbook",
-      "default": null,
-      "description": "Workbook is the top level object which contains related workbook objects such as worksheets, tables, ranges, etc"
-    },
-    {
-      "name": "Worksheet",
-      "default": null,
-      "description": "An Excel worksheet is a grid of cells. It can contain data, tables, charts, etc."
+      "default": "workbook",
+      "description": "Represents an Excel table",
+      "options": [
+        {
+          "name": "Table",
+          "value": "table",
+          "description": "Represents an Excel table"
+        },
+        {
+          "name": "Workbook",
+          "value": "workbook",
+          "description": "Workbook is the top level object which contains related workbook objects such as worksheets, tables, ranges, etc"
+        },
+        {
+          "name": "Worksheet",
+          "value": "worksheet",
+          "description": "An Excel worksheet is a grid of cells. It can contain data, tables, charts, etc."
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -31,5 +38,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

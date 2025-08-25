@@ -8,11 +8,17 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "credentials",
+      "options": [
+        {
+          "name": "Credentials",
+          "value": "credentials"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "events",
@@ -26,11 +32,18 @@
       "name": "eventsOrder",
       "displayName": "Events Order",
       "type": "options",
-      "default": "ASC"
-    },
-    {
-      "name": "DESC",
-      "default": null
+      "default": "ASC",
+      "description": "Order direction for queued events in one webhook. Can be “DESC” or “ASC”.",
+      "options": [
+        {
+          "name": "ASC",
+          "value": "ASC"
+        },
+        {
+          "name": "DESC",
+          "value": "DESC"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -50,5 +63,19 @@
       "name": "events",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

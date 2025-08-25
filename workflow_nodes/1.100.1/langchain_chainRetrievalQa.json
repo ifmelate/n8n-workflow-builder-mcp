@@ -17,7 +17,14 @@
       "displayName": "Query",
       "type": "string",
       "default": "={{ $json.input }}",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "text",
@@ -25,14 +32,25 @@
       "type": "string",
       "default": "",
       "placeholder": "e.g. Hello, how can you help me?",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "rows": 2
+      },
+      "displayOptions": {
+        "show": {
+          "promptType": [
+            "define"
+          ]
+        }
+      }
     },
     {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Option"
+      "placeholder": "Add Option",
+      "displayOptions": "{\n\t\t\t\t\t\t\tshow: {\n\t\t\t\t\t\t\t\t'@version': [{ _cnd: { lt: 1.5 }"
     }
   ],
   "credentialsConfig": [
@@ -44,5 +62,31 @@
       "name": "text",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main",
+      "AiLanguageModel",
+      "AiRetriever"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main",
+      "AiLanguageModel",
+      "AiRetriever"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

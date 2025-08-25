@@ -8,57 +8,46 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
+      "default": "analyzeComment",
+      "options": [
+        {
+          "name": "Analyze Comment",
+          "value": "analyzeComment"
+        }
+      ]
     },
     {
       "name": "text",
       "displayName": "Text",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyzeComment"
+          ]
+        }
+      }
     },
     {
       "name": "requestedAttributesUi",
       "displayName": "Attributes to Analyze",
       "type": "fixedCollection",
       "default": {},
+      "description": "Attribute to analyze in the text. Details <a href=\"https://developers.perspectiveapi.com/s/about-the-api-attributes-and-languages\">here</a>.",
       "placeholder": "Add Atrribute",
-      "required": true
-    },
-    {
-      "name": "Identity Attack",
-      "default": null
-    },
-    {
-      "name": "Insult",
-      "default": null
-    },
-    {
-      "name": "Profanity",
-      "default": null
-    },
-    {
-      "name": "Severe Toxicity",
-      "default": null
-    },
-    {
-      "name": "Sexually Explicit",
-      "default": null
-    },
-    {
-      "name": "Threat",
-      "default": null
-    },
-    {
-      "name": "Toxicity",
-      "default": null
-    },
-    {
-      "name": "scoreThreshold",
-      "displayName": "Score Threshold",
-      "type": "number",
-      "default": 0,
-      "description": "Score above which to return results. At zero, all scores are returned."
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyzeComment"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -66,7 +55,23 @@
       "type": "collection",
       "default": {},
       "description": "Languages of the text input. If unspecified, the API will auto-detect the comment language. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "languages",
+          "displayName": "Language Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "Languages of the text input. If unspecified, the API will auto-detect the comment language. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyzeComment"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -90,5 +95,27 @@
       "name": "options",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

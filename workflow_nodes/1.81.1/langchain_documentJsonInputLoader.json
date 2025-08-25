@@ -4,5 +4,23 @@
   "description": "Use JSON data from a previous step in the workflow",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [
+      "Document"
+    ],
+    "hints": {
+      "connectTo": []
+    }
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

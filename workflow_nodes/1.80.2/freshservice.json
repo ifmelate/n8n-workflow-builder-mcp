@@ -10,14 +10,34 @@
       "type": "string",
       "default": "",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agent"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "firstName",
       "displayName": "First Name",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agent"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "roles",
@@ -26,141 +46,52 @@
       "default": {},
       "description": "Role to assign to the agent",
       "placeholder": "Add Role",
-      "required": true
-    },
-    {
-      "name": "assignment_scope",
-      "displayName": "Scope",
-      "type": "options",
-      "default": null,
-      "description": "Scope in which the agent may use the permissions granted by the role"
-    },
-    {
-      "name": "Member Groups",
-      "default": null
-    },
-    {
-      "name": "Specified Groups",
-      "default": null
-    },
-    {
-      "name": "Assigned Items",
-      "default": null
-    },
-    {
-      "name": "groups",
-      "displayName": "Group Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Groups in which the permissions granted by the role apply. Required only when Scope is Specified Groups - ignored otherwise. Choose from the list or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agent"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "background_information",
-      "displayName": "Background Information",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "department_ids",
-      "displayName": "Department Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "IDs of the departments to which the agent belongs. Choose from the list or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "job_title",
-      "displayName": "Job Title",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "language",
-      "displayName": "Language",
-      "type": "options",
-      "default": ""
-    },
-    {
-      "name": "last_name",
-      "displayName": "Last Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "location_id",
-      "displayName": "Location Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "member_of",
-      "displayName": "Group Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Comma-separated IDs of the groups that the agent is a member of. Choose from the list or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "mobile_phone_number",
-      "displayName": "Mobile Phone",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "observer_of",
-      "displayName": "Observer of Group Names/IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Comma-separated IDs of the groups that the agent is an observer of. Choose from the list or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "scoreboard_level_id",
-      "displayName": "Scoreboard Level ID",
-      "type": "options",
-      "default": 1,
-      "description": "ID of the level of the agent in the Arcade"
-    },
-    {
-      "name": "Intermediate",
-      "default": null
-    },
-    {
-      "name": "Professional",
-      "default": null
-    },
-    {
-      "name": "Expert",
-      "default": null
-    },
-    {
-      "name": "Master",
-      "default": null
-    },
-    {
-      "name": "Guru",
-      "default": null
-    },
-    {
-      "name": "time_format",
-      "displayName": "Time Format",
-      "type": "options",
-      "default": "12h"
-    },
-    {
-      "name": "24-Hour Format",
-      "default": null
-    },
-    {
-      "name": "work_phone_number",
-      "displayName": "Work Phone",
-      "type": "string",
-      "default": ""
+      "description": "IDs of the departments to which the agent belongs. Choose from the list or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "address",
+          "displayName": "Address",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "background_information",
+          "displayName": "Background Information",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agent"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "agentId",
@@ -168,14 +99,57 @@
       "type": "string",
       "default": "",
       "description": "ID of the agent to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agent"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agent"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agent"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -183,83 +157,125 @@
       "type": "collection",
       "default": {},
       "description": "ID of the department to which the agent belongs. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "first_name",
-      "displayName": "First Name",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "department_id",
+          "displayName": "Department Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "ID of the department to which the agent belongs. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        },
+        {
+          "name": "email",
+          "displayName": "Email",
+          "type": "string",
+          "default": "",
+          "placeholder": "name@email.com"
+        },
+        {
+          "name": "first_name",
+          "displayName": "First Name",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "job_title",
+          "displayName": "Job Title",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "language",
+          "displayName": "Language",
+          "type": "options",
+          "default": ""
+        },
+        {
+          "name": "last_name",
+          "displayName": "Last Name",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "location_id",
+          "displayName": "Location Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "Choose from the list or specify an ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        },
+        {
+          "name": "mobile_phone_number",
+          "displayName": "Mobile Phone Number",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "work_phone_number",
+          "displayName": "Work Phone Number",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agent"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
       "displayName": "Update Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
+      "description": "IDs of the departments to which the agent belongs. Choose from the list or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "address",
+          "displayName": "Address",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "background_information",
+          "displayName": "Background Information",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agent"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "name",
       "displayName": "Name",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "escalate_to",
-      "displayName": "Escalate to Agent Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the user to whom an escalation email is sent if a ticket in this group is unassigned. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "members",
-      "displayName": "Member Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Comma-separated IDs of agents who are members of this group. Choose from the list or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "observers",
-      "displayName": "Observer Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Comma-separated agent IDs who are observers of this group. Choose from the list or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "unassigned_for",
-      "displayName": "Unassigned For",
-      "type": "options",
-      "default": "30m",
-      "description": "Time after which an escalation email is sent if a ticket in the group remains unassigned"
-    },
-    {
-      "name": "1 Hour",
-      "default": null
-    },
-    {
-      "name": "12 Hours",
-      "default": null
-    },
-    {
-      "name": "2 Days",
-      "default": null
-    },
-    {
-      "name": "2 Hours",
-      "default": null
-    },
-    {
-      "name": "3 Days",
-      "default": null
-    },
-    {
-      "name": "30 Minutes",
-      "default": null
-    },
-    {
-      "name": "8 Hours",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agentGroup"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "agentGroupId",
@@ -267,34 +283,58 @@
       "type": "string",
       "default": "",
       "description": "ID of the agent group to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agentGroup"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create an agent group"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an agent group"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Retrieve an agent group"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Retrieve many agent groups"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update an agent group"
+      "default": "create",
+      "description": "Create an agent group",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create an agent group"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete an agent group"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Retrieve an agent group"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Retrieve many agent groups"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update an agent group"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agentGroup"
+          ]
+        }
+      }
     },
     {
       "name": "agentRoleId",
@@ -302,14 +342,34 @@
       "type": "string",
       "default": "",
       "description": "ID of the agent role to retrieve",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agentRole"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "title",
       "displayName": "Title",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "announcement"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "bodyHtml",
@@ -317,22 +377,48 @@
       "type": "string",
       "default": "",
       "description": "HTML supported",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "announcement"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "visibility",
       "displayName": "Visibility",
       "type": "options",
       "default": "everyone",
-      "required": true
-    },
-    {
-      "name": "Agents and Groups",
-      "default": null
-    },
-    {
-      "name": "Everyone",
-      "default": null
+      "required": true,
+      "options": [
+        {
+          "name": "Agents Only",
+          "value": "agents_only"
+        },
+        {
+          "name": "Agents and Groups",
+          "value": "grouped_visibility"
+        },
+        {
+          "name": "Everyone",
+          "value": "everyone"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "announcement"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "visibleFrom",
@@ -340,28 +426,17 @@
       "type": "dateTime",
       "default": "",
       "description": "Timestamp at which announcement becomes active",
-      "required": true
-    },
-    {
-      "name": "departments",
-      "displayName": "Department Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Comma-separated IDs of departments that may view this announcement. Choose from the list or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "visible_from",
-      "displayName": "Visible From",
-      "type": "dateTime",
-      "default": "",
-      "description": "Timestamp at which announcement is active"
-    },
-    {
-      "name": "visible_till",
-      "displayName": "Visible Until",
-      "type": "dateTime",
-      "default": "",
-      "description": "Timestamp until which announcement is active"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "announcement"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "announcementId",
@@ -369,21 +444,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the announcement to delete",
-      "required": true
-    },
-    {
-      "name": "body_html",
-      "displayName": "Body",
-      "type": "string",
-      "default": "",
-      "description": "HTML supported"
-    },
-    {
-      "name": "parent_asset_type_id",
-      "displayName": "Parent Asset Type Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "announcement"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "assetTypeId",
@@ -391,7 +462,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the asset type to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "assetType"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "requesterId",
@@ -399,127 +480,68 @@
       "type": "options",
       "default": "",
       "description": "ID of the requester of the change. Choose from the list or specify an ID. You can also specify the ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "change"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "subject",
       "displayName": "Subject",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "change"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "plannedStartDate",
       "displayName": "Planned Start Date",
       "type": "dateTime",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "change"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "plannedEndDate",
       "displayName": "Planned End Date",
       "type": "dateTime",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "change_type",
-      "displayName": "Change Type",
-      "type": "options",
-      "default": 1
-    },
-    {
-      "name": "Standard",
-      "default": null
-    },
-    {
-      "name": "Major",
-      "default": null
-    },
-    {
-      "name": "Emergency",
-      "default": null
-    },
-    {
-      "name": "department_id",
-      "displayName": "Department Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the department requesting the change. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": "",
-      "description": "HTML supported"
-    },
-    {
-      "name": "group_id",
-      "displayName": "Group Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the agent group to which the change is assigned. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "impact",
-      "displayName": "Impact",
-      "type": "options",
-      "default": 1
-    },
-    {
-      "name": "Medium",
-      "default": null
-    },
-    {
-      "name": "High",
-      "default": null
-    },
-    {
-      "name": "priority",
-      "displayName": "Priority",
-      "type": "options",
-      "default": 1
-    },
-    {
-      "name": "Urgent",
-      "default": null
-    },
-    {
-      "name": "risk",
-      "displayName": "Risk",
-      "type": "options",
-      "default": 1
-    },
-    {
-      "name": "Very High",
-      "default": null
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": 1
-    },
-    {
-      "name": "Planning",
-      "default": null
-    },
-    {
-      "name": "Approval",
-      "default": null
-    },
-    {
-      "name": "Pending Release",
-      "default": null
-    },
-    {
-      "name": "Pending Review",
-      "default": null
-    },
-    {
-      "name": "Closed",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "change"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "changeId",
@@ -527,53 +549,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the change to delete",
-      "required": true
-    },
-    {
-      "name": "My Open",
-      "default": null
-    },
-    {
-      "name": "Release Requested",
-      "default": null
-    },
-    {
-      "name": "Requester ID",
-      "default": null
-    },
-    {
-      "name": "Unassigned",
-      "default": null
-    },
-    {
-      "name": "sort_by",
-      "displayName": "Sort Order",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Descending",
-      "default": null
-    },
-    {
-      "name": "updated_since",
-      "displayName": "Updated Since",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "requester_id",
-      "displayName": "Requester Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the requester of the change. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "domains",
-      "displayName": "Domains",
-      "type": "string",
-      "default": "",
-      "description": "Comma-separated email domains associated with the department"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "change"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "departmentId",
@@ -581,37 +567,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the department to delete",
-      "required": true
-    },
-    {
-      "name": "line2",
-      "displayName": "Line 2",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "city",
-      "displayName": "City",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "country",
-      "displayName": "Country",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "state",
-      "displayName": "State",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "zipcode",
-      "displayName": "Zip Code",
-      "type": "string",
-      "default": ""
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "department"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "locationId",
@@ -619,25 +585,34 @@
       "type": "string",
       "default": "",
       "description": "ID of the location to delete",
-      "required": true
-    },
-    {
-      "name": "address",
-      "displayName": "Address",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Address Fields"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "location"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "dueBy",
       "displayName": "Due By",
       "type": "dateTime",
       "default": "",
-      "description": "Date when the problem is due to be solved"
-    },
-    {
-      "name": "Change Requested",
-      "default": null
+      "description": "Date when the problem is due to be solved",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "problem"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "problemId",
@@ -645,42 +620,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the problem to delete",
-      "required": true
-    },
-    {
-      "name": "due_by",
-      "displayName": "Due By",
-      "type": "dateTime",
-      "default": "",
-      "description": "Date when the problem is due to be solved"
-    },
-    {
-      "name": "manufacturer",
-      "displayName": "Manufacturer",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "mode_of_procurement",
-      "displayName": "Mode of Procurement",
-      "type": "options",
-      "default": "Buy"
-    },
-    {
-      "name": "Lease",
-      "default": null
-    },
-    {
-      "name": "Both",
-      "default": null
-    },
-    {
-      "name": "In Pipeline",
-      "default": null
-    },
-    {
-      "name": "Retired",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "problem"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "productId",
@@ -688,29 +638,123 @@
       "type": "string",
       "default": "",
       "description": "ID of the product to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "product"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "releaseType",
       "displayName": "Release Type",
       "type": "options",
-      "default": 1
+      "default": 1,
+      "options": [
+        {
+          "name": "Minor",
+          "value": 1
+        },
+        {
+          "name": "Standard",
+          "value": 2
+        },
+        {
+          "name": "Major",
+          "value": 3
+        },
+        {
+          "name": "Emergency",
+          "value": 4
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "release"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
-      "name": "On Hold",
-      "default": null
+      "name": "priority",
+      "displayName": "Priority",
+      "type": "options",
+      "default": 1,
+      "options": [
+        {
+          "name": "Low",
+          "value": 1
+        },
+        {
+          "name": "Medium",
+          "value": 2
+        },
+        {
+          "name": "High",
+          "value": 3
+        },
+        {
+          "name": "Urgent",
+          "value": 4
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "release"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
-      "name": "In Progress",
-      "default": null
-    },
-    {
-      "name": "Incomplete",
-      "default": null
-    },
-    {
-      "name": "Completed",
-      "default": null
+      "name": "status",
+      "displayName": "Status",
+      "type": "options",
+      "default": 1,
+      "options": [
+        {
+          "name": "Open",
+          "value": 1
+        },
+        {
+          "name": "On Hold",
+          "value": 2
+        },
+        {
+          "name": "In Progress",
+          "value": 3
+        },
+        {
+          "name": "Incomplete",
+          "value": 4
+        },
+        {
+          "name": "Completed",
+          "value": 5
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "release"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "releaseId",
@@ -718,32 +762,33 @@
       "type": "string",
       "default": "",
       "description": "ID of the release to delete",
-      "required": true
-    },
-    {
-      "name": "release_type",
-      "displayName": "Release Type",
-      "type": "options",
-      "default": 1
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "release"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "primaryEmail",
       "displayName": "Primary Email",
       "type": "string",
-      "default": ""
-    },
-    {
-      "name": "secondary_emails",
-      "displayName": "Secondary Emails",
-      "type": "string",
       "default": "",
-      "description": "Comma-separated secondary emails associated with the requester"
-    },
-    {
-      "name": "primary_email",
-      "displayName": "Primary Email",
-      "type": "string",
-      "default": ""
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "requester"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "requesterGroupId",
@@ -751,40 +796,48 @@
       "type": "string",
       "default": "",
       "description": "ID of the requester group to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "requesterGroup"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "applicationType",
       "displayName": "Application Type",
       "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "Mobile",
-      "default": null
-    },
-    {
-      "name": "SaaS",
-      "default": null
-    },
-    {
-      "name": "notes",
-      "displayName": "Notes",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Ignored",
-      "default": null
-    },
-    {
-      "name": "Needs Review",
-      "default": null
-    },
-    {
-      "name": "Restricted",
-      "default": null
+      "default": "desktop",
+      "required": true,
+      "options": [
+        {
+          "name": "Desktop",
+          "value": "desktop"
+        },
+        {
+          "name": "Mobile",
+          "value": "mobile"
+        },
+        {
+          "name": "SaaS",
+          "value": "saas"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "software"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "softwareId",
@@ -792,15 +845,34 @@
       "type": "string",
       "default": "",
       "description": "ID of the software application to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "software"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
-      "name": "Pending",
-      "default": null
-    },
-    {
-      "name": "Resolved",
-      "default": null
+      "name": "description",
+      "displayName": "Description",
+      "type": "string",
+      "default": "",
+      "description": "HTML supported",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "ticket"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "ticketId",
@@ -808,82 +880,85 @@
       "type": "string",
       "default": "",
       "description": "ID of the ticket to delete",
-      "required": true
-    },
-    {
-      "name": "created_at",
-      "displayName": "Created On",
-      "type": "dateTime",
-      "default": "",
-      "description": "Date when the ticket was created"
-    },
-    {
-      "name": "phone",
-      "displayName": "Phone",
-      "type": "string",
-      "default": ""
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "ticket"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Agent Group",
-      "default": null
-    },
-    {
-      "name": "Agent Role",
-      "default": null
-    },
-    {
-      "name": "Announcement",
-      "default": null
-    },
-    {
-      "name": "Asset Type",
-      "default": null
-    },
-    {
-      "name": "Change",
-      "default": null
-    },
-    {
-      "name": "Department",
-      "default": null
-    },
-    {
-      "name": "Location",
-      "default": null
-    },
-    {
-      "name": "Problem",
-      "default": null
-    },
-    {
-      "name": "Product",
-      "default": null
-    },
-    {
-      "name": "Release",
-      "default": null
-    },
-    {
-      "name": "Requester",
-      "default": null
-    },
-    {
-      "name": "Requester Group",
-      "default": null
-    },
-    {
-      "name": "Software",
-      "default": null
-    },
-    {
-      "name": "Ticket",
-      "default": null
+      "default": "agent",
+      "options": [
+        {
+          "name": "Agent",
+          "value": "agent"
+        },
+        {
+          "name": "Agent Group",
+          "value": "agentGroup"
+        },
+        {
+          "name": "Agent Role",
+          "value": "agentRole"
+        },
+        {
+          "name": "Announcement",
+          "value": "announcement"
+        },
+        {
+          "name": "Asset Type",
+          "value": "assetType"
+        },
+        {
+          "name": "Change",
+          "value": "change"
+        },
+        {
+          "name": "Department",
+          "value": "department"
+        },
+        {
+          "name": "Location",
+          "value": "location"
+        },
+        {
+          "name": "Problem",
+          "value": "problem"
+        },
+        {
+          "name": "Product",
+          "value": "product"
+        },
+        {
+          "name": "Release",
+          "value": "release"
+        },
+        {
+          "name": "Requester",
+          "value": "requester"
+        },
+        {
+          "name": "Requester Group",
+          "value": "requesterGroup"
+        },
+        {
+          "name": "Software",
+          "value": "software"
+        },
+        {
+          "name": "Ticket",
+          "value": "ticket"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -895,5 +970,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

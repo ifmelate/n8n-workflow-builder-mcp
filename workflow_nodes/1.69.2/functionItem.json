@@ -15,8 +15,25 @@
       "displayName": "JavaScript Code",
       "type": "string",
       "default": null,
-      "description": "The JavaScript code to execute for each item"
+      "description": "The JavaScript code to execute for each item",
+      "typeOptions": {
+        "rows": 10
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

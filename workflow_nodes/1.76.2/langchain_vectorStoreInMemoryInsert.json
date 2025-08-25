@@ -25,5 +25,26 @@
       "description": "The key to use to store the vector memory in the workflow data. The key will be prefixed with the workflow ID to avoid collisions."
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "vectorStore",
+    "requires": [
+      "AiDocument"
+    ],
+    "optional": [
+      "AiEmbedding"
+    ],
+    "consumedBy": [
+      "AiRetriever",
+      "AiTool"
+    ],
+    "consumes": [],
+    "produces": []
+  }
 }

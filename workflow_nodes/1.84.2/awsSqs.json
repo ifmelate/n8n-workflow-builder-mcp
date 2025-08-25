@@ -8,8 +8,15 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Send a message to a queue"
+      "default": "sendMessage",
+      "description": "Send a message to a queue",
+      "options": [
+        {
+          "name": "Send Message",
+          "value": "sendMessage",
+          "description": "Send a message to a queue"
+        }
+      ]
     },
     {
       "name": "queue",
@@ -18,19 +25,32 @@
       "default": "",
       "description": "Queue to send a message to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
       "required": true,
-      "options": []
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendMessage"
+          ]
+        }
+      }
     },
     {
       "name": "queueType",
       "displayName": "Queue Type",
       "type": "options",
-      "default": null,
-      "description": "FIFO SQS queue"
-    },
-    {
-      "name": "Standard",
-      "default": null,
-      "description": "Standard SQS queue"
+      "default": "standard",
+      "description": "FIFO SQS queue",
+      "options": [
+        {
+          "name": "FIFO",
+          "value": "fifo",
+          "description": "FIFO SQS queue"
+        },
+        {
+          "name": "Standard",
+          "value": "standard",
+          "description": "Standard SQS queue"
+        }
+      ]
     },
     {
       "name": "sendInputData",
@@ -45,7 +65,17 @@
       "type": "string",
       "default": "",
       "description": "Message to send to the queue",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendMessage"
+          ],
+          "sendInputData": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "messageGroupId",
@@ -53,7 +83,14 @@
       "type": "string",
       "default": "",
       "description": "Tag that specifies that a message belongs to a specific message group. Applies only to FIFO (first-in-first-out) queues.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "queueType": [
+            "fifo"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -61,50 +98,18 @@
       "type": "collection",
       "default": {},
       "description": "How long, in seconds, to delay a message for",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "messageAttributes",
-      "displayName": "Message Attributes",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Attributes to set",
-      "placeholder": "Add Attribute"
-    },
-    {
-      "name": "dataPropertyName",
-      "displayName": "Property Name",
-      "type": "string",
-      "default": "data",
-      "description": "Name of the binary property which contains the data for the message attribute"
-    },
-    {
-      "name": "number",
-      "displayName": "Number",
-      "type": "string",
-      "default": "",
-      "description": "Name of the attribute"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "number",
-      "default": 0,
-      "description": "Number value of the attribute"
-    },
-    {
-      "name": "string",
-      "displayName": "String",
-      "type": "string",
-      "default": "",
-      "description": "Name of the attribute"
-    },
-    {
-      "name": "messageDeduplicationId",
-      "displayName": "Message Deduplication ID",
-      "type": "string",
-      "default": "",
-      "description": "Token used for deduplication of sent messages. Applies only to FIFO (first-in-first-out) queues."
+      "placeholder": "Add option",
+      "typeOptions": {
+        "minValue": 0,
+        "maxValue": 900
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendMessage"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -136,5 +141,19 @@
       "name": "messageDeduplicationId",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -22,8 +22,39 @@
       "type": "collection",
       "default": {},
       "description": "Whether to ignore SSL/TLS certificate issues or not",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "ignoreSSL",
+          "displayName": "Ignore SSL Issues (Insecure)",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to ignore SSL/TLS certificate issues or not"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

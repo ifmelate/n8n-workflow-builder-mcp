@@ -17,65 +17,91 @@
       "displayName": "Content",
       "type": "string",
       "default": "",
-      "placeholder": "Hello World!"
+      "placeholder": "Hello World!",
+      "typeOptions": {
+        "maxValue": 2000
+      }
     },
     {
       "name": "options",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add option"
-    },
-    {
-      "name": "attachments",
-      "displayName": "Attachments",
-      "type": "json",
-      "default": ""
-    },
-    {
-      "name": "avatarUrl",
-      "displayName": "Avatar URL",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "components",
-      "displayName": "Components",
-      "type": "json",
-      "default": ""
-    },
-    {
-      "name": "embeds",
-      "displayName": "Embeds",
-      "type": "json",
-      "default": ""
-    },
-    {
-      "name": "flags",
-      "displayName": "Flags",
-      "type": "number",
-      "default": ""
-    },
-    {
-      "name": "payloadJson",
-      "displayName": "JSON Payload",
-      "type": "json",
-      "default": ""
-    },
-    {
-      "name": "username",
-      "displayName": "Username",
-      "type": "string",
-      "default": "",
-      "placeholder": "User"
-    },
-    {
-      "name": "tts",
-      "displayName": "TTS",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether this message be sent as a Text To Speech message"
+      "description": "Whether this message be sent as a Text To Speech message",
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "allowedMentions",
+          "displayName": "Allowed Mentions",
+          "type": "json",
+          "default": ""
+        },
+        {
+          "name": "attachments",
+          "displayName": "Attachments",
+          "type": "json",
+          "default": ""
+        },
+        {
+          "name": "avatarUrl",
+          "displayName": "Avatar URL",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "components",
+          "displayName": "Components",
+          "type": "json",
+          "default": ""
+        },
+        {
+          "name": "embeds",
+          "displayName": "Embeds",
+          "type": "json",
+          "default": ""
+        },
+        {
+          "name": "flags",
+          "displayName": "Flags",
+          "type": "number",
+          "default": ""
+        },
+        {
+          "name": "payloadJson",
+          "displayName": "JSON Payload",
+          "type": "json",
+          "default": ""
+        },
+        {
+          "name": "username",
+          "displayName": "Username",
+          "type": "string",
+          "default": "",
+          "placeholder": "User"
+        },
+        {
+          "name": "tts",
+          "displayName": "TTS",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether this message be sent as a Text To Speech message"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

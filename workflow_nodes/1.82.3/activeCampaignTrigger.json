@@ -9,30 +9,36 @@
       "displayName": "Event Names or IDs",
       "type": "multiOptions",
       "default": [],
-      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "options": []
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
     },
     {
       "name": "sources",
       "displayName": "Source",
       "type": "multiOptions",
-      "default": null,
-      "description": "Run the hooks when a contact triggers the action"
-    },
-    {
-      "name": "Admin",
-      "default": null,
-      "description": "Run the hooks when an admin user triggers the action"
-    },
-    {
-      "name": "Api",
-      "default": null,
-      "description": "Run the hooks when an API call triggers the action"
-    },
-    {
-      "name": "System",
-      "default": null,
-      "description": "Run the hooks when automated systems triggers the action"
+      "default": [],
+      "description": "Run the hooks when a contact triggers the action",
+      "options": [
+        {
+          "name": "Public",
+          "value": "public",
+          "description": "Run the hooks when a contact triggers the action"
+        },
+        {
+          "name": "Admin",
+          "value": "admin",
+          "description": "Run the hooks when an admin user triggers the action"
+        },
+        {
+          "name": "Api",
+          "value": "api",
+          "description": "Run the hooks when an API call triggers the action"
+        },
+        {
+          "name": "System",
+          "value": "system",
+          "description": "Run the hooks when automated systems triggers the action"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -48,5 +54,19 @@
       "name": "events",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

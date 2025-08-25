@@ -12,38 +12,75 @@
       "name": "apiVersion",
       "displayName": "API Version",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "3",
-      "default": null
-    },
-    {
-      "name": "4",
-      "default": null
+      "default": 1,
+      "description": "Which Mindee API Version to use",
+      "options": [
+        {
+          "name": "1",
+          "value": 1
+        },
+        {
+          "name": "3",
+          "value": 3
+        },
+        {
+          "name": "4",
+          "value": 4
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Receipt",
-      "default": null
+      "default": "receipt",
+      "options": [
+        {
+          "name": "Invoice",
+          "value": "invoice"
+        },
+        {
+          "name": "Receipt",
+          "value": "receipt"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
+      "default": "predict",
+      "options": [
+        {
+          "name": "Predict",
+          "value": "predict"
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
       "displayName": "Input Binary Field",
       "type": "string",
       "default": "data",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "predict"
+          ],
+          "resource": [
+            "receipt",
+            "invoice"
+          ]
+        }
+      }
     },
     {
       "name": "rawData",
@@ -82,5 +119,19 @@
       "name": "binaryPropertyName",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

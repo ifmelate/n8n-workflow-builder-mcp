@@ -8,7 +8,17 @@
       "name": "jsonParameters",
       "displayName": "JSON Parameters",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "email",
@@ -16,240 +26,170 @@
       "type": "string",
       "default": "",
       "description": "Email address of the contact",
-      "placeholder": "name@email.com"
+      "placeholder": "name@email.com",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "firstName",
       "displayName": "First Name",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "lastName",
       "displayName": "Last Name",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "company",
       "displayName": "Primary Company Name or ID",
       "type": "options",
       "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "position",
       "displayName": "Position",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "title",
       "displayName": "Title",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "bodyJson",
       "displayName": "Body",
       "type": "json",
       "default": "",
-      "description": "Contact parameters"
+      "description": "Contact parameters",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "contact"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field",
-      "typeOptions": {
-        "multipleValues": true
-      }
-    },
-    {
-      "name": "address2",
-      "displayName": "Address Line 2",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "city",
-      "displayName": "City",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "state",
-      "displayName": "State",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "country",
-      "displayName": "Country",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "zipCode",
-      "displayName": "Zip Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "b2bOrb2c",
-      "displayName": "B2B or B2C",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "B2C",
-      "default": null
-    },
-    {
-      "name": "crmId",
-      "displayName": "CRM ID",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "customFieldsUi",
-      "displayName": "Custom Fields",
-      "type": "fixedCollection",
-      "default": {},
       "description": "Adds a custom fields to set also values which have not been predefined",
-      "placeholder": "Add Custom Fields"
-    },
-    {
-      "name": "fieldValue",
-      "displayName": "Field Value",
-      "type": "string",
-      "default": "",
-      "description": "Value of the field to set"
-    },
-    {
-      "name": "fax",
-      "displayName": "Fax",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "hasPurchased",
-      "displayName": "Has Purchased",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "ipAddress",
-      "displayName": "IP Address",
-      "type": "string",
-      "default": "",
-      "description": "IP address to associate with the contact"
-    },
-    {
-      "name": "lastActive",
-      "displayName": "Last Active",
-      "type": "dateTime",
-      "default": "",
-      "description": "Date/time in UTC;"
-    },
-    {
-      "name": "mobile",
-      "displayName": "Mobile",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "ownerId",
-      "displayName": "Owner ID",
-      "type": "string",
-      "default": "",
-      "description": "ID of a Mautic user to assign this contact to"
-    },
-    {
-      "name": "phone",
-      "displayName": "Phone",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "prospectOrCustomer",
-      "displayName": "Prospect or Customer",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Customer",
-      "default": null
-    },
-    {
-      "name": "sandbox",
-      "displayName": "Sandbox",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "stage",
-      "displayName": "Stage Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "tags",
-      "displayName": "Tag Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "socialMediaUi",
-      "displayName": "Social Media",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Social Media"
-    },
-    {
-      "name": "foursquare",
-      "displayName": "Foursquare",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "instagram",
-      "displayName": "Instagram",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "linkedIn",
-      "displayName": "LinkedIn",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "skype",
-      "displayName": "Skype",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "twitter",
-      "displayName": "Twitter",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "website",
-      "displayName": "Website",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "contactId",
       "displayName": "Contact ID",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -257,57 +197,103 @@
       "type": "collection",
       "default": {},
       "description": "Contact parameters",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "addressUi",
-      "displayName": "Address",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Address"
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "action",
       "displayName": "Action",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Remove",
-      "default": null
+      "default": "add",
+      "options": [
+        {
+          "name": "Add",
+          "value": "add"
+        },
+        {
+          "name": "Remove",
+          "value": "remove"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "editDoNotContactList"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "channel",
       "displayName": "Channel",
       "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "SMS",
-      "default": null
-    },
-    {
-      "name": "Bounced",
-      "default": null
-    },
-    {
-      "name": "Manual",
-      "default": null
-    },
-    {
-      "name": "comments",
-      "displayName": "Comments",
-      "type": "string",
-      "default": "",
-      "description": "A text describing details of Do Not Contact entry"
+      "default": "email",
+      "required": true,
+      "options": [
+        {
+          "name": "Email",
+          "value": "email"
+        },
+        {
+          "name": "SMS",
+          "value": "sms"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "editDoNotContactList"
+          ]
+        }
+      }
     },
     {
       "name": "points",
       "displayName": "Points",
       "type": "number",
       "default": 0,
-      "description": "Whether to return all results or only up to a given limit"
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "editContactPoint"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
@@ -315,45 +301,38 @@
       "type": "number",
       "default": 30,
       "description": "Max number of results to return",
-      "placeholder": "Add option"
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 30
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
-      "name": "orderBy",
-      "displayName": "Order By",
-      "type": "string",
-      "default": "",
-      "description": "Column to sort by. Can use any column listed in the response."
-    },
-    {
-      "name": "orderByDir",
-      "displayName": "Order By Dir",
-      "type": "options",
-      "default": ""
-    },
-    {
-      "name": "DESC",
-      "default": null
-    },
-    {
-      "name": "publishedOnly",
-      "displayName": "Published Only",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return currently published entities"
-    },
-    {
-      "name": "minimal",
-      "displayName": "Minimal",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return array of entities without additional lists in it"
-    },
-    {
-      "name": "rawData",
-      "displayName": "RAW Data",
-      "type": "boolean",
-      "default": true,
-      "description": "By default only the data of the fields get returned. If this options gets set the RAW response with all data gets returned."
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "String or search command to filter entities by",
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "campaignEmailId",
@@ -361,49 +340,73 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "sendEmail"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a new contact"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a contact"
-    },
-    {
-      "name": "Edit Contact Points",
-      "default": null,
-      "description": "Edit contact's points"
-    },
-    {
-      "name": "Edit Do Not Contact List",
-      "default": null,
-      "description": "Add/remove contacts from/to the do not contact list"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get data of a contact"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get data of many contacts"
-    },
-    {
-      "name": "Send Email",
-      "default": null,
-      "description": "Send email to contact"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a contact"
+      "default": "create",
+      "description": "Create a new contact",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new contact"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a contact"
+        },
+        {
+          "name": "Edit Contact Points",
+          "value": "editContactPoint",
+          "description": "Edit contact's points"
+        },
+        {
+          "name": "Edit Do Not Contact List",
+          "value": "editDoNotContactList",
+          "description": "Add/remove contacts from/to the do not contact list"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get data of a contact"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get data of many contacts"
+        },
+        {
+          "name": "Send Email",
+          "value": "sendEmail",
+          "description": "Send email to contact"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a contact"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "segmentEmailId",
@@ -411,79 +414,68 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "segmentEmail"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "name",
       "displayName": "Company Name",
       "type": "string",
       "default": "",
-      "description": "The name of the company to create"
+      "description": "The name of the company to create",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "simple",
       "displayName": "Simplify",
       "type": "boolean",
       "default": true,
-      "description": "Whether to return a simplified version of the response instead of the raw data"
-    },
-    {
-      "name": "annualRevenue",
-      "displayName": "Annual Revenue",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "companyEmail",
-      "displayName": "Company Email",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "industry",
-      "displayName": "Industry Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "isPublished",
-      "displayName": "Is Published",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "numberOfEmpoyees",
-      "displayName": "Number of Employees",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "overwriteWithBlank",
-      "displayName": "Overwrite With Blank",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether empty values are set to fields. Otherwise empty values are skipped."
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "companyId",
       "displayName": "Company ID",
       "type": "string",
       "default": "",
-      "description": "The ID of the company to update"
-    },
-    {
-      "name": "search",
-      "displayName": "Search",
-      "type": "string",
-      "default": "",
-      "description": "String or search command to filter entities by"
+      "description": "The ID of the company to update",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "company"
+          ]
+        }
+      }
     },
     {
       "name": "segmentId",
@@ -491,7 +483,18 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contactSegment"
+          ],
+          "operation": [
+            "add",
+            "remove"
+          ]
+        }
+      }
     },
     {
       "name": "campaignId",
@@ -499,49 +502,73 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "campaignContact"
+          ],
+          "operation": [
+            "add",
+            "remove"
+          ]
+        }
+      }
     },
     {
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "credentials",
+      "options": [
+        {
+          "name": "Credentials",
+          "value": "credentials"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "description": "Add/remove contacts to/from a campaign"
-    },
-    {
-      "name": "Company",
-      "default": null,
-      "description": "Create or modify a company"
-    },
-    {
-      "name": "Company Contact",
-      "default": null,
-      "description": "Add/remove contacts to/from a company"
-    },
-    {
-      "name": "Contact",
-      "default": null,
-      "description": "Create & modify contacts"
-    },
-    {
-      "name": "Contact Segment",
-      "default": null,
-      "description": "Add/remove contacts to/from a segment"
-    },
-    {
-      "name": "Segment Email",
-      "default": null,
-      "description": "Send an email"
+      "default": "contact",
+      "description": "Add/remove contacts to/from a campaign",
+      "options": [
+        {
+          "name": "Campaign Contact",
+          "value": "campaignContact",
+          "description": "Add/remove contacts to/from a campaign"
+        },
+        {
+          "name": "Company",
+          "value": "company",
+          "description": "Create or modify a company"
+        },
+        {
+          "name": "Company Contact",
+          "value": "companyContact",
+          "description": "Add/remove contacts to/from a company"
+        },
+        {
+          "name": "Contact",
+          "value": "contact",
+          "description": "Create & modify contacts"
+        },
+        {
+          "name": "Contact Segment",
+          "value": "contactSegment",
+          "description": "Add/remove contacts to/from a segment"
+        },
+        {
+          "name": "Segment Email",
+          "value": "segmentEmail",
+          "description": "Send an email"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -557,5 +584,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

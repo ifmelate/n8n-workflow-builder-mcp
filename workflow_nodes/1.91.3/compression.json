@@ -11,13 +11,20 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Compress files into a zip or gzip archive"
-    },
-    {
-      "name": "Decompress",
-      "default": null,
-      "description": "Decompress zip or gzip archives"
+      "default": "decompress",
+      "description": "Compress files into a zip or gzip archive",
+      "options": [
+        {
+          "name": "Compress",
+          "value": "compress",
+          "description": "Compress files into a zip or gzip archive"
+        },
+        {
+          "name": "Decompress",
+          "value": "decompress",
+          "description": "Decompress zip or gzip archives"
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -26,17 +33,41 @@
       "default": "data",
       "description": "To process more than one file, use a comma-separated list of the binary fields names",
       "placeholder": "e.g. data,data2,data3",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "compress"
+          ]
+        }
+      }
     },
     {
       "name": "outputFormat",
       "displayName": "Output Format",
       "type": "options",
-      "default": ""
-    },
-    {
-      "name": "Zip",
-      "default": null
+      "default": "",
+      "description": "Format of the output",
+      "options": [
+        {
+          "name": "Gzip",
+          "value": "gzip"
+        },
+        {
+          "name": "Zip",
+          "value": "zip"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "compress"
+          ],
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "fileName",
@@ -45,13 +76,33 @@
       "default": "",
       "description": "Name of the output file",
       "placeholder": "e.g. data.zip",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "compress"
+          ],
+          "outputFormat": [
+            "zip"
+          ]
+        }
+      }
     },
     {
       "name": "binaryPropertyOutput",
       "displayName": "Put Output File in Field",
       "type": "string",
-      "default": "data"
+      "default": "data",
+      "displayOptions": {
+        "show": {
+          "outputFormat": [
+            "zip"
+          ],
+          "operation": [
+            "compress"
+          ]
+        }
+      }
     },
     {
       "name": "outputPrefix",
@@ -59,8 +110,43 @@
       "type": "string",
       "default": "data",
       "description": "Prefix to add to the gzip file",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "compress"
+          ],
+          "outputFormat": [
+            "gzip"
+          ],
+          "@version": [
+            1
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

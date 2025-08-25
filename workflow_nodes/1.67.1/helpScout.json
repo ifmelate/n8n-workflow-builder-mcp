@@ -10,22 +10,49 @@
       "type": "options",
       "default": "",
       "description": "ID of a mailbox where the conversation is being created. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "conversation"
+          ]
+        }
+      }
     },
     {
       "name": "status",
       "displayName": "Status",
       "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "Closed",
-      "default": null
-    },
-    {
-      "name": "Pending",
-      "default": null
+      "default": "",
+      "description": "Conversation status",
+      "required": true,
+      "options": [
+        {
+          "name": "Active",
+          "value": "active"
+        },
+        {
+          "name": "Closed",
+          "value": "closed"
+        },
+        {
+          "name": "Pending",
+          "value": "pending"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "conversation"
+          ]
+        }
+      }
     },
     {
       "name": "subject",
@@ -33,29 +60,66 @@
       "type": "string",
       "default": "",
       "description": "Conversation’s subject",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "conversation"
+          ]
+        }
+      }
     },
     {
       "name": "type",
       "displayName": "Type",
       "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "Email",
-      "default": null
-    },
-    {
-      "name": "Phone",
-      "default": null
+      "default": "",
+      "description": "Conversation type",
+      "required": true,
+      "options": [
+        {
+          "name": "Chat",
+          "value": "chat"
+        },
+        {
+          "name": "Email",
+          "value": "email"
+        },
+        {
+          "name": "Phone",
+          "value": "phone"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "conversation"
+          ]
+        }
+      }
     },
     {
       "name": "resolveData",
       "displayName": "Resolve Data",
       "type": "boolean",
       "default": true,
-      "description": "By default the response only contain the ID to resource. If this option gets activated, it will resolve the data automatically."
+      "description": "By default the response only contain the ID to resource. If this option gets activated, it will resolve the data automatically.",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "conversation"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -63,123 +127,144 @@
       "type": "collection",
       "default": {},
       "description": "The Help Scout user assigned to the conversation",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "autoReply",
-      "displayName": "Auto Reply",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether set to true, an auto reply will be sent as long as there is at least one customer thread in the conversation"
-    },
-    {
-      "name": "closedAt",
-      "displayName": "Closed At",
-      "type": "dateTime",
-      "default": "",
-      "description": "When the conversation was closed, only applicable for imported conversations"
-    },
-    {
-      "name": "createdAt",
-      "displayName": "Created At",
-      "type": "dateTime",
-      "default": "",
-      "description": "When this conversation was created - ISO 8601 date time"
-    },
-    {
-      "name": "customerEmail",
-      "displayName": "Customer Email",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "customerId",
-      "displayName": "Customer ID",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "imported",
-      "displayName": "Imported",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether set to true, no outgoing emails or notifications will be generated"
-    },
-    {
-      "name": "tags",
-      "displayName": "Tag Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "List of tags to be added to the conversation. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "user",
-      "displayName": "User ID",
-      "type": "number",
-      "default": 0,
-      "description": "ID of the user who is adding the conversation and threads"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "assignTo",
+          "displayName": "Assign To",
+          "type": "number",
+          "default": 0,
+          "description": "The Help Scout user assigned to the conversation"
+        },
+        {
+          "name": "autoReply",
+          "displayName": "Auto Reply",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether set to true, an auto reply will be sent as long as there is at least one customer thread in the conversation"
+        },
+        {
+          "name": "closedAt",
+          "displayName": "Closed At",
+          "type": "dateTime",
+          "default": "",
+          "description": "When the conversation was closed, only applicable for imported conversations"
+        },
+        {
+          "name": "createdAt",
+          "displayName": "Created At",
+          "type": "dateTime",
+          "default": "",
+          "description": "When this conversation was created - ISO 8601 date time"
+        },
+        {
+          "name": "customerEmail",
+          "displayName": "Customer Email",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "customerId",
+          "displayName": "Customer ID",
+          "type": "number",
+          "default": 0
+        },
+        {
+          "name": "imported",
+          "displayName": "Imported",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether set to true, no outgoing emails or notifications will be generated"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "conversation"
+          ]
+        }
+      }
     },
     {
       "name": "threadsUi",
       "displayName": "Threads",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Thread"
-    },
-    {
-      "name": "Customer",
-      "default": null
-    },
-    {
-      "name": "Note",
-      "default": null
-    },
-    {
-      "name": "Reply",
-      "default": null
-    },
-    {
-      "name": "text",
-      "displayName": "Text",
-      "type": "string",
-      "default": "",
-      "description": "The message text"
-    },
-    {
-      "name": "bcc",
-      "displayName": "Bcc",
-      "type": "['customer']",
-      "default": [],
-      "description": "Email addresses"
-    },
-    {
-      "name": "cc",
-      "displayName": "Cc",
-      "type": "['customer']",
-      "default": [],
-      "description": "Email addresses"
-    },
-    {
-      "name": "draft",
-      "displayName": "Draft",
-      "type": "['reply']",
-      "default": false,
-      "description": "Whether true, a draft reply is created"
+      "description": "The message text",
+      "placeholder": "Add Thread",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "conversation"
+          ]
+        }
+      }
     },
     {
       "name": "conversationId",
       "displayName": "Conversation ID",
       "type": "string",
       "default": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "conversation"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
       "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "conversation"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "conversation"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -187,348 +272,167 @@
       "type": "collection",
       "default": {},
       "description": "Filters conversations by assignee ID",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "embed",
-      "displayName": "Embed",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "folder",
-      "displayName": "Folder ID",
-      "type": "string",
-      "default": "",
-      "description": "Filters conversations from a specific folder ID"
-    },
-    {
-      "name": "mailbox",
-      "displayName": "Mailbox ID",
-      "type": "string",
-      "default": "",
-      "description": "Filters conversations from a specific mailbox"
-    },
-    {
-      "name": "modifiedSince",
-      "displayName": "Modified Since",
-      "type": "dateTime",
-      "default": "",
-      "description": "Returns only conversations that were modified after this date"
-    },
-    {
-      "name": "number",
-      "displayName": "Number",
-      "type": "number",
-      "default": 0,
-      "description": "Looks up conversation by conversation number"
-    },
-    {
-      "name": "query",
-      "displayName": "Query",
-      "type": "string",
-      "default": "",
-      "description": "Advanced search <a href=\"https://developer.helpscout.com/mailbox-api/endpoints/conversations/list/#query\">Examples</a>"
-    },
-    {
-      "name": "sortField",
-      "displayName": "Sort Field",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Customer Email",
-      "default": null
-    },
-    {
-      "name": "Customer Name",
-      "default": null
-    },
-    {
-      "name": "Mailbox ID",
-      "default": null
-    },
-    {
-      "name": "Modified At",
-      "default": null
-    },
-    {
-      "name": "Number",
-      "default": null
-    },
-    {
-      "name": "Score",
-      "default": null
-    },
-    {
-      "name": "Status",
-      "default": null
-    },
-    {
-      "name": "Subject",
-      "default": null
-    },
-    {
-      "name": "sortOrder",
-      "displayName": "Sort Order",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "DESC",
-      "default": null
-    },
-    {
-      "name": "All",
-      "default": null
-    },
-    {
-      "name": "Open",
-      "default": null
-    },
-    {
-      "name": "Spam",
-      "default": null
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "assignTo",
+          "displayName": "Assign To",
+          "type": "number",
+          "default": 0,
+          "description": "Filters conversations by assignee ID"
+        }
+      ],
+      "typeOptions": {
+        "minValue": 0
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "conversation"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a new conversation"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a conversation"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a conversation"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many conversations"
-    },
-    {
-      "name": "firstName",
-      "displayName": "First Name",
-      "type": "string",
-      "default": "",
-      "description": "First name of the customer. When defined it must be between 1 and 40 characters."
-    },
-    {
-      "name": "gender",
-      "displayName": "Gender",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Male",
-      "default": null
-    },
-    {
-      "name": "Unknown",
-      "default": null
-    },
-    {
-      "name": "jobTitle",
-      "displayName": "Job Title",
-      "type": "string",
-      "default": "",
-      "description": "Job title. Max length 60 characters."
-    },
-    {
-      "name": "lastName",
-      "displayName": "Last Name",
-      "type": "string",
-      "default": "",
-      "description": "Last name of the customer"
-    },
-    {
-      "name": "location",
-      "displayName": "Location",
-      "type": "string",
-      "default": "",
-      "description": "Location of the customer"
-    },
-    {
-      "name": "background",
-      "displayName": "Notes",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "organization",
-      "displayName": "Organization",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "photoUrl",
-      "displayName": "Photo Url",
-      "type": "string",
-      "default": "",
-      "description": "URL of the customer’s photo"
+      "default": "create",
+      "description": "Create a new conversation",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new conversation"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a conversation"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a conversation"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many conversations"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "conversation"
+          ]
+        }
+      }
     },
     {
       "name": "addressUi",
       "displayName": "Address",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Address"
-    },
-    {
-      "name": "line2",
-      "displayName": "Line 2",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "city",
-      "displayName": "City",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "state",
-      "displayName": "State",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "country",
-      "displayName": "Country Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "postalCode",
-      "displayName": "Postal Code",
-      "type": "string",
-      "default": ""
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Address",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "customer"
+          ]
+        }
+      }
     },
     {
       "name": "chatsUi",
       "displayName": "Chat Handles",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Chat Handle"
-    },
-    {
-      "name": "Google Talk",
-      "default": null
-    },
-    {
-      "name": "ICQ",
-      "default": null
-    },
-    {
-      "name": "MSN",
-      "default": null
-    },
-    {
-      "name": "Other",
-      "default": null
-    },
-    {
-      "name": "QQ",
-      "default": null
-    },
-    {
-      "name": "Skype",
-      "default": null
-    },
-    {
-      "name": "XMPP",
-      "default": null
-    },
-    {
-      "name": "Yahoo",
-      "default": null
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Chat handle"
+      "description": "Chat type",
+      "placeholder": "Add Chat Handle",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "customer"
+          ]
+        }
+      }
     },
     {
       "name": "emailsUi",
       "displayName": "Emails",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Email"
-    },
-    {
-      "name": "Work",
-      "default": null
+      "description": "Location for this email address",
+      "placeholder": "Add Email",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "customer"
+          ]
+        }
+      }
     },
     {
       "name": "phonesUi",
       "displayName": "Phones",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Phone"
-    },
-    {
-      "name": "Home",
-      "default": null
-    },
-    {
-      "name": "Pager",
-      "default": null
+      "description": "Location for this phone",
+      "placeholder": "Add Phone",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "customer"
+          ]
+        }
+      }
     },
     {
       "name": "socialProfilesUi",
       "displayName": "Social Profiles",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Social Profile"
-    },
-    {
-      "name": "Facebook",
-      "default": null
-    },
-    {
-      "name": "Flickr",
-      "default": null
-    },
-    {
-      "name": "Forsquare",
-      "default": null
-    },
-    {
-      "name": "Google",
-      "default": null
-    },
-    {
-      "name": "Google Plus",
-      "default": null
-    },
-    {
-      "name": "Linkedin",
-      "default": null
-    },
-    {
-      "name": "Quora",
-      "default": null
-    },
-    {
-      "name": "Tungleme",
-      "default": null
-    },
-    {
-      "name": "Twitter",
-      "default": null
-    },
-    {
-      "name": "Youtube",
-      "default": null
+      "description": "Type of social profile",
+      "placeholder": "Add Social Profile",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "customer"
+          ]
+        }
+      }
     },
     {
       "name": "websitesUi",
@@ -536,22 +440,37 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Website URL",
-      "placeholder": "Add Website"
+      "placeholder": "Add Website",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "customer"
+          ]
+        }
+      }
     },
     {
-      "name": "returnAll",
-      "displayName": "Return All",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all results or only up to a given limit"
-    },
-    {
-      "name": "First Name",
-      "default": null
-    },
-    {
-      "name": "Last Name",
-      "default": null
+      "name": "customerId",
+      "displayName": "Customer ID",
+      "type": "string",
+      "default": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customer"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -559,61 +478,99 @@
       "type": "collection",
       "default": {},
       "description": "Customer’s age",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "age",
+          "displayName": "Age",
+          "type": "number",
+          "default": 1,
+          "description": "Customer’s age"
+        },
+        {
+          "name": "firstName",
+          "displayName": "First Name",
+          "type": "string",
+          "default": "",
+          "description": "First name of the customer. When defined it must be between 1 and 40 characters."
+        }
+      ],
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "customer"
+          ]
+        }
+      }
     },
     {
-      "name": "Properties",
-      "default": null,
-      "description": "Get customer property definitions"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a customer"
+      "name": "text",
+      "displayName": "Text",
+      "type": "string",
+      "default": "",
+      "description": "The chat text",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "thread"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "attachmentsUi",
       "displayName": "Attachments",
       "type": "fixedCollection",
-      "default": "",
+      "default": {},
       "description": "Attachment’s file name",
-      "placeholder": "Add Attachments"
-    },
-    {
-      "name": "mimeType",
-      "displayName": "Mime Type",
-      "type": "string",
-      "default": "",
-      "description": "Attachment’s mime type"
-    },
-    {
-      "name": "data",
-      "displayName": "Data",
-      "type": "string",
-      "default": "",
-      "description": "Base64-encoded stream of data",
-      "placeholder": "ZXhhbXBsZSBmaWxl"
-    },
-    {
-      "name": "attachmentsBinary",
-      "displayName": "Attachments Binary",
-      "type": "string",
-      "default": "data",
-      "description": "Name of the binary properties which contain data which should be added to email as attachment"
+      "placeholder": "Add Attachments",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "thread"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Mailbox",
-      "default": null
-    },
-    {
-      "name": "Thread",
-      "default": null
+      "default": "conversation",
+      "options": [
+        {
+          "name": "Conversation",
+          "value": "conversation"
+        },
+        {
+          "name": "Customer",
+          "value": "customer"
+        },
+        {
+          "name": "Mailbox",
+          "value": "mailbox"
+        },
+        {
+          "name": "Thread",
+          "value": "thread"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -625,5 +582,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

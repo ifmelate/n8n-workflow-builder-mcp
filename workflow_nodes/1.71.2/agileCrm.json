@@ -10,45 +10,133 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for a particular contact",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 20,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filterType",
       "displayName": "Filter",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Build Manually",
-      "default": null
-    },
-    {
-      "name": "JSON",
-      "default": null
+      "default": "none",
+      "options": [
+        {
+          "name": "None",
+          "value": "none"
+        },
+        {
+          "name": "Build Manually",
+          "value": "manual"
+        },
+        {
+          "name": "JSON",
+          "value": "json"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "matchType",
       "displayName": "Must Match",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "All Filters",
-      "default": null
+      "default": "anyFilter",
+      "options": [
+        {
+          "name": "Any Filter",
+          "value": "anyFilter"
+        },
+        {
+          "name": "All Filters",
+          "value": "allFilters"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "filterType": [
+            "manual"
+          ]
+        }
+      }
     },
     {
       "name": "simple",
       "displayName": "Simplify",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return a simplified version of the response instead of the raw data"
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -56,92 +144,115 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Any searchable field",
-      "placeholder": "Add Condition"
-    },
-    {
-      "name": "condition_type",
-      "displayName": "Condition Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Before",
-      "default": null
-    },
-    {
-      "name": "Between",
-      "default": null
-    },
-    {
-      "name": "Equals",
-      "default": null
-    },
-    {
-      "name": "Last",
-      "default": null
-    },
-    {
-      "name": "Not Equal",
-      "default": null
-    },
-    {
-      "name": "On",
-      "default": null
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "value2",
-      "displayName": "Value 2",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Condition",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "filterType": [
+            "manual"
+          ]
+        }
+      }
     },
     {
       "name": "jsonNotice",
       "displayName": "See <a href=\"https://github.com/agilecrm/rest-api#121-get-contacts-by-dynamic-filter\" target=\"_blank\">Agile CRM guide</a> to creating filters",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "filterType": [
+            "json"
+          ]
+        }
+      }
     },
     {
       "name": "filterJson",
       "displayName": "Filters (JSON)",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "filterType": [
+            "json"
+          ]
+        }
+      }
     },
     {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
-      "placeholder": "Add option"
-    },
-    {
-      "name": "Descending",
-      "default": null
-    },
-    {
-      "name": "field",
-      "displayName": "Field",
-      "type": "string",
-      "default": "",
-      "description": "The sorting field"
+      "description": "The sorting direction",
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "jsonParameters",
       "displayName": "JSON Parameters",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFieldsJson",
       "displayName": "Additional Fields",
       "type": "json",
       "default": "",
-      "description": "Object of values to set as described <a href=\"https://github.com/agilecrm/rest-api#1-contacts---companies-api\">here</a>"
+      "description": "Object of values to set as described <a href=\"https://github.com/agilecrm/rest-api#1-contacts---companies-api\">here</a>",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -153,250 +264,61 @@
       "required": true,
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
       }
-    },
-    {
-      "name": "Postal",
-      "default": null
-    },
-    {
-      "name": "Office",
-      "default": null
-    },
-    {
-      "name": "address",
-      "displayName": "Address",
-      "type": "string",
-      "default": "",
-      "description": "Full address",
-      "required": true
-    },
-    {
-      "name": "company",
-      "displayName": "Company",
-      "type": "string",
-      "default": "",
-      "description": "Company Name"
-    },
-    {
-      "name": "emailOptions",
-      "displayName": "Email",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Contact email",
-      "required": true
-    },
-    {
-      "name": "Personal",
-      "default": null
-    },
-    {
-      "name": "email",
-      "displayName": "Email",
-      "type": "string",
-      "default": "",
-      "placeholder": "name@email.com",
-      "required": true
-    },
-    {
-      "name": "firstName",
-      "displayName": "First Name",
-      "type": "string",
-      "default": "",
-      "description": "Contact first name"
-    },
-    {
-      "name": "lastName",
-      "displayName": "Last Name",
-      "type": "string",
-      "default": "",
-      "description": "Contact last name"
-    },
-    {
-      "name": "leadScore",
-      "displayName": "Lead Score",
-      "type": "number",
-      "default": "",
-      "description": "Lead score of contact"
-    },
-    {
-      "name": "starValue",
-      "displayName": "Star Value",
-      "type": "options",
-      "default": "",
-      "description": "Rating of contact (Max value 5). This is not applicable for companies."
-    },
-    {
-      "name": "1",
-      "default": null
-    },
-    {
-      "name": "2",
-      "default": null
-    },
-    {
-      "name": "3",
-      "default": null
-    },
-    {
-      "name": "4",
-      "default": null
-    },
-    {
-      "name": "5",
-      "default": null
-    },
-    {
-      "name": "phoneOptions",
-      "displayName": "Phone",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Contacts phone",
-      "required": true
-    },
-    {
-      "name": "Home Fax",
-      "default": null
-    },
-    {
-      "name": "Main",
-      "default": null
-    },
-    {
-      "name": "Mobile",
-      "default": null
-    },
-    {
-      "name": "Other",
-      "default": null
-    },
-    {
-      "name": "Work",
-      "default": null
-    },
-    {
-      "name": "Work Fax",
-      "default": null
-    },
-    {
-      "name": "number",
-      "displayName": "Number",
-      "type": "string",
-      "default": "",
-      "description": "Phone number",
-      "required": true
-    },
-    {
-      "name": "tags",
-      "displayName": "Tags",
-      "type": "string",
-      "default": [],
-      "description": "Unique identifiers added to contact, for easy management of contacts. This is not applicable for companies."
-    },
-    {
-      "name": "title",
-      "displayName": "Title",
-      "type": "string",
-      "default": "",
-      "description": "Professional title"
-    },
-    {
-      "name": "websiteOptions",
-      "displayName": "Website",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Contacts websites",
-      "required": true
-    },
-    {
-      "name": "Feed",
-      "default": null
-    },
-    {
-      "name": "Flickr",
-      "default": null
-    },
-    {
-      "name": "Github",
-      "default": null
-    },
-    {
-      "name": "Google Plus",
-      "default": null
-    },
-    {
-      "name": "LinkedIn",
-      "default": null
-    },
-    {
-      "name": "Skype",
-      "default": null
-    },
-    {
-      "name": "Twitter",
-      "default": null
-    },
-    {
-      "name": "URL",
-      "default": null
-    },
-    {
-      "name": "Xing",
-      "default": null
-    },
-    {
-      "name": "YouTube",
-      "default": null
-    },
-    {
-      "name": "url",
-      "displayName": "URL",
-      "type": "string",
-      "default": "",
-      "description": "Website URL",
-      "required": true
-    },
-    {
-      "name": "customProperties",
-      "displayName": "Custom Properties",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Property name",
-      "required": true
-    },
-    {
-      "name": "subtype",
-      "displayName": "Sub Type",
-      "type": "string",
-      "default": "",
-      "description": "Property sub type"
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a new contact"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a contact"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a contact"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many contacts"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update contact properties"
+      "default": "get",
+      "description": "Create a new contact",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new contact"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a contact"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a contact"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many contacts"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update contact properties"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "companyId",
@@ -404,21 +326,17 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for a particular company",
-      "required": true
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": "",
-      "description": "Company name"
-    },
-    {
-      "name": "phone",
-      "displayName": "Phone",
-      "type": "string",
-      "default": "",
-      "description": "Company phone"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "dealId",
@@ -426,15 +344,38 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for a particular deal",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deal"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
-      "name": "returnAll",
-      "displayName": "Return All",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "name": "closeDate",
+      "displayName": "Close Date",
+      "type": "dateTime",
+      "default": "",
+      "description": "Closing date of deal",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deal"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "expectedValue",
@@ -442,7 +383,24 @@
       "type": "number",
       "default": 1,
       "description": "Expected Value of deal",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "minValue": 0,
+        "maxValue": 1000000000000
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deal"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "milestone",
@@ -450,7 +408,41 @@
       "type": "string",
       "default": "",
       "description": "Milestone of deal",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deal"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of deal",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deal"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "probability",
@@ -458,36 +450,44 @@
       "type": "number",
       "default": 50,
       "description": "Expected probability",
-      "required": true
-    },
-    {
-      "name": "customData",
-      "displayName": "Custom Data",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Property name",
-      "required": true
-    },
-    {
-      "name": "contactIds",
-      "displayName": "Contact IDs",
-      "type": "string",
-      "default": [],
-      "description": "Unique contact identifiers"
+      "required": true,
+      "typeOptions": {
+        "minValue": 0,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deal"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Contact",
-      "default": null
-    },
-    {
-      "name": "Deal",
-      "default": null
+      "default": "contact",
+      "options": [
+        {
+          "name": "Company",
+          "value": "company"
+        },
+        {
+          "name": "Contact",
+          "value": "contact"
+        },
+        {
+          "name": "Deal",
+          "value": "deal"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -499,5 +499,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

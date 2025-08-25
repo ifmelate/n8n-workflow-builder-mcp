@@ -8,19 +8,25 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Channel Message (Beta)",
-      "default": null
-    },
-    {
-      "name": "Chat Message",
-      "default": null
-    },
-    {
-      "name": "Task",
-      "default": null
+      "default": "channel",
+      "options": [
+        {
+          "name": "Channel",
+          "value": "channel"
+        },
+        {
+          "name": "Channel Message (Beta)",
+          "value": "channelMessage"
+        },
+        {
+          "name": "Chat Message",
+          "value": "chatMessage"
+        },
+        {
+          "name": "Task",
+          "value": "task"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -32,5 +38,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -9,5 +9,37 @@
     1.3
   ],
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "AiLanguageModel"
+    ],
+    "outputs": [
+      "AiOutputParser"
+    ],
+    "outputNames": [
+      "Output Parser"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiChain",
+        "AiAgent"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "outputParser",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent",
+      "AiChain"
+    ],
+    "consumes": [
+      "AiLanguageModel"
+    ],
+    "produces": [
+      "AiOutputParser"
+    ]
+  }
 }

@@ -8,23 +8,57 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "document",
+      "options": [
+        {
+          "name": "Document",
+          "value": "document"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
+      "default": "analyzeSentiment",
+      "options": [
+        {
+          "name": "Analyze Sentiment",
+          "value": "analyzeSentiment"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ]
+        }
+      }
     },
     {
       "name": "source",
       "displayName": "Source",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Google Cloud Storage URI",
-      "default": null
+      "default": "content",
+      "description": "The source of the document: a string containing the content or a Google Cloud Storage URI",
+      "required": true,
+      "options": [
+        {
+          "name": "Content",
+          "value": "content"
+        },
+        {
+          "name": "Google Cloud Storage URI",
+          "value": "gcsContentUri"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyzeSentiment"
+          ]
+        }
+      }
     },
     {
       "name": "content",
@@ -32,7 +66,17 @@
       "type": "string",
       "default": "",
       "description": "The content of the input in string format. Cloud audit logging exempt since it is based on user data.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyzeSentiment"
+          ],
+          "source": [
+            "content"
+          ]
+        }
+      }
     },
     {
       "name": "gcsContentUri",
@@ -40,102 +84,32 @@
       "type": "string",
       "default": "",
       "description": "The Google Cloud Storage URI where the file content is located. This URI must be of the form: <code>gs://bucket_name/object_name</code>. For more details, see <a href=\"https://cloud.google.com/storage/docs/reference-uris.\">reference</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyzeSentiment"
+          ],
+          "source": [
+            "gcsContentUri"
+          ]
+        }
+      }
     },
     {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
-      "placeholder": "Add option"
-    },
-    {
-      "name": "Plain Text",
-      "default": null
-    },
-    {
-      "name": "encodingType",
-      "displayName": "Encoding Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "UTF-8",
-      "default": null
-    },
-    {
-      "name": "UTF-16",
-      "default": null
-    },
-    {
-      "name": "UTF-32",
-      "default": null
-    },
-    {
-      "name": "language",
-      "displayName": "Language",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Chinese (Simplified)",
-      "default": null
-    },
-    {
-      "name": "Chinese (Traditional)",
-      "default": null
-    },
-    {
-      "name": "Dutch",
-      "default": null
-    },
-    {
-      "name": "English",
-      "default": null
-    },
-    {
-      "name": "French",
-      "default": null
-    },
-    {
-      "name": "German",
-      "default": null
-    },
-    {
-      "name": "Indonesian",
-      "default": null
-    },
-    {
-      "name": "Italian",
-      "default": null
-    },
-    {
-      "name": "Japanese",
-      "default": null
-    },
-    {
-      "name": "Korean",
-      "default": null
-    },
-    {
-      "name": "Portuguese (Brazilian & Continental)",
-      "default": null
-    },
-    {
-      "name": "Spanish",
-      "default": null
-    },
-    {
-      "name": "Thai",
-      "default": null
-    },
-    {
-      "name": "Turkish",
-      "default": null
-    },
-    {
-      "name": "Vietnamese",
-      "default": null
+      "description": "The type of input document",
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyzeSentiment"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -167,5 +141,19 @@
       "name": "language",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

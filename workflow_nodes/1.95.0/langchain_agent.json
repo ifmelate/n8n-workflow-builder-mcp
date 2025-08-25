@@ -4,5 +4,25 @@
   "description": null,
   "version": "2",
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "agent",
+    "requires": [
+      "AiLanguageModel"
+    ],
+    "optional": [
+      "AiMemory",
+      "AiOutputParser",
+      "AiTool"
+    ],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

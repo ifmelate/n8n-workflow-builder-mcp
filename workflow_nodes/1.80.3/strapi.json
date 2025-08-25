@@ -10,7 +10,17 @@
       "type": "string",
       "default": "",
       "description": "Name of the content type",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "entry"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "columns",
@@ -19,7 +29,16 @@
       "default": "",
       "description": "Comma-separated list of the properties which should used as columns for the new rows",
       "placeholder": "id,name,description",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "entry"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "entryId",
@@ -27,47 +46,79 @@
       "type": "string",
       "default": "",
       "description": "The ID of the entry to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "entry"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "entry"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "entry"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Preview",
-      "default": null
-    },
-    {
-      "name": "sort",
-      "displayName": "Sort Fields",
-      "type": "string",
-      "default": "",
-      "description": "Name of the fields to sort the data by. By default will be sorted ascendingly. To modify that behavior, you have to add the sort direction after the name of sort field preceded by a colon. For example: <code>name:asc</code>.",
-      "placeholder": "name:asc"
-    },
-    {
-      "name": "where",
-      "displayName": "Where (JSON)",
-      "type": "string",
-      "default": "",
-      "description": "JSON query to filter the data. <a href=\"https://strapi.io/documentation/developer-docs/latest/developer-resources/content-api/content-api.html#filters\">More info</a>."
+      "description": "Only select entries matching the publication state provided",
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "entry"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "updateKey",
@@ -75,50 +126,86 @@
       "type": "string",
       "default": "id",
       "description": "Name of the property which decides which rows in the database should be updated. Normally that would be \"id\".",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "entry"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create an entry"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an entry"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get an entry"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many entries"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update an entry"
+      "default": "get",
+      "description": "Create an entry",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create an entry"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete an entry"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get an entry"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many entries"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update an entry"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "entry"
+          ]
+        }
+      }
     },
     {
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "API Token",
-      "default": null
+      "default": "password",
+      "options": [
+        {
+          "name": "Username & Password",
+          "value": "password"
+        },
+        {
+          "name": "API Token",
+          "value": "token"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "entry",
+      "options": [
+        {
+          "name": "Entry",
+          "value": "entry"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -134,5 +221,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

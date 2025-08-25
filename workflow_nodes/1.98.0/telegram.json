@@ -12,131 +12,71 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Chat",
-      "default": null
-    },
-    {
-      "name": "Callback",
-      "default": null
-    },
-    {
-      "name": "File",
-      "default": null
-    },
-    {
-      "name": "Message",
-      "default": null
+      "default": "message",
+      "options": [
+        {
+          "name": "Chat",
+          "value": "chat"
+        },
+        {
+          "name": "Callback",
+          "value": "callback"
+        },
+        {
+          "name": "File",
+          "value": "file"
+        },
+        {
+          "name": "Message",
+          "value": "message"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": "info",
-      "description": "Get information about the bot associated with the access token.",
-      "options": []
-    },
-    {
-      "name": "Get Administrators",
-      "default": null,
-      "description": "Get the Administrators of a chat"
-    },
-    {
-      "name": "Get Member",
-      "default": null,
-      "description": "Get the member of a chat"
-    },
-    {
-      "name": "Leave",
-      "default": null,
-      "description": "Leave a group, supergroup or channel"
-    },
-    {
-      "name": "Set Description",
-      "default": null,
-      "description": "Set the description of a chat"
-    },
-    {
-      "name": "Set Title",
-      "default": null,
-      "description": "Set the title of a chat"
-    },
-    {
-      "name": "Answer Inline Query",
-      "default": null,
-      "description": "Send answer to callback query sent from inline bot"
-    },
-    {
-      "name": "Edit Message Text",
-      "default": null,
-      "description": "Edit a text message"
-    },
-    {
-      "name": "Pin Chat Message",
-      "default": null,
-      "description": "Pin a chat message"
-    },
-    {
-      "name": "Send Animation",
-      "default": null,
-      "description": "Send an animated file"
-    },
-    {
-      "name": "Send Audio",
-      "default": null,
-      "description": "Send a audio file"
-    },
-    {
-      "name": "Send Chat Action",
-      "default": null,
-      "description": "Send a chat action"
-    },
-    {
-      "name": "Send Document",
-      "default": null,
-      "description": "Send a document"
-    },
-    {
-      "name": "Send Location",
-      "default": null,
-      "description": "Send a location"
-    },
-    {
-      "name": "Send Media Group",
-      "default": null,
-      "description": "Send group of photos or videos to album"
-    },
-    {
-      "name": "Send Message",
-      "default": null,
-      "description": "Send a text message"
-    },
-    {
-      "name": "Send and Wait for Response",
-      "default": null,
-      "description": "Send a message and wait for response"
-    },
-    {
-      "name": "Send Photo",
-      "default": null,
-      "description": "Send a photo"
-    },
-    {
-      "name": "Send Sticker",
-      "default": null,
-      "description": "Send a sticker"
-    },
-    {
-      "name": "Send Video",
-      "default": null,
-      "description": "Send a video"
-    },
-    {
-      "name": "Unpin Chat Message",
-      "default": null,
-      "description": "Unpin a chat message"
+      "default": "get",
+      "description": "Get up to date information about a chat",
+      "options": [
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get up to date information about a chat"
+        },
+        {
+          "name": "Get Administrators",
+          "value": "administrators",
+          "description": "Get the Administrators of a chat"
+        },
+        {
+          "name": "Get Member",
+          "value": "member",
+          "description": "Get the member of a chat"
+        },
+        {
+          "name": "Leave",
+          "value": "leave",
+          "description": "Leave a group, supergroup or channel"
+        },
+        {
+          "name": "Set Description",
+          "value": "setDescription",
+          "description": "Set the description of a chat"
+        },
+        {
+          "name": "Set Title",
+          "value": "setTitle",
+          "description": "Set the title of a chat"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "chat"
+          ]
+        }
+      }
     },
     {
       "name": "chatId",
@@ -144,7 +84,54 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for the target chat or username, To find your chat ID ask @get_id_bot",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "administrators",
+            "deleteMessage",
+            "get",
+            "leave",
+            "member",
+            "pinChatMessage",
+            "setDescription",
+            "setTitle",
+            "sendAnimation",
+            "sendAudio",
+            "sendChatAction",
+            "sendDocument",
+            "sendLocation",
+            "sendMessage",
+            "sendMediaGroup",
+            "sendPhoto",
+            "sendSticker",
+            "sendVideo",
+            "unpinChatMessage"
+          ],
+          "resource": [
+            "chat",
+            "message"
+          ]
+        }
+      }
+    },
+    {
+      "name": "messageId",
+      "displayName": "Message ID",
+      "type": "string",
+      "default": "",
+      "description": "Unique identifier of the message to delete",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "deleteMessage"
+          ],
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -152,7 +139,26 @@
       "type": "collection",
       "default": {},
       "description": "Whether to send a notification to all chat members about the new pinned message",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "disable_notification",
+          "displayName": "Disable Notification",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to send a notification to all chat members about the new pinned message"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "pinChatMessage"
+          ],
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
       "name": "userId",
@@ -160,36 +166,71 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier of the target user",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "member"
+          ],
+          "resource": [
+            "chat"
+          ]
+        }
+      }
     },
     {
-      "name": "show_alert",
-      "displayName": "Show Alert",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether an alert will be shown by the client instead of a notification at the top of the chat screen"
-    },
-    {
-      "name": "text",
-      "displayName": "Text",
+      "name": "description",
+      "displayName": "Description",
       "type": "string",
       "default": "",
-      "description": "Text of the notification. If not specified, nothing will be shown to the user, 0-200 characters."
+      "description": "New chat description, 0-255 characters",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "setDescription"
+          ],
+          "resource": [
+            "chat"
+          ]
+        }
+      }
     },
     {
-      "name": "url",
-      "displayName": "URL",
+      "name": "title",
+      "displayName": "Title",
       "type": "string",
       "default": "",
-      "description": "URL that will be opened by the user's client"
+      "description": "New chat title, 1-255 characters",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "setTitle"
+          ],
+          "resource": [
+            "chat"
+          ]
+        }
+      }
     },
     {
       "name": "queryId",
       "displayName": "Query ID",
       "type": "string",
       "default": "",
-      "description": "Unique identifier for the answered query",
-      "required": true
+      "description": "Unique identifier for the query to be answered",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "answerQuery"
+          ],
+          "resource": [
+            "callback"
+          ]
+        }
+      }
     },
     {
       "name": "results",
@@ -197,7 +238,17 @@
       "type": "string",
       "default": "",
       "description": "A JSON-serialized array of results for the inline query",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "answerInlineQuery"
+          ],
+          "resource": [
+            "callback"
+          ]
+        }
+      }
     },
     {
       "name": "fileId",
@@ -205,14 +256,84 @@
       "type": "string",
       "default": "",
       "description": "The ID of the file",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "file"
+          ]
+        }
+      }
     },
     {
       "name": "download",
       "displayName": "Download",
       "type": "boolean",
       "default": true,
-      "description": "Whether to download the file"
+      "description": "Whether to download the file",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "file"
+          ]
+        }
+      }
+    },
+    {
+      "name": "messageType",
+      "displayName": "Message Type",
+      "type": "options",
+      "default": "message",
+      "description": "The type of the message to edit",
+      "options": [
+        {
+          "name": "Inline Message",
+          "value": "inlineMessage"
+        },
+        {
+          "name": "Message",
+          "value": "message"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "editMessageText"
+          ],
+          "resource": [
+            "message"
+          ]
+        }
+      }
+    },
+    {
+      "name": "binaryData",
+      "displayName": "Binary File",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the data to upload should be taken from binary field",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendAnimation",
+            "sendAudio",
+            "sendDocument",
+            "sendPhoto",
+            "sendVideo",
+            "sendSticker"
+          ],
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
       "name": "binaryPropertyName",
@@ -221,15 +342,25 @@
       "default": "data",
       "description": "Name of the binary property that contains the data to upload",
       "placeholder": "",
-      "required": true
-    },
-    {
-      "name": "messageId",
-      "displayName": "Message ID",
-      "type": "string",
-      "default": "",
-      "description": "Unique identifier of the message to edit",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendAnimation",
+            "sendAudio",
+            "sendDocument",
+            "sendPhoto",
+            "sendVideo",
+            "sendSticker"
+          ],
+          "resource": [
+            "message"
+          ],
+          "binaryData": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "inlineMessageId",
@@ -237,60 +368,147 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier of the inline message to edit",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "messageType": [
+            "inlineMessage"
+          ],
+          "operation": [
+            "editMessageText"
+          ],
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
       "name": "replyMarkup",
       "displayName": "Reply Markup",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Inline Keyboard",
-      "default": null
+      "default": "none",
+      "description": "Additional interface options",
+      "options": [
+        {
+          "name": "None",
+          "value": "none"
+        },
+        {
+          "name": "Inline Keyboard",
+          "value": "inlineKeyboard"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "editMessageText"
+          ],
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
       "name": "file",
       "displayName": "Animation",
       "type": "string",
       "default": "",
-      "description": "Animation to send. Pass a file_id to send an animation that exists on the Telegram servers (recommended), an HTTP URL for Telegram to get an animation from the Internet."
+      "description": "Animation to send. Pass a file_id to send an animation that exists on the Telegram servers (recommended), an HTTP URL for Telegram to get an animation from the Internet.",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendAnimation"
+          ],
+          "resource": [
+            "message"
+          ],
+          "binaryData": [
+            false
+          ]
+        }
+      }
     },
     {
-      "name": "Record Audio",
-      "default": null
+      "name": "action",
+      "displayName": "Action",
+      "type": "options",
+      "default": "typing",
+      "description": "Type of action to broadcast. Choose one, depending on what the user is about to receive. The status is set for 5 seconds or less (when a message arrives from your bot).",
+      "options": [
+        {
+          "name": "Find Location",
+          "value": "find_location"
+        },
+        {
+          "name": "Record Audio",
+          "value": "record_audio"
+        },
+        {
+          "name": "Record Video",
+          "value": "record_video"
+        },
+        {
+          "name": "Record Video Note",
+          "value": "record_video_note"
+        },
+        {
+          "name": "Typing",
+          "value": "typing"
+        },
+        {
+          "name": "Upload Audio",
+          "value": "upload_audio"
+        },
+        {
+          "name": "Upload Document",
+          "value": "upload_document"
+        },
+        {
+          "name": "Upload Photo",
+          "value": "upload_photo"
+        },
+        {
+          "name": "Upload Video",
+          "value": "upload_video"
+        },
+        {
+          "name": "Upload Video Note",
+          "value": "upload_video_note"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendChatAction"
+          ],
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
-      "name": "Record Video",
-      "default": null
-    },
-    {
-      "name": "Record Video Note",
-      "default": null
-    },
-    {
-      "name": "Typing",
-      "default": null
-    },
-    {
-      "name": "Upload Audio",
-      "default": null
-    },
-    {
-      "name": "Upload Document",
-      "default": null
-    },
-    {
-      "name": "Upload Photo",
-      "default": null
-    },
-    {
-      "name": "Upload Video",
-      "default": null
-    },
-    {
-      "name": "Upload Video Note",
-      "default": null
+      "name": "latitude",
+      "displayName": "Latitude",
+      "type": "number",
+      "default": 0.0,
+      "description": "Location latitude",
+      "typeOptions": {
+        "minValue": -90,
+        "maxValue": 90
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendLocation"
+          ],
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
       "name": "longitude",
@@ -298,44 +516,60 @@
       "type": "number",
       "default": 0.0,
       "description": "Location longitude",
-      "placeholder": "Add Media"
-    },
-    {
-      "name": "Video",
-      "default": null
+      "typeOptions": {
+        "minValue": -180,
+        "maxValue": 180
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendLocation"
+          ],
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
       "name": "media",
-      "displayName": "Media File",
+      "displayName": "Media",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "The media to add",
+      "placeholder": "Add Media",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendMediaGroup"
+          ],
+          "resource": [
+            "message"
+          ]
+        }
+      }
+    },
+    {
+      "name": "text",
+      "displayName": "Text",
       "type": "string",
       "default": "",
-      "description": "Media to send. Pass a file_id to send a file that exists on the Telegram servers (recommended) or pass an HTTP URL for Telegram to get a file from the Internet."
-    },
-    {
-      "name": "parse_mode",
-      "displayName": "Parse Mode",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "MarkdownV2",
-      "default": null
-    },
-    {
-      "name": "HTML",
-      "default": null
-    },
-    {
-      "name": "None",
-      "default": null
-    },
-    {
-      "name": "Reply Keyboard",
-      "default": null
-    },
-    {
-      "name": "Reply Keyboard Remove",
-      "default": null
+      "description": "Text of the message to be sent",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "editMessageText",
+            "sendMessage"
+          ],
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
       "name": "forceReply",
@@ -343,14 +577,33 @@
       "type": "collection",
       "default": {},
       "description": "Whether to show reply interface to the user, as if they manually selected the bot‘s message and tapped ’Reply",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "selective",
-      "displayName": "Selective",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to force reply from specific users only"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "force_reply",
+          "displayName": "Force Reply",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to show reply interface to the user, as if they manually selected the bot‘s message and tapped ’Reply"
+        },
+        {
+          "name": "selective",
+          "displayName": "Selective",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to force reply from specific users only"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "replyMarkup": [
+            "forceReply"
+          ],
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
       "name": "inlineKeyboard",
@@ -358,38 +611,19 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Adds an inline keyboard that appears right next to the message it belongs to",
-      "placeholder": "Add Keyboard Row"
-    },
-    {
-      "name": "pay",
-      "displayName": "Pay",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to send a Pay button"
-    },
-    {
-      "name": "switch_inline_query_current_chat",
-      "displayName": "Switch Inline Query Current Chat",
-      "type": "string",
-      "default": "",
-      "description": "If set, pressing the button will insert the bot‘s username and the specified inline query in the current chat's input field.Can be empty, in which case only the bot’s username will be inserted"
-    },
-    {
-      "name": "switch_inline_query",
-      "displayName": "Switch Inline Query",
-      "type": "string",
-      "default": "",
-      "description": "If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot‘s username and the specified inline query in the input field. Can be empty, in which case just the bot’s username will be inserted."
-    },
-    {
-      "name": "web_app",
-      "displayName": "Web App",
-      "type": "collection",
-      "default": {},
-      "description": "An HTTPS URL of a Web App to be opened",
-      "placeholder": "Set Telegram Web App URL",
+      "placeholder": "Add Keyboard Row",
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "replyMarkup": [
+            "inlineKeyboard"
+          ],
+          "resource": [
+            "message"
+          ]
+        }
       }
     },
     {
@@ -398,14 +632,17 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Adds a custom keyboard with reply options",
-      "placeholder": "Add Reply Keyboard Row"
-    },
-    {
-      "name": "request_location",
-      "displayName": "Request Location",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the user's request_location"
+      "placeholder": "Add Reply Keyboard Row",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "replyMarkup": [
+            "replyKeyboard"
+          ]
+        }
+      }
     },
     {
       "name": "replyKeyboardOptions",
@@ -413,14 +650,37 @@
       "type": "collection",
       "default": {},
       "description": "Whether to request clients to resize the keyboard vertically for optimal fit",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "one_time_keyboard",
-      "displayName": "One Time Keyboard",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to request clients to hide the keyboard as soon as it's been used"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "resize_keyboard",
+          "displayName": "Resize Keyboard",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to request clients to resize the keyboard vertically for optimal fit"
+        },
+        {
+          "name": "one_time_keyboard",
+          "displayName": "One Time Keyboard",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to request clients to hide the keyboard as soon as it's been used"
+        },
+        {
+          "name": "selective",
+          "displayName": "Selective",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to show the keyboard to specific users only"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "replyMarkup": [
+            "replyKeyboard"
+          ]
+        }
+      }
     },
     {
       "name": "replyKeyboardRemove",
@@ -428,91 +688,30 @@
       "type": "collection",
       "default": {},
       "description": "Whether to request clients to remove the custom keyboard",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "caption",
-      "displayName": "Caption",
-      "type": "string",
-      "default": "",
-      "description": "Caption text to set, 0-1024 characters"
-    },
-    {
-      "name": "disable_notification",
-      "displayName": "Disable Notification",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to send the message silently. Users will receive a notification with no sound."
-    },
-    {
-      "name": "disable_web_page_preview",
-      "displayName": "Disable WebPage Preview",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to disable link previews for links in this message"
-    },
-    {
-      "name": "duration",
-      "displayName": "Duration",
-      "type": "number",
-      "default": 0,
-      "description": "Duration of clip in seconds"
-    },
-    {
-      "name": "fileName",
-      "displayName": "File Name",
-      "type": "string",
-      "default": "",
-      "placeholder": "image.jpeg"
-    },
-    {
-      "name": "height",
-      "displayName": "Height",
-      "type": "number",
-      "default": 0,
-      "description": "Height of the video"
-    },
-    {
-      "name": "performer",
-      "displayName": "Performer",
-      "type": "string",
-      "default": "",
-      "description": "Name of the performer"
-    },
-    {
-      "name": "reply_to_message_id",
-      "displayName": "Reply To Message ID",
-      "type": "number",
-      "default": 0,
-      "description": "If the message is a reply, ID of the original message"
-    },
-    {
-      "name": "message_thread_id",
-      "displayName": "Message Thread ID",
-      "type": "number",
-      "default": 0,
-      "description": "The unique identifier of the forum topic"
-    },
-    {
-      "name": "title",
-      "displayName": "Title",
-      "type": "string",
-      "default": "",
-      "description": "Title of the track"
-    },
-    {
-      "name": "thumb",
-      "displayName": "Thumbnail",
-      "type": "string",
-      "default": "",
-      "description": "Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail‘s width and height should not exceed 320."
-    },
-    {
-      "name": "width",
-      "displayName": "Width",
-      "type": "number",
-      "default": 0,
-      "description": "Width of the video"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "remove_keyboard",
+          "displayName": "Remove Keyboard",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to request clients to remove the custom keyboard"
+        },
+        {
+          "name": "selective",
+          "displayName": "Selective",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to force reply from specific users only"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "replyMarkup": [
+            "replyKeyboardRemove"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -608,5 +807,27 @@
       "name": "chatId",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

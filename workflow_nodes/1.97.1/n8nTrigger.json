@@ -10,18 +10,43 @@
       "type": "multiOptions",
       "default": [],
       "description": "Triggers when this workflow is updated",
-      "required": true
-    },
-    {
-      "name": "Instance Started",
-      "default": null,
-      "description": "Triggers when this n8n instance is started or re-started"
-    },
-    {
-      "name": "Workflow Activated",
-      "default": null,
-      "description": "Triggers when this workflow is activated"
+      "required": true,
+      "options": [
+        {
+          "name": "Active Workflow Updated",
+          "value": "update",
+          "description": "Triggers when this workflow is updated"
+        },
+        {
+          "name": "Instance Started",
+          "value": "init",
+          "description": "Triggers when this n8n instance is started or re-started"
+        },
+        {
+          "name": "Workflow Activated",
+          "value": "activate",
+          "description": "Triggers when this workflow is activated"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

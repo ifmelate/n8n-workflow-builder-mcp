@@ -9,7 +9,17 @@
       "displayName": "Topic",
       "type": "string",
       "default": "",
-      "description": "Topic of the meeting"
+      "description": "Topic of the meeting",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "meeting"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -17,157 +27,50 @@
       "type": "collection",
       "default": {},
       "description": "Meeting agenda",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "duration",
-      "displayName": "Duration",
-      "type": "number",
-      "default": 0,
-      "description": "Meeting duration (minutes)"
-    },
-    {
-      "name": "password",
-      "displayName": "Password",
-      "type": "string",
-      "default": "",
-      "description": "Password to join the meeting with maximum 10 characters"
-    },
-    {
-      "name": "scheduleFor",
-      "displayName": "Schedule For",
-      "type": "string",
-      "default": "",
-      "description": "Schedule meeting for someone else from your account, provide their email ID"
-    },
-    {
-      "name": "settings",
-      "displayName": "Settings",
-      "type": "collection",
-      "default": {},
-      "placeholder": "Add Setting"
-    },
-    {
-      "name": "Telephony",
-      "default": null
-    },
-    {
-      "name": "VOIP",
-      "default": null
-    },
-    {
-      "name": "alternativeHosts",
-      "displayName": "Alternative Hosts",
-      "type": "string",
-      "default": "",
-      "description": "Alternative hosts email IDs"
-    },
-    {
-      "name": "autoRecording",
-      "displayName": "Auto Recording",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Record on Cloud",
-      "default": null
-    },
-    {
-      "name": "Disabled",
-      "default": null
-    },
-    {
-      "name": "cnMeeting",
-      "displayName": "Host Meeting in China",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "inMeeting",
-      "displayName": "Host Meeting in India",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "hostVideo",
-      "displayName": "Host Video",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to start a video when host joins the meeting"
-    },
-    {
-      "name": "joinBeforeHost",
-      "displayName": "Join Before Host",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to allow participants to join the meeting before host starts it"
-    },
-    {
-      "name": "muteUponEntry",
-      "displayName": "Muting Upon Entry",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to mute participants upon entry"
-    },
-    {
-      "name": "participantVideo",
-      "displayName": "Participant Video",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to start a video when participant joins the meeting"
-    },
-    {
-      "name": "registrationType",
-      "displayName": "Registration Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Attendees need to register for every occurrence",
-      "default": null
-    },
-    {
-      "name": "Attendees register once and can choose one or more occurrences to attend",
-      "default": null
-    },
-    {
-      "name": "watermark",
-      "displayName": "Watermark",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to add a watermark when viewing a shared screen"
-    },
-    {
-      "name": "startTime",
-      "displayName": "Start Time",
-      "type": "dateTime",
-      "default": "",
-      "description": "Start time should be used only for scheduled or recurring meetings with fixed time"
-    },
-    {
-      "name": "timeZone",
-      "displayName": "Timezone Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Time zone used in the response. The default is the time zone of the calendar. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "type",
-      "displayName": "Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Scheduled Meeting",
-      "default": null
-    },
-    {
-      "name": "Recurring Meeting with No Fixed Time",
-      "default": null
-    },
-    {
-      "name": "Recurring Meeting with Fixed Time",
-      "default": null
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "agenda",
+          "displayName": "Agenda",
+          "type": "string",
+          "default": "",
+          "description": "Meeting agenda"
+        },
+        {
+          "name": "duration",
+          "displayName": "Duration",
+          "type": "number",
+          "default": 0,
+          "description": "Meeting duration (minutes)"
+        },
+        {
+          "name": "password",
+          "displayName": "Password",
+          "type": "string",
+          "default": "",
+          "description": "Password to join the meeting with maximum 10 characters"
+        },
+        {
+          "name": "scheduleFor",
+          "displayName": "Schedule For",
+          "type": "string",
+          "default": "",
+          "description": "Schedule meeting for someone else from your account, provide their email ID"
+        }
+      ],
+      "typeOptions": {
+        "minValue": 0
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "meeting"
+          ]
+        }
+      }
     },
     {
       "name": "meetingId",
@@ -175,28 +78,58 @@
       "type": "string",
       "default": "",
       "description": "Meeting ID",
-      "required": true
-    },
-    {
-      "name": "showPreviousOccurrences",
-      "displayName": "Show Previous Occurrences",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to view meeting details of all previous occurrences of the recurring meeting"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "meeting"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "meeting"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 30,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 300
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "meeting"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -204,24 +137,17 @@
       "type": "collection",
       "default": {},
       "description": "This includes all valid past meetings, live meetings and upcoming scheduled meetings",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "Live",
-      "default": null,
-      "description": "All ongoing meetings"
-    },
-    {
-      "name": "Upcoming",
-      "default": null,
-      "description": "All upcoming meetings including live meetings"
-    },
-    {
-      "name": "scheduleForReminder",
-      "displayName": "Schedule Reminder",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to notify hosts and alternative hosts about meeting cancellation via email"
+      "placeholder": "Add Filter",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "meeting"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -229,265 +155,119 @@
       "type": "collection",
       "default": {},
       "description": "Meeting agenda",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Attendees Need to Register for Every Occurrence",
-      "default": null
-    },
-    {
-      "name": "Attendees Register Once and Can Choose One or More Occurrences to Attend",
-      "default": null
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "agenda",
+          "displayName": "Agenda",
+          "type": "string",
+          "default": "",
+          "description": "Meeting agenda"
+        },
+        {
+          "name": "duration",
+          "displayName": "Duration",
+          "type": "number",
+          "default": 0,
+          "description": "Meeting duration (minutes)"
+        },
+        {
+          "name": "password",
+          "displayName": "Password",
+          "type": "string",
+          "default": "",
+          "description": "Password to join the meeting with maximum 10 characters"
+        },
+        {
+          "name": "scheduleFor",
+          "displayName": "Schedule For",
+          "type": "string",
+          "default": "",
+          "description": "Schedule meeting for someone else from your account, provide their email ID"
+        }
+      ],
+      "typeOptions": {
+        "minValue": 0
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "meeting"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a meeting"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a meeting"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Retrieve a meeting"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Retrieve many meetings"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a meeting"
-    },
-    {
-      "name": "email",
-      "displayName": "Email",
-      "type": "string",
-      "default": "",
-      "description": "Valid Email-ID",
-      "placeholder": "name@email.com",
-      "required": true
-    },
-    {
-      "name": "firstName",
-      "displayName": "First Name",
-      "type": "string",
-      "default": "",
-      "required": true
-    },
-    {
-      "name": "city",
-      "displayName": "City",
-      "type": "string",
-      "default": "",
-      "description": "Valid city of registrant"
-    },
-    {
-      "name": "comments",
-      "displayName": "Comments",
-      "type": "string",
-      "default": "",
-      "description": "Allows registrants to provide any questions they have"
-    },
-    {
-      "name": "country",
-      "displayName": "Country",
-      "type": "string",
-      "default": "",
-      "description": "Valid country of registrant"
-    },
-    {
-      "name": "jobTitle",
-      "displayName": "Job Title",
-      "type": "string",
-      "default": "",
-      "description": "Job title of registrant"
-    },
-    {
-      "name": "lastName",
-      "displayName": "Last Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "occurrenceId",
-      "displayName": "Occurrence IDs",
-      "type": "string",
-      "default": "",
-      "description": "Occurrence IDs separated by comma"
-    },
-    {
-      "name": "org",
-      "displayName": "Organization",
-      "type": "string",
-      "default": "",
-      "description": "Organization of registrant"
-    },
-    {
-      "name": "phone",
-      "displayName": "Phone Number",
-      "type": "string",
-      "default": "",
-      "description": "Valid phone number of registrant"
-    },
-    {
-      "name": "purchasingTimeFrame",
-      "displayName": "Purchasing Time Frame",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "1-3 Months",
-      "default": null
-    },
-    {
-      "name": "4-6 Months",
-      "default": null
-    },
-    {
-      "name": "More than 6 Months",
-      "default": null
-    },
-    {
-      "name": "No Timeframe",
-      "default": null
-    },
-    {
-      "name": "roleInPurchaseProcess",
-      "displayName": "Role in Purchase Process",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Evaluator/Recommender",
-      "default": null
-    },
-    {
-      "name": "Influencer",
-      "default": null
-    },
-    {
-      "name": "Not Involved",
-      "default": null
-    },
-    {
-      "name": "state",
-      "displayName": "State",
-      "type": "string",
-      "default": "",
-      "description": "Valid state of registrant"
-    },
-    {
-      "name": "zip",
-      "displayName": "Zip Code",
-      "type": "string",
-      "default": "",
-      "description": "Valid zip-code of registrant"
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Approved",
-      "default": null
-    },
-    {
-      "name": "Denied",
-      "default": null
-    },
-    {
-      "name": "action",
-      "displayName": "Action",
-      "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "Deny",
-      "default": null
-    },
-    {
-      "name": "userId",
-      "displayName": "User ID",
-      "type": "string",
-      "default": "",
-      "description": "User ID or email ID",
-      "required": true
-    },
-    {
-      "name": "approvalType",
-      "displayName": "Approval Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Manually Approve",
-      "default": null
-    },
-    {
-      "name": "No Registration Required",
-      "default": null
-    },
-    {
-      "name": "audio",
-      "displayName": "Audio",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "panelistsVideo",
-      "displayName": "Panelists Video",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to start a video when panelists joins the webinar"
-    },
-    {
-      "name": "practiceSession",
-      "displayName": "Practice Session",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to enable Practice session"
-    },
-    {
-      "name": "Recurring Webinar with No Fixed Time",
-      "default": null
-    },
-    {
-      "name": "Recurring Webinar with Fixed Time",
-      "default": null
-    },
-    {
-      "name": "webinarId",
-      "displayName": "Webinar ID",
-      "type": "string",
-      "default": "",
-      "required": true
+      "default": "create",
+      "description": "Create a meeting",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a meeting"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a meeting"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Retrieve a meeting"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Retrieve many meetings"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a meeting"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "meeting"
+          ]
+        }
+      }
     },
     {
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "accessToken",
+      "options": [
+        {
+          "name": "Access Token",
+          "value": "accessToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "meeting",
+      "options": [
+        {
+          "name": "Meeting",
+          "value": "meeting"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -503,5 +283,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

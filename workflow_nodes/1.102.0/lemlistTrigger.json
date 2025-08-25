@@ -9,8 +9,7 @@
       "displayName": "Event",
       "type": "options",
       "default": "",
-      "required": true,
-      "options": []
+      "required": true
     },
     {
       "name": "options",
@@ -18,14 +17,23 @@
       "type": "collection",
       "default": {},
       "description": "We'll call this hook only for this campaignId. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "isFirst",
-      "displayName": "Is First",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to call this hook only the first time this activity happened"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "campaignId",
+          "displayName": "Campaign Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "We'll call this hook only for this campaignId. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        },
+        {
+          "name": "isFirst",
+          "displayName": "Is First",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to call this hook only the first time this activity happened"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -41,5 +49,23 @@
       "name": "event",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

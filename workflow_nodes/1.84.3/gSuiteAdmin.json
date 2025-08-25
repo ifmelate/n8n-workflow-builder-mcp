@@ -11,7 +11,17 @@
       "default": "",
       "description": "The group's email address. If your account has multiple domains, select the appropriate domain for the email address. The email must be unique",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "group"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -19,14 +29,33 @@
       "type": "collection",
       "default": {},
       "description": "An extended description to help users determine the purpose of a group. For example, you can include information about who should join the group, the types of messages to send to the group, links to FAQs about the group, or related groups.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": "",
-      "description": "The group's display name"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "description",
+          "displayName": "Description",
+          "type": "string",
+          "default": "",
+          "description": "An extended description to help users determine the purpose of a group. For example, you can include information about who should join the group, the types of messages to send to the group, links to FAQs about the group, or related groups."
+        },
+        {
+          "name": "name",
+          "displayName": "Name",
+          "type": "string",
+          "default": "",
+          "description": "The group's display name"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "group"
+          ]
+        }
+      }
     },
     {
       "name": "groupId",
@@ -34,14 +63,58 @@
       "type": "string",
       "default": "",
       "description": "Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "group"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "group"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "group"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -49,44 +122,33 @@
       "type": "collection",
       "default": {},
       "description": "The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, fill this field instead of domain.",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "domain",
-      "displayName": "Domain",
-      "type": "string",
-      "default": "",
-      "description": "The domain name. Use this field to get fields from only one domain."
-    },
-    {
-      "name": "orderBy",
-      "displayName": "Order By",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "query",
-      "displayName": "Query",
-      "type": "string",
-      "default": "",
-      "description": "Query string search. Complete documentation is <a href=\"https://developers.google.com/admin-sdk/directory/v1/guides/search-groups\">at</a>."
-    },
-    {
-      "name": "sortOrder",
-      "displayName": "Sort Order",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Descending",
-      "default": null
-    },
-    {
-      "name": "userId",
-      "displayName": "User ID",
-      "type": "string",
-      "default": "",
-      "description": "Email or immutable ID of the user if only those groups are to be listed, the given user is a member of. If it's an ID, it should match with the ID of the user object."
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "customer",
+          "displayName": "Customer",
+          "type": "string",
+          "default": "",
+          "description": "The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, fill this field instead of domain."
+        },
+        {
+          "name": "domain",
+          "displayName": "Domain",
+          "type": "string",
+          "default": "",
+          "description": "The domain name. Use this field to get fields from only one domain."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "group"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -94,48 +156,116 @@
       "type": "collection",
       "default": {},
       "description": "An extended description to help users determine the purpose of a group. For example, you can include information about who should join the group, the types of messages to send to the group, links to FAQs about the group, or related groups.",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "description",
+          "displayName": "Description",
+          "type": "string",
+          "default": "",
+          "description": "An extended description to help users determine the purpose of a group. For example, you can include information about who should join the group, the types of messages to send to the group, links to FAQs about the group, or related groups."
+        },
+        {
+          "name": "email",
+          "displayName": "Email",
+          "type": "string",
+          "default": "",
+          "description": "The group's email address. If your account has multiple domains, select the appropriate domain for the email address. The email must be unique.",
+          "placeholder": "name@email.com"
+        },
+        {
+          "name": "name",
+          "displayName": "Name",
+          "type": "string",
+          "default": "",
+          "description": "The group's display name"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "group"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a group"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a group"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a group"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many groups"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a group"
+      "default": "create",
+      "description": "Create a group",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a group"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a group"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a group"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many groups"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a group"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "group"
+          ]
+        }
+      }
     },
     {
       "name": "firstName",
       "displayName": "First Name",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "user"
+          ]
+        }
+      }
     },
     {
       "name": "lastName",
       "displayName": "Last Name",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "user"
+          ]
+        }
+      }
     },
     {
       "name": "password",
@@ -143,14 +273,52 @@
       "type": "string",
       "default": "",
       "description": "Stores the password for the user account. A minimum of 8 characters is required. The maximum length is 100 characters.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "user"
+          ]
+        }
+      }
+    },
+    {
+      "name": "domain",
+      "displayName": "Domain Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "user"
+          ]
+        }
+      }
     },
     {
       "name": "username",
       "displayName": "Username",
       "type": "string",
       "default": "",
-      "description": "The username that will be set to the user. Example: If you domain is example.com and you set the username to jhon then the user's final email address will be jhon@example.com."
+      "description": "The username that will be set to the user. Example: If you domain is example.com and you set the username to jhon then the user's final email address will be jhon@example.com.",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "user"
+          ]
+        }
+      }
     },
     {
       "name": "makeAdmin",
@@ -158,201 +326,86 @@
       "type": "boolean",
       "default": false,
       "description": "Whether to make a user a super administrator",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "user"
+          ]
+        }
+      }
     },
     {
-      "name": "phoneUi",
-      "displayName": "Phones",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Phone"
-    },
-    {
-      "name": "Callback",
-      "default": null
-    },
-    {
-      "name": "Car",
-      "default": null
-    },
-    {
-      "name": "Company Main",
-      "default": null
-    },
-    {
-      "name": "Custom",
-      "default": null
-    },
-    {
-      "name": "Grand Central",
-      "default": null
-    },
-    {
-      "name": "Home",
-      "default": null
-    },
-    {
-      "name": "Home Fax",
-      "default": null
-    },
-    {
-      "name": "isdn",
-      "default": null
-    },
-    {
-      "name": "Main",
-      "default": null
-    },
-    {
-      "name": "Mobile",
-      "default": null
-    },
-    {
-      "name": "Other",
-      "default": null
-    },
-    {
-      "name": "Other Fax",
-      "default": null
-    },
-    {
-      "name": "Pager",
-      "default": null
-    },
-    {
-      "name": "Radio",
-      "default": null
-    },
-    {
-      "name": "Telex",
-      "default": null
-    },
-    {
-      "name": "tty tdd",
-      "default": null
-    },
-    {
-      "name": "Work",
-      "default": null
-    },
-    {
-      "name": "Work Fax",
-      "default": null
-    },
-    {
-      "name": "Work Mobile",
-      "default": null
-    },
-    {
-      "name": "Work Pager",
-      "default": null
-    },
-    {
-      "name": "value",
-      "displayName": "Phone Number",
+      "name": "userId",
+      "displayName": "User ID",
       "type": "string",
-      "default": ""
-    },
-    {
-      "name": "primary",
-      "displayName": "Primary",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether this is the user's primary phone number. A user may only have one primary phone number."
-    },
-    {
-      "name": "emailUi",
-      "displayName": "Secondary Emails",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Email"
-    },
-    {
-      "name": "address",
-      "displayName": "Email",
-      "type": "string",
-      "default": ""
+      "default": "",
+      "description": "The value can be the user's primary email address, alias email address, or unique user ID",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "user"
+          ]
+        }
+      }
     },
     {
       "name": "projection",
       "displayName": "Projection",
       "type": "options",
-      "default": null,
+      "default": "basic",
       "description": "Do not include any custom fields for the user",
-      "required": true
-    },
-    {
-      "name": "Full",
-      "default": null,
-      "description": "Include all fields associated with this user"
-    },
-    {
-      "name": "viewType",
-      "displayName": "View Type",
-      "type": "options",
-      "default": null,
-      "description": "Results include both administrator-only and domain-public fields for the user"
-    },
-    {
-      "name": "returnAll",
-      "displayName": "Return All",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all results or only up to a given limit"
-    },
-    {
-      "name": "customer",
-      "displayName": "Customer",
-      "type": "string",
-      "default": "",
-      "description": "The unique ID for the customer's Google Workspace account. In case of a multi-domain account, to fetch all groups for a customer, fill this field instead of domain."
-    },
-    {
-      "name": "Family Name",
-      "default": null
-    },
-    {
-      "name": "Given Name",
-      "default": null
-    },
-    {
-      "name": "showDeleted",
-      "displayName": "Show Deleted",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to retrieve the list of deleted users"
-    },
-    {
-      "name": "changePasswordAtNextLogin",
-      "displayName": "Change Password At Next Login",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the user is forced to change their password at next login"
-    },
-    {
-      "name": "Isdn",
-      "default": null
-    },
-    {
-      "name": "Tty Tdd",
-      "default": null
-    },
-    {
-      "name": "primaryEmail",
-      "displayName": "Primary Email",
-      "type": "string",
-      "default": "",
-      "description": "The user's primary email address. This property is required in a request to create a user account. The primaryEmail must be unique and cannot be an alias of another user."
+      "required": true,
+      "options": [
+        {
+          "name": "Basic",
+          "value": "basic",
+          "description": "Do not include any custom fields for the user"
+        },
+        {
+          "name": "Custom",
+          "value": "custom",
+          "description": "Include custom fields from schemas requested in customField"
+        },
+        {
+          "name": "Full",
+          "value": "full",
+          "description": "Include all fields associated with this user"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "user"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
+      "default": "user",
+      "options": [
+        {
+          "name": "Group",
+          "value": "group"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -364,5 +417,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

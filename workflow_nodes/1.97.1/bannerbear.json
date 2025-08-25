@@ -10,7 +10,17 @@
       "type": "options",
       "default": "",
       "description": "The template ID you want to use. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "image"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -18,28 +28,37 @@
       "type": "collection",
       "default": {},
       "description": "Metadata that you need to store e.g. ID of a record in your DB",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "waitForImage",
-      "displayName": "Wait for Image",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to wait for the image to be proccesed before returning. If after three tries the images is not ready, an error will be thrown. Number of tries can be increased by setting \"Wait Max Tries\"."
-    },
-    {
-      "name": "waitForImageMaxTries",
-      "displayName": "Wait Max Tries",
-      "type": "number",
-      "default": 3,
-      "description": "How often it should check if the image is available before it fails"
-    },
-    {
-      "name": "webhookUrl",
-      "displayName": "Webhook URL",
-      "type": "string",
-      "default": "",
-      "description": "A URL to POST the Image object to upon rendering completed"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "metadata",
+          "displayName": "Metadata",
+          "type": "string",
+          "default": "",
+          "description": "Metadata that you need to store e.g. ID of a record in your DB"
+        },
+        {
+          "name": "waitForImage",
+          "displayName": "Wait for Image",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to wait for the image to be proccesed before returning. If after three tries the images is not ready, an error will be thrown. Number of tries can be increased by setting \"Wait Max Tries\"."
+        }
+      ],
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 10
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "image"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "modificationsUi",
@@ -47,35 +66,20 @@
       "type": "fixedCollection",
       "default": {},
       "description": "The name of the item you want to change. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Modification"
-    },
-    {
-      "name": "text",
-      "displayName": "Text",
-      "type": "string",
-      "default": "",
-      "description": "Replacement text you want to use"
-    },
-    {
-      "name": "color",
-      "displayName": "Color",
-      "type": "color",
-      "default": "",
-      "description": "Color hex of object"
-    },
-    {
-      "name": "background",
-      "displayName": "Background",
-      "type": "color",
-      "default": "",
-      "description": "Color hex of text background"
-    },
-    {
-      "name": "imageUrl",
-      "displayName": "Image URL",
-      "type": "string",
-      "default": "",
-      "description": "Replacement image URL you want to use (must be publicly viewable)"
+      "placeholder": "Add Modification",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "image"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "imageId",
@@ -83,34 +87,59 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for the image",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "image"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create an image"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get an image"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many templates"
+      "default": "create",
+      "description": "Create an image",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create an image"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get an image"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "image"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Template",
-      "default": null
+      "default": "image",
+      "options": [
+        {
+          "name": "Image",
+          "value": "image"
+        },
+        {
+          "name": "Template",
+          "value": "template"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -122,5 +151,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

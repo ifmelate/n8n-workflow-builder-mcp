@@ -9,43 +9,49 @@
       "displayName": "Trigger On",
       "type": "multiOptions",
       "default": [],
-      "required": true
-    },
-    {
-      "name": "Account Update",
-      "default": null
-    },
-    {
-      "name": "Business Capability Update",
-      "default": null
-    },
-    {
-      "name": "Message Template Quality Update",
-      "default": null
-    },
-    {
-      "name": "Message Template Status Update",
-      "default": null
-    },
-    {
-      "name": "Messages",
-      "default": null
-    },
-    {
-      "name": "Phone Number Name Update",
-      "default": null
-    },
-    {
-      "name": "Phone Number Quality Update",
-      "default": null
-    },
-    {
-      "name": "Security",
-      "default": null
-    },
-    {
-      "name": "Template Category Update",
-      "default": null
+      "required": true,
+      "options": [
+        {
+          "name": "Account Review Update",
+          "value": "account_review_update"
+        },
+        {
+          "name": "Account Update",
+          "value": "account_update"
+        },
+        {
+          "name": "Business Capability Update",
+          "value": "business_capability_update"
+        },
+        {
+          "name": "Message Template Quality Update",
+          "value": "message_template_quality_update"
+        },
+        {
+          "name": "Message Template Status Update",
+          "value": "message_template_status_update"
+        },
+        {
+          "name": "Messages",
+          "value": "messages"
+        },
+        {
+          "name": "Phone Number Name Update",
+          "value": "phone_number_name_update"
+        },
+        {
+          "name": "Phone Number Quality Update",
+          "value": "phone_number_quality_update"
+        },
+        {
+          "name": "Security",
+          "value": "security"
+        },
+        {
+          "name": "Template Category Update",
+          "value": "template_category_update"
+        }
+      ]
     },
     {
       "name": "whatsAppNotice",
@@ -63,5 +69,19 @@
       "name": "setup",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

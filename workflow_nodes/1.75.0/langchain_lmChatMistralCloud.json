@@ -4,5 +4,26 @@
   "description": "For advanced usage with an AI chain",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [
+      "Model"
+    ],
+    "hints": {
+      "connectTo": []
+    }
+  },
+  "wiring": {
+    "role": "model",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent",
+      "AiChain"
+    ],
+    "consumes": [],
+    "produces": []
+  }
 }

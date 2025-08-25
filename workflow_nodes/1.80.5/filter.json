@@ -17,8 +17,32 @@
       "type": "collection",
       "default": {},
       "description": "Whether to ignore letter case when evaluating conditions",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "ignoreCase",
+          "displayName": "Ignore Case",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to ignore letter case when evaluating conditions"
+        }
+      ],
+      "displayOptions": "{\n\t\t\t\t\t\t\t\tshow: {\n\t\t\t\t\t\t\t\t\t'@version': [{ _cnd: { lt: 2.1 }"
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

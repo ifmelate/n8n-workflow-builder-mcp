@@ -8,11 +8,18 @@
       "name": "event",
       "displayName": "Event",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Page Updated in Database",
-      "default": null
+      "default": "pageAddedToDatabase",
+      "required": true,
+      "options": [
+        {
+          "name": "Page Added to Database",
+          "value": "pageAddedToDatabase"
+        },
+        {
+          "name": "Page Updated in Database",
+          "value": "pagedUpdatedInDatabase"
+        }
+      ]
     },
     {
       "name": "notionNotice",
@@ -25,29 +32,32 @@
       "displayName": "Database",
       "type": "resourceLocator",
       "default": "{ mode: 'list', value: '' }",
+      "description": "The Notion Database to operate on",
       "placeholder": "Select a Database...",
-      "required": true
-    },
-    {
-      "name": "url",
-      "displayName": "Link",
-      "type": "string",
-      "default": null,
-      "placeholder": "https://www.notion.so/0fe2f7de558b471eab07e9d871cdf4a9?v=f2d424ba0c404733a3f500c78c881610"
-    },
-    {
-      "name": "id",
-      "displayName": "ID",
-      "type": "string",
-      "default": null,
-      "placeholder": "ab1545b247fb49fa92d6f4b49f4d8116"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "event": [
+            "pageAddedToDatabase",
+            "pagedUpdatedInDatabase"
+          ]
+        }
+      }
     },
     {
       "name": "simple",
       "displayName": "Simplify",
       "type": "boolean",
       "default": true,
-      "description": "Whether to return a simplified version of the response instead of the raw data"
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "displayOptions": {
+        "show": {
+          "event": [
+            "pageAddedToDatabase",
+            "pagedUpdatedInDatabase"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -71,5 +81,19 @@
       "name": "simple",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -10,7 +10,17 @@
       "type": "string",
       "default": "",
       "description": "Name of data type of the object to create",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "object"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "properties",
@@ -18,14 +28,20 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Field to set for the object to create",
-      "placeholder": "Add Property"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Value to set for the object to create"
+      "placeholder": "Add Property",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "object"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "objectId",
@@ -33,27 +49,75 @@
       "type": "string",
       "default": "",
       "description": "ID of the object to retrieve",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "object"
+          ],
+          "operation": [
+            "get",
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "object"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "object"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "jsonParameters",
       "displayName": "JSON Parameters",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "object"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -64,139 +128,64 @@
       "placeholder": "Add Field",
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "object"
+          ]
+        }
       }
-    },
-    {
-      "name": "constraint_type",
-      "displayName": "Constrain",
-      "type": "options",
-      "default": null,
-      "description": "Use to test strict equality, for all field types"
-    },
-    {
-      "name": "Not Equal",
-      "default": null,
-      "description": "Use to test strict equality, for all field types"
-    },
-    {
-      "name": "Is Empty",
-      "default": null,
-      "description": "Use to test whether a thing's given field is empty, for all field types"
-    },
-    {
-      "name": "Is Not Empty",
-      "default": null,
-      "description": "Use to test whether a thing's given field is not empty, for all field types"
-    },
-    {
-      "name": "Text Contains",
-      "default": null,
-      "description": "Use to test if a text field contains a string, for text fields only"
-    },
-    {
-      "name": "Not Text Contains",
-      "default": null,
-      "description": "Use to test if a text field does not contain a string, for text fields only"
-    },
-    {
-      "name": "Greater Than",
-      "default": null,
-      "description": "Use to compare a thing's field value relative to a string or number, for text, number, and date fields"
-    },
-    {
-      "name": "Less Than",
-      "default": null,
-      "description": "Use to compare a thing's field value relative to a string or number, for text, number, and date fields"
-    },
-    {
-      "name": "In",
-      "default": null,
-      "description": "Use to test whether a thing's field is in a list, for all field types"
-    },
-    {
-      "name": "Not In",
-      "default": null,
-      "description": "Use to test whether a thing's field is not in a list, for all field types"
-    },
-    {
-      "name": "Contains",
-      "default": null,
-      "description": "Use to test whether a list field contains an entry, for list fields only"
-    },
-    {
-      "name": "Not Contains",
-      "default": null,
-      "description": "Use to test whether a list field does not contains an entry, for list fields only"
-    },
-    {
-      "name": "Empty",
-      "default": null,
-      "description": "Use to test whether a list field is empty, for list fields only"
-    },
-    {
-      "name": "Not Empty",
-      "default": null,
-      "description": "Use to test whether a list field is not empty, for list fields only"
-    },
-    {
-      "name": "Geographic Search",
-      "default": null,
-      "description": "Use to test if the current thing is within a radius from a central address. To use this, the value sent with the constraint must have an address and a range. See <a href=\"https://manual.bubble.io/core-resources/api/data-api\">link</a>."
-    },
-    {
-      "name": "filtersJson",
-      "displayName": "Filters (JSON)",
-      "type": "json",
-      "default": ""
-    },
-    {
-      "name": "sort",
-      "displayName": "Sort",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Specify the field to use for sorting. Either use a fielddefined for the current typeor use <code>_random_sorting</code> to get the entries in a random order.",
-      "placeholder": "Add Sort"
-    },
-    {
-      "name": "descending",
-      "displayName": "Descending",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "geo_reference",
-      "displayName": "Geo Reference",
-      "type": "string",
-      "default": "",
-      "description": "When the field's type is geographic address, you need to add another parameter geo_reference and provide an address as a string"
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": "get"
-    },
-    {
-      "name": "Delete",
-      "default": null
-    },
-    {
-      "name": "Get",
-      "default": null
-    },
-    {
-      "name": "Get Many",
-      "default": null
-    },
-    {
-      "name": "Update",
-      "default": null
+      "default": "get",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create"
+        },
+        {
+          "name": "Delete",
+          "value": "delete"
+        },
+        {
+          "name": "Get",
+          "value": "get"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll"
+        },
+        {
+          "name": "Update",
+          "value": "update"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "object"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "object",
+      "options": [
+        {
+          "name": "Object",
+          "value": "object"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -208,5 +197,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

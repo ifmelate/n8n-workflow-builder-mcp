@@ -17,27 +17,34 @@
       "displayName": "Resources",
       "type": "multiOptions",
       "default": "['all']",
-      "required": true
-    },
-    {
-      "name": "Issue",
-      "default": null
-    },
-    {
-      "name": "Milestone (Sprint)",
-      "default": null
-    },
-    {
-      "name": "Task",
-      "default": null
-    },
-    {
-      "name": "User Story",
-      "default": null
-    },
-    {
-      "name": "Wikipage",
-      "default": null
+      "description": "Resources to listen to",
+      "required": true,
+      "options": [
+        {
+          "name": "All",
+          "value": "all"
+        },
+        {
+          "name": "Issue",
+          "value": "issue"
+        },
+        {
+          "name": "Milestone (Sprint)",
+          "value": "milestone"
+        },
+        {
+          "name": "Task",
+          "value": "task"
+        },
+        {
+          "name": "User Story",
+          "value": "userstory"
+        },
+        {
+          "name": "Wikipage",
+          "value": "wikipage"
+        }
+      ]
     },
     {
       "name": "operations",
@@ -45,19 +52,25 @@
       "type": "multiOptions",
       "default": "['all']",
       "description": "Operations to listen to",
-      "required": true
-    },
-    {
-      "name": "Create",
-      "default": null
-    },
-    {
-      "name": "Delete",
-      "default": null
-    },
-    {
-      "name": "Update",
-      "default": null
+      "required": true,
+      "options": [
+        {
+          "name": "All",
+          "value": "all"
+        },
+        {
+          "name": "Create",
+          "value": "create"
+        },
+        {
+          "name": "Delete",
+          "value": "delete"
+        },
+        {
+          "name": "Update",
+          "value": "change"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -77,5 +90,23 @@
       "name": "operations",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

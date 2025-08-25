@@ -10,7 +10,17 @@
       "type": "multiOptions",
       "default": [],
       "description": "The destination stream, or a comma-separated list containing the usernames (emails) of the recipients. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "sendPrivate"
+          ]
+        }
+      }
     },
     {
       "name": "content",
@@ -18,7 +28,35 @@
       "type": "string",
       "default": "",
       "description": "The content of the message",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "sendPrivate"
+          ]
+        }
+      }
+    },
+    {
+      "name": "stream",
+      "displayName": "Stream Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The destination stream, or a comma-separated list containing the usernames (emails) of the recipients. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "sendStream"
+          ]
+        }
+      }
     },
     {
       "name": "topic",
@@ -26,29 +64,17 @@
       "type": "options",
       "default": "",
       "description": "The topic of the message. Only required if type is stream, ignored otherwise. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
-    },
-    {
-      "name": "updateFields",
-      "displayName": "Update Fields",
-      "type": "collection",
-      "default": {},
-      "description": "The content of the message",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "propagateMode",
-      "displayName": "Propagate Mode",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Change Later",
-      "default": null
-    },
-    {
-      "name": "Change All",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "sendStream"
+          ]
+        }
+      }
     },
     {
       "name": "messageId",
@@ -56,51 +82,142 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for the message",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "name": "updateFields",
+      "displayName": "Update Fields",
+      "type": "collection",
+      "default": {},
+      "description": "The content of the message",
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "content",
+          "displayName": "Content",
+          "type": "string",
+          "default": "",
+          "description": "The content of the message"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "name": "dataBinaryProperty",
+      "displayName": "Put Output File in Field",
+      "type": "string",
+      "default": "data",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "updateFile"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Delete a message"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a message"
-    },
-    {
-      "name": "Send Private",
-      "default": null,
-      "description": "Send a private message"
-    },
-    {
-      "name": "Send to Stream",
-      "default": null,
-      "description": "Send a message to stream"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a message"
-    },
-    {
-      "name": "Upload a File",
-      "default": null
+      "default": "sendPrivate",
+      "description": "Delete a message",
+      "options": [
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a message"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a message"
+        },
+        {
+          "name": "Send Private",
+          "value": "sendPrivate",
+          "description": "Send a private message"
+        },
+        {
+          "name": "Send to Stream",
+          "value": "sendStream",
+          "description": "Send a message to stream"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a message"
+        },
+        {
+          "name": "Upload a File",
+          "value": "updateFile"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
       "name": "jsonParameters",
       "displayName": "JSON Parameters",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "stream"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFieldsJson",
       "displayName": "Additional Fields",
       "type": "json",
       "default": "",
-      "description": "JSON format parameters for stream creation"
+      "description": "JSON format parameters for stream creation",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "stream"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "subscriptions",
@@ -108,15 +225,23 @@
       "type": "fixedCollection",
       "default": {},
       "description": "A list of dictionaries containing the the key name and value specifying the name of the stream to subscribe. If the stream does not exist a new stream is created.",
-      "required": true
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": "",
-      "description": "Description of Subscription",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "stream"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -124,82 +249,54 @@
       "type": "collection",
       "default": {},
       "description": "If announce is True and one of the streams specified in subscriptions has to be created (i.e. doesnt exist to begin with), an announcement will be made notifying that a new stream was created.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "authorizationErrorsFatal",
-      "displayName": "Authorization Errors Fatal",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether authorization errors (such as when the requesting user is not authorized to access a private stream) should be considered fatal or not. When True, an authorization error is reported as such. When set to False, the returned JSON payload indicates that there was an authorization error, but the response is still considered a successful one."
-    },
-    {
-      "name": "historyPublicToSubscribers",
-      "displayName": "History Public to Subscribers",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the streams message history should be available to newly subscribed members, or users can only access messages they actually received while subscribed to the stream"
-    },
-    {
-      "name": "inviteOnly",
-      "displayName": "Invite Only",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the streams specified in subscriptions are invite-only or not"
-    },
-    {
-      "name": "principals",
-      "displayName": "Principals",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "A list of email addresses of the users that will be subscribed/unsubscribed to the streams specified in the subscriptions argument. If not provided, then the requesting user/bot is subscribed.",
-      "placeholder": "name@email.com",
-      "required": true
-    },
-    {
-      "name": "streamPostPolicy",
-      "displayName": "Stream Post Policy",
-      "type": "options",
-      "default": "",
-      "description": "Policy for which users can post messages to the stream"
-    },
-    {
-      "name": "2",
-      "default": null,
-      "description": "Only administrators can post"
-    },
-    {
-      "name": "3",
-      "default": null,
-      "description": "Only new members can post"
-    },
-    {
-      "name": "includeDefault",
-      "displayName": "Include Default",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to include all default streams for the users realm"
-    },
-    {
-      "name": "includeOwnersubscribed",
-      "displayName": "Include Owner Subscribed",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether the user is a bot, include all streams that the bots owner is subscribed to"
-    },
-    {
-      "name": "includePublic",
-      "displayName": "Include Public",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to include all public streams"
-    },
-    {
-      "name": "includeSubscribed",
-      "displayName": "Include Subscribed",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to include all streams that the user is subscribed to"
+      "placeholder": "Add Field",
+      "required": true,
+      "options": [
+        {
+          "name": "announce",
+          "displayName": "Announce",
+          "type": "boolean",
+          "default": false,
+          "description": "If announce is True and one of the streams specified in subscriptions has to be created (i.e. doesnt exist to begin with), an announcement will be made notifying that a new stream was created."
+        },
+        {
+          "name": "authorizationErrorsFatal",
+          "displayName": "Authorization Errors Fatal",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether authorization errors (such as when the requesting user is not authorized to access a private stream) should be considered fatal or not. When True, an authorization error is reported as such. When set to False, the returned JSON payload indicates that there was an authorization error, but the response is still considered a successful one."
+        },
+        {
+          "name": "historyPublicToSubscribers",
+          "displayName": "History Public to Subscribers",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the streams message history should be available to newly subscribed members, or users can only access messages they actually received while subscribed to the stream"
+        },
+        {
+          "name": "inviteOnly",
+          "displayName": "Invite Only",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the streams specified in subscriptions are invite-only or not"
+        }
+      ],
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "stream"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "streamId",
@@ -207,37 +304,17 @@
       "type": "string",
       "default": "",
       "description": "ID of stream to update",
-      "required": true
-    },
-    {
-      "name": "isPrivate",
-      "displayName": "Is Private",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the stream is a private stream"
-    },
-    {
-      "name": "newName",
-      "displayName": "New Name",
-      "type": "string",
-      "default": "",
-      "description": "The new name for the stream",
-      "placeholder": "Italy"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a stream"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many streams"
-    },
-    {
-      "name": "Get Subscribed",
-      "default": null,
-      "description": "Get subscribed streams"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "stream"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "email",
@@ -246,7 +323,17 @@
       "default": "",
       "description": "The email address of the new user",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "fullName",
@@ -254,7 +341,17 @@
       "type": "string",
       "default": "",
       "description": "The full name of the new user",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "password",
@@ -262,7 +359,17 @@
       "type": "string",
       "default": "",
       "description": "The password of the new user",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "shortName",
@@ -270,92 +377,55 @@
       "type": "string",
       "default": "",
       "description": "The short name of the new user. Not user-visible.",
-      "required": true
-    },
-    {
-      "name": "includeCustomProfileFields",
-      "displayName": "Custom Profile Fields",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the client wants custom profile field data to be included in the response"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "userId",
       "displayName": "User ID",
       "type": "string",
       "default": "",
-      "description": "The ID of user to update",
-      "required": true
-    },
-    {
-      "name": "isAdmin",
-      "displayName": "Is Admin",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the target user is an administrator"
-    },
-    {
-      "name": "isGuest",
-      "displayName": "Is Guest",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the target user is a guest"
-    },
-    {
-      "name": "profileData",
-      "displayName": "Profile Data",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "A dictionary containing the to be updated custom profile field data for the user",
-      "required": true
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Value of custom profile data"
-    },
-    {
-      "name": "role",
-      "displayName": "Role",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Member",
-      "default": null
-    },
-    {
-      "name": "Organization Administrator",
-      "default": null
-    },
-    {
-      "name": "Organization Moderator",
-      "default": null
-    },
-    {
-      "name": "Organization Owner",
-      "default": null
-    },
-    {
-      "name": "Deactivate",
-      "default": null,
-      "description": "Deactivate a user"
+      "description": "The ID of user to get",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Stream",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
+      "default": "message",
+      "options": [
+        {
+          "name": "Message",
+          "value": "message"
+        },
+        {
+          "name": "Stream",
+          "value": "stream"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -367,5 +437,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

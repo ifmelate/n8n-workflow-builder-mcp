@@ -12,41 +12,76 @@
       "displayName": "Operation Mode",
       "type": "options",
       "default": "load",
-      "description": "Retrieve chat messages from connected memory"
-    },
-    {
-      "name": "Insert Messages",
-      "default": null,
-      "description": "Insert chat messages into connected memory"
-    },
-    {
-      "name": "Delete Messages",
-      "default": null,
-      "description": "Delete chat messages from connected memory"
+      "description": "Retrieve chat messages from connected memory",
+      "options": [
+        {
+          "name": "Get Many Messages",
+          "value": "load",
+          "description": "Retrieve chat messages from connected memory"
+        },
+        {
+          "name": "Insert Messages",
+          "value": "insert",
+          "description": "Insert chat messages into connected memory"
+        },
+        {
+          "name": "Delete Messages",
+          "value": "delete",
+          "description": "Delete chat messages from connected memory"
+        }
+      ]
     },
     {
       "name": "insertMode",
       "displayName": "Insert Mode",
       "type": "options",
       "default": "insert",
-      "description": "Choose how new messages are inserted into the memory"
-    },
-    {
-      "name": "Override All Messages",
-      "default": null,
-      "description": "Replace the current memory with new messages"
+      "description": "Choose how new messages are inserted into the memory",
+      "options": [
+        {
+          "name": "Insert Messages",
+          "value": "insert",
+          "description": "Add messages alongside existing ones"
+        },
+        {
+          "name": "Override All Messages",
+          "value": "override",
+          "description": "Replace the current memory with new messages"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "insert"
+          ]
+        }
+      }
     },
     {
       "name": "deleteMode",
       "displayName": "Delete Mode",
       "type": "options",
       "default": "lastN",
-      "description": "How messages are deleted from memory"
-    },
-    {
-      "name": "All Messages",
-      "default": null,
-      "description": "Clear all messages from memory"
+      "description": "How messages are deleted from memory",
+      "options": [
+        {
+          "name": "Last N",
+          "value": "lastN",
+          "description": "Delete the last N messages"
+        },
+        {
+          "name": "All Messages",
+          "value": "all",
+          "description": "Clear all messages from memory"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "messages",
@@ -54,44 +89,49 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Chat messages to insert into memory",
-      "placeholder": "Add message"
-    },
-    {
-      "name": "System",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
-    },
-    {
-      "name": "message",
-      "displayName": "Message",
-      "type": "string",
-      "default": "",
-      "required": true
-    },
-    {
-      "name": "hideFromUI",
-      "displayName": "Hide Message in Chat",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to hide the message from the chat UI",
-      "required": true
+      "placeholder": "Add message",
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "insert"
+          ]
+        }
+      }
     },
     {
       "name": "lastMessagesCount",
       "displayName": "Messages Count",
       "type": "number",
       "default": 2,
-      "description": "The amount of last messages to delete"
+      "description": "The amount of last messages to delete",
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "delete"
+          ],
+          "deleteMode": [
+            "lastN"
+          ]
+        }
+      }
     },
     {
       "name": "simplifyOutput",
       "displayName": "Simplify Output",
       "type": "boolean",
       "default": true,
-      "description": "Whether to simplify the output to only include the sender and the text"
+      "description": "Whether to simplify the output to only include the sender and the text",
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "load"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -99,8 +139,50 @@
       "type": "collection",
       "default": {},
       "description": "Whether to group messages into a single item or return each message as a separate item",
-      "placeholder": "Add Option"
+      "placeholder": "Add Option",
+      "options": [
+        {
+          "name": "groupMessages",
+          "displayName": "Group Messages",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to group messages into a single item or return each message as a separate item"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "load"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main",
+      "AiMemory"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "memory",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent"
+    ],
+    "consumes": [
+      "Main",
+      "AiMemory"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

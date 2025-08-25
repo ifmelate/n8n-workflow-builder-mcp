@@ -1,0 +1,36 @@
+{
+  "nodeType": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+  "displayName": "Embeddings OpenAI",
+  "description": "Use Embeddings OpenAI",
+  "version": [
+    1,
+    1.1,
+    1.2
+  ],
+  "properties": [],
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "AiEmbedding"
+    ],
+    "outputNames": [
+      "Embeddings"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiVectorStore"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "AiEmbedding"
+    ]
+  }
+}

@@ -10,7 +10,17 @@
       "type": "string",
       "default": "",
       "description": "The name of the event to track",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "track"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -18,75 +28,102 @@
       "type": "collection",
       "default": {},
       "description": "Campaign tied to conversion",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "campaignId",
+          "displayName": "Campaign ID",
+          "type": "string",
+          "default": "",
+          "description": "Campaign tied to conversion"
+        },
+        {
+          "name": "createdAt",
+          "displayName": "Created At",
+          "type": "dateTime",
+          "default": "",
+          "description": "Time event happened"
+        }
+      ],
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "track"
+          ]
+        }
+      }
     },
     {
-      "name": "createdAt",
-      "displayName": "Created At",
-      "type": "dateTime",
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": "track",
+      "description": "Record the actions a user perform",
+      "options": [
+        {
+          "name": "Track",
+          "value": "track",
+          "description": "Record the actions a user perform"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ]
+        }
+      }
+    },
+    {
+      "name": "identifier",
+      "displayName": "Identifier",
+      "type": "options",
       "default": "",
-      "description": "Time event happened"
-    },
-    {
-      "name": "dataFieldsUi",
-      "displayName": "Data Fields",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "The end event specified key of the event defined data",
-      "placeholder": "Add Data Field"
+      "description": "Identifier to be used",
+      "required": true,
+      "options": [
+        {
+          "name": "Email",
+          "value": "email"
+        },
+        {
+          "name": "User ID",
+          "value": "userId"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "upsert"
+          ]
+        }
+      }
     },
     {
       "name": "value",
       "displayName": "Value",
       "type": "string",
       "default": "",
-      "description": "The end event specified value of the event defined data"
-    },
-    {
-      "name": "email",
-      "displayName": "Email",
-      "type": "string",
-      "default": "",
-      "description": "Either email or userId must be passed in to identify the user. If both are passed in, email takes precedence.",
-      "placeholder": "name@email.com"
-    },
-    {
-      "name": "id",
-      "displayName": "ID",
-      "type": "string",
-      "default": "",
-      "description": "Optional event ID. If an event exists with that ID, the event will be updated. If none is specified, a new ID will automatically be generated and returned."
-    },
-    {
-      "name": "templateId",
-      "displayName": "Template ID",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "userId",
-      "displayName": "User ID",
-      "type": "string",
-      "default": "",
-      "description": "userId that was passed into the updateUser call"
-    },
-    {
-      "name": "operation",
-      "displayName": "Operation",
-      "type": "options",
-      "default": null,
-      "description": "Record the actions a user perform"
-    },
-    {
-      "name": "identifier",
-      "displayName": "Identifier",
-      "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "User ID",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "upsert"
+          ]
+        }
+      }
     },
     {
       "name": "preferUserId",
@@ -94,31 +131,91 @@
       "type": "boolean",
       "default": true,
       "description": "Whether to create a new user if the idetifier does not exist",
-      "required": true
-    },
-    {
-      "name": "mergeNestedObjects",
-      "displayName": "Merge Nested Objects",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to merge top level objects instead of overwriting (default: false), e.g. if user profile has data: {mySettings:{mobile:true}} and change contact field has data: {mySettings:{email:true}}, the resulting profile: {mySettings:{mobile:true,email:true}}"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "upsert"
+          ],
+          "identifier": [
+            "userId"
+          ]
+        }
+      }
     },
     {
       "name": "by",
       "displayName": "By",
       "type": "options",
-      "default": null,
-      "required": true
+      "default": "email",
+      "description": "Identifier to be used",
+      "required": true,
+      "options": [
+        {
+          "name": "Email",
+          "value": "email"
+        },
+        {
+          "name": "User ID",
+          "value": "userId"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a user"
+      "name": "userId",
+      "displayName": "User ID",
+      "type": "string",
+      "default": "",
+      "description": "Unique identifier for a particular user",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "delete"
+          ],
+          "by": [
+            "userId"
+          ]
+        }
+      }
     },
     {
-      "name": "Get",
-      "default": null,
-      "description": "Get a user"
+      "name": "email",
+      "displayName": "Email",
+      "type": "string",
+      "default": "",
+      "description": "Email for a particular user",
+      "placeholder": "name@email.com",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "delete"
+          ],
+          "by": [
+            "email"
+          ]
+        }
+      }
     },
     {
       "name": "listId",
@@ -126,33 +223,37 @@
       "type": "options",
       "default": "",
       "description": "Identifier to be used. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
-    },
-    {
-      "name": "channelUnsubscribe",
-      "displayName": "Channel Unsubscribe",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to unsubscribe email from list's associated channel - essentially a global unsubscribe"
-    },
-    {
-      "name": "Remove",
-      "default": null,
-      "description": "Remove a user from a list"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "userList"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
-    },
-    {
-      "name": "User List",
-      "default": null
+      "default": "user",
+      "options": [
+        {
+          "name": "Event",
+          "value": "event"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        },
+        {
+          "name": "User List",
+          "value": "userList"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -164,5 +265,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

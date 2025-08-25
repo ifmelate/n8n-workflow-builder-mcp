@@ -9,21 +9,62 @@
       "displayName": "Operation",
       "type": "options",
       "default": "get",
-      "description": "Retrieve data on the logged-in user's organization"
+      "description": "Retrieve data on the logged-in user's organization",
+      "options": [
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Retrieve data on the logged-in user's organization"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "organization"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "space"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 5,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 1000
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "space"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "title",
@@ -31,7 +72,17 @@
       "type": "string",
       "default": "",
       "description": "Title of the work item to create",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "workItem"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "spaceId",
@@ -39,7 +90,17 @@
       "type": "options",
       "default": [],
       "description": "ID of the space to retrieve the work items from. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "workItem"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "statusId",
@@ -47,7 +108,17 @@
       "type": "options",
       "default": [],
       "description": "ID of the status to set on the item to create. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "workItem"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -55,43 +126,26 @@
       "type": "collection",
       "default": {},
       "description": "Description of the item to create. Markdown supported.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "effort",
-      "displayName": "Effort",
-      "type": "options",
-      "default": "SMALL",
-      "description": "Effort to set for the item to create"
-    },
-    {
-      "name": "Medium",
-      "default": null
-    },
-    {
-      "name": "Large",
-      "default": null
-    },
-    {
-      "name": "impact",
-      "displayName": "Impact",
-      "type": "options",
-      "default": "SMALL",
-      "description": "Impact to set for the item to create"
-    },
-    {
-      "name": "labelIds",
-      "displayName": "Label Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "ID of the label to set on the item to create. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "memberIds",
-      "displayName": "Member Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "ID of the user to assign to the item to create. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "description",
+          "displayName": "Description",
+          "type": "string",
+          "default": "",
+          "description": "Description of the item to create. Markdown supported."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "workItem"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "workItemId",
@@ -99,7 +153,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the work item to retrieve",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "workItem"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -107,37 +171,51 @@
       "type": "collection",
       "default": {},
       "description": "Description of the item to update. Markdown supported.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Get",
-      "default": null
-    },
-    {
-      "name": "Get Many",
-      "default": null
-    },
-    {
-      "name": "Update",
-      "default": null
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "description",
+          "displayName": "Description",
+          "type": "string",
+          "default": "",
+          "description": "Description of the item to update. Markdown supported."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "workItem"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Space",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
-    },
-    {
-      "name": "Work Item",
-      "default": null
+      "default": "workItem",
+      "required": true,
+      "options": [
+        {
+          "name": "Organization",
+          "value": "organization"
+        },
+        {
+          "name": "Space",
+          "value": "space"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        },
+        {
+          "name": "Work Item",
+          "value": "workItem"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -149,5 +227,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

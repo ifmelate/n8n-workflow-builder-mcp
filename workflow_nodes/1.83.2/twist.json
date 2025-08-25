@@ -10,7 +10,17 @@
       "type": "options",
       "default": "",
       "description": "The ID of the workspace. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "channel"
+          ]
+        }
+      }
     },
     {
       "name": "name",
@@ -18,86 +28,35 @@
       "type": "string",
       "default": "",
       "description": "The name of the channel",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "channel"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Blue",
-      "default": null
-    },
-    {
-      "name": "Green",
-      "default": null
-    },
-    {
-      "name": "Grey",
-      "default": null
-    },
-    {
-      "name": "Magenta",
-      "default": null
-    },
-    {
-      "name": "Mint Green",
-      "default": null
-    },
-    {
-      "name": "Red",
-      "default": null
-    },
-    {
-      "name": "Salmon",
-      "default": null
-    },
-    {
-      "name": "Sky Blue",
-      "default": null
-    },
-    {
-      "name": "Teal Blue",
-      "default": null
-    },
-    {
-      "name": "Turquoise",
-      "default": null
-    },
-    {
-      "name": "Yellow",
-      "default": null
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": "",
-      "description": "The description of the channel"
-    },
-    {
-      "name": "public",
-      "displayName": "Public",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the channel will be marked as public"
-    },
-    {
-      "name": "temp_id",
-      "displayName": "Temp ID",
-      "type": "number",
-      "default": null,
-      "description": "The temporary ID of the channel. It needs to be a negative number."
-    },
-    {
-      "name": "user_ids",
-      "displayName": "User Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "The users that will participate in the channel. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "description": "The color of the channel",
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "channel"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "channelId",
@@ -105,21 +64,61 @@
       "type": "string",
       "default": "",
       "description": "The ID of the channel",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "archive",
+            "delete",
+            "get",
+            "unarchive"
+          ],
+          "resource": [
+            "channel"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "channel"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "channel"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -127,51 +126,95 @@
       "type": "collection",
       "default": {},
       "description": "Whether only archived conversations are returned",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "archived",
+          "displayName": "Archived",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether only archived conversations are returned"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "channel"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
       "displayName": "Update Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
+      "description": "The color of the channel",
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "channel"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Archive a channel"
-    },
-    {
-      "name": "Create",
-      "default": null,
-      "description": "Initiates a public or private channel-based conversation"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a channel"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get information about a channel"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many channels"
-    },
-    {
-      "name": "Unarchive",
-      "default": null,
-      "description": "Unarchive a channel"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a channel"
+      "default": "create",
+      "description": "Archive a channel",
+      "options": [
+        {
+          "name": "Archive",
+          "value": "archive",
+          "description": "Archive a channel"
+        },
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Initiates a public or private channel-based conversation"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a channel"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get information about a channel"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many channels"
+        },
+        {
+          "name": "Unarchive",
+          "value": "unarchive",
+          "description": "Unarchive a channel"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a channel"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "channel"
+          ]
+        }
+      }
     },
     {
       "name": "threadId",
@@ -179,7 +222,17 @@
       "type": "string",
       "default": "",
       "description": "The ID of the thread",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "comment"
+          ]
+        }
+      }
     },
     {
       "name": "content",
@@ -187,78 +240,17 @@
       "type": "string",
       "default": "",
       "description": "The content of the comment",
-      "required": true
-    },
-    {
-      "name": "Prefill Message",
-      "default": null
-    },
-    {
-      "name": "Send Reply",
-      "default": null
-    },
-    {
-      "name": "button_text",
-      "displayName": "Button Text",
-      "type": "string",
-      "default": "",
-      "description": "The text for the action button"
-    },
-    {
-      "name": "message",
-      "displayName": "Message",
-      "type": "string",
-      "default": "",
-      "description": "The text for the action button"
-    },
-    {
-      "name": "type",
-      "displayName": "Type",
-      "type": "options",
-      "default": null,
-      "description": "The type of the button. (Currently only <code>action</code> is available)."
-    },
-    {
-      "name": "url",
-      "displayName": "URL",
-      "type": "string",
-      "default": "",
-      "description": "URL to redirect"
-    },
-    {
-      "name": "binaryProperties",
-      "displayName": "Attachments",
-      "type": "string",
-      "default": "data",
-      "description": "Name of the property that holds the binary data. Multiple can be defined separated by comma."
-    },
-    {
-      "name": "direct_mentions",
-      "displayName": "Direct Mention Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "The users that are directly mentioned. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "mark_thread_position",
-      "displayName": "Mark Thread Position",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether the position of the thread is marked"
-    },
-    {
-      "name": "recipients",
-      "displayName": "Recipient Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "The users that will attached to the comment. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "send_as_integration",
-      "displayName": "Send as Integration",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to display the integration as the comment creator"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "comment"
+          ]
+        }
+      }
     },
     {
       "name": "commentId",
@@ -266,45 +258,18 @@
       "type": "string",
       "default": "",
       "description": "The ID of the comment",
-      "required": true
-    },
-    {
-      "name": "to_obj_index",
-      "displayName": "Ending Object Index",
-      "type": "number",
-      "default": 50,
-      "description": "Limit comments ending at the specified object index"
-    },
-    {
-      "name": "newer_than_ts",
-      "displayName": "Newer Than",
-      "type": "dateTime",
-      "default": "",
-      "description": "Limits comments to those newer when the specified Unix time"
-    },
-    {
-      "name": "older_than_ts",
-      "displayName": "Older Than",
-      "type": "dateTime",
-      "default": "",
-      "description": "Limits comments to those older than the specified Unix time"
-    },
-    {
-      "name": "order_by",
-      "displayName": "Order By",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "DESC",
-      "default": null
-    },
-    {
-      "name": "from_obj_index",
-      "displayName": "Starting Object Index",
-      "type": "number",
-      "default": 0,
-      "description": "Limit comments starting at the specified object index"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get",
+            "delete"
+          ],
+          "resource": [
+            "comment"
+          ]
+        }
+      }
     },
     {
       "name": "conversationId",
@@ -312,7 +277,17 @@
       "type": "options",
       "default": "",
       "description": "The ID of the conversation. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "messageConversation"
+          ]
+        }
+      }
     },
     {
       "name": "id",
@@ -320,7 +295,18 @@
       "type": "string",
       "default": "",
       "description": "The ID of the conversation message",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete",
+            "get"
+          ],
+          "resource": [
+            "messageConversation"
+          ]
+        }
+      }
     },
     {
       "name": "title",
@@ -328,39 +314,41 @@
       "type": "string",
       "default": "",
       "description": "The title of the new thread (1 < length < 300)",
-      "required": true
-    },
-    {
-      "name": "filter_by",
-      "displayName": "Filter By",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Everyone",
-      "default": null
-    },
-    {
-      "name": "Starred",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "thread"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Comment",
-      "default": null
-    },
-    {
-      "name": "Message Conversation",
-      "default": null
-    },
-    {
-      "name": "Thread",
-      "default": null
+      "default": "messageConversation",
+      "options": [
+        {
+          "name": "Channel",
+          "value": "channel"
+        },
+        {
+          "name": "Comment",
+          "value": "comment"
+        },
+        {
+          "name": "Message Conversation",
+          "value": "messageConversation"
+        },
+        {
+          "name": "Thread",
+          "value": "thread"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -372,5 +360,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

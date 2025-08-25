@@ -10,23 +10,94 @@
       "type": "string",
       "default": "",
       "description": "Company or business name",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "description": "Whether to return all results or only up to a given limit",
       "placeholder": "Add Field",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "name": "accountId",
+      "displayName": "Account ID",
+      "type": "string",
+      "default": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "delete",
+            "get",
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 5,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 10
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -34,14 +105,18 @@
       "type": "collection",
       "default": {},
       "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "expandFields",
-      "displayName": "Expand Field Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "get",
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -49,42 +124,90 @@
       "type": "collection",
       "default": {},
       "description": "Query to filter the results. Check <a href=\"https://docs.microsoft.com/en-us/powerapps/developer/data-platform/webapi/query-data-web-api#filter-results\" target=\"_blank\">filters</a>.",
-      "placeholder": "Add Filter"
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "query",
+          "displayName": "Query",
+          "type": "string",
+          "default": "",
+          "description": "Query to filter the results. Check <a href=\"https://docs.microsoft.com/en-us/powerapps/developer/data-platform/webapi/query-data-web-api#filter-results\" target=\"_blank\">filters</a>."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
       "displayName": "Update Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Delete",
-      "default": null
-    },
-    {
-      "name": "Get",
-      "default": null
-    },
-    {
-      "name": "Get Many",
-      "default": null
-    },
-    {
-      "name": "Update",
-      "default": null
+      "default": "create",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create"
+        },
+        {
+          "name": "Delete",
+          "value": "delete"
+        },
+        {
+          "name": "Get",
+          "value": "get"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll"
+        },
+        {
+          "name": "Update",
+          "value": "update"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "account",
+      "options": [
+        {
+          "name": "Account",
+          "value": "account"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -96,5 +219,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

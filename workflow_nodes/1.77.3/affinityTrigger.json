@@ -8,103 +8,111 @@
       "name": "events",
       "displayName": "Events",
       "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "field_value.deleted",
-      "default": null
-    },
-    {
-      "name": "field_value.updated",
-      "default": null
-    },
-    {
-      "name": "field.created",
-      "default": null
-    },
-    {
-      "name": "field.deleted",
-      "default": null
-    },
-    {
-      "name": "field.updated",
-      "default": null
-    },
-    {
-      "name": "file.created",
-      "default": null
-    },
-    {
-      "name": "file.deleted",
-      "default": null
-    },
-    {
-      "name": "list_entry.created",
-      "default": null
-    },
-    {
-      "name": "list_entry.deleted",
-      "default": null
-    },
-    {
-      "name": "list.created",
-      "default": null
-    },
-    {
-      "name": "list.deleted",
-      "default": null
-    },
-    {
-      "name": "list.updated",
-      "default": null
-    },
-    {
-      "name": "note.created",
-      "default": null
-    },
-    {
-      "name": "note.deleted",
-      "default": null
-    },
-    {
-      "name": "note.updated",
-      "default": null
-    },
-    {
-      "name": "opportunity.created",
-      "default": null
-    },
-    {
-      "name": "opportunity.deleted",
-      "default": null
-    },
-    {
-      "name": "opportunity.updated",
-      "default": null
-    },
-    {
-      "name": "organization.created",
-      "default": null
-    },
-    {
-      "name": "organization.deleted",
-      "default": null
-    },
-    {
-      "name": "organization.updated",
-      "default": null
-    },
-    {
-      "name": "person.created",
-      "default": null
-    },
-    {
-      "name": "person.deleted",
-      "default": null
-    },
-    {
-      "name": "person.updated",
-      "default": null
+      "default": [],
+      "description": "Webhook events that will be enabled for that endpoint",
+      "required": true,
+      "options": [
+        {
+          "name": "field_value.created",
+          "value": "field_value.created"
+        },
+        {
+          "name": "field_value.deleted",
+          "value": "field_value.deleted"
+        },
+        {
+          "name": "field_value.updated",
+          "value": "field_value.updated"
+        },
+        {
+          "name": "field.created",
+          "value": "field.created"
+        },
+        {
+          "name": "field.deleted",
+          "value": "field.deleted"
+        },
+        {
+          "name": "field.updated",
+          "value": "field.updated"
+        },
+        {
+          "name": "file.created",
+          "value": "file.created"
+        },
+        {
+          "name": "file.deleted",
+          "value": "file.deleted"
+        },
+        {
+          "name": "list_entry.created",
+          "value": "list_entry.created"
+        },
+        {
+          "name": "list_entry.deleted",
+          "value": "list_entry.deleted"
+        },
+        {
+          "name": "list.created",
+          "value": "list.created"
+        },
+        {
+          "name": "list.deleted",
+          "value": "list.deleted"
+        },
+        {
+          "name": "list.updated",
+          "value": "list.updated"
+        },
+        {
+          "name": "note.created",
+          "value": "note.created"
+        },
+        {
+          "name": "note.deleted",
+          "value": "note.deleted"
+        },
+        {
+          "name": "note.updated",
+          "value": "note.updated"
+        },
+        {
+          "name": "opportunity.created",
+          "value": "opportunity.created"
+        },
+        {
+          "name": "opportunity.deleted",
+          "value": "opportunity.deleted"
+        },
+        {
+          "name": "opportunity.updated",
+          "value": "opportunity.updated"
+        },
+        {
+          "name": "organization.created",
+          "value": "organization.created"
+        },
+        {
+          "name": "organization.deleted",
+          "value": "organization.deleted"
+        },
+        {
+          "name": "organization.updated",
+          "value": "organization.updated"
+        },
+        {
+          "name": "person.created",
+          "value": "person.created"
+        },
+        {
+          "name": "person.deleted",
+          "value": "person.deleted"
+        },
+        {
+          "name": "person.updated",
+          "value": "person.updated"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -120,5 +128,19 @@
       "name": "events",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

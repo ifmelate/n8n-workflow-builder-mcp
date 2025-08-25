@@ -8,18 +8,25 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Execute an SQL query"
-    },
-    {
-      "name": "Insert",
-      "default": null,
-      "description": "Insert rows in database"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update rows in database"
+      "default": "insert",
+      "description": "Execute an SQL query",
+      "options": [
+        {
+          "name": "Execute Query",
+          "value": "executeQuery",
+          "description": "Execute an SQL query"
+        },
+        {
+          "name": "Insert",
+          "value": "insert",
+          "description": "Insert rows in database"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update rows in database"
+        }
+      ]
     },
     {
       "name": "query",
@@ -28,7 +35,32 @@
       "default": "",
       "description": "The SQL query to execute. You can use n8n expressions or $1 and $2 in conjunction with query parameters.",
       "placeholder": "SELECT id, name FROM product WHERE quantity > $1 AND price <= $2",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "rows": 5
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "executeQuery"
+          ]
+        }
+      }
+    },
+    {
+      "name": "schema",
+      "displayName": "Schema",
+      "type": "string",
+      "default": "doc",
+      "description": "Name of the schema the table belongs to",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "insert"
+          ]
+        }
+      }
     },
     {
       "name": "table",
@@ -36,7 +68,14 @@
       "type": "string",
       "default": "",
       "description": "Name of the table in which to insert data to",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "insert"
+          ]
+        }
+      }
     },
     {
       "name": "columns",
@@ -45,7 +84,13 @@
       "default": "",
       "description": "Comma-separated list of the properties which should used as columns for the new rows",
       "placeholder": "id,name,description",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "insert"
+          ]
+        }
+      }
     },
     {
       "name": "updateKey",
@@ -53,20 +98,44 @@
       "type": "string",
       "default": "id",
       "description": "Comma-separated list of the properties which decides which rows in the database should be updated. Normally that would be \"id\".",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
-      "name": "Multiple Queries",
-      "default": null,
-      "description": "<b>Default</b>. Sends multiple queries at once to database."
-    },
-    {
-      "name": "queryParams",
-      "displayName": "Query Parameters",
+      "name": "returnFields",
+      "displayName": "Return Fields",
       "type": "string",
-      "default": "",
-      "description": "Comma-separated list of properties which should be used as query parameters",
-      "placeholder": "quantity,price"
+      "default": "*",
+      "description": "Comma-separated list of the fields that the operation will return",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "insert",
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Execute each query independently",
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "/operation": [
+            "executeQuery"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -86,5 +155,19 @@
       "name": "queryParams",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

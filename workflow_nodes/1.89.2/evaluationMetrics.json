@@ -14,8 +14,30 @@
       "name": "metrics",
       "displayName": "Metrics to Return",
       "type": "assignmentCollection",
-      "default": null
+      "default": "{\n\t\t\t\t\tassignments: [\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tname: '',\n\t\t\t\t\t\t\tvalue: '',\n\t\t\t\t\t\t\ttype: 'number',\n\t\t\t\t\t\t}"
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

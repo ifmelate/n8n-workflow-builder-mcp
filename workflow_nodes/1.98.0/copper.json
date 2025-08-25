@@ -10,7 +10,17 @@
       "type": "string",
       "default": "",
       "description": "Name of the company to create",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -18,22 +28,91 @@
       "type": "collection",
       "default": {},
       "description": "Description of the company to create",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "details",
+          "displayName": "Details",
+          "type": "string",
+          "default": "",
+          "description": "Description of the company to create"
+        },
+        {
+          "name": "email_domain",
+          "displayName": "Email Domain",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
-      "name": "email_domain",
-      "displayName": "Email Domain",
+      "name": "companyId",
+      "displayName": "Company ID",
       "type": "string",
       "default": "",
       "description": "ID of the company to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 5,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 1000
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filterFields",
@@ -41,15 +120,33 @@
       "type": "collection",
       "default": {},
       "description": "Country of the company to filter by",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "companyId",
-      "displayName": "Company ID",
-      "type": "string",
-      "default": "",
-      "description": "ID of the company to update",
-      "required": true
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "country",
+          "displayName": "Country",
+          "type": "options",
+          "default": "",
+          "description": "Country of the company to filter by"
+        },
+        {
+          "name": "name",
+          "displayName": "Name",
+          "type": "string",
+          "default": "",
+          "description": "Name of the company to filter by"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -57,51 +154,103 @@
       "type": "collection",
       "default": {},
       "description": "Description to set for the company",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "details",
+          "displayName": "Details",
+          "type": "string",
+          "default": "",
+          "description": "Description to set for the company"
+        },
+        {
+          "name": "name",
+          "displayName": "Name",
+          "type": "string",
+          "default": "",
+          "description": "Name to set for the company"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Delete",
-      "default": null
-    },
-    {
-      "name": "Get",
-      "default": null
-    },
-    {
-      "name": "Get Many",
-      "default": null
-    },
-    {
-      "name": "Update",
-      "default": null
-    },
-    {
-      "name": "returnAll",
-      "displayName": "Return All",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "default": "create",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create"
+        },
+        {
+          "name": "Delete",
+          "value": "delete"
+        },
+        {
+          "name": "Get",
+          "value": "get"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll"
+        },
+        {
+          "name": "Update",
+          "value": "update"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ]
+        }
+      }
     },
     {
       "name": "leadId",
       "displayName": "Lead ID",
       "type": "string",
       "default": "",
-      "description": "ID of the lead to update",
-      "required": true
+      "description": "ID of the lead to delete",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "lead"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "customerSourceId",
       "displayName": "Customer Source ID",
       "type": "string",
       "default": "",
-      "description": "ID of the customer source that generated this opportunity"
+      "description": "ID of the customer source that generated this opportunity",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "opportunity"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "primaryContactId",
@@ -109,54 +258,52 @@
       "type": "string",
       "default": "",
       "description": "ID of the primary company associated with this opportunity",
-      "required": true
-    },
-    {
-      "name": "customer_source_ids",
-      "displayName": "Customer Source IDs",
-      "type": "string",
-      "default": "",
-      "description": "Comma-separated IDs of the customer sources to filter by"
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "opportunity"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "opportunityId",
       "displayName": "Opportunity ID",
       "type": "string",
       "default": "",
-      "description": "ID of the opportunity to update",
-      "required": true
-    },
-    {
-      "name": "primary_contact_id",
-      "displayName": "Primary Contact ID",
-      "type": "string",
-      "default": "",
-      "description": "ID of the customer source that generated this opportunity"
+      "description": "ID of the opportunity to delete",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "opportunity"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "personId",
       "displayName": "Person ID",
       "type": "string",
       "default": "",
-      "description": "ID of the person to update",
-      "required": true
-    },
-    {
-      "name": "details",
-      "displayName": "Details",
-      "type": "string",
-      "default": "",
-      "description": "Description of the project to create"
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": "Open"
-    },
-    {
-      "name": "Open",
-      "default": null
+      "description": "ID of the person to delete",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "person"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "projectId",
@@ -164,17 +311,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the project to delete",
-      "required": true
-    },
-    {
-      "name": "priority",
-      "displayName": "Priority",
-      "type": "options",
-      "default": "High"
-    },
-    {
-      "name": "None",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "project"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "taskId",
@@ -182,48 +329,57 @@
       "type": "string",
       "default": "",
       "description": "ID of the task to delete",
-      "required": true
-    },
-    {
-      "name": "project_ids",
-      "displayName": "Project IDs",
-      "type": "string",
-      "default": "",
-      "description": "Comma-separated IDs of project IDs to filter by"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Customer Source",
-      "default": null
-    },
-    {
-      "name": "Lead",
-      "default": null
-    },
-    {
-      "name": "Opportunity",
-      "default": null
-    },
-    {
-      "name": "Person",
-      "default": null
-    },
-    {
-      "name": "Project",
-      "default": null
-    },
-    {
-      "name": "Task",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
+      "default": "company",
+      "options": [
+        {
+          "name": "Company",
+          "value": "company"
+        },
+        {
+          "name": "Customer Source",
+          "value": "customerSource"
+        },
+        {
+          "name": "Lead",
+          "value": "lead"
+        },
+        {
+          "name": "Opportunity",
+          "value": "opportunity"
+        },
+        {
+          "name": "Person",
+          "value": "person"
+        },
+        {
+          "name": "Project",
+          "value": "project"
+        },
+        {
+          "name": "Task",
+          "value": "task"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -235,5 +391,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

@@ -16,13 +16,38 @@
       "type": "multiOptions",
       "default": [],
       "description": "Triggers when this workflow is updated",
-      "required": true
-    },
-    {
-      "name": "Workflow Activated",
-      "default": null,
-      "description": "Triggers when this workflow is activated"
+      "required": true,
+      "options": [
+        {
+          "name": "Active Workflow Updated",
+          "value": "update",
+          "description": "Triggers when this workflow is updated"
+        },
+        {
+          "name": "Workflow Activated",
+          "value": "activate",
+          "description": "Triggers when this workflow is activated"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

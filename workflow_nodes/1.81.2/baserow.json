@@ -21,9 +21,46 @@
       "required": true
     },
     {
-      "name": "Define Below for Each Column",
-      "default": null,
-      "description": "Set the value for each destination column"
+      "name": "rowId",
+      "displayName": "Row ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the row to return",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ]
+        }
+      }
+    },
+    {
+      "name": "dataToSend",
+      "displayName": "Data to Send",
+      "type": "options",
+      "default": "defineBelow",
+      "description": "Use when node input properties match destination column names",
+      "options": [
+        {
+          "name": "Auto-Map Input Data to Columns",
+          "value": "autoMapInputData",
+          "description": "Use when node input properties match destination column names"
+        },
+        {
+          "name": "Define Below for Each Column",
+          "value": "defineBelow",
+          "description": "Set the value for each destination column"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create",
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "inputsToIgnore",
@@ -31,7 +68,18 @@
       "type": "string",
       "default": "",
       "description": "List of input properties to avoid sending, separated by commas. Leave empty to send all properties.",
-      "placeholder": "Enter properties..."
+      "placeholder": "Enter properties...",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create",
+            "update"
+          ],
+          "dataToSend": [
+            "autoMapInputData"
+          ]
+        }
+      }
     },
     {
       "name": "fieldsUi",
@@ -39,28 +87,56 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create",
+            "update"
+          ],
+          "dataToSend": [
+            "defineBelow"
+          ]
+        }
+      }
     },
     {
-      "name": "fieldValue",
-      "displayName": "Field Value",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "rowId",
-      "displayName": "Row ID",
-      "type": "string",
-      "default": "",
-      "description": "ID of the row to delete",
-      "required": true
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "additionalOptions",
@@ -71,193 +147,67 @@
       "placeholder": "Add option",
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ]
+        }
       }
-    },
-    {
-      "name": "operator",
-      "displayName": "Filter",
-      "type": "options",
-      "default": null,
-      "description": "Operator to compare field and value with"
-    },
-    {
-      "name": "Contains Not",
-      "default": null,
-      "description": "Field does not contain value"
-    },
-    {
-      "name": "Date After Date",
-      "default": null,
-      "description": "Field after this date. Format: 'YYYY-MM-DD'."
-    },
-    {
-      "name": "Date Before Date",
-      "default": null,
-      "description": "Field before this date. Format: 'YYYY-MM-DD'."
-    },
-    {
-      "name": "Date Equal",
-      "default": null,
-      "description": "Field is date. Format: 'YYYY-MM-DD'."
-    },
-    {
-      "name": "Date Equals Month",
-      "default": null,
-      "description": "Field in this month. Format: string."
-    },
-    {
-      "name": "Date Equals Today",
-      "default": null,
-      "description": "Field is today. Format: string."
-    },
-    {
-      "name": "Date Equals Year",
-      "default": null,
-      "description": "Field in this year. Format: string."
-    },
-    {
-      "name": "Date Not Equal",
-      "default": null,
-      "description": "Field is not date. Format: 'YYYY-MM-DD'."
-    },
-    {
-      "name": "Equal",
-      "default": null,
-      "description": "Field is equal to value"
-    },
-    {
-      "name": "Filename Contains",
-      "default": null,
-      "description": "Field filename contains value"
-    },
-    {
-      "name": "Higher Than",
-      "default": null,
-      "description": "Field is higher than value"
-    },
-    {
-      "name": "Is Empty",
-      "default": null,
-      "description": "Field is empty"
-    },
-    {
-      "name": "Is Not Empty",
-      "default": null,
-      "description": "Field is not empty"
-    },
-    {
-      "name": "Is True",
-      "default": null,
-      "description": "Boolean field is true"
-    },
-    {
-      "name": "Link Row Does Not Have",
-      "default": null,
-      "description": "Field does not have link ID"
-    },
-    {
-      "name": "Link Row Has",
-      "default": null,
-      "description": "Field has link ID"
-    },
-    {
-      "name": "Lower Than",
-      "default": null,
-      "description": "Field is lower than value"
-    },
-    {
-      "name": "Not Equal",
-      "default": null,
-      "description": "Field is not equal to value"
-    },
-    {
-      "name": "Single Select Equal",
-      "default": null,
-      "description": "Field selected option is value"
-    },
-    {
-      "name": "Single Select Not Equal",
-      "default": null,
-      "description": "Field selected option is not value"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Value to compare to"
-    },
-    {
-      "name": "filterType",
-      "displayName": "Filter Type",
-      "type": "options",
-      "default": null,
-      "description": "Indicates that the rows must match all the provided filters"
-    },
-    {
-      "name": "OR",
-      "default": null,
-      "description": "Indicates that the rows only have to match one of the filters"
-    },
-    {
-      "name": "search",
-      "displayName": "Search Term",
-      "type": "string",
-      "default": "",
-      "description": "Text to match (can be in any column)"
-    },
-    {
-      "name": "order",
-      "displayName": "Sorting",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Set the sort order of the result rows",
-      "placeholder": "Add Sort Order"
-    },
-    {
-      "name": "direction",
-      "displayName": "Direction",
-      "type": "options",
-      "default": null,
-      "description": "Sort in ascending order"
-    },
-    {
-      "name": "DESC",
-      "default": null,
-      "description": "Sort in descending order"
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "row",
+      "options": [
+        {
+          "name": "Row",
+          "value": "row"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a row"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a row"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Retrieve a row"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Retrieve many rows"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a row"
+      "default": "getAll",
+      "description": "Create a row",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a row"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a row"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Retrieve a row"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Retrieve many rows"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a row"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "row"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -273,5 +223,19 @@
       "name": "operation",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

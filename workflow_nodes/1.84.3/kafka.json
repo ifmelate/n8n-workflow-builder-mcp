@@ -24,7 +24,14 @@
       "displayName": "Message",
       "type": "string",
       "default": "",
-      "description": "The message to be sent"
+      "description": "The message to be sent",
+      "displayOptions": {
+        "show": {
+          "sendInputData": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "jsonParameters",
@@ -46,7 +53,14 @@
       "default": "",
       "description": "URL of the schema registry",
       "placeholder": "https://schema-registry-domain:8081",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "useSchemaRegistry": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "useKey",
@@ -62,7 +76,14 @@
       "default": "",
       "description": "The message key",
       "placeholder": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "useKey": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "eventName",
@@ -70,27 +91,45 @@
       "type": "string",
       "default": "",
       "description": "Namespace and Name of Schema in Schema Registry (namespace.name)",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "useSchemaRegistry": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "headersUi",
       "displayName": "Headers",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Header"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Header",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "headerParametersJson",
       "displayName": "Headers (JSON)",
       "type": "json",
       "default": "",
-      "description": "Header parameters as JSON (flat object)"
+      "description": "Header parameters as JSON (flat object)",
+      "displayOptions": {
+        "show": {
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -98,21 +137,30 @@
       "type": "collection",
       "default": {},
       "description": "Whether or not producer must wait for acknowledgement from all replicas",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "compression",
-      "displayName": "Compression",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to send the data in a compressed format using the GZIP codec"
-    },
-    {
-      "name": "timeout",
-      "displayName": "Timeout",
-      "type": "number",
-      "default": 30000,
-      "description": "The time to await a response in ms"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "acks",
+          "displayName": "Acks",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether or not producer must wait for acknowledgement from all replicas"
+        },
+        {
+          "name": "compression",
+          "displayName": "Compression",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to send the data in a compressed format using the GZIP codec"
+        },
+        {
+          "name": "timeout",
+          "displayName": "Timeout",
+          "type": "number",
+          "default": 30000,
+          "description": "The time to await a response in ms"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -128,5 +176,19 @@
       "name": "headerParametersJson",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

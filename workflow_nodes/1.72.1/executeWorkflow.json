@@ -11,29 +11,42 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "hidden",
-      "default": "call_workflow"
+      "default": "call_workflow",
+      "options": [
+        {
+          "name": "Call Another Workflow",
+          "value": "call_workflow"
+        }
+      ]
     },
     {
       "name": "source",
       "displayName": "Source",
       "type": "options",
-      "default": null,
-      "description": "Load the workflow from the database by ID"
-    },
-    {
-      "name": "Local File",
-      "default": null,
-      "description": "Load the workflow from a locally saved file"
-    },
-    {
-      "name": "Parameter",
-      "default": null,
-      "description": "Load the workflow from a parameter"
-    },
-    {
-      "name": "URL",
-      "default": null,
-      "description": "Load the workflow from an URL"
+      "default": "database",
+      "description": "Load the workflow from the database by ID",
+      "options": [
+        {
+          "name": "Database",
+          "value": "database",
+          "description": "Load the workflow from the database by ID"
+        },
+        {
+          "name": "Local File",
+          "value": "localFile",
+          "description": "Load the workflow from a locally saved file"
+        },
+        {
+          "name": "Parameter",
+          "value": "parameter",
+          "description": "Load the workflow from a parameter"
+        },
+        {
+          "name": "URL",
+          "value": "url",
+          "description": "Load the workflow from an URL"
+        }
+      ]
     },
     {
       "name": "workflowId",
@@ -41,7 +54,17 @@
       "type": "string",
       "default": "",
       "description": "Note on using an expression here: if this node is set to run once with all items, they will all be sent to the <em>same</em> workflow. That workflow's ID will be calculated by evaluating the expression for the <strong>first input item</strong>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "source": [
+            "database"
+          ],
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "workflowPath",
@@ -50,7 +73,48 @@
       "default": "",
       "description": "The path to local JSON workflow file to execute",
       "placeholder": "/data/workflow.json",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "source": [
+            "localFile"
+          ]
+        }
+      }
+    },
+    {
+      "name": "workflowJson",
+      "displayName": "Workflow JSON",
+      "type": "json",
+      "default": "\\n\\n\\n",
+      "description": "The workflow JSON code to execute",
+      "required": true,
+      "typeOptions": {
+        "rows": 10
+      },
+      "displayOptions": {
+        "show": {
+          "source": [
+            "parameter"
+          ]
+        }
+      }
+    },
+    {
+      "name": "workflowUrl",
+      "displayName": "Workflow URL",
+      "type": "string",
+      "default": "",
+      "description": "The URL from which to load the workflow from",
+      "placeholder": "https://example.com/workflow.json",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "source": [
+            "url"
+          ]
+        }
+      }
     },
     {
       "name": "executeWorkflowNotice",
@@ -62,13 +126,20 @@
       "name": "mode",
       "displayName": "Mode",
       "type": "options",
-      "default": null,
-      "description": "Pass all items into a single execution of the sub-workflow"
-    },
-    {
-      "name": "Run once for each item",
-      "default": null,
-      "description": "Call the sub-workflow individually for each item"
+      "default": "once",
+      "description": "Pass all items into a single execution of the sub-workflow",
+      "options": [
+        {
+          "name": "Run once with all items",
+          "value": "once",
+          "description": "Pass all items into a single execution of the sub-workflow"
+        },
+        {
+          "name": "Run once for each item",
+          "value": "each",
+          "description": "Call the sub-workflow individually for each item"
+        }
+      ]
     },
     {
       "name": "options",
@@ -76,8 +147,31 @@
       "type": "collection",
       "default": {},
       "description": "Whether the main workflow should wait for the sub-workflow to complete its execution before proceeding",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "waitForSubWorkflow",
+          "displayName": "Wait For Sub-Workflow Completion",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether the main workflow should wait for the sub-workflow to complete its execution before proceeding"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

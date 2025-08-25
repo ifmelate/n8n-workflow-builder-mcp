@@ -8,45 +8,74 @@
       "name": "triggerOn",
       "displayName": "Trigger On",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Changes Involving a Specific Folder",
-      "default": null
+      "default": "",
+      "required": true,
+      "options": [
+        {
+          "name": "Changes to a Specific File",
+          "value": "file"
+        },
+        {
+          "name": "Changes Involving a Specific Folder",
+          "value": "folder"
+        }
+      ]
     },
     {
       "name": "path",
       "displayName": "File to Watch",
       "type": "string",
       "default": "",
-      "placeholder": "/data/invoices/1.pdf"
+      "placeholder": "/data/invoices/1.pdf",
+      "displayOptions": {
+        "show": {
+          "triggerOn": [
+            "file"
+          ]
+        }
+      }
     },
     {
       "name": "events",
       "displayName": "Watch for",
       "type": "multiOptions",
-      "default": null,
-      "description": "Triggers whenever a new file was added"
-    },
-    {
-      "name": "File Changed",
-      "default": null,
-      "description": "Triggers whenever a file was changed"
-    },
-    {
-      "name": "File Deleted",
-      "default": null,
-      "description": "Triggers whenever a file was deleted"
-    },
-    {
-      "name": "Folder Added",
-      "default": null,
-      "description": "Triggers whenever a new folder was added"
-    },
-    {
-      "name": "Folder Deleted",
-      "default": null,
-      "description": "Triggers whenever a folder was deleted"
+      "default": [],
+      "description": "Triggers whenever a new file was added",
+      "required": true,
+      "options": [
+        {
+          "name": "File Added",
+          "value": "add",
+          "description": "Triggers whenever a new file was added"
+        },
+        {
+          "name": "File Changed",
+          "value": "change",
+          "description": "Triggers whenever a file was changed"
+        },
+        {
+          "name": "File Deleted",
+          "value": "unlink",
+          "description": "Triggers whenever a file was deleted"
+        },
+        {
+          "name": "Folder Added",
+          "value": "addDir",
+          "description": "Triggers whenever a new folder was added"
+        },
+        {
+          "name": "Folder Deleted",
+          "value": "unlinkDir",
+          "description": "Triggers whenever a folder was deleted"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "triggerOn": [
+            "folder"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -54,79 +83,57 @@
       "type": "collection",
       "default": {},
       "description": "Whether to wait until files finished writing to avoid partially read",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "followSymlinks",
-      "displayName": "Include Linked Files/Folders",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether linked files/folders will also be watched (this includes symlinks, aliases on MacOS and shortcuts on Windows). Otherwise only the links themselves will be monitored)."
-    },
-    {
-      "name": "ignored",
-      "displayName": "Ignore",
-      "type": "string",
-      "default": "",
-      "description": "Files or paths to ignore. The whole path is tested, not just the filename. Supports <a href=\"https://github.com/micromatch/anymatch\">Anymatch</a>- syntax. Regex patterns may not work on macOS. To ignore files based on substring matching, use the 'Ignore Mode' option with 'Contain'.",
-      "placeholder": "**/*.txt or ignore-me/subfolder"
-    },
-    {
-      "name": "ignoreInitial",
-      "displayName": "Ignore Existing Files/Folders",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to ignore existing files/folders to not trigger an event"
-    },
-    {
-      "name": "depth",
-      "displayName": "Max Folder Depth",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "2 Levels Down",
-      "default": null
-    },
-    {
-      "name": "3 Levels Down",
-      "default": null
-    },
-    {
-      "name": "4 Levels Down",
-      "default": null
-    },
-    {
-      "name": "5 Levels Down",
-      "default": null
-    },
-    {
-      "name": "Top Folder Only",
-      "default": null
-    },
-    {
-      "name": "Unlimited",
-      "default": null
-    },
-    {
-      "name": "usePolling",
-      "displayName": "Use Polling",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to use polling for watching. Typically necessary to successfully watch files over a network."
-    },
-    {
-      "name": "ignoreMode",
-      "displayName": "Ignore Mode",
-      "type": "options",
-      "default": null,
-      "description": "Ignore files using regex patterns (e.g., **/*.txt), Not supported on macOS"
-    },
-    {
-      "name": "Contain",
-      "default": null,
-      "description": "Ignore files if their path contains the specified value"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "awaitWriteFinish",
+          "displayName": "Await Write Finish",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to wait until files finished writing to avoid partially read"
+        },
+        {
+          "name": "followSymlinks",
+          "displayName": "Include Linked Files/Folders",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether linked files/folders will also be watched (this includes symlinks, aliases on MacOS and shortcuts on Windows). Otherwise only the links themselves will be monitored)."
+        },
+        {
+          "name": "ignored",
+          "displayName": "Ignore",
+          "type": "string",
+          "default": "",
+          "description": "Files or paths to ignore. The whole path is tested, not just the filename. Supports <a href=\"https://github.com/micromatch/anymatch\">Anymatch</a>- syntax. Regex patterns may not work on macOS. To ignore files based on substring matching, use the 'Ignore Mode' option with 'Contain'.",
+          "placeholder": "**/*.txt or ignore-me/subfolder"
+        },
+        {
+          "name": "ignoreInitial",
+          "displayName": "Ignore Existing Files/Folders",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to ignore existing files/folders to not trigger an event"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

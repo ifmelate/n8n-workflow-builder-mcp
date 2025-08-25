@@ -11,14 +11,34 @@
       "default": "",
       "description": "The email of the contact to create",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "updateIfExists",
       "displayName": "Update if Exists",
       "type": "boolean",
       "default": false,
-      "description": "Whether to update user if it exists already. If not set and user exists it will error instead."
+      "description": "Whether to update user if it exists already. If not set and user exists it will error instead.",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -29,35 +49,17 @@
       "placeholder": "Add Field",
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
       }
-    },
-    {
-      "name": "value",
-      "displayName": "Field Value",
-      "type": "string",
-      "default": "",
-      "description": "Value of the field to set"
-    },
-    {
-      "name": "firstName",
-      "displayName": "First Name",
-      "type": "string",
-      "default": "",
-      "description": "The first name of the contact to create"
-    },
-    {
-      "name": "lastName",
-      "displayName": "Last Name",
-      "type": "string",
-      "default": "",
-      "description": "The last name of the contact to create"
-    },
-    {
-      "name": "phone",
-      "displayName": "Phone",
-      "type": "string",
-      "default": "",
-      "description": "Phone number of the contact"
     },
     {
       "name": "contactId",
@@ -65,7 +67,17 @@
       "type": "number",
       "default": 0,
       "description": "ID of the contact to update",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -76,180 +88,58 @@
       "placeholder": "Add Field",
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
       }
-    },
-    {
-      "name": "email_like",
-      "displayName": "Email Like",
-      "type": "string",
-      "default": "",
-      "description": "Filter contacts that contain the given value in the email address"
-    },
-    {
-      "name": "exclude",
-      "displayName": "Exclude",
-      "type": "string",
-      "default": "",
-      "description": "Exclude from the response the contact with the given ID"
-    },
-    {
-      "name": "formid",
-      "displayName": "Form ID",
-      "type": "string",
-      "default": "",
-      "description": "Filter contacts associated with the given form"
-    },
-    {
-      "name": "listid",
-      "displayName": "List ID",
-      "type": "string",
-      "default": "",
-      "description": "Filter contacts associated with the given list"
-    },
-    {
-      "name": "search",
-      "displayName": "Search",
-      "type": "string",
-      "default": "",
-      "description": "Filter contacts that match the given value in the contact names, organization, phone or email"
-    },
-    {
-      "name": "segmentid",
-      "displayName": "Segment ID",
-      "type": "string",
-      "default": "",
-      "description": "Return only contacts that match a list segment"
-    },
-    {
-      "name": "seriesid",
-      "displayName": "Series ID",
-      "type": "string",
-      "default": "",
-      "description": "Filter contacts associated with the given automation"
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Any",
-      "default": null
-    },
-    {
-      "name": "Bounced",
-      "default": null
-    },
-    {
-      "name": "Unconfirmed",
-      "default": null
-    },
-    {
-      "name": "Unsubscribed",
-      "default": null
-    },
-    {
-      "name": "tagid",
-      "displayName": "Tag ID",
-      "type": "string",
-      "default": "",
-      "description": "Filter contacts associated with the given tag"
-    },
-    {
-      "name": "filters[created_before]",
-      "displayName": "Created Before",
-      "type": "dateTime",
-      "default": "",
-      "description": "Filter contacts that were created prior to this date"
-    },
-    {
-      "name": "filters[created_after]",
-      "displayName": "Created After",
-      "type": "dateTime",
-      "default": "",
-      "description": "Filter contacts that were created after this date"
-    },
-    {
-      "name": "filters[updated_before]",
-      "displayName": "Updated Before",
-      "type": "dateTime",
-      "default": "",
-      "description": "Filter contacts that were updated before this date"
-    },
-    {
-      "name": "filters[updated_after]",
-      "displayName": "Updated After",
-      "type": "dateTime",
-      "default": "",
-      "description": "Filter contacts that were updated after this date"
-    },
-    {
-      "name": "waitid",
-      "displayName": "Wait ID",
-      "type": "string",
-      "default": "",
-      "description": "Filter by contacts in the wait queue of an automation block"
-    },
-    {
-      "name": "orderBy",
-      "displayName": "Order By",
-      "type": "options",
-      "default": null,
-      "description": "Order contacts by creation date",
-      "options": []
-    },
-    {
-      "name": "Email",
-      "default": null,
-      "description": "Order contacts by email"
-    },
-    {
-      "name": "First Name",
-      "default": null,
-      "description": "Order contacts by first name"
-    },
-    {
-      "name": "Last Name",
-      "default": null,
-      "description": "Order contacts by last name"
-    },
-    {
-      "name": "Name",
-      "default": null,
-      "description": "Order contacts by full name"
-    },
-    {
-      "name": "Score",
-      "default": null,
-      "description": "Order contacts by score"
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a contact"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a contact"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get data of a contact"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get data of many contacts"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a contact"
+      "default": "create",
+      "description": "Create a contact",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a contact"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a contact"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get data of a contact"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get data of many contacts"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a contact"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "title",
@@ -257,7 +147,17 @@
       "type": "string",
       "default": "",
       "description": "The title of the deal",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
     },
     {
       "name": "contact",
@@ -265,7 +165,35 @@
       "type": "number",
       "default": 0,
       "description": "The ID of the deal's contact",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
+    },
+    {
+      "name": "value",
+      "displayName": "Deal Value",
+      "type": "number",
+      "default": 0,
+      "description": "The value of the deal in cents",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
     },
     {
       "name": "currency",
@@ -273,35 +201,68 @@
       "type": "options",
       "default": "eur",
       "description": "The currency of the deal in 3-character ISO format",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
     },
     {
       "name": "group",
       "displayName": "Deal Pipeline ID",
       "type": "string",
       "default": "",
-      "description": "The pipeline ID of the deal"
+      "description": "The pipeline ID of the deal",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
     },
     {
       "name": "stage",
       "displayName": "Deal Stage ID",
       "type": "string",
       "default": "",
-      "description": "The stage ID of the deal"
+      "description": "The stage ID of the deal",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
     },
     {
       "name": "owner",
       "displayName": "Deal Owner ID",
       "type": "string",
       "default": "",
-      "description": "The owner ID of the deal"
-    },
-    {
-      "name": "percent",
-      "displayName": "Deal Percentage",
-      "type": "number",
-      "default": 0,
-      "description": "The percentage of the deal"
+      "description": "The owner ID of the deal",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
     },
     {
       "name": "dealId",
@@ -309,14 +270,17 @@
       "type": "number",
       "default": 0,
       "description": "ID of the deal to update",
-      "required": true
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": "",
-      "description": "The description of the deal"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
     },
     {
       "name": "dealNote",
@@ -324,7 +288,17 @@
       "type": "string",
       "default": "",
       "description": "The content of the deal note",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "createNote"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
     },
     {
       "name": "dealNoteId",
@@ -332,31 +306,51 @@
       "type": "number",
       "default": "",
       "description": "The ID of the deal note",
-      "required": true
-    },
-    {
-      "name": "Create Note",
-      "default": null,
-      "description": "Create a deal note"
-    },
-    {
-      "name": "Update Deal Note",
-      "default": null,
-      "description": "Update a deal note"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "updateNote"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
     },
     {
       "name": "externalid",
       "displayName": "External ID",
       "type": "string",
       "default": "",
-      "description": "The ID of the order in the external service. ONLY REQUIRED IF EXTERNALCHECKOUTID NOT INCLUDED."
+      "description": "The ID of the order in the external service. ONLY REQUIRED IF EXTERNALCHECKOUTID NOT INCLUDED.",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
+      }
     },
     {
       "name": "externalcheckoutid",
       "displayName": "External Checkout ID",
       "type": "string",
       "default": "",
-      "description": "The ID of the cart in the external service. ONLY REQUIRED IF EXTERNALID IS NOT INCLUDED."
+      "description": "The ID of the cart in the external service. ONLY REQUIRED IF EXTERNALID IS NOT INCLUDED.",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
+      }
     },
     {
       "name": "source",
@@ -364,7 +358,17 @@
       "type": "number",
       "default": 0,
       "description": "The order source code (0 - will not trigger automations, 1 - will trigger automations)",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
+      }
     },
     {
       "name": "totalPrice",
@@ -372,7 +376,17 @@
       "type": "number",
       "default": 0,
       "description": "The total price of the order in cents, including tax and shipping charges. (i.e. $456.78 => 45678). Must be greater than or equal to zero.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
+      }
     },
     {
       "name": "connectionid",
@@ -380,7 +394,17 @@
       "type": "number",
       "default": 0,
       "description": "The ID of the connection from which this order originated",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
+      }
     },
     {
       "name": "customerid",
@@ -388,7 +412,17 @@
       "type": "number",
       "default": 0,
       "description": "The ID of the customer associated with this order",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
+      }
     },
     {
       "name": "externalCreatedDate",
@@ -396,14 +430,34 @@
       "type": "dateTime",
       "default": "",
       "description": "The date the order was placed",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
+      }
     },
     {
       "name": "abandonedDate",
       "displayName": "Abandoning Date",
       "type": "dateTime",
       "default": "",
-      "description": "The date the cart was abandoned. REQUIRED ONLY IF INCLUDING EXTERNALCHECKOUTID."
+      "description": "The date the cart was abandoned. REQUIRED ONLY IF INCLUDING EXTERNALCHECKOUTID.",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
+      }
     },
     {
       "name": "orderProducts",
@@ -412,114 +466,101 @@
       "default": {},
       "description": "All ordered products",
       "placeholder": "Add product field",
+      "options": [
+        {
+          "name": "name",
+          "displayName": "Name",
+          "type": "string",
+          "default": "",
+          "description": "The name of the product"
+        },
+        {
+          "name": "price",
+          "displayName": "Price",
+          "type": "number",
+          "default": 0,
+          "description": "The price of the product, in cents. (i.e. $456.78 => 45678). Must be greater than or equal to zero."
+        },
+        {
+          "name": "quantity",
+          "displayName": "Product Quantity",
+          "type": "number",
+          "default": 0,
+          "description": "The quantity ordered"
+        },
+        {
+          "name": "externalid",
+          "displayName": "Product External ID",
+          "type": "string",
+          "default": "",
+          "description": "The ID of the product in the external service"
+        },
+        {
+          "name": "category",
+          "displayName": "Product Category",
+          "type": "string",
+          "default": "",
+          "description": "The category of the product"
+        },
+        {
+          "name": "sku",
+          "displayName": "SKU",
+          "type": "string",
+          "default": "",
+          "description": "The SKU for the product"
+        },
+        {
+          "name": "description",
+          "displayName": "Description",
+          "type": "string",
+          "default": "",
+          "description": "The description of the product"
+        },
+        {
+          "name": "imageUrl",
+          "displayName": "Image URL",
+          "type": "string",
+          "default": "",
+          "description": "An Image URL that displays an image of the product"
+        },
+        {
+          "name": "productUrl",
+          "displayName": "Product URL",
+          "type": "string",
+          "default": "",
+          "description": "A URL linking to the product in your store"
+        }
+      ],
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
       }
-    },
-    {
-      "name": "price",
-      "displayName": "Price",
-      "type": "number",
-      "default": 0,
-      "description": "The price of the product, in cents. (i.e. $456.78 => 45678). Must be greater than or equal to zero."
-    },
-    {
-      "name": "quantity",
-      "displayName": "Product Quantity",
-      "type": "number",
-      "default": 0,
-      "description": "The quantity ordered"
-    },
-    {
-      "name": "category",
-      "displayName": "Product Category",
-      "type": "string",
-      "default": "",
-      "description": "The category of the product"
-    },
-    {
-      "name": "sku",
-      "displayName": "SKU",
-      "type": "string",
-      "default": "",
-      "description": "The SKU for the product"
-    },
-    {
-      "name": "imageUrl",
-      "displayName": "Image URL",
-      "type": "string",
-      "default": "",
-      "description": "An Image URL that displays an image of the product"
-    },
-    {
-      "name": "productUrl",
-      "displayName": "Product URL",
-      "type": "string",
-      "default": "",
-      "description": "A URL linking to the product in your store"
-    },
-    {
-      "name": "taxAmount",
-      "displayName": "Tax Amount",
-      "type": "number",
-      "default": 0,
-      "description": "The total tax amount for the order in cents"
-    },
-    {
-      "name": "discountAmount",
-      "displayName": "Discount Amount",
-      "type": "number",
-      "default": 0,
-      "description": "The total discount amount for the order in cents"
-    },
-    {
-      "name": "orderUrl",
-      "displayName": "Order URL",
-      "type": "string",
-      "default": "",
-      "description": "The URL for the order in the external service"
-    },
-    {
-      "name": "externalUpdatedDate",
-      "displayName": "External Updated Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "The date the order was updated"
-    },
-    {
-      "name": "shippingMethod",
-      "displayName": "Shipping Method",
-      "type": "string",
-      "default": "",
-      "description": "The shipping method of the order"
-    },
-    {
-      "name": "orderNumber",
-      "displayName": "Order Number",
-      "type": "string",
-      "default": "",
-      "description": "The order number. This can be different than the externalid."
     },
     {
       "name": "orderId",
       "displayName": "Order ID",
       "type": "number",
       "default": 0,
-      "description": "The ID of the e-commerce order"
-    },
-    {
-      "name": "externalupdatedDate",
-      "displayName": "Creation Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "The date the order was placed"
-    },
-    {
-      "name": "shippingAmount",
-      "displayName": "Shipping Amount",
-      "type": "number",
-      "default": 0,
-      "description": "The total shipping amount for the order in cents"
+      "description": "The ID of the e-commerce order",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
+      }
     },
     {
       "name": "ecommerceCustomerId",
@@ -527,24 +568,34 @@
       "type": "number",
       "default": 0,
       "description": "ID of the E-commerce customer to update",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "ecommerceCustomer"
+          ]
+        }
+      }
     },
     {
-      "name": "acceptsMarketing",
-      "displayName": "Accepts Marketing",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether customer has opt-ed in to marketing communications"
-    },
-    {
-      "name": "Get by Product ID",
-      "default": null,
-      "description": "Get data of a ordered product"
-    },
-    {
-      "name": "Get by Order ID",
-      "default": null,
-      "description": "Get data of an order's products"
+      "name": "procuctId",
+      "displayName": "Product ID",
+      "type": "number",
+      "default": 0,
+      "description": "The ID of the product you'd like returned",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getByProductId"
+          ],
+          "resource": [
+            "ecommerceOrderProducts"
+          ]
+        }
+      }
     },
     {
       "name": "service",
@@ -552,7 +603,17 @@
       "type": "string",
       "default": "",
       "description": "The name of the service",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "connection"
+          ]
+        }
+      }
     },
     {
       "name": "name",
@@ -560,7 +621,17 @@
       "type": "string",
       "default": "",
       "description": "The name associated with the account in the external service. Often this will be a company name (e.g., \"My Toystore, Inc.\").",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "connection"
+          ]
+        }
+      }
     },
     {
       "name": "logoUrl",
@@ -568,7 +639,17 @@
       "type": "string",
       "default": "",
       "description": "The URL to a logo image for the external service",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "connection"
+          ]
+        }
+      }
     },
     {
       "name": "linkUrl",
@@ -576,29 +657,35 @@
       "type": "string",
       "default": "",
       "description": "The URL to a page where the integration with the external service can be managed in the third-party's website",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "connection"
+          ]
+        }
+      }
     },
     {
-      "name": "syncStatus",
-      "displayName": "Syncronisation Status",
+      "name": "connectionId",
+      "displayName": "Connection ID",
       "type": "number",
-      "default": 1,
-      "description": "The status of a sync triggered on the connection (0 = sync stopped; 1 = sync running)"
-    },
-    {
-      "name": "fields",
-      "displayName": "Fields",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Adds a custom fields to set also values which have not been predefined",
-      "placeholder": "Add Custom Fields"
-    },
-    {
-      "name": "fieldValue",
-      "displayName": "Field Value",
-      "type": "string",
-      "default": "",
-      "description": "Value of the field to set"
+      "default": 0,
+      "description": "ID of the connection to update",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "connection"
+          ]
+        }
+      }
     },
     {
       "name": "accountId",
@@ -606,14 +693,44 @@
       "type": "number",
       "default": 0,
       "description": "ID of the account to update",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "account"
+          ]
+        }
+      }
     },
     {
-      "name": "accountUrl",
-      "displayName": "Account URL",
-      "type": "string",
-      "default": "",
-      "description": "Account's website"
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Search by name",
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "search",
+          "displayName": "Search",
+          "type": "string",
+          "default": "",
+          "description": "Search by name"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "account"
+          ]
+        }
+      }
     },
     {
       "name": "tagType",
@@ -621,12 +738,29 @@
       "type": "options",
       "default": "contact",
       "description": "Tag contact",
-      "required": true
-    },
-    {
-      "name": "Template",
-      "default": null,
-      "description": "Tag template"
+      "required": true,
+      "options": [
+        {
+          "name": "Contact",
+          "value": "contact",
+          "description": "Tag contact"
+        },
+        {
+          "name": "Template",
+          "value": "template",
+          "description": "Tag template"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "tag"
+          ]
+        }
+      }
     },
     {
       "name": "tagId",
@@ -634,14 +768,34 @@
       "type": "number",
       "default": 0,
       "description": "ID of the tag to update",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "tag"
+          ]
+        }
+      }
     },
     {
       "name": "account",
       "displayName": "Account ID",
       "type": "number",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "accountContact"
+          ]
+        }
+      }
     },
     {
       "name": "accountContactId",
@@ -649,69 +803,108 @@
       "type": "number",
       "default": 0,
       "description": "ID of the account contact to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "accountContact"
+          ]
+        }
+      }
     },
     {
       "name": "listId",
       "displayName": "List ID",
       "type": "number",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "add"
+          ],
+          "resource": [
+            "contactList"
+          ]
+        }
+      }
     },
     {
-      "name": "Remove",
-      "default": null,
-      "description": "Remove contact from a list"
+      "name": "contactTagId",
+      "displayName": "Contact Tag ID",
+      "type": "number",
+      "default": 0,
+      "description": "ID of the contact tag to delete",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "remove"
+          ],
+          "resource": [
+            "contactTag"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Account Contact",
-      "default": null
-    },
-    {
-      "name": "Connection",
-      "default": null
-    },
-    {
-      "name": "Contact",
-      "default": null
-    },
-    {
-      "name": "Contact List",
-      "default": null
-    },
-    {
-      "name": "Contact Tag",
-      "default": null
-    },
-    {
-      "name": "Deal",
-      "default": null
-    },
-    {
-      "name": "E-Commerce Customer",
-      "default": null
-    },
-    {
-      "name": "E-Commerce Order",
-      "default": null
-    },
-    {
-      "name": "E-Commerce Order Product",
-      "default": null
-    },
-    {
-      "name": "List",
-      "default": null
-    },
-    {
-      "name": "Tag",
-      "default": null
+      "default": "contact",
+      "options": [
+        {
+          "name": "Account",
+          "value": "account"
+        },
+        {
+          "name": "Account Contact",
+          "value": "accountContact"
+        },
+        {
+          "name": "Connection",
+          "value": "connection"
+        },
+        {
+          "name": "Contact",
+          "value": "contact"
+        },
+        {
+          "name": "Contact List",
+          "value": "contactList"
+        },
+        {
+          "name": "Contact Tag",
+          "value": "contactTag"
+        },
+        {
+          "name": "Deal",
+          "value": "deal"
+        },
+        {
+          "name": "E-Commerce Customer",
+          "value": "ecommerceCustomer"
+        },
+        {
+          "name": "E-Commerce Order",
+          "value": "ecommerceOrder"
+        },
+        {
+          "name": "E-Commerce Order Product",
+          "value": "ecommerceOrderProducts"
+        },
+        {
+          "name": "List",
+          "value": "list"
+        },
+        {
+          "name": "Tag",
+          "value": "tag"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -723,5 +916,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

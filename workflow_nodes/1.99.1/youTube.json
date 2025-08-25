@@ -8,57 +8,102 @@
       "name": "part",
       "displayName": "Fields",
       "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "Branding Settings",
-      "default": null
-    },
-    {
-      "name": "Content Details",
-      "default": null
-    },
-    {
-      "name": "Content Owner Details",
-      "default": null
-    },
-    {
-      "name": "ID",
-      "default": null
-    },
-    {
-      "name": "Localizations",
-      "default": null
-    },
-    {
-      "name": "Snippet",
-      "default": null
-    },
-    {
-      "name": "Statistics",
-      "default": null
-    },
-    {
-      "name": "Status",
-      "default": null
-    },
-    {
-      "name": "Topic Details",
-      "default": null
+      "default": "['*']",
+      "description": "The fields parameter specifies a comma-separated list of one or more channel resource properties that the API response will include",
+      "required": true,
+      "options": [
+        {
+          "name": "*",
+          "value": "*"
+        },
+        {
+          "name": "Branding Settings",
+          "value": "brandingSettings"
+        },
+        {
+          "name": "Content Details",
+          "value": "contentDetails"
+        },
+        {
+          "name": "Content Owner Details",
+          "value": "contentOwnerDetails"
+        },
+        {
+          "name": "ID",
+          "value": "id"
+        },
+        {
+          "name": "Localizations",
+          "value": "localizations"
+        },
+        {
+          "name": "Snippet",
+          "value": "snippet"
+        },
+        {
+          "name": "Statistics",
+          "value": "statistics"
+        },
+        {
+          "name": "Status",
+          "value": "status"
+        },
+        {
+          "name": "Topic Details",
+          "value": "topicDetails"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "channel"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "channel"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 25,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 50
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "channel"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -66,28 +111,47 @@
       "type": "collection",
       "default": {},
       "description": "The categoryId parameter specifies a YouTube guide category, thereby requesting YouTube channels associated with that category",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "forUsername",
-      "displayName": "For Username",
-      "type": "string",
-      "default": "",
-      "description": "The forUsername parameter specifies a YouTube username, thereby requesting the channel associated with that username"
-    },
-    {
-      "name": "id",
-      "displayName": "ID",
-      "type": "string",
-      "default": "",
-      "description": "The ID parameter specifies a comma-separated list of the YouTube channel ID(s) for the resource(s) that are being retrieved. In a channel resource, the ID property specifies the channel's YouTube channel ID."
-    },
-    {
-      "name": "managedByMe",
-      "displayName": "Managed By Me",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to instruct the API to only return channels managed by the content owner that the onBehalfOfContentOwner parameter specifies"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "categoryId",
+          "displayName": "Category ID",
+          "type": "string",
+          "default": "",
+          "description": "The categoryId parameter specifies a YouTube guide category, thereby requesting YouTube channels associated with that category"
+        },
+        {
+          "name": "forUsername",
+          "displayName": "For Username",
+          "type": "string",
+          "default": "",
+          "description": "The forUsername parameter specifies a YouTube username, thereby requesting the channel associated with that username"
+        },
+        {
+          "name": "id",
+          "displayName": "ID",
+          "type": "string",
+          "default": "",
+          "description": "The ID parameter specifies a comma-separated list of the YouTube channel ID(s) for the resource(s) that are being retrieved. In a channel resource, the ID property specifies the channel's YouTube channel ID."
+        },
+        {
+          "name": "managedByMe",
+          "displayName": "Managed By Me",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to instruct the API to only return channels managed by the content owner that the onBehalfOfContentOwner parameter specifies"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "channel"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -95,14 +159,33 @@
       "type": "collection",
       "default": {},
       "description": "The hl parameter instructs the API to retrieve localized resource metadata for a specific application language that the YouTube website supports. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "onBehalfOfContentOwner",
-      "displayName": "On Behalf Of Content Owner",
-      "type": "string",
-      "default": "",
-      "description": "The onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "h1",
+          "displayName": "Language Code",
+          "type": "options",
+          "default": "",
+          "description": "The hl parameter instructs the API to retrieve localized resource metadata for a specific application language that the YouTube website supports. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        },
+        {
+          "name": "onBehalfOfContentOwner",
+          "displayName": "On Behalf Of Content Owner",
+          "type": "string",
+          "default": "",
+          "description": "The onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "channel"
+          ]
+        }
+      }
     },
     {
       "name": "channelId",
@@ -110,7 +193,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the channel",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "channel"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -119,125 +212,15 @@
       "default": {},
       "description": "Encapsulates information about the branding of the channel",
       "placeholder": "Add Field",
-      "typeOptions": {
-        "multipleValues": true
-      }
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": "",
-      "description": "The channel description, which appears in the channel information box on your channel page. The property's value has a maximum length of 1000 characters."
-    },
-    {
-      "name": "defaultLanguage",
-      "displayName": "Default Language",
-      "type": "string",
-      "default": "",
-      "description": "The content tab that users should display by default when viewers arrive at your channel page"
-    },
-    {
-      "name": "defaultTab",
-      "displayName": "Default Tab",
-      "type": "string",
-      "default": "The content tab that users should display by default when viewers arrive at your channel page."
-    },
-    {
-      "name": "featuredChannelsTitle",
-      "displayName": "Featured Channels Title",
-      "type": "string",
-      "default": "",
-      "description": "The title that displays above the featured channels module. The title has a maximum length of 30 characters."
-    },
-    {
-      "name": "featuredChannelsUrls",
-      "displayName": "Featured Channels Urls",
-      "type": "string",
-      "default": [],
-      "description": "A list of up to 100 channels that you would like to link to from the featured channels module. The property value is a list of YouTube channel ID values, each of which uniquely identifies a channel."
-    },
-    {
-      "name": "keywords",
-      "displayName": "Keywords",
-      "type": "string",
-      "default": "",
-      "description": "Keywords associated with your channel. The value is a space-separated list of strings.",
-      "placeholder": "tech,news"
-    },
-    {
-      "name": "moderateComments",
-      "displayName": "Moderate Comments",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether user-submitted comments left on the channel page need to be approved by the channel owner to be publicly visible"
-    },
-    {
-      "name": "profileColor",
-      "displayName": "Profile Color",
-      "type": "string",
-      "default": "",
-      "description": "A prominent color that complements the channel's content"
-    },
-    {
-      "name": "showRelatedChannels",
-      "displayName": "Show Related Channels",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether YouTube should show an algorithmically generated list of related channels on your channel page"
-    },
-    {
-      "name": "showBrowseView",
-      "displayName": "Show Browse View",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the channel page should display content in a browse or feed view"
-    },
-    {
-      "name": "trackingAnalyticsAccountId",
-      "displayName": "Tracking Analytics AccountId",
-      "type": "string",
-      "default": "",
-      "description": "The ID for a Google Analytics account that you want to use to track and measure traffic to your channel"
-    },
-    {
-      "name": "unsubscribedTrailer",
-      "displayName": "Unsubscribed Trailer",
-      "type": "string",
-      "default": "",
-      "description": "The video that should play in the featured video module in the channel page's browse view for unsubscribed viewers"
-    },
-    {
-      "name": "imageSettingsValues",
-      "displayName": "Image Settings",
-      "type": "collection",
-      "default": {},
-      "description": "The image object encapsulates information about images that display on the channel's channel page or video watch pages",
-      "placeholder": "Add Channel Settings",
-      "typeOptions": {
-        "multipleValues": true
-      }
-    },
-    {
-      "name": "trackingImageUrl",
-      "displayName": "Tracking Image Url",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "watchIconImageUrl",
-      "displayName": "Watch Icon Image Url",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "statusValue",
-      "displayName": "Status",
-      "type": "collection",
-      "default": {},
-      "placeholder": "Add Status",
-      "typeOptions": {
-        "multipleValues": true
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "channel"
+          ]
+        }
       }
     },
     {
@@ -245,29 +228,53 @@
       "displayName": "Input Binary Field",
       "type": "string",
       "default": "data",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "uploadBanner"
+          ],
+          "resource": [
+            "channel"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Retrieve a channel"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Retrieve many channels"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a channel"
-    },
-    {
-      "name": "Upload Banner",
-      "default": null,
-      "description": "Upload a channel banner"
+      "default": "getAll",
+      "description": "Retrieve a channel",
+      "options": [
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Retrieve a channel"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Retrieve many channels"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a channel"
+        },
+        {
+          "name": "Upload Banner",
+          "value": "uploadBanner",
+          "description": "Upload a channel banner"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "channel"
+          ]
+        }
+      }
     },
     {
       "name": "title",
@@ -275,91 +282,68 @@
       "type": "string",
       "default": "",
       "description": "The playlist's title",
-      "required": true
-    },
-    {
-      "name": "privacyStatus",
-      "displayName": "Privacy Status",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Public",
-      "default": null
-    },
-    {
-      "name": "Unlisted",
-      "default": null
-    },
-    {
-      "name": "tags",
-      "displayName": "Tags",
-      "type": "string",
-      "default": "",
-      "description": "Keyword tags associated with the playlist. Mulplie can be defined separated by comma."
-    },
-    {
-      "name": "onBehalfOfContentOwnerChannel",
-      "displayName": "On Behalf Of Content Owner Channel",
-      "type": "string",
-      "default": "",
-      "description": "The onBehalfOfContentOwnerChannel parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter."
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "playlist"
+          ]
+        }
+      }
     },
     {
       "name": "playlistId",
       "displayName": "Playlist ID",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "Player",
-      "default": null
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a playlist"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a playlist"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "playlist"
+          ]
+        }
+      }
     },
     {
       "name": "videoId",
       "displayName": "Video ID",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "note",
-      "displayName": "Note",
-      "type": "string",
-      "default": "",
-      "description": "A user-generated note for this item. The property value has a maximum length of 280 characters."
-    },
-    {
-      "name": "position",
-      "displayName": "Position",
-      "type": "number",
-      "default": "",
-      "description": "The order in which the item appears in the playlist. The value uses a zero-based index, so the first item has a position of 0, the second item has a position of 1, and so forth."
-    },
-    {
-      "name": "startAt",
-      "displayName": "Start At",
-      "type": "dateTime",
-      "default": "",
-      "description": "The time, measured in seconds from the start of the video, when the video should start playing"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "add"
+          ],
+          "resource": [
+            "playlistItem"
+          ]
+        }
+      }
     },
     {
       "name": "playlistItemId",
       "displayName": "Playlist Item ID",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "playlistItem"
+          ]
+        }
+      }
     },
     {
       "name": "regionCode",
@@ -367,202 +351,96 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "videoCategory"
+          ]
+        }
+      }
     },
     {
       "name": "categoryId",
       "displayName": "Category Name or ID",
       "type": "options",
       "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "embeddable",
-      "displayName": "Embeddable",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the video can be embedded on another website"
-    },
-    {
-      "name": "license",
-      "displayName": "License",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Youtube",
-      "default": null
-    },
-    {
-      "name": "notifySubscribers",
-      "displayName": "Notify Subscribers",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether YouTube should send a notification about the new video to users who subscribe to the video's channel"
-    },
-    {
-      "name": "publicStatsViewable",
-      "displayName": "Public Stats Viewable",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether the extended video statistics on the video's watch page are publicly viewable"
-    },
-    {
-      "name": "publishAt",
-      "displayName": "Publish At",
-      "type": "dateTime",
-      "default": "",
-      "description": "If you set a value for this property, you must also set the status.privacyStatus property to private"
-    },
-    {
-      "name": "recordingDate",
-      "displayName": "Recording Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "The date and time when the video was recorded"
-    },
-    {
-      "name": "selfDeclaredMadeForKids",
-      "displayName": "Self Declared Made For Kids",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the video is designated as child-directed, and it contains the current \"made for kids\" status of the video"
-    },
-    {
-      "name": "Live Streaming Details",
-      "default": null
-    },
-    {
-      "name": "Recording Details",
-      "default": null
-    },
-    {
-      "name": "forDeveloper",
-      "displayName": "For Developer",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to restrict the search to only retrieve videos uploaded via the developer's application or website"
-    },
-    {
-      "name": "publishedAfter",
-      "displayName": "Published After",
-      "type": "dateTime",
-      "default": "",
-      "description": "The publishedAfter parameter indicates that the API response should only contain resources created at or after the specified time"
-    },
-    {
-      "name": "publishedBefore",
-      "displayName": "Published Before",
-      "type": "dateTime",
-      "default": "",
-      "description": "The publishedBefore parameter indicates that the API response should only contain resources created before or at the specified time"
-    },
-    {
-      "name": "q",
-      "displayName": "Query",
-      "type": "string",
-      "default": "",
-      "description": "The q parameter specifies the query term to search for"
-    },
-    {
-      "name": "relatedToVideoId",
-      "displayName": "Related To Video ID",
-      "type": "string",
-      "default": "",
-      "description": "The relatedToVideoId parameter retrieves a list of videos that are related to the video that the parameter value identifies"
-    },
-    {
-      "name": "videoCategoryId",
-      "displayName": "Video Category ID",
-      "type": "string",
-      "default": "",
-      "description": "The videoCategoryId parameter identifies the video category for which the chart should be retrieved"
-    },
-    {
-      "name": "videoSyndicated",
-      "displayName": "Video Syndicated",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to restrict a search to only videos that can be played outside youtube.com"
-    },
-    {
-      "name": "videoType",
-      "displayName": "Video Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Episode",
-      "default": null
-    },
-    {
-      "name": "Movie",
-      "default": null
-    },
-    {
-      "name": "Relevance",
-      "default": null
-    },
-    {
-      "name": "safeSearch",
-      "displayName": "Safe Search",
-      "type": "options",
-      "default": null,
-      "description": "YouTube will filter some content from search results and, at the least, will filter content that is restricted in your locale"
-    },
-    {
-      "name": "None",
-      "default": null,
-      "description": "YouTube will not filter the search result set"
-    },
-    {
-      "name": "Strict",
-      "default": null,
-      "description": "YouTube will try to exclude all restricted content from the search result set"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "upload"
+          ],
+          "resource": [
+            "video"
+          ]
+        }
+      }
     },
     {
       "name": "rating",
       "displayName": "Rating",
       "type": "options",
-      "default": null,
-      "description": "Records that the authenticated user disliked the video"
-    },
-    {
-      "name": "Like",
-      "default": null,
-      "description": "Records that the authenticated user liked the video"
-    },
-    {
-      "name": "Rate",
-      "default": null,
-      "description": "Rate a video"
-    },
-    {
-      "name": "Upload",
-      "default": null,
-      "description": "Upload a video"
+      "default": "",
+      "description": "Records that the authenticated user disliked the video",
+      "options": [
+        {
+          "name": "Dislike",
+          "value": "dislike",
+          "description": "Records that the authenticated user disliked the video"
+        },
+        {
+          "name": "Like",
+          "value": "like",
+          "description": "Records that the authenticated user liked the video"
+        },
+        {
+          "name": "None",
+          "value": "none",
+          "description": "Removes any rating that the authenticated user had previously set for the video"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "rate"
+          ],
+          "resource": [
+            "video"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Playlist",
-      "default": null
-    },
-    {
-      "name": "Playlist Item",
-      "default": null
-    },
-    {
-      "name": "Video",
-      "default": null
-    },
-    {
-      "name": "Video Category",
-      "default": null
+      "default": "channel",
+      "options": [
+        {
+          "name": "Channel",
+          "value": "channel"
+        },
+        {
+          "name": "Playlist",
+          "value": "playlist"
+        },
+        {
+          "name": "Playlist Item",
+          "value": "playlistItem"
+        },
+        {
+          "name": "Video",
+          "value": "video"
+        },
+        {
+          "name": "Video Category",
+          "value": "videoCategory"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -574,5 +452,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

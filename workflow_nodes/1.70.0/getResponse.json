@@ -9,14 +9,34 @@
       "displayName": "Email",
       "type": "string",
       "default": "",
-      "placeholder": "name@email.com"
+      "placeholder": "name@email.com",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "campaignId",
       "displayName": "Campaign Name or ID",
       "type": "options",
       "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -27,54 +47,17 @@
       "placeholder": "Add Field",
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
       }
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "The end user specified value of the user defined data"
-    },
-    {
-      "name": "dayOfCycle",
-      "displayName": "Day Of Cycle",
-      "type": "string",
-      "default": "",
-      "description": "The day on which the contact is in the Autoresponder cycle. null indicates the contacts is not in the cycle."
-    },
-    {
-      "name": "ipAddress",
-      "displayName": "IP Address",
-      "type": "string",
-      "default": "",
-      "description": "The contact's IP address. IPv4 and IPv6 formats are accepted."
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "note",
-      "displayName": "Note",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "scoring",
-      "displayName": "Scoring",
-      "type": "number",
-      "default": "",
-      "description": "Contact scoring, pass null to remove the score from a contact"
-    },
-    {
-      "name": "tags",
-      "displayName": "Tag Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
     },
     {
       "name": "contactId",
@@ -82,7 +65,17 @@
       "type": "string",
       "default": "",
       "description": "ID of contact to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -90,148 +83,73 @@
       "type": "collection",
       "default": {},
       "description": "This makes it possible to pass the IP from which the contact unsubscribed. Used only if the messageId was send.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "messageId",
-      "displayName": "Message ID",
-      "type": "string",
-      "default": "",
-      "description": "The ID of a message (such as a newsletter, an autoresponder, or an RSS-newsletter). When passed, this method will simulate the unsubscribe process, as if the contact clicked the unsubscribe link in a given message."
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "ipAddress",
+          "displayName": "IP Address",
+          "type": "string",
+          "default": "",
+          "description": "This makes it possible to pass the IP from which the contact unsubscribed. Used only if the messageId was send."
+        },
+        {
+          "name": "messageId",
+          "displayName": "Message ID",
+          "type": "string",
+          "default": "",
+          "description": "The ID of a message (such as a newsletter, an autoresponder, or an RSS-newsletter). When passed, this method will simulate the unsubscribe process, as if the contact clicked the unsubscribe link in a given message."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 20,
-      "description": "Max number of results to return"
-    },
-    {
-      "name": "changeOnFrom",
-      "displayName": "Change On From",
-      "type": "dateTime",
-      "default": "",
-      "description": "Search contacts edited from this date"
-    },
-    {
-      "name": "changeOnTo",
-      "displayName": "Change On To",
-      "type": "dateTime",
-      "default": "",
-      "description": "Search contacts edited to this date"
-    },
-    {
-      "name": "createdOnFrom",
-      "displayName": "Created On From",
-      "type": "dateTime",
-      "default": "",
-      "description": "Count data from this date"
-    },
-    {
-      "name": "createdOnTo",
-      "displayName": "Created On To",
-      "type": "dateTime",
-      "default": "",
-      "description": "Count data from this date"
-    },
-    {
-      "name": "exactMatch",
-      "displayName": "Exact Match",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to search for contacts with the exact value of the email and name provided in the query string. Without this flag, matching is done via a standard 'like' comparison, which may sometimes be slow."
-    },
-    {
-      "name": "fields",
-      "displayName": "Fields",
-      "type": "string",
-      "default": "",
-      "description": "List of fields that should be returned. ID is always returned. Fields should be separated by comma"
-    },
-    {
-      "name": "origin",
-      "displayName": "Origin",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Copy",
-      "default": null
-    },
-    {
-      "name": "Email",
-      "default": null
-    },
-    {
-      "name": "Forward",
-      "default": null
-    },
-    {
-      "name": "Import",
-      "default": null
-    },
-    {
-      "name": "Iphone",
-      "default": null
-    },
-    {
-      "name": "Landing Page",
-      "default": null
-    },
-    {
-      "name": "Leads",
-      "default": null
-    },
-    {
-      "name": "Panel",
-      "default": null
-    },
-    {
-      "name": "Sale",
-      "default": null
-    },
-    {
-      "name": "Survey",
-      "default": null
-    },
-    {
-      "name": "Webinar",
-      "default": null
-    },
-    {
-      "name": "WWW",
-      "default": null
-    },
-    {
-      "name": "sortBy",
-      "displayName": "Sort By",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Changed On",
-      "default": null
-    },
-    {
-      "name": "Created On",
-      "default": null
-    },
-    {
-      "name": "sortOrder",
-      "displayName": "Sort Order",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "DESC",
-      "default": null
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -239,58 +157,95 @@
       "type": "collection",
       "default": {},
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "customFieldsUi",
-      "displayName": "Custom Fields",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "The end user specified key of the user defined data. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Custom Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "campaignId",
+          "displayName": "Campaign Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a new contact"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a contact"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a contact"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many contacts"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update contact properties"
+      "default": "get",
+      "description": "Create a new contact",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new contact"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a contact"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a contact"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many contacts"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update contact properties"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "apiKey",
+      "options": [
+        {
+          "name": "API Key",
+          "value": "apiKey"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "contact",
+      "options": [
+        {
+          "name": "Contact",
+          "value": "contact"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -306,5 +261,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

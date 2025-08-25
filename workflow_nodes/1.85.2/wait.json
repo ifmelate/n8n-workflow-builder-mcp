@@ -11,47 +11,75 @@
       "name": "resume",
       "displayName": "Resume",
       "type": "options",
-      "default": null,
-      "description": "Waits for a certain amount of time"
-    },
-    {
-      "name": "At Specified Time",
-      "default": null,
-      "description": "Waits until a specific date and time to continue"
-    },
-    {
-      "name": "On Webhook Call",
-      "default": null,
-      "description": "Waits for a webhook call before continuing"
-    },
-    {
-      "name": "On Form Submitted",
-      "default": null,
-      "description": "Waits for a form submission before continuing"
+      "default": "timeInterval",
+      "description": "Waits for a certain amount of time",
+      "options": [
+        {
+          "name": "After Time Interval",
+          "value": "timeInterval",
+          "description": "Waits for a certain amount of time"
+        },
+        {
+          "name": "At Specified Time",
+          "value": "specificTime",
+          "description": "Waits until a specific date and time to continue"
+        },
+        {
+          "name": "On Webhook Call",
+          "value": "webhook",
+          "description": "Waits for a webhook call before continuing"
+        },
+        {
+          "name": "On Form Submitted",
+          "value": "form",
+          "description": "Waits for a form submission before continuing"
+        }
+      ]
     },
     {
       "name": "incomingAuthentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "None",
-      "default": null
+      "default": "none",
+      "description": "If and how incoming resume-webhook-requests to $execution.resumeFormUrl should be authenticated for additional security",
+      "options": [
+        {
+          "name": "Basic Auth",
+          "value": "basicAuth"
+        },
+        {
+          "name": "None",
+          "value": "none"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resume": [
+            "form"
+          ]
+        }
+      }
     },
     {
       "name": "dateTime",
       "displayName": "Date and Time",
       "type": "dateTime",
       "default": "",
-      "description": "If and how incoming resume-webhook-requests to $execution.resumeUrl should be authenticated for additional security",
-      "required": true
+      "description": "The date and time to wait for before continuing",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resume": [
+            "specificTime"
+          ]
+        }
+      }
     },
     {
       "name": "webhookNotice",
       "displayName": "The webhook URL will be generated at run time. It can be referenced with the <strong>$execution.resumeUrl</strong> variable. Send it somewhere before getting to this node. <a href=\"https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.wait/?utm_source=n8n_app&utm_medium=node_settings_modal-credential_link&utm_campaign=n8n-nodes-base.wait\" target=\"_blank\">More info</a>",
       "type": "notice",
-      "default": "seconds"
+      "default": ""
     },
     {
       "name": "formNotice",
@@ -64,8 +92,37 @@
       "displayName": "Options",
       "type": "collection",
       "default": {},
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "resume": [
+            "form"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

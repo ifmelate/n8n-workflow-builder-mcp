@@ -14,22 +14,45 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": "save"
+      "default": "save",
+      "options": [
+        {
+          "name": "Save Highlight Data (for Search/review)",
+          "value": "save"
+        }
+      ]
     },
     {
       "name": "dataToSave",
       "displayName": "Data to Save",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Saved Field"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "placeholder": "e.g. myValue"
+      "placeholder": "Add Saved Field",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "save"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

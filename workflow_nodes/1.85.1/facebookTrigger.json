@@ -16,64 +16,79 @@
       "name": "whatsappBusinessAccountNotice",
       "displayName": "To watch Whatsapp business account events use the Whatsapp trigger node",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "object": [
+            "whatsappBusinessAccount"
+          ]
+        }
+      }
     },
     {
       "name": "object",
       "displayName": "Object",
       "type": "options",
-      "default": null,
-      "description": "Get updates about Ad Account"
-    },
-    {
-      "name": "Application",
-      "default": null,
-      "description": "Get updates about the app"
-    },
-    {
-      "name": "Certificate Transparency",
-      "default": null,
-      "description": "Get updates about Certificate Transparency"
-    },
-    {
-      "name": "Group",
-      "default": null,
-      "description": "Get updates about activity in groups and events in groups for Workplace"
-    },
-    {
-      "name": "Instagram",
-      "default": null,
-      "description": "Get updates about comments on your media"
-    },
-    {
-      "name": "Link",
-      "default": null,
-      "description": "Get updates about links for rich previews by an external provider"
-    },
-    {
-      "name": "Page",
-      "default": null,
-      "description": "Page updates"
-    },
-    {
-      "name": "Permissions",
-      "default": null,
-      "description": "Updates regarding granting or revoking permissions"
-    },
-    {
-      "name": "User",
-      "default": null,
-      "description": "User profile updates"
-    },
-    {
-      "name": "Whatsapp Business Account",
-      "default": null,
-      "description": "Get updates about Whatsapp business account"
-    },
-    {
-      "name": "Workplace Security",
-      "default": null,
-      "description": "Get updates about Workplace Security"
+      "default": "user",
+      "description": "Get updates about Ad Account",
+      "required": true,
+      "options": [
+        {
+          "name": "Ad Account",
+          "value": "adAccount",
+          "description": "Get updates about Ad Account"
+        },
+        {
+          "name": "Application",
+          "value": "application",
+          "description": "Get updates about the app"
+        },
+        {
+          "name": "Certificate Transparency",
+          "value": "certificateTransparency",
+          "description": "Get updates about Certificate Transparency"
+        },
+        {
+          "name": "Group",
+          "value": "group",
+          "description": "Get updates about activity in groups and events in groups for Workplace"
+        },
+        {
+          "name": "Instagram",
+          "value": "instagram",
+          "description": "Get updates about comments on your media"
+        },
+        {
+          "name": "Link",
+          "value": "link",
+          "description": "Get updates about links for rich previews by an external provider"
+        },
+        {
+          "name": "Page",
+          "value": "page",
+          "description": "Page updates"
+        },
+        {
+          "name": "Permissions",
+          "value": "permissions",
+          "description": "Updates regarding granting or revoking permissions"
+        },
+        {
+          "name": "User",
+          "value": "user",
+          "description": "User profile updates"
+        },
+        {
+          "name": "Whatsapp Business Account",
+          "value": "whatsappBusinessAccount",
+          "description": "Get updates about Whatsapp business account"
+        },
+        {
+          "name": "Workplace Security",
+          "value": "workplaceSecurity",
+          "description": "Get updates about Workplace Security"
+        }
+      ]
     },
     {
       "name": "fields",
@@ -88,7 +103,16 @@
       "type": "collection",
       "default": {},
       "description": "Whether change notifications should include the new values",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "includeValues",
+          "displayName": "Include Values",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether change notifications should include the new values"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -108,5 +132,23 @@
       "name": "fields",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

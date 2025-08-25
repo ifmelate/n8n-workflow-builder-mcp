@@ -10,7 +10,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the index containing the document to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "documentId",
@@ -18,7 +28,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the document to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -26,241 +46,131 @@
       "type": "collection",
       "default": {},
       "description": "Whether to use the bulk operation to delete the document/s",
-      "placeholder": "Add Option"
+      "placeholder": "Add Option",
+      "options": [
+        {
+          "name": "bulkOperation",
+          "displayName": "Bulk Delete",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to use the bulk operation to delete the document/s"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "simple",
       "displayName": "Simplify",
       "type": "boolean",
       "default": true,
-      "description": "Whether to return a simplified version of the response instead of the raw data"
-    },
-    {
-      "name": "_source_includes",
-      "displayName": "Source Includes",
-      "type": "string",
-      "default": "",
-      "description": "Comma-separated list of source fields to include in the response"
-    },
-    {
-      "name": "stored_fields",
-      "displayName": "Stored Fields",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to retrieve the document fields stored in the index rather than the document <code>_source</code>. Defaults to false."
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "paginateNotice",
       "displayName": "By default, you cannot page through more than 10,000 hits. To page through more hits, add \"Sort\" from options.",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
-    },
-    {
-      "name": "allow_partial_search_results",
-      "displayName": "Allow Partial Search Results",
-      "type": "boolean",
-      "default": true,
-      "description": "<p>If true, return partial results if there are shard request timeouts or shard failures.</p><p>If false, returns an error with no partial results. Defaults to true.</p>."
-    },
-    {
-      "name": "batched_reduce_size",
-      "displayName": "Batched Reduce Size",
-      "type": "number",
-      "default": 512,
-      "description": "Number of shard results that should be reduced at once on the coordinating node. Defaults to 512."
-    },
-    {
-      "name": "ccs_minimize_roundtrips",
-      "displayName": "CCS Minimize Roundtrips",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether network round-trips between the coordinating node and the remote clusters are minimized when executing cross-cluster search (CCS) requests. Defaults to true."
-    },
-    {
-      "name": "docvalue_fields",
-      "displayName": "Doc Value Fields",
-      "type": "string",
-      "default": "",
-      "description": "Comma-separated list of fields to return as the docvalue representation of a field for each hit"
-    },
-    {
-      "name": "expand_wildcards",
-      "displayName": "Expand Wildcards",
-      "type": "options",
-      "default": null,
-      "description": "Type of index that wildcard expressions can match. Defaults to <code>open</code>"
-    },
-    {
-      "name": "Closed",
-      "default": null
-    },
-    {
-      "name": "Hidden",
-      "default": null
-    },
-    {
-      "name": "None",
-      "default": null
-    },
-    {
-      "name": "Open",
-      "default": null
-    },
-    {
-      "name": "explain",
-      "displayName": "Explain",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return detailed information about score computation as part of a hit. Defaults to false."
-    },
-    {
-      "name": "ignore_throttled",
-      "displayName": "Ignore Throttled",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether concrete, expanded or aliased indices are ignored when frozen. Defaults to true."
-    },
-    {
-      "name": "ignore_unavailable",
-      "displayName": "Ignore Unavailable",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether missing or closed indices are not included in the response. Defaults to false."
-    },
-    {
-      "name": "max_concurrent_shard_requests",
-      "displayName": "Max Concurrent Shard Requests",
-      "type": "number",
-      "default": 5,
-      "description": "Define the number of shard requests per node this search executes concurrently. Defaults to 5."
-    },
-    {
-      "name": "pre_filter_shard_size",
-      "displayName": "Pre-Filter Shard Size",
-      "type": "number",
-      "default": 1,
-      "description": "Define a threshold that enforces a pre-filter roundtrip to prefilter search shards based on query rewriting. Only used if the number of shards the search request expands to exceeds the threshold."
-    },
-    {
-      "name": "query",
-      "displayName": "Query",
-      "type": "json",
-      "default": "",
-      "description": "Query in the <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html\">Elasticsearch Query DSL</a>"
-    },
-    {
-      "name": "request_cache",
-      "displayName": "Request Cache",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the caching of search results is enabled for requests where size is 0. See <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-request-cache.html\">Elasticsearch shard request cache settings</a>."
-    },
-    {
-      "name": "routing",
-      "displayName": "Routing",
-      "type": "string",
-      "default": "",
-      "description": "Target this primary shard"
-    },
-    {
-      "name": "search_type",
-      "displayName": "Search Type",
-      "type": "options",
-      "default": null,
-      "description": "How distributed term frequencies are calculated for relevance scoring. Defaults to Query then Fetch."
-    },
-    {
-      "name": "Query Then Fetch",
-      "default": null
-    },
-    {
-      "name": "seq_no_primary_term",
-      "displayName": "Sequence Number and Primary Term",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return the sequence number and primary term of the last modification of each hit. See <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/optimistic-concurrency-control.html\">Optimistic concurrency control</a>."
-    },
-    {
-      "name": "sort",
-      "displayName": "Sort",
-      "type": "string",
-      "default": "",
-      "description": "Comma-separated list of <code>field:direction</code> pairs"
-    },
-    {
-      "name": "_source_excludes",
-      "displayName": "Source Excludes",
-      "type": "string",
-      "default": "",
-      "description": "Comma-separated list of source fields to exclude from the response"
-    },
-    {
-      "name": "stats",
-      "displayName": "Stats",
-      "type": "string",
-      "default": "",
-      "description": "Tag of the request for logging and statistical purposes"
-    },
-    {
-      "name": "terminate_after",
-      "displayName": "Terminate After",
-      "type": "number",
-      "default": 0,
-      "description": "Max number of documents to collect for each shard"
-    },
-    {
-      "name": "timeout",
-      "displayName": "Timeout",
-      "type": "string",
-      "default": "1m",
-      "description": "Period to wait for active shards. Defaults to <code>1m</code> (one minute). See the <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#time-units\">Elasticsearch time units reference</a>"
-    },
-    {
-      "name": "track_scores",
-      "displayName": "Track Scores",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to calculate and return document scores, even if the scores are not used for sorting. Defaults to false."
-    },
-    {
-      "name": "track_total_hits",
-      "displayName": "Track Total Hits",
-      "type": "number",
-      "default": 10000,
-      "description": "Number of hits matching the query to count accurately. Defaults to 10000."
-    },
-    {
-      "name": "version",
-      "displayName": "Version",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return document version as part of a hit. Defaults to false."
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "dataToSend",
       "displayName": "Data to Send",
       "type": "options",
-      "default": null,
-      "description": "Set the value for each destination column"
-    },
-    {
-      "name": "Auto-Map Input Data to Columns",
-      "default": null,
-      "description": "Use when node input properties match destination column names"
+      "default": "defineBelow",
+      "description": "Set the value for each destination column",
+      "options": [
+        {
+          "name": "Define Below for Each Column",
+          "value": "defineBelow",
+          "description": "Set the value for each destination column"
+        },
+        {
+          "name": "Auto-Map Input Data to Columns",
+          "value": "autoMapInputData",
+          "description": "Use when node input properties match destination column names"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "inputsToIgnore",
@@ -268,20 +178,43 @@
       "type": "string",
       "default": "",
       "description": "List of input properties to avoid sending, separated by commas. Leave empty to send all properties.",
-      "placeholder": "Enter properties..."
+      "placeholder": "Enter properties...",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "create"
+          ],
+          "dataToSend": [
+            "autoMapInputData"
+          ]
+        }
+      }
     },
     {
       "name": "fieldsUi",
       "displayName": "Fields to Send",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "fieldValue",
-      "displayName": "Field Value",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "create"
+          ],
+          "dataToSend": [
+            "defineBelow"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -289,124 +222,97 @@
       "type": "collection",
       "default": {},
       "description": "ID of the document to create and add to the index",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "pipeline",
-      "displayName": "Pipeline ID",
-      "type": "string",
-      "default": "",
-      "description": "ID of the pipeline to use to preprocess incoming documents"
-    },
-    {
-      "name": "refresh",
-      "displayName": "Refresh",
-      "type": "options",
-      "default": "false",
-      "description": "If true, Elasticsearch refreshes the affected shards to make this operation visible to search,if wait_for then wait for a refresh to make this operation visible to search,if false do nothing with refreshes"
-    },
-    {
-      "name": "Wait For",
-      "default": null,
-      "description": "Wait for a refresh to make this operation visible"
-    },
-    {
-      "name": "False",
-      "default": null,
-      "description": "Do nothing with refreshes"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "documentId",
+          "displayName": "Document ID",
+          "type": "string",
+          "default": "",
+          "description": "ID of the document to create and add to the index"
+        },
+        {
+          "name": "routing",
+          "displayName": "Routing",
+          "type": "string",
+          "default": "",
+          "description": "Target this primary shard"
+        },
+        {
+          "name": "timeout",
+          "displayName": "Timeout",
+          "type": "string",
+          "default": "1m",
+          "description": "Period to wait for active shards. Defaults to <code>1m</code> (one minute). See the <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#time-units\">Elasticsearch time units reference</a>"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a document"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a document"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a document"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many documents"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a document"
-    },
-    {
-      "name": "include_type_name",
-      "displayName": "Include Type Name",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether a mapping type is expected in the body of mappings. Defaults to false."
-    },
-    {
-      "name": "mappings",
-      "displayName": "Mappings",
-      "type": "json",
-      "default": "",
-      "description": "Mapping for fields in the index, as <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html\">mapping object</a>"
-    },
-    {
-      "name": "master_timeout",
-      "displayName": "Master Timeout",
-      "type": "string",
-      "default": "1m",
-      "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error. Defaults to <code>1m</code>. See the <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/common-options.html#time-units\">Elasticsearch time units reference</a>"
-    },
-    {
-      "name": "settings",
-      "displayName": "Settings",
-      "type": "json",
-      "default": "",
-      "description": "Configuration options for the index, as an <a href=\"https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html#index-modules-settings\">index settings object</a>"
-    },
-    {
-      "name": "wait_for_active_shards",
-      "displayName": "Wait for Active Shards",
-      "type": "string",
-      "default": "1",
-      "description": "The number of shard copies that must be active before proceeding with the operation. Set to <code>all</code> or any positive integer up to the total number of shards in the index. Default: 1, the primary shard"
-    },
-    {
-      "name": "flat_settings",
-      "displayName": "Flat Settings",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return settings in flat format. Defaults to false."
-    },
-    {
-      "name": "include_defaults",
-      "displayName": "Include Defaults",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all default settings in the response. Defaults to false."
-    },
-    {
-      "name": "local",
-      "displayName": "Local",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to retrieve information from the local node only. Defaults to false."
+      "default": "get",
+      "description": "Create a document",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a document"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a document"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a document"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many documents"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a document"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Index",
-      "default": null
+      "default": "document",
+      "options": [
+        {
+          "name": "Document",
+          "value": "document"
+        },
+        {
+          "name": "Index",
+          "value": "index"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -418,5 +324,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

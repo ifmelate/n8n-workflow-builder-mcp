@@ -10,7 +10,17 @@
       "type": "options",
       "default": [],
       "description": "ID of the user profile to retrieve the balance of. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "getBalances"
+          ]
+        }
+      }
     },
     {
       "name": "borderlessAccountId",
@@ -18,40 +28,91 @@
       "type": "options",
       "default": [],
       "description": "ID of the borderless account to retrieve the statement of. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "getStatement"
+          ]
+        }
+      }
     },
     {
       "name": "currency",
       "displayName": "Currency",
       "type": "string",
       "default": "",
-      "description": "Code of the currency of the borderless account to retrieve the statement of"
+      "description": "Code of the currency of the borderless account to retrieve the statement of",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "getStatement"
+          ]
+        }
+      }
     },
     {
       "name": "format",
       "displayName": "Format",
       "type": "options",
       "default": "json",
-      "description": "File format to retrieve the statement in"
-    },
-    {
-      "name": "CSV",
-      "default": null
-    },
-    {
-      "name": "PDF",
-      "default": null
-    },
-    {
-      "name": "XML (CAMT.053)",
-      "default": null
+      "description": "File format to retrieve the statement in",
+      "options": [
+        {
+          "name": "JSON",
+          "value": "json"
+        },
+        {
+          "name": "CSV",
+          "value": "csv"
+        },
+        {
+          "name": "PDF",
+          "value": "pdf"
+        },
+        {
+          "name": "XML (CAMT.053)",
+          "value": "xml"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "getStatement"
+          ]
+        }
+      }
     },
     {
       "name": "binaryProperty",
       "displayName": "Put Output File in Field",
       "type": "string",
       "default": "data",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "getStatement"
+          ],
+          "format": [
+            "csv",
+            "pdf",
+            "xml"
+          ]
+        }
+      }
     },
     {
       "name": "fileName",
@@ -60,7 +121,22 @@
       "default": "",
       "description": "Name of the file that will be downloaded",
       "placeholder": "data.pdf",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "getStatement"
+          ],
+          "format": [
+            "csv",
+            "pdf",
+            "xml"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -68,81 +144,82 @@
       "type": "collection",
       "default": {},
       "description": "Line style to retrieve the statement in",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Flat",
-      "default": null,
-      "description": "Separate lines for transaction fees"
-    },
-    {
-      "name": "range",
-      "displayName": "Range",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Range"
-    },
-    {
-      "name": "intervalEnd",
-      "displayName": "Range End",
-      "type": "dateTime",
-      "default": ""
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "getStatement"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
       "default": "getBalances",
-      "description": "Retrieve balances for all account currencies of this user"
-    },
-    {
-      "name": "Get Currencies",
-      "default": null,
-      "description": "Retrieve currencies in the borderless account of this user"
-    },
-    {
-      "name": "Get Statement",
-      "default": null,
-      "description": "Retrieve the statement for the borderless account of this user"
+      "description": "Retrieve balances for all account currencies of this user",
+      "options": [
+        {
+          "name": "Get Balances",
+          "value": "getBalances",
+          "description": "Retrieve balances for all account currencies of this user"
+        },
+        {
+          "name": "Get Currencies",
+          "value": "getCurrencies",
+          "description": "Retrieve currencies in the borderless account of this user"
+        },
+        {
+          "name": "Get Statement",
+          "value": "getStatement",
+          "description": "Retrieve the statement for the borderless account of this user"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ]
+        }
+      }
     },
     {
       "name": "source",
       "displayName": "Source Currency",
       "type": "string",
       "default": "",
-      "description": "Code of the source currency to retrieve the exchange rate for"
+      "description": "Code of the source currency to retrieve the exchange rate for",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "exchangeRate"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "target",
       "displayName": "Target Currency",
       "type": "string",
       "default": "",
-      "description": "Code of the target currency to retrieve the exchange rate for"
-    },
-    {
-      "name": "Hour",
-      "default": null
-    },
-    {
-      "name": "Minute",
-      "default": null
-    },
-    {
-      "name": "to",
-      "displayName": "Range End",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "time",
-      "displayName": "Time",
-      "type": "dateTime",
-      "default": "",
-      "description": "Point in time to retrieve the exchange rate for"
-    },
-    {
-      "name": "Get Many",
-      "default": null
+      "description": "Code of the target currency to retrieve the exchange rate for",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "exchangeRate"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "targetAccountId",
@@ -150,31 +227,81 @@
       "type": "options",
       "default": [],
       "description": "ID of the account that will receive the funds. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "quote"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "amountType",
       "displayName": "Amount Type",
       "type": "options",
-      "default": "source"
-    },
-    {
-      "name": "Target",
-      "default": null
+      "default": "source",
+      "description": "Whether the amount is to be sent or received",
+      "options": [
+        {
+          "name": "Source",
+          "value": "source"
+        },
+        {
+          "name": "Target",
+          "value": "target"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "quote"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "amount",
       "displayName": "Amount",
       "type": "number",
       "default": 1,
-      "description": "Amount of funds for the quote to create"
+      "description": "Amount of funds for the quote to create",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "quote"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "sourceCurrency",
       "displayName": "Source Currency",
       "type": "string",
       "default": "",
-      "description": "Code of the currency to send for the quote to create"
+      "description": "Code of the currency to send for the quote to create",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "quote"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "targetCurrency",
@@ -182,33 +309,75 @@
       "type": "string",
       "default": "",
       "description": "Code of the currency to receive for the quote to create",
-      "required": true
-    },
-    {
-      "name": "Get",
-      "default": null
-    },
-    {
-      "name": "returnAll",
-      "displayName": "Return All",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all results or only up to a given limit"
-    },
-    {
-      "name": "limit",
-      "displayName": "Limit",
-      "type": "number",
-      "default": 5,
-      "description": "Max number of results to return"
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "quote"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "quoteId",
       "displayName": "Quote ID",
       "type": "string",
       "default": "",
-      "description": "ID of the quote based on which to create the transfer",
-      "required": true
+      "description": "ID of the quote to retrieve",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "quote"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "recipient"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 5,
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 1000
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "recipient"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "transferId",
@@ -216,7 +385,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the transfer to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "transfer"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "downloadReceipt",
@@ -224,7 +403,17 @@
       "type": "boolean",
       "default": false,
       "description": "Whether to download the transfer receipt as a PDF file. Only for executed transfers, having status 'Outgoing Payment Sent'.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "transfer"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -232,89 +421,49 @@
       "type": "collection",
       "default": {},
       "description": "Range of time for filtering the transfers",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "createdDateEnd",
-      "displayName": "Created Date End",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": "processing"
-    },
-    {
-      "name": "Cancelled",
-      "default": null
-    },
-    {
-      "name": "Charged Back",
-      "default": null
-    },
-    {
-      "name": "Funds Converted",
-      "default": null
-    },
-    {
-      "name": "Funds Refunded",
-      "default": null
-    },
-    {
-      "name": "Incoming Payment Waiting",
-      "default": null
-    },
-    {
-      "name": "Outgoing Payment Sent",
-      "default": null
-    },
-    {
-      "name": "Processing",
-      "default": null
-    },
-    {
-      "name": "Unknown",
-      "default": null
-    },
-    {
-      "name": "Waiting for Recipient Input to Proceed",
-      "default": null
-    },
-    {
-      "name": "Delete",
-      "default": null
-    },
-    {
-      "name": "Execute",
-      "default": null
+      "placeholder": "Add Filter",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "transfer"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Exchange Rate",
-      "default": null
-    },
-    {
-      "name": "Profile",
-      "default": null
-    },
-    {
-      "name": "Quote",
-      "default": null
-    },
-    {
-      "name": "Recipient",
-      "default": null
-    },
-    {
-      "name": "Transfer",
-      "default": null
+      "default": "account",
+      "options": [
+        {
+          "name": "Account",
+          "value": "account"
+        },
+        {
+          "name": "Exchange Rate",
+          "value": "exchangeRate"
+        },
+        {
+          "name": "Profile",
+          "value": "profile"
+        },
+        {
+          "name": "Quote",
+          "value": "quote"
+        },
+        {
+          "name": "Recipient",
+          "value": "recipient"
+        },
+        {
+          "name": "Transfer",
+          "value": "transfer"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -326,5 +475,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

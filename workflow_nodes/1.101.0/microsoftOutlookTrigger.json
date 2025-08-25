@@ -8,7 +8,13 @@
       "name": "event",
       "displayName": "Trigger On",
       "type": "options",
-      "default": "messageReceived"
+      "default": "messageReceived",
+      "options": [
+        {
+          "name": "Message Received",
+          "value": "messageReceived"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -20,5 +26,23 @@
       "name": "event",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

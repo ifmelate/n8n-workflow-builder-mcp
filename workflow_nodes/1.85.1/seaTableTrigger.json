@@ -8,18 +8,25 @@
       "name": "event",
       "displayName": "Event",
       "type": "options",
-      "default": null,
-      "description": "Trigger on newly created rows"
-    },
-    {
-      "name": "New or Updated Row",
-      "default": null,
-      "description": "Trigger has recently created or modified rows"
-    },
-    {
-      "name": "New Signature",
-      "default": null,
-      "description": "Trigger on new signatures"
+      "default": "newRow",
+      "description": "Trigger on newly created rows",
+      "options": [
+        {
+          "name": "New Row",
+          "value": "newRow",
+          "description": "Trigger on newly created rows"
+        },
+        {
+          "name": "New or Updated Row",
+          "value": "updatedRow",
+          "description": "Trigger has recently created or modified rows"
+        },
+        {
+          "name": "New Signature",
+          "value": "newAsset",
+          "description": "Trigger on new signatures"
+        }
+      ]
     },
     {
       "name": "tableName",
@@ -34,7 +41,15 @@
       "displayName": "View Name",
       "type": "options",
       "default": "",
-      "description": "The name of SeaTable view to access. Choose from the list, or specify the name using an <a href=\"https://docs.n8n.io/code-examples/expressions/\">expression</a>."
+      "description": "The name of SeaTable view to access. Choose from the list, or specify the name using an <a href=\"https://docs.n8n.io/code-examples/expressions/\">expression</a>.",
+      "displayOptions": {
+        "show": {
+          "event": [
+            "newRow",
+            "updatedRow"
+          ]
+        }
+      }
     },
     {
       "name": "assetColumn",
@@ -42,7 +57,14 @@
       "type": "options",
       "default": "",
       "description": "Select the digital-signature column that should be tracked. Choose from the list, or specify the name using an <a href=\"https://docs.n8n.io/code-examples/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "event": [
+            "newAsset"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -50,14 +72,24 @@
       "type": "collection",
       "default": {},
       "description": "Whether to return a simplified version of the response instead of the raw data",
-      "placeholder": "Add Option"
-    },
-    {
-      "name": "convert",
-      "displayName": "Return Column Names",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to return the column keys (false) or the column names (true)"
+      "placeholder": "Add Option",
+      "options": [
+        {
+          "name": "simple",
+          "displayName": "Simplify",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to return a simplified version of the response instead of the raw data"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "/event": [
+            "newRow",
+            "updatedRow"
+          ]
+        }
+      }
     },
     {
       "name": "notice",
@@ -83,5 +115,19 @@
       "name": "notice",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

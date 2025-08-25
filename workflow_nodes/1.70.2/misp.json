@@ -10,28 +10,65 @@
       "type": "string",
       "default": "",
       "description": "UUID of the event to attach the attribute to",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attribute"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "type",
       "displayName": "Type",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "URL",
-      "default": null
-    },
-    {
-      "name": "Comment",
-      "default": null
+      "default": "text",
+      "required": true,
+      "options": [
+        {
+          "name": "Text",
+          "value": "text"
+        },
+        {
+          "name": "URL",
+          "value": "url"
+        },
+        {
+          "name": "Comment",
+          "value": "comment"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attribute"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "value",
       "displayName": "Value",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attribute"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -39,34 +76,17 @@
       "type": "collection",
       "default": {},
       "description": "Who will be able to see this event once published",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Connected Communities",
-      "default": null
-    },
-    {
-      "name": "Inherit Event",
-      "default": null
-    },
-    {
-      "name": "Sharing Group",
-      "default": null
-    },
-    {
-      "name": "This Community Only",
-      "default": null
-    },
-    {
-      "name": "Your Organization Only",
-      "default": null
-    },
-    {
-      "name": "sharing_group_id",
-      "displayName": "Sharing Group Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Use only for when <code>Sharing Group</code> is selected in <code>Distribution</code>. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attribute"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "attributeId",
@@ -74,14 +94,34 @@
       "type": "string",
       "default": "",
       "description": "UUID or numeric ID of the attribute",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attribute"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attribute"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
@@ -89,7 +129,22 @@
       "type": "number",
       "default": 50,
       "description": "Max number of results to return",
-      "required": true
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attribute"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -97,33 +152,56 @@
       "type": "collection",
       "default": {},
       "description": "Who will be able to see this event once published",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attribute"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Delete",
-      "default": null
-    },
-    {
-      "name": "Get",
-      "default": null
-    },
-    {
-      "name": "Get Many",
-      "default": null
-    },
-    {
-      "name": "Search",
-      "default": null
-    },
-    {
-      "name": "Update",
-      "default": null
+      "default": "create",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create"
+        },
+        {
+          "name": "Delete",
+          "value": "delete"
+        },
+        {
+          "name": "Get",
+          "value": "get"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll"
+        },
+        {
+          "name": "Search",
+          "value": "search"
+        },
+        {
+          "name": "Update",
+          "value": "update"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attribute"
+          ]
+        }
+      }
     },
     {
       "name": "org_id",
@@ -131,7 +209,17 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "information",
@@ -139,48 +227,17 @@
       "type": "string",
       "default": "",
       "description": "Information on the event - max 65535 characters",
-      "required": true
-    },
-    {
-      "name": "Ongoing",
-      "default": null
-    },
-    {
-      "name": "Complete",
-      "default": null
-    },
-    {
-      "name": "distribution",
-      "displayName": "Distribution",
-      "type": "options",
-      "default": 0,
-      "description": "Who will be able to see this event once published"
-    },
-    {
-      "name": "threat_level_id",
-      "displayName": "Threat Level ID",
-      "type": "options",
-      "default": 1
-    },
-    {
-      "name": "Medium",
-      "default": null
-    },
-    {
-      "name": "Low",
-      "default": null
-    },
-    {
-      "name": "Undefined",
-      "default": null
-    },
-    {
-      "name": "Publish",
-      "default": null
-    },
-    {
-      "name": "Unpublish",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "tagId",
@@ -188,25 +245,51 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
-    },
-    {
-      "name": "Remove",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "eventTag"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
     },
     {
       "name": "name",
       "displayName": "Name",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "feed"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "provider",
       "displayName": "Provider",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "feed"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "url",
@@ -214,14 +297,17 @@
       "type": "string",
       "default": "",
       "placeholder": "https://example.com",
-      "required": true
-    },
-    {
-      "name": "json",
-      "displayName": "Rules",
-      "type": "string",
-      "default": "",
-      "description": "Filter rules for the feed"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "feed"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "feedId",
@@ -229,22 +315,17 @@
       "type": "string",
       "default": "",
       "description": "UUID or numeric ID of the feed",
-      "required": true
-    },
-    {
-      "name": "rules",
-      "displayName": "Rules",
-      "type": "json",
-      "default": "",
-      "description": "Filter rules for the feed"
-    },
-    {
-      "name": "Disable",
-      "default": null
-    },
-    {
-      "name": "Enable",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "feed"
+          ],
+          "operation": [
+            "disable"
+          ]
+        }
+      }
     },
     {
       "name": "galaxyId",
@@ -252,7 +333,17 @@
       "type": "string",
       "default": "",
       "description": "UUID or numeric ID of the galaxy",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "galaxy"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "noticelistId",
@@ -260,31 +351,17 @@
       "type": "string",
       "default": "",
       "description": "Numeric ID of the noticelist",
-      "required": true
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "nationality",
-      "displayName": "Nationality",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "sector",
-      "displayName": "Sector",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "usercount",
-      "displayName": "User Count",
-      "type": "number",
-      "default": 0
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "noticelist"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "organisationId",
@@ -292,7 +369,17 @@
       "type": "string",
       "default": "",
       "description": "UUID or numeric ID of the organisation",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "organisation"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "email",
@@ -300,7 +387,17 @@
       "type": "string",
       "default": "",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "role_id",
@@ -308,14 +405,17 @@
       "type": "string",
       "default": "",
       "description": "Role IDs are available in the MISP dashboard at /roles/index",
-      "required": true
-    },
-    {
-      "name": "invited_by",
-      "displayName": "Inviter Email or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "userId",
@@ -323,13 +423,17 @@
       "type": "string",
       "default": "",
       "description": "Numeric ID of the user",
-      "required": true
-    },
-    {
-      "name": "gpgkey",
-      "displayName": "GPG Key",
-      "type": "string",
-      "default": ""
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "warninglistId",
@@ -337,53 +441,69 @@
       "type": "string",
       "default": "",
       "description": "Numeric ID of the warninglist",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "warninglist"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Event",
-      "default": null
-    },
-    {
-      "name": "Event Tag",
-      "default": null
-    },
-    {
-      "name": "Feed",
-      "default": null
-    },
-    {
-      "name": "Galaxy",
-      "default": null
-    },
-    {
-      "name": "Noticelist",
-      "default": null
-    },
-    {
-      "name": "Object",
-      "default": null
-    },
-    {
-      "name": "Organisation",
-      "default": null
-    },
-    {
-      "name": "Tag",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
-    },
-    {
-      "name": "Warninglist",
-      "default": null
+      "default": "attribute",
+      "options": [
+        {
+          "name": "Attribute",
+          "value": "attribute"
+        },
+        {
+          "name": "Event",
+          "value": "event"
+        },
+        {
+          "name": "Event Tag",
+          "value": "eventTag"
+        },
+        {
+          "name": "Feed",
+          "value": "feed"
+        },
+        {
+          "name": "Galaxy",
+          "value": "galaxy"
+        },
+        {
+          "name": "Noticelist",
+          "value": "noticelist"
+        },
+        {
+          "name": "Object",
+          "value": "object"
+        },
+        {
+          "name": "Organisation",
+          "value": "organisation"
+        },
+        {
+          "name": "Tag",
+          "value": "tag"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        },
+        {
+          "name": "Warninglist",
+          "value": "warninglist"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -395,5 +515,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

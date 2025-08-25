@@ -8,13 +8,32 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "email",
+      "options": [
+        {
+          "name": "Email",
+          "value": "email"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
+      "default": "check",
+      "options": [
+        {
+          "name": "Check",
+          "value": "check"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ]
+        }
+      }
     },
     {
       "name": "email",
@@ -22,7 +41,17 @@
       "type": "string",
       "default": "",
       "description": "Email address to check",
-      "placeholder": "name@email.com"
+      "placeholder": "name@email.com",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "check"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -42,5 +71,19 @@
       "name": "email",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

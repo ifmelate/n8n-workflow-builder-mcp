@@ -10,7 +10,17 @@
       "type": "string",
       "default": "",
       "description": "The unique identifier of the customer",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "track"
+          ]
+        }
+      }
     },
     {
       "name": "email",
@@ -18,7 +28,17 @@
       "type": "string",
       "default": "",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "track"
+          ]
+        }
+      }
     },
     {
       "name": "eventName",
@@ -26,13 +46,33 @@
       "type": "string",
       "default": "",
       "description": "The name of the event tracked",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "track"
+          ]
+        }
+      }
     },
     {
       "name": "jsonParameters",
       "displayName": "JSON Parameters",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "track"
+          ]
+        }
+      }
     },
     {
       "name": "dataAttributesUi",
@@ -40,14 +80,23 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Key value pairs that represent any properties you want to track with this event",
-      "placeholder": "Add Data"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Value of the property to set"
+      "placeholder": "Add Data",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "track"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "extraAttributesUi",
@@ -55,28 +104,84 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Key value pairs that represent reserved, Vero-specific operators. Refer to the note on “deduplication” below.",
-      "placeholder": "Add Extra"
+      "placeholder": "Add Extra",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "track"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "dataAttributesJson",
       "displayName": "Data",
       "type": "json",
       "default": "",
-      "description": "Key value pairs that represent the custom user properties you want to update"
+      "description": "Key value pairs that represent the custom user properties you want to update",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "track"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "extraAttributesJson",
       "displayName": "Extra",
       "type": "json",
       "default": "",
-      "description": "Key value pairs that represent reserved, Vero-specific operators. Refer to the note on “deduplication” below."
+      "description": "Key value pairs that represent reserved, Vero-specific operators. Refer to the note on “deduplication” below.",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "track"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Track an event for a specific customer"
+      "default": "track",
+      "description": "Track an event for a specific customer",
+      "options": [
+        {
+          "name": "Track",
+          "value": "track",
+          "description": "Track an event for a specific customer"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -84,7 +189,27 @@
       "type": "collection",
       "default": {},
       "description": "The table to create the row in",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "email",
+          "displayName": "Email",
+          "type": "string",
+          "default": "",
+          "description": "The table to create the row in",
+          "placeholder": "name@email.com"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "newId",
@@ -92,7 +217,17 @@
       "type": "string",
       "default": "",
       "description": "The new unique identifier of the user",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "alias"
+          ]
+        }
+      }
     },
     {
       "name": "tags",
@@ -100,49 +235,36 @@
       "type": "string",
       "default": "",
       "description": "Tags to add separated by \",\"",
-      "required": true
-    },
-    {
-      "name": "Alias",
-      "default": null,
-      "description": "Change a users identifier"
-    },
-    {
-      "name": "Create or Update",
-      "default": null,
-      "description": "Create or update a user profile"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a user"
-    },
-    {
-      "name": "Re-Subscribe",
-      "default": null,
-      "description": "Resubscribe a user"
-    },
-    {
-      "name": "Remove Tags",
-      "default": null,
-      "description": "Removes a tag from a users profile"
-    },
-    {
-      "name": "Unsubscribe",
-      "default": null,
-      "description": "Unsubscribe a user"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "addTags"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "description": "Create, update and manage the subscription status of your users"
-    },
-    {
-      "name": "Event",
-      "default": null,
-      "description": "Track events based on actions your customers take in real time"
+      "default": "user",
+      "description": "Create, update and manage the subscription status of your users",
+      "options": [
+        {
+          "name": "User",
+          "value": "user",
+          "description": "Create, update and manage the subscription status of your users"
+        },
+        {
+          "name": "Event",
+          "value": "event",
+          "description": "Track events based on actions your customers take in real time"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -154,5 +276,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

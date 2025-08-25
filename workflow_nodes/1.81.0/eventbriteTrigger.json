@@ -8,11 +8,17 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "privateKey",
+      "options": [
+        {
+          "name": "Private Key",
+          "value": "privateKey"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "organization",
@@ -34,63 +40,71 @@
       "name": "actions",
       "displayName": "Actions",
       "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "attendee.checked_out",
-      "default": null
-    },
-    {
-      "name": "attendee.updated",
-      "default": null
-    },
-    {
-      "name": "event.created",
-      "default": null
-    },
-    {
-      "name": "event.published",
-      "default": null
-    },
-    {
-      "name": "event.unpublished",
-      "default": null
-    },
-    {
-      "name": "event.updated",
-      "default": null
-    },
-    {
-      "name": "order.placed",
-      "default": null
-    },
-    {
-      "name": "order.refunded",
-      "default": null
-    },
-    {
-      "name": "order.updated",
-      "default": null
-    },
-    {
-      "name": "organizer.updated",
-      "default": null
-    },
-    {
-      "name": "ticket_class.created",
-      "default": null
-    },
-    {
-      "name": "ticket_class.deleted",
-      "default": null
-    },
-    {
-      "name": "ticket_class.updated",
-      "default": null
-    },
-    {
-      "name": "venue.updated",
-      "default": null
+      "default": [],
+      "description": "One or more action to subscribe to",
+      "required": true,
+      "options": [
+        {
+          "name": "attendee.checked_in",
+          "value": "attendee.checked_in"
+        },
+        {
+          "name": "attendee.checked_out",
+          "value": "attendee.checked_out"
+        },
+        {
+          "name": "attendee.updated",
+          "value": "attendee.updated"
+        },
+        {
+          "name": "event.created",
+          "value": "event.created"
+        },
+        {
+          "name": "event.published",
+          "value": "event.published"
+        },
+        {
+          "name": "event.unpublished",
+          "value": "event.unpublished"
+        },
+        {
+          "name": "event.updated",
+          "value": "event.updated"
+        },
+        {
+          "name": "order.placed",
+          "value": "order.placed"
+        },
+        {
+          "name": "order.refunded",
+          "value": "order.refunded"
+        },
+        {
+          "name": "order.updated",
+          "value": "order.updated"
+        },
+        {
+          "name": "organizer.updated",
+          "value": "organizer.updated"
+        },
+        {
+          "name": "ticket_class.created",
+          "value": "ticket_class.created"
+        },
+        {
+          "name": "ticket_class.deleted",
+          "value": "ticket_class.deleted"
+        },
+        {
+          "name": "ticket_class.updated",
+          "value": "ticket_class.updated"
+        },
+        {
+          "name": "venue.updated",
+          "value": "venue.updated"
+        }
+      ]
     },
     {
       "name": "resolveData",
@@ -121,5 +135,19 @@
       "name": "resolveData",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

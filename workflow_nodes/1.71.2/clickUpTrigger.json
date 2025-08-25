@@ -8,11 +8,17 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "accessToken",
+      "options": [
+        {
+          "name": "Access Token",
+          "value": "accessToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "team",
@@ -27,140 +33,154 @@
       "displayName": "Events",
       "type": "multiOptions",
       "default": [],
-      "required": true
-    },
-    {
-      "name": "folder.created",
-      "default": null
-    },
-    {
-      "name": "folder.deleted",
-      "default": null
-    },
-    {
-      "name": "folder.updated",
-      "default": null
-    },
-    {
-      "name": "goal.created",
-      "default": null
-    },
-    {
-      "name": "goal.deleted",
-      "default": null
-    },
-    {
-      "name": "goal.updated",
-      "default": null
-    },
-    {
-      "name": "keyResult.created",
-      "default": null
-    },
-    {
-      "name": "keyResult.deleted",
-      "default": null
-    },
-    {
-      "name": "keyResult.updated",
-      "default": null
-    },
-    {
-      "name": "list.created",
-      "default": null
-    },
-    {
-      "name": "list.deleted",
-      "default": null
-    },
-    {
-      "name": "list.updated",
-      "default": null
-    },
-    {
-      "name": "space.created",
-      "default": null
-    },
-    {
-      "name": "space.deleted",
-      "default": null
-    },
-    {
-      "name": "space.updated",
-      "default": null
-    },
-    {
-      "name": "task.assignee.updated",
-      "default": null
-    },
-    {
-      "name": "task.comment.posted",
-      "default": null
-    },
-    {
-      "name": "task.comment.updated",
-      "default": null
-    },
-    {
-      "name": "task.created",
-      "default": null
-    },
-    {
-      "name": "task.deleted",
-      "default": null
-    },
-    {
-      "name": "task.dueDate.updated",
-      "default": null
-    },
-    {
-      "name": "task.moved",
-      "default": null
-    },
-    {
-      "name": "task.status.updated",
-      "default": null
-    },
-    {
-      "name": "task.tag.updated",
-      "default": null
-    },
-    {
-      "name": "task.timeEstimate.updated",
-      "default": null
-    },
-    {
-      "name": "task.timeTracked.updated",
-      "default": null
-    },
-    {
-      "name": "task.updated",
-      "default": null
+      "required": true,
+      "options": [
+        {
+          "name": "*",
+          "value": "*"
+        },
+        {
+          "name": "folder.created",
+          "value": "folderCreated"
+        },
+        {
+          "name": "folder.deleted",
+          "value": "folderDeleted"
+        },
+        {
+          "name": "folder.updated",
+          "value": "folderUpdated"
+        },
+        {
+          "name": "goal.created",
+          "value": "goalCreated"
+        },
+        {
+          "name": "goal.deleted",
+          "value": "goalDeleted"
+        },
+        {
+          "name": "goal.updated",
+          "value": "goalUpdated"
+        },
+        {
+          "name": "keyResult.created",
+          "value": "keyResultCreated"
+        },
+        {
+          "name": "keyResult.deleted",
+          "value": "keyResultDelete"
+        },
+        {
+          "name": "keyResult.updated",
+          "value": "keyResultUpdated"
+        },
+        {
+          "name": "list.created",
+          "value": "listCreated"
+        },
+        {
+          "name": "list.deleted",
+          "value": "listDeleted"
+        },
+        {
+          "name": "list.updated",
+          "value": "listUpdated"
+        },
+        {
+          "name": "space.created",
+          "value": "spaceCreated"
+        },
+        {
+          "name": "space.deleted",
+          "value": "spaceDeleted"
+        },
+        {
+          "name": "space.updated",
+          "value": "spaceUpdated"
+        },
+        {
+          "name": "task.assignee.updated",
+          "value": "taskAssigneeUpdated"
+        },
+        {
+          "name": "task.comment.posted",
+          "value": "taskCommentPosted"
+        },
+        {
+          "name": "task.comment.updated",
+          "value": "taskCommentUpdated"
+        },
+        {
+          "name": "task.created",
+          "value": "taskCreated"
+        },
+        {
+          "name": "task.deleted",
+          "value": "taskDeleted"
+        },
+        {
+          "name": "task.dueDate.updated",
+          "value": "taskDueDateUpdated"
+        },
+        {
+          "name": "task.moved",
+          "value": "taskMoved"
+        },
+        {
+          "name": "task.status.updated",
+          "value": "taskStatusUpdated"
+        },
+        {
+          "name": "task.tag.updated",
+          "value": "taskTagUpdated"
+        },
+        {
+          "name": "task.timeEstimate.updated",
+          "value": "taskTimeEstimateUpdated"
+        },
+        {
+          "name": "task.timeTracked.updated",
+          "value": "taskTimeTrackedUpdated"
+        },
+        {
+          "name": "task.updated",
+          "value": "taskUpdated"
+        }
+      ]
     },
     {
       "name": "filters",
       "displayName": "Filters",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "listId",
-      "displayName": "List ID",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "spaceId",
-      "displayName": "Space ID",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "taskId",
-      "displayName": "Task ID",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "folderId",
+          "displayName": "Folder ID",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "listId",
+          "displayName": "List ID",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "spaceId",
+          "displayName": "Space ID",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "taskId",
+          "displayName": "Task ID",
+          "type": "string",
+          "default": ""
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -184,5 +204,19 @@
       "name": "filters",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

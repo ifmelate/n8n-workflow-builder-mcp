@@ -8,19 +8,32 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "job",
+      "options": [
+        {
+          "name": "Job",
+          "value": "job"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Execute a job"
-    },
-    {
-      "name": "Get Metadata",
-      "default": null,
-      "description": "Get metadata of a job"
+      "default": "execute",
+      "description": "Execute a job",
+      "options": [
+        {
+          "name": "Execute",
+          "value": "execute",
+          "description": "Execute a job"
+        },
+        {
+          "name": "Get Metadata",
+          "value": "getMetadata",
+          "description": "Get metadata of a job"
+        }
+      ]
     },
     {
       "name": "jobid",
@@ -29,20 +42,37 @@
       "default": "",
       "description": "The job ID to execute",
       "placeholder": "Rundeck Job ID",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "execute"
+          ],
+          "resource": [
+            "job"
+          ]
+        }
+      }
     },
     {
       "name": "arguments",
       "displayName": "Arguments",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Argument"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Argument",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "execute"
+          ],
+          "resource": [
+            "job"
+          ]
+        }
+      }
     },
     {
       "name": "filter",
@@ -51,7 +81,16 @@
       "default": "",
       "description": "Filter Rundeck nodes by name",
       "placeholder": "Add Filters",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "execute"
+          ],
+          "resource": [
+            "job"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -75,5 +114,27 @@
       "name": "filter",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

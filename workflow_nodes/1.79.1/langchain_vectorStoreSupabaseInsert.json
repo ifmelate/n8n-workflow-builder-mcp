@@ -8,7 +8,13 @@
       "name": "setupNotice",
       "displayName": "Please refer to the <a href=\"https://supabase.com/docs/guides/ai/langchain\" target=\"_blank\">Supabase documentation</a> for more information on how to setup your database as a Vector Store.",
       "type": "notice",
-      "default": "",
+      "default": ""
+    },
+    {
+      "name": "queryName",
+      "displayName": "Query Name",
+      "type": "string",
+      "default": "match_documents",
       "description": "Name of the query to use for matching documents",
       "required": true
     },
@@ -28,5 +34,26 @@
       "name": "setupNotice",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "vectorStore",
+    "requires": [
+      "AiDocument"
+    ],
+    "optional": [
+      "AiEmbedding"
+    ],
+    "consumedBy": [
+      "AiRetriever",
+      "AiTool"
+    ],
+    "consumes": [],
+    "produces": []
+  }
 }

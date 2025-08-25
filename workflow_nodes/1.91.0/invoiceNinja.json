@@ -12,51 +12,67 @@
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "bankIntegrationId",
-      "displayName": "Bank Integration Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "baseType",
-      "displayName": "Base Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Withdrawal",
-      "default": null
-    },
-    {
-      "name": "currencyId",
-      "displayName": "Currency Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "date",
-      "displayName": "Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": ""
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "amount",
+          "displayName": "Amount",
+          "type": "number",
+          "default": 0
+        },
+        {
+          "name": "bankIntegrationId",
+          "displayName": "Bank Integration Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "bank_transaction"
+          ]
+        }
+      }
     },
     {
       "name": "bankTransactionId",
       "displayName": "Bank Transaction ID",
       "type": "string",
       "default": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "bank_transaction"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
       "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "bank_transaction"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
@@ -64,801 +80,351 @@
       "type": "number",
       "default": 50,
       "description": "Max number of results to return",
-      "required": true
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 60
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "bank_transaction"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "paymentId",
       "displayName": "Payment Name or ID",
       "type": "options",
       "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "bank_transaction"
+          ],
+          "operation": [
+            "matchPayment"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a new bank transaction"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a bank transaction"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get data of a bank transaction"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get data of many bank transactions"
-    },
-    {
-      "name": "Match Payment",
-      "default": null,
-      "description": "Match payment to a bank transaction"
-    },
-    {
-      "name": "idNumber",
-      "displayName": "ID Number",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "privateNotes",
-      "displayName": "Private Notes",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "vatNumber",
-      "displayName": "VAT Number",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "workPhone",
-      "displayName": "Work Phone",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "website",
-      "displayName": "Website",
-      "type": "string",
-      "default": ""
+      "default": "create",
+      "description": "Create a new bank transaction",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new bank transaction"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a bank transaction"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get data of a bank transaction"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get data of many bank transactions"
+        },
+        {
+          "name": "Match Payment",
+          "value": "matchPayment",
+          "description": "Match payment to a bank transaction"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "bank_transaction"
+          ]
+        }
+      }
     },
     {
       "name": "billingAddressUi",
       "displayName": "Billing Address",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Billing Address"
-    },
-    {
-      "name": "aptSuite",
-      "displayName": "Apt/Suite",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "city",
-      "displayName": "City",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "state",
-      "displayName": "State",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "postalCode",
-      "displayName": "Postal Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "countryCode",
-      "displayName": "Country Code Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Billing Address",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "client"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "contactsUi",
       "displayName": "Contacts",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Contact"
-    },
-    {
-      "name": "lastName",
-      "displayName": "Last Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "email",
-      "displayName": "Email",
-      "type": "string",
-      "default": "",
-      "placeholder": "name@email.com"
-    },
-    {
-      "name": "phone",
-      "displayName": "Phone",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Contact",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "client"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "shippingAddressUi",
       "displayName": "Shipping Address",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Shipping Address"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Shipping Address",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "client"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "clientId",
       "displayName": "Client ID",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "client"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "returnAll",
-      "displayName": "Return All",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all results or only up to a given limit"
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Archived",
-      "default": null
-    },
-    {
-      "name": "Deleted",
-      "default": null
-    },
-    {
-      "name": "createdAt",
-      "displayName": "Created At",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "updatedAt",
-      "displayName": "Updated At",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "isDeleted",
-      "displayName": "Is Deleted",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "billable",
-      "displayName": "Billable",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "client",
-      "displayName": "Client Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "customValue1",
-      "displayName": "Custom Value 1",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "customValue2",
-      "displayName": "Custom Value 2",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "category",
-      "displayName": "Category Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "expenseDate",
-      "displayName": "Expense Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "paymentDate",
-      "displayName": "Payment Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "paymentType",
-      "displayName": "Payment Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Alipay",
-      "default": null
-    },
-    {
-      "name": "American Express",
-      "default": null
-    },
-    {
-      "name": "Apply Credit",
-      "default": null
-    },
-    {
-      "name": "Bank Transfer",
-      "default": null
-    },
-    {
-      "name": "Bitcoin",
-      "default": null
-    },
-    {
-      "name": "Carte Blanche",
-      "default": null
-    },
-    {
-      "name": "Cash",
-      "default": null
-    },
-    {
-      "name": "Check",
-      "default": null
-    },
-    {
-      "name": "Credit Card Other",
-      "default": null
-    },
-    {
-      "name": "Debit",
-      "default": null
-    },
-    {
-      "name": "Diners Card",
-      "default": null
-    },
-    {
-      "name": "Discover Card",
-      "default": null
-    },
-    {
-      "name": "EuroCard",
-      "default": null
-    },
-    {
-      "name": "GoCardless",
-      "default": null
-    },
-    {
-      "name": "Google Wallet",
-      "default": null
-    },
-    {
-      "name": "iZettle",
-      "default": null
-    },
-    {
-      "name": "JCB",
-      "default": null
-    },
-    {
-      "name": "Laser",
-      "default": null
-    },
-    {
-      "name": "Maestro",
-      "default": null
-    },
-    {
-      "name": "MasterCard",
-      "default": null
-    },
-    {
-      "name": "Money Order",
-      "default": null
-    },
-    {
-      "name": "Nova",
-      "default": null
-    },
-    {
-      "name": "Paypal",
-      "default": null
-    },
-    {
-      "name": "SEPA",
-      "default": null
-    },
-    {
-      "name": "Sofort",
-      "default": null
-    },
-    {
-      "name": "Solo",
-      "default": null
-    },
-    {
-      "name": "Swich",
-      "default": null
-    },
-    {
-      "name": "Swish",
-      "default": null
-    },
-    {
-      "name": "UnionPay",
-      "default": null
-    },
-    {
-      "name": "Venmo",
-      "default": null
-    },
-    {
-      "name": "Visa Card",
-      "default": null
-    },
-    {
-      "name": "publicNotes",
-      "displayName": "Public Notes",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "taxName1",
-      "displayName": "Tax Name 1",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "taxName2",
-      "displayName": "Tax Name 2",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "taxRate1",
-      "displayName": "Tax Rate 1",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "taxRate2",
-      "displayName": "Tax Rate 2",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "transactionReference",
-      "displayName": "Transaction Reference",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "vendor",
-      "displayName": "Vendor Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "ACH",
-      "default": null
-    },
-    {
-      "name": "Visa",
-      "default": null
-    },
-    {
-      "name": "Mastercard",
-      "default": null
-    },
-    {
-      "name": "Discover",
-      "default": null
-    },
-    {
-      "name": "Diners",
-      "default": null
-    },
-    {
-      "name": "Eurocard",
-      "default": null
-    },
-    {
-      "name": "PayPal",
-      "default": null
-    },
-    {
-      "name": "Switch",
-      "default": null
-    },
-    {
-      "name": "Crypto",
-      "default": null
-    },
-    {
-      "name": "Credit",
-      "default": null
-    },
-    {
-      "name": "Zelle",
-      "default": null
-    },
-    {
-      "name": "Mollie Bank Transfer",
-      "default": null
-    },
-    {
-      "name": "KBC",
-      "default": null
-    },
-    {
-      "name": "Bancontact",
-      "default": null
-    },
-    {
-      "name": "iDEAL",
-      "default": null
-    },
-    {
-      "name": "Hosted Page",
-      "default": null
-    },
-    {
-      "name": "Giropay",
-      "default": null
-    },
-    {
-      "name": "Przelewy24",
-      "default": null
-    },
-    {
-      "name": "EPS",
-      "default": null
-    },
-    {
-      "name": "Direct Debit",
-      "default": null
-    },
-    {
-      "name": "BECS",
-      "default": null
-    },
-    {
-      "name": "ACSS",
-      "default": null
-    },
-    {
-      "name": "Instant Bank Pay",
-      "default": null
-    },
-    {
-      "name": "FPX",
-      "default": null
-    },
-    {
-      "name": "Klarna",
-      "default": null
-    },
-    {
-      "name": "Interac E-Transfer",
-      "default": null
-    },
-    {
-      "name": "BACS",
-      "default": null
-    },
-    {
-      "name": "Stripe Bank Transfer",
-      "default": null
-    },
-    {
-      "name": "Cash App",
-      "default": null
-    },
-    {
-      "name": "Pay Later",
-      "default": null
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "client"
+          ]
+        }
+      }
     },
     {
       "name": "expenseId",
       "displayName": "Expense ID",
       "type": "string",
       "default": "",
-      "description": "Whether to return all results or only up to a given limit",
-      "required": true
-    },
-    {
-      "name": "autoBill",
-      "displayName": "Auto Bill",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "discount",
-      "displayName": "Discount",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "dueDate",
-      "displayName": "Due Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "emailInvoice",
-      "displayName": "Email Invoice",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "invoiceDate",
-      "displayName": "Invoice Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "invoiceNumber",
-      "displayName": "Invoice Number",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "invoiceStatus",
-      "displayName": "Invoice Status",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Sent",
-      "default": null
-    },
-    {
-      "name": "isAmountDiscount",
-      "displayName": "Is Amount Discount",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "markSent",
-      "displayName": "Mark Sent",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "paid",
-      "displayName": "Paid",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "partial",
-      "displayName": "Partial",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "partialDueDate",
-      "displayName": "Partial Due Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "poNumber",
-      "displayName": "PO Number",
-      "type": "string",
-      "default": ""
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "expense"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "invoiceItemsUi",
       "displayName": "Invoice Items",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Invoice Item"
-    },
-    {
-      "name": "service",
-      "displayName": "Service",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "hours",
-      "displayName": "Hours",
-      "type": "number",
-      "default": 0
+      "placeholder": "Add Invoice Item",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "invoice"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "invoiceId",
       "displayName": "Invoice ID",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "include",
-      "displayName": "Include",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "clientStatus",
-      "displayName": "Client Status",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Paid",
-      "default": null
-    },
-    {
-      "name": "Unpaid",
-      "default": null
-    },
-    {
-      "name": "Overdue",
-      "default": null
-    },
-    {
-      "name": "Email",
-      "default": null,
-      "description": "Email an invoice"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "invoice"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "invoice",
       "displayName": "Invoice Name or ID",
       "type": "options",
       "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "payment"
+          ]
+        }
+      }
     },
     {
       "name": "amount",
       "displayName": "Amount",
       "type": "number",
-      "default": 0
-    },
-    {
-      "name": "transferReference",
-      "displayName": "Transfer Reference",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "emailQuote",
-      "displayName": "Email Quote",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "quoteDate",
-      "displayName": "Quote Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "quoteNumber",
-      "displayName": "Quote Number",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "quoteStatus",
-      "displayName": "Quote Status",
-      "type": "options",
-      "default": null
+      "default": 0,
+      "typeOptions": {
+        "minValue": 0
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "payment"
+          ]
+        }
+      }
     },
     {
       "name": "quoteId",
       "displayName": "Quote ID",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "project",
-      "displayName": "Project Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "quote"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "timeLogsUi",
       "displayName": "Time Logs",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Time Log"
-    },
-    {
-      "name": "endDate",
-      "displayName": "End Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "duration",
-      "displayName": "Duration (Hours)",
-      "type": "number",
-      "default": 0
+      "placeholder": "Add Time Log",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "taskId",
       "displayName": "Task ID",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "apiVersion",
       "displayName": "API Version",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Version 5",
-      "default": null
+      "default": "v4",
+      "options": [
+        {
+          "name": "Version 4",
+          "value": "v4"
+        },
+        {
+          "name": "Version 5",
+          "value": "v5"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "options": []
-    },
-    {
-      "name": "Client",
-      "default": null
-    },
-    {
-      "name": "Expense",
-      "default": null
-    },
-    {
-      "name": "Invoice",
-      "default": null
-    },
-    {
-      "name": "Payment",
-      "default": null
-    },
-    {
-      "name": "Quote",
-      "default": null
-    },
-    {
-      "name": "Task",
-      "default": null
+      "default": "client",
+      "displayOptions": {
+        "show": {
+          "apiVersion": [
+            "v5"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -878,5 +444,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

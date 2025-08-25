@@ -4,5 +4,29 @@
   "description": "Split text into chunks by characters recursively, recommended for most use cases",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "AiTextSplitter"
+    ],
+    "outputNames": [
+      "Text Splitter"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiDocument"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "AiTextSplitter"
+    ]
+  }
 }

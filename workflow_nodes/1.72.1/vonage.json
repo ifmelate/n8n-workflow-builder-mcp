@@ -8,20 +8,49 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "sms",
+      "options": [
+        {
+          "name": "SMS",
+          "value": "sms"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
+      "default": "send",
+      "options": [
+        {
+          "name": "Send",
+          "value": "send"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     },
     {
       "name": "from",
       "displayName": "From",
       "type": "string",
       "default": "",
-      "description": "The name or number the message should be sent from"
+      "description": "The name or number the message should be sent from",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "to",
@@ -29,14 +58,33 @@
       "type": "string",
       "default": "",
       "description": "The number that the message should be sent to. Numbers are specified in E.164 format.",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "message",
       "displayName": "Message",
       "type": "string",
       "default": "",
-      "description": "The body of the message being sent"
+      "description": "The body of the message being sent",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -44,60 +92,40 @@
       "type": "collection",
       "default": {},
       "description": "An optional string used to identify separate accounts using the SMS endpoint for billing purposes. To use this feature, please email support@nexmo.com.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "callback",
-      "displayName": "Callback",
-      "type": "string",
-      "default": "",
-      "description": "The webhook endpoint the delivery receipt for this sms is sent to. This parameter overrides the webhook endpoint you set in Dashboard."
-    },
-    {
-      "name": "client-ref",
-      "displayName": "Client Ref",
-      "type": "string",
-      "default": "",
-      "description": "You can optionally include your own reference of up to 40 characters"
-    },
-    {
-      "name": "message-class",
-      "displayName": "Message Class",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "1",
-      "default": null
-    },
-    {
-      "name": "2",
-      "default": null
-    },
-    {
-      "name": "3",
-      "default": null
-    },
-    {
-      "name": "protocol-id",
-      "displayName": "Protocol ID",
-      "type": "string",
-      "default": "",
-      "description": "The value of the protocol identifier to use. Ensure that the value is aligned with udh."
-    },
-    {
-      "name": "status-report-req",
-      "displayName": "Status Report Req",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to receive a Delivery Receipt"
-    },
-    {
-      "name": "ttl",
-      "displayName": "TTL (in Minutes)",
-      "type": "number",
-      "default": 4320,
-      "description": "By default Nexmo attempt delivery for 72 hours"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "account-ref",
+          "displayName": "Account Ref",
+          "type": "string",
+          "default": "",
+          "description": "An optional string used to identify separate accounts using the SMS endpoint for billing purposes. To use this feature, please email support@nexmo.com."
+        },
+        {
+          "name": "callback",
+          "displayName": "Callback",
+          "type": "string",
+          "default": "",
+          "description": "The webhook endpoint the delivery receipt for this sms is sent to. This parameter overrides the webhook endpoint you set in Dashboard."
+        },
+        {
+          "name": "client-ref",
+          "displayName": "Client Ref",
+          "type": "string",
+          "default": "",
+          "description": "You can optionally include your own reference of up to 40 characters"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -121,5 +149,19 @@
       "name": "protocol-id",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

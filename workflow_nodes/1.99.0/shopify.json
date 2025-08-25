@@ -9,199 +9,18 @@
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field",
-      "typeOptions": {
-        "multipleValues": true
-      }
-    },
-    {
-      "name": "lastName",
-      "displayName": "Last Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "company",
-      "displayName": "Company",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "country",
-      "displayName": "Country",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "address1",
-      "displayName": "Address Line 1",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "address2",
-      "displayName": "Address Line 2",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "city",
-      "displayName": "City",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "province",
-      "displayName": "Province",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "zip",
-      "displayName": "Zip Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "phone",
-      "displayName": "Phone",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "discountCodesUi",
-      "displayName": "Discount Codes",
-      "type": "fixedCollection",
-      "default": {},
       "description": "The amount that's deducted from the order total",
-      "placeholder": "Add Discount Code"
-    },
-    {
-      "name": "code",
-      "displayName": "Code",
-      "type": "string",
-      "default": "",
-      "description": "When the associated discount application is of type code"
-    },
-    {
-      "name": "type",
-      "displayName": "Type",
-      "type": "options",
-      "default": null,
-      "description": "Applies amount as a unit of the store's currency"
-    },
-    {
-      "name": "Percentage",
-      "default": null,
-      "description": "Applies a discount of amount as a percentage of the order total"
-    },
-    {
-      "name": "Shipping",
-      "default": null,
-      "description": "Applies a free shipping discount on orders that have a shipping rate less than or equal to amount"
-    },
-    {
-      "name": "email",
-      "displayName": "Email",
-      "type": "string",
-      "default": "",
-      "description": "The customer's email address",
-      "placeholder": "name@email.com"
-    },
-    {
-      "name": "fulfillmentStatus",
-      "displayName": "Fulfillment Status",
-      "type": "options",
-      "default": null,
-      "description": "Every line item in the order has been fulfilled"
-    },
-    {
-      "name": "Null",
-      "default": null,
-      "description": "None of the line items in the order have been fulfilled"
-    },
-    {
-      "name": "Partial",
-      "default": null,
-      "description": "At least one line item in the order has been fulfilled"
-    },
-    {
-      "name": "Restocked",
-      "default": null,
-      "description": "Every line item in the order has been restocked and the order canceled"
-    },
-    {
-      "name": "inventoryBehaviour",
-      "displayName": "Inventory Behaviour",
-      "type": "options",
-      "default": null,
-      "description": "Do not claim inventory"
-    },
-    {
-      "name": "Decrement Ignoring Policy",
-      "default": null,
-      "description": "Ignore the product's inventory policy and claim inventory"
-    },
-    {
-      "name": "Decrement Obeying Policy",
-      "default": null,
-      "description": "Follow the product's inventory policy and claim inventory, if possible"
-    },
-    {
-      "name": "locationId",
-      "displayName": "Location Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "The ID of the physical location where the order was processed. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "note",
-      "displayName": "Note",
-      "type": "string",
-      "default": "",
-      "description": "An optional note that a shop owner can attach to the order"
-    },
-    {
-      "name": "sendFulfillmentReceipt",
-      "displayName": "Send Fulfillment Receipt",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to send a shipping confirmation to the customer"
-    },
-    {
-      "name": "sendReceipt",
-      "displayName": "Send Receipt",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to send an order confirmation to the customer"
-    },
-    {
-      "name": "shippingAddressUi",
-      "displayName": "Shipping Address",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Shipping"
-    },
-    {
-      "name": "sourceName",
-      "displayName": "Source Name",
-      "type": "string",
-      "default": "",
-      "description": "Where the order originated. Can be set only during order creation, and is not writeable afterwards."
-    },
-    {
-      "name": "tags",
-      "displayName": "Tags",
-      "type": "string",
-      "default": "",
-      "description": "Tags attached to the order, formatted as a string of comma-separated values"
-    },
-    {
-      "name": "test",
-      "displayName": "Test",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether this is a test order"
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "order"
+          ]
+        }
+      }
     },
     {
       "name": "limeItemsUi",
@@ -209,48 +28,37 @@
       "type": "fixedCollection",
       "default": {},
       "description": "The ID of the product that the line item belongs to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Line Item"
-    },
-    {
-      "name": "variantId",
-      "displayName": "Variant ID",
-      "type": "string",
-      "default": "",
-      "description": "The ID of the product variant"
-    },
-    {
-      "name": "title",
-      "displayName": "Title",
-      "type": "string",
-      "default": "",
-      "description": "The title of the product"
-    },
-    {
-      "name": "grams",
-      "displayName": "Grams",
-      "type": "string",
-      "default": "",
-      "description": "The weight of the item in grams"
-    },
-    {
-      "name": "quantity",
-      "displayName": "Quantity",
-      "type": "number",
-      "default": 1,
-      "description": "The number of items that were purchased"
-    },
-    {
-      "name": "price",
-      "displayName": "Price",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Line Item",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "order"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "orderId",
       "displayName": "Order ID",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "order"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -258,168 +66,67 @@
       "type": "collection",
       "default": {},
       "description": "Fields the order will return, formatted as a string of comma-separated values. By default all the fields are returned.",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "fields",
+          "displayName": "Fields",
+          "type": "string",
+          "default": "",
+          "description": "Fields the order will return, formatted as a string of comma-separated values. By default all the fields are returned."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "order"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "order"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
-    },
-    {
-      "name": "createdAtMin",
-      "displayName": "Created At Min",
-      "type": "dateTime",
-      "default": "",
-      "description": "Show orders created at or after date"
-    },
-    {
-      "name": "createdAtMax",
-      "displayName": "Created At Max",
-      "type": "dateTime",
-      "default": "",
-      "description": "Show orders created at or before date"
-    },
-    {
-      "name": "financialStatus",
-      "displayName": "Financial Status",
-      "type": "options",
-      "default": null,
-      "description": "Show orders of any financial status"
-    },
-    {
-      "name": "Authorized",
-      "default": null,
-      "description": "Show only authorized orders"
-    },
-    {
-      "name": "Paid",
-      "default": null,
-      "description": "Show only paid orders"
-    },
-    {
-      "name": "Partially Paid",
-      "default": null,
-      "description": "Show only partially paid orders"
-    },
-    {
-      "name": "Partially Refunded",
-      "default": null,
-      "description": "Show only partially refunded orders"
-    },
-    {
-      "name": "Pending",
-      "default": null,
-      "description": "Show only pending orders"
-    },
-    {
-      "name": "Refunded",
-      "default": null,
-      "description": "Show only refunded orders"
-    },
-    {
-      "name": "Unpaid",
-      "default": null,
-      "description": "Show authorized and partially paid orders"
-    },
-    {
-      "name": "Voided",
-      "default": null,
-      "description": "Show only voided orders"
-    },
-    {
-      "name": "Shipped",
-      "default": null,
-      "description": "Show orders that have been shipped. Returns orders with fulfillment_status of fulfilled."
-    },
-    {
-      "name": "Unfulfilled",
-      "default": null,
-      "description": "Returns orders with fulfillment_status of null or partial"
-    },
-    {
-      "name": "Unshipped",
-      "default": null,
-      "description": "Show orders that have not yet been shipped. Returns orders with fulfillment_status of null."
-    },
-    {
-      "name": "fields",
-      "displayName": "Fields",
-      "type": "string",
-      "default": "",
-      "description": "Fields the orders will return, formatted as a string of comma-separated values. By default all the fields are returned."
-    },
-    {
-      "name": "ids",
-      "displayName": "IDs",
-      "type": "string",
-      "default": "",
-      "description": "Retrieve only orders specified by a comma-separated list of order IDs"
-    },
-    {
-      "name": "processedAtMax",
-      "displayName": "Processed At Max",
-      "type": "dateTime",
-      "default": "",
-      "description": "Show orders imported at or before date"
-    },
-    {
-      "name": "processedAtMin",
-      "displayName": "Processed At Min",
-      "type": "dateTime",
-      "default": "",
-      "description": "Show orders imported at or after date"
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": null,
-      "description": "Show orders of any status, including archived orders"
-    },
-    {
-      "name": "Cancelled",
-      "default": null,
-      "description": "Show only canceled orders"
-    },
-    {
-      "name": "Closed",
-      "default": null,
-      "description": "Show only closed orders"
-    },
-    {
-      "name": "Open",
-      "default": null,
-      "description": "Show only open orders"
-    },
-    {
-      "name": "sinceId",
-      "displayName": "Since ID",
-      "type": "string",
-      "default": "",
-      "description": "Show orders after the specified ID"
-    },
-    {
-      "name": "updatedAtMax",
-      "displayName": "Updated At Max",
-      "type": "dateTime",
-      "default": "",
-      "description": "Show orders last updated at or after date"
-    },
-    {
-      "name": "updatedAtMin",
-      "displayName": "Updated At Min",
-      "type": "dateTime",
-      "default": "",
-      "description": "Show orders last updated at or before date"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 250
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "order"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -427,237 +134,118 @@
       "type": "collection",
       "default": {},
       "description": "The customer's email address",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "email",
+          "displayName": "Email",
+          "type": "string",
+          "default": "",
+          "description": "The customer's email address",
+          "placeholder": "name@email.com"
+        },
+        {
+          "name": "locationId",
+          "displayName": "Location Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "The ID of the physical location where the order was processed. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        },
+        {
+          "name": "note",
+          "displayName": "Note",
+          "type": "string",
+          "default": "",
+          "description": "An optional note that a shop owner can attach to the order"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "order"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create an order"
+      "default": "create",
+      "description": "Create an order",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create an order"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete an order"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get an order"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many orders"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update an order"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "order"
+          ]
+        }
+      }
     },
     {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an order"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get an order"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many orders"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update an order"
+      "name": "title",
+      "displayName": "Title",
+      "type": "string",
+      "default": "",
+      "description": "The name of the product",
+      "placeholder": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "product"
+          ]
+        }
+      }
     },
     {
       "name": "productId",
       "displayName": "Product ID",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "handle",
-      "displayName": "Handle",
-      "type": "string",
-      "default": "",
-      "description": "A unique human-friendly string for the product. Automatically generated from the product's title. Used by the Liquid templating language to refer to objects."
-    },
-    {
-      "name": "images",
-      "displayName": "Images",
-      "type": "collection",
-      "default": {},
-      "description": "A list of product image objects, each one representing an image associated with the product",
-      "placeholder": "Add Image Field",
-      "typeOptions": {
-        "multipleValues": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "product"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
       }
-    },
-    {
-      "name": "id",
-      "displayName": "ID",
-      "type": "number",
-      "default": "",
-      "description": "A unique numeric identifier for the product image"
-    },
-    {
-      "name": "position",
-      "displayName": "Position",
-      "type": "number",
-      "default": "",
-      "description": "The order of the product image in the list. The first product image is at position 1 and is the \"main\" image for the product."
-    },
-    {
-      "name": "product_id",
-      "displayName": "Product ID",
-      "type": "number",
-      "default": "",
-      "description": "The ID of the product associated with the image"
-    },
-    {
-      "name": "variant_ids",
-      "displayName": "Variant IDs",
-      "type": "number",
-      "default": "",
-      "description": "An array of variant IDs associated with the image"
-    },
-    {
-      "name": "src",
-      "displayName": "Source",
-      "type": "string",
-      "default": "",
-      "description": "<p>Specifies the location of the product image. This parameter supports URL filters that you can use to retrieve modified copies of the image.</p><p>For example, add _small, to the filename to retrieve a scaled copy of the image at 100 x 100 px (for example, ipod-nano_small.png), or add _2048x2048 to retrieve a copy of the image constrained at 2048 x 2048 px resolution (for example, ipod-nano_2048x2048.png).</p>."
-    },
-    {
-      "name": "width",
-      "displayName": "Width",
-      "type": "number",
-      "default": "",
-      "description": "Width dimension of the image which is determined on upload"
-    },
-    {
-      "name": "height",
-      "displayName": "Height",
-      "type": "number",
-      "default": "",
-      "description": "Height dimension of the image which is determined on upload"
-    },
-    {
-      "name": "updated_at",
-      "displayName": "Updated At",
-      "type": "dateTime",
-      "default": "",
-      "description": "The date and time when the product image was last modified"
-    },
-    {
-      "name": "productOptions",
-      "displayName": "Options",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "The custom product property names like Size, Color, and Material. You can add up to 3 options of up to 255 characters each.",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Option's values"
-    },
-    {
-      "name": "product_type",
-      "displayName": "Product Type",
-      "type": "string",
-      "default": "",
-      "description": "A categorization for the product used for filtering and searching products"
-    },
-    {
-      "name": "published_at",
-      "displayName": "Published At",
-      "type": "dateTime",
-      "default": "",
-      "description": "The date and time (ISO 8601 format) when the product was published. Can be set to null to unpublish the product from the Online Store channel."
-    },
-    {
-      "name": "published_scope",
-      "displayName": "Published Scope",
-      "type": "options",
-      "default": "",
-      "description": "The product is published to both the Online Store channel and the Point of Sale channel"
-    },
-    {
-      "name": "Web",
-      "default": null,
-      "description": "The product is published to the Online Store channel but not published to the Point of Sale channel"
-    },
-    {
-      "name": "template_suffix",
-      "displayName": "Template Suffix",
-      "type": "string",
-      "default": "",
-      "description": "The suffix of the Liquid template used for the product page. If this property is specified, then the product page uses a template called \"product.suffix.liquid\", where \"suffix\" is the value of this property. If this property is \"\" or null, then the product page uses the default template \"product.liquid\". (default: null)",
-      "placeholder": "Add Variant Field"
-    },
-    {
-      "name": "vendor",
-      "displayName": "Vendor",
-      "type": "string",
-      "default": "",
-      "description": "The name of the product's vendor"
-    },
-    {
-      "name": "created_at_max",
-      "displayName": "Created At Max",
-      "type": "dateTime",
-      "default": "",
-      "description": "Show products created before date"
-    },
-    {
-      "name": "created_at_min",
-      "displayName": "Created At Min",
-      "type": "dateTime",
-      "default": "",
-      "description": "Show products created after date"
-    },
-    {
-      "name": "presentment_currencies",
-      "displayName": "Presentment Currencies",
-      "type": "string",
-      "default": "",
-      "description": "Return presentment prices in only certain currencies, specified by a comma-separated list of ISO 4217 currency codes"
-    },
-    {
-      "name": "published_at_max",
-      "displayName": "Published At Max",
-      "type": "dateTime",
-      "default": "",
-      "description": "Show products published before date"
-    },
-    {
-      "name": "published_at_min",
-      "displayName": "Published At Min",
-      "type": "dateTime",
-      "default": "",
-      "description": "Show products published after date"
-    },
-    {
-      "name": "published_status",
-      "displayName": "Published Status",
-      "type": "options",
-      "default": null,
-      "description": "Show all products"
-    },
-    {
-      "name": "Published",
-      "default": null,
-      "description": "Show only published products"
-    },
-    {
-      "name": "Unpublished",
-      "default": null,
-      "description": "Show only unpublished products"
-    },
-    {
-      "name": "updated_at_max",
-      "displayName": "Updated At Max",
-      "type": "dateTime",
-      "default": "",
-      "description": "Show products last updated before date"
-    },
-    {
-      "name": "updated_at_min",
-      "displayName": "Updated At Min",
-      "type": "dateTime",
-      "default": "",
-      "description": "Show products last updated after date"
     },
     {
       "name": "apiVersion",
@@ -669,25 +257,37 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
-    },
-    {
-      "name": "API Key",
-      "default": null
+      "default": "apiKey",
+      "options": [
+        {
+          "name": "Access Token",
+          "value": "accessToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        },
+        {
+          "name": "API Key",
+          "value": "apiKey"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Product",
-      "default": null
+      "default": "order",
+      "options": [
+        {
+          "name": "Order",
+          "value": "order"
+        },
+        {
+          "name": "Product",
+          "value": "product"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -703,5 +303,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

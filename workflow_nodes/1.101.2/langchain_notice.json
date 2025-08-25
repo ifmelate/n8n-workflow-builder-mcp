@@ -1,8 +1,0 @@
-{
-  "nodeType": "@n8n/n8n-nodes-langchain.notice",
-  "displayName": "VectorStoreInMemory",
-  "description": null,
-  "version": 1,
-  "properties": [],
-  "credentialsConfig": []
-}

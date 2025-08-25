@@ -8,22 +8,35 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Sign",
-      "default": null
-    },
-    {
-      "name": "Verify",
-      "default": null
+      "default": "sign",
+      "options": [
+        {
+          "name": "Decode",
+          "value": "decode"
+        },
+        {
+          "name": "Sign",
+          "value": "sign"
+        },
+        {
+          "name": "Verify",
+          "value": "verify"
+        }
+      ]
     },
     {
       "name": "useJson",
       "displayName": "Use JSON to Build Payload",
       "type": "boolean",
       "default": false,
-      "description": "Whether to use JSON to build the claims"
+      "description": "Whether to use JSON to build the claims",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sign"
+          ]
+        }
+      }
     },
     {
       "name": "claims",
@@ -31,52 +44,88 @@
       "type": "collection",
       "default": {},
       "description": "Identifies the recipients that the JWT is intended for",
-      "placeholder": "Add Claim"
-    },
-    {
-      "name": "expiresIn",
-      "displayName": "Expires In",
-      "type": "number",
-      "default": 3600,
-      "description": "The lifetime of the token in seconds",
-      "placeholder": "e.g. 3600"
-    },
-    {
-      "name": "issuer",
-      "displayName": "Issuer",
-      "type": "string",
-      "default": "",
-      "description": "Identifies the principal that issued the JWT",
-      "placeholder": "e.g. https://example.com"
-    },
-    {
-      "name": "jwtid",
-      "displayName": "JWT ID",
-      "type": "string",
-      "default": "",
-      "description": "Unique identifier for the JWT",
-      "placeholder": "e.g. 123456"
-    },
-    {
-      "name": "notBefore",
-      "displayName": "Not Before",
-      "type": "number",
-      "default": 0,
-      "description": "The time before which the JWT must not be accepted for processing"
-    },
-    {
-      "name": "subject",
-      "displayName": "Subject",
-      "type": "string",
-      "default": "",
-      "description": "Identifies the principal that is the subject of the JWT"
+      "placeholder": "Add Claim",
+      "options": [
+        {
+          "name": "audience",
+          "displayName": "Audience",
+          "type": "string",
+          "default": "",
+          "description": "Identifies the recipients that the JWT is intended for",
+          "placeholder": "e.g. https://example.com"
+        },
+        {
+          "name": "expiresIn",
+          "displayName": "Expires In",
+          "type": "number",
+          "default": 3600,
+          "description": "The lifetime of the token in seconds",
+          "placeholder": "e.g. 3600"
+        },
+        {
+          "name": "issuer",
+          "displayName": "Issuer",
+          "type": "string",
+          "default": "",
+          "description": "Identifies the principal that issued the JWT",
+          "placeholder": "e.g. https://example.com"
+        },
+        {
+          "name": "jwtid",
+          "displayName": "JWT ID",
+          "type": "string",
+          "default": "",
+          "description": "Unique identifier for the JWT",
+          "placeholder": "e.g. 123456"
+        },
+        {
+          "name": "notBefore",
+          "displayName": "Not Before",
+          "type": "number",
+          "default": 0,
+          "description": "The time before which the JWT must not be accepted for processing"
+        },
+        {
+          "name": "subject",
+          "displayName": "Subject",
+          "type": "string",
+          "default": "",
+          "description": "Identifies the principal that is the subject of the JWT"
+        }
+      ],
+      "typeOptions": {
+        "minValue": 0
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sign"
+          ],
+          "useJson": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "claimsJson",
       "displayName": "Payload Claims (JSON)",
       "type": "json",
       "default": "{\\n  \"my_field_1\": \"value 1\",\\n  \"my_field_2\": \"value 2\"\\n}\\n",
-      "description": "Claims to add to the token in JSON format"
+      "description": "Claims to add to the token in JSON format",
+      "typeOptions": {
+        "rows": 5
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sign"
+          ],
+          "useJson": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "token",
@@ -84,7 +133,15 @@
       "type": "string",
       "default": "",
       "description": "The token to verify or decode",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "verify",
+            "decode"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -92,86 +149,18 @@
       "type": "collection",
       "default": {},
       "description": "Whether to return the complete decoded token with information about the header and signature or just the payload",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "ignoreExpiration",
-      "displayName": "Ignore Expiration",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to ignore the expiration of the token"
-    },
-    {
-      "name": "ignoreNotBefore",
-      "displayName": "Ignore Not Before Claim",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to ignore the not before claim of the token"
-    },
-    {
-      "name": "clockTolerance",
-      "displayName": "Clock Tolerance",
-      "type": "number",
-      "default": 0,
-      "description": "Number of seconds to tolerate when checking the nbf and exp claims, to deal with small clock differences among different servers"
-    },
-    {
-      "name": "kid",
-      "displayName": "Key ID",
-      "type": "string",
-      "default": "",
-      "description": "The kid (key ID) claim is an optional header claim, used to specify the key for validating the signature",
-      "placeholder": "e.g. 123456"
-    },
-    {
-      "name": "algorithm",
-      "displayName": "Override Algorithm",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "ES384",
-      "default": null
-    },
-    {
-      "name": "ES512",
-      "default": null
-    },
-    {
-      "name": "HS256",
-      "default": null
-    },
-    {
-      "name": "HS384",
-      "default": null
-    },
-    {
-      "name": "HS512",
-      "default": null
-    },
-    {
-      "name": "PS256",
-      "default": null
-    },
-    {
-      "name": "PS384",
-      "default": null
-    },
-    {
-      "name": "PS512",
-      "default": null
-    },
-    {
-      "name": "RS256",
-      "default": null
-    },
-    {
-      "name": "RS384",
-      "default": null
-    },
-    {
-      "name": "RS512",
-      "default": null
+      "placeholder": "Add option",
+      "typeOptions": {
+        "minValue": 0
+      },
+      "displayOptions": {
+        "show": {
+          "/operation": [
+            "verify",
+            "decode"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -191,5 +180,27 @@
       "name": "claimsJson",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

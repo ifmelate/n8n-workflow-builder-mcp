@@ -8,34 +8,37 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Update",
-      "default": null
-    },
-    {
-      "name": "Delete",
-      "type": "set",
-      "default": null
-    },
-    {
-      "name": "Get Many",
-      "type": "rootProperty",
-      "default": null
-    },
-    {
-      "name": "Create or Update",
-      "default": null
-    },
-    {
-      "name": "Get",
-      "default": null
-    },
-    {
-      "name": "Send Template",
-      "default": null
+      "default": "create",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attribute"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

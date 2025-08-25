@@ -8,14 +8,34 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "sms",
+      "options": [
+        {
+          "name": "SMS",
+          "value": "sms"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Send SMS"
+      "default": "send",
+      "description": "Send SMS",
+      "options": [
+        {
+          "name": "Send",
+          "value": "send",
+          "description": "Send SMS"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     },
     {
       "name": "from",
@@ -24,7 +44,17 @@
       "default": "",
       "description": "The number from which to send the message",
       "placeholder": "4155238886",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     },
     {
       "name": "to",
@@ -33,7 +63,17 @@
       "default": "",
       "description": "The number, with coutry code, to which to send the message",
       "placeholder": "+14155238886",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     },
     {
       "name": "message",
@@ -41,7 +81,17 @@
       "type": "string",
       "default": "",
       "description": "The message to send",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -61,5 +111,27 @@
       "name": "from",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

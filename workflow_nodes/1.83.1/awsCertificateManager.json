@@ -10,204 +10,166 @@
       "type": "string",
       "default": "",
       "description": "String that contains the ARN of the ACM certificate to be renewed. This must be of the form: arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "certificate"
+          ],
+          "operation": [
+            "renew",
+            "get",
+            "delete",
+            "getMetadata"
+          ]
+        }
+      }
+    },
+    {
+      "name": "bucketName",
+      "displayName": "Bucket Name",
+      "type": "string",
+      "default": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "certificate"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "certificateKey",
       "displayName": "Certificate Key",
       "type": "string",
       "default": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "certificate"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
       "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getMany"
+          ],
+          "resource": [
+            "certificate"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getMany"
+          ],
+          "resource": [
+            "certificate"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Failed",
-      "default": null
-    },
-    {
-      "name": "Inactive",
-      "default": null
-    },
-    {
-      "name": "Issued",
-      "default": null
-    },
-    {
-      "name": "Pending Validation",
-      "default": null
-    },
-    {
-      "name": "Revoked",
-      "default": null
-    },
-    {
-      "name": "Validation Timed Out",
-      "default": null
-    },
-    {
-      "name": "extendedKeyUsage",
-      "displayName": "Extended Key Usage",
-      "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "Code Signing",
-      "default": null
-    },
-    {
-      "name": "Custom",
-      "default": null
-    },
-    {
-      "name": "Email Protection",
-      "default": null
-    },
-    {
-      "name": "IPSEC End System",
-      "default": null
-    },
-    {
-      "name": "IPSEC Tunnel",
-      "default": null
-    },
-    {
-      "name": "IPSEC User",
-      "default": null
-    },
-    {
-      "name": "None",
-      "default": null
-    },
-    {
-      "name": "OCSP Signing",
-      "default": null
-    },
-    {
-      "name": "Time Stamping",
-      "default": null
-    },
-    {
-      "name": "TLS Web Client Authentication",
-      "default": null
-    },
-    {
-      "name": "TLS Web Server Authentication",
-      "default": null
-    },
-    {
-      "name": "keyTypes",
-      "displayName": "Key Types",
-      "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "EC Secp384r1",
-      "default": null
-    },
-    {
-      "name": "EC Secp521r1",
-      "default": null
-    },
-    {
-      "name": "RSA 1024",
-      "default": null
-    },
-    {
-      "name": "RSA 2048",
-      "default": null
-    },
-    {
-      "name": "RSA 4096",
-      "default": null
-    },
-    {
-      "name": "keyUsage",
-      "displayName": "Key Usage",
-      "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "Certificate Signing",
-      "default": null
-    },
-    {
-      "name": "CRL Signing",
-      "default": null
-    },
-    {
-      "name": "Data Encipherment",
-      "default": null
-    },
-    {
-      "name": "Decipher Only",
-      "default": null
-    },
-    {
-      "name": "Digital Signature",
-      "default": null
-    },
-    {
-      "name": "Encipher Only",
-      "default": null
-    },
-    {
-      "name": "Key Agreement",
-      "default": null
-    },
-    {
-      "name": "Key Encipherment",
-      "default": null
-    },
-    {
-      "name": "Non Repudiation",
-      "default": null
+      "description": "Filter the certificate list by status value",
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "certificate"
+          ],
+          "operation": [
+            "getMany"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Delete a certificate"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a certificate"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many certificates"
-    },
-    {
-      "name": "Get Metadata",
-      "default": null,
-      "description": "Get certificate metadata"
-    },
-    {
-      "name": "Renew",
-      "default": null,
-      "description": "Renew a certificate"
+      "default": "renew",
+      "description": "Delete a certificate",
+      "options": [
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a certificate"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a certificate"
+        },
+        {
+          "name": "Get Many",
+          "value": "getMany",
+          "description": "Get many certificates"
+        },
+        {
+          "name": "Get Metadata",
+          "value": "getMetadata",
+          "description": "Get certificate metadata"
+        },
+        {
+          "name": "Renew",
+          "value": "renew",
+          "description": "Renew a certificate"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "certificate"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "certificate",
+      "options": [
+        {
+          "name": "Certificate",
+          "value": "certificate"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -219,5 +181,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

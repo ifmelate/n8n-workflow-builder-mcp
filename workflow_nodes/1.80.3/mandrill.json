@@ -8,20 +8,41 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "description": "Send a message"
+      "default": "message",
+      "description": "Send a message",
+      "options": [
+        {
+          "name": "Message",
+          "value": "message",
+          "description": "Send a message"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Send message based on template"
-    },
-    {
-      "name": "Send HTML",
-      "default": null,
-      "description": "Send message based on HTML"
+      "default": "sendTemplate",
+      "description": "Send message based on template",
+      "options": [
+        {
+          "name": "Send Template",
+          "value": "sendTemplate",
+          "description": "Send message based on template"
+        },
+        {
+          "name": "Send HTML",
+          "value": "sendHtml",
+          "description": "Send message based on HTML"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
       "name": "template",
@@ -30,7 +51,13 @@
       "default": "",
       "description": "The template you want to send. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
       "required": true,
-      "options": []
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendTemplate"
+          ]
+        }
+      }
     },
     {
       "name": "fromEmail",
@@ -39,7 +66,15 @@
       "default": "",
       "description": "Email address of the sender optional with name",
       "placeholder": "Admin <example@yourdomain.com>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendHtml",
+            "sendTemplate"
+          ]
+        }
+      }
     },
     {
       "name": "toEmail",
@@ -48,13 +83,29 @@
       "default": "",
       "description": "Email address of the recipient. Multiple ones can be separated by comma.",
       "placeholder": "info@example.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendHtml",
+            "sendTemplate"
+          ]
+        }
+      }
     },
     {
       "name": "jsonParameters",
       "displayName": "JSON Parameters",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendHtml",
+            "sendTemplate"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -62,186 +113,87 @@
       "type": "collection",
       "default": {},
       "description": "Whether to enable a background sending mode that is optimized for bulk sending. In async mode, messages/send will immediately return a status of \"queued\" for every recipient. To handle rejections when sending in async mode, set up a webhook for the 'reject' event. Defaults to false for messages with no more than 10 recipients; messages with more than 10 recipients are always sent asynchronously, regardless of the value of async.",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "autoText",
-      "displayName": "Auto Text",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether or not to automatically generate a text part for messages that are not given text"
-    },
-    {
-      "name": "autoHtml",
-      "displayName": "Auto HTML",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether or not to automatically generate an HTML part for messages that are not given HTML"
-    },
-    {
-      "name": "bccAddress",
-      "displayName": "BCC Address",
-      "type": "string",
-      "default": "",
-      "description": "An optional address to receive an exact copy of each recipient's email",
-      "placeholder": "message.bcc_address@example.com"
-    },
-    {
-      "name": "fromName",
-      "displayName": "From Name",
-      "type": "string",
-      "default": "",
-      "description": "Optional from name to be used",
-      "placeholder": "John Doe"
-    },
-    {
-      "name": "googleAnalyticsCampaign",
-      "displayName": "Google Analytics Campaign",
-      "type": "string",
-      "default": "",
-      "description": "Optional string indicating the value to set for the utm_campaign tracking parameter. If this isn't provided the email's from address will be used instead.",
-      "placeholder": ""
-    },
-    {
-      "name": "googleAnalyticsDomains",
-      "displayName": "Google Analytics Domains",
-      "type": "string",
-      "default": "",
-      "description": "An array of strings separated by a comma (,) indicating for which any matching URLs will automatically have Google Analytics parameters appended to their query string automatically",
-      "placeholder": ""
-    },
-    {
-      "name": "html",
-      "displayName": "HTML",
-      "type": "string",
-      "default": "",
-      "description": "The html you want to send"
-    },
-    {
-      "name": "important",
-      "displayName": "Important",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether or not this message is important, and should be delivered ahead of non-important messages"
-    },
-    {
-      "name": "inlineCss",
-      "displayName": "Inline CSS",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether or not to automatically inline all CSS styles provided in the message HTML - only for HTML documents less than 256KB in size"
-    },
-    {
-      "name": "ipPool",
-      "displayName": "Ip Pool",
-      "type": "string",
-      "default": "",
-      "description": "The name of the dedicated ip pool that should be used to send the message. If you do not have any dedicated IPs, this parameter has no effect. If you specify a pool that does not exist, your default pool will be used instead.",
-      "placeholder": ""
-    },
-    {
-      "name": "preserveRecipients",
-      "displayName": "Preserve Recipients",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether or not to expose all recipients in to \"To\" header for each email"
-    },
-    {
-      "name": "returnPathDomain",
-      "displayName": "Return Path Domain",
-      "type": "string",
-      "default": "",
-      "description": "A custom domain to use for the messages's return-path",
-      "placeholder": ""
-    },
-    {
-      "name": "sendAt",
-      "displayName": "Sent At",
-      "type": "dateTime",
-      "default": "",
-      "description": "When this message should be sent as a UTC timestamp in YYYY-MM-DD HH:MM:SS format. If you specify a time in the past, the message will be sent immediately. An additional fee applies for scheduled email, and this feature is only available to accounts with a positive balance.",
-      "placeholder": ""
-    },
-    {
-      "name": "signingDomain",
-      "displayName": "Signing Domain",
-      "type": "string",
-      "default": "",
-      "description": "A custom domain to use for SPF/DKIM signing instead of mandrill(for \"via\" or \"on behalf of\" in email clients)",
-      "placeholder": ""
-    },
-    {
-      "name": "subAccount",
-      "displayName": "Subaccount",
-      "type": "string",
-      "default": "",
-      "description": "The unique ID of a subaccount for this message - must already exist or will fail with an error",
-      "placeholder": ""
-    },
-    {
-      "name": "subject",
-      "displayName": "Subject",
-      "type": "string",
-      "default": "",
-      "description": "Subject line of the email",
-      "placeholder": "My subject line"
-    },
-    {
-      "name": "tags",
-      "displayName": "Tags",
-      "type": "string",
-      "default": "",
-      "description": "An array of string separated by a comma (,) to tag the message with. Stats are accumulated using tags, though we only store the first 100 we see, so this should not be unique or change frequently. Tags should be 50 characters or less. Any tags starting with an underscore are reserved for internal use and will cause errors.",
-      "placeholder": ""
-    },
-    {
-      "name": "text",
-      "displayName": "Text",
-      "type": "string",
-      "default": "",
-      "description": "Example text content"
-    },
-    {
-      "name": "trackClicks",
-      "displayName": "Track Clicks",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether or not to turn on click tracking for the message"
-    },
-    {
-      "name": "trackOpens",
-      "displayName": "Track Opens",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether or not to turn on open tracking for the message"
-    },
-    {
-      "name": "trackingDomain",
-      "displayName": "Tracking Domain",
-      "type": "string",
-      "default": "",
-      "description": "A custom domain to use for tracking opens and clicks instead of mandrillapp.com",
-      "placeholder": ""
-    },
-    {
-      "name": "urlStripQs",
-      "displayName": "Url Strip Qs",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether or not to strip the query string from URLs when aggregating tracked URL data"
-    },
-    {
-      "name": "viewContentLink",
-      "displayName": "View Content Link",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to remove content logging for sensitive emails"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "async",
+          "displayName": "Async",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to enable a background sending mode that is optimized for bulk sending. In async mode, messages/send will immediately return a status of \"queued\" for every recipient. To handle rejections when sending in async mode, set up a webhook for the 'reject' event. Defaults to false for messages with no more than 10 recipients; messages with more than 10 recipients are always sent asynchronously, regardless of the value of async."
+        },
+        {
+          "name": "autoText",
+          "displayName": "Auto Text",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether or not to automatically generate a text part for messages that are not given text"
+        },
+        {
+          "name": "autoHtml",
+          "displayName": "Auto HTML",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether or not to automatically generate an HTML part for messages that are not given HTML"
+        },
+        {
+          "name": "bccAddress",
+          "displayName": "BCC Address",
+          "type": "string",
+          "default": "",
+          "description": "An optional address to receive an exact copy of each recipient's email",
+          "placeholder": "message.bcc_address@example.com"
+        },
+        {
+          "name": "fromName",
+          "displayName": "From Name",
+          "type": "string",
+          "default": "",
+          "description": "Optional from name to be used",
+          "placeholder": "John Doe"
+        },
+        {
+          "name": "googleAnalyticsCampaign",
+          "displayName": "Google Analytics Campaign",
+          "type": "string",
+          "default": "",
+          "description": "Optional string indicating the value to set for the utm_campaign tracking parameter. If this isn't provided the email's from address will be used instead.",
+          "placeholder": ""
+        },
+        {
+          "name": "googleAnalyticsDomains",
+          "displayName": "Google Analytics Domains",
+          "type": "string",
+          "default": "",
+          "description": "An array of strings separated by a comma (,) indicating for which any matching URLs will automatically have Google Analytics parameters appended to their query string automatically",
+          "placeholder": ""
+        }
+      ],
+      "typeOptions": {
+        "rows": 5
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendHtml",
+            "sendTemplate"
+          ]
+        }
+      }
     },
     {
       "name": "mergeVarsJson",
       "displayName": "Merge Vars",
       "type": "json",
-      "default": ""
+      "default": "",
+      "description": "Global merge variables",
+      "displayOptions": {
+        "show": {
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "mergeVarsUi",
@@ -249,13 +201,17 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Per-recipient merge variables",
-      "placeholder": "Add Merge Vars"
-    },
-    {
-      "name": "content",
-      "displayName": "Content",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Merge Vars",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "metadataUi",
@@ -263,64 +219,95 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Metadata an associative array of user metadata. Mandrill will store this metadata and make it available for retrieval. In addition, you can select up to 10 metadata fields to index and make searchable using the Mandrill search api.",
-      "placeholder": "Add Metadata"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Value to set for the metadata key"
+      "placeholder": "Add Metadata",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "metadataJson",
       "displayName": "Metadata",
       "type": "json",
       "default": "",
-      "description": "Metadata an associative array of user metadata. Mandrill will store this metadata and make it available for retrieval. In addition, you can select up to 10 metadata fields to index and make searchable using the Mandrill search api."
+      "description": "Metadata an associative array of user metadata. Mandrill will store this metadata and make it available for retrieval. In addition, you can select up to 10 metadata fields to index and make searchable using the Mandrill search api.",
+      "displayOptions": {
+        "show": {
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "attachmentsJson",
       "displayName": "Attachments",
       "type": "json",
-      "default": ""
+      "default": "",
+      "description": "An array of supported attachments to add to the message",
+      "displayOptions": {
+        "show": {
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "attachmentsUi",
       "displayName": "Attachments",
       "type": "fixedCollection",
-      "default": "",
+      "default": {},
       "description": "The MIME type of the attachment",
-      "placeholder": "Add Attachments"
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": "",
-      "description": "The file name of the attachment",
-      "placeholder": "myfile.txt"
-    },
-    {
-      "name": "attachmentsBinary",
-      "displayName": "Attachments Binary",
-      "type": "string",
-      "default": "",
-      "description": "Name of the binary properties which contain data which should be added to email as attachment"
+      "placeholder": "Add Attachments",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "headersJson",
       "displayName": "Headers",
       "type": "json",
       "default": "",
-      "description": "Optional extra headers to add to the message (most headers are allowed)"
+      "description": "Optional extra headers to add to the message (most headers are allowed)",
+      "displayOptions": {
+        "show": {
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "headersUi",
       "displayName": "Headers",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Headers"
+      "description": "Optional extra headers to add to the message (most headers are allowed)",
+      "placeholder": "Add Headers",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -368,5 +355,19 @@
       "name": "headersJson",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

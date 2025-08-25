@@ -10,21 +10,50 @@
       "type": "string",
       "default": "",
       "description": "The URL to shorten",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "url"
+          ],
+          "operation": [
+            "shorten"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "title",
-      "displayName": "Title",
-      "type": "string",
-      "default": "",
-      "description": "Title for custom short URLs"
+      "description": "Title for custom short URLs",
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "keyword",
+          "displayName": "Keyword",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "title",
+          "displayName": "Title",
+          "type": "string",
+          "default": "",
+          "description": "Title for custom short URLs"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "url"
+          ],
+          "operation": [
+            "shorten"
+          ]
+        }
+      }
     },
     {
       "name": "shortUrl",
@@ -32,30 +61,60 @@
       "type": "string",
       "default": "",
       "description": "The short URL to expand",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "url"
+          ],
+          "operation": [
+            "expand"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Expand a URL"
-    },
-    {
-      "name": "Shorten",
-      "default": null,
-      "description": "Shorten a URL"
-    },
-    {
-      "name": "Stats",
-      "default": null,
-      "description": "Get stats about one short URL"
+      "default": "shorten",
+      "description": "Expand a URL",
+      "options": [
+        {
+          "name": "Expand",
+          "value": "expand",
+          "description": "Expand a URL"
+        },
+        {
+          "name": "Shorten",
+          "value": "shorten",
+          "description": "Shorten a URL"
+        },
+        {
+          "name": "Stats",
+          "value": "stats",
+          "description": "Get stats about one short URL"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "url"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "url",
+      "options": [
+        {
+          "name": "URL",
+          "value": "url"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -67,5 +126,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

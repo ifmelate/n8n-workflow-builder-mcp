@@ -9,22 +9,29 @@
       "displayName": "Trigger On",
       "type": "options",
       "default": "fileCreated",
-      "description": "When a new file is created"
-    },
-    {
-      "name": "File Updated",
-      "default": null,
-      "description": "When an existing file is modified"
-    },
-    {
-      "name": "Folder Created",
-      "default": null,
-      "description": "When a new folder is created"
-    },
-    {
-      "name": "Folder Updated",
-      "default": null,
-      "description": "When an existing folder is modified"
+      "description": "When a new file is created",
+      "options": [
+        {
+          "name": "File Created",
+          "value": "fileCreated",
+          "description": "When a new file is created"
+        },
+        {
+          "name": "File Updated",
+          "value": "fileUpdated",
+          "description": "When an existing file is modified"
+        },
+        {
+          "name": "Folder Created",
+          "value": "folderCreated",
+          "description": "When a new folder is created"
+        },
+        {
+          "name": "Folder Updated",
+          "value": "folderUpdated",
+          "description": "When an existing folder is modified"
+        }
+      ]
     },
     {
       "name": "simple",
@@ -38,29 +45,45 @@
       "displayName": "Watch Folder",
       "type": "boolean",
       "default": false,
-      "description": "Whether to watch for the created file in a given folder, rather than the entire OneDrive"
+      "description": "Whether to watch for the created file in a given folder, rather than the entire OneDrive",
+      "displayOptions": {
+        "show": {
+          "event": [
+            "fileCreated"
+          ]
+        }
+      }
     },
     {
       "name": "watch",
       "displayName": "Watch",
       "type": "options",
       "default": "anyFile",
-      "description": "How to select which file to watch"
-    },
-    {
-      "name": "Inside a Folder",
-      "default": null,
-      "description": "Watch for updated files inside a selected folder"
-    },
-    {
-      "name": "A Selected File",
-      "default": null,
-      "description": "Watch a specific file for updates"
-    },
-    {
-      "name": "A Selected Folder",
-      "default": null,
-      "description": "Watch a specific folder for updates"
+      "description": "How to select which file to watch",
+      "options": [
+        {
+          "name": "Any File",
+          "value": "anyFile",
+          "description": "Watch for updated files in the entire OneDrive"
+        },
+        {
+          "name": "Inside a Folder",
+          "value": "selectedFolder",
+          "description": "Watch for updated files inside a selected folder"
+        },
+        {
+          "name": "A Selected File",
+          "value": "selectedFile",
+          "description": "Watch a specific file for updates"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "event": [
+            "fileUpdated"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -68,7 +91,23 @@
       "type": "collection",
       "default": {},
       "description": "Whether to look for modified files/folders in all nested folders, rather than only direct descendants",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "folderChild",
+          "displayName": "Watch Nested Folders",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to look for modified files/folders in all nested folders, rather than only direct descendants"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "watch": [
+            "selectedFolder"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -76,5 +115,19 @@
       "name": "microsoftOneDriveOAuth2Api",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

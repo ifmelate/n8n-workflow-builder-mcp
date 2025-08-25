@@ -14,12 +14,32 @@
       "name": "operation",
       "displayName": "Page Type",
       "type": "options",
-      "default": "page"
-    },
-    {
-      "name": "Form Ending",
-      "default": null
+      "default": "page",
+      "options": [
+        {
+          "name": "Next Form Page",
+          "value": "page"
+        },
+        {
+          "name": "Form Ending",
+          "value": "completion"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

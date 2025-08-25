@@ -11,7 +11,17 @@
       "default": "",
       "description": "Email address of the user to create",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customer"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "firstname",
@@ -19,7 +29,17 @@
       "type": "string",
       "default": "",
       "description": "First name of the user to create",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customer"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "lastname",
@@ -27,82 +47,216 @@
       "type": "string",
       "default": "",
       "description": "Last name of the user to create",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customer"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customer"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "name": "customerId",
+      "displayName": "Customer ID",
+      "type": "string",
+      "default": "",
       "description": "ID of the customer to update",
-      "placeholder": "Add Field"
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customer"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "firstName",
       "displayName": "First Name",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customer"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "lastName",
       "displayName": "Last Name",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customer"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "website_id",
       "displayName": "Website Name or ID",
       "type": "options",
       "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customer"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
       "displayName": "Update Fields",
       "type": "collection",
       "default": {},
-      "description": "Whether to return all results or only up to a given limit",
       "placeholder": "Add Field",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customer"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customer"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 5,
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 10
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customer"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a new customer"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a customer"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a customer"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many customers"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a customer"
+      "default": "create",
+      "description": "Create a new customer",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new customer"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a customer"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a customer"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many customers"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a customer"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customer"
+          ]
+        }
+      }
     },
     {
       "name": "orderId",
       "displayName": "Order ID",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "Ship",
-      "default": null,
-      "description": "Ship an order"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "invoice"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "sku",
@@ -110,45 +264,92 @@
       "type": "string",
       "default": "",
       "description": "Stock-keeping unit of the product",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "product"
+          ],
+          "operation": [
+            "create",
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "name",
       "displayName": "Name",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "product"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "attributeSetId",
       "displayName": "Attribute Set Name or ID",
       "type": "options",
       "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "product"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "price",
       "displayName": "Price",
       "type": "number",
-      "default": 0
+      "default": 0,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "product"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Invoice",
-      "default": null
-    },
-    {
-      "name": "Order",
-      "default": null
-    },
-    {
-      "name": "Product",
-      "default": null
+      "default": "customer",
+      "options": [
+        {
+          "name": "Customer",
+          "value": "customer"
+        },
+        {
+          "name": "Invoice",
+          "value": "invoice"
+        },
+        {
+          "name": "Order",
+          "value": "order"
+        },
+        {
+          "name": "Product",
+          "value": "product"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -160,5 +361,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -9,107 +9,94 @@
       "displayName": "Name",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
       "placeholder": "Add Field",
-      "typeOptions": {
-        "multipleValues": true
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
       }
-    },
-    {
-      "name": "country_id",
-      "displayName": "Country Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "state_id",
-      "displayName": "State Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "street",
-      "displayName": "Street",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "street2",
-      "displayName": "Street 2",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "zip",
-      "displayName": "Zip Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "email",
-      "displayName": "Email",
-      "type": "string",
-      "default": "",
-      "placeholder": "name@email.com"
-    },
-    {
-      "name": "comment",
-      "displayName": "Internal Notes",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "function",
-      "displayName": "Job Position",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "mobile",
-      "displayName": "Mobile",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "phone",
-      "displayName": "Phone",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "vat",
-      "displayName": "Tax ID",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "website",
-      "displayName": "Website",
-      "type": "string",
-      "default": ""
     },
     {
       "name": "contactId",
       "displayName": "Contact ID",
       "type": "string",
       "default": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get",
+            "delete"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
       "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 1000
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -117,50 +104,77 @@
       "type": "collection",
       "default": {},
       "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll",
+            "get"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
       "displayName": "Update Fields",
       "type": "collection",
       "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
       "placeholder": "Add Field",
-      "typeOptions": {
-        "multipleValues": true
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
       }
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": ""
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
       "default": "create",
-      "description": "Create a new contact"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a contact"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a contact"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many contacts"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a contact"
+      "description": "Create a new contact",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new contact"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a contact"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a contact"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many contacts"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a contact"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "fieldsToCreateOrUpdate",
@@ -168,21 +182,38 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "fieldValue",
-      "displayName": "New Value",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "custom"
+          ]
+        }
+      }
     },
     {
       "name": "customResourceId",
       "displayName": "Custom Resource ID",
       "type": "string",
       "default": "",
-      "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get",
+            "delete"
+          ],
+          "resource": [
+            "custom"
+          ]
+        }
+      }
     },
     {
       "name": "filterRequest",
@@ -190,145 +221,128 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Filter request by applying filters",
-      "placeholder": "Add condition"
-    },
-    {
-      "name": "operator",
-      "displayName": "Operator",
-      "type": "options",
-      "default": "equal",
-      "description": "Specify an operator"
-    },
-    {
-      "name": "<",
-      "default": null
-    },
-    {
-      "name": "<=",
-      "default": null
-    },
-    {
-      "name": "=",
-      "default": null
-    },
-    {
-      "name": ">",
-      "default": null
-    },
-    {
-      "name": ">=",
-      "default": null
-    },
-    {
-      "name": "Child Of",
-      "default": null
-    },
-    {
-      "name": "In",
-      "default": null
-    },
-    {
-      "name": "Like",
-      "default": null
-    },
-    {
-      "name": "Not In",
-      "default": null
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Specify value for comparison"
+      "placeholder": "Add condition",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "custom"
+          ]
+        }
+      }
     },
     {
       "name": "customResource",
       "displayName": "Custom Resource Name or ID",
       "type": "options",
       "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "custom"
+          ]
+        }
+      }
     },
     {
       "name": "memo",
       "displayName": "Memo",
       "type": "string",
       "default": "",
-      "description": "Whether to return all results or only up to a given limit",
-      "placeholder": "Add Field",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "note"
+          ]
+        }
+      }
     },
     {
       "name": "noteId",
       "displayName": "Note ID",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get",
+            "delete"
+          ],
+          "resource": [
+            "note"
+          ]
+        }
+      }
     },
     {
       "name": "opportunityName",
       "displayName": "Name",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "expected_revenue",
-      "displayName": "Expected Revenue",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "description",
-      "displayName": "Internal Notes",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "priority",
-      "displayName": "Priority",
-      "type": "options",
-      "default": "1"
-    },
-    {
-      "name": "2",
-      "default": null
-    },
-    {
-      "name": "3",
-      "default": null
-    },
-    {
-      "name": "probability",
-      "displayName": "Probability",
-      "type": "number",
-      "default": 0
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "opportunity"
+          ]
+        }
+      }
     },
     {
       "name": "opportunityId",
       "displayName": "Opportunity ID",
       "type": "string",
       "default": "",
-      "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get",
+            "delete"
+          ],
+          "resource": [
+            "opportunity"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": "contact"
-    },
-    {
-      "name": "Custom Resource",
-      "default": null
-    },
-    {
-      "name": "Note",
-      "default": null
-    },
-    {
-      "name": "Opportunity",
-      "default": null
+      "default": "contact",
+      "options": [
+        {
+          "name": "Contact",
+          "value": "contact"
+        },
+        {
+          "name": "Custom Resource",
+          "value": "custom"
+        },
+        {
+          "name": "Note",
+          "value": "note"
+        },
+        {
+          "name": "Opportunity",
+          "value": "opportunity"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -340,5 +354,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -10,21 +10,57 @@
       "type": "string",
       "default": "",
       "description": "One or multiple comma-separated stock symbols (tickers) to retrieve, e.g. <code>AAPL</code> or <code>AAPL,MSFT</code>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "endOfDayData"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "endOfDayData"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "endOfDayData"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -32,52 +68,52 @@
       "type": "collection",
       "default": {},
       "description": "Stock exchange to filter results by, specified by <a href=\"https://en.wikipedia.org/wiki/Market_Identifier_Code\">Market Identifier Code</a>, e.g. <code>XNAS</code>",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "latest",
-      "displayName": "Latest",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to fetch the most recent stock market data"
-    },
-    {
-      "name": "sort",
-      "displayName": "Sort Order",
-      "type": "options",
-      "default": null,
-      "description": "Order to sort results in"
-    },
-    {
-      "name": "Descending",
-      "default": null
-    },
-    {
-      "name": "specificDate",
-      "displayName": "Specific Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Date in YYYY-MM-DD format, e.g. <code>2020-01-01</code>, or in ISO-8601 date format, e.g. <code>2020-05-21T00:00:00+0000</code>"
-    },
-    {
-      "name": "dateFrom",
-      "displayName": "Timeframe Start Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Timeframe start date in YYYY-MM-DD format, e.g. <code>2020-01-01</code>, or in ISO-8601 date format, e.g. <code>2020-05-21T00:00:00+0000</code>"
-    },
-    {
-      "name": "dateTo",
-      "displayName": "Timeframe End Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Timeframe end date in YYYY-MM-DD format, e.g. <code>2020-01-01</code>, or in ISO-8601 date format, e.g. <code>2020-05-21T00:00:00+0000</code>"
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "exchange",
+          "displayName": "Exchange",
+          "type": "string",
+          "default": "",
+          "description": "Stock exchange to filter results by, specified by <a href=\"https://en.wikipedia.org/wiki/Market_Identifier_Code\">Market Identifier Code</a>, e.g. <code>XNAS</code>"
+        },
+        {
+          "name": "latest",
+          "displayName": "Latest",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to fetch the most recent stock market data"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "endOfDayData"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
+      "default": "getAll",
+      "options": [
+        {
+          "name": "Get Many",
+          "value": "getAll"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "endOfDayData"
+          ]
+        }
+      }
     },
     {
       "name": "exchange",
@@ -85,7 +121,17 @@
       "type": "string",
       "default": "",
       "description": "Stock exchange to retrieve, specified by <a href=\"https://en.wikipedia.org/wiki/Market_Identifier_Code\">Market Identifier Code</a>, e.g. <code>XNAS</code>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "exchange"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "symbol",
@@ -93,24 +139,42 @@
       "type": "string",
       "default": "",
       "description": "Stock symbol (ticker) to retrieve, e.g. <code>AAPL</code>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "ticker"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "description": "Stock market closing data"
-    },
-    {
-      "name": "Exchange",
-      "default": null,
-      "description": "Stock market exchange"
-    },
-    {
-      "name": "Ticker",
-      "default": null,
-      "description": "Stock market symbol"
+      "default": "endOfDayData",
+      "description": "Stock market closing data",
+      "required": true,
+      "options": [
+        {
+          "name": "End-of-Day Data",
+          "value": "endOfDayData",
+          "description": "Stock market closing data"
+        },
+        {
+          "name": "Exchange",
+          "value": "exchange",
+          "description": "Stock market exchange"
+        },
+        {
+          "name": "Ticker",
+          "value": "ticker",
+          "description": "Stock market symbol"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -122,5 +186,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -10,7 +10,33 @@
       "type": "collection",
       "default": {},
       "description": "URL to send tool response when tool has resolved your request",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "dataWebhook",
+          "displayName": "Data Webhook",
+          "type": "string",
+          "default": "",
+          "description": "URL to send tool response when tool has resolved your request"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "group": [
+            "audio",
+            "communication",
+            "company",
+            "finance",
+            "geographic",
+            "image",
+            "internet",
+            "personal",
+            "product",
+            "security",
+            "text"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -22,5 +48,27 @@
       "name": "additionalOptions",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

@@ -8,43 +8,80 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "push",
+      "options": [
+        {
+          "name": "Push",
+          "value": "push"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a push"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a push"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many pushes"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a push"
+      "default": "create",
+      "description": "Create a push",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a push"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a push"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many pushes"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a push"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "push"
+          ]
+        }
+      }
     },
     {
       "name": "type",
       "displayName": "Type",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Link",
-      "default": null
-    },
-    {
-      "name": "Note",
-      "default": null
+      "default": "note",
+      "required": true,
+      "options": [
+        {
+          "name": "File",
+          "value": "file"
+        },
+        {
+          "name": "Link",
+          "value": "link"
+        },
+        {
+          "name": "Note",
+          "value": "note"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "push"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "title",
@@ -52,7 +89,21 @@
       "type": "string",
       "default": "",
       "description": "Title of the push",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "push"
+          ],
+          "operation": [
+            "create"
+          ],
+          "type": [
+            "note",
+            "link"
+          ]
+        }
+      }
     },
     {
       "name": "body",
@@ -60,7 +111,22 @@
       "type": "string",
       "default": "",
       "description": "Body of the push",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "push"
+          ],
+          "operation": [
+            "create"
+          ],
+          "type": [
+            "note",
+            "link",
+            "file"
+          ]
+        }
+      }
     },
     {
       "name": "url",
@@ -68,7 +134,20 @@
       "type": "string",
       "default": "",
       "description": "URL of the push",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "push"
+          ],
+          "operation": [
+            "create"
+          ],
+          "type": [
+            "link"
+          ]
+        }
+      }
     },
     {
       "name": "binaryPropertyName",
@@ -76,29 +155,60 @@
       "type": "string",
       "default": "data",
       "placeholder": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "push"
+          ],
+          "operation": [
+            "create"
+          ],
+          "type": [
+            "file"
+          ]
+        }
+      }
     },
     {
       "name": "target",
       "displayName": "Target",
       "type": "options",
-      "default": null,
-      "description": "Send the push to all subscribers to your channel that has this tag"
-    },
-    {
-      "name": "Default",
-      "default": null,
-      "description": "Broadcast it to all of the user's devices"
-    },
-    {
-      "name": "Device ID",
-      "default": null,
-      "description": "Send the push to a specific device"
-    },
-    {
-      "name": "Email",
-      "default": null,
-      "description": "Send the push to this email address"
+      "default": "default",
+      "description": "Send the push to all subscribers to your channel that has this tag",
+      "required": true,
+      "options": [
+        {
+          "name": "Channel Tag",
+          "value": "channel_tag",
+          "description": "Send the push to all subscribers to your channel that has this tag"
+        },
+        {
+          "name": "Default",
+          "value": "default",
+          "description": "Broadcast it to all of the user's devices"
+        },
+        {
+          "name": "Device ID",
+          "value": "device_iden",
+          "description": "Send the push to a specific device"
+        },
+        {
+          "name": "Email",
+          "value": "email",
+          "description": "Send the push to this email address"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "push"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "value",
@@ -106,28 +216,75 @@
       "type": "string",
       "default": "",
       "description": "The value to be set depending on the target selected. For example, if the target selected is email then this field would take the email address of the person you are trying to send the push to.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "push"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "pushId",
       "displayName": "Push ID",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "push"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "push"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "push"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -135,14 +292,33 @@
       "type": "collection",
       "default": {},
       "description": "Don't return deleted pushes",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "modified_after",
-      "displayName": "Modified After",
-      "type": "dateTime",
-      "default": "",
-      "description": "Request pushes modified after this timestamp"
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "active",
+          "displayName": "Active",
+          "type": "boolean",
+          "default": false,
+          "description": "Don't return deleted pushes"
+        },
+        {
+          "name": "modified_after",
+          "displayName": "Modified After",
+          "type": "dateTime",
+          "default": "",
+          "description": "Request pushes modified after this timestamp"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "push"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "dismissed",
@@ -150,7 +326,17 @@
       "type": "boolean",
       "default": false,
       "description": "Whether to mark a push as having been dismissed by the user, will cause any notifications for the push to be hidden if possible",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "push"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -182,5 +368,27 @@
       "name": "pushId",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

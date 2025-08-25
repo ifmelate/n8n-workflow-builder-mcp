@@ -8,15 +8,21 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "File",
-      "default": null
-    },
-    {
-      "name": "Folder",
-      "default": null
+      "default": "file",
+      "options": [
+        {
+          "name": "Bucket",
+          "value": "bucket"
+        },
+        {
+          "name": "File",
+          "value": "file"
+        },
+        {
+          "name": "Folder",
+          "value": "folder"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -28,5 +34,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

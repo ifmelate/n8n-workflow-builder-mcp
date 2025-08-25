@@ -9,21 +9,40 @@
       "displayName": "Card ID",
       "type": "resourceLocator",
       "default": "{ mode: 'list', value: '' }",
+      "description": "The ID of the card",
       "placeholder": "Select a Card...",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete",
+            "create",
+            "get",
+            "getAll"
+          ],
+          "resource": [
+            "attachment"
+          ]
+        }
+      }
     },
     {
       "name": "url",
-      "displayName": "By URL",
+      "displayName": "Source URL",
       "type": "string",
-      "default": null,
-      "placeholder": "https://trello.com/c/e123456/card-name"
-    },
-    {
-      "name": "id",
-      "displayName": "ID",
-      "type": "string",
-      "default": null
+      "default": "",
+      "description": "The URL of the attachment to add",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "attachment"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -31,176 +50,124 @@
       "type": "collection",
       "default": {},
       "description": "The MIME type of the attachment to add",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "mimeType",
+          "displayName": "MIME Type",
+          "type": "string",
+          "default": "",
+          "description": "The MIME type of the attachment to add",
+          "placeholder": "image/png"
+        },
+        {
+          "name": "name",
+          "displayName": "Name",
+          "type": "string",
+          "default": "",
+          "description": "The name of the attachment to add"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "attachment"
+          ]
+        }
+      }
+    },
+    {
+      "name": "id",
+      "displayName": "Attachment ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the attachment to delete",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "attachment"
+          ]
+        }
+      }
+    },
+    {
+      "name": "operation",
+      "displayName": "Operation",
+      "type": "options",
+      "default": "getAll",
+      "description": "Create a new attachment for a card",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new attachment for a card"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete an attachment"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get the data of an attachment"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Returns many attachments for the card"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attachment"
+          ]
+        }
+      }
     },
     {
       "name": "name",
       "displayName": "Name",
       "type": "string",
       "default": "",
-      "description": "The name of the attachment to add"
-    },
-    {
-      "name": "operation",
-      "displayName": "Operation",
-      "type": "options",
-      "default": null,
-      "description": "Create a new attachment for a card"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an attachment"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get the data of an attachment"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Returns many attachments for the card"
+      "description": "The name of the board",
+      "placeholder": "My board",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "board"
+          ]
+        }
+      }
     },
     {
       "name": "description",
       "displayName": "Description",
       "type": "string",
       "default": "",
-      "description": "The description of the board"
-    },
-    {
-      "name": "Regular",
-      "default": null
-    },
-    {
-      "name": "prefs_background",
-      "displayName": "Background",
-      "type": "string",
-      "default": "blue",
-      "description": "The ID of a custom background or one of: blue, orange, green, red, purple, pink, lime, sky, grey"
-    },
-    {
-      "name": "prefs_comments",
-      "displayName": "Comments",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Members",
-      "default": null
-    },
-    {
-      "name": "Observers",
-      "default": null
-    },
-    {
-      "name": "Organization",
-      "default": null
-    },
-    {
-      "name": "Public",
-      "default": null
-    },
-    {
-      "name": "prefs_cardCovers",
-      "displayName": "Covers",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether card covers are enabled"
-    },
-    {
-      "name": "prefs_invitations",
-      "displayName": "Invitations",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "keepFromSource",
-      "displayName": "Keep From Source",
-      "type": "string",
-      "default": "none",
-      "description": "To keep cards from the original board pass in the value cards"
-    },
-    {
-      "name": "defaultLabels",
-      "displayName": "Labels",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to use the default set of labels"
-    },
-    {
-      "name": "defaultLists",
-      "displayName": "Lists",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to add the default set of lists to a board(To Do, Doing, Done).It is ignored if idBoardSource is provided"
-    },
-    {
-      "name": "idOrganization",
-      "displayName": "Organization ID",
-      "type": "string",
-      "default": "",
-      "description": "The ID or name of the team the board should belong to"
-    },
-    {
-      "name": "prefs_permissionLevel",
-      "displayName": "Permission Level",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Private",
-      "default": null
-    },
-    {
-      "name": "powerUps",
-      "displayName": "Power Ups",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Calendar",
-      "default": null
-    },
-    {
-      "name": "Card Aging",
-      "default": null
-    },
-    {
-      "name": "Recap",
-      "default": null
-    },
-    {
-      "name": "Voting",
-      "default": null
-    },
-    {
-      "name": "prefs_selfJoin",
-      "displayName": "Self Join",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether users can join the boards themselves or whether they have to be invited"
-    },
-    {
-      "name": "idBoardSource",
-      "displayName": "Source IDs",
-      "type": "string",
-      "default": "",
-      "description": "The ID of a board to copy into the new board"
-    },
-    {
-      "name": "prefs_voting",
-      "displayName": "Voting",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "pluginData",
-      "displayName": "Plugin Data",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to include pluginData on the card with the response"
+      "description": "The description of the board",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "board"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -208,33 +175,71 @@
       "type": "collection",
       "default": {},
       "description": "Whether the board is closed",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "desc",
-      "displayName": "Description",
-      "type": "string",
-      "default": "",
-      "description": "New description of the board"
-    },
-    {
-      "name": "subscribed",
-      "displayName": "Subscribed",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the acting user is subscribed to the board"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a board"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "closed",
+          "displayName": "Closed",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the board is closed"
+        },
+        {
+          "name": "desc",
+          "displayName": "Description",
+          "type": "string",
+          "default": "",
+          "description": "New description of the board"
+        },
+        {
+          "name": "name",
+          "displayName": "Name",
+          "type": "string",
+          "default": "",
+          "description": "New name of the board"
+        },
+        {
+          "name": "idOrganization",
+          "displayName": "Organization ID",
+          "type": "string",
+          "default": "",
+          "description": "The ID of the team the board should be moved to"
+        },
+        {
+          "name": "subscribed",
+          "displayName": "Subscribed",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the acting user is subscribed to the board"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "board"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "boardMember"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
@@ -242,7 +247,22 @@
       "type": "number",
       "default": 20,
       "description": "Max number of results to return",
-      "required": true
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "boardMember"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "idMember",
@@ -250,7 +270,17 @@
       "type": "string",
       "default": "",
       "description": "The ID of the member to add to the board",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "add"
+          ],
+          "resource": [
+            "boardMember"
+          ]
+        }
+      }
     },
     {
       "name": "type",
@@ -258,17 +288,34 @@
       "type": "options",
       "default": "normal",
       "description": "Invite as normal member",
-      "required": true
-    },
-    {
-      "name": "Admin",
-      "default": null,
-      "description": "Invite as admin"
-    },
-    {
-      "name": "Observer",
-      "default": null,
-      "description": "Invite as observer (Trello premium feature)"
+      "required": true,
+      "options": [
+        {
+          "name": "Normal",
+          "value": "normal",
+          "description": "Invite as normal member"
+        },
+        {
+          "name": "Admin",
+          "value": "admin",
+          "description": "Invite as admin"
+        },
+        {
+          "name": "Observer",
+          "value": "observer",
+          "description": "Invite as observer (Trello premium feature)"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "add"
+          ],
+          "resource": [
+            "boardMember"
+          ]
+        }
+      }
     },
     {
       "name": "email",
@@ -277,24 +324,17 @@
       "default": "",
       "description": "The ID of the board to update",
       "placeholder": "name@email.com",
-      "required": true
-    },
-    {
-      "name": "fullName",
-      "displayName": "Full Name",
-      "type": "string",
-      "default": "",
-      "description": "The full name of the user to add as a member of the board. Must have a length of at least 1 and cannot begin nor end with a space."
-    },
-    {
-      "name": "Invite",
-      "default": null,
-      "description": "Invite a new member to a board via email"
-    },
-    {
-      "name": "Remove",
-      "default": null,
-      "description": "Remove member from board using member ID"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "invite"
+          ],
+          "resource": [
+            "boardMember"
+          ]
+        }
+      }
     },
     {
       "name": "listId",
@@ -302,134 +342,53 @@
       "type": "string",
       "default": "",
       "description": "The ID of the list to create card in",
-      "required": true
-    },
-    {
-      "name": "dueComplete",
-      "displayName": "Due Complete",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the card is completed"
-    },
-    {
-      "name": "pos",
-      "displayName": "Position",
-      "type": "string",
-      "default": "bottom",
-      "description": "The position of the new card. top, bottom, or a positive float."
-    },
-    {
-      "name": "idMembers",
-      "displayName": "Member IDs",
-      "type": "string",
-      "default": "",
-      "description": "Comma-separated list of member IDs to add to the card"
-    },
-    {
-      "name": "idLabels",
-      "displayName": "Label IDs",
-      "type": "string",
-      "default": "",
-      "description": "Comma-separated list of label IDs to add to the card"
-    },
-    {
-      "name": "urlSource",
-      "displayName": "URL Source",
-      "type": "string",
-      "default": "",
-      "description": "A source URL to attach to card"
-    },
-    {
-      "name": "idCardSource",
-      "displayName": "Source ID",
-      "type": "string",
-      "default": "",
-      "description": "The ID of a card to copy into the new card"
-    },
-    {
-      "name": "board",
-      "displayName": "Board",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return the board object the card is on"
-    },
-    {
-      "name": "board_fields",
-      "displayName": "Board Fields",
-      "type": "string",
-      "default": "all",
-      "description": "Fields to return. Either \"all\" or a comma-separated list: name, desc, descData, closed, idOrganization, pinned, url, prefs."
-    },
-    {
-      "name": "customFieldItems",
-      "displayName": "Custom Field Items",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to include the customFieldItems"
-    },
-    {
-      "name": "members",
-      "displayName": "Members",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return member objects for members on the card"
-    },
-    {
-      "name": "member_fields",
-      "displayName": "Member Fields",
-      "type": "string",
-      "default": "all",
-      "description": "Fields to return. Either \"all\" or a comma-separated list: avatarHash, fullName, initials, username."
-    },
-    {
-      "name": "stickers",
-      "displayName": "Stickers",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to include sticker models with the response"
-    },
-    {
-      "name": "sticker_fields",
-      "displayName": "Sticker Fields",
-      "type": "string",
-      "default": "all",
-      "description": "Fields to return. Either \"all\" or a comma-separated list of sticker fields."
-    },
-    {
-      "name": "idBoard",
-      "displayName": "Board ID",
-      "type": "string",
-      "default": "",
-      "description": "The ID of the board the card should be on"
-    },
-    {
-      "name": "closed",
-      "displayName": "Closed",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the board is closed"
-    },
-    {
-      "name": "due",
-      "displayName": "Due Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "A due date for the card"
-    },
-    {
-      "name": "idList",
-      "displayName": "List ID",
-      "type": "string",
-      "default": "",
-      "description": "The ID of the list the card should be in"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "card"
+          ]
+        }
+      }
     },
     {
       "name": "text",
       "displayName": "Text",
       "type": "string",
       "default": "",
-      "description": "The ID of the card",
-      "required": true
+      "description": "Text of the comment",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "cardComment"
+          ]
+        }
+      }
+    },
+    {
+      "name": "commentId",
+      "displayName": "Comment ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the comment to delete",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "cardComment"
+          ]
+        }
+      }
     },
     {
       "name": "checklistId",
@@ -437,7 +396,17 @@
       "type": "string",
       "default": "",
       "description": "The ID of the checklist to update",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "createCheckItem"
+          ],
+          "resource": [
+            "checklist"
+          ]
+        }
+      }
     },
     {
       "name": "checkItemId",
@@ -445,42 +414,17 @@
       "type": "string",
       "default": "",
       "description": "The ID of the checklist item to delete",
-      "required": true
-    },
-    {
-      "name": "state",
-      "displayName": "State",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Incomplete",
-      "default": null
-    },
-    {
-      "name": "Create Checklist Item",
-      "default": null,
-      "description": "Create a checklist item"
-    },
-    {
-      "name": "Delete Checklist Item",
-      "default": null,
-      "description": "Delete a checklist item"
-    },
-    {
-      "name": "Get Checklist Items",
-      "default": null,
-      "description": "Get a specific checklist on a card"
-    },
-    {
-      "name": "Get Completed Checklist Items",
-      "default": null,
-      "description": "Get the completed checklist items on a card"
-    },
-    {
-      "name": "Update Checklist Item",
-      "default": null,
-      "description": "Update an item in a checklist on a card"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "deleteCheckItem"
+          ],
+          "resource": [
+            "checklist"
+          ]
+        }
+      }
     },
     {
       "name": "boardId",
@@ -489,64 +433,82 @@
       "default": "{ mode: 'list', value: '' }",
       "description": "The ID of the board",
       "placeholder": "Select a Board...",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create",
+            "getAll"
+          ],
+          "resource": [
+            "label"
+          ]
+        }
+      }
     },
     {
       "name": "color",
       "displayName": "Color",
       "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "Blue",
-      "default": null
-    },
-    {
-      "name": "Green",
-      "default": null
-    },
-    {
-      "name": "Lime",
-      "default": null
-    },
-    {
-      "name": "Null",
-      "default": null
-    },
-    {
-      "name": "Orange",
-      "default": null
-    },
-    {
-      "name": "Pink",
-      "default": null
-    },
-    {
-      "name": "Purple",
-      "default": null
-    },
-    {
-      "name": "Red",
-      "default": null
-    },
-    {
-      "name": "Sky",
-      "default": null
-    },
-    {
-      "name": "Yellow",
-      "default": null
-    },
-    {
-      "name": "Create",
-      "default": null,
-      "description": "Create a new label"
-    },
-    {
-      "name": "Remove From Card",
-      "default": null,
-      "description": "Remove a label from a card"
+      "default": "null",
+      "description": "The color for the label",
+      "required": true,
+      "options": [
+        {
+          "name": "Black",
+          "value": "black"
+        },
+        {
+          "name": "Blue",
+          "value": "blue"
+        },
+        {
+          "name": "Green",
+          "value": "green"
+        },
+        {
+          "name": "Lime",
+          "value": "lime"
+        },
+        {
+          "name": "Null",
+          "value": "null"
+        },
+        {
+          "name": "Orange",
+          "value": "orange"
+        },
+        {
+          "name": "Pink",
+          "value": "pink"
+        },
+        {
+          "name": "Purple",
+          "value": "purple"
+        },
+        {
+          "name": "Red",
+          "value": "red"
+        },
+        {
+          "name": "Sky",
+          "value": "sky"
+        },
+        {
+          "name": "Yellow",
+          "value": "yellow"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "label"
+          ]
+        }
+      }
     },
     {
       "name": "archive",
@@ -554,46 +516,74 @@
       "type": "boolean",
       "default": false,
       "description": "Whether the list should be archived or unarchived",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "archive"
+          ],
+          "resource": [
+            "list"
+          ]
+        }
+      }
     },
     {
-      "name": "Get Cards",
-      "default": null,
-      "description": "Get all the cards in a list"
+      "name": "idBoard",
+      "displayName": "Board ID",
+      "type": "string",
+      "default": "",
+      "description": "The ID of the board the list should be created in",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "list"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Board",
-      "default": null
-    },
-    {
-      "name": "Board Member",
-      "default": null
-    },
-    {
-      "name": "Card",
-      "default": null
-    },
-    {
-      "name": "Card Comment",
-      "default": null
-    },
-    {
-      "name": "Checklist",
-      "default": null
-    },
-    {
-      "name": "Label",
-      "default": null
-    },
-    {
-      "name": "List",
-      "default": null
+      "default": "card",
+      "options": [
+        {
+          "name": "Attachment",
+          "value": "attachment"
+        },
+        {
+          "name": "Board",
+          "value": "board"
+        },
+        {
+          "name": "Board Member",
+          "value": "boardMember"
+        },
+        {
+          "name": "Card",
+          "value": "card"
+        },
+        {
+          "name": "Card Comment",
+          "value": "cardComment"
+        },
+        {
+          "name": "Checklist",
+          "value": "checklist"
+        },
+        {
+          "name": "Label",
+          "value": "label"
+        },
+        {
+          "name": "List",
+          "value": "list"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -605,5 +595,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

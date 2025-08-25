@@ -13,7 +13,14 @@
       "displayName": "Workspace Name or ID",
       "type": "options",
       "default": "none",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "version": [
+            3
+          ]
+        }
+      }
     },
     {
       "name": "projectId",
@@ -21,7 +28,14 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "version": [
+            3
+          ]
+        }
+      }
     },
     {
       "name": "table",
@@ -29,30 +43,72 @@
       "type": "options",
       "default": "",
       "description": "The table to operate on. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "version": [
+            2,
+            3
+          ]
+        }
+      }
     },
     {
       "name": "primaryKey",
       "displayName": "Primary Key Type",
       "type": "options",
       "default": "id",
-      "description": "Default, added when table was created from UI by those options: Create new table / Import from Excel / Import from CSV"
-    },
-    {
-      "name": "Imported From Airtable",
-      "default": null,
-      "description": "Select if table was imported from Airtable"
-    },
-    {
-      "name": "Custom",
-      "default": null,
-      "description": "When connecting to existing external database as existing primary key field is retained as is, enter the name of the primary key field below"
+      "description": "Default, added when table was created from UI by those options: Create new table / Import from Excel / Import from CSV",
+      "options": [
+        {
+          "name": "Default",
+          "value": "id",
+          "description": "Default, added when table was created from UI by those options: Create new table / Import from Excel / Import from CSV"
+        },
+        {
+          "name": "Imported From Airtable",
+          "value": "ncRecordId",
+          "description": "Select if table was imported from Airtable"
+        },
+        {
+          "name": "Custom",
+          "value": "custom",
+          "description": "When connecting to existing external database as existing primary key field is retained as is, enter the name of the primary key field below"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "version": [
+            1,
+            2
+          ],
+          "operation": [
+            "delete",
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "customPrimaryKey",
       "displayName": "Field Name",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "version": [
+            1,
+            2
+          ],
+          "operation": [
+            "delete",
+            "update"
+          ],
+          "primaryKey": [
+            "custom"
+          ]
+        }
+      }
     },
     {
       "name": "id",
@@ -60,21 +116,69 @@
       "type": "string",
       "default": "",
       "description": "The value of the ID field",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "version": [
+            1,
+            2
+          ],
+          "operation": [
+            "delete",
+            "get",
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "downloadAttachments",
       "displayName": "Download Attachments",
       "type": "boolean",
       "default": false,
-      "description": "Whether the attachment fields define in 'Download Fields' will be downloaded"
+      "description": "Whether the attachment fields define in 'Download Fields' will be downloaded",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "downloadFieldNames",
@@ -82,7 +186,17 @@
       "type": "string",
       "default": "",
       "description": "Name of the fields of type 'attachment' that should be downloaded. Multiple ones can be defined separated by comma. Case sensitive.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "downloadAttachments": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -91,56 +205,63 @@
       "default": {},
       "description": "The select fields of the returned rows",
       "placeholder": "Add option",
-      "typeOptions": {
-        "multipleValues": true
+      "options": [
+        {
+          "name": "viewId",
+          "displayName": "View ID",
+          "type": "string",
+          "default": "",
+          "description": "The select fields of the returned rows",
+          "placeholder": "View ID"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ]
+        }
       }
     },
     {
-      "name": "fields",
-      "displayName": "Fields",
-      "type": "string",
-      "default": [],
-      "description": "The select fields of the returned rows",
-      "placeholder": "Name"
-    },
-    {
-      "name": "sort",
-      "displayName": "Sort",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "The sorting rules for the returned rows",
-      "placeholder": "Add Sort Rule"
-    },
-    {
-      "name": "direction",
-      "displayName": "Direction",
+      "name": "dataToSend",
+      "displayName": "Data to Send",
       "type": "options",
-      "default": null,
-      "description": "Sort in ascending order (small -> large)"
-    },
-    {
-      "name": "DESC",
-      "default": null,
-      "description": "Sort in descending order (large -> small)"
-    },
-    {
-      "name": "where",
-      "displayName": "Filter By Formula",
-      "type": "string",
-      "default": "",
-      "description": "A formula used to filter rows",
-      "placeholder": "(name,like,example%)~or(name,eq,test)"
-    },
-    {
-      "name": "Define Below for Each Column",
-      "default": null,
-      "description": "Set the value for each destination column"
+      "default": "defineBelow",
+      "description": "Use when node input properties match destination column names",
+      "options": [
+        {
+          "name": "Auto-Map Input Data to Columns",
+          "value": "autoMapInputData",
+          "description": "Use when node input properties match destination column names"
+        },
+        {
+          "name": "Define Below for Each Column",
+          "value": "defineBelow",
+          "description": "Set the value for each destination column"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create",
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "info",
       "displayName": "In this mode, make sure the incoming data fields are named the same as the columns in NocoDB. (Use an 'Edit Fields' node before this node to change them if required.)",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "dataToSend": [
+            "autoMapInputData"
+          ]
+        }
+      }
     },
     {
       "name": "inputsToIgnore",
@@ -148,95 +269,136 @@
       "type": "string",
       "default": "",
       "description": "List of input properties to avoid sending, separated by commas. Leave empty to send all properties.",
-      "placeholder": "Enter properties..."
+      "placeholder": "Enter properties...",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create",
+            "update"
+          ],
+          "dataToSend": [
+            "autoMapInputData"
+          ]
+        }
+      }
     },
     {
       "name": "fieldsUi",
       "displayName": "Fields to Send",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "binaryData",
-      "displayName": "Is Binary File",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the field data to set is binary and should be taken from a binary property"
-    },
-    {
-      "name": "fieldValue",
-      "displayName": "Field Value",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "binaryProperty",
-      "displayName": "Take Input From Field",
-      "type": "string",
-      "default": "",
-      "description": "The field containing the binary file data to be uploaded"
+      "description": "Whether the field data to set is binary and should be taken from a binary property",
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create",
+            "update"
+          ],
+          "dataToSend": [
+            "defineBelow"
+          ]
+        }
+      }
     },
     {
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "User Token",
-      "default": null
+      "default": "nocoDb",
+      "options": [
+        {
+          "name": "API Token",
+          "value": "nocoDbApiToken"
+        },
+        {
+          "name": "User Token",
+          "value": "nocoDb"
+        }
+      ]
     },
     {
       "name": "version",
       "displayName": "API Version",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "v0.90.0 Onwards",
-      "default": null
-    },
-    {
-      "name": "v0.200.0 Onwards",
-      "default": null
+      "default": 1,
+      "options": [
+        {
+          "name": "Before v0.90.0",
+          "value": 1
+        },
+        {
+          "name": "v0.90.0 Onwards",
+          "value": 2
+        },
+        {
+          "name": "v0.200.0 Onwards",
+          "value": 3
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "row",
+      "options": [
+        {
+          "name": "Row",
+          "value": "row"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a row"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a row"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Retrieve a row"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Retrieve many rows"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a row"
-    },
-    {
-      "name": "No Workspace",
-      "default": null
+      "default": "get",
+      "description": "Create a row",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a row"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a row"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Retrieve a row"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Retrieve many rows"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a row"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "row"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -272,5 +434,19 @@
       "name": "No Workspace",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

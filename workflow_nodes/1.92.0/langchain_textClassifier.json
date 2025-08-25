@@ -10,7 +10,10 @@
       "type": "string",
       "default": "",
       "description": "Use an expression to reference data in previous nodes or enter static text",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "rows": 2
+      }
     },
     {
       "name": "categories",
@@ -19,62 +22,50 @@
       "default": {},
       "description": "Category to add",
       "placeholder": "Add Category",
-      "required": true
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": "",
-      "description": "Describe your category if it's not obvious"
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      }
     },
     {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Option"
-    },
-    {
-      "name": "fallback",
-      "displayName": "When No Clear Match",
-      "type": "options",
-      "default": "discard",
-      "description": "What to do with items that don’t match the categories exactly"
-    },
-    {
-      "name": "Output on Extra, 'Other' Branch",
-      "default": null,
-      "description": "Create a separate output branch called 'Other'"
-    },
-    {
-      "name": "systemPromptTemplate",
-      "displayName": "System Prompt Template",
-      "type": "string",
-      "default": null,
-      "description": "String to use directly as the system prompt template"
-    },
-    {
-      "name": "enableAutoFixing",
-      "displayName": "Enable Auto-Fixing",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to enable auto-fixing (may trigger an additional LLM call if output is broken)"
-    },
-    {
-      "name": "batching",
-      "displayName": "Batch Processing",
-      "type": "collection",
-      "default": {},
-      "description": "Batch processing options for rate limiting"
-    },
-    {
-      "name": "delayBetweenBatches",
-      "displayName": "Delay Between Batches",
-      "type": "number",
-      "default": 0,
-      "description": "Delay in milliseconds between batches. This is useful for rate limiting."
+      "description": "What to do with items that don’t match the categories exactly",
+      "placeholder": "Add Option",
+      "options": [
+        {
+          "name": "multiClass",
+          "displayName": "Allow Multiple Classes To Be True",
+          "type": "boolean",
+          "default": false
+        }
+      ],
+      "typeOptions": {
+        "rows": 6
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main",
+      "AiLanguageModel"
+    ],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main",
+      "AiLanguageModel"
+    ],
+    "produces": []
+  }
 }

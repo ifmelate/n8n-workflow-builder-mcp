@@ -10,7 +10,17 @@
       "type": "options",
       "default": "",
       "description": "Choose the analyzer. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "analyzer"
+          ],
+          "operation": [
+            "execute"
+          ]
+        }
+      }
     },
     {
       "name": "observableType",
@@ -18,32 +28,86 @@
       "type": "options",
       "default": "",
       "description": "Choose the observable type. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "analyzer"
+          ],
+          "operation": [
+            "execute"
+          ]
+        }
+      }
+    },
+    {
+      "name": "observableValue",
+      "displayName": "Observable Value",
+      "type": "string",
+      "default": "",
+      "description": "Enter the observable value",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "analyzer"
+          ],
+          "operation": [
+            "execute"
+          ]
+        }
+      }
     },
     {
       "name": "binaryPropertyName",
       "displayName": "Put Output File in Field",
       "type": "string",
       "default": "data",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "observableType": [
+            "file"
+          ],
+          "resource": [
+            "analyzer"
+          ],
+          "operation": [
+            "execute"
+          ]
+        }
+      }
     },
     {
       "name": "tlp",
       "displayName": "TLP",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Green",
-      "default": null
-    },
-    {
-      "name": "Amber",
-      "default": null
-    },
-    {
-      "name": "Red",
-      "default": null
+      "default": 2,
+      "description": "The TLP of the analyzed observable",
+      "options": [
+        {
+          "name": "White"
+        },
+        {
+          "name": "Green"
+        },
+        {
+          "name": "Amber"
+        },
+        {
+          "name": "Red"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "analyzer"
+          ],
+          "operation": [
+            "execute"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -51,14 +115,33 @@
       "type": "collection",
       "default": {},
       "description": "Whether to force bypassing the cache",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "timeout",
-      "displayName": "Timeout (Seconds)",
-      "type": "number",
-      "default": 3,
-      "description": "Timeout to wait for the report in case it is not available at the time the query was made"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "force",
+          "displayName": "Force",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to force bypassing the cache"
+        },
+        {
+          "name": "timeout",
+          "displayName": "Timeout (Seconds)",
+          "type": "number",
+          "default": 3,
+          "description": "Timeout to wait for the report in case it is not available at the time the query was made"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "analyzer"
+          ],
+          "operation": [
+            "execute"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
@@ -66,7 +149,21 @@
       "type": "options",
       "default": "execute",
       "description": "Choose an operation",
-      "required": true
+      "required": true,
+      "options": [
+        {
+          "name": "Execute",
+          "value": "execute",
+          "description": "Execute Analyzer"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "analyzer"
+          ]
+        }
+      }
     },
     {
       "name": "responder",
@@ -74,7 +171,14 @@
       "type": "options",
       "default": "",
       "description": "Choose the responder. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "responder"
+          ]
+        }
+      }
     },
     {
       "name": "entityType",
@@ -82,230 +186,66 @@
       "type": "options",
       "default": "",
       "description": "Choose the Data type. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "responder"
+          ]
+        }
+      }
     },
     {
       "name": "jsonObject",
       "displayName": "JSON Parameters",
       "type": "boolean",
       "default": false,
-      "description": "Choose between providing JSON object or seperated attributes"
+      "description": "Choose between providing JSON object or seperated attributes",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "responder"
+          ]
+        }
+      }
     },
     {
       "name": "objectData",
       "displayName": "Entity Object (JSON)",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "responder"
+          ],
+          "jsonObject": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "parameters",
       "displayName": "Parameters",
       "type": "fixedCollection",
-      "default": "",
+      "default": {},
       "description": "Description of the case",
-      "placeholder": "Add Parameter"
-    },
-    {
-      "name": "flag",
-      "displayName": "Flag",
-      "type": "boolean",
-      "default": false,
-      "description": "Flag of the case default=false"
-    },
-    {
-      "name": "owner",
-      "displayName": "Owner",
-      "type": "string",
-      "default": "",
-      "description": "User who owns the case. This is automatically set to current user when status is set to InProgress."
-    },
-    {
-      "name": "severity",
-      "displayName": "Severity",
-      "type": "options",
-      "default": 2
-    },
-    {
-      "name": "Medium",
-      "default": null
-    },
-    {
-      "name": "High",
-      "default": null
-    },
-    {
-      "name": "startDate",
-      "displayName": "Start Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Date and time of the begin of the case default=now"
-    },
-    {
-      "name": "tags",
-      "displayName": "Tags",
-      "type": "string",
-      "default": "",
-      "placeholder": "tag1,tag2,..."
-    },
-    {
-      "name": "title",
-      "displayName": "Title",
-      "type": "string",
-      "default": "",
-      "description": "Title of the case"
-    },
-    {
-      "name": "data",
-      "displayName": "Data",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "dataType",
-      "displayName": "Data Type",
-      "type": "options",
-      "default": ""
-    },
-    {
-      "name": "File",
-      "default": null
-    },
-    {
-      "name": "Filename",
-      "default": null
-    },
-    {
-      "name": "Fqdn",
-      "default": null
-    },
-    {
-      "name": "Hash",
-      "default": null
-    },
-    {
-      "name": "IP",
-      "default": null
-    },
-    {
-      "name": "Mail",
-      "default": null
-    },
-    {
-      "name": "Mail Subject",
-      "default": null
-    },
-    {
-      "name": "Other",
-      "default": null
-    },
-    {
-      "name": "Regexp",
-      "default": null
-    },
-    {
-      "name": "Registry",
-      "default": null
-    },
-    {
-      "name": "Uri Path",
-      "default": null
-    },
-    {
-      "name": "URL",
-      "default": null
-    },
-    {
-      "name": "User Agent",
-      "default": null
-    },
-    {
-      "name": "message",
-      "displayName": "Message",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "date",
-      "displayName": "Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Date and time when the alert was raised default=now"
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": "",
-      "description": "Description of the alert"
-    },
-    {
-      "name": "follow",
-      "displayName": "Follow",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "source",
-      "displayName": "Source",
-      "type": "string",
-      "default": "",
-      "description": "Source of the alert"
-    },
-    {
-      "name": "sourceRef",
-      "displayName": "SourceRef",
-      "type": "string",
-      "default": "",
-      "description": "Source reference of the alert"
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": "New"
-    },
-    {
-      "name": "Updated",
-      "default": null
-    },
-    {
-      "name": "Ignored",
-      "default": null
-    },
-    {
-      "name": "Imported",
-      "default": null
-    },
-    {
-      "name": "type",
-      "displayName": "Type",
-      "type": "string",
-      "default": "",
-      "description": "Type of the alert"
-    },
-    {
-      "name": "ioc",
-      "displayName": "IOC",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the observable is an IOC (Indicator of compromise)"
-    },
-    {
-      "name": "Deleted",
-      "default": null
-    },
-    {
-      "name": "InProgress",
-      "default": null
-    },
-    {
-      "name": "Completed",
-      "default": null
-    },
-    {
-      "name": "Cancel",
-      "default": null
+      "placeholder": "Add Parameter",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "responder"
+          ],
+          "jsonObject": [
+            false
+          ],
+          "entityType": [
+            "case"
+          ]
+        }
+      }
     },
     {
       "name": "jobId",
@@ -313,26 +253,40 @@
       "type": "string",
       "default": "",
       "description": "ID of the job",
-      "required": true
-    },
-    {
-      "name": "Report",
-      "default": null,
-      "description": "Get job report"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "job"
+          ],
+          "operation": [
+            "get",
+            "report"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Job",
-      "default": null
-    },
-    {
-      "name": "Responder",
-      "default": null
+      "default": "analyzer",
+      "description": "Choose a resource",
+      "required": true,
+      "options": [
+        {
+          "name": "Analyzer",
+          "value": "analyzer"
+        },
+        {
+          "name": "Job",
+          "value": "job"
+        },
+        {
+          "name": "Responder",
+          "value": "responder"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -344,5 +298,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

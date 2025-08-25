@@ -16,8 +16,29 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Triggers for the workflow",
-      "placeholder": "Add Cron Time"
+      "placeholder": "Add Cron Time",
+      "typeOptions": {
+        "multipleValues": true
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

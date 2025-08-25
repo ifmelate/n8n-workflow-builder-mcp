@@ -4,5 +4,26 @@
   "description": "Return the results as separate items",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [
+      "Output Parser"
+    ],
+    "hints": {
+      "connectTo": []
+    }
+  },
+  "wiring": {
+    "role": "outputParser",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent",
+      "AiChain"
+    ],
+    "consumes": [],
+    "produces": []
+  }
 }

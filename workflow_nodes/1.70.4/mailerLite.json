@@ -11,74 +11,52 @@
       "default": "",
       "description": "Email of new subscriber",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "subscriber"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "confirmation_ip",
-      "displayName": "Confirmation IP",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "customFieldsUi",
-      "displayName": "Custom Fields",
-      "type": "fixedCollection",
-      "default": {},
       "description": "Filter by custom fields",
-      "placeholder": "Add Custom Field"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "The value to set on custom field"
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "resubscribe",
-      "displayName": "Resubscribe",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to reactivate subscriber"
-    },
-    {
-      "name": "signup_ip",
-      "displayName": "Signup IP",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "signup_timestamp",
-      "displayName": "Signup Timestamp",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "type",
-      "displayName": "Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Unsubscribed",
-      "default": null
-    },
-    {
-      "name": "Unconfirmed",
-      "default": null
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "confirmation_timestamp",
+          "displayName": "Confirmation Timestamp",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "confirmation_ip",
+          "displayName": "Confirmation IP",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "subscriber"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "subscriberId",
@@ -86,7 +64,17 @@
       "type": "string",
       "default": "",
       "description": "Email of subscriber",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "subscriber"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -97,56 +85,123 @@
       "placeholder": "Add Field",
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "subscriber"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
       }
     },
     {
-      "name": "resend_autoresponders",
-      "displayName": "Resend Autoresponders",
+      "name": "returnAll",
+      "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether it is needed to resend autoresponders"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "subscriber"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "subscriber"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
       "displayName": "Filters",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Filter"
+      "placeholder": "Add Filter",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "subscriber"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a new subscriber"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get an subscriber"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many subscribers"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update an subscriber"
+      "default": "create",
+      "description": "Create a new subscriber",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new subscriber"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get an subscriber"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many subscribers"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update an subscriber"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "subscriber"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "subscriber",
+      "options": [
+        {
+          "name": "Subscriber",
+          "value": "subscriber"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -158,5 +213,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

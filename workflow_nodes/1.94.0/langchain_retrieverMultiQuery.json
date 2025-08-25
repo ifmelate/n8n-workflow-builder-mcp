@@ -4,5 +4,29 @@
   "description": "Automates prompt tuning, generates diverse queries and expands document pool for enhanced retrieval.",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "AiLanguageModel",
+      "AiRetriever"
+    ],
+    "outputs": [
+      "AiRetriever"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "AiLanguageModel",
+      "AiRetriever"
+    ],
+    "produces": [
+      "AiRetriever"
+    ]
+  }
 }

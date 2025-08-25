@@ -8,11 +8,17 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "apiKey",
+      "options": [
+        {
+          "name": "API Key",
+          "value": "apiKey"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "list",
@@ -20,8 +26,7 @@
       "type": "options",
       "default": "",
       "description": "The list that is gonna fire the event. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true,
-      "options": []
+      "required": true
     },
     {
       "name": "events",
@@ -29,32 +34,39 @@
       "type": "multiOptions",
       "default": [],
       "description": "The events that can trigger the webhook and whether they are enabled",
-      "required": true
-    },
-    {
-      "name": "Cleaned",
-      "default": null,
-      "description": "Whether the webhook is triggered when a subscriber's email address is cleaned from the list"
-    },
-    {
-      "name": "Email Address Updated",
-      "default": null,
-      "description": "Whether the webhook is triggered when a subscriber's email address is changed"
-    },
-    {
-      "name": "Profile Updated",
-      "default": null,
-      "description": "Whether the webhook is triggered when a subscriber's profile is updated"
-    },
-    {
-      "name": "Subscribe",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list subscriber is added"
-    },
-    {
-      "name": "Unsubscribe",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
+      "required": true,
+      "options": [
+        {
+          "name": "Campaign Sent",
+          "value": "campaign",
+          "description": "Whether the webhook is triggered when a campaign is sent or cancelled"
+        },
+        {
+          "name": "Cleaned",
+          "value": "cleaned",
+          "description": "Whether the webhook is triggered when a subscriber's email address is cleaned from the list"
+        },
+        {
+          "name": "Email Address Updated",
+          "value": "upemail",
+          "description": "Whether the webhook is triggered when a subscriber's email address is changed"
+        },
+        {
+          "name": "Profile Updated",
+          "value": "profile",
+          "description": "Whether the webhook is triggered when a subscriber's profile is updated"
+        },
+        {
+          "name": "Subscribe",
+          "value": "subscribe",
+          "description": "Whether the webhook is triggered when a list subscriber is added"
+        },
+        {
+          "name": "Unsubscribe",
+          "value": "unsubscribe",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        }
+      ]
     },
     {
       "name": "sources",
@@ -62,17 +74,24 @@
       "type": "multiOptions",
       "default": [],
       "description": "The possible sources of any events that can trigger the webhook and whether they are enabled",
-      "required": true
-    },
-    {
-      "name": "Admin",
-      "default": null,
-      "description": "Whether the webhook is triggered by admin-initiated actions in the web interface"
-    },
-    {
-      "name": "API",
-      "default": null,
-      "description": "Whether the webhook is triggered by actions initiated via the API"
+      "required": true,
+      "options": [
+        {
+          "name": "User",
+          "value": "user",
+          "description": "Whether the webhook is triggered by subscriber-initiated actions"
+        },
+        {
+          "name": "Admin",
+          "value": "admin",
+          "description": "Whether the webhook is triggered by admin-initiated actions in the web interface"
+        },
+        {
+          "name": "API",
+          "value": "api",
+          "description": "Whether the webhook is triggered by actions initiated via the API"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -96,5 +115,23 @@
       "name": "sources",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

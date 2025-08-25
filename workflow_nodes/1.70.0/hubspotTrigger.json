@@ -10,107 +10,36 @@
       "type": "fixedCollection",
       "default": {},
       "description": "To get notified if any company is created in a customer's account",
-      "placeholder": "Add Event"
-    },
-    {
-      "name": "Company Deleted",
-      "default": null,
-      "description": "To get notified if any company is deleted in a customer's account"
-    },
-    {
-      "name": "Company Property Changed",
-      "default": null,
-      "description": "To get notified if a specified property is changed for any company in a customer's account"
-    },
-    {
-      "name": "Contact Created",
-      "default": null,
-      "description": "To get notified if any contact is created in a customer's account"
-    },
-    {
-      "name": "Contact Deleted",
-      "default": null,
-      "description": "To get notified if any contact is deleted in a customer's account"
-    },
-    {
-      "name": "Contact Privacy Deleted",
-      "default": null,
-      "description": "To get notified if a contact is deleted for privacy compliance reasons"
-    },
-    {
-      "name": "Contact Property Changed",
-      "default": null,
-      "description": "To get notified if a specified property is changed for any contact in a customer's account"
-    },
-    {
-      "name": "Conversation Creation",
-      "default": null,
-      "description": "To get notified if a new thread is created in an account"
-    },
-    {
-      "name": "Conversation Deletion",
-      "default": null,
-      "description": "To get notified if a thread is archived or soft-deleted in an account"
-    },
-    {
-      "name": "Conversation New Message",
-      "default": null,
-      "description": "To get notified if a new message on a thread has been received"
-    },
-    {
-      "name": "Conversation Privacy Deletion",
-      "default": null,
-      "description": "To get notified if a thread is permanently deleted in an account"
-    },
-    {
-      "name": "Conversation Property Change",
-      "default": null,
-      "description": "To get notified if a property on a thread has been changed"
-    },
-    {
-      "name": "Deal Created",
-      "default": null,
-      "description": "To get notified if any deal is created in a customer's account"
-    },
-    {
-      "name": "Deal Deleted",
-      "default": null,
-      "description": "To get notified if any deal is deleted in a customer's account"
-    },
-    {
-      "name": "Deal Property Changed",
-      "default": null,
-      "description": "To get notified if a specified property is changed for any deal in a customer's account"
-    },
-    {
-      "name": "Ticket Created",
-      "default": null,
-      "description": "To get notified if a ticket is created in a customer's account"
-    },
-    {
-      "name": "Ticket Deleted",
-      "default": null,
-      "description": "To get notified if any ticket is deleted in a customer's account"
-    },
-    {
-      "name": "Ticket Property Changed",
-      "default": null,
-      "description": "To get notified if a specified property is changed for any ticket in a customer's account"
-    },
-    {
-      "name": "property",
-      "displayName": "Property Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "placeholder": "Add Event",
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "name": [
+            "contact.propertyChange"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "maxConcurrentRequests",
+          "displayName": "Max Concurrent Requests",
+          "type": "number",
+          "default": 5
+        }
+      ],
+      "typeOptions": {
+        "minValue": 5
+      }
     }
   ],
   "credentialsConfig": [
@@ -134,5 +63,19 @@
       "name": "additionalFields",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

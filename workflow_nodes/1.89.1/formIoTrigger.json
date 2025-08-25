@@ -24,11 +24,18 @@
       "name": "events",
       "displayName": "Trigger Events",
       "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "Submission Updated",
-      "default": null
+      "default": [],
+      "required": true,
+      "options": [
+        {
+          "name": "Submission Created",
+          "value": "create"
+        },
+        {
+          "name": "Submission Updated",
+          "value": "update"
+        }
+      ]
     },
     {
       "name": "simple",
@@ -55,5 +62,23 @@
       "name": "simple",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

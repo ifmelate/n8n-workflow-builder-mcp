@@ -10,59 +10,70 @@
       "type": "string",
       "default": "",
       "placeholder": "https://example.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "link"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "group",
-      "displayName": "Group Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "tags",
-      "displayName": "Tag Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "title",
-      "displayName": "Title",
-      "type": "string",
-      "default": ""
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "domain",
+          "displayName": "Domain",
+          "type": "string",
+          "default": "bit.ly"
+        },
+        {
+          "name": "group",
+          "displayName": "Group Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "link"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "deeplink",
       "displayName": "Deeplinks",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Deep Link"
-    },
-    {
-      "name": "appUriPath",
-      "displayName": "App URI Path",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "installType",
-      "displayName": "Install Type",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "installUrl",
-      "displayName": "Install URL",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Deep Link",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "link"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "id",
@@ -70,47 +81,115 @@
       "type": "string",
       "default": "",
       "placeholder": "bit.ly/22u3ypK",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "link"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
       "displayName": "Update Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "archived",
+          "displayName": "Archived",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "group",
+          "displayName": "Group Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+        },
+        {
+          "name": "longUrl",
+          "displayName": "Long URL",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "link"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a link"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a link"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a link"
+      "default": "create",
+      "description": "Create a link",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a link"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a link"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a link"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "link"
+          ]
+        }
+      }
     },
     {
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "accessToken",
+      "options": [
+        {
+          "name": "Access Token",
+          "value": "accessToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "link",
+      "options": [
+        {
+          "name": "Link",
+          "value": "link"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -126,5 +205,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

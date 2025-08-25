@@ -7,5 +7,35 @@
     1.1
   ],
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "AiTool"
+    ],
+    "outputs": [
+      "AiTool"
+    ],
+    "outputNames": [
+      "Tool"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiAgent"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "tool",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent"
+    ],
+    "consumes": [
+      "AiTool"
+    ],
+    "produces": [
+      "AiTool"
+    ]
+  }
 }

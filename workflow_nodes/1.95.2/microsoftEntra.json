@@ -8,44 +8,38 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
+      "default": "getAll",
       "description": "Create a group",
-      "options": []
-    },
-    {
-      "name": "Delete",
-      "type": "set",
-      "default": null,
-      "description": "Delete a group"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Retrieve data for a specific group"
-    },
-    {
-      "name": "Get Many",
-      "type": "rootProperty",
-      "default": null,
-      "description": "Retrieve a list of groups"
-    },
-    {
-      "name": "Update",
-      "type": "set",
-      "default": null,
-      "description": "Update a group"
-    },
-    {
-      "name": "Create",
-      "default": null,
-      "description": "Create a user"
-    },
-    {
-      "name": "Remove from Group",
-      "type": "set",
-      "default": null,
-      "description": "Remove user from group"
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "group"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

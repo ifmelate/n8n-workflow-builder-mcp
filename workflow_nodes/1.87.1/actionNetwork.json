@@ -10,7 +10,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the person to create an attendance for",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attendance"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "eventId",
@@ -18,7 +28,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the event to create an attendance for",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attendance"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "attendanceId",
@@ -26,28 +46,84 @@
       "type": "string",
       "default": "",
       "description": "ID of the attendance to retrieve",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attendance"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attendance"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attendance"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Get",
-      "default": null
-    },
-    {
-      "name": "Get Many",
-      "default": null
+      "default": "create",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create"
+        },
+        {
+          "name": "Get",
+          "value": "get"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attendance"
+          ]
+        }
+      }
     },
     {
       "name": "originSystem",
@@ -55,7 +131,17 @@
       "type": "string",
       "default": "",
       "description": "Source where the event originated",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "title",
@@ -63,8 +149,34 @@
       "type": "string",
       "default": "",
       "description": "Title of the event to create",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
       "placeholder": "Add Field",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "email_addresses",
@@ -72,63 +184,34 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Person’s email addresses",
-      "placeholder": "Add Email Address Field"
+      "placeholder": "Add Email Address Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "person"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
-      "name": "primary",
-      "displayName": "Primary",
-      "type": "hidden",
-      "default": true,
-      "description": "Whether this is the person's primary email address"
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": "subscribed",
-      "description": "Subscription status of this email address"
-    },
-    {
-      "name": "Previous Bounce",
-      "default": null
-    },
-    {
-      "name": "Previous Spam Complaint",
-      "default": null
-    },
-    {
-      "name": "Spam Complaint",
-      "default": null
-    },
-    {
-      "name": "Subscribed",
-      "default": null
-    },
-    {
-      "name": "Unsubscribed",
-      "default": null
-    },
-    {
-      "name": "additionalFields",
-      "displayName": "Additional Fields",
+      "name": "updateFields",
+      "displayName": "Update Fields",
       "type": "collection",
       "default": {},
-      "description": "ID of the person to retrieve",
       "placeholder": "Add Field",
-      "required": true
-    },
-    {
-      "name": "limit",
-      "displayName": "Limit",
-      "type": "number",
-      "default": 25,
-      "description": "Max number of results to return",
-      "placeholder": "Add Field",
-      "required": true
-    },
-    {
-      "name": "Update",
-      "default": null
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "person"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "tagId",
@@ -136,7 +219,17 @@
       "type": "options",
       "default": [],
       "description": "ID of the tag to add. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "personTag"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
     },
     {
       "name": "taggingId",
@@ -144,19 +237,35 @@
       "type": "options",
       "default": [],
       "description": "ID of the tagging to remove. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
-    },
-    {
-      "name": "Remove",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "personTag"
+          ],
+          "operation": [
+            "remove"
+          ]
+        }
+      }
     },
     {
       "name": "petitionId",
       "displayName": "Petition ID",
       "type": "string",
       "default": "",
-      "description": "ID of the petition to sign",
-      "required": true
+      "description": "ID of the petition to retrieve",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "petition"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "signatureId",
@@ -164,7 +273,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the signature to retrieve",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "signature"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "name",
@@ -172,37 +291,53 @@
       "type": "string",
       "default": "",
       "description": "Name of the tag to create",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "tag"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Event",
-      "default": null
-    },
-    {
-      "name": "Person",
-      "default": null
-    },
-    {
-      "name": "Person Tag",
-      "default": null
-    },
-    {
-      "name": "Petition",
-      "default": null
-    },
-    {
-      "name": "Signature",
-      "default": null
-    },
-    {
-      "name": "Tag",
-      "default": null
+      "default": "attendance",
+      "options": [
+        {
+          "name": "Attendance",
+          "value": "attendance"
+        },
+        {
+          "name": "Event",
+          "value": "event"
+        },
+        {
+          "name": "Person",
+          "value": "person"
+        },
+        {
+          "name": "Person Tag",
+          "value": "personTag"
+        },
+        {
+          "name": "Petition",
+          "value": "petition"
+        },
+        {
+          "name": "Signature",
+          "value": "signature"
+        },
+        {
+          "name": "Tag",
+          "value": "tag"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -214,5 +349,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

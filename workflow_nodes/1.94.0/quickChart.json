@@ -15,11 +15,17 @@
       "name": "labelsMode",
       "displayName": "Add Labels",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "From Array",
-      "default": null
+      "default": "manually",
+      "options": [
+        {
+          "name": "Manually",
+          "value": "manually"
+        },
+        {
+          "name": "From Array",
+          "value": "array"
+        }
+      ]
     },
     {
       "name": "labelsUi",
@@ -28,7 +34,17 @@
       "default": {},
       "description": "Labels to use in the chart",
       "placeholder": "Add Label",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "labelsMode": [
+            "manually"
+          ]
+        }
+      }
     },
     {
       "name": "labelsArray",
@@ -37,7 +53,14 @@
       "default": "",
       "description": "The array of labels to be used in the chart",
       "placeholder": "e.g. [\"Berlin\", \"Paris\", \"Rome\", \"New York\"]",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "labelsMode": [
+            "array"
+          ]
+        }
+      }
     },
     {
       "name": "data",
@@ -62,54 +85,28 @@
       "type": "collection",
       "default": {},
       "description": "Background color of the chart",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "devicePixelRatio",
-      "displayName": "Device Pixel Ratio",
-      "type": "number",
-      "default": 2,
-      "description": "Pixel ratio of the chart"
-    },
-    {
-      "name": "format",
-      "displayName": "Format",
-      "type": "options",
-      "default": "png",
-      "description": "File format of the resulting chart"
-    },
-    {
-      "name": "PDF",
-      "default": null
-    },
-    {
-      "name": "SVG",
-      "default": null
-    },
-    {
-      "name": "WebP",
-      "default": null
-    },
-    {
-      "name": "height",
-      "displayName": "Height",
-      "type": "number",
-      "default": 300,
-      "description": "Height of the chart"
-    },
-    {
-      "name": "horizontal",
-      "displayName": "Horizontal",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the chart should use its Y axis horizontal"
-    },
-    {
-      "name": "width",
-      "displayName": "Width",
-      "type": "number",
-      "default": 500,
-      "description": "Width of the chart"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "backgroundColor",
+          "displayName": "Background Color",
+          "type": "color",
+          "default": "",
+          "description": "Background color of the chart"
+        },
+        {
+          "name": "devicePixelRatio",
+          "displayName": "Device Pixel Ratio",
+          "type": "number",
+          "default": 2,
+          "description": "Pixel ratio of the chart"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "/chartType": "HORIZONTAL_CHARTS"
+        }
+      }
     },
     {
       "name": "datasetOptions",
@@ -117,72 +114,65 @@
       "type": "collection",
       "default": {},
       "description": "Color used for the background the dataset (area of a line graph, fill of a bar chart, etc.)",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "borderColor",
-      "displayName": "Border Color",
-      "type": "color",
-      "default": "",
-      "description": "Color used for lines of the dataset"
-    },
-    {
-      "name": "fill",
-      "displayName": "Fill",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to fill area of the dataset"
-    },
-    {
-      "name": "label",
-      "displayName": "Label",
-      "type": "string",
-      "default": "",
-      "description": "The label of the dataset"
-    },
-    {
-      "name": "pointStyle",
-      "displayName": "Point Style",
-      "type": "options",
-      "default": "circle",
-      "description": "Style to use for points of the dataset"
-    },
-    {
-      "name": "Cross",
-      "default": null
-    },
-    {
-      "name": "CrossRot",
-      "default": null
-    },
-    {
-      "name": "Dash",
-      "default": null
-    },
-    {
-      "name": "Line",
-      "default": null
-    },
-    {
-      "name": "Rect",
-      "default": null
-    },
-    {
-      "name": "Rect Rot",
-      "default": null
-    },
-    {
-      "name": "Rect Rounded",
-      "default": null
-    },
-    {
-      "name": "Star",
-      "default": null
-    },
-    {
-      "name": "Triangle",
-      "default": null
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "backgroundColor",
+          "displayName": "Background Color",
+          "type": "color",
+          "default": "",
+          "description": "Color used for the background the dataset (area of a line graph, fill of a bar chart, etc.)"
+        },
+        {
+          "name": "borderColor",
+          "displayName": "Border Color",
+          "type": "color",
+          "default": "",
+          "description": "Color used for lines of the dataset"
+        },
+        {
+          "name": "fill",
+          "displayName": "Fill",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to fill area of the dataset"
+        },
+        {
+          "name": "label",
+          "displayName": "Label",
+          "type": "string",
+          "default": "",
+          "description": "The label of the dataset"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "/chartType": "Fill_CHARTS"
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

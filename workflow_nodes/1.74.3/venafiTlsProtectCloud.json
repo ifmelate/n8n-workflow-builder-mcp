@@ -9,52 +9,139 @@
       "displayName": "Certificate ID",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "download"
+          ],
+          "resource": [
+            "certificate"
+          ]
+        }
+      }
     },
     {
       "name": "downloadItem",
       "displayName": "Download Item",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Keystore",
-      "default": null
+      "default": "certificate",
+      "options": [
+        {
+          "name": "Certificate",
+          "value": "certificate"
+        },
+        {
+          "name": "Keystore",
+          "value": "keystore"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "download"
+          ],
+          "resource": [
+            "certificate"
+          ]
+        }
+      }
     },
     {
       "name": "keystoreType",
       "displayName": "Keystore Type",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "PKCS12",
-      "default": null
-    },
-    {
-      "name": "PEM",
-      "default": null
+      "default": "PEM",
+      "options": [
+        {
+          "name": "JKS",
+          "value": "JKS"
+        },
+        {
+          "name": "PKCS12",
+          "value": "PKCS12"
+        },
+        {
+          "name": "PEM",
+          "value": "PEM"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "download"
+          ],
+          "resource": [
+            "certificate"
+          ],
+          "downloadItem": [
+            "keystore"
+          ]
+        }
+      }
     },
     {
       "name": "certificateLabel",
       "displayName": "Certificate Label",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "download"
+          ],
+          "resource": [
+            "certificate"
+          ],
+          "downloadItem": [
+            "keystore"
+          ]
+        }
+      }
     },
     {
       "name": "privateKeyPassphrase",
       "displayName": "Private Key Passphrase",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "download"
+          ],
+          "resource": [
+            "certificate"
+          ],
+          "downloadItem": [
+            "keystore"
+          ]
+        }
+      }
     },
     {
       "name": "keystorePassphrase",
       "displayName": "Keystore Passphrase",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "download"
+          ],
+          "resource": [
+            "certificate"
+          ],
+          "downloadItem": [
+            "keystore"
+          ],
+          "keystoreType": [
+            "JKS"
+          ]
+        }
+      }
     },
     {
       "name": "binaryProperty",
@@ -62,7 +149,17 @@
       "type": "string",
       "default": "data",
       "description": "The name of the input field containing the binary file data to be uploaded",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "download"
+          ],
+          "resource": [
+            "certificate"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -70,108 +167,206 @@
       "type": "collection",
       "default": {},
       "description": "Download the certificate with the end-entity portion of the chain first",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "download"
+          ],
+          "resource": [
+            "certificate"
+          ]
+        }
+      }
     },
     {
-      "name": "EE_ONLY",
-      "default": null,
-      "description": "Download only the end-entity certificate"
-    },
-    {
-      "name": "ROOT_FIRST",
-      "default": null,
-      "description": "Download the certificate with root portion of the chain first"
-    },
-    {
-      "name": "format",
-      "displayName": "Format",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "DER",
-      "default": null
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getMany"
+          ],
+          "resource": [
+            "certificate"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getMany"
+          ],
+          "resource": [
+            "certificate"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
       "displayName": "Filters",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "subject",
+          "displayName": "Subject",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getMany"
+          ],
+          "resource": [
+            "certificate"
+          ]
+        }
+      }
     },
     {
       "name": "applicationId",
       "displayName": "Application Name or ID",
       "type": "options",
       "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "renew"
+          ],
+          "resource": [
+            "certificate"
+          ]
+        }
+      }
     },
     {
       "name": "existingCertificateId",
       "displayName": "Existing Certificate ID",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "renew"
+          ],
+          "resource": [
+            "certificate"
+          ]
+        }
+      }
     },
     {
       "name": "certificateIssuingTemplateId",
       "displayName": "Certificate Issuing Template Name or ID",
       "type": "options",
       "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "renew"
+          ],
+          "resource": [
+            "certificate"
+          ]
+        }
+      }
     },
     {
       "name": "certificateSigningRequest",
       "displayName": "Certificate Signing Request",
       "type": "string",
-      "default": ""
-    },
-    {
-      "name": "10 Days",
-      "default": null
-    },
-    {
-      "name": "12 Hours",
-      "default": null
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "renew"
+          ],
+          "resource": [
+            "certificate"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Delete a certificate"
-    },
-    {
-      "name": "Download",
-      "default": null,
-      "description": "Download a certificate"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Retrieve a certificate"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Retrieve many certificates"
-    },
-    {
-      "name": "Renew",
-      "default": null,
-      "description": "Renew a certificate"
+      "default": "delete",
+      "description": "Delete a certificate",
+      "options": [
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a certificate"
+        },
+        {
+          "name": "Download",
+          "value": "download",
+          "description": "Download a certificate"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Retrieve a certificate"
+        },
+        {
+          "name": "Get Many",
+          "value": "getMany",
+          "description": "Retrieve many certificates"
+        },
+        {
+          "name": "Renew",
+          "value": "renew",
+          "description": "Renew a certificate"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "certificate"
+          ]
+        }
+      }
     },
     {
       "name": "generateCsr",
       "displayName": "Generate CSR",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "certificateRequest"
+          ]
+        }
+      }
     },
     {
       "name": "commonName",
@@ -179,122 +374,77 @@
       "type": "string",
       "default": "n8n.io",
       "description": "The Common Name field for the certificate Subject (CN)",
-      "placeholder": "Add Field",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "certificateRequest"
+          ],
+          "generateCsr": [
+            true
+          ]
+        }
+      }
     },
     {
-      "name": "RSA",
-      "default": null,
-      "description": "Rivest, Shamir, Adleman key (RSA)"
-    },
-    {
-      "name": "keyCurve",
-      "displayName": "Key Curve",
-      "type": "options",
-      "default": null,
-      "description": "Use Edwards-curve Digital Signature Algorithm (EdDSA)"
-    },
-    {
-      "name": "P256",
-      "default": null,
-      "description": "Use Elliptic Prime Curve 256 bit encryption"
-    },
-    {
-      "name": "P384",
-      "default": null,
-      "description": "Use Elliptic Prime Curve 384 bit encryption"
-    },
-    {
-      "name": "P521",
-      "default": null,
-      "description": "Use Elliptic Prime Curve 521 bit encryption"
-    },
-    {
-      "name": "UNKNOWN",
-      "default": null
-    },
-    {
-      "name": "keyLength",
-      "displayName": "Key Length",
-      "type": "number",
-      "default": 2048,
-      "description": "The number of bits to allow for key generation"
-    },
-    {
-      "name": "organization",
-      "displayName": "(O) Organization",
-      "type": "string",
-      "default": "",
-      "description": "The name of a company or organization"
-    },
-    {
-      "name": "organizationalUnits",
-      "displayName": "(OU) Organizational Unit(s)",
-      "type": "string",
-      "default": "",
-      "description": "The name of a department or section"
-    },
-    {
-      "name": "locality",
-      "displayName": "(L) City/Locality",
-      "type": "string",
-      "default": "",
-      "description": "The name of a city or town"
-    },
-    {
-      "name": "state",
-      "displayName": "(ST) State",
-      "type": "string",
-      "default": "",
-      "description": "The name of a state or province"
-    },
-    {
-      "name": "country",
-      "displayName": "(C) Country",
-      "type": "string",
-      "default": "",
-      "description": "A 2 letter country code"
-    },
-    {
-      "name": "SubjectAltNamesUi",
-      "displayName": "Subject Alt Names",
-      "type": "fixedCollection",
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
       "default": {},
-      "placeholder": "Add Subject"
-    },
-    {
-      "name": "RFC822 Names",
-      "default": null
-    },
-    {
-      "name": "URI",
-      "default": "dnsNames",
-      "description": "What type of SAN is being used"
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": "community.n8n.io",
-      "description": "The SAN friendly name that corresponds to the Type or TypeName parameter. For example, if a TypeName is IPAddress, the Name value is a valid IP address."
+      "description": "Elliptic Curve (EC)",
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "certificateRequest"
+          ],
+          "generateCsr": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "certificateRequestId",
       "displayName": "Certificate Request ID",
       "type": "string",
       "default": "",
-      "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "certificateRequest"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Certificate Request",
-      "default": null
+      "default": "certificateRequest",
+      "options": [
+        {
+          "name": "Certificate",
+          "value": "certificate"
+        },
+        {
+          "name": "Certificate Request",
+          "value": "certificateRequest"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -306,5 +456,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

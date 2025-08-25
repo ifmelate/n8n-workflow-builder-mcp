@@ -8,100 +8,163 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "contact",
+      "required": true,
+      "options": [
+        {
+          "name": "Contact",
+          "value": "contact"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Find B2B emails and enrich your contact from his name and his website"
-    },
-    {
-      "name": "Fetch Request",
-      "default": null
+      "default": "enrich",
+      "description": "Find B2B emails and enrich your contact from his name and his website",
+      "required": true,
+      "options": [
+        {
+          "name": "Enrich",
+          "value": "enrich",
+          "description": "Find B2B emails and enrich your contact from his name and his website"
+        },
+        {
+          "name": "Fetch Request",
+          "value": "fetchRequest"
+        }
+      ]
     },
     {
       "name": "requestId",
       "displayName": "Request ID",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "fetchRequest"
+          ]
+        }
+      }
     },
     {
       "name": "email",
       "displayName": "Email",
       "type": "string",
       "default": "",
-      "placeholder": "name@email.com"
+      "placeholder": "name@email.com",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "enrich"
+          ]
+        }
+      }
     },
     {
       "name": "simplify",
       "displayName": "Simplify Output (Faster)",
       "type": "boolean",
       "default": false,
-      "description": "When off, waits for the contact data before completing. Waiting time can be adjusted with Extend Wait Time option. When on, returns a request_id that can be used later in the Fetch Request operation."
+      "description": "When off, waits for the contact data before completing. Waiting time can be adjusted with Extend Wait Time option. When on, returns a request_id that can be used later in the Fetch Request operation.",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "enrich"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "siret",
-      "displayName": "Company SIRET Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "company",
-      "displayName": "Company Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "country",
-      "displayName": "Country",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "first_name",
-      "displayName": "First Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "full_name",
-      "displayName": "Full Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "last_name",
-      "displayName": "Last Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "linkedin",
-      "displayName": "LinkedIn Profile",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "phone",
-      "displayName": "Phone Number",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "website",
-      "displayName": "Website",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "num_siren",
+          "displayName": "Company SIREN Number",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "siret",
+          "displayName": "Company SIRET Code",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "company",
+          "displayName": "Company Name",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "country",
+          "displayName": "Country",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "first_name",
+          "displayName": "First Name",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "full_name",
+          "displayName": "Full Name",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "last_name",
+          "displayName": "Last Name",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "linkedin",
+          "displayName": "LinkedIn Profile",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "phone",
+          "displayName": "Phone Number",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "website",
+          "displayName": "Website",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "enrich"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -109,24 +172,20 @@
       "type": "collection",
       "default": {},
       "description": "When not simplifying the response, data will be fetched in two steps. This parameter controls how long to wait (in seconds) before trying the second step.",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "siren",
-      "displayName": "French Company Enrich",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether you want the <a href=\"https://en.wikipedia.org/wiki/SIREN_code\" target=\"_blank\">SIREN number</a>, NAF code, TVA number, company address and informations about the company leader. Only applies to french companies."
-    },
-    {
-      "name": "language",
-      "displayName": "Language",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "French",
-      "default": null
+      "placeholder": "Add option",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "enrich"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -150,5 +209,19 @@
       "name": "options",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

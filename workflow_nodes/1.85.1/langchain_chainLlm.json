@@ -11,5 +11,27 @@
     1.5
   ],
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "AiLanguageModel"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "AiLanguageModel"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

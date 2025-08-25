@@ -8,23 +8,29 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Search Configuration",
-      "default": null
-    },
-    {
-      "name": "Search Job",
-      "default": null
-    },
-    {
-      "name": "Search Result",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
+      "default": "searchJob",
+      "options": [
+        {
+          "name": "Fired Alert",
+          "value": "firedAlert"
+        },
+        {
+          "name": "Search Configuration",
+          "value": "searchConfiguration"
+        },
+        {
+          "name": "Search Job",
+          "value": "searchJob"
+        },
+        {
+          "name": "Search Result",
+          "value": "searchResult"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -36,5 +42,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

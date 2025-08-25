@@ -14,14 +14,35 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Retrieve one or more files from the computer that runs n8n"
-    },
-    {
-      "name": "Write File to Disk",
-      "default": null,
-      "description": "Create a binary file on the computer that runs n8n"
+      "default": "read",
+      "description": "Retrieve one or more files from the computer that runs n8n",
+      "options": [
+        {
+          "name": "Read File(s) From Disk",
+          "value": "read",
+          "description": "Retrieve one or more files from the computer that runs n8n"
+        },
+        {
+          "name": "Write File to Disk",
+          "value": "write",
+          "description": "Create a binary file on the computer that runs n8n"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

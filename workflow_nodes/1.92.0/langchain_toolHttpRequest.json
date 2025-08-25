@@ -11,38 +11,65 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null,
-      "description": "Select the type of authentication to use if needed, authentication would be done by n8n and your credentials will not be shared with the LLM"
-    },
-    {
-      "name": "Predefined Credential Type",
-      "default": null,
-      "description": "We've already implemented auth for many services so that you don't have to set it up manually"
-    },
-    {
-      "name": "Generic Credential Type",
-      "default": null,
-      "description": "Fully customizable. Choose between basic, header, OAuth2, etc."
+      "default": "none",
+      "description": "Select the type of authentication to use if needed, authentication would be done by n8n and your credentials will not be shared with the LLM",
+      "options": [
+        {
+          "name": "None",
+          "value": "none"
+        },
+        {
+          "name": "Predefined Credential Type",
+          "value": "predefinedCredentialType",
+          "description": "We've already implemented auth for many services so that you don't have to set it up manually"
+        },
+        {
+          "name": "Generic Credential Type",
+          "value": "genericCredentialType",
+          "description": "Fully customizable. Choose between basic, header, OAuth2, etc."
+        }
+      ]
     },
     {
       "name": "nodeCredentialType",
       "displayName": "Credential Type",
       "type": "credentialsSelect",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "authentication": [
+            "predefinedCredentialType"
+          ]
+        }
+      }
     },
     {
       "name": "googleApiWarning",
       "displayName": "Make sure you have specified the scope(s) for the Service Account in the credential",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "nodeCredentialType": [
+            "googleApi"
+          ]
+        }
+      }
     },
     {
       "name": "genericAuthType",
       "displayName": "Generic Auth Type",
       "type": "credentialsSelect",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "authentication": [
+            "genericCredentialType"
+          ]
+        }
+      }
     },
     {
       "name": "optimizeResponse",
@@ -55,15 +82,28 @@
       "name": "responseType",
       "displayName": "Expected Response Type",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "HTML",
-      "default": null
-    },
-    {
-      "name": "Text",
-      "default": null
+      "default": "json",
+      "options": [
+        {
+          "name": "JSON",
+          "value": "json"
+        },
+        {
+          "name": "HTML",
+          "value": "html"
+        },
+        {
+          "name": "Text",
+          "value": "text"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "optimizeResponse": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "dataField",
@@ -71,24 +111,51 @@
       "type": "string",
       "default": "",
       "description": "Specify the name of the field in the response containing the data",
-      "placeholder": "e.g. records"
+      "placeholder": "e.g. records",
+      "displayOptions": {
+        "show": {
+          "optimizeResponse": [
+            true
+          ],
+          "responseType": [
+            "json"
+          ]
+        }
+      }
     },
     {
       "name": "fieldsToInclude",
       "displayName": "Include Fields",
       "type": "options",
       "default": "all",
-      "description": "What fields response object should include"
-    },
-    {
-      "name": "Selected",
-      "default": null,
-      "description": "Include only fields specified below"
-    },
-    {
-      "name": "Except",
-      "default": null,
-      "description": "Exclude fields specified below"
+      "description": "What fields response object should include",
+      "options": [
+        {
+          "name": "All",
+          "value": "all",
+          "description": "Include all fields"
+        },
+        {
+          "name": "Selected",
+          "value": "selected",
+          "description": "Include only fields specified below"
+        },
+        {
+          "name": "Except",
+          "value": "except",
+          "description": "Exclude fields specified below"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "optimizeResponse": [
+            true
+          ],
+          "responseType": [
+            "json"
+          ]
+        }
+      }
     },
     {
       "name": "fields",
@@ -96,7 +163,17 @@
       "type": "string",
       "default": "",
       "description": "Comma-separated list of the field names. Supports dot notation. You can drag the selected fields from the input panel.",
-      "placeholder": "e.g. field1,field2"
+      "placeholder": "e.g. field1,field2",
+      "displayOptions": {
+        "show": {
+          "optimizeResponse": [
+            true
+          ],
+          "responseType": [
+            "json"
+          ]
+        }
+      }
     },
     {
       "name": "cssSelector",
@@ -104,14 +181,34 @@
       "type": "string",
       "default": "body",
       "description": "Select specific element(e.g. body) or multiple elements(e.g. div) of chosen type in the response HTML.",
-      "placeholder": "e.g. body"
+      "placeholder": "e.g. body",
+      "displayOptions": {
+        "show": {
+          "optimizeResponse": [
+            true
+          ],
+          "responseType": [
+            "html"
+          ]
+        }
+      }
     },
     {
       "name": "onlyContent",
       "displayName": "Return Only Content",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return only content of html elements, stripping html tags and attributes"
+      "description": "Whether to return only content of html elements, stripping html tags and attributes",
+      "displayOptions": {
+        "show": {
+          "optimizeResponse": [
+            true
+          ],
+          "responseType": [
+            "html"
+          ]
+        }
+      }
     },
     {
       "name": "elementsToOmit",
@@ -119,19 +216,60 @@
       "type": "string",
       "default": "",
       "description": "Comma-separated list of selectors that would be excluded when extracting content",
-      "placeholder": "e.g. img, .className, #ItemId"
+      "placeholder": "e.g. img, .className, #ItemId",
+      "displayOptions": {
+        "show": {
+          "optimizeResponse": [
+            true
+          ],
+          "responseType": [
+            "html"
+          ],
+          "onlyContent": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "truncateResponse",
       "displayName": "Truncate Response",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "displayOptions": {
+        "show": {
+          "optimizeResponse": [
+            true
+          ],
+          "responseType": [
+            "text",
+            "html"
+          ]
+        }
+      }
     },
     {
       "name": "maxLength",
       "displayName": "Max Response Characters",
       "type": "number",
-      "default": 1000
+      "default": 1000,
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "optimizeResponse": [
+            true
+          ],
+          "responseType": [
+            "text",
+            "html"
+          ],
+          "truncateResponse": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "toolDescription",
@@ -139,29 +277,38 @@
       "type": "string",
       "default": "",
       "description": "Explain to LLM what this tool does, better description would allow LLM to produce expected result",
-      "placeholder": "e.g. Get the current weather in the requested city"
+      "placeholder": "e.g. Get the current weather in the requested city",
+      "typeOptions": {
+        "rows": 3
+      }
     },
     {
       "name": "method",
       "displayName": "Method",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "GET",
-      "default": null
-    },
-    {
-      "name": "PATCH",
-      "default": null
-    },
-    {
-      "name": "POST",
-      "default": null
-    },
-    {
-      "name": "PUT",
-      "default": null
+      "default": "GET",
+      "options": [
+        {
+          "name": "DELETE",
+          "value": "DELETE"
+        },
+        {
+          "name": "GET",
+          "value": "GET"
+        },
+        {
+          "name": "PATCH",
+          "value": "PATCH"
+        },
+        {
+          "name": "POST",
+          "value": "POST"
+        },
+        {
+          "name": "PUT",
+          "value": "PUT"
+        }
+      ]
     },
     {
       "name": "placeholderNotice",
@@ -174,22 +321,59 @@
       "displayName": "URL",
       "type": "string",
       "default": "",
-      "description": "Whether the request has query params or not",
       "placeholder": "e.g. http://www.example.com/{path}",
       "required": true
     },
     {
+      "name": "sendQuery",
+      "displayName": "Send Query Parameters",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the request has query params or not"
+    },
+    {
       "name": "specifyQuery",
       "displayName": "Specify Query Parameters",
-      "default": null
+      "default": null,
+      "displayOptions": {
+        "show": {
+          "sendQuery": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "parametersQuery",
       "displayName": "Query Parameters",
-      "default": null
+      "default": null,
+      "displayOptions": {
+        "show": {
+          "sendQuery": [
+            true
+          ],
+          "specifyQuery": [
+            "keypair"
+          ]
+        }
+      }
     },
     {
       "name": "jsonQuery",
+      "default": null,
+      "displayOptions": {
+        "show": {
+          "sendQuery": [
+            true
+          ],
+          "specifyQuery": [
+            "json"
+          ]
+        }
+      }
+    },
+    {
+      "name": "sendHeaders",
       "displayName": "Send Headers",
       "type": "boolean",
       "default": false,
@@ -198,15 +382,46 @@
     {
       "name": "specifyHeaders",
       "displayName": "Specify Headers",
-      "default": null
+      "default": null,
+      "displayOptions": {
+        "show": {
+          "sendHeaders": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "parametersHeaders",
       "displayName": "Header Parameters",
-      "default": null
+      "default": null,
+      "displayOptions": {
+        "show": {
+          "sendHeaders": [
+            true
+          ],
+          "specifyHeaders": [
+            "keypair"
+          ]
+        }
+      }
     },
     {
       "name": "jsonHeaders",
+      "default": null,
+      "displayOptions": {
+        "show": {
+          "sendHeaders": [
+            true
+          ],
+          "specifyHeaders": [
+            "json"
+          ]
+        }
+      }
+    },
+    {
+      "name": "sendBody",
       "displayName": "Send Body",
       "type": "boolean",
       "default": false,
@@ -215,12 +430,43 @@
     {
       "name": "specifyBody",
       "displayName": "Specify Body",
-      "default": null
+      "default": null,
+      "displayOptions": {
+        "show": {
+          "sendBody": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "parametersBody",
       "displayName": "Body Parameters",
-      "default": null
+      "default": null,
+      "displayOptions": {
+        "show": {
+          "sendBody": [
+            true
+          ],
+          "specifyBody": [
+            "keypair"
+          ]
+        }
+      }
+    },
+    {
+      "name": "jsonBody",
+      "default": null,
+      "displayOptions": {
+        "show": {
+          "sendBody": [
+            true
+          ],
+          "specifyBody": [
+            "json"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -228,5 +474,31 @@
       "name": "toolDescription",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "AiTool"
+    ],
+    "outputNames": [
+      "Tool"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiAgent"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "tool",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent"
+    ],
+    "consumes": [],
+    "produces": [
+      "AiTool"
+    ]
+  }
 }

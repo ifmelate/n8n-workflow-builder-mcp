@@ -10,15 +10,54 @@
       "type": "options",
       "default": "",
       "description": "Enter the Site ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deploy"
+          ],
+          "operation": [
+            "get",
+            "create",
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "deployId",
       "displayName": "Deploy ID",
       "type": "string",
       "default": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deploy"
+          ],
+          "operation": [
+            "get",
+            "cancel"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
       "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "deploy"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
@@ -26,52 +65,107 @@
       "type": "number",
       "default": 50,
       "description": "Max number of results to return",
-      "placeholder": "Add Fields"
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 200
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "deploy"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
-      "name": "title",
-      "displayName": "Title",
-      "type": "string",
-      "default": ""
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Fields",
+      "options": [
+        {
+          "name": "branch",
+          "displayName": "Branch",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "title",
+          "displayName": "Title",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deploy"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Cancel a deployment"
-    },
-    {
-      "name": "Create",
-      "default": null,
-      "description": "Create a new deployment"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a deployment"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many deployments"
-    },
-    {
-      "name": "returnAll",
-      "displayName": "Return All",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "default": "getAll",
+      "description": "Cancel a deployment",
+      "options": [
+        {
+          "name": "Cancel",
+          "value": "cancel",
+          "description": "Cancel a deployment"
+        },
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new deployment"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a deployment"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many deployments"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deploy"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Site",
-      "default": null
+      "default": "deploy",
+      "required": true,
+      "options": [
+        {
+          "name": "Deploy",
+          "value": "deploy"
+        },
+        {
+          "name": "Site",
+          "value": "site"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -83,5 +177,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

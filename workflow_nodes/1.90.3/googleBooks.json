@@ -11,64 +11,107 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
-    },
-    {
-      "name": "Service Account",
-      "default": null
+      "default": "serviceAccount",
+      "options": [
+        {
+          "name": "Service Account",
+          "value": "serviceAccount"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Bookshelf Volume",
-      "default": null
-    },
-    {
-      "name": "Volume",
-      "default": null
+      "default": "bookshelf",
+      "options": [
+        {
+          "name": "Bookshelf",
+          "value": "bookshelf"
+        },
+        {
+          "name": "Bookshelf Volume",
+          "value": "bookshelfVolume"
+        },
+        {
+          "name": "Volume",
+          "value": "volume"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Retrieve a specific bookshelf resource for the specified user"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many public bookshelf resource for the specified user"
-    },
-    {
-      "name": "Clear",
-      "default": null,
-      "description": "Clears all volumes from a bookshelf"
-    },
-    {
-      "name": "Move",
-      "default": null,
-      "description": "Moves a volume within a bookshelf"
-    },
-    {
-      "name": "Remove",
-      "default": null,
-      "description": "Removes a volume from a bookshelf"
+      "default": "get",
+      "description": "Retrieve a specific bookshelf resource for the specified user",
+      "options": [
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Retrieve a specific bookshelf resource for the specified user"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many public bookshelf resource for the specified user"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "bookshelf"
+          ]
+        }
+      }
     },
     {
       "name": "myLibrary",
       "displayName": "My Library",
       "type": "boolean",
       "default": false,
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get",
+            "getAll"
+          ],
+          "resource": [
+            "bookshelf",
+            "bookshelfVolume"
+          ]
+        }
+      }
+    },
+    {
+      "name": "searchQuery",
+      "displayName": "Search Query",
+      "type": "string",
+      "default": "",
       "description": "Full-text search query string",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "volume"
+          ]
+        }
+      }
     },
     {
       "name": "userId",
@@ -76,7 +119,19 @@
       "type": "string",
       "default": "",
       "description": "ID of user",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get",
+            "getAll"
+          ],
+          "resource": [
+            "bookshelf",
+            "bookshelfVolume"
+          ]
+        }
+      }
     },
     {
       "name": "shelfId",
@@ -84,7 +139,22 @@
       "type": "string",
       "default": "",
       "description": "ID of the bookshelf",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get",
+            "add",
+            "clear",
+            "move",
+            "remove"
+          ],
+          "resource": [
+            "bookshelf",
+            "bookshelfVolume"
+          ]
+        }
+      }
     },
     {
       "name": "volumeId",
@@ -92,7 +162,21 @@
       "type": "string",
       "default": "",
       "description": "ID of the volume",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "add",
+            "move",
+            "remove",
+            "get"
+          ],
+          "resource": [
+            "bookshelfVolume",
+            "volume"
+          ]
+        }
+      }
     },
     {
       "name": "volumePosition",
@@ -100,21 +184,52 @@
       "type": "string",
       "default": "",
       "description": "Position on shelf to move the item (0 puts the item before the current first item, 1 puts it between the first and the second and so on)",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "move"
+          ],
+          "resource": [
+            "bookshelfVolume"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 40,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 40
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -150,5 +265,27 @@
       "name": "myLibrary",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

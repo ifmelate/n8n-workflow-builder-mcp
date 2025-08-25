@@ -19,5 +19,29 @@
       "description": "Name of the tool to execute if the connected tool is a toolkit"
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main",
+      "AiTool"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main",
+      "AiTool"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

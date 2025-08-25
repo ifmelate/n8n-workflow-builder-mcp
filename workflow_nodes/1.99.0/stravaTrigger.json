@@ -8,35 +8,13 @@
       "name": "object",
       "displayName": "Object",
       "type": "options",
-      "default": null,
-      "options": []
-    },
-    {
-      "name": "Activity",
-      "default": null
-    },
-    {
-      "name": "Athlete",
-      "default": null
+      "default": "*"
     },
     {
       "name": "event",
       "displayName": "Event",
       "type": "options",
-      "default": null,
-      "options": []
-    },
-    {
-      "name": "Created",
-      "default": null
-    },
-    {
-      "name": "Deleted",
-      "default": null
-    },
-    {
-      "name": "Updated",
-      "default": null
+      "default": "*"
     },
     {
       "name": "resolveData",
@@ -51,7 +29,16 @@
       "type": "collection",
       "default": {},
       "description": "Strava allows just one subscription at all times. If you want to delete the current subscription to make room for a new subscription with the current parameters, set this parameter to true. Keep in mind this is a destructive operation.",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "deleteIfExist",
+          "displayName": "Delete If Exist",
+          "type": "boolean",
+          "default": false,
+          "description": "Strava allows just one subscription at all times. If you want to delete the current subscription to make room for a new subscription with the current parameters, set this parameter to true. Keep in mind this is a destructive operation."
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -75,5 +62,23 @@
       "name": "resolveData",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

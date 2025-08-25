@@ -23,14 +23,23 @@
       "type": "collection",
       "default": {},
       "description": "Whether to allow using characters from the Unicode surrogate blocks",
-      "placeholder": "Add Option"
-    },
-    {
-      "name": "isAutoEmbedded",
-      "displayName": "Is Auto Embedded",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to automatically embed documents when they are added"
+      "placeholder": "Add Option",
+      "options": [
+        {
+          "name": "embeddingDimensions",
+          "displayName": "Embedding Dimensions",
+          "type": "number",
+          "default": 1536,
+          "description": "Whether to allow using characters from the Unicode surrogate blocks"
+        },
+        {
+          "name": "isAutoEmbedded",
+          "displayName": "Is Auto Embedded",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to automatically embed documents when they are added"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -42,5 +51,26 @@
       "name": "collectionName",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "vectorStore",
+    "requires": [
+      "AiDocument"
+    ],
+    "optional": [
+      "AiEmbedding"
+    ],
+    "consumedBy": [
+      "AiRetriever",
+      "AiTool"
+    ],
+    "consumes": [],
+    "produces": []
+  }
 }

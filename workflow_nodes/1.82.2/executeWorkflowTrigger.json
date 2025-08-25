@@ -11,55 +11,91 @@
       "name": "events",
       "displayName": "Events",
       "type": "hidden",
-      "default": null,
-      "description": "When executed by another workflow using Execute Workflow Trigger"
+      "default": "worklfow_call",
+      "description": "When executed by another workflow using Execute Workflow Trigger",
+      "options": [
+        {
+          "name": "Workflow Call",
+          "value": "worklfow_call",
+          "description": "When executed by another workflow using Execute Workflow Trigger"
+        }
+      ]
     },
     {
       "name": "notice",
       "displayName": "When an ‘execute workflow’ node calls this workflow, the execution starts here. Any data passed into the 'execute workflow' node will be output by this node.",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": "{\n\t\t\t\t\tshow: { '@version': [{ _cnd: { eq: 1 }"
     },
     {
       "name": "outdatedVersionWarning",
       "displayName": "This node is out of date. Please upgrade by removing it and adding a new one",
       "type": "notice",
-      "default": null
+      "default": "",
+      "displayOptions": "{ show: { '@version': [{ _cnd: { eq: 1 }"
     },
     {
       "name": "Define using fields below",
       "displayName": "Input data mode",
       "type": "options",
       "default": null,
-      "description": "Provide input fields via UI"
+      "description": "Provide input fields via UI",
+      "options": [
+        {
+          "name": "Define using fields below",
+          "description": "Provide input fields via UI"
+        },
+        {
+          "name": "Define using JSON example",
+          "description": "Generate a schema from an example JSON object"
+        },
+        {
+          "name": "Accept all data",
+          "description": "Use all incoming data from the parent workflow"
+        }
+      ],
+      "displayOptions": "{\n\t\t\t\t\tshow: { '@version': [{ _cnd: { gte: 1.1 }"
     },
     {
-      "name": "Define using JSON example",
-      "default": null,
-      "description": "Generate a schema from an example JSON object"
+      "displayName": "Provide an example object to infer fields and their types.<br>To allow any type for a given field, set the value to null.",
+      "type": "notice",
+      "default": "",
+      "displayOptions": "{\n\t\t\t\t\tshow: { '@version': [{ _cnd: { gte: 1.1 }"
     },
     {
-      "name": "Accept all data",
+      "displayName": "JSON Example",
+      "type": "json",
       "default": null,
-      "description": "Use all incoming data from the parent workflow"
+      "displayOptions": "{\n\t\t\t\t\tshow: { '@version': [{ _cnd: { gte: 1.1 }"
     },
     {
       "name": "name",
-      "displayName": "Values",
-      "type": "string",
-      "default": "",
-      "description": "A unique name for this workflow input, used to reference it from another workflows",
-      "placeholder": "e.g. fieldName",
-      "required": true
-    },
-    {
-      "name": "type",
-      "displayName": "Type",
-      "type": "options",
-      "default": "string",
-      "description": "Expected data type for this input value. Determines how this field's values are stored, validated, and displayed.",
-      "required": true
+      "displayName": "Workflow Input Schema",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Define expected input fields. If no inputs are provided, all data from the calling workflow will be passed through.",
+      "placeholder": "Add field",
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": "{\n\t\t\t\t\tshow: { '@version': [{ _cnd: { gte: 1.1 }"
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

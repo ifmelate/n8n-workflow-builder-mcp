@@ -10,7 +10,17 @@
       "type": "string",
       "default": "",
       "description": "The domain to look up",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "enrich"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -18,28 +28,47 @@
       "type": "collection",
       "default": {},
       "description": "The name of the company",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "facebook",
-      "displayName": "Facebook",
-      "type": "string",
-      "default": "",
-      "description": "The Facebook URL for the company"
-    },
-    {
-      "name": "linkedin",
-      "displayName": "Linkedin",
-      "type": "string",
-      "default": "",
-      "description": "The LinkedIn URL for the company"
-    },
-    {
-      "name": "twitter",
-      "displayName": "Twitter",
-      "type": "string",
-      "default": "",
-      "description": "The Twitter handle for the company"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "companyName",
+          "displayName": "Company Name",
+          "type": "string",
+          "default": "",
+          "description": "The name of the company"
+        },
+        {
+          "name": "facebook",
+          "displayName": "Facebook",
+          "type": "string",
+          "default": "",
+          "description": "The Facebook URL for the company"
+        },
+        {
+          "name": "linkedin",
+          "displayName": "Linkedin",
+          "type": "string",
+          "default": "",
+          "description": "The LinkedIn URL for the company"
+        },
+        {
+          "name": "twitter",
+          "displayName": "Twitter",
+          "type": "string",
+          "default": "",
+          "description": "The Twitter handle for the company"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "enrich"
+          ]
+        }
+      }
     },
     {
       "name": "name",
@@ -47,19 +76,43 @@
       "type": "string",
       "default": "",
       "description": "Name is the partial name of the company",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "autocomplete"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Auto-complete company names and retrieve logo and domain"
-    },
-    {
-      "name": "Enrich",
-      "default": null,
-      "description": "Look up person and company data based on an email or domain"
+      "default": "enrich",
+      "description": "Auto-complete company names and retrieve logo and domain",
+      "options": [
+        {
+          "name": "Autocomplete",
+          "value": "autocomplete",
+          "description": "Auto-complete company names and retrieve logo and domain"
+        },
+        {
+          "name": "Enrich",
+          "value": "enrich",
+          "description": "Look up person and company data based on an email or domain"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ]
+        }
+      }
     },
     {
       "name": "email",
@@ -68,61 +121,36 @@
       "default": "",
       "description": "The email address to look up",
       "placeholder": "name@email.com",
-      "required": true
-    },
-    {
-      "name": "companyDomain",
-      "displayName": "Company Domain",
-      "type": "string",
-      "default": "",
-      "description": "The domain for the person’s employer"
-    },
-    {
-      "name": "familyName",
-      "displayName": "Family Name",
-      "type": "string",
-      "default": "",
-      "description": "Last name of person. If you have this, passing this is strongly recommended to improve match rates."
-    },
-    {
-      "name": "givenName",
-      "displayName": "Given Name",
-      "type": "string",
-      "default": "",
-      "description": "First name of person"
-    },
-    {
-      "name": "ipAddress",
-      "displayName": "IP Address",
-      "type": "string",
-      "default": "",
-      "description": "IP address of the person. If you have this, passing this is strongly recommended to improve match rates."
-    },
-    {
-      "name": "location",
-      "displayName": "Location",
-      "type": "string",
-      "default": "",
-      "description": "The city or country where the person resides"
-    },
-    {
-      "name": "linkedIn",
-      "displayName": "LinkedIn",
-      "type": "string",
-      "default": "",
-      "description": "The LinkedIn URL for the person"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "person"
+          ],
+          "operation": [
+            "enrich"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "description": "The Company API allows you to look up a company by their domain"
-    },
-    {
-      "name": "Person",
-      "default": null,
-      "description": "The Person API lets you retrieve social information associated with an email address, such as a person’s name, location and Twitter handle"
+      "default": "company",
+      "description": "The Company API allows you to look up a company by their domain",
+      "options": [
+        {
+          "name": "Company",
+          "value": "company",
+          "description": "The Company API allows you to look up a company by their domain"
+        },
+        {
+          "name": "Person",
+          "value": "person",
+          "description": "The Person API lets you retrieve social information associated with an email address, such as a person’s name, location and Twitter handle"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -134,5 +162,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

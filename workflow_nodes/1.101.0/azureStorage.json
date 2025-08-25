@@ -3,15 +3,28 @@
   "displayName": "Azure Storage",
   "description": "Interact with Azure Storage API",
   "version": 1,
-  "properties": [
-    {
-      "name": "operation",
-      "displayName": "Operation",
-      "type": "options",
-      "default": null,
-      "description": "Create a new blob or replace an existing one",
-      "options": []
-    }
-  ],
-  "credentialsConfig": []
+  "properties": [],
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

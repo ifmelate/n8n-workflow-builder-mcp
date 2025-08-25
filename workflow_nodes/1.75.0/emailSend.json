@@ -8,13 +8,25 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "hidden",
-      "default": "email"
+      "default": "email",
+      "options": [
+        {
+          "name": "Email",
+          "value": "email"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "hidden",
-      "default": "send"
+      "default": "send",
+      "options": [
+        {
+          "name": "Send",
+          "value": "send"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -30,5 +42,19 @@
       "name": "operation",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

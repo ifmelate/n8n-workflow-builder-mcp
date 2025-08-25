@@ -11,7 +11,17 @@
       "default": "",
       "description": "The email of the contact",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -19,14 +29,33 @@
       "type": "collection",
       "default": {},
       "description": "The name of the contact",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "phone",
-      "displayName": "Phone",
-      "type": "string",
-      "default": "",
-      "description": "The phone number associated with the contact"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "name",
+          "displayName": "Name",
+          "type": "string",
+          "default": "",
+          "description": "The name of the contact"
+        },
+        {
+          "name": "phone",
+          "displayName": "Phone",
+          "type": "string",
+          "default": "",
+          "description": "The phone number associated with the contact"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "contactId",
@@ -34,7 +63,17 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for the contact",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -42,57 +81,110 @@
       "type": "collection",
       "default": {},
       "description": "The email of the contact",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": "",
-      "description": "The name of the contact"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "email",
+          "displayName": "Email",
+          "type": "string",
+          "default": "",
+          "description": "The email of the contact",
+          "placeholder": "name@email.com"
+        },
+        {
+          "name": "name",
+          "displayName": "Name",
+          "type": "string",
+          "default": "",
+          "description": "The name of the contact"
+        },
+        {
+          "name": "phone",
+          "displayName": "Phone",
+          "type": "string",
+          "default": "",
+          "description": "The phone number associated with the contact"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a contact"
-    },
-    {
-      "name": "Custom Attributes",
-      "default": null,
-      "description": "Get custom attributes"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a contact"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a contact"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a contact"
+      "default": "create",
+      "description": "Create a contact",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a contact"
+        },
+        {
+          "name": "Custom Attributes",
+          "value": "getCustomAttributes",
+          "description": "Get custom attributes"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a contact"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a contact"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a contact"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "accessToken",
+      "options": [
+        {
+          "name": "Access Token",
+          "value": "accessToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "contact",
+      "options": [
+        {
+          "name": "Contact",
+          "value": "contact"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -108,5 +200,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

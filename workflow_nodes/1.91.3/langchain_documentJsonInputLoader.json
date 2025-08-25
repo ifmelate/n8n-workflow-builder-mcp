@@ -4,5 +4,33 @@
   "description": "Use JSON data from a previous step in the workflow",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "AiTextSplitter"
+    ],
+    "outputs": [
+      "AiDocument"
+    ],
+    "outputNames": [
+      "Document"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiVectorStore"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "AiTextSplitter"
+    ],
+    "produces": [
+      "AiDocument"
+    ]
+  }
 }

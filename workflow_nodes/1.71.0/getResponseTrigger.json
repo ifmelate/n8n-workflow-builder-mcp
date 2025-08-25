@@ -8,38 +8,52 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "apiKey",
+      "options": [
+        {
+          "name": "API Key",
+          "value": "apiKey"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "events",
       "displayName": "Events",
       "type": "multiOptions",
-      "default": null,
-      "description": "Receive notifications when a customer is subscribed to a list"
-    },
-    {
-      "name": "Customer Unsubscribed",
-      "default": null,
-      "description": "Receive notifications when a customer is unsubscribed from a list"
-    },
-    {
-      "name": "Email Clicked",
-      "default": null,
-      "description": "Receive notifications when a email is clicked"
-    },
-    {
-      "name": "Email Opened",
-      "default": null,
-      "description": "Receive notifications when a email is opened"
-    },
-    {
-      "name": "Survey Submitted",
-      "default": null,
-      "description": "Receive notifications when a survey is submitted"
+      "default": [],
+      "description": "Receive notifications when a customer is subscribed to a list",
+      "required": true,
+      "options": [
+        {
+          "name": "Customer Subscribed",
+          "value": "subscribe",
+          "description": "Receive notifications when a customer is subscribed to a list"
+        },
+        {
+          "name": "Customer Unsubscribed",
+          "value": "unsubscribe",
+          "description": "Receive notifications when a customer is unsubscribed from a list"
+        },
+        {
+          "name": "Email Clicked",
+          "value": "click",
+          "description": "Receive notifications when a email is clicked"
+        },
+        {
+          "name": "Email Opened",
+          "value": "open",
+          "description": "Receive notifications when a email is opened"
+        },
+        {
+          "name": "Survey Submitted",
+          "value": "survey",
+          "description": "Receive notifications when a survey is submitted"
+        }
+      ]
     },
     {
       "name": "listIds",
@@ -54,7 +68,16 @@
       "type": "collection",
       "default": {},
       "description": "Whether to delete the current subscription",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "delete",
+          "displayName": "Delete Current Subscription",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to delete the current subscription"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -78,5 +101,19 @@
       "name": "listIds",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -8,7 +8,13 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
+      "default": "createEventFile",
+      "options": [
+        {
+          "name": "Create Event File",
+          "value": "createEventFile"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -16,5 +22,27 @@
       "name": "operation",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

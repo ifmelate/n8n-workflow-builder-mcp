@@ -8,22 +8,41 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Image",
-      "default": null
-    },
-    {
-      "name": "PDF",
-      "default": null
+      "default": "image",
+      "options": [
+        {
+          "name": "Account",
+          "value": "account"
+        },
+        {
+          "name": "Image",
+          "value": "image"
+        },
+        {
+          "name": "PDF",
+          "value": "pdf"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
       "default": "create",
-      "required": true
+      "required": true,
+      "options": [
+        {
+          "name": "Create",
+          "value": "create"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "image"
+          ]
+        }
+      }
     },
     {
       "name": "imageTemplateId",
@@ -31,7 +50,17 @@
       "type": "options",
       "default": "",
       "description": "ID of the image template to use. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "image"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "pdfTemplateId",
@@ -39,40 +68,113 @@
       "type": "options",
       "default": "",
       "description": "ID of the PDF template to use. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "pdf"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "jsonParameters",
       "displayName": "JSON Parameters",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "pdf",
+            "image"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "download",
       "displayName": "Download",
       "type": "boolean",
       "default": false,
-      "description": "Name of the binary property to which to write the data of the read file"
+      "description": "Name of the binary property to which to write the data of the read file",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "pdf",
+            "image"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "binaryProperty",
       "displayName": "Put Output File in Field",
       "type": "string",
       "default": "data",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "pdf",
+            "image"
+          ],
+          "operation": [
+            "create"
+          ],
+          "download": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "overridesJson",
       "displayName": "Overrides (JSON)",
       "type": "json",
-      "default": ""
+      "default": "",
+      "placeholder": "[ {\"name\": \"text_1\", \"text\": \"hello world\", \"textBackgroundColor\": \"rgba(246, 243, 243, 0)\" } ]",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "image"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "propertiesJson",
       "displayName": "Properties (JSON)",
       "type": "json",
       "default": "",
-      "placeholder": "{ \"name\": \"text_1\" }"
+      "placeholder": "{ \"name\": \"text_1\" }",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "pdf"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "overridesUi",
@@ -80,14 +182,23 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Name of the property",
-      "placeholder": "Add Override"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Value to the property"
+      "placeholder": "Add Override",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "image"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "propertiesUi",
@@ -95,7 +206,23 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Name of the property",
-      "placeholder": "Add Property"
+      "placeholder": "Add Property",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "pdf"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -103,7 +230,30 @@
       "type": "collection",
       "default": {},
       "description": "The name of the downloaded image/pdf. It has to include the extension. For example: report.pdf",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "fileName",
+          "displayName": "File Name",
+          "type": "string",
+          "default": "",
+          "description": "The name of the downloaded image/pdf. It has to include the extension. For example: report.pdf"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "pdf",
+            "image"
+          ],
+          "download": [
+            true
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -143,5 +293,19 @@
       "name": "options",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

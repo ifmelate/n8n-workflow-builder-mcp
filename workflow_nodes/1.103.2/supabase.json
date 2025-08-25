@@ -10,23 +10,55 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "row"
+          ],
+          "operation": [
+            "create",
+            "delete",
+            "get",
+            "getAll",
+            "update"
+          ]
+        }
+      }
     },
     {
-      "name": "All Select Conditions",
+      "name": "Any Select Condition",
       "default": null
     },
     {
       "name": "dataToSend",
       "displayName": "Data to Send",
       "type": "options",
-      "default": null,
-      "description": "Use when node input properties match destination column names"
-    },
-    {
-      "name": "Define Below for Each Column",
-      "default": null,
-      "description": "Set the value for each destination column"
+      "default": "defineBelow",
+      "description": "Use when node input properties match destination column names",
+      "options": [
+        {
+          "name": "Auto-Map Input Data to Columns",
+          "value": "autoMapInputData",
+          "description": "Use when node input properties match destination column names"
+        },
+        {
+          "name": "Define Below for Each Column",
+          "value": "defineBelow",
+          "description": "Set the value for each destination column"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "row"
+          ],
+          "operation": [
+            "create",
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "inputsToIgnore",
@@ -34,7 +66,21 @@
       "type": "string",
       "default": "",
       "description": "List of input properties to avoid sending, separated by commas. Leave empty to send all properties.",
-      "placeholder": "Enter properties..."
+      "placeholder": "Enter properties...",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "row"
+          ],
+          "operation": [
+            "create",
+            "update"
+          ],
+          "dataToSend": [
+            "autoMapInputData"
+          ]
+        }
+      }
     },
     {
       "name": "fieldsUi",
@@ -42,17 +88,24 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "fieldValue",
-      "displayName": "Field Value",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Any Select Condition",
-      "default": null
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "row"
+          ],
+          "operation": [
+            "create",
+            "update"
+          ],
+          "dataToSend": [
+            "defineBelow"
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -60,47 +113,101 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "placeholder": "Add Condition"
-    },
-    {
-      "name": "keyValue",
-      "displayName": "Value",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Condition",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "row"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "row"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "row"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a new row"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a row"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a row"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many rows"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a row"
+      "default": "create",
+      "description": "Create a new row",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new row"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a row"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a row"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many rows"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a row"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "row"
+          ]
+        }
+      }
     },
     {
       "name": "useCustomSchema",
@@ -114,13 +221,20 @@
       "displayName": "Schema",
       "type": "string",
       "default": "public",
-      "description": "Name of database schema to use for table"
+      "description": "Name of database schema to use for table",
+      "displayOptions": "{ show: { useCustomSchema: [true] }"
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "row",
+      "options": [
+        {
+          "name": "Row",
+          "value": "row"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -132,5 +246,27 @@
       "name": "useCustomSchema",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

@@ -27,8 +27,31 @@
       "type": "collection",
       "default": {},
       "description": "Whether to append to an existing file",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "append",
+          "displayName": "Append",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to append to an existing file"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

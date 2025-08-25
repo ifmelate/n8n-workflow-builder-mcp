@@ -8,123 +8,147 @@
       "name": "hostUrl",
       "displayName": "Host URL",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Video Uploads",
-      "default": null
+      "default": "graph.facebook.com",
+      "description": "The Host URL of the request. Almost all requests are passed to the graph.facebook.com host URL. The single exception is video uploads, which use graph-video.facebook.com.",
+      "required": true,
+      "options": [
+        {
+          "name": "Default",
+          "value": "graph.facebook.com"
+        },
+        {
+          "name": "Video Uploads",
+          "value": "graph-video.facebook.com"
+        }
+      ]
     },
     {
       "name": "httpRequestMethod",
       "displayName": "HTTP Request Method",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "POST",
-      "default": null
-    },
-    {
-      "name": "DELETE",
-      "default": null
+      "default": "GET",
+      "description": "The HTTP Method to be used for the request",
+      "required": true,
+      "options": [
+        {
+          "name": "GET",
+          "value": "GET"
+        },
+        {
+          "name": "POST",
+          "value": "POST"
+        },
+        {
+          "name": "DELETE",
+          "value": "DELETE"
+        }
+      ]
     },
     {
       "name": "graphApiVersion",
       "displayName": "Graph API Version",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "v22.0",
-      "default": null
-    },
-    {
-      "name": "v21.0",
-      "default": null
-    },
-    {
-      "name": "v20.0",
-      "default": null
-    },
-    {
-      "name": "v19.0",
-      "default": null
-    },
-    {
-      "name": "v18.0",
-      "default": null
-    },
-    {
-      "name": "v17.0",
-      "default": null
-    },
-    {
-      "name": "v16.0",
-      "default": null
-    },
-    {
-      "name": "v15.0",
-      "default": null
-    },
-    {
-      "name": "v14.0",
-      "default": null
-    },
-    {
-      "name": "v13.0",
-      "default": null
-    },
-    {
-      "name": "v12.0",
-      "default": null
-    },
-    {
-      "name": "v11.0",
-      "default": null
-    },
-    {
-      "name": "v10.0",
-      "default": null
-    },
-    {
-      "name": "v9.0",
-      "default": null
-    },
-    {
-      "name": "v8.0",
-      "default": null
-    },
-    {
-      "name": "v7.0",
-      "default": null
-    },
-    {
-      "name": "v6.0",
-      "default": null
-    },
-    {
-      "name": "v5.0",
-      "default": null
-    },
-    {
-      "name": "v4.0",
-      "default": null
-    },
-    {
-      "name": "v3.3",
-      "default": null
-    },
-    {
-      "name": "v3.2",
-      "default": null
-    },
-    {
-      "name": "v3.1",
-      "default": null
-    },
-    {
-      "name": "v3.0",
-      "default": null
+      "default": "",
+      "description": "The version of the Graph API to be used in the request",
+      "required": true,
+      "options": [
+        {
+          "name": "Default",
+          "value": ""
+        },
+        {
+          "name": "v22.0",
+          "value": "v22.0"
+        },
+        {
+          "name": "v21.0",
+          "value": "v21.0"
+        },
+        {
+          "name": "v20.0",
+          "value": "v20.0"
+        },
+        {
+          "name": "v19.0",
+          "value": "v19.0"
+        },
+        {
+          "name": "v18.0",
+          "value": "v18.0"
+        },
+        {
+          "name": "v17.0",
+          "value": "v17.0"
+        },
+        {
+          "name": "v16.0",
+          "value": "v16.0"
+        },
+        {
+          "name": "v15.0",
+          "value": "v15.0"
+        },
+        {
+          "name": "v14.0",
+          "value": "v14.0"
+        },
+        {
+          "name": "v13.0",
+          "value": "v13.0"
+        },
+        {
+          "name": "v12.0",
+          "value": "v12.0"
+        },
+        {
+          "name": "v11.0",
+          "value": "v11.0"
+        },
+        {
+          "name": "v10.0",
+          "value": "v10.0"
+        },
+        {
+          "name": "v9.0",
+          "value": "v9.0"
+        },
+        {
+          "name": "v8.0",
+          "value": "v8.0"
+        },
+        {
+          "name": "v7.0",
+          "value": "v7.0"
+        },
+        {
+          "name": "v6.0",
+          "value": "v6.0"
+        },
+        {
+          "name": "v5.0",
+          "value": "v5.0"
+        },
+        {
+          "name": "v4.0",
+          "value": "v4.0"
+        },
+        {
+          "name": "v3.3",
+          "value": "v3.3"
+        },
+        {
+          "name": "v3.2",
+          "value": "v3.2"
+        },
+        {
+          "name": "v3.1",
+          "value": "v3.1"
+        },
+        {
+          "name": "v3.0",
+          "value": "v3.0"
+        }
+      ]
     },
     {
       "name": "node",
@@ -156,7 +180,15 @@
       "type": "boolean",
       "default": false,
       "description": "Whether binary data should be sent as body",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "httpRequestMethod": [
+            "POST",
+            "PUT"
+          ]
+        }
+      }
     },
     {
       "name": "binaryPropertyName",
@@ -164,7 +196,14 @@
       "type": "string",
       "default": "",
       "description": "For Form-Data Multipart, they can be provided in the format: <code>\"sendKey1:binaryProperty1,sendKey2:binaryProperty2</code>",
-      "placeholder": "file:data"
+      "placeholder": "file:data",
+      "displayOptions": {
+        "hide": {
+          "sendBinaryData": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -175,30 +214,14 @@
       "placeholder": "Add option",
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "/httpRequestMethod": [
+            "GET"
+          ]
+        }
       }
-    },
-    {
-      "name": "queryParameters",
-      "displayName": "Query Parameters",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "The query parameters to send",
-      "placeholder": "Add Parameter"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Value of the parameter"
-    },
-    {
-      "name": "queryParametersJson",
-      "displayName": "Query Parameters JSON",
-      "type": "json",
-      "default": "{}",
-      "description": "The query parameters to send, defined as a JSON object",
-      "placeholder": "{\"field_name\": \"field_value\"}"
     }
   ],
   "credentialsConfig": [
@@ -230,5 +253,27 @@
       "name": "queryParametersJson",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

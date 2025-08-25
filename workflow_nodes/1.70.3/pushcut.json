@@ -8,21 +8,51 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "notification",
+      "options": [
+        {
+          "name": "Notification",
+          "value": "notification"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Send a notification"
+      "default": "send",
+      "description": "Send a notification",
+      "options": [
+        {
+          "name": "Send",
+          "value": "send",
+          "description": "Send a notification"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "notification"
+          ]
+        }
+      }
     },
     {
       "name": "notificationName",
       "displayName": "Notification Name or ID",
       "type": "options",
       "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "notification"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -30,28 +60,17 @@
       "type": "collection",
       "default": {},
       "description": "List of devices this notification is sent to. (default is all devices). Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "input",
-      "displayName": "Input",
-      "type": "string",
-      "default": "",
-      "description": "Value that is passed as input to the notification action"
-    },
-    {
-      "name": "text",
-      "displayName": "Text",
-      "type": "string",
-      "default": "",
-      "description": "Text that is used instead of the one defined in the app"
-    },
-    {
-      "name": "title",
-      "displayName": "Title",
-      "type": "string",
-      "default": "",
-      "description": "Title that is used instead of the one defined in the app"
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "notification"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -71,5 +90,19 @@
       "name": "notificationName",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

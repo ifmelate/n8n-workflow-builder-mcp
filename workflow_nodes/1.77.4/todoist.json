@@ -8,110 +8,175 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "apiKey",
+      "options": [
+        {
+          "name": "API Key",
+          "value": "apiKey"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "description": "Task resource"
+      "default": "task",
+      "description": "Task resource",
+      "required": true,
+      "options": [
+        {
+          "name": "Task",
+          "value": "task",
+          "description": "Task resource"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
+      "default": "create",
       "description": "Close a task",
-      "required": true
-    },
-    {
-      "name": "Create",
-      "default": null,
-      "description": "Create a new task"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a task"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a task"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many tasks"
-    },
-    {
-      "name": "Move",
-      "default": null,
-      "description": "Move a task"
-    },
-    {
-      "name": "Reopen",
-      "default": null,
-      "description": "Reopen a task"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a task"
+      "required": true,
+      "options": [
+        {
+          "name": "Close",
+          "value": "close",
+          "description": "Close a task"
+        },
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new task"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a task"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a task"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many tasks"
+        },
+        {
+          "name": "Move",
+          "value": "move",
+          "description": "Move a task"
+        },
+        {
+          "name": "Reopen",
+          "value": "reopen",
+          "description": "Reopen a task"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a task"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ]
+        }
+      }
     },
     {
       "name": "taskId",
       "displayName": "Task ID",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "delete",
+            "close",
+            "get",
+            "reopen",
+            "update",
+            "move"
+          ]
+        }
+      }
     },
     {
       "name": "project",
       "displayName": "Project Name or ID",
       "type": "resourceLocator",
       "default": "{ mode: 'list', value: '' }",
+      "description": "The destination project. Choose from the list, or specify an ID.",
       "placeholder": "Select a project...",
-      "required": true
-    },
-    {
-      "name": "id",
-      "displayName": "ID",
-      "type": "string",
-      "default": null,
-      "placeholder": "2302163813"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "create",
+            "move",
+            "sync"
+          ]
+        }
+      }
     },
     {
       "name": "section",
       "displayName": "Section Name or ID",
       "type": "options",
-      "default": null
+      "default": "",
+      "description": "Section to which you want move the task. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "move"
+          ]
+        }
+      }
     },
     {
       "name": "options",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add option"
-    },
-    {
-      "name": "parent",
-      "displayName": "Parent Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "The destination parent task. The task becomes the last child task of the parent task. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "description": "The destination section. The task becomes the last root task of the section. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add option",
+      "displayOptions": "{\n\t\t\t\tshow: {\n\t\t\t\t\tresource: ['task'],\n\t\t\t\t\toperation: ['move'],\n\t\t\t\t\t'@version': [{ _cnd: { gte: 2.1 }"
     },
     {
       "name": "labels",
       "displayName": "Label Names or IDs",
       "type": "multiOptions",
       "default": [],
-      "description": "Optional labels that will be assigned to a created task. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "description": "Optional labels that will be assigned to a created task. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "content",
@@ -119,63 +184,78 @@
       "type": "string",
       "default": "",
       "description": "Task content",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "rows": 5
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "commands",
       "displayName": "Sync Commands",
       "type": "string",
       "default": "[]",
-      "description": "Sync body"
-    },
-    {
-      "name": "dueDateTime",
-      "displayName": "Due Date Time",
-      "type": "dateTime",
-      "default": "",
-      "description": "Specific date and time in RFC3339 format in UTC"
-    },
-    {
-      "name": "dueLang",
-      "displayName": "Due String Locale",
-      "type": "string",
-      "default": "",
-      "description": "2-letter code specifying language in case due_string is not written in English"
-    },
-    {
-      "name": "dueString",
-      "displayName": "Due String",
-      "type": "string",
-      "default": "",
-      "description": "Human defined task due date (ex.: “next Monday”, “Tomorrow”). Value is set using local (not UTC) time."
-    },
-    {
-      "name": "parentId",
-      "displayName": "Parent Name or ID",
-      "type": "options",
-      "default": {},
-      "description": "The parent task you want to operate on. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "priority",
-      "displayName": "Priority",
-      "type": "number",
-      "default": 1,
-      "description": "Task priority from 1 (normal) to 4 (urgent)"
+      "description": "Sync body",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "sync"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "task"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "task"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -183,42 +263,47 @@
       "type": "collection",
       "default": {},
       "description": "Filter by any <a href=\"https://get.todoist.help/hc/en-us/articles/205248842\">supported filter.</a>",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "ids",
-      "displayName": "IDs",
-      "type": "string",
-      "default": "",
-      "description": "A list of the task IDs to retrieve, this should be a comma-separated list"
-    },
-    {
-      "name": "labelId",
-      "displayName": "Label Name or ID",
-      "type": "options",
-      "default": {},
-      "description": "Filter tasks by label. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "lang",
-      "displayName": "Lang",
-      "type": "string",
-      "default": "",
-      "description": "IETF language tag defining what language filter is written in, if differs from default English"
-    },
-    {
-      "name": "projectId",
-      "displayName": "Project Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Filter tasks by project ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "sectionId",
-      "displayName": "Section Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Filter tasks by section ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "filter",
+          "displayName": "Filter",
+          "type": "string",
+          "default": "",
+          "description": "Filter by any <a href=\"https://get.todoist.help/hc/en-us/articles/205248842\">supported filter.</a>"
+        },
+        {
+          "name": "ids",
+          "displayName": "IDs",
+          "type": "string",
+          "default": "",
+          "description": "A list of the task IDs to retrieve, this should be a comma-separated list"
+        },
+        {
+          "name": "labelId",
+          "displayName": "Label Name or ID",
+          "type": "options",
+          "default": {},
+          "description": "Filter tasks by label. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        },
+        {
+          "name": "lang",
+          "displayName": "Lang",
+          "type": "string",
+          "default": "",
+          "description": "IETF language tag defining what language filter is written in, if differs from default English"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -226,14 +311,61 @@
       "type": "collection",
       "default": {},
       "description": "Task content",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": "",
-      "description": "A description for the task"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "content",
+          "displayName": "Content",
+          "type": "string",
+          "default": "",
+          "description": "Task content"
+        },
+        {
+          "name": "description",
+          "displayName": "Description",
+          "type": "string",
+          "default": "",
+          "description": "A description for the task"
+        },
+        {
+          "name": "dueDateTime",
+          "displayName": "Due Date Time",
+          "type": "dateTime",
+          "default": "",
+          "description": "Specific date and time in RFC3339 format in UTC"
+        },
+        {
+          "name": "dueLang",
+          "displayName": "Due String Locale",
+          "type": "string",
+          "default": "",
+          "description": "2-letter code specifying language in case due_string is not written in English"
+        },
+        {
+          "name": "dueString",
+          "displayName": "Due String",
+          "type": "string",
+          "default": "",
+          "description": "Human defined task due date (ex.: “next Monday”, “Tomorrow”). Value is set using local (not UTC) time."
+        },
+        {
+          "name": "dueLang",
+          "displayName": "Due String Locale",
+          "type": "string",
+          "default": "",
+          "description": "2-letter code specifying language in case due_string is not written in English"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -281,5 +413,19 @@
       "name": "updateFields",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

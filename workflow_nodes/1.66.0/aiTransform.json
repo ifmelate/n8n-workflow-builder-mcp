@@ -23,8 +23,23 @@
       "name": "hint",
       "displayName": "Click on 'Test step' to run the transformation code. Further executions will use the generated code (and not invoke AI again).",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": "{\n\t\t\t\t\tshow: {\n\t\t\t\t\t\tjsCode: [{ _cnd: { exists: true }"
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

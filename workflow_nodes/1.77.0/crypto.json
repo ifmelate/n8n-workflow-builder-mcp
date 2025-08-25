@@ -8,53 +8,75 @@
       "name": "action",
       "displayName": "Action",
       "type": "options",
-      "default": null,
-      "description": "Generate random string"
-    },
-    {
-      "name": "Hash",
-      "default": null,
-      "description": "Hash a text or file in a specified format"
-    },
-    {
-      "name": "Hmac",
-      "default": null,
-      "description": "Hmac a text or file in a specified format"
-    },
-    {
-      "name": "Sign",
-      "default": null,
-      "description": "Sign a string using a private key"
+      "default": "hash",
+      "description": "Generate random string",
+      "options": [
+        {
+          "name": "Generate",
+          "value": "generate",
+          "description": "Generate random string"
+        },
+        {
+          "name": "Hash",
+          "value": "hash",
+          "description": "Hash a text or file in a specified format"
+        },
+        {
+          "name": "Hmac",
+          "value": "hmac",
+          "description": "Hmac a text or file in a specified format"
+        },
+        {
+          "name": "Sign",
+          "value": "sign",
+          "description": "Sign a string using a private key"
+        }
+      ]
     },
     {
       "name": "type",
       "displayName": "Type",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "SHA256",
-      "default": null
-    },
-    {
-      "name": "SHA3-256",
-      "default": null
-    },
-    {
-      "name": "SHA3-384",
-      "default": null
-    },
-    {
-      "name": "SHA3-512",
-      "default": null
-    },
-    {
-      "name": "SHA384",
-      "default": null
-    },
-    {
-      "name": "SHA512",
-      "default": null
+      "default": "MD5",
+      "description": "The hash type to use",
+      "required": true,
+      "options": [
+        {
+          "name": "MD5",
+          "value": "MD5"
+        },
+        {
+          "name": "SHA256",
+          "value": "SHA256"
+        },
+        {
+          "name": "SHA3-256",
+          "value": "SHA3-256"
+        },
+        {
+          "name": "SHA3-384",
+          "value": "SHA3-384"
+        },
+        {
+          "name": "SHA3-512",
+          "value": "SHA3-512"
+        },
+        {
+          "name": "SHA384",
+          "value": "SHA384"
+        },
+        {
+          "name": "SHA512",
+          "value": "SHA512"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "action": [
+            "hash"
+          ]
+        }
+      }
     },
     {
       "name": "binaryData",
@@ -62,7 +84,15 @@
       "type": "boolean",
       "default": false,
       "description": "Whether the data to hashed should be taken from binary field",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "action": [
+            "hash",
+            "hmac"
+          ]
+        }
+      }
     },
     {
       "name": "binaryPropertyName",
@@ -70,7 +100,18 @@
       "type": "string",
       "default": "data",
       "description": "Name of the binary property which contains the input data",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "action": [
+            "hash",
+            "hmac"
+          ],
+          "binaryData": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "value",
@@ -78,7 +119,17 @@
       "type": "string",
       "default": "",
       "description": "The value that should be hashed",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "action": [
+            "hash"
+          ],
+          "binaryData": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "dataPropertyName",
@@ -86,24 +137,52 @@
       "type": "string",
       "default": "data",
       "description": "Name of the property to which to write the hash",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "action": [
+            "hash"
+          ]
+        }
+      }
     },
     {
       "name": "encoding",
       "displayName": "Encoding",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "HEX",
-      "default": null
+      "default": "hex",
+      "required": true,
+      "options": [
+        {
+          "name": "BASE64",
+          "value": "base64"
+        },
+        {
+          "name": "HEX",
+          "value": "hex"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "action": [
+            "hash"
+          ]
+        }
+      }
     },
     {
       "name": "secret",
       "displayName": "Secret",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "action": [
+            "hmac"
+          ]
+        }
+      }
     },
     {
       "name": "algorithm",
@@ -111,7 +190,14 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "action": [
+            "sign"
+          ]
+        }
+      }
     },
     {
       "name": "privateKey",
@@ -119,29 +205,81 @@
       "type": "string",
       "default": "",
       "description": "Private key to use when signing the string",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "action": [
+            "sign"
+          ]
+        }
+      }
     },
     {
       "name": "encodingType",
       "displayName": "Type",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "BASE64",
-      "default": null
-    },
-    {
-      "name": "UUID",
-      "default": null
+      "default": "uuid",
+      "description": "Encoding that will be used to generate string",
+      "required": true,
+      "options": [
+        {
+          "name": "ASCII",
+          "value": "ascii"
+        },
+        {
+          "name": "BASE64",
+          "value": "base64"
+        },
+        {
+          "name": "HEX",
+          "value": "hex"
+        },
+        {
+          "name": "UUID",
+          "value": "uuid"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "action": [
+            "generate"
+          ]
+        }
+      }
     },
     {
       "name": "stringLength",
       "displayName": "Length",
       "type": "number",
       "default": 32,
-      "description": "Length of the generated string"
+      "description": "Length of the generated string",
+      "displayOptions": {
+        "show": {
+          "action": [
+            "generate"
+          ],
+          "encodingType": [
+            "ascii",
+            "base64",
+            "hex"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }
