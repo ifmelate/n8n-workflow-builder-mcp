@@ -9,14 +9,15 @@ This project provides a Model Context Protocol (MCP) server for building and man
 # DEMO VIDEO:
 [![Watch the video](https://github.com/user-attachments/assets/53706f62-7e99-449f-8537-0ce951c727e1)](https://youtu.be/MKEVLM5QmPA?si=8SJQAcYGeAIuhaBm)
 
+# Cursor rules:
+- file with rules is in `rules/n8n-mcp-server-rules.mdc`
+
 ## Current status of implementation
 
-It's in early development stage. Basically, it's working - MCP server creates JSON file with n8n workflow that you can copy and paste to workflow editor in n8n UI.
+Basically, it's working - MCP server creates JSON file with n8n workflow that you can copy and paste to workflow editor in n8n UI.
 Current problems:
 - sometimes llm agents put wrong parameters in the request. **I plan to find a way to fix this**.
-- sometimes connection between nodes is not setting. **I'm working to resolve it**.
 - not all types of node are checked working. **I'm working to resolve it**.
-- initial prompt does matter. If it's not clear, the agent will go wrong way. **I plan to find a way to fix this**.
 
 ## Key Features
 
