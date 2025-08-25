@@ -1,0 +1,72 @@
+{
+    "name": "UNIT_VERSION_MATRIX",
+    "id": "TEST-WF-UNIT-VERSIONS",
+    "nodes": [
+        {
+            "id": "if1",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 2.2,
+            "position": [
+                0,
+                0
+            ],
+            "parameters": {},
+            "name": "If Node"
+        },
+        {
+            "id": "sw1",
+            "type": "n8n-nodes-base.switch",
+            "typeVersion": 3.2,
+            "position": [
+                160,
+                0
+            ],
+            "parameters": {},
+            "name": "Switch Node"
+        },
+        {
+            "id": "http1",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.2,
+            "position": [
+                320,
+                0
+            ],
+            "parameters": {},
+            "name": "HTTP Node"
+        },
+        {
+            "id": "merge1",
+            "type": "n8n-nodes-base.merge",
+            "typeVersion": 3.2,
+            "position": [
+                480,
+                0
+            ],
+            "parameters": {},
+            "name": "Merge Node"
+        },
+        {
+            "id": "pg1",
+            "type": "n8n-nodes-base.postgres",
+            "typeVersion": 2.6,
+            "position": [
+                640,
+                0
+            ],
+            "parameters": {},
+            "name": "Postgres Node"
+        }
+    ],
+    "connections": {},
+    "active": false,
+    "pinData": {},
+    "settings": {
+        "executionOrder": "v1"
+    },
+    "versionId": "TEST-VERSION-ID",
+    "meta": {
+        "instanceId": "TEST-INSTANCE-ID"
+    },
+    "tags": []
+}

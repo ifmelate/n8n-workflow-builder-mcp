@@ -1,0 +1,54 @@
+{
+  "name": "connection_demo",
+  "id": "ICjlMNGO5lW235ca",
+  "nodes": [
+    {
+      "id": "3129ed41-4e3d-423b-9e18-b8a4b955f0a1",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        100,
+        100
+      ],
+      "parameters": {},
+      "name": "Start"
+    },
+    {
+      "id": "36be451f-cb0d-49b1-be8a-92fcb5dd2c22",
+      "type": "n8n-nodes-base.http",
+      "typeVersion": 1,
+      "position": [
+        300,
+        100
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.github.com/users/octocat"
+      },
+      "name": "HTTP Request"
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b4b00121-f59e-4b2a-9597-914a62600538",
+  "meta": {
+    "instanceId": "ea1bc61fb347ae1f604456f96f79ed50108d22c70cb9c0c4fbfa7a09f7b02bed"
+  },
+  "tags": []
+}
