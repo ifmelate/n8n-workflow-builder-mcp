@@ -52,7 +52,7 @@ The recommended way to install this MCP server is using npx directly in your `.c
       "env": {
         "N8N_API_URL": "http://localhost:5678",
         "N8N_API_KEY": "your-n8n-api-key-here",
-       // "N8N_VERSION": "1.72.1" // optional, if not set, the server will try to detect the version automatically
+       // "N8N_VERSION": "1.76.1" // optional, if not set, the server will try to detect the version automatically
       }
     }
   }
@@ -115,7 +115,7 @@ For development or local testing, you can clone and build from source:
          "env": {
            "N8N_API_URL": "http://localhost:5678",
            "N8N_API_KEY": "your-n8n-api-key-here",
-           //"N8N_VERSION": "1.72.1" - optional
+           //"N8N_VERSION": "1.76.1" - optional
          }
        }
      }
