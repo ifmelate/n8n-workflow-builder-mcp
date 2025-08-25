@@ -8,72 +8,84 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "apiKey",
+      "options": [
+        {
+          "name": "API Key",
+          "value": "apiKey"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "List Group",
-      "default": null
-    },
-    {
-      "name": "Member",
-      "default": null
-    },
-    {
-      "name": "Member Tag",
-      "default": null
+      "default": "member",
+      "required": true,
+      "options": [
+        {
+          "name": "Campaign",
+          "value": "campaign"
+        },
+        {
+          "name": "List Group",
+          "value": "listGroup"
+        },
+        {
+          "name": "Member",
+          "value": "member"
+        },
+        {
+          "name": "Member Tag",
+          "value": "memberTag"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
+      "default": "create",
       "description": "Create a new member on list",
-      "required": true
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a member on list"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a member on list"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many members on a list"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a new member on list"
-    },
-    {
-      "name": "Replicate",
-      "default": null,
-      "description": "Replicate a campaign"
-    },
-    {
-      "name": "Resend",
-      "default": null,
-      "description": "Creates a Resend to Non-Openers version of this campaign"
-    },
-    {
-      "name": "Send",
-      "default": null,
-      "description": "Send a campaign"
+      "required": true,
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new member on list"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a member on list"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a member on list"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many members on a list"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a new member on list"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ]
+        }
+      }
     },
     {
       "name": "list",
@@ -82,7 +94,16 @@
       "default": "",
       "description": "List of lists. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
       "required": true,
-      "options": []
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "email",
@@ -91,96 +112,91 @@
       "default": "",
       "description": "Email address for a subscriber",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "status",
       "displayName": "Status",
       "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "Pending",
-      "default": null
-    },
-    {
-      "name": "Subscribed",
-      "default": null
-    },
-    {
-      "name": "Transactional",
-      "default": null
-    },
-    {
-      "name": "Unsubscribed",
-      "default": null
+      "default": "",
+      "description": "Subscriber's current status",
+      "required": true,
+      "options": [
+        {
+          "name": "Cleaned",
+          "value": "cleaned"
+        },
+        {
+          "name": "Pending",
+          "value": "pending"
+        },
+        {
+          "name": "Subscribed",
+          "value": "subscribed"
+        },
+        {
+          "name": "Transactional",
+          "value": "transactional"
+        },
+        {
+          "name": "Unsubscribed",
+          "value": "unsubscribed"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "jsonParameters",
       "displayName": "JSON Parameters",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
-      "placeholder": "Add option"
-    },
-    {
-      "name": "Text",
-      "default": null
-    },
-    {
-      "name": "language",
-      "displayName": "Language",
-      "type": "string",
-      "default": "",
-      "description": "If set/detected, the subscriber's language"
-    },
-    {
-      "name": "ipOptIn",
-      "displayName": "Opt-in IP",
-      "type": "string",
-      "default": "",
-      "description": "The IP address the subscriber used to confirm their opt-in status"
-    },
-    {
-      "name": "ipSignup",
-      "displayName": "Signup IP",
-      "type": "string",
-      "default": "",
-      "description": "IP address the subscriber signed up from"
-    },
-    {
-      "name": "timestampSignup",
-      "displayName": "Signup Timestamp",
-      "type": "dateTime",
-      "default": "",
-      "description": "The date and time the subscriber signed up for the list in ISO 8601 format"
-    },
-    {
-      "name": "tags",
-      "displayName": "Tags",
-      "type": "string",
-      "default": "",
-      "description": "The tags that are associated with a member separeted by ,"
-    },
-    {
-      "name": "vip",
-      "displayName": "Vip",
-      "type": "boolean",
-      "default": false,
-      "description": "Vip status for subscribers"
-    },
-    {
-      "name": "timestampOpt",
-      "displayName": "Opt-in Timestamp",
-      "type": "dateTime",
-      "default": "",
-      "description": "The date and time the subscribe confirmed their opt-in status in ISO 8601 format"
+      "description": "Type of email this member asked to get",
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "locationFieldsUi",
@@ -189,15 +205,20 @@
       "default": {},
       "description": "Subscriber location information.n",
       "placeholder": "Add Location",
-      "required": true
-    },
-    {
-      "name": "longitude",
-      "displayName": "Longitude",
-      "type": "string",
-      "default": "",
-      "description": "The location longitude",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "mergeFieldsUi",
@@ -206,27 +227,61 @@
       "default": {},
       "description": "An individual merge var and value for a member",
       "placeholder": "Add Merge Fields",
-      "required": true
-    },
-    {
-      "name": "value",
-      "displayName": "Field Value",
-      "type": "string",
-      "default": "",
-      "description": "Merge field value",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "mergeFieldsJson",
       "displayName": "Merge Fields",
       "type": "json",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "locationJson",
       "displayName": "Location",
       "type": "json",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "groupsUi",
@@ -234,76 +289,125 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "placeholder": "Add Interest Group"
-    },
-    {
-      "name": "categoryFieldId",
-      "displayName": "Category Field ID",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Interest Group",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "groupJson",
       "displayName": "Interest Groups",
       "type": "json",
       "default": "",
-      "description": "List of lists. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
-    },
-    {
-      "name": "excludeFields",
-      "displayName": "Exclude Fields",
-      "type": "string",
-      "default": "",
-      "description": "A comma-separated list of fields to exclude"
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 500,
-      "description": "Max number of results to return"
-    },
-    {
-      "name": "beforeTimestampOpt",
-      "displayName": "Before Timestamp Opt",
-      "type": "dateTime",
-      "default": "",
-      "description": "Restrict results to subscribers who opted-in before the set timeframe"
-    },
-    {
-      "name": "emailType",
-      "displayName": "Email Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "sinceLastChanged",
-      "displayName": "Since Last Changed",
-      "type": "dateTime",
-      "default": "",
-      "description": "Restrict results to subscribers whose information changed after the set timeframe"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 1000
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
       "displayName": "Update Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
+      "description": "Type of email this member asked to get",
+      "placeholder": "Add Field",
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
-      "name": "skipMergeValidation",
-      "displayName": "Skip Merge Validation",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether member data will be accepted without merge field values, even if the merge field is usually required"
+      "name": "tags",
+      "displayName": "Tags",
+      "type": "string",
+      "default": [],
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "memberTag"
+          ],
+          "operation": [
+            "create",
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "groupCategory",
@@ -312,74 +416,16 @@
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
       "required": true,
-      "options": []
-    },
-    {
-      "name": "beforeSendTime",
-      "displayName": "Before Send Time",
-      "type": "dateTime",
-      "default": "",
-      "description": "Restrict the response to campaigns sent before the set time"
-    },
-    {
-      "name": "fields",
-      "displayName": "Field Names or IDs",
-      "type": "multiOptions",
-      "default": "[\n\t\t\t\t\t\t\t'campaigns.id',\n\t\t\t\t\t\t\t'campaigns.status',\n\t\t\t\t\t\t\t'campaigns.tracking',\n\t\t\t\t\t\t\t'campaigns.settings.from_name',\n\t\t\t\t\t\t\t'campaigns.settings.reply_to',\n\t\t\t\t\t\t\t'campaigns.settings.title',\n\t\t\t\t\t\t]",
-      "description": "A comma-separated list of fields to return. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "listId",
-      "displayName": "List Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "List of lists. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "sinceCreateTime",
-      "displayName": "Since Create Time",
-      "type": "dateTime",
-      "default": "",
-      "description": "Restrict the response to campaigns created after the set time"
-    },
-    {
-      "name": "sinceSendTime",
-      "displayName": "Since Send Time",
-      "type": "dateTime",
-      "default": "",
-      "description": "Restrict the response to campaigns sent after the set time"
-    },
-    {
-      "name": "sortDirection",
-      "displayName": "Sort Direction",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "DESC",
-      "default": null
-    },
-    {
-      "name": "sortField",
-      "displayName": "Sort Field",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Send Time",
-      "default": null
-    },
-    {
-      "name": "Sending",
-      "default": null
-    },
-    {
-      "name": "Sent",
-      "default": null
-    },
-    {
-      "name": "Schedule",
-      "default": null
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "listGroup"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "campaignId",
@@ -387,7 +433,21 @@
       "type": "string",
       "default": "",
       "description": "List of Campaigns",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "campaign"
+          ],
+          "operation": [
+            "send",
+            "get",
+            "delete",
+            "replicate",
+            "resend"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -503,5 +563,27 @@
       "name": "campaignId",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

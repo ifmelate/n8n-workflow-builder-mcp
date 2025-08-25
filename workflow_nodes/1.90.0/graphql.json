@@ -11,45 +11,59 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Custom Auth",
-      "default": null
-    },
-    {
-      "name": "Digest Auth",
-      "default": null
-    },
-    {
-      "name": "Header Auth",
-      "default": null
-    },
-    {
-      "name": "None",
-      "default": null
-    },
-    {
-      "name": "OAuth1",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
-    },
-    {
-      "name": "Query Auth",
-      "default": null
+      "default": "none",
+      "description": "The way to authenticate",
+      "options": [
+        {
+          "name": "Basic Auth",
+          "value": "basicAuth"
+        },
+        {
+          "name": "Custom Auth",
+          "value": "customAuth"
+        },
+        {
+          "name": "Digest Auth",
+          "value": "digestAuth"
+        },
+        {
+          "name": "Header Auth",
+          "value": "headerAuth"
+        },
+        {
+          "name": "None",
+          "value": "none"
+        },
+        {
+          "name": "OAuth1",
+          "value": "oAuth1"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        },
+        {
+          "name": "Query Auth",
+          "value": "queryAuth"
+        }
+      ]
     },
     {
       "name": "requestMethod",
       "displayName": "HTTP Request Method",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "POST",
-      "default": null
+      "default": "POST",
+      "description": "The underlying HTTP request method to use",
+      "options": [
+        {
+          "name": "GET",
+          "value": "GET"
+        },
+        {
+          "name": "POST",
+          "value": "POST"
+        }
+      ]
     },
     {
       "name": "endpoint",
@@ -71,17 +85,29 @@
       "name": "requestFormat",
       "displayName": "Request Format",
       "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "JSON",
-      "default": null
-    },
-    {
-      "name": "GraphQL (Raw)",
-      "default": null,
-      "description": "Raw GraphQL query string. Not all servers support this format. Use JSON for better compatibility."
+      "default": "graphql",
+      "description": "The format for the query payload",
+      "required": true,
+      "options": [
+        {
+          "name": "GraphQL (Raw)",
+          "value": "graphql"
+        },
+        {
+          "name": "JSON",
+          "value": "json"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "requestMethod": [
+            "POST"
+          ],
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "query",
@@ -89,31 +115,61 @@
       "type": "string",
       "default": "",
       "description": "GraphQL query",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "rows": 6
+      }
     },
     {
       "name": "variables",
       "displayName": "Variables",
       "type": "json",
       "default": "",
-      "description": "Query variables as JSON object"
+      "description": "Query variables as JSON object",
+      "displayOptions": {
+        "show": {
+          "requestFormat": [
+            "json"
+          ],
+          "requestMethod": [
+            "POST"
+          ]
+        }
+      }
     },
     {
       "name": "operationName",
       "displayName": "Operation Name",
       "type": "string",
       "default": "",
-      "description": "Name of operation to execute"
+      "description": "Name of operation to execute",
+      "displayOptions": {
+        "show": {
+          "requestFormat": [
+            "json"
+          ],
+          "requestMethod": [
+            "POST"
+          ]
+        }
+      }
     },
     {
       "name": "responseFormat",
       "displayName": "Response Format",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "String",
-      "default": null
+      "default": "json",
+      "description": "The format in which the data gets returned from the URL",
+      "options": [
+        {
+          "name": "JSON",
+          "value": "json"
+        },
+        {
+          "name": "String",
+          "value": "string"
+        }
+      ]
     },
     {
       "name": "dataPropertyName",
@@ -121,15 +177,25 @@
       "type": "string",
       "default": "data",
       "description": "Name of the property to which to write the response data",
-      "placeholder": "Add Header",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "responseFormat": [
+            "string"
+          ]
+        }
+      }
     },
     {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Value to set for the header"
+      "name": "headerParametersUi",
+      "displayName": "Headers",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "The headers to send",
+      "placeholder": "Add Header",
+      "typeOptions": {
+        "multipleValues": true
+      }
     }
   ],
   "credentialsConfig": [
@@ -161,5 +227,27 @@
       "name": "dataPropertyName",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

@@ -11,68 +11,108 @@
       "name": "mode",
       "displayName": "Operation",
       "type": "options",
-      "default": "existing"
-    },
-    {
-      "name": "Use Existing Assistant",
-      "default": null
+      "default": "existing",
+      "options": [
+        {
+          "name": "Use New Assistant",
+          "value": "new"
+        },
+        {
+          "name": "Use Existing Assistant",
+          "value": "existing"
+        }
+      ]
     },
     {
       "name": "name",
       "displayName": "Name",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "/mode": [
+            "new"
+          ]
+        }
+      }
     },
     {
       "name": "instructions",
       "displayName": "Instructions",
       "type": "string",
       "default": "",
-      "description": "How the Assistant and model should behave or respond"
+      "description": "How the Assistant and model should behave or respond",
+      "typeOptions": {
+        "rows": 5
+      },
+      "displayOptions": {
+        "show": {
+          "/mode": [
+            "new"
+          ]
+        }
+      }
     },
     {
       "name": "model",
       "displayName": "Model",
       "type": "options",
-      "default": null,
+      "default": "gpt-3.5-turbo-1106",
       "description": "The model which will be used to power the assistant. <a href=\"https://beta.openai.com/docs/models/overview\">Learn more</a>. The Retrieval tool requires gpt-3.5-turbo-1106 and gpt-4-1106-preview models.",
-      "required": true
-    },
-    {
-      "name": "={{$responseItem.id}}",
-      "type": "setKeyValue",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "/mode": [
+            "new"
+          ]
+        }
+      }
     },
     {
       "name": "assistantId",
       "displayName": "Assistant",
       "type": "options",
-      "default": null,
-      "description": "The assistant to use. <a href=\"https://beta.openai.com/docs/assistants/overview\">Learn more</a>."
-    },
-    {
-      "name": "={{$responseItem.name}}",
-      "type": "setKeyValue",
-      "default": null,
-      "description": "={{$responseItem.model}}"
+      "default": "",
+      "description": "The assistant to use. <a href=\"https://beta.openai.com/docs/assistants/overview\">Learn more</a>.",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "/mode": [
+            "existing"
+          ]
+        }
+      }
     },
     {
       "name": "text",
       "displayName": "Text",
       "type": "string",
       "default": "={{ $json.chat_input }}",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "nativeTools",
       "displayName": "OpenAI Tools",
       "type": "multiOptions",
-      "default": []
-    },
-    {
-      "name": "Knowledge Retrieval",
-      "default": null
+      "default": [],
+      "options": [
+        {
+          "name": "Code Interpreter",
+          "value": "code_interpreter"
+        },
+        {
+          "name": "Knowledge Retrieval",
+          "value": "retrieval"
+        }
+      ]
     },
     {
       "name": "noticeTools",
@@ -86,21 +126,30 @@
       "type": "collection",
       "default": {},
       "description": "Additional options to add",
-      "placeholder": "Add Option"
-    },
-    {
-      "name": "maxRetries",
-      "displayName": "Max Retries",
-      "type": "number",
-      "default": 2,
-      "description": "Maximum number of retries to attempt"
-    },
-    {
-      "name": "timeout",
-      "displayName": "Timeout",
-      "type": "number",
-      "default": 10000,
-      "description": "Maximum amount of time a request is allowed to take in milliseconds"
+      "placeholder": "Add Option",
+      "options": [
+        {
+          "name": "baseURL",
+          "displayName": "Base URL",
+          "type": "string",
+          "default": "https://api.openai.com/v1",
+          "description": "Override the default base URL for the API"
+        },
+        {
+          "name": "maxRetries",
+          "displayName": "Max Retries",
+          "type": "number",
+          "default": 2,
+          "description": "Maximum number of retries to attempt"
+        },
+        {
+          "name": "timeout",
+          "displayName": "Timeout",
+          "type": "number",
+          "default": 10000,
+          "description": "Maximum amount of time a request is allowed to take in milliseconds"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -128,5 +177,25 @@
       "name": "noticeTools",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "agent",
+    "requires": [
+      "AiLanguageModel"
+    ],
+    "optional": [
+      "AiMemory",
+      "AiOutputParser",
+      "AiTool"
+    ],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

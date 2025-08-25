@@ -8,47 +8,67 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Email",
-      "default": null
-    },
-    {
-      "name": "Template",
-      "default": null
+      "default": "email",
+      "options": [
+        {
+          "name": "Custom Verification Email",
+          "value": "customVerificationEmail"
+        },
+        {
+          "name": "Email",
+          "value": "email"
+        },
+        {
+          "name": "Template",
+          "value": "template"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a new custom verification email template"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an existing custom verification email template"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get the custom email verification template"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many of the existing custom verification email templates for your account"
-    },
-    {
-      "name": "Send",
-      "default": null,
-      "description": "Add an email address to the list of identities"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update an existing custom verification email template"
+      "default": "create",
+      "description": "Create a new custom verification email template",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new custom verification email template"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete an existing custom verification email template"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get the custom email verification template"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many of the existing custom verification email templates for your account"
+        },
+        {
+          "name": "Send",
+          "value": "send",
+          "description": "Add an email address to the list of identities"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update an existing custom verification email template"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customVerificationEmail"
+          ]
+        }
+      }
     },
     {
       "name": "fromEmailAddress",
@@ -56,21 +76,51 @@
       "type": "string",
       "default": "",
       "description": "The email address that the custom verification email is sent from",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customVerificationEmail"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "templateName",
       "displayName": "Template Name",
       "type": "string",
       "default": "",
-      "description": "The name of the custom verification email template"
+      "description": "The name of the custom verification email template",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customVerificationEmail"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "templateContent",
       "displayName": "Template Content",
       "type": "string",
       "default": "",
-      "description": "The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML"
+      "description": "The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customVerificationEmail"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "templateSubject",
@@ -78,7 +128,17 @@
       "type": "string",
       "default": "",
       "description": "The subject line of the custom verification email",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customVerificationEmail"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "successRedirectionURL",
@@ -86,7 +146,17 @@
       "type": "string",
       "default": "",
       "description": "The URL that the recipient of the verification email is sent to if his or her address is successfully verified",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customVerificationEmail"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "failureRedirectionURL",
@@ -94,7 +164,17 @@
       "type": "string",
       "default": "",
       "description": "The URL that the recipient of the verification email is sent to if his or her address is not successfully verified",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customVerificationEmail"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "email",
@@ -103,7 +183,17 @@
       "default": "",
       "description": "The email address to verify",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customVerificationEmail"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -111,7 +201,26 @@
       "type": "collection",
       "default": {},
       "description": "Name of a configuration set to use when sending the verification email",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "configurationSetName",
+          "displayName": "Configuration Set Name",
+          "type": "string",
+          "default": "",
+          "description": "Name of a configuration set to use when sending the verification email"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customVerificationEmail"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -119,39 +228,128 @@
       "type": "collection",
       "default": {},
       "description": "The URL that the recipient of the verification email is sent to if his or her address is not successfully verified",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "failureRedirectionURL",
+          "displayName": "Failure Redirection URL",
+          "type": "string",
+          "default": "",
+          "description": "The URL that the recipient of the verification email is sent to if his or her address is not successfully verified"
+        },
+        {
+          "name": "fromEmailAddress",
+          "displayName": "From Email",
+          "type": "string",
+          "default": "",
+          "description": "The email address that the custom verification email is sent from"
+        },
+        {
+          "name": "successRedirectionURL",
+          "displayName": "Success Redirection URL",
+          "type": "string",
+          "default": "",
+          "description": "The URL that the recipient of the verification email is sent to if his or her address is successfully verified"
+        },
+        {
+          "name": "templateContent",
+          "displayName": "Template Content",
+          "type": "string",
+          "default": "",
+          "description": "The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML"
+        },
+        {
+          "name": "templateSubject",
+          "displayName": "Template Subject",
+          "type": "string",
+          "default": "",
+          "description": "The subject line of the custom verification email"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customVerificationEmail"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customVerificationEmail"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 20,
-      "description": "Max number of results to return"
-    },
-    {
-      "name": "Send Template",
-      "default": null
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customVerificationEmail"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "isBodyHtml",
       "displayName": "Is Body HTML",
       "type": "boolean",
       "default": false,
-      "description": "Whether body is HTML or simple text"
+      "description": "Whether body is HTML or simple text",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "subject",
       "displayName": "Subject",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "body",
@@ -159,7 +357,17 @@
       "type": "string",
       "default": "",
       "description": "The message to be sent",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "fromEmail",
@@ -168,7 +376,17 @@
       "default": "",
       "description": "Email address of the sender",
       "placeholder": "admin@example.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "toAddresses",
@@ -176,77 +394,74 @@
       "type": "string",
       "default": [],
       "description": "Email addresses of the recipients",
-      "placeholder": "info@example.com"
+      "placeholder": "info@example.com",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "templateDataUi",
       "displayName": "Template Data",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Data"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "ccAddresses",
-      "displayName": "Cc Addresses",
-      "type": "string",
-      "default": [],
-      "description": "Cc recipients of the email"
-    },
-    {
-      "name": "configurationSetName",
-      "displayName": "Configuration Set Name",
-      "type": "string",
-      "default": "",
-      "description": "Name of the configuration set to use when you send an email using send"
-    },
-    {
-      "name": "replyToAddresses",
-      "displayName": "Reply To Addresses",
-      "type": "string",
-      "default": [],
-      "description": "Reply-to email address(es) for the message",
-      "placeholder": "Add Reply Address"
-    },
-    {
-      "name": "returnPath",
-      "displayName": "Return Path",
-      "type": "string",
-      "default": "",
-      "description": "Email address that bounces and complaints will be forwarded to when feedback forwarding is enabled"
-    },
-    {
-      "name": "returnPathArn",
-      "displayName": "Return Path ARN",
-      "type": "string",
-      "default": "",
-      "description": "This parameter is used only for sending authorization"
-    },
-    {
-      "name": "sourceArn",
-      "displayName": "Source ARN",
-      "type": "string",
-      "default": "",
-      "description": "This parameter is used only for sending authorization"
+      "placeholder": "Add Data",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "sendTemplate"
+          ]
+        }
+      }
     },
     {
       "name": "subjectPart",
       "displayName": "Subject Part",
       "type": "string",
       "default": "",
-      "description": "The subject line of the email"
+      "description": "The subject line of the email",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "template"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "htmlPart",
       "displayName": "Html Part",
       "type": "string",
       "default": "",
-      "description": "The HTML body of the email"
+      "description": "The HTML body of the email",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "template"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -298,5 +513,27 @@
       "name": "returnAll",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

@@ -8,11 +8,17 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "apiToken",
+      "options": [
+        {
+          "name": "API Token",
+          "value": "apiToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "notice",
@@ -31,23 +37,34 @@
       "name": "resources",
       "displayName": "Listen to Resources",
       "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "Cycle",
-      "default": null
-    },
-    {
-      "name": "Issue Comment",
-      "default": null
-    },
-    {
-      "name": "Issue Label",
-      "default": null
-    },
-    {
-      "name": "Project",
-      "default": null
+      "default": [],
+      "required": true,
+      "options": [
+        {
+          "name": "Comment Reaction",
+          "value": "reaction"
+        },
+        {
+          "name": "Cycle",
+          "value": "cycle"
+        },
+        {
+          "name": "Issue",
+          "value": "issue"
+        },
+        {
+          "name": "Issue Comment",
+          "value": "comment"
+        },
+        {
+          "name": "Issue Label",
+          "value": "issueLabel"
+        },
+        {
+          "name": "Project",
+          "value": "project"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -67,5 +84,23 @@
       "name": "notice",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

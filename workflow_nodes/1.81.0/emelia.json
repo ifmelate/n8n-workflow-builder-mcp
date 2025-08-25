@@ -10,7 +10,17 @@
       "type": "options",
       "default": [],
       "description": "The ID of the campaign to add the contact to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "campaign"
+          ],
+          "operation": [
+            "addContact"
+          ]
+        }
+      }
     },
     {
       "name": "contactEmail",
@@ -18,7 +28,17 @@
       "type": "string",
       "default": "",
       "description": "The email of the contact to add to the campaign",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "campaign"
+          ],
+          "operation": [
+            "addContact"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -29,63 +49,17 @@
       "placeholder": "Add Field",
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "campaign"
+          ],
+          "operation": [
+            "addContact"
+          ]
+        }
       }
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "The value to set on custom field"
-    },
-    {
-      "name": "firstName",
-      "displayName": "First Name",
-      "type": "string",
-      "default": "",
-      "description": "First name of the contact to add"
-    },
-    {
-      "name": "lastContacted",
-      "displayName": "Last Contacted",
-      "type": "dateTime",
-      "default": "",
-      "description": "Last contacted date of the contact to add"
-    },
-    {
-      "name": "lastName",
-      "displayName": "Last Name",
-      "type": "string",
-      "default": "",
-      "description": "Last name of the contact to add"
-    },
-    {
-      "name": "lastOpen",
-      "displayName": "Last Open",
-      "type": "dateTime",
-      "default": "",
-      "description": "Last opened date of the contact to add"
-    },
-    {
-      "name": "lastReplied",
-      "displayName": "Last Replied",
-      "type": "dateTime",
-      "default": "",
-      "description": "Last replied date of the contact to add"
-    },
-    {
-      "name": "mailsSent",
-      "displayName": "Mails Sent",
-      "type": "number",
-      "default": 0,
-      "description": "Number of emails sent to the contact to add"
-    },
-    {
-      "name": "phoneNumber",
-      "displayName": "Phone Number",
-      "type": "string",
-      "default": "",
-      "description": "Phone number of the contact to add"
     },
     {
       "name": "campaignName",
@@ -93,7 +67,34 @@
       "type": "string",
       "default": "",
       "description": "The name of the campaign to create",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "campaign"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "campaign"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
@@ -101,7 +102,23 @@
       "type": "number",
       "default": 100,
       "description": "Max number of results to return",
-      "required": true
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "campaign"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -109,58 +126,90 @@
       "type": "collection",
       "default": {},
       "description": "Whether to copy all the contacts from the original campaign",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "copyProvider",
-      "displayName": "Copy Email Provider",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to set the same email provider than the original campaign"
-    },
-    {
-      "name": "copyMails",
-      "displayName": "Copy Email Sequence",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to copy all the steps of the email sequence from the original campaign"
-    },
-    {
-      "name": "copySettings",
-      "displayName": "Copy Global Settings",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to copy all the general settings from the original campaign"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "copyContacts",
+          "displayName": "Copy Contacts",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to copy all the contacts from the original campaign"
+        },
+        {
+          "name": "copyProvider",
+          "displayName": "Copy Email Provider",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to set the same email provider than the original campaign"
+        },
+        {
+          "name": "copyMails",
+          "displayName": "Copy Email Sequence",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to copy all the steps of the email sequence from the original campaign"
+        },
+        {
+          "name": "copySettings",
+          "displayName": "Copy Global Settings",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to copy all the general settings from the original campaign"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "duplicate"
+          ],
+          "resource": [
+            "campaign"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": "get"
-    },
-    {
-      "name": "Create",
-      "default": null
-    },
-    {
-      "name": "Duplicate",
-      "default": null
-    },
-    {
-      "name": "Get",
-      "default": null
-    },
-    {
-      "name": "Get Many",
-      "default": null
-    },
-    {
-      "name": "Pause",
-      "default": null
-    },
-    {
-      "name": "Start",
-      "default": null
+      "default": "get",
+      "options": [
+        {
+          "name": "Add Contact",
+          "value": "addContact"
+        },
+        {
+          "name": "Create",
+          "value": "create"
+        },
+        {
+          "name": "Duplicate",
+          "value": "duplicate"
+        },
+        {
+          "name": "Get",
+          "value": "get"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll"
+        },
+        {
+          "name": "Pause",
+          "value": "pause"
+        },
+        {
+          "name": "Start",
+          "value": "start"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "campaign"
+          ]
+        }
+      }
     },
     {
       "name": "contactListId",
@@ -168,24 +217,34 @@
       "type": "options",
       "default": [],
       "description": "The ID of the contact list to add the contact to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
-    },
-    {
-      "name": "returnAll",
-      "displayName": "Return All",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contactList"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Contact List",
-      "default": null
+      "default": "campaign",
+      "required": true,
+      "options": [
+        {
+          "name": "Campaign",
+          "value": "campaign"
+        },
+        {
+          "name": "Contact List",
+          "value": "contactList"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -197,5 +256,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

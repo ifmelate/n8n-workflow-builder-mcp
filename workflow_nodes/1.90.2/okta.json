@@ -9,31 +9,39 @@
       "displayName": "User",
       "type": "resourceLocator",
       "default": "{ mode: 'list', value: '' }",
+      "description": "The user you want to operate on. Choose from the list, or specify an ID.",
       "placeholder": "Select a user...",
-      "required": true
-    },
-    {
-      "name": "login",
-      "displayName": "By username",
-      "type": "string",
-      "default": null,
-      "placeholder": ""
-    },
-    {
-      "name": "id",
-      "displayName": "ID",
-      "type": "string",
-      "default": null,
-      "placeholder": "e.g. 00u1abcd2345EfGHIjk6"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "get",
+            "update",
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "firstName",
       "displayName": "First Name",
       "type": "string",
       "default": "",
-      "description": "The user you want to operate on. Choose from the list, or specify an ID.",
       "placeholder": "e.g. Nathan",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "lastName",
@@ -41,7 +49,35 @@
       "type": "string",
       "default": "",
       "placeholder": "e.g. Smith",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "name": "login",
+      "displayName": "Username",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. nathan@example.com",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "email",
@@ -49,49 +85,198 @@
       "type": "string",
       "default": "",
       "placeholder": "e.g. nathan@example.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "activate",
       "displayName": "Activate",
       "type": "boolean",
       "default": true,
-      "description": "Whether to activate the user and allow access to all assigned applications"
+      "description": "Whether to activate the user and allow access to all assigned applications",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "getCreateFields",
       "displayName": "Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add field"
+      "placeholder": "Add field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "name": "getUpdateFields",
+      "displayName": "Fields",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "name": "searchQuery",
+      "displayName": "Search Query",
+      "type": "string",
+      "default": "",
+      "placeholder": "e.g. profile.lastName sw \"Smi\"",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 20,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 200
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
+    },
+    {
+      "name": "simplify",
+      "displayName": "Simplify",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "get",
+            "getAll"
+          ]
+        }
+      }
+    },
+    {
+      "name": "sendEmail",
+      "displayName": "Send Email",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to send a deactivation email to the administrator",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
+      "default": "getAll",
       "description": "Create a new user",
-      "options": []
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get details of a user"
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

@@ -10,21 +10,67 @@
       "type": "options",
       "default": "",
       "description": "Board unique identifiers. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "board"
+          ],
+          "operation": [
+            "archive"
+          ]
+        }
+      }
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "The board's name",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "board"
+          ]
+        }
+      }
     },
     {
       "name": "kind",
       "displayName": "Kind",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Public",
-      "default": null
-    },
-    {
-      "name": "Private",
-      "default": null
+      "default": "",
+      "description": "The board's kind (public / private / share)",
+      "required": true,
+      "options": [
+        {
+          "name": "Share",
+          "value": "share"
+        },
+        {
+          "name": "Public",
+          "value": "public"
+        },
+        {
+          "name": "Private",
+          "value": "private"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "board"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -32,137 +78,226 @@
       "type": "collection",
       "default": {},
       "description": "Optional board template ID",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "templateId",
+          "displayName": "Template ID",
+          "type": "number",
+          "default": 0,
+          "description": "Optional board template ID"
+        }
+      ],
+      "typeOptions": {
+        "minValue": 0
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "board"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "board"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "board"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Archive a board"
-    },
-    {
-      "name": "Create",
-      "default": null,
-      "description": "Create a new board"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a board"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many boards"
+      "default": "create",
+      "description": "Archive a board",
+      "options": [
+        {
+          "name": "Archive",
+          "value": "archive",
+          "description": "Archive a board"
+        },
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new board"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a board"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many boards"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "board"
+          ]
+        }
+      }
     },
     {
       "name": "title",
       "displayName": "Title",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "boardColumn"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "columnType",
       "displayName": "Column Type",
       "type": "options",
-      "default": ""
-    },
-    {
-      "name": "Country",
-      "default": null
-    },
-    {
-      "name": "Date",
-      "default": null
-    },
-    {
-      "name": "Dropdown",
-      "default": null
-    },
-    {
-      "name": "Email",
-      "default": null
-    },
-    {
-      "name": "Hour",
-      "default": null
-    },
-    {
-      "name": "Link",
-      "default": null
-    },
-    {
-      "name": "Long Text",
-      "default": null
-    },
-    {
-      "name": "Numbers",
-      "default": null
-    },
-    {
-      "name": "People",
-      "default": null
-    },
-    {
-      "name": "Person",
-      "default": null
-    },
-    {
-      "name": "Phone",
-      "default": null
-    },
-    {
-      "name": "Rating",
-      "default": null
-    },
-    {
-      "name": "Status",
-      "default": null
-    },
-    {
-      "name": "Tags",
-      "default": null
-    },
-    {
-      "name": "Team",
-      "default": null
-    },
-    {
-      "name": "Text",
-      "default": null
-    },
-    {
-      "name": "Timeline",
-      "default": null
-    },
-    {
-      "name": "Timezone",
-      "default": null
-    },
-    {
-      "name": "Week",
-      "default": null
-    },
-    {
-      "name": "World Clock",
-      "default": null
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
       "default": "",
-      "description": "The group name",
-      "required": true
+      "required": true,
+      "options": [
+        {
+          "name": "Checkbox",
+          "value": "checkbox"
+        },
+        {
+          "name": "Country",
+          "value": "country"
+        },
+        {
+          "name": "Date",
+          "value": "date"
+        },
+        {
+          "name": "Dropdown",
+          "value": "dropdown"
+        },
+        {
+          "name": "Email",
+          "value": "email"
+        },
+        {
+          "name": "Hour",
+          "value": "hour"
+        },
+        {
+          "name": "Link",
+          "value": "Link"
+        },
+        {
+          "name": "Long Text",
+          "value": "longText"
+        },
+        {
+          "name": "Numbers",
+          "value": "numbers"
+        },
+        {
+          "name": "People",
+          "value": "people"
+        },
+        {
+          "name": "Person",
+          "value": "person"
+        },
+        {
+          "name": "Phone",
+          "value": "phone"
+        },
+        {
+          "name": "Rating",
+          "value": "rating"
+        },
+        {
+          "name": "Status",
+          "value": "status"
+        },
+        {
+          "name": "Tags",
+          "value": "tags"
+        },
+        {
+          "name": "Team",
+          "value": "team"
+        },
+        {
+          "name": "Text",
+          "value": "text"
+        },
+        {
+          "name": "Timeline",
+          "value": "timeline"
+        },
+        {
+          "name": "Timezone",
+          "value": "timezone"
+        },
+        {
+          "name": "Week",
+          "value": "week"
+        },
+        {
+          "name": "World Clock",
+          "value": "worldClock"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "boardColumn"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "groupId",
@@ -170,7 +305,17 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "boardGroup"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "itemId",
@@ -178,7 +323,17 @@
       "type": "string",
       "default": "",
       "description": "The unique identifier of the item to add update to",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "boardItem"
+          ],
+          "operation": [
+            "addUpdate"
+          ]
+        }
+      }
     },
     {
       "name": "value",
@@ -186,7 +341,17 @@
       "type": "string",
       "default": "",
       "description": "The update text to add",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "boardItem"
+          ],
+          "operation": [
+            "addUpdate"
+          ]
+        }
+      }
     },
     {
       "name": "columnId",
@@ -194,7 +359,17 @@
       "type": "options",
       "default": "",
       "description": "The column's unique identifier. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "boardItem"
+          ],
+          "operation": [
+            "changeColumnValue"
+          ]
+        }
+      }
     },
     {
       "name": "columnValues",
@@ -202,14 +377,17 @@
       "type": "json",
       "default": "",
       "description": "The column fields and values in JSON format. Documentation can be found <a href=\"https://monday.com/developers/v2#mutations-section-columns-change-multiple-column-values\">here</a>.",
-      "required": true
-    },
-    {
-      "name": "returnAll",
-      "displayName": "Return All",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "boardItem"
+          ],
+          "operation": [
+            "changeMultipleColumnValues"
+          ]
+        }
+      }
     },
     {
       "name": "columnValue",
@@ -217,60 +395,57 @@
       "type": "string",
       "default": "",
       "description": "The column value to search items by",
-      "required": true
-    },
-    {
-      "name": "Change Column Value",
-      "default": null,
-      "description": "Change a column value for a board item"
-    },
-    {
-      "name": "Change Multiple Column Values",
-      "default": null,
-      "description": "Change multiple column values for a board item"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an item"
-    },
-    {
-      "name": "Get By Column Value",
-      "default": null,
-      "description": "Get items by column value"
-    },
-    {
-      "name": "Move",
-      "default": null,
-      "description": "Move item to group"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "boardItem"
+          ],
+          "operation": [
+            "getByColumnValue"
+          ]
+        }
+      }
     },
     {
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "accessToken",
+      "options": [
+        {
+          "name": "Access Token",
+          "value": "accessToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Board Column",
-      "default": null
-    },
-    {
-      "name": "Board Group",
-      "default": null
-    },
-    {
-      "name": "Board Item",
-      "default": null
+      "default": "board",
+      "options": [
+        {
+          "name": "Board",
+          "value": "board"
+        },
+        {
+          "name": "Board Column",
+          "value": "boardColumn"
+        },
+        {
+          "name": "Board Group",
+          "value": "boardGroup"
+        },
+        {
+          "name": "Board Item",
+          "value": "boardItem"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -286,5 +461,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

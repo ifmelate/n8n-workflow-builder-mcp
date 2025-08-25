@@ -8,115 +8,182 @@
       "name": "category",
       "displayName": "Category",
       "type": "options",
-      "default": null,
-      "description": "Does nothing"
-    },
-    {
-      "name": "Throw Error",
-      "default": null,
-      "description": "Throws an error with the specified type and message"
-    },
-    {
-      "name": "Out Of Memory",
-      "default": null,
-      "description": "Generates a large amount of memory to cause an out of memory error"
-    },
-    {
-      "name": "Generate Random Data",
-      "default": null,
-      "description": "Generates random data sets"
+      "default": "throwError",
+      "description": "Does nothing",
+      "options": [
+        {
+          "name": "Do Nothing",
+          "value": "doNothing",
+          "description": "Does nothing"
+        },
+        {
+          "name": "Throw Error",
+          "value": "throwError",
+          "description": "Throws an error with the specified type and message"
+        },
+        {
+          "name": "Out Of Memory",
+          "value": "oom",
+          "description": "Generates a large amount of memory to cause an out of memory error"
+        },
+        {
+          "name": "Generate Random Data",
+          "value": "randomData",
+          "description": "Generates random data sets"
+        }
+      ]
     },
     {
       "name": "throwErrorType",
       "displayName": "Error Type",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "NodeOperationError",
-      "default": null
-    },
-    {
-      "name": "Error",
-      "default": null
+      "default": "NodeApiError",
+      "options": [
+        {
+          "name": "NodeApiError",
+          "value": "NodeApiError"
+        },
+        {
+          "name": "NodeOperationError",
+          "value": "NodeOperationError"
+        },
+        {
+          "name": "Error",
+          "value": "Error"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "category": [
+            "throwError"
+          ]
+        }
+      }
     },
     {
       "name": "throwErrorMessage",
       "displayName": "Error Message",
       "type": "string",
       "default": "Node has thrown an error",
-      "description": "The message to send as part of the error"
+      "description": "The message to send as part of the error",
+      "displayOptions": {
+        "show": {
+          "category": [
+            "throwError"
+          ]
+        }
+      }
     },
     {
       "name": "memorySizeValue",
       "displayName": "Memory Size to Generate",
       "type": "number",
       "default": 10,
-      "description": "The approximate amount of memory to generate. Be generous..."
+      "description": "The approximate amount of memory to generate. Be generous...",
+      "displayOptions": {
+        "show": {
+          "category": [
+            "oom"
+          ]
+        }
+      }
     },
     {
       "name": "randomDataType",
       "displayName": "Data Type",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Coordinates",
-      "default": null
-    },
-    {
-      "name": "Credit Card",
-      "default": null
-    },
-    {
-      "name": "Email",
-      "default": null
-    },
-    {
-      "name": "IPv4",
-      "default": null
-    },
-    {
-      "name": "IPv6",
-      "default": null
-    },
-    {
-      "name": "MAC",
-      "default": null
-    },
-    {
-      "name": "NanoIds",
-      "default": null
-    },
-    {
-      "name": "URL",
-      "default": null
-    },
-    {
-      "name": "User Data",
-      "default": null
-    },
-    {
-      "name": "UUID",
-      "default": null
-    },
-    {
-      "name": "Version",
-      "default": null
+      "default": "user",
+      "options": [
+        {
+          "name": "Address",
+          "value": "address"
+        },
+        {
+          "name": "Coordinates",
+          "value": "latLong"
+        },
+        {
+          "name": "Credit Card",
+          "value": "creditCard"
+        },
+        {
+          "name": "Email",
+          "value": "email"
+        },
+        {
+          "name": "IPv4",
+          "value": "ipv4"
+        },
+        {
+          "name": "IPv6",
+          "value": "ipv6"
+        },
+        {
+          "name": "MAC",
+          "value": "macAddress"
+        },
+        {
+          "name": "NanoIds",
+          "value": "nanoid"
+        },
+        {
+          "name": "URL",
+          "value": "url"
+        },
+        {
+          "name": "User Data",
+          "value": "user"
+        },
+        {
+          "name": "UUID",
+          "value": "uuid"
+        },
+        {
+          "name": "Version",
+          "value": "semver"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "category": [
+            "randomData"
+          ]
+        }
+      }
     },
     {
       "name": "nanoidAlphabet",
       "displayName": "NanoId Alphabet",
       "type": "string",
       "default": "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
-      "description": "The alphabet to use for generating the nanoIds"
+      "description": "The alphabet to use for generating the nanoIds",
+      "displayOptions": {
+        "show": {
+          "category": [
+            "randomData"
+          ],
+          "randomDataType": [
+            "nanoid"
+          ]
+        }
+      }
     },
     {
       "name": "nanoidLength",
       "displayName": "NanoId Length",
       "type": "string",
       "default": "16",
-      "description": "The length of each nanoIds"
+      "description": "The length of each nanoIds",
+      "displayOptions": {
+        "show": {
+          "category": [
+            "randomData"
+          ],
+          "randomDataType": [
+            "nanoid"
+          ]
+        }
+      }
     },
     {
       "name": "randomDataSeed",
@@ -124,21 +191,42 @@
       "type": "string",
       "default": "",
       "description": "If set, seed to use for generating the data (same seed will generate the same data)",
-      "placeholder": "Leave empty for random seed"
+      "placeholder": "Leave empty for random seed",
+      "displayOptions": {
+        "show": {
+          "category": [
+            "randomData"
+          ]
+        }
+      }
     },
     {
       "name": "randomDataCount",
       "displayName": "Number of Items to Generate",
       "type": "number",
       "default": 10,
-      "description": "The number of random data items to generate into an array"
+      "description": "The number of random data items to generate into an array",
+      "displayOptions": {
+        "show": {
+          "category": [
+            "randomData"
+          ]
+        }
+      }
     },
     {
       "name": "randomDataSingleArray",
       "displayName": "Output as Single Array",
       "type": "boolean",
       "default": false,
-      "description": "Whether to output a single array instead of multiple items"
+      "description": "Whether to output a single array instead of multiple items",
+      "displayOptions": {
+        "show": {
+          "category": [
+            "randomData"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -158,5 +246,19 @@
       "name": "nanoidAlphabet",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

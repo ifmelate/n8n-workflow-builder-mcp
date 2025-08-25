@@ -8,35 +8,63 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "image",
+      "options": [
+        {
+          "name": "Image",
+          "value": "image"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
+      "default": "analyze",
+      "options": [
+        {
+          "name": "Analyze",
+          "value": "analyze"
+        }
+      ]
     },
     {
       "name": "type",
       "displayName": "Type",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Detect Labels",
-      "default": null
-    },
-    {
-      "name": "Detect Moderation Labels",
-      "default": null
-    },
-    {
-      "name": "Detect Text",
-      "default": null
-    },
-    {
-      "name": "Recognize Celebrity",
-      "default": null
+      "default": "detectFaces",
+      "options": [
+        {
+          "name": "Detect Faces",
+          "value": "detectFaces"
+        },
+        {
+          "name": "Detect Labels",
+          "value": "detectLabels"
+        },
+        {
+          "name": "Detect Moderation Labels",
+          "value": "detectModerationLabels"
+        },
+        {
+          "name": "Detect Text",
+          "value": "detectText"
+        },
+        {
+          "name": "Recognize Celebrity",
+          "value": "recognizeCelebrity"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyze"
+          ],
+          "resource": [
+            "image"
+          ]
+        }
+      }
     },
     {
       "name": "binaryData",
@@ -44,14 +72,37 @@
       "type": "boolean",
       "default": false,
       "description": "Whether the image to analyze should be taken from binary field",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyze"
+          ],
+          "resource": [
+            "image"
+          ]
+        }
+      }
     },
     {
       "name": "binaryPropertyName",
       "displayName": "Input Binary Field",
       "type": "string",
       "default": "data",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyze"
+          ],
+          "resource": [
+            "image"
+          ],
+          "binaryData": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "bucket",
@@ -59,7 +110,20 @@
       "type": "string",
       "default": "",
       "description": "Name of the S3 bucket",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyze"
+          ],
+          "resource": [
+            "image"
+          ],
+          "binaryData": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "name",
@@ -67,7 +131,20 @@
       "type": "string",
       "default": "",
       "description": "S3 object key name",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyze"
+          ],
+          "resource": [
+            "image"
+          ],
+          "binaryData": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -78,84 +155,17 @@
       "placeholder": "Add Field",
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyze"
+          ],
+          "resource": [
+            "image"
+          ]
+        }
       }
-    },
-    {
-      "name": "left",
-      "displayName": "Left",
-      "type": "number",
-      "default": 0,
-      "description": "Left coordinate of the bounding box as a ratio of overall image width"
-    },
-    {
-      "name": "top",
-      "displayName": "Top",
-      "type": "number",
-      "default": 0,
-      "description": "Top coordinate of the bounding box as a ratio of overall image height"
-    },
-    {
-      "name": "Width",
-      "displayName": "Width",
-      "type": "number",
-      "default": 0,
-      "description": "Width of the bounding box as a ratio of the overall image width"
-    },
-    {
-      "name": "version",
-      "displayName": "Version",
-      "type": "string",
-      "default": "",
-      "description": "If the bucket is versioning enabled, you can specify the object version"
-    },
-    {
-      "name": "wordFilterUi",
-      "displayName": "Word Filter",
-      "type": "collection",
-      "default": {},
-      "description": "Sets the minimum height of the word bounding box. Words with bounding box heights lesser than this value will be excluded from the result. Value is relative to the video frame height.",
-      "placeholder": "Add Word Filter",
-      "typeOptions": {
-        "multipleValues": true
-      }
-    },
-    {
-      "name": "MinBoundingBoxWidth",
-      "displayName": "Min Bounding Box Width",
-      "type": "number",
-      "default": 0,
-      "description": "Sets the minimum width of the word bounding box. Words with bounding boxes widths lesser than this value will be excluded from the result. Value is relative to the video frame width."
-    },
-    {
-      "name": "MinConfidence",
-      "displayName": "Min Confidence",
-      "type": "number",
-      "default": 0,
-      "description": "Sets the confidence of word detection. Words with detection confidence below this will be excluded from the result. Values should be between 50 and 100 as Text in Video will not return any result below 50."
-    },
-    {
-      "name": "maxLabels",
-      "displayName": "Max Labels",
-      "type": "number",
-      "default": 0,
-      "description": "Maximum number of labels you want the service to return in the response. The service returns the specified number of highest confidence labels."
-    },
-    {
-      "name": "minConfidence",
-      "displayName": "Min Confidence",
-      "type": "number",
-      "default": 0,
-      "description": "Specifies the minimum confidence level for the labels to return. Amazon Rekognition doesn't return any labels with a confidence level lower than this specified value."
-    },
-    {
-      "name": "attributes",
-      "displayName": "Attributes",
-      "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "Default",
-      "default": null
     }
   ],
   "credentialsConfig": [
@@ -187,5 +197,27 @@
       "name": "maxLabels",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

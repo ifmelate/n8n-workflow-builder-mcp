@@ -10,26 +10,84 @@
       "type": "string",
       "default": "",
       "description": "The unique ID of the list object to be retrieved",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "list"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "list"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 5,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 10
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "list"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Get a list"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many lists"
+      "default": "get",
+      "description": "Get a list",
+      "options": [
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a list"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many lists"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "list"
+          ]
+        }
+      }
     },
     {
       "name": "entityId",
@@ -37,7 +95,17 @@
       "type": "string",
       "default": "",
       "description": "The unique ID of the entity (person, organization, or opportunity) to add to this list",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "listEntry"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -45,7 +113,26 @@
       "type": "collection",
       "default": {},
       "description": "The ID of a Person resource who should be recorded as adding the entry to the list. Must be a person who can access Affinity. If not provided the creator defaults to the owner of the API key.",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "creator_id",
+          "displayName": "Creator ID",
+          "type": "string",
+          "default": "",
+          "description": "The ID of a Person resource who should be recorded as adding the entry to the list. Must be a person who can access Affinity. If not provided the creator defaults to the owner of the API key."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "listEntry"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "listEntryId",
@@ -53,24 +140,17 @@
       "type": "string",
       "default": "",
       "description": "The unique ID of the list entry object to be retrieved",
-      "required": true
-    },
-    {
-      "name": "returnAll",
-      "displayName": "Return All",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all results or only up to a given limit"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a list entry"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a list entry"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "listEntry"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "name",
@@ -78,7 +158,17 @@
       "type": "string",
       "default": "",
       "description": "The name of the organization",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "organization"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "domain",
@@ -86,7 +176,17 @@
       "type": "string",
       "default": "",
       "description": "The domain name of the organization",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "organization"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "organizationId",
@@ -94,7 +194,17 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for the organization",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "organization"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -102,14 +212,33 @@
       "type": "collection",
       "default": {},
       "description": "The domain name of the organization",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "persons",
-      "displayName": "Person Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Persons that the new organization will be associated with. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "domain",
+          "displayName": "Domain",
+          "type": "string",
+          "default": "",
+          "description": "The domain name of the organization"
+        },
+        {
+          "name": "name",
+          "displayName": "Name",
+          "type": "string",
+          "default": "",
+          "description": "The name of the organization"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "organization"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -117,19 +246,26 @@
       "type": "collection",
       "default": {},
       "description": "Whether interaction dates will be present on the returned resources",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "withInteractionDates",
-      "displayName": "With Interaction Dates",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether interaction dates will be present on the returned resources"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update an organization"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "withInteractionDates",
+          "displayName": "With Interaction Dates",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether interaction dates will be present on the returned resources"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "organization"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "firstName",
@@ -137,7 +273,17 @@
       "type": "string",
       "default": "",
       "description": "The first name of the person",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "person"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "lastName",
@@ -145,7 +291,17 @@
       "type": "string",
       "default": "",
       "description": "The last name of the person",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "person"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "emails",
@@ -154,14 +310,19 @@
       "default": [],
       "description": "The email addresses of the person",
       "placeholder": "info@example.com",
-      "required": true
-    },
-    {
-      "name": "organizations",
-      "displayName": "Organization Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Organizations that the person is associated with. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "person"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "personId",
@@ -169,25 +330,41 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for the person",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "person"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "List Entry",
-      "default": null
-    },
-    {
-      "name": "Organization",
-      "default": null
-    },
-    {
-      "name": "Person",
-      "default": null
+      "default": "organization",
+      "options": [
+        {
+          "name": "List",
+          "value": "list"
+        },
+        {
+          "name": "List Entry",
+          "value": "listEntry"
+        },
+        {
+          "name": "Organization",
+          "value": "organization"
+        },
+        {
+          "name": "Person",
+          "value": "person"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -199,5 +376,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

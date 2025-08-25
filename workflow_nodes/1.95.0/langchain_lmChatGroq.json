@@ -4,5 +4,33 @@
   "description": "Language Model Groq",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "AiLanguageModel"
+    ],
+    "outputNames": [
+      "Model"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiChain",
+        "AiChain"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "model",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent",
+      "AiChain"
+    ],
+    "consumes": [],
+    "produces": [
+      "AiLanguageModel"
+    ]
+  }
 }

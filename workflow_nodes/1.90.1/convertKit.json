@@ -10,7 +10,18 @@
       "type": "string",
       "default": "",
       "description": "The ID of your custom field",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customField"
+          ],
+          "operation": [
+            "update",
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "label",
@@ -18,43 +29,95 @@
       "type": "string",
       "default": "",
       "description": "The label of the custom field",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customField"
+          ],
+          "operation": [
+            "update",
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "customField"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "customField"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a field"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a field"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many fields"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a field"
+      "default": "update",
+      "description": "Create a field",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a field"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a field"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many fields"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a field"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "customField"
+          ]
+        }
+      }
     },
     {
       "name": "email",
@@ -63,7 +126,17 @@
       "default": "",
       "description": "The subscriber's email address",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "form"
+          ],
+          "operation": [
+            "addSubscriber"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -74,38 +147,17 @@
       "placeholder": "Add Field",
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "form"
+          ],
+          "operation": [
+            "addSubscriber"
+          ]
+        }
       }
-    },
-    {
-      "name": "value",
-      "displayName": "Field Value",
-      "type": "string",
-      "default": "",
-      "description": "Value of the field",
-      "placeholder": "Doe"
-    },
-    {
-      "name": "firstName",
-      "displayName": "First Name",
-      "type": "string",
-      "default": "",
-      "description": "The subscriber's first name"
-    },
-    {
-      "name": "Cancelled",
-      "default": null
-    },
-    {
-      "name": "Get Subscriptions",
-      "default": null,
-      "description": "List subscriptions to a form including subscriber data"
-    },
-    {
-      "name": "tags",
-      "displayName": "Tag Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Tags. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
     },
     {
       "name": "name",
@@ -113,7 +165,17 @@
       "type": "string",
       "default": "",
       "description": "Tag name, multiple can be added separated by comma",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "tag"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "tagId",
@@ -121,29 +183,47 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "tagSubscriber"
+          ],
+          "operation": [
+            "add",
+            "getAll",
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Form",
-      "default": null
-    },
-    {
-      "name": "Sequence",
-      "default": null
-    },
-    {
-      "name": "Tag",
-      "default": null
-    },
-    {
-      "name": "Tag Subscriber",
-      "default": null
+      "default": "form",
+      "options": [
+        {
+          "name": "Custom Field",
+          "value": "customField"
+        },
+        {
+          "name": "Form",
+          "value": "form"
+        },
+        {
+          "name": "Sequence",
+          "value": "sequence"
+        },
+        {
+          "name": "Tag",
+          "value": "tag"
+        },
+        {
+          "name": "Tag Subscriber",
+          "value": "tagSubscriber"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -155,5 +235,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

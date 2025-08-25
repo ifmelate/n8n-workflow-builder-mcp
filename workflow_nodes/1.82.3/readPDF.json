@@ -24,8 +24,29 @@
       "displayName": "Password",
       "type": "string",
       "default": "",
-      "description": "Password to decrypt the PDF file with"
+      "description": "Password to decrypt the PDF file with",
+      "displayOptions": {
+        "show": {
+          "encrypted": [
+            true
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -19,27 +19,41 @@
       "name": "httpMethod",
       "displayName": "HTTP Methods",
       "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "GET",
-      "default": null
-    },
-    {
-      "name": "HEAD",
-      "default": null
-    },
-    {
-      "name": "PATCH",
-      "default": null
-    },
-    {
-      "name": "POST",
-      "default": null
-    },
-    {
-      "name": "PUT",
-      "default": null
+      "default": "['GET', 'POST']",
+      "description": "The HTTP methods to listen to",
+      "options": [
+        {
+          "name": "DELETE",
+          "value": "DELETE"
+        },
+        {
+          "name": "GET",
+          "value": "GET"
+        },
+        {
+          "name": "HEAD",
+          "value": "HEAD"
+        },
+        {
+          "name": "PATCH",
+          "value": "PATCH"
+        },
+        {
+          "name": "POST",
+          "value": "POST"
+        },
+        {
+          "name": "PUT",
+          "value": "PUT"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "multipleMethods": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "path",
@@ -49,7 +63,34 @@
       "description": "The path to listen to, dynamic values could be specified by using ':', e.g. 'your-path/:dynamic-value'. If dynamic values are set 'webhookId' would be prepended to path.",
       "placeholder": "webhook",
       "required": true
+    },
+    {
+      "name": "webhookNotice",
+      "displayName": "Insert a 'Respond to Webhook' node to control when and how you respond. <a href=\"https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.respondtowebhook/\" target=\"_blank\">More details</a>",
+      "type": "notice",
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "responseMode": [
+            "responseNode"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

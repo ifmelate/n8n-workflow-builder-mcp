@@ -13,7 +13,17 @@
       "type": "options",
       "default": "",
       "description": "ID of the doc. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "control"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "controlId",
@@ -21,33 +31,84 @@
       "type": "string",
       "default": "",
       "description": "The control to get the row from",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "control"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "control"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "control"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Get a control"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many controls"
+      "default": "get",
+      "description": "Get a control",
+      "options": [
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a control"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many controls"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "control"
+          ]
+        }
+      }
     },
     {
       "name": "formulaId",
@@ -55,7 +116,17 @@
       "type": "string",
       "default": "",
       "description": "The formula to get the row from",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "formula"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "tableId",
@@ -63,7 +134,17 @@
       "type": "options",
       "default": "",
       "description": "The table to create the row in. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "table"
+          ],
+          "operation": [
+            "createRow"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -71,14 +152,33 @@
       "type": "collection",
       "default": {},
       "description": "Whether the API will not attempt to parse the data in any way",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "keyColumns",
-      "displayName": "Key Columns",
-      "type": "string",
-      "default": "",
-      "description": "Optional column IDs, URLs, or names (fragile and discouraged), specifying columns to be used as upsert keys. If more than one separate by a comma (,)."
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "disableParsing",
+          "displayName": "Disable Parsing",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the API will not attempt to parse the data in any way"
+        },
+        {
+          "name": "keyColumns",
+          "displayName": "Key Columns",
+          "type": "string",
+          "default": "",
+          "description": "Optional column IDs, URLs, or names (fragile and discouraged), specifying columns to be used as upsert keys. If more than one separate by a comma (,)."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "table"
+          ],
+          "operation": [
+            "createRow"
+          ]
+        }
+      }
     },
     {
       "name": "rowId",
@@ -86,52 +186,17 @@
       "type": "string",
       "default": "",
       "description": "ID or name of the row. Names are discouraged because they're easily prone to being changed by users. If you're using a name, be sure to URI-encode it. If there are multiple rows with the same value in the identifying column, an arbitrary one will be selected",
-      "required": true
-    },
-    {
-      "name": "useColumnNames",
-      "displayName": "Use Column Names",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to use column names instead of column IDs in the returned output. This is generally discouraged as it is fragile. If columns are renamed, code using original names may throw errors."
-    },
-    {
-      "name": "valueFormat",
-      "displayName": "ValueFormat",
-      "type": "options",
-      "default": ""
-    },
-    {
-      "name": "Simple With Arrays",
-      "default": null
-    },
-    {
-      "name": "Rich",
-      "default": null
-    },
-    {
-      "name": "rawData",
-      "displayName": "RAW Data",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return the data exactly in the way it got received from the API"
-    },
-    {
-      "name": "sortBy",
-      "displayName": "Sort By",
-      "type": "options",
-      "default": ""
-    },
-    {
-      "name": "Natural",
-      "default": null
-    },
-    {
-      "name": "visibleOnly",
-      "displayName": "Visible Only",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return only visible rows and columns for the table"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "table"
+          ],
+          "operation": [
+            "getRow"
+          ]
+        }
+      }
     },
     {
       "name": "columnId",
@@ -139,37 +204,17 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
-    },
-    {
-      "name": "Delete Row",
-      "default": null,
-      "description": "Delete one or multiple rows"
-    },
-    {
-      "name": "Get All Columns",
-      "default": null,
-      "description": "Get all columns in a table"
-    },
-    {
-      "name": "Get All Rows",
-      "default": null,
-      "description": "Get all rows in a table"
-    },
-    {
-      "name": "Get Column",
-      "default": null,
-      "description": "Get a column"
-    },
-    {
-      "name": "Get Row",
-      "default": null,
-      "description": "Get a row"
-    },
-    {
-      "name": "Push Button",
-      "default": null,
-      "description": "Pushes a button"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "table"
+          ],
+          "operation": [
+            "pushButton"
+          ]
+        }
+      }
     },
     {
       "name": "viewId",
@@ -177,7 +222,17 @@
       "type": "string",
       "default": "",
       "description": "The view to get the row from",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "view"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "keyName",
@@ -185,48 +240,46 @@
       "type": "string",
       "default": "columns",
       "description": "The view to get the row from",
-      "required": true
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a view"
-    },
-    {
-      "name": "Get Columns",
-      "default": null,
-      "description": "Get all views columns"
-    },
-    {
-      "name": "Get Rows",
-      "default": null,
-      "description": "Get all views rows"
-    },
-    {
-      "name": "Update Row",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "view"
+          ],
+          "operation": [
+            "updateViewRow"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "description": "Controls provide a user-friendly way to input a value that can affect other parts of the doc"
-    },
-    {
-      "name": "Formula",
-      "default": null,
-      "description": "Formulas can be great for performing one-off computations"
-    },
-    {
-      "name": "Table",
-      "default": null,
-      "description": "Access data of tables in documents"
-    },
-    {
-      "name": "View",
-      "default": null,
-      "description": "Access data of views in documents"
+      "default": "table",
+      "description": "Controls provide a user-friendly way to input a value that can affect other parts of the doc",
+      "options": [
+        {
+          "name": "Control",
+          "value": "control",
+          "description": "Controls provide a user-friendly way to input a value that can affect other parts of the doc"
+        },
+        {
+          "name": "Formula",
+          "value": "formula",
+          "description": "Formulas can be great for performing one-off computations"
+        },
+        {
+          "name": "Table",
+          "value": "table",
+          "description": "Access data of tables in documents"
+        },
+        {
+          "name": "View",
+          "value": "view",
+          "description": "Access data of views in documents"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -238,5 +291,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

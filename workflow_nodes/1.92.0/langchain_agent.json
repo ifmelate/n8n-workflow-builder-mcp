@@ -20,7 +20,17 @@
       "displayName": "Text",
       "type": "string",
       "default": "={{ $json.input }}",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "agent": [
+            "conversationalAgent"
+          ],
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -28,49 +38,45 @@
       "type": "collection",
       "default": {},
       "description": "The message that will provide the agent with a list of tools to use",
-      "placeholder": "Add Option"
-    },
-    {
-      "name": "systemMessage",
-      "displayName": "System Message",
-      "type": "string",
-      "default": null,
-      "description": "The message that will be sent to the agent before the conversation starts"
-    },
-    {
-      "name": "maxIterations",
-      "displayName": "Max Iterations",
-      "type": "number",
-      "default": 10,
-      "description": "The maximum number of iterations the agent will run before stopping"
-    },
-    {
-      "name": "returnIntermediateSteps",
-      "displayName": "Return Intermediate Steps",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether or not the output should include intermediate steps the agent took"
-    },
-    {
-      "name": "prefix",
-      "displayName": "Prefix Message",
-      "type": "string",
-      "default": null,
-      "description": "String to put before the list of tools"
-    },
-    {
-      "name": "suffixChat",
-      "displayName": "Suffix Message for Chat Model",
-      "type": "string",
-      "default": null,
-      "description": "String to put after the list of tools that will be used if chat model is used"
-    },
-    {
-      "name": "suffix",
-      "displayName": "Suffix Message for Regular Model",
-      "type": "string",
-      "default": null,
-      "description": "String to put after the list of tools that will be used if regular model is used"
+      "placeholder": "Add Option",
+      "options": [
+        {
+          "name": "humanMessage",
+          "displayName": "Human Message",
+          "type": "string",
+          "description": "The message that will provide the agent with a list of tools to use"
+        },
+        {
+          "name": "systemMessage",
+          "displayName": "System Message",
+          "type": "string",
+          "description": "The message that will be sent to the agent before the conversation starts"
+        },
+        {
+          "name": "maxIterations",
+          "displayName": "Max Iterations",
+          "type": "number",
+          "default": 10,
+          "description": "The maximum number of iterations the agent will run before stopping"
+        },
+        {
+          "name": "returnIntermediateSteps",
+          "displayName": "Return Intermediate Steps",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether or not the output should include intermediate steps the agent took"
+        }
+      ],
+      "typeOptions": {
+        "rows": 6
+      },
+      "displayOptions": {
+        "show": {
+          "agent": [
+            "conversationalAgent"
+          ]
+        }
+      }
     },
     {
       "name": "credentials",
@@ -82,7 +88,17 @@
       "name": "sqLiteFileNotice",
       "displayName": "Pass the SQLite database into this node as binary data, e.g. by inserting a 'Read/Write Files from Disk' node beforehand",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "agent": [
+            "sqlAgent"
+          ],
+          "dataSource": [
+            "sqlite"
+          ]
+        }
+      }
     },
     {
       "name": "binaryPropertyName",
@@ -90,70 +106,53 @@
       "type": "string",
       "default": "data",
       "placeholder": "e.g data",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "agent": [
+            "sqlAgent"
+          ],
+          "dataSource": [
+            "sqlite"
+          ]
+        }
+      }
     },
     {
       "name": "input",
       "displayName": "Prompt",
       "type": "string",
-      "default": null
-    },
-    {
-      "name": "includedSampleRows",
-      "displayName": "Include Sample Rows",
-      "type": "number",
-      "default": 3,
-      "description": "Number of sample rows to include in the prompt to the agent. It helps the agent to understand the schema of the database but it also increases the amount of tokens used."
-    },
-    {
-      "name": "includedTables",
-      "displayName": "Included Tables",
-      "type": "string",
       "default": "",
-      "description": "Comma-separated list of tables to include in the database. If empty, all tables are included."
-    },
-    {
-      "name": "prefixPrompt",
-      "displayName": "Prefix Prompt",
-      "type": "string",
-      "default": null,
-      "description": "Prefix prompt to use for the agent"
-    },
-    {
-      "name": "suffixPrompt",
-      "displayName": "Suffix Prompt",
-      "type": "string",
-      "default": null,
-      "description": "Suffix prompt to use for the agent"
-    },
-    {
-      "name": "topK",
-      "displayName": "Limit",
-      "type": "number",
-      "default": 10,
-      "description": "The maximum number of results to return"
-    },
-    {
-      "name": "passthroughBinaryImages",
-      "displayName": "Automatically Passthrough Binary Images",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether or not binary images should be automatically passed through to the agent as image type messages"
-    },
-    {
-      "name": "batching",
-      "displayName": "Batch Processing",
-      "type": "collection",
-      "default": {},
-      "description": "Batch processing options for rate limiting"
-    },
-    {
-      "name": "delayBetweenBatches",
-      "displayName": "Delay Between Batches",
-      "type": "number",
-      "default": 0,
-      "description": "Delay in milliseconds between batches. This is useful for rate limiting."
+      "required": true,
+      "typeOptions": {
+        "rows": 5
+      },
+      "displayOptions": "{\n\t\t\tshow: {\n\t\t\t\tagent: ['sqlAgent'],\n\t\t\t\t'@version': [{ _cnd: { lte: 1.2 }"
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "agent",
+    "requires": [
+      "AiLanguageModel"
+    ],
+    "optional": [
+      "AiMemory",
+      "AiOutputParser",
+      "AiTool"
+    ],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

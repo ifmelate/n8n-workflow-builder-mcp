@@ -8,18 +8,39 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Voice",
-      "default": null
+      "default": "sms",
+      "options": [
+        {
+          "name": "SMS",
+          "value": "sms"
+        },
+        {
+          "name": "Voice",
+          "value": "voice"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Send SMS/Voice message"
+      "default": "send",
+      "description": "Send SMS/Voice message",
+      "options": [
+        {
+          "name": "Send",
+          "value": "send",
+          "description": "Send SMS/Voice message"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms",
+            "voice"
+          ]
+        }
+      }
     },
     {
       "name": "from",
@@ -28,7 +49,18 @@
       "default": "",
       "description": "Number to which to send the message",
       "placeholder": "Sender Number",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms",
+            "voice"
+          ]
+        }
+      }
     },
     {
       "name": "to",
@@ -37,29 +69,56 @@
       "default": "",
       "description": "Number from which to send the message",
       "placeholder": "Receipient number",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms",
+            "voice"
+          ]
+        }
+      }
     },
     {
       "name": "language",
       "displayName": "Language",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "English (United Kingdom)",
-      "default": null
-    },
-    {
-      "name": "English (United States)",
-      "default": null
-    },
-    {
-      "name": "Japanese (Japan)",
-      "default": null
-    },
-    {
-      "name": "Korean (Korea)",
-      "default": null
+      "default": "en-US",
+      "options": [
+        {
+          "name": "Chinese Mandarin (China)",
+          "value": "cmn-CN"
+        },
+        {
+          "name": "English (United Kingdom)",
+          "value": "en-GB"
+        },
+        {
+          "name": "English (United States)",
+          "value": "en-US"
+        },
+        {
+          "name": "Japanese (Japan)",
+          "value": "ja-JP"
+        },
+        {
+          "name": "Korean (Korea)",
+          "value": "ko-KR"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "voice"
+          ]
+        }
+      }
     },
     {
       "name": "message",
@@ -68,14 +127,44 @@
       "default": "",
       "description": "Message to send",
       "placeholder": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms",
+            "voice"
+          ]
+        }
+      }
     },
     {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "dlrUrl",
+          "displayName": "Delivery Report URL",
+          "type": "string",
+          "default": "",
+          "placeholder": ""
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -99,5 +188,19 @@
       "name": "message",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

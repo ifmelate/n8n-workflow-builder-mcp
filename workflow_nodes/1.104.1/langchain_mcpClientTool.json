@@ -14,7 +14,14 @@
       "default": "",
       "description": "SSE Endpoint of your MCP server",
       "placeholder": "e.g. https://my-mcp-server.ai/sse",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "endpointUrl",
@@ -23,68 +30,113 @@
       "default": "",
       "description": "Endpoint of your MCP server",
       "placeholder": "e.g. https://my-mcp-server.ai/mcp",
-      "required": true
+      "required": true,
+      "displayOptions": "{\n\t\t\t\t\tshow: {\n\t\t\t\t\t\t'@version': [{ _cnd: { gte: 1.1 }"
     },
     {
       "name": "serverTransport",
       "displayName": "Server Transport",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "HTTP Streamable",
-      "default": null
+      "default": "sse",
+      "description": "The transport used by your endpoint",
+      "options": [
+        {
+          "name": "Server Sent Events (Deprecated)",
+          "value": "sse"
+        },
+        {
+          "name": "HTTP Streamable",
+          "value": "httpStreamable"
+        }
+      ],
+      "displayOptions": "{\n\t\t\t\t\tshow: {\n\t\t\t\t\t\t'@version': [{ _cnd: { gte: 1.1 }"
     },
     {
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Header Auth",
-      "default": null
-    },
-    {
-      "name": "None",
-      "default": null
+      "default": "none",
+      "description": "The way to authenticate with your endpoint",
+      "options": [
+        {
+          "name": "Bearer Auth",
+          "value": "bearerAuth"
+        },
+        {
+          "name": "Header Auth",
+          "value": "headerAuth"
+        },
+        {
+          "name": "None",
+          "value": "none"
+        }
+      ]
     },
     {
       "name": "credentials",
       "displayName": "Credentials",
       "type": "credentials",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "authentication": [
+            "headerAuth",
+            "bearerAuth"
+          ]
+        }
+      }
     },
     {
       "name": "include",
       "displayName": "Tools to Include",
       "type": "options",
       "default": "all",
-      "description": "How to select the tools you want to be exposed to the AI Agent"
-    },
-    {
-      "name": "Selected",
-      "default": null,
-      "description": "Also include the tools listed in the parameter \"Tools to Include\""
-    },
-    {
-      "name": "All Except",
-      "default": null,
-      "description": "Exclude the tools listed in the parameter \"Tools to Exclude\""
+      "description": "How to select the tools you want to be exposed to the AI Agent",
+      "options": [
+        {
+          "name": "All",
+          "value": "all",
+          "description": "Also include all unchanged fields from the input"
+        },
+        {
+          "name": "Selected",
+          "value": "selected",
+          "description": "Also include the tools listed in the parameter \"Tools to Include\""
+        },
+        {
+          "name": "All Except",
+          "value": "except",
+          "description": "Exclude the tools listed in the parameter \"Tools to Exclude\""
+        }
+      ]
     },
     {
       "name": "includeTools",
       "displayName": "Tools to Include",
       "type": "multiOptions",
       "default": [],
-      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "include": [
+            "selected"
+          ]
+        }
+      }
     },
     {
       "name": "excludeTools",
       "displayName": "Tools to Exclude",
       "type": "multiOptions",
       "default": [],
-      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "include": [
+            "except"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -112,5 +164,29 @@
       "name": "includeTools",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "AiTool"
+    ],
+    "outputNames": [],
+    "hints": {
+      "connectTo": [
+        "AiAgent"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "tool",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent"
+    ],
+    "consumes": [],
+    "produces": [
+      "AiTool"
+    ]
+  }
 }

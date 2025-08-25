@@ -11,54 +11,83 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Transform input data into a CSV file"
-    },
-    {
-      "name": "Convert to HTML",
-      "default": null,
-      "description": "Transform input data into a table in an HTML file"
-    },
-    {
-      "name": "Convert to ICS",
-      "default": null,
-      "description": "Converts each input item to an ICS event file"
-    },
-    {
-      "name": "Convert to JSON",
-      "default": null,
-      "description": "Transform input data into a single or multiple JSON files"
-    },
-    {
-      "name": "Convert to ODS",
-      "default": null,
-      "description": "Transform input data into an ODS file"
-    },
-    {
-      "name": "Convert to RTF",
-      "default": null,
-      "description": "Transform input data into a table in an RTF file"
-    },
-    {
-      "name": "Convert to Text File",
-      "default": null,
-      "description": "Transform input data string into a file"
-    },
-    {
-      "name": "Convert to XLS",
-      "default": null,
-      "description": "Transform input data into an Excel file"
-    },
-    {
-      "name": "Convert to XLSX",
-      "default": null,
-      "description": "Transform input data into an Excel file"
-    },
-    {
-      "name": "Move Base64 String to File",
-      "default": null,
-      "description": "Convert a base64-encoded string into its original file format"
+      "default": "csv",
+      "description": "Transform input data into a CSV file",
+      "options": [
+        {
+          "name": "Convert to CSV",
+          "value": "csv",
+          "description": "Transform input data into a CSV file"
+        },
+        {
+          "name": "Convert to HTML",
+          "value": "html",
+          "description": "Transform input data into a table in an HTML file"
+        },
+        {
+          "name": "Convert to ICS",
+          "value": "iCal",
+          "description": "Converts each input item to an ICS event file"
+        },
+        {
+          "name": "Convert to JSON",
+          "value": "toJson",
+          "description": "Transform input data into a single or multiple JSON files"
+        },
+        {
+          "name": "Convert to ODS",
+          "value": "ods",
+          "description": "Transform input data into an ODS file"
+        },
+        {
+          "name": "Convert to RTF",
+          "value": "rtf",
+          "description": "Transform input data into a table in an RTF file"
+        },
+        {
+          "name": "Convert to Text File",
+          "value": "toText",
+          "description": "Transform input data string into a file"
+        },
+        {
+          "name": "Convert to XLS",
+          "value": "xls",
+          "description": "Transform input data into an Excel file"
+        },
+        {
+          "name": "Convert to XLSX",
+          "value": "xlsx",
+          "description": "Transform input data into an Excel file"
+        },
+        {
+          "name": "Move Base64 String to File",
+          "value": "toBinary",
+          "description": "Convert a base64-encoded string into its original file format"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

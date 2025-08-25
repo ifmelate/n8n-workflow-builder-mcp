@@ -9,11 +9,23 @@
       "displayName": "Source",
       "type": "options",
       "default": "deliveryApi",
-      "description": "Pick where your data comes from, delivery or preview API"
+      "description": "Pick where your data comes from, delivery or preview API",
+      "options": [
+        {
+          "name": "Delivery API",
+          "value": "deliveryApi"
+        },
+        {
+          "name": "Preview API",
+          "value": "previewApi"
+        }
+      ]
     },
     {
-      "name": "Preview API",
-      "default": null
+      "name": "resource",
+      "displayName": "Resource",
+      "type": "options",
+      "default": "entry"
     }
   ],
   "credentialsConfig": [
@@ -25,5 +37,19 @@
       "name": "source",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

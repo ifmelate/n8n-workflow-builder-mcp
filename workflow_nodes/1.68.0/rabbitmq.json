@@ -11,29 +11,63 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "hidden",
-      "default": "sendMessage"
-    },
-    {
-      "name": "Delete From Queue",
-      "default": null
+      "default": "sendMessage",
+      "options": [
+        {
+          "name": "Send a Message to RabbitMQ",
+          "value": "sendMessage"
+        },
+        {
+          "name": "Delete From Queue",
+          "value": "deleteMessage"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "deleteMessage",
       "displayName": "Will delete an item from the queue triggered earlier in the workflow by a RabbitMQ Trigger node",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "deleteMessage"
+          ]
+        }
+      }
     },
     {
       "name": "mode",
       "displayName": "Mode",
       "type": "options",
-      "default": null,
-      "description": "Publish data to queue"
-    },
-    {
-      "name": "Exchange",
-      "default": null,
-      "description": "Publish data to exchange"
+      "default": "queue",
+      "description": "Publish data to queue",
+      "options": [
+        {
+          "name": "Queue",
+          "value": "queue",
+          "description": "Publish data to queue"
+        },
+        {
+          "name": "Exchange",
+          "value": "exchange",
+          "description": "Publish data to exchange"
+        }
+      ],
+      "displayOptions": {
+        "hide": {
+          "operation": [
+            "deleteMessage"
+          ]
+        }
+      }
     },
     {
       "name": "queue",
@@ -41,29 +75,65 @@
       "type": "string",
       "default": "",
       "description": "Name of the queue to publish to",
-      "placeholder": "queue-name"
+      "placeholder": "queue-name",
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "queue"
+          ]
+        }
+      }
+    },
+    {
+      "name": "exchange",
+      "displayName": "Exchange",
+      "type": "string",
+      "default": "",
+      "description": "Name of the exchange to publish to",
+      "placeholder": "exchange-name",
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "exchange"
+          ]
+        }
+      }
     },
     {
       "name": "exchangeType",
       "displayName": "Type",
       "type": "options",
-      "default": null,
-      "description": "Direct exchange type"
-    },
-    {
-      "name": "Topic",
-      "default": null,
-      "description": "Topic exchange type"
-    },
-    {
-      "name": "Headers",
-      "default": null,
-      "description": "Headers exchange type"
-    },
-    {
-      "name": "Fanout",
-      "default": null,
-      "description": "Fanout exchange type"
+      "default": "fanout",
+      "description": "Direct exchange type",
+      "options": [
+        {
+          "name": "Direct",
+          "value": "direct",
+          "description": "Direct exchange type"
+        },
+        {
+          "name": "Topic",
+          "value": "topic",
+          "description": "Topic exchange type"
+        },
+        {
+          "name": "Headers",
+          "value": "headers",
+          "description": "Headers exchange type"
+        },
+        {
+          "name": "Fanout",
+          "value": "fanout",
+          "description": "Fanout exchange type"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "exchange"
+          ]
+        }
+      }
     },
     {
       "name": "routingKey",
@@ -71,14 +141,42 @@
       "type": "string",
       "default": "",
       "description": "The routing key for the message",
-      "placeholder": "routing-key"
+      "placeholder": "routing-key",
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "exchange"
+          ]
+        }
+      }
+    },
+    {
+      "name": "sendInputData",
+      "displayName": "Send Input Data",
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to send the data the node receives as JSON",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendMessage"
+          ]
+        }
+      }
     },
     {
       "name": "message",
       "displayName": "Message",
       "type": "string",
       "default": "",
-      "description": "The message to be sent"
+      "description": "The message to be sent",
+      "displayOptions": {
+        "show": {
+          "sendInputData": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -86,50 +184,17 @@
       "type": "collection",
       "default": {},
       "description": "An exchange to send messages to if this exchange can’t route them to any queues",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "arguments",
-      "displayName": "Arguments",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Arguments to add, See <a href=\"https://amqp-node.github.io/amqplib/channel_api.html#channel_publish\" target=\"_blank\">here</a> for valid options",
-      "placeholder": "Add Argument"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "autoDelete",
-      "displayName": "Auto Delete Queue",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the queue will be deleted when the number of consumers drops to zero"
-    },
-    {
-      "name": "durable",
-      "displayName": "Durable",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether the queue will survive broker restarts"
-    },
-    {
-      "name": "exclusive",
-      "displayName": "Exclusive",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to scope the queue to the connection"
-    },
-    {
-      "name": "headers",
-      "displayName": "Headers",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Headers to add",
-      "placeholder": "Add Header"
+      "placeholder": "Add option",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "sendMessage"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -161,5 +226,19 @@
       "name": "autoDelete",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

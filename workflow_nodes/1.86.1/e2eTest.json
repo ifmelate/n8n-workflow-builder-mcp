@@ -8,15 +8,21 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Resource Locator",
-      "default": null
-    },
-    {
-      "name": "Resource Mapping Component",
-      "default": null
+      "default": "remoteOptions",
+      "options": [
+        {
+          "name": "Remote Options",
+          "value": "remoteOptions"
+        },
+        {
+          "name": "Resource Locator",
+          "value": "resourceLocator"
+        },
+        {
+          "name": "Resource Mapping Component",
+          "value": "resourceMapper"
+        }
+      ]
     },
     {
       "name": "fieldId",
@@ -30,34 +36,43 @@
       "type": "options",
       "default": [],
       "description": "Remote options to load. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "remoteOptions"
+          ]
+        }
+      }
     },
     {
       "name": "rlc",
       "displayName": "Resource Locator",
       "type": "resourceLocator",
       "default": "{ mode: 'list', value: '' }",
-      "required": true
-    },
-    {
-      "name": "url",
-      "displayName": "By URL",
-      "type": "string",
-      "default": null,
-      "placeholder": "https://example.com/user/a4071e98-7d40-41fb-8911-ce3e7bf94fb2"
-    },
-    {
-      "name": "id",
-      "displayName": "ID",
-      "type": "string",
-      "default": null
+      "placeholder": "https://example.com/user/a4071e98-7d40-41fb-8911-ce3e7bf94fb2",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "resourceLocator"
+          ]
+        }
+      }
     },
     {
       "name": "resourceMapper",
       "displayName": "Resource Mapping Component",
       "type": "resourceMapper",
       "default": "{\n\t\t\t\t\tmappingMode: 'defineBelow',\n\t\t\t\t\tvalue: null,\n\t\t\t\t}",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "resourceMapper"
+          ]
+        }
+      }
     },
     {
       "name": "otherField",
@@ -66,5 +81,27 @@
       "default": ""
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

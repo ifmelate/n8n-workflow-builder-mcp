@@ -8,393 +8,285 @@
       "name": "familyName",
       "displayName": "Family Name",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "givenName",
       "displayName": "Given Name",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "city",
-      "displayName": "City",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "region",
-      "displayName": "Region",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "countryCode",
-      "displayName": "Country Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "postalCode",
-      "displayName": "Postal Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "type",
-      "displayName": "Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Work",
-      "default": null
-    },
-    {
-      "name": "Other",
-      "default": null
-    },
-    {
-      "name": "birthday",
-      "displayName": "Birthday",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "companyUi",
-      "displayName": "Company",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Company"
-    },
-    {
-      "name": "domain",
-      "displayName": "Domain",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "title",
-      "displayName": "Title",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "customFieldsUi",
-      "displayName": "Custom Fields",
-      "type": "fixedCollection",
-      "default": {},
       "description": "The end user specified key of the user defined data",
-      "placeholder": "Add Custom Field"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "The end user specified value of the user defined data"
-    },
-    {
-      "name": "emailsUi",
-      "displayName": "Emails",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Email"
-    },
-    {
-      "name": "eventsUi",
-      "displayName": "Events",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "An event related to the person",
-      "placeholder": "Add Event"
-    },
-    {
-      "name": "fileAs",
-      "displayName": "File As",
-      "type": "string",
-      "default": "",
-      "description": "The name that should be used to sort the person in a list"
-    },
-    {
-      "name": "group",
-      "displayName": "Group Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "honorificPrefix",
-      "displayName": "Honorific Prefix",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "honorificSuffix",
-      "displayName": "Honorific Suffix",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "middleName",
-      "displayName": "Middle Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "biographies",
-      "displayName": "Notes",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "phoneUi",
-      "displayName": "Phone",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Phone"
-    },
-    {
-      "name": "Home",
-      "default": null
-    },
-    {
-      "name": "Home Fax",
-      "default": null
-    },
-    {
-      "name": "Main",
-      "default": null
-    },
-    {
-      "name": "Mobile",
-      "default": null
-    },
-    {
-      "name": "Other Fax",
-      "default": null
-    },
-    {
-      "name": "Pager",
-      "default": null
-    },
-    {
-      "name": "Work Fax",
-      "default": null
-    },
-    {
-      "name": "Work Mobile",
-      "default": null
-    },
-    {
-      "name": "Work Pager",
-      "default": null
-    },
-    {
-      "name": "relationsUi",
-      "displayName": "Relations",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "The name of the other person this relation refers to",
-      "placeholder": "Add Relation"
-    },
-    {
-      "name": "Brother",
-      "default": null
-    },
-    {
-      "name": "Child",
-      "default": null
-    },
-    {
-      "name": "Domestic Partner",
-      "default": null
-    },
-    {
-      "name": "Father",
-      "default": null
-    },
-    {
-      "name": "Friend",
-      "default": null
-    },
-    {
-      "name": "Manager",
-      "default": null
-    },
-    {
-      "name": "Mother",
-      "default": null
-    },
-    {
-      "name": "Parent",
-      "default": null
-    },
-    {
-      "name": "Referred By",
-      "default": null
-    },
-    {
-      "name": "Relative",
-      "default": null
-    },
-    {
-      "name": "Sister",
-      "default": null
-    },
-    {
-      "name": "Spouse",
-      "default": null
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "contactId",
       "displayName": "Contact ID",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "fields",
       "displayName": "Fields",
       "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "Addresses",
-      "default": null
-    },
-    {
-      "name": "Biographies",
-      "default": null
-    },
-    {
-      "name": "Birthdays",
-      "default": null
-    },
-    {
-      "name": "Cover Photos",
-      "default": null
-    },
-    {
-      "name": "Email Addresses",
-      "default": null
-    },
-    {
-      "name": "Events",
-      "default": null
-    },
-    {
-      "name": "Genders",
-      "default": null
-    },
-    {
-      "name": "IM Clients",
-      "default": null
-    },
-    {
-      "name": "Interests",
-      "default": null
-    },
-    {
-      "name": "Locales",
-      "default": null
-    },
-    {
-      "name": "Memberships",
-      "default": null
-    },
-    {
-      "name": "Metadata",
-      "default": null
-    },
-    {
-      "name": "Names",
-      "default": null
-    },
-    {
-      "name": "Nicknames",
-      "default": null
-    },
-    {
-      "name": "Occupations",
-      "default": null
-    },
-    {
-      "name": "Organizations",
-      "default": null
-    },
-    {
-      "name": "Phone Numbers",
-      "default": null
-    },
-    {
-      "name": "Photos",
-      "default": null
-    },
-    {
-      "name": "Relations",
-      "default": null
-    },
-    {
-      "name": "Residences",
-      "default": null
-    },
-    {
-      "name": "Sip Addresses",
-      "default": null
-    },
-    {
-      "name": "Skills",
-      "default": null
-    },
-    {
-      "name": "URLs",
-      "default": null
-    },
-    {
-      "name": "User Defined",
-      "default": null
+      "default": [],
+      "description": "A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas.",
+      "options": [
+        {
+          "name": "*",
+          "value": "*"
+        },
+        {
+          "name": "Addresses",
+          "value": "addresses"
+        },
+        {
+          "name": "Biographies",
+          "value": "biographies"
+        },
+        {
+          "name": "Birthdays",
+          "value": "birthdays"
+        },
+        {
+          "name": "Cover Photos",
+          "value": "coverPhotos"
+        },
+        {
+          "name": "Email Addresses",
+          "value": "emailAddresses"
+        },
+        {
+          "name": "Events",
+          "value": "events"
+        },
+        {
+          "name": "Genders",
+          "value": "genders"
+        },
+        {
+          "name": "IM Clients",
+          "value": "imClients"
+        },
+        {
+          "name": "Interests",
+          "value": "interests"
+        },
+        {
+          "name": "Locales",
+          "value": "locales"
+        },
+        {
+          "name": "Memberships",
+          "value": "memberships"
+        },
+        {
+          "name": "Metadata",
+          "value": "metadata"
+        },
+        {
+          "name": "Names",
+          "value": "names"
+        },
+        {
+          "name": "Nicknames",
+          "value": "nicknames"
+        },
+        {
+          "name": "Occupations",
+          "value": "occupations"
+        },
+        {
+          "name": "Organizations",
+          "value": "organizations"
+        },
+        {
+          "name": "Phone Numbers",
+          "value": "phoneNumbers"
+        },
+        {
+          "name": "Photos",
+          "value": "photos"
+        },
+        {
+          "name": "Relations",
+          "value": "relations"
+        },
+        {
+          "name": "Residences",
+          "value": "residences"
+        },
+        {
+          "name": "Sip Addresses",
+          "value": "sipAddresses"
+        },
+        {
+          "name": "Skills",
+          "value": "skills"
+        },
+        {
+          "name": "URLs",
+          "value": "urls"
+        },
+        {
+          "name": "User Defined",
+          "value": "userDefined"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "rawData",
       "displayName": "RAW Data",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return the data exactly in the way it got received from the API"
+      "description": "Whether to return the data exactly in the way it got received from the API",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "contact"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "useQuery",
       "displayName": "Use Query",
       "type": "boolean",
       "default": false,
-      "description": "Whether or not to use a query to filter the results"
+      "description": "Whether or not to use a query to filter the results",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "query",
       "displayName": "Query",
       "type": "string",
       "default": "",
-      "description": "The plain-text query for the request. The query is used to match prefix phrases of the fields on a person. For example, a person with name \"foo name\" matches queries such as \"f\", \"fo\", \"foo\", \"foo n\", \"nam\", etc., but not \"oo n\"."
+      "description": "The plain-text query for the request. The query is used to match prefix phrases of the fields on a person. For example, a person with name \"foo name\" matches queries such as \"f\", \"fo\", \"foo\", \"foo n\", \"nam\", etc., but not \"oo n\".",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "contact"
+          ],
+          "useQuery": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -402,22 +294,20 @@
       "type": "collection",
       "default": {},
       "description": "Sort people by when they were changed; older entries first",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "Last Modified Descending",
-      "default": null,
-      "description": "Sort people by when they were changed; newer entries first"
-    },
-    {
-      "name": "First Name Ascending",
-      "default": null,
-      "description": "Sort people by first name"
-    },
-    {
-      "name": "Last Name Ascending",
-      "default": null,
-      "description": "Sort people by last name"
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "contact"
+          ],
+          "useQuery": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -425,47 +315,94 @@
       "type": "collection",
       "default": {},
       "description": "The etag field in the person is nedded to make sure the contact has not changed since your last read",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "addressesUi",
-      "displayName": "Addresses",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Address"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "etag",
+          "displayName": "Etag",
+          "type": "string",
+          "default": "",
+          "description": "The etag field in the person is nedded to make sure the contact has not changed since your last read"
+        },
+        {
+          "name": "familyName",
+          "displayName": "Family Name",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "givenName",
+          "displayName": "Given Name",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a contact"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a contact"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a contact"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Retrieve many contacts"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a contact"
+      "default": "create",
+      "description": "Create a contact",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a contact"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a contact"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a contact"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Retrieve many contacts"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a contact"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "contact",
+      "options": [
+        {
+          "name": "Contact",
+          "value": "contact"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -477,5 +414,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -8,18 +8,38 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "SMS",
-      "default": null
+      "default": "sms",
+      "options": [
+        {
+          "name": "Call",
+          "value": "call"
+        },
+        {
+          "name": "SMS",
+          "value": "sms"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Send SMS/MMS/WhatsApp message"
+      "default": "send",
+      "description": "Send SMS/MMS/WhatsApp message",
+      "options": [
+        {
+          "name": "Send",
+          "value": "send",
+          "description": "Send SMS/MMS/WhatsApp message"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     },
     {
       "name": "from",
@@ -28,7 +48,19 @@
       "default": "",
       "description": "The number from which to send the message",
       "placeholder": "+14155238886",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send",
+            "make"
+          ],
+          "resource": [
+            "sms",
+            "call"
+          ]
+        }
+      }
     },
     {
       "name": "to",
@@ -37,14 +69,36 @@
       "default": "",
       "description": "The number to which to send the message",
       "placeholder": "+14155238886",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send",
+            "make"
+          ],
+          "resource": [
+            "sms",
+            "call"
+          ]
+        }
+      }
     },
     {
       "name": "toWhatsapp",
       "displayName": "To Whatsapp",
       "type": "boolean",
       "default": false,
-      "description": "Whether the message should be sent to WhatsApp"
+      "description": "Whether the message should be sent to WhatsApp",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     },
     {
       "name": "message",
@@ -52,14 +106,34 @@
       "type": "string",
       "default": "",
       "description": "The message to send",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     },
     {
       "name": "twiml",
       "displayName": "Use TwiML",
       "type": "boolean",
       "default": false,
-      "description": "Whether to use the <a href=\"https://www.twilio.com/docs/voice/twiml\">Twilio Markup Language</a> in the message"
+      "description": "Whether to use the <a href=\"https://www.twilio.com/docs/voice/twiml\">Twilio Markup Language</a> in the message",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "make"
+          ],
+          "resource": [
+            "call"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -67,7 +141,16 @@
       "type": "collection",
       "default": {},
       "description": "Status Callbacks allow you to receive events related to the REST resources managed by Twilio: Rooms, Recordings and Compositions",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "statusCallback",
+          "displayName": "Status Callback",
+          "type": "string",
+          "default": "",
+          "description": "Status Callbacks allow you to receive events related to the REST resources managed by Twilio: Rooms, Recordings and Compositions"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -91,5 +174,27 @@
       "name": "from",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

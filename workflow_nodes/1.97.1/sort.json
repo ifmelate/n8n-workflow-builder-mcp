@@ -8,41 +8,58 @@
       "name": "type",
       "displayName": "Type",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Random",
-      "default": null
-    },
-    {
-      "name": "Code",
-      "default": null
+      "default": "simple",
+      "description": "The type of sorting to perform",
+      "options": [
+        {
+          "name": "Simple",
+          "value": "simple"
+        },
+        {
+          "name": "Random",
+          "value": "random"
+        },
+        {
+          "name": "Code",
+          "value": "code"
+        }
+      ]
     },
     {
       "name": "sortFieldsUi",
       "displayName": "Fields To Sort By",
       "type": "fixedCollection",
-      "default": "",
+      "default": {},
       "description": "The field to sort by",
       "placeholder": "Add Field To Sort By",
-      "required": true
-    },
-    {
-      "name": "order",
-      "displayName": "Order",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Descending",
-      "default": null
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "type": [
+            "simple"
+          ]
+        }
+      }
     },
     {
       "name": "code",
       "displayName": "Code",
       "type": "string",
       "default": null,
-      "description": "Javascript code to determine the order of any two items"
+      "description": "Javascript code to determine the order of any two items",
+      "typeOptions": {
+        "rows": 10
+      },
+      "displayOptions": {
+        "show": {
+          "type": [
+            "code"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -50,8 +67,46 @@
       "type": "collection",
       "default": {},
       "description": "Whether to disallow referencing child fields using `parent.child` in the field name",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "disableDotNotation",
+          "displayName": "Disable Dot Notation",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to disallow referencing child fields using `parent.child` in the field name"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "type": [
+            "simple"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

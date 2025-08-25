@@ -11,33 +11,54 @@
       "name": "events",
       "displayName": "Events",
       "type": "multiOptions",
-      "default": null,
-      "description": "Receive notifications when a Cal event is canceled"
-    },
-    {
-      "name": "Booking Created",
-      "default": null,
-      "description": "Receive notifications when a new Cal event is created"
-    },
-    {
-      "name": "Booking Rescheduled",
-      "default": null,
-      "description": "Receive notifications when a Cal event is rescheduled"
-    },
-    {
-      "name": "Meeting Ended",
-      "default": null,
-      "description": "Receive notifications when a Cal event or meeting has ended"
+      "default": [],
+      "description": "Receive notifications when a Cal event is canceled",
+      "required": true,
+      "options": [
+        {
+          "name": "Booking Cancelled",
+          "value": "BOOKING_CANCELLED",
+          "description": "Receive notifications when a Cal event is canceled"
+        },
+        {
+          "name": "Booking Created",
+          "value": "BOOKING_CREATED",
+          "description": "Receive notifications when a new Cal event is created"
+        },
+        {
+          "name": "Booking Rescheduled",
+          "value": "BOOKING_RESCHEDULED",
+          "description": "Receive notifications when a Cal event is rescheduled"
+        },
+        {
+          "name": "Meeting Ended",
+          "value": "MEETING_ENDED",
+          "description": "Receive notifications when a Cal event or meeting has ended"
+        }
+      ]
     },
     {
       "name": "version",
       "displayName": "API Version",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "v2.0 Onwards",
-      "default": null
+      "default": 1,
+      "options": [
+        {
+          "name": "Before v2.0",
+          "value": 1
+        },
+        {
+          "name": "v2.0 Onwards",
+          "value": 2
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -45,21 +66,30 @@
       "type": "collection",
       "default": {},
       "description": "The ID of the App to monitor",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "eventTypeId",
-      "displayName": "EventType Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "The EventType to monitor. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "payloadTemplate",
-      "displayName": "Payload Template",
-      "type": "string",
-      "default": "",
-      "description": "Template to customize the webhook payload"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "appId",
+          "displayName": "App ID",
+          "type": "string",
+          "default": "",
+          "description": "The ID of the App to monitor"
+        },
+        {
+          "name": "eventTypeId",
+          "displayName": "EventType Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "The EventType to monitor. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        },
+        {
+          "name": "payloadTemplate",
+          "displayName": "Payload Template",
+          "type": "string",
+          "default": "",
+          "description": "Template to customize the webhook payload"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -87,5 +117,23 @@
       "name": "options",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

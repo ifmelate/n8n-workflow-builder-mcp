@@ -11,7 +11,17 @@
       "default": "",
       "description": "The affiliate’s email",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "affiliate"
+          ]
+        }
+      }
     },
     {
       "name": "firstname",
@@ -19,7 +29,17 @@
       "type": "string",
       "default": "",
       "description": "The affiliate’s firstname",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "affiliate"
+          ]
+        }
+      }
     },
     {
       "name": "lastname",
@@ -27,55 +47,35 @@
       "type": "string",
       "default": "",
       "description": "The affiliate’s lastname",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "affiliate"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
+      "description": "The country’s ISO_3166-1 code. <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1\">Codes</a>.",
       "placeholder": "Add Field",
-      "typeOptions": {
-        "multipleValues": true
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "affiliate"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
       }
-    },
-    {
-      "name": "address_two",
-      "displayName": "Line 2",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "postal_code",
-      "displayName": "Postal Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "city",
-      "displayName": "City",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "state",
-      "displayName": "State",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "country",
-      "displayName": "Country Code",
-      "type": "string",
-      "default": "",
-      "description": "The country’s ISO_3166-1 code. <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1\">Codes</a>."
-    },
-    {
-      "name": "companyName",
-      "displayName": "Company Name",
-      "type": "string",
-      "default": "",
-      "description": "The affiliate’s company data"
     },
     {
       "name": "affiliateId",
@@ -83,14 +83,58 @@
       "type": "string",
       "default": "",
       "description": "The ID of the affiliate",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "affiliate"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "affiliate"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 1000
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "affiliate"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -98,55 +142,96 @@
       "type": "collection",
       "default": {},
       "description": "Retrieves affiliates for a certain affiliate group",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "click_id",
-      "displayName": "Click ID",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "parentId",
-      "displayName": "Parent ID",
-      "type": "string",
-      "default": "",
-      "description": "Retrieves children for a certain parent affiliate"
-    },
-    {
-      "name": "referral_code",
-      "displayName": "Referral Code",
-      "type": "string",
-      "default": "",
-      "description": "An affiliate’s referral code. This corresponds to the value of ref= in their referral link."
-    },
-    {
-      "name": "source_id",
-      "displayName": "Source ID",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "affiliate_group_id",
+          "displayName": "Affiliate Group ID",
+          "type": "string",
+          "default": "",
+          "description": "Retrieves affiliates for a certain affiliate group"
+        },
+        {
+          "name": "click_id",
+          "displayName": "Click ID",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "email",
+          "displayName": "Email",
+          "type": "string",
+          "default": "",
+          "description": "An email address,",
+          "placeholder": "name@email.com"
+        },
+        {
+          "name": "parentId",
+          "displayName": "Parent ID",
+          "type": "string",
+          "default": "",
+          "description": "Retrieves children for a certain parent affiliate"
+        },
+        {
+          "name": "referral_code",
+          "displayName": "Referral Code",
+          "type": "string",
+          "default": "",
+          "description": "An affiliate’s referral code. This corresponds to the value of ref= in their referral link."
+        },
+        {
+          "name": "source_id",
+          "displayName": "Source ID",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "affiliate"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create an affiliate"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an affiliate"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get an affiliate by ID"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many affiliates"
+      "default": "create",
+      "description": "Create an affiliate",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create an affiliate"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete an affiliate"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get an affiliate by ID"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many affiliates"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "affiliate"
+          ]
+        }
+      }
     },
     {
       "name": "metadataUi",
@@ -154,14 +239,20 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Meta data",
-      "placeholder": "Add Metadata"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Value to set for the metadata key"
+      "placeholder": "Add Metadata",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "affiliateMetadata"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
     },
     {
       "name": "key",
@@ -169,17 +260,33 @@
       "type": "string",
       "default": "",
       "description": "Name of the metadata key to remove",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "affiliateMetadata"
+          ],
+          "operation": [
+            "remove"
+          ]
+        }
+      }
     },
     {
-      "name": "Remove",
-      "default": null,
-      "description": "Remove metadata from affiliate"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update affiliate's metadata"
+      "name": "value",
+      "displayName": "Value",
+      "type": "string",
+      "default": "",
+      "description": "Value to set for the metadata key",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "affiliateMetadata"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "programId",
@@ -187,45 +294,38 @@
       "type": "options",
       "default": "",
       "description": "The ID of the Program to add the affiliate to. This ID can be found as part of the URL when viewing the program on the platform. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
-    },
-    {
-      "name": "coupon",
-      "displayName": "Coupon",
-      "type": "string",
-      "default": "",
-      "description": "An optional coupon for this affiliate"
-    },
-    {
-      "name": "returnAll",
-      "displayName": "Return All",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all results or only up to a given limit"
-    },
-    {
-      "name": "Approve",
-      "default": null,
-      "description": "Approve an affiliate for a program"
-    },
-    {
-      "name": "Disapprove",
-      "default": null,
-      "description": "Disapprove an affiliate"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "add"
+          ],
+          "resource": [
+            "programAffiliate"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Affiliate Metadata",
-      "default": null
-    },
-    {
-      "name": "Program Affiliate",
-      "default": null
+      "default": "affiliate",
+      "required": true,
+      "options": [
+        {
+          "name": "Affiliate",
+          "value": "affiliate"
+        },
+        {
+          "name": "Affiliate Metadata",
+          "value": "affiliateMetadata"
+        },
+        {
+          "name": "Program Affiliate",
+          "value": "programAffiliate"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -237,5 +337,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

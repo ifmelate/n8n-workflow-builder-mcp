@@ -8,78 +8,98 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Artist",
-      "default": null
-    },
-    {
-      "name": "Library",
-      "default": null
-    },
-    {
-      "name": "My Data",
-      "default": null
-    },
-    {
-      "name": "Player",
-      "default": null
-    },
-    {
-      "name": "Playlist",
-      "default": null
-    },
-    {
-      "name": "Track",
-      "default": null
+      "default": "player",
+      "options": [
+        {
+          "name": "Album",
+          "value": "album"
+        },
+        {
+          "name": "Artist",
+          "value": "artist"
+        },
+        {
+          "name": "Library",
+          "value": "library"
+        },
+        {
+          "name": "My Data",
+          "value": "myData"
+        },
+        {
+          "name": "Player",
+          "value": "player"
+        },
+        {
+          "name": "Playlist",
+          "value": "playlist"
+        },
+        {
+          "name": "Track",
+          "value": "track"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Add a song to your queue"
-    },
-    {
-      "name": "Currently Playing",
-      "default": null,
-      "description": "Get your currently playing track"
-    },
-    {
-      "name": "Next Song",
-      "default": null,
-      "description": "Skip to your next track"
-    },
-    {
-      "name": "Pause",
-      "default": null,
-      "description": "Pause your music"
-    },
-    {
-      "name": "Previous Song",
-      "default": null,
-      "description": "Skip to your previous song"
-    },
-    {
-      "name": "Recently Played",
-      "default": null,
-      "description": "Get your recently played tracks"
-    },
-    {
-      "name": "Resume",
-      "default": null,
-      "description": "Resume playback on the current active device"
-    },
-    {
-      "name": "Set Volume",
-      "default": null,
-      "description": "Set volume on the current active device"
-    },
-    {
-      "name": "Start Music",
-      "default": null,
-      "description": "Start playing a playlist, artist, or album"
+      "default": "addSongToQueue",
+      "description": "Add a song to your queue",
+      "options": [
+        {
+          "name": "Add Song to Queue",
+          "value": "addSongToQueue",
+          "description": "Add a song to your queue"
+        },
+        {
+          "name": "Currently Playing",
+          "value": "currentlyPlaying",
+          "description": "Get your currently playing track"
+        },
+        {
+          "name": "Next Song",
+          "value": "nextSong",
+          "description": "Skip to your next track"
+        },
+        {
+          "name": "Pause",
+          "value": "pause",
+          "description": "Pause your music"
+        },
+        {
+          "name": "Previous Song",
+          "value": "previousSong",
+          "description": "Skip to your previous song"
+        },
+        {
+          "name": "Recently Played",
+          "value": "recentlyPlayed",
+          "description": "Get your recently played tracks"
+        },
+        {
+          "name": "Resume",
+          "value": "resume",
+          "description": "Resume playback on the current active device"
+        },
+        {
+          "name": "Set Volume",
+          "value": "volume",
+          "description": "Set volume on the current active device"
+        },
+        {
+          "name": "Start Music",
+          "value": "startMusic",
+          "description": "Start playing a playlist, artist, or album"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "player"
+          ]
+        }
+      }
     },
     {
       "name": "id",
@@ -88,22 +108,17 @@
       "default": "",
       "description": "Enter a playlist, artist, or album URI or ID",
       "placeholder": "spotify:album:1YZ3k65Mqw3G8FzYlW1mmp",
-      "required": true
-    },
-    {
-      "name": "Get New Releases",
-      "default": null,
-      "description": "Get a list of new album releases"
-    },
-    {
-      "name": "Get Tracks",
-      "default": null,
-      "description": "Get an album's tracks by URI or ID"
-    },
-    {
-      "name": "Search",
-      "default": null,
-      "description": "Search albums by keyword"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "player"
+          ],
+          "operation": [
+            "startMusic"
+          ]
+        }
+      }
     },
     {
       "name": "query",
@@ -111,22 +126,17 @@
       "type": "string",
       "default": "",
       "description": "The keyword term to search for",
-      "required": true
-    },
-    {
-      "name": "Get Albums",
-      "default": null,
-      "description": "Get an artist's albums by URI or ID"
-    },
-    {
-      "name": "Get Related Artists",
-      "default": null,
-      "description": "Get an artist's related artists by URI or ID"
-    },
-    {
-      "name": "Get Top Tracks",
-      "default": null,
-      "description": "Get an artist's top tracks by URI or ID"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "album"
+          ],
+          "operation": [
+            "search"
+          ]
+        }
+      }
     },
     {
       "name": "country",
@@ -135,27 +145,17 @@
       "default": "US",
       "description": "Top tracks in which country? Enter the postal abbreviation",
       "placeholder": "US",
-      "required": true
-    },
-    {
-      "name": "Create a Playlist",
-      "default": null,
-      "description": "Create a new playlist"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a playlist by URI or ID"
-    },
-    {
-      "name": "Get the User's Playlists",
-      "default": null,
-      "description": "Get a user's playlists"
-    },
-    {
-      "name": "Remove an Item",
-      "default": null,
-      "description": "Remove tracks from a playlist by track and playlist URI or ID"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "artist"
+          ],
+          "operation": [
+            "getTopTracks"
+          ]
+        }
+      }
     },
     {
       "name": "name",
@@ -164,7 +164,17 @@
       "default": "",
       "description": "Name of the playlist to create",
       "placeholder": "Favorite Songs",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "playlist"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -172,14 +182,34 @@
       "type": "collection",
       "default": {},
       "description": "Description for the playlist to create",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "public",
-      "displayName": "Public",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether the playlist is publicly accessible"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "description",
+          "displayName": "Description",
+          "type": "string",
+          "default": "",
+          "description": "Description for the playlist to create",
+          "placeholder": "These are all my favorite songs."
+        },
+        {
+          "name": "public",
+          "displayName": "Public",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether the playlist is publicly accessible"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "playlist"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "trackID",
@@ -188,12 +218,18 @@
       "default": "",
       "description": "The track's Spotify URI or its ID. The track to add/delete from the playlist.",
       "placeholder": "spotify:track:0xE4LEFzSNGsz1F6kvXsHU",
-      "required": true
-    },
-    {
-      "name": "Get Audio Features",
-      "default": null,
-      "description": "Get audio features for a track by URI or ID"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "playlist"
+          ],
+          "operation": [
+            "add",
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
@@ -201,7 +237,30 @@
       "type": "boolean",
       "default": false,
       "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "album",
+            "artist",
+            "library",
+            "myData",
+            "playlist",
+            "track",
+            "player"
+          ],
+          "operation": [
+            "getTracks",
+            "getAlbums",
+            "getUserPlaylists",
+            "getNewReleases",
+            "getLikedTracks",
+            "getFollowingArtists",
+            "search",
+            "recentlyPlayed"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
@@ -209,7 +268,33 @@
       "type": "number",
       "default": 50,
       "description": "Max number of results to return",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "album",
+            "artist",
+            "library",
+            "playlist",
+            "track"
+          ],
+          "operation": [
+            "getTracks",
+            "getAlbums",
+            "getUserPlaylists",
+            "getNewReleases",
+            "getLikedTracks",
+            "search"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "volumePercent",
@@ -217,7 +302,21 @@
       "type": "number",
       "default": 50,
       "description": "The volume percentage to set",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "minValue": 0,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "player"
+          ],
+          "operation": [
+            "volume"
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -225,7 +324,26 @@
       "type": "collection",
       "default": {},
       "description": "Country to filter new releases by",
-      "placeholder": "Add Filter"
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "country",
+          "displayName": "Country",
+          "type": "options",
+          "default": "US",
+          "description": "Country to filter new releases by"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "album"
+          ],
+          "operation": [
+            "getNewReleases"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -281,5 +399,27 @@
       "name": "filters",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

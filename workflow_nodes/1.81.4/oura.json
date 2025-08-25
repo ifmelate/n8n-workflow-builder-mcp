@@ -8,22 +8,57 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Get the user's personal information"
+      "default": "get",
+      "description": "Get the user's personal information",
+      "options": [
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get the user's personal information"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "profile"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "summary"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 5,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 10
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "summary"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -31,34 +66,46 @@
       "type": "collection",
       "default": {},
       "description": "End date for the summary retrieval. If omitted, it defaults to the current day.",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "start",
-      "displayName": "Start Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Start date for the summary retrieval. If omitted, it defaults to a week ago."
-    },
-    {
-      "name": "Get Readiness Summary",
-      "default": null,
-      "description": "Get the user's readiness summary"
-    },
-    {
-      "name": "Get Sleep Periods",
-      "default": null,
-      "description": "Get the user's sleep summary"
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "end",
+          "displayName": "End Date",
+          "type": "dateTime",
+          "default": "",
+          "description": "End date for the summary retrieval. If omitted, it defaults to the current day."
+        },
+        {
+          "name": "start",
+          "displayName": "Start Date",
+          "type": "dateTime",
+          "default": "",
+          "description": "Start date for the summary retrieval. If omitted, it defaults to a week ago."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "summary"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Summary",
-      "default": null
+      "default": "summary",
+      "options": [
+        {
+          "name": "Profile",
+          "value": "profile"
+        },
+        {
+          "name": "Summary",
+          "value": "summary"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -70,5 +117,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

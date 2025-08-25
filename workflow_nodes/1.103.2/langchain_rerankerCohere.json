@@ -4,5 +4,27 @@
   "description": "Use Cohere Reranker to reorder documents after retrieval from a vector store by relevance to the given query.",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "AiReranker"
+    ],
+    "outputNames": [
+      "Reranker"
+    ],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "reranker",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiRetriever"
+    ],
+    "consumes": [],
+    "produces": [
+      "AiReranker"
+    ]
+  }
 }

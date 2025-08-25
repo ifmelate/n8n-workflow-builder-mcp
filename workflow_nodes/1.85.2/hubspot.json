@@ -8,41 +8,53 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "APP Token",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "apiKey",
+      "options": [
+        {
+          "name": "API Key",
+          "value": "apiKey"
+        },
+        {
+          "name": "APP Token",
+          "value": "appToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Contact",
-      "default": null
-    },
-    {
-      "name": "Contact List",
-      "default": null
-    },
-    {
-      "name": "Deal",
-      "default": null
-    },
-    {
-      "name": "Engagement",
-      "default": null
-    },
-    {
-      "name": "Ticket",
-      "default": null
+      "default": "contact",
+      "options": [
+        {
+          "name": "Company",
+          "value": "company"
+        },
+        {
+          "name": "Contact",
+          "value": "contact"
+        },
+        {
+          "name": "Contact List",
+          "value": "contactList"
+        },
+        {
+          "name": "Deal",
+          "value": "deal"
+        },
+        {
+          "name": "Engagement",
+          "value": "engagement"
+        },
+        {
+          "name": "Ticket",
+          "value": "ticket"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -58,5 +70,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

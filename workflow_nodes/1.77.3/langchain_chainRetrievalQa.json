@@ -15,14 +15,31 @@
       "displayName": "Query",
       "type": "string",
       "default": "={{ $json.input }}",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "text",
       "displayName": "Text",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "rows": 2
+      },
+      "displayOptions": {
+        "show": {
+          "promptType": [
+            "define"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -30,7 +47,18 @@
       "type": "collection",
       "default": {},
       "description": "Template string used for the system prompt. This should include the variable `{context}` for the provided context. For text completion models, you should also include the variable `{question}` for the user’s query.",
-      "placeholder": "Add Option"
+      "placeholder": "Add Option",
+      "options": [
+        {
+          "name": "systemPromptTemplate",
+          "displayName": "System Prompt Template",
+          "type": "string",
+          "description": "Template string used for the system prompt. This should include the variable `{context}` for the provided context. For text completion models, you should also include the variable `{question}` for the user’s query."
+        }
+      ],
+      "typeOptions": {
+        "rows": 6
+      }
     }
   ],
   "credentialsConfig": [
@@ -42,5 +70,19 @@
       "name": "text",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

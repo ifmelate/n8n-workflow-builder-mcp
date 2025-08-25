@@ -10,14 +10,34 @@
       "type": "options",
       "default": "",
       "description": "ID of the project to which the epic belongs. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "epic"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "subject",
       "displayName": "Subject",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "epic"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -25,41 +45,17 @@
       "type": "collection",
       "default": {},
       "description": "ID of the user to assign the epic to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "blocked_note",
-      "displayName": "Blocked Note",
-      "type": "string",
-      "default": "",
-      "description": "Reason why the epic is blocked. Requires \"Is Blocked\" toggle to be enabled."
-    },
-    {
-      "name": "color",
-      "displayName": "Color",
-      "type": "color",
-      "default": "0000FF",
-      "description": "Color code in hexadecimal notation"
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "is_blocked",
-      "displayName": "Is Blocked",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the issue is blocked"
-    },
-    {
-      "name": "tags",
-      "displayName": "Tag Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "epic"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "epicId",
@@ -67,21 +63,57 @@
       "type": "string",
       "default": "",
       "description": "ID of the epic to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "epic"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "epic"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "epic"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -89,14 +121,17 @@
       "type": "collection",
       "default": {},
       "description": "ID of the user whom the epic is assigned to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "statusIsClosed",
-      "displayName": "Is Closed",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the epic is closed"
+      "placeholder": "Add Filter",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "epic"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -104,69 +139,58 @@
       "type": "collection",
       "default": {},
       "description": "ID of the user to whom the epic is assigned. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "epic"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create an epic"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an epic"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get an epic"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many epics"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update an epic"
-    },
-    {
-      "name": "milestone",
-      "displayName": "Milestone (Sprint) Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the milestone of the issue. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "priority",
-      "displayName": "Priority Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "severity",
-      "displayName": "Severity Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "status",
-      "displayName": "Status Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the status of the issue. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "type",
-      "displayName": "Type Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "default": "create",
+      "description": "Create an epic",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create an epic"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete an epic"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get an epic"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many epics"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update an epic"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "epic"
+          ]
+        }
+      }
     },
     {
       "name": "issueId",
@@ -174,81 +198,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the issue to delete",
-      "required": true
-    },
-    {
-      "name": "orderBy",
-      "displayName": "Order By",
-      "type": "options",
-      "default": null,
-      "description": "Field to order the issues by"
-    },
-    {
-      "name": "Created Date",
-      "default": null
-    },
-    {
-      "name": "Modified Date",
-      "default": null
-    },
-    {
-      "name": "Owner",
-      "default": null
-    },
-    {
-      "name": "Priority",
-      "default": null
-    },
-    {
-      "name": "Severity",
-      "default": null
-    },
-    {
-      "name": "Status",
-      "default": null
-    },
-    {
-      "name": "Subject",
-      "default": null
-    },
-    {
-      "name": "Type",
-      "default": null
-    },
-    {
-      "name": "owner",
-      "displayName": "Owner Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the owner of the issue. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "role",
-      "displayName": "Role Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "taskboard_order",
-      "displayName": "Taskboard Order",
-      "type": "number",
-      "default": 1,
-      "description": "Order of the task in the taskboard"
-    },
-    {
-      "name": "user_story",
-      "displayName": "User Story Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the user story of the task. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "us_order",
-      "displayName": "User Story Order",
-      "type": "number",
-      "default": 1,
-      "description": "Order of the task in the user story"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issue"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "taskId",
@@ -256,35 +216,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the task to delete",
-      "required": true
-    },
-    {
-      "name": "userStory",
-      "displayName": "User Story Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the user story to which the task belongs. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "backlog_order",
-      "displayName": "Backlog Order",
-      "type": "number",
-      "default": 1,
-      "description": "Order of the user story in the backlog"
-    },
-    {
-      "name": "kanban_order",
-      "displayName": "Kanban Order",
-      "type": "number",
-      "default": 1,
-      "description": "Order of the user story in the kanban"
-    },
-    {
-      "name": "sprint_order",
-      "displayName": "Sprint Order",
-      "type": "number",
-      "default": 1,
-      "description": "Order of the user story in the milestone"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "userStoryId",
@@ -292,39 +234,41 @@
       "type": "string",
       "default": "",
       "description": "ID of the user story to delete",
-      "required": true
-    },
-    {
-      "name": "epic",
-      "displayName": "Epic Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the epic to which the user story belongs. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "statusIsArchived",
-      "displayName": "Is Archived",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the user story has been archived"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "userStory"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Issue",
-      "default": null
-    },
-    {
-      "name": "Task",
-      "default": null
-    },
-    {
-      "name": "User Story",
-      "default": null
+      "default": "issue",
+      "options": [
+        {
+          "name": "Epic",
+          "value": "epic"
+        },
+        {
+          "name": "Issue",
+          "value": "issue"
+        },
+        {
+          "name": "Task",
+          "value": "task"
+        },
+        {
+          "name": "User Story",
+          "value": "userStory"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -336,5 +280,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

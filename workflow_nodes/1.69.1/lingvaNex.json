@@ -8,8 +8,15 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Translate data"
+      "default": "translate",
+      "description": "Translate data",
+      "options": [
+        {
+          "name": "Translate",
+          "value": "translate",
+          "description": "Translate data"
+        }
+      ]
     },
     {
       "name": "text",
@@ -17,7 +24,14 @@
       "type": "string",
       "default": "",
       "description": "The input text to translate",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "translate"
+          ]
+        }
+      }
     },
     {
       "name": "translateTo",
@@ -25,7 +39,14 @@
       "type": "options",
       "default": "",
       "description": "The language to use for translation of the input text, set to one of the language codes listed in <a href=\"https://cloud.google.com/translate/docs/languages\">Language Support</a>. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "translate"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -33,20 +54,36 @@
       "type": "collection",
       "default": {},
       "description": "The language code in the format “language code_code of the country”. If this parameter is not present, the auto-detect language mode is enabled. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "platform",
-      "displayName": "Platform",
-      "type": "string",
-      "default": "api"
-    },
-    {
-      "name": "translateMode",
-      "displayName": "Translate Mode",
-      "type": "string",
-      "default": "",
-      "description": "Describe the input text format. Possible value is \"html\" for translating and preserving html structure. If value is not specified or is other than \"html\" than plain text is translating."
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "from",
+          "displayName": "From",
+          "type": "options",
+          "default": "",
+          "description": "The language code in the format “language code_code of the country”. If this parameter is not present, the auto-detect language mode is enabled. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        },
+        {
+          "name": "platform",
+          "displayName": "Platform",
+          "type": "string",
+          "default": "api"
+        },
+        {
+          "name": "translateMode",
+          "displayName": "Translate Mode",
+          "type": "string",
+          "default": "",
+          "description": "Describe the input text format. Possible value is \"html\" for translating and preserving html structure. If value is not specified or is other than \"html\" than plain text is translating."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "translate"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -62,5 +99,19 @@
       "name": "text",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

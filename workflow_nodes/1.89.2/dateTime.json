@@ -8,32 +8,52 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Extract Part of a Date",
-      "default": null
-    },
-    {
-      "name": "Format a Date",
-      "default": null
-    },
-    {
-      "name": "Get Current Date",
-      "default": null
-    },
-    {
-      "name": "Get Time Between Dates",
-      "default": null
-    },
-    {
-      "name": "Round a Date",
-      "default": null
-    },
-    {
-      "name": "Subtract From a Date",
-      "default": null
+      "default": "getCurrentDate",
+      "options": [
+        {
+          "name": "Add to a Date",
+          "value": "addToDate"
+        },
+        {
+          "name": "Extract Part of a Date",
+          "value": "extractDate"
+        },
+        {
+          "name": "Format a Date",
+          "value": "formatDate"
+        },
+        {
+          "name": "Get Current Date",
+          "value": "getCurrentDate"
+        },
+        {
+          "name": "Get Time Between Dates",
+          "value": "getTimeBetweenDates"
+        },
+        {
+          "name": "Round a Date",
+          "value": "roundDate"
+        },
+        {
+          "name": "Subtract From a Date",
+          "value": "subtractFromDate"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

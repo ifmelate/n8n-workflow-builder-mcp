@@ -8,13 +8,32 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "message",
+      "options": [
+        {
+          "name": "Message",
+          "value": "message"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
+      "default": "push",
+      "options": [
+        {
+          "name": "Push",
+          "value": "push"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
       "name": "userKey",
@@ -22,7 +41,17 @@
       "type": "string",
       "default": "",
       "description": "The user/group key (not e-mail address) of your user (or you), viewable when logged into the <a href=\"https://pushover.net/\">dashboard</a> (often referred to as <code>USER_KEY</code> in the <a href=\"https://support.pushover.net/i44-example-code-and-pushover-libraries\">libraries</a> and code examples)",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "push"
+          ]
+        }
+      }
     },
     {
       "name": "message",
@@ -30,29 +59,54 @@
       "type": "string",
       "default": "",
       "description": "Your message",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "push"
+          ]
+        }
+      }
     },
     {
       "name": "priority",
       "displayName": "Priority",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Low Priority",
-      "default": null
-    },
-    {
-      "name": "Normal Priority",
-      "default": null
-    },
-    {
-      "name": "High Priority",
-      "default": null
-    },
-    {
-      "name": "Emergency Priority",
-      "default": null
+      "default": null,
+      "description": "Send as -2 to generate no notification/alert, -1 to always send as a quiet notification, 1 to display as high-priority and bypass the user's quiet hours, or 2 to also require confirmation from the user",
+      "options": [
+        {
+          "name": "Lowest Priority"
+        },
+        {
+          "name": "Low Priority"
+        },
+        {
+          "name": "Normal Priority",
+          "value": 0
+        },
+        {
+          "name": "High Priority",
+          "value": 1
+        },
+        {
+          "name": "Emergency Priority",
+          "value": 2
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "push"
+          ]
+        }
+      }
     },
     {
       "name": "retry",
@@ -60,7 +114,23 @@
       "type": "number",
       "default": 30,
       "description": "Specifies how often (in seconds) the Pushover servers will send the same notification to the user. This parameter must have a value of at least 30 seconds between retries.",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "minValue": 0
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "push"
+          ],
+          "priority": [
+            2
+          ]
+        }
+      }
     },
     {
       "name": "expire",
@@ -68,66 +138,42 @@
       "type": "number",
       "default": 30,
       "description": "Specifies how many seconds your notification will continue to be retried for (every retry seconds)",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "minValue": 0,
+        "maxValue": 10800
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "push"
+          ],
+          "priority": [
+            2
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
+      "description": "Your user's device name to send the message directly to that device, rather than all of the user's devices (multiple devices may be separated by a comma)",
       "placeholder": "Add Field",
-      "typeOptions": {
-        "multipleValues": true
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "push"
+          ]
+        }
       }
-    },
-    {
-      "name": "device",
-      "displayName": "Device",
-      "type": "string",
-      "default": "",
-      "description": "Your user's device name to send the message directly to that device, rather than all of the user's devices (multiple devices may be separated by a comma)"
-    },
-    {
-      "name": "html",
-      "displayName": "HTML Formatting",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to enable messages formatting with HTML tags"
-    },
-    {
-      "name": "sound",
-      "displayName": "Sound Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "The name of one of the sounds supported by device clients to override the user's default sound choice. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "timestamp",
-      "displayName": "Timestamp",
-      "type": "dateTime",
-      "default": "",
-      "description": "A Unix timestamp of your message's date and time to display to the user, rather than the time your message is received by our API"
-    },
-    {
-      "name": "title",
-      "displayName": "Title",
-      "type": "string",
-      "default": "",
-      "description": "Your message's title, otherwise your app's name is used"
-    },
-    {
-      "name": "url",
-      "displayName": "URL",
-      "type": "string",
-      "default": "",
-      "description": "A supplementary URL to show with your message"
-    },
-    {
-      "name": "url_title",
-      "displayName": "URL Title",
-      "type": "string",
-      "default": "",
-      "description": "A title for your supplementary URL, otherwise just the URL is shown"
     }
   ],
   "credentialsConfig": [
@@ -155,5 +201,19 @@
       "name": "device",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

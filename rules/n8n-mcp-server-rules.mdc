@@ -1,0 +1,396 @@
+---
+alwaysApply: false
+---
+- **Scope & goal**
+  - This rule guides Cursor/agents to use the exposed MCP tools to build n8n workflows from scratch, add/edit nodes, and wire connections (including AI nodes) safely and predictably. Prefer to use MCP tools for AI agent if user didn't concrete this moment directly.
+  - Start every session by ensuring a valid workspace and workflow file exists.
+  - AVOID "node_type": "code" as much as possible. Use Specialized/Concise nodes that provide functionality out of the box.
+  - Start with linear workflow - make connection right there when you add a node.
+
+- **Core tools (as implemented today)**
+  - `create_workflow(workflow_name, workspace_dir)`
+  - `list_workflows(limit?, cursor?)`
+  - `get_workflow_details(workflow_name, workflow_path?)`
+  - `list_available_nodes(search_term ?, n8n_version?, limit?, cursor?, tags?, token_logic?)`
+  - `get_n8n_version_info()`
+  - `add_node(workflow_name, node_type, position?, parameters?, node_name?, typeVersion?, webhookId?, workflow_path?, connect_from?, connect_to?)`
+  - `edit_node(workflow_name, node_id, node_type?, node_name?, position?, parameters?, typeVersion?, webhookId?, workflow_path?, connect_from?, connect_to?)`
+  - `delete_node(workflow_name, node_id, workflow_path?)`
+  - `add_connection(workflow_name, source_node_id, source_node_output_name, target_node_id, target_node_input_name, target_node_input_index?)`
+  - `add_ai_connections(workflow_name, agent_node_id, model_node_id?, tool_node_ids?, memory_node_id?)`
+  - `validate_workflow(workflow_name, workflow_path?)`
+
+- **Quick-start recipes**
+  - **Create a new workflow**
+    ```json
+    {
+      "workflow_name": "my_first_flow",
+      "workspace_dir": "/absolute/path/to/project"
+    }
+    ```
+  - **Optimized discovery (single call for multiple related nodes)**
+    - Prefer one multi-token query over multiple separate calls. Search defaults to OR logic and tag-style synonyms.
+    - Examples:
+      ```json
+      { "search_term": "webhook trigger" }
+      ```
+      ```json
+      { "search_term": "llm agent tool memory" }
+      ```
+      ```json
+      { "search_term": "vector embedding", "limit": 25 }
+      ```
+      - Require intersection of all terms:
+      ```json
+      { "search_term": "webhook trigger", "token_logic": "and" }
+      ```
+      - Disable synonym expansion for strict tokens:
+      ```json
+      { "search_term": "webhook trigger", "tags": false }
+      ```
+      - Paginate when results exceed the limit:
+      ```json
+      { "search_term": "http request", "limit": 20, "cursor": "20" }
+      ```
+  - **Node parameter previews (default)**
+    - `list_available_nodes` returns a compact `propertiesPreview` for each node by default. Use it to pick nodes and pre-fill sensible parameters without opening the full schema.
+    - Preview fields: `name`, `displayName`, `type`, `default` (if present), `required` (true only), and up to 5 `optionValues`.
+    - Example result item:
+      ```json
+      {
+        "nodeType": "@n8n/n8n-nodes-langchain.informationExtractor",
+        "displayName": "Information Extractor",
+        "parameterCount": 4,
+        "propertiesPreview": [
+          { "name": "text", "displayName": "Text", "type": "string", "default": "" },
+          { "name": "From Attribute Descriptions", "displayName": "From Attribute Descriptions", "type": "options", "default": "fromAttributes", "optionValues": ["fromAttributes"] },
+          { "name": "attributes", "displayName": "Attributes", "type": "fixedCollection", "required": true },
+          { "name": "options", "displayName": "Options", "type": "collection", "optionValues": ["systemPromptTemplate"] }
+        ]
+      }
+      ```
+    - Prefer using `propertiesPreview` to generate UI hints or starter parameter payloads when calling `add_node`/`edit_node`.
+  - **Add a node (type casing auto-normalized)**
+    ```json
+    {
+      "workflow_name": "my_first_flow",
+      "node_type": "openai",
+      "node_name": "OpenAI LLM",
+      "position": { "x": 200, "y": 120 },
+      "parameters": { "model": "gpt-4o", "temperature": 0.2 }
+    }
+    ```
+  - **Connect two nodes** (IDs from previous tool results)
+    ```json
+    {
+      "workflow_name": "my_first_flow",
+      "source_node_id": "<NODE_ID_A>",
+      "source_node_output_name": "main",
+      "target_node_id": "<NODE_ID_B>",
+      "target_node_input_name": "main",
+      "target_node_input_index": 0
+    }
+    ```
+  - **Wire AI agent, model, tools, memory** (preferred for LangChain AI nodes)
+    ```json
+    {
+      "workflow_name": "my_first_flow",
+      "agent_node_id": "<AGENT_ID>",
+      "model_node_id": "<MODEL_ID>",
+      "tool_node_ids": ["<TOOL_ID_1>", "<TOOL_ID_2>"],
+      "memory_node_id": "<MEMORY_ID>"
+    }
+    ```
+  - **Add a node and connect immediately (from existing → new)**
+    ```json
+    {
+      "workflow_name": "my_first_flow",
+      "node_type": "httpRequest",
+      "position": { "x": 600, "y": 200 },
+      "connect_from": [
+        {
+          "source_node_id": "<EXISTING_NODE_ID>",
+          "source_node_output_name": "main",
+          "target_node_input_name": "main",
+          "target_node_input_index": 0
+        }
+      ]
+    }
+    ```
+  - **Add a node and connect immediately (new → existing)**
+    ```json
+    {
+      "workflow_name": "my_first_flow",
+      "node_type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "position": { "x": 800, "y": 260 },
+      "connect_to": [
+        {
+          "target_node_id": "<AGENT_NODE_ID>",
+          "source_node_output_name": "ai_languageModel",
+          "target_node_input_name": "ai_languageModel"
+        }
+      ]
+    }
+    ```
+
+- **DO**
+  - **Initialize workspace**: Always call `create_workflow` first to set `workspace_dir` and create the target JSON file in `workflow_data/`.
+  - **Discover before adding**: Use `list_available_nodes` (optionally with `search_term` and `n8n_version`) to choose a supported `node_type` and version.
+  - **Leverage parameter previews**: Use the returned `propertiesPreview` to pre-populate minimal `parameters` for new nodes (e.g., names, required fields, and option defaults) and to guide users with example values.
+  - **Use returned IDs**: After `add_node`, capture the returned `node.id` and reuse it for `edit_node`, `delete_node`, and `add_connection`.
+  - **Attach nodes at creation/edit**: Prefer the `connect_from`/`connect_to` options on `add_node`/`edit_node` to ensure new nodes are connected to the main chain.
+  - **Check version support**: If a node or version is unsupported, consult `get_n8n_version_info()` and re-query `list_available_nodes(n8n_version=...)`.
+  - **Verify after changes**: Call `validate_workflow` to confirm nodes and connections are persisted as expected.
+  - **Prefer `add_ai_connections` for AI graphs**: It applies correct port naming conventions for model/tool/memory → agent wiring.
+  - Add the start node first; connect each subsequent node on `main`.
+  - Attach AI components (model/tool/memory) to the agent via AI handles, but keep the agent on the main chain.
+  - Use minimal, necessary branches and rejoin them promptly.
+
+- **DON'T**
+  - **AVOID using CODE node**: Use 'Code' node only for simple tasks. Do not  avoid dealing with Specialized/Concise nodes that provide functionality out of the box. We don't need to make code that only you can understand.
+  - **Don’t assume casing**: Provide `node_type` loosely (e.g., "openai" or simple name). The server normalizes casing and prefixes; rely on it.
+  - **Don’t hardcode connection keys by name**: Connections are keyed by node display name internally; always connect by node IDs via the tool inputs.
+  - **Don’t skip discovery**: Avoid guessing `node_type`; search first to reduce mismatch and version conflicts.
+  - **Don't rely on 'Code' node**: Use 'Code' node only for simple tasks. Do not  avoid dealing with Specialized nodes that provide functionality out of the box.
+  - **Do not replace node type**: Do not replace node type just because of errors. Understand the correct syntax of node and apply it.
+  - **Do not skip validation errors**: If there are errors, fix them before finish
+  - Don't leave tool/model/memory nodes floating without the agent being connected on `main`.
+  - Don't assume AI attachments satisfy main-chain connectivity.
+  - Don't keep multiple enabled starts unless explicitly required by design and still connected into a single main path.
+
+- **AI node wiring guidance**
+  - For LangChain AI nodes, n8n expects:
+    - **Model → Agent** via `ai_languageModel`
+    - **Tool → Agent** via `ai_tool`
+    - **Memory → Agent** via `ai_memory`
+  - Use `add_ai_connections` to create these correctly. If using `add_connection`, ensure output/input handles match the above.
+
+- **Version compatibility & auto-heal**
+  - The server normalizes `node_type` and attempts to resolve a compatible `typeVersion`. If the requested version isn’t supported, it will select the highest supported for the current n8n version when possible.
+  - Use `get_n8n_version_info()` to view current/available versions and capabilities. Prefer `list_available_nodes(n8n_version=...)` to filter to compatible sets.
+
+- **Disambiguation & paths**
+  - `workflow_name` is converted to a safe filename. If you must target a custom location, provide `workflow_path`.
+  - When multiple similarly named nodes exist, always reference nodes by the returned `node_id` from prior calls.
+
+- **Common error recovery**
+  - `Workflow not found`: Verify `workflow_name` and that `create_workflow` was called with the same `workspace_dir`.
+  - `Node type not supported`: Re-run `list_available_nodes` with `search_term` and/or `n8n_version`, then retry `add_node`.
+  - `Connection invalid`: Ensure both nodes exist and confirm correct port names (see AI wiring guidance). Re-read via `get_workflow_details`.
+
+- **Testing & verification**
+  - After changes, validate the workflow via `validate_workflow`. This tool promotes warnings to errors and also fails if any enabled node is not connected to the main chain.
+  - Prefer to solve connection issues (use `connect_from`/`connect_to` or `add_ai_connections`) rather than delete nodes.
+  - Open the generated JSON under `workflow_data/` to visually confirm IDs, names, and connection structures.
+
+- **Validation details (important)**
+  - `validate_workflow` returns:
+    - `errors` (including promoted warnings)
+    - `startNode`
+    - `suggestedActions` (connection hints for common AI/Vector patterns)
+    - `nodeIssues` (field-level validation issues per node)
+  - Connectivity enforcement runs only inside `validate_workflow` to avoid blocking normal edit/add flows, but teams should aim for zero `node_not_in_main_chain` errors before considering a workflow valid.
+
+- **IF-node wiring (must-do for branching)**
+  - The validator requires IF branches to be encoded as `connections[IfNode].main` with two outputs:
+    - Output index 0 → true branch
+    - Output index 1 → false branch
+  - Legacy shapes that use top-level `true`/`false` keys are not traversed and will trigger:
+    - `node_not_in_main_chain` on downstream nodes
+    - `legacy_if_branch_shape` on the IF node itself (actionable error)
+  - Merge nodes must consume the two branches on distinct input indexes:
+    - True path → Merge input index 0
+    - False path → Merge input index 1
+  - Example (connections excerpt):
+    ```json
+    "3. Manual Upload Decision": {
+      "main": [
+        [ { "node": "4. Manual Upload Files", "type": "main", "index": 0 } ],
+        [ { "node": "5. Merge Paths", "type": "main", "index": 1 } ]
+      ]
+    },
+    "4. Manual Upload Files": {
+      "main": [
+        [ { "node": "5. Merge Paths", "type": "main", "index": 0 } ]
+      ]
+    }
+    ```
+  - If you see `legacy_if_branch_shape`, convert your IF wiring to the structure above and re-run validation.
+
+
+
+- **What this enforces**
+  - Use the exact `nodeType` strings and wiring roles for 2025 AI nodes (Agent, Vector Stores, MCP Client) when composing graphs.
+  - Prefer built-in 2025 patterns: vector stores as tools, HTTP Streamable MCP transport, and agent-tool wiring via AI ports.
+  - Validate connectivity with `validate_workflow` after edits.
+
+- **Node catalog (exact `nodeType`) — verified in local catalogs**
+  - **Agent**
+    - `@n8n/n8n-nodes-langchain.agent` (display: "Agent", version ≈ 2.x)
+      - Requires: `AiLanguageModel`
+      - Optional: `AiMemory`, `AiOutputParser`, `AiTool`
+      - See: [langchain_agent.json](mdc:workflow_nodes/1.108.1/langchain_agent.json)
+  - **Chat LLM models (produce `AiLanguageModel`)**
+    - `@n8n/n8n-nodes-langchain.lmChatOpenAi`, `.lmChatAnthropic`, `.lmChatGoogleGemini`, `.lmChatGoogleVertex`, `.lmChatMistralCloud`, `.lmChatAwsBedrock`, `.lmChatAzureOpenAi`, `.lmChatOllama`, `.lmChatGroq`, `.lmChatOpenRouter`, `.lmChatXAiGrok`, `.lmChatDeepSeek`, `.lmChatCohere`, `.lmChatVercelAiGateway`
+      - Example: [lmChatOpenAi](mdc:workflow_nodes/1.108.1/langchain_lmChatOpenAi.json)
+  - **Embeddings (produce `AiEmbedding`)**
+    - `@n8n/n8n-nodes-langchain.embeddingsOpenAi`, `.embeddingsMistralCloud`, `.embeddingsGoogleGemini`, `.embeddingsGoogleVertex`, `.embeddingsCohere`, `.embeddingsOllama`, `.embeddingsAwsBedrock`, `.embeddingsAzureOpenAi`, `.embeddingsHuggingFaceInference`
+      - Example: [embeddingsOpenAi](mdc:workflow_nodes/1.108.1/langchain_embeddingsOpenAi.json)
+  - **Vector Stores (2025, first-class)**
+    - `@n8n/n8n-nodes-langchain.vectorStoreQdrant`, `.vectorStorePinecone`, `.vectorStoreWeaviate`, `.vectorStoreMilvus`, `.vectorStorePGVector`, `.vectorStoreMongoDBAtlas`, `.vectorStoreSupabase`, `.vectorStoreZep`, `.vectorStoreInMemory`
+      - Example: [vectorStoreQdrant](mdc:workflow_nodes/1.108.1/langchain_vectorStoreQdrant.json)
+      - Many support modes: `insert`, `load` (get many), `retrieve`, `retrieve-as-tool`
+  - **Vector Store Q&A Tool (produces `AiTool`)**
+    - `@n8n/n8n-nodes-langchain.toolVectorStore`
+      - Consumes: `AiVectorStore`, `AiLanguageModel`
+      - Produces: `AiTool`
+      - See: [toolVectorStore](mdc:workflow_nodes/1.108.1/langchain_toolVectorStore.json)
+  - **MCP (Model Context Protocol)**
+    - Client Tool (produces `AiTool`): `@n8n/n8n-nodes-langchain.mcpClientTool`
+      - See: [mcpClientTool](mdc:workflow_nodes/1.108.1/langchain_mcpClientTool.json)
+    - Server Trigger (consumes `AiTool`): `@n8n/n8n-nodes-langchain.mcpTrigger`
+      - See: [mcpTrigger](mdc:workflow_nodes/1.108.1/langchain_mcpTrigger.json)
+
+- **Wiring rules (ports/roles)**
+  - **Model → Agent** via `ai_languageModel` (role: `AiLanguageModel`)
+  - **Tool → Agent** via `ai_tool` (role: `AiTool`)
+  - **Memory → Agent** via `ai_memory` (role: `AiMemory`)
+  - **Embeddings → Vector Store**
+    - Vector Store requires `AiDocument`; `AiEmbedding` is optional (store can embed if not provided). Use document loader nodes to produce `AiDocument`.
+  - **Vector Store → Tool**
+    - Either use `retrieve-as-tool` mode on the vector store node, or wire the store into `toolVectorStore` (recommended for consistent `AiTool` output), then connect tool → agent.
+  - **MCP**
+    - Client tool outputs `AiTool` → connect to agent as a tool.
+    - Server trigger inputs `AiTool` → connect tools you want to expose into `mcpTrigger` using the `ai_tool` handle.
+
+- **Quick recipes (use MCP workflow tools)**
+  - **Agent + Chat Model + Vector Store QA Tool**
+    ```json
+    {
+      "workflow_name": "ai_rag_agent",
+      "workspace_dir": "/abs/path/to/project"
+    }
+    ```
+    ```json
+    {
+      "workflow_name": "ai_rag_agent",
+      "node_type": "@n8n/n8n-nodes-langchain.agent",
+      "node_name": "AI Agent",
+      "position": { "x": 600, "y": 200 }
+    }
+    ```
+    ```json
+    {
+      "workflow_name": "ai_rag_agent",
+      "node_type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "node_name": "OpenAI Chat Model",
+      "position": { "x": 350, "y": 160 }
+    }
+    ```
+    ```json
+    {
+      "workflow_name": "ai_rag_agent",
+      "node_type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "node_name": "Vector QA Tool",
+      "position": { "x": 380, "y": 240 }
+    }
+    ```
+    ```json
+    {
+      "workflow_name": "ai_rag_agent",
+      "agent_node_id": "<AGENT_ID>",
+      "model_node_id": "<LM_ID>",
+      "tool_node_ids": ["<VEC_QA_TOOL_ID>"]
+    }
+    ```
+  - **Embeddings + Qdrant (Insert) + Expose as Retriever Tool**
+    ```json
+    {
+      "workflow_name": "ai_rag_build",
+      "node_type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "node_name": "Embeddings OpenAI",
+      "position": { "x": 200, "y": 120 }
+    }
+    ```
+    ```json
+    {
+      "workflow_name": "ai_rag_build",
+      "node_type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+      "node_name": "Qdrant Vector Store",
+      "position": { "x": 420, "y": 140 },
+      "parameters": { "mode": "insert", "embeddingBatchSize": 200 }
+    }
+    ```
+    - Provide `AiDocument` from a loader (PDF/Text) into the vector store; connect embeddings output optionally.
+    - For retrieval as tool later: set the same node `mode` to `retrieve-as-tool` and connect its tool output to the agent (or use `toolVectorStore`).
+  - **Agent + MCP Client Tool (HTTP Streamable)**
+    ```json
+    {
+      "workflow_name": "agent_mcp_client",
+      "node_type": "@n8n/n8n-nodes-langchain.agent",
+      "node_name": "AI Agent",
+      "position": { "x": 600, "y": 200 }
+    }
+    ```
+    ```json
+    {
+      "workflow_name": "agent_mcp_client",
+      "node_type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "node_name": "Claude Chat Model",
+      "position": { "x": 360, "y": 160 }
+    }
+    ```
+    ```json
+    {
+      "workflow_name": "agent_mcp_client",
+      "node_type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "node_name": "MCP Client Tool",
+      "position": { "x": 360, "y": 250 },
+      "parameters": {
+        "endpointUrl": "https://your-mcp-server.example.com/mcp",
+        "serverTransport": "httpStreamable",
+        "authentication": "bearerAuth"
+      }
+    }
+    ```
+    ```json
+    {
+      "workflow_name": "agent_mcp_client",
+      "agent_node_id": "<AGENT_ID>",
+      "model_node_id": "<LM_ID>",
+      "tool_node_ids": ["<MCP_CLIENT_ID>"]
+    }
+    ```
+  - **Expose tools via MCP Server Trigger**
+    - Add `@n8n/n8n-nodes-langchain.mcpTrigger` and connect one or more tool nodes to its `AiTool` input (use `ai_tool` handle on both sides when creating connections).
+    - Build custom MCP servers with the official SDKs (`@modelcontextprotocol/sdk/server/mcp.js`, `@modelcontextprotocol/sdk/server/stdio.js`).
+
+- **Gotchas / 2025 updates**
+  - **Streaming**: Real-time/streaming output improved around n8n 1.103.x. Enable streaming on supported LLM nodes when needed (see release notes).
+  - **Vector store as tool**: Prefer `toolVectorStore` for stable `AiTool` output; `retrieve-as-tool` works but may vary in node UX across versions.
+  - **Embeddings vs documents**: Vector stores require `AiDocument`; if no `AiEmbedding` is provided, stores embed on insert (batch size configurable on some backends, e.g., Qdrant `embeddingBatchSize`).
+  - **MCP transport**: `serverTransport: sse` is deprecated; prefer `httpStreamable` with `endpointUrl` (≥ v1.1). Use `authentication` + `credentials` when required.
+  - **Discovery first**: Always call `list_available_nodes` with `token_logic: "and"` for strict searches, and pass the current n8n version to avoid typeVersion mismatches.
+
+- **Linear Workflow Discipline**
+  - Enforce a linear, unbroken main chain from the workflow's single start node to its terminal node. AI attachments (`ai_languageModel`, `ai_tool`, `ai_memory`) do not count toward main-chain connectivity.
+
+- **Required invariants**
+  - **Single enabled start node**: Exactly one enabled start/trigger for the workflow's main path.
+  - **All enabled nodes reachable on `main`**: Every enabled node must be reachable from the start node via `main` connections only.
+  - **No islands or strays**: No enabled node may be disconnected or reachable only through non-`main` edges.
+  - **Branches must rejoin**: If you branch on the main chain, you must merge back to a single terminal path; avoid dangling parallel ends unless explicitly required and still connected to the main path.
+  - **Agent attachments are auxiliary**: Connections on `ai_languageModel`, `ai_tool`, `ai_memory` are auxiliary and do not replace `main` connectivity. Ensure the `@n8n/n8n-nodes-langchain.agent` node itself is on the main chain.
+
+- **How to build linearly**
+  - **Create and connect with intent**
+    - When adding nodes, always use `connect_from`/`connect_to` to attach them on `main` immediately.
+    - For AI graphs, use `add_ai_connections` for model/tool/memory → agent, and separately ensure `start → agent` and `agent → next` are connected on `main`.
+  - **Prefer single terminal**
+    - Where possible, converge to one terminal node; use `Merge`/`IF`/`Switch` patterns so branches rejoin before termination.
+  - **Rewire safely**
+    - Use `add_connection` to fix gaps; avoid leaving intermediate nodes detached while editing.
+
+
+
+

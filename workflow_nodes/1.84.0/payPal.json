@@ -10,13 +10,33 @@
       "type": "string",
       "default": "",
       "description": "A sender-specified ID number. Tracks the payout in an accounting system.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "payout"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "jsonParameters",
       "displayName": "JSON Parameters",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "payout"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "itemsUi",
@@ -24,96 +44,44 @@
       "type": "fixedCollection",
       "default": {},
       "description": "The unencrypted phone number",
-      "placeholder": "Add Item"
-    },
-    {
-      "name": "Email",
-      "default": null,
-      "description": "The unencrypted email"
-    },
-    {
-      "name": "PayPal ID",
-      "default": null,
-      "description": "The encrypted PayPal account number"
-    },
-    {
-      "name": "receiverValue",
-      "displayName": "Receiver Value",
-      "type": "string",
-      "default": "",
-      "description": "The receiver of the payment. Corresponds to the recipient_type value in the request. Max length: 127 characters.",
-      "required": true
-    },
-    {
-      "name": "currency",
-      "displayName": "Currency",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Brazilian Real",
-      "default": null
-    },
-    {
-      "name": "Canadian Dollar",
-      "default": null
-    },
-    {
-      "name": "Czech Koruna",
-      "default": null
-    },
-    {
-      "name": "Danish Krone",
-      "default": null
-    },
-    {
-      "name": "Euro",
-      "default": null
-    },
-    {
-      "name": "United States Dollar",
-      "default": null
-    },
-    {
-      "name": "amount",
-      "displayName": "Amount",
-      "type": "string",
-      "default": "",
-      "description": "The value, which might be",
-      "required": true
-    },
-    {
-      "name": "note",
-      "displayName": "Note",
-      "type": "string",
-      "default": "",
-      "description": "The sender-specified note for notifications. Supports up to 4000 ASCII characters and 1000 non-ASCII characters."
-    },
-    {
-      "name": "senderItemId",
-      "displayName": "Sender Item ID",
-      "type": "string",
-      "default": "",
-      "description": "The sender-specified ID number. Tracks the payout in an accounting system."
-    },
-    {
-      "name": "recipientWallet",
-      "displayName": "Recipient Wallet",
-      "type": "options",
-      "default": null,
-      "description": "PayPal Wallet"
-    },
-    {
-      "name": "Venmo",
-      "default": null,
-      "description": "Venmo Wallet"
+      "placeholder": "Add Item",
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "payout"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "itemsJson",
       "displayName": "Items",
       "type": "json",
       "default": "",
-      "description": "An array of individual payout items"
+      "description": "An array of individual payout items",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "payout"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -121,14 +89,40 @@
       "type": "collection",
       "default": {},
       "description": "The subject line for the email that PayPal sends when payment for a payout item completes. The subject line is the same for all recipients. Max length: 255 characters.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "emailMessage",
-      "displayName": "Email Message",
-      "type": "string",
-      "default": "",
-      "description": "The email message that PayPal sends when the payout item completes. The message is the same for all recipients."
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "emailSubject",
+          "displayName": "Email Subject",
+          "type": "string",
+          "default": "",
+          "description": "The subject line for the email that PayPal sends when payment for a payout item completes. The subject line is the same for all recipients. Max length: 255 characters."
+        },
+        {
+          "name": "emailMessage",
+          "displayName": "Email Message",
+          "type": "string",
+          "default": "",
+          "description": "The email message that PayPal sends when the payout item completes. The message is the same for all recipients."
+        },
+        {
+          "name": "note",
+          "displayName": "Note",
+          "type": "string",
+          "default": "",
+          "description": "The payouts and item-level notes are concatenated in the email. Max length: 1000 characters."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "payout"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "payoutBatchId",
@@ -136,21 +130,58 @@
       "type": "string",
       "default": "",
       "description": "The ID of the payout for which to show details",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "payout"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "payout"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 1000
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "payout"
+          ],
+          "operation": [
+            "get"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "payoutItemId",
@@ -158,29 +189,59 @@
       "type": "string",
       "default": "",
       "description": "The ID of the payout item for which to show details",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "payoutItem"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Cancels an unclaimed payout item"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Show payout item details"
+      "default": "get",
+      "description": "Cancels an unclaimed payout item",
+      "options": [
+        {
+          "name": "Cancel",
+          "value": "cancel",
+          "description": "Cancels an unclaimed payout item"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Show payout item details"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "payoutItem"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Payout Item",
-      "default": null
+      "default": "payout",
+      "options": [
+        {
+          "name": "Payout",
+          "value": "payout"
+        },
+        {
+          "name": "Payout Item",
+          "value": "payoutItem"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -192,5 +253,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

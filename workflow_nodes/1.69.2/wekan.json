@@ -11,7 +11,17 @@
       "default": "",
       "description": "The title of the board",
       "placeholder": "My board",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "board"
+          ]
+        }
+      }
     },
     {
       "name": "owner",
@@ -19,7 +29,17 @@
       "type": "options",
       "default": "",
       "description": "The user ID in Wekan. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "board"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -27,71 +47,33 @@
       "type": "collection",
       "default": {},
       "description": "Whether to set the board active",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "isAdmin",
-      "displayName": "Admin",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to set the owner an admin of the board"
-    },
-    {
-      "name": "color",
-      "displayName": "Color",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Midnight",
-      "default": null
-    },
-    {
-      "name": "Nephritis",
-      "default": null
-    },
-    {
-      "name": "Pomegranate",
-      "default": null
-    },
-    {
-      "name": "Pumpkin",
-      "default": null
-    },
-    {
-      "name": "Wisteria",
-      "default": null
-    },
-    {
-      "name": "isCommentOnly",
-      "displayName": "Comment Only",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to enable comments"
-    },
-    {
-      "name": "isNoComments",
-      "displayName": "No Comments",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to disable comments"
-    },
-    {
-      "name": "permission",
-      "displayName": "Permission",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Public",
-      "default": null
-    },
-    {
-      "name": "isWorker",
-      "displayName": "Worker",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to only move cards, assign himself to card and comment"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "isActive",
+          "displayName": "Active",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to set the board active"
+        },
+        {
+          "name": "isAdmin",
+          "displayName": "Admin",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to set the owner an admin of the board"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "board"
+          ]
+        }
+      }
     },
     {
       "name": "boardId",
@@ -99,43 +81,112 @@
       "type": "string",
       "default": "",
       "description": "The ID of the board to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "board"
+          ]
+        }
+      }
+    },
+    {
+      "name": "IdUser",
+      "displayName": "User Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "The ID of the user that boards are attached. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "board"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "board"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 200
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "board"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a new board"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a board"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get the data of a board"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many user boards"
+      "default": "create",
+      "description": "Create a new board",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new board"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a board"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get the data of a board"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many user boards"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "board"
+          ]
+        }
+      }
     },
     {
       "name": "listId",
@@ -143,7 +194,17 @@
       "type": "options",
       "default": "",
       "description": "The ID of the list to create card in. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "card"
+          ]
+        }
+      }
     },
     {
       "name": "swimlaneId",
@@ -151,7 +212,17 @@
       "type": "options",
       "default": "",
       "description": "The swimlane ID of the new card. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "card"
+          ]
+        }
+      }
     },
     {
       "name": "authorId",
@@ -159,21 +230,17 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": "",
-      "description": "The new description of the card"
-    },
-    {
-      "name": "members",
-      "displayName": "Member Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "The new list of member IDs attached to the card. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "card"
+          ]
+        }
+      }
     },
     {
       "name": "cardId",
@@ -181,18 +248,44 @@
       "type": "options",
       "default": "",
       "description": "The ID of the card to delete. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "card"
+          ]
+        }
+      }
     },
     {
       "name": "fromObject",
       "displayName": "From Object",
       "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "Swimlane",
-      "default": null
+      "default": "",
+      "required": true,
+      "options": [
+        {
+          "name": "List",
+          "value": "list"
+        },
+        {
+          "name": "Swimlane",
+          "value": "swimlane"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "card"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -200,178 +293,26 @@
       "type": "collection",
       "default": {},
       "description": "Update the owner of the card. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "assignees",
-      "displayName": "Assignee Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "The new list of assignee IDs attached to the card. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "Blue",
-      "default": null
-    },
-    {
-      "name": "Crimson",
-      "default": null
-    },
-    {
-      "name": "Darkgreen",
-      "default": null
-    },
-    {
-      "name": "Gold",
-      "default": null
-    },
-    {
-      "name": "Gray",
-      "default": null
-    },
-    {
-      "name": "Green",
-      "default": null
-    },
-    {
-      "name": "Indigo",
-      "default": null
-    },
-    {
-      "name": "Lime",
-      "default": null
-    },
-    {
-      "name": "Magenta",
-      "default": null
-    },
-    {
-      "name": "Mistyrose",
-      "default": null
-    },
-    {
-      "name": "Navy",
-      "default": null
-    },
-    {
-      "name": "Orange",
-      "default": null
-    },
-    {
-      "name": "Paleturquoise",
-      "default": null
-    },
-    {
-      "name": "Peachpuff",
-      "default": null
-    },
-    {
-      "name": "Pink",
-      "default": null
-    },
-    {
-      "name": "Plum",
-      "default": null
-    },
-    {
-      "name": "Purple",
-      "default": null
-    },
-    {
-      "name": "Red",
-      "default": null
-    },
-    {
-      "name": "Saddlebrown",
-      "default": null
-    },
-    {
-      "name": "Silver",
-      "default": null
-    },
-    {
-      "name": "Sky",
-      "default": null
-    },
-    {
-      "name": "Slateblue",
-      "default": null
-    },
-    {
-      "name": "White",
-      "default": null
-    },
-    {
-      "name": "Yellow",
-      "default": null
-    },
-    {
-      "name": "dueAt",
-      "displayName": "Due At",
-      "type": "dateTime",
-      "default": "",
-      "description": "The new due at field of the card"
-    },
-    {
-      "name": "endAt",
-      "displayName": "End At",
-      "type": "dateTime",
-      "default": "",
-      "description": "The new end at field of the card"
-    },
-    {
-      "name": "labelIds",
-      "displayName": "Label IDs",
-      "type": "string",
-      "default": "",
-      "description": "The label IDs attached to the card"
-    },
-    {
-      "name": "isOverTime",
-      "displayName": "Over Time",
-      "type": "boolean",
-      "default": false,
-      "description": "The new over time field of the card"
-    },
-    {
-      "name": "parentId",
-      "displayName": "Parent Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "The parent of the card. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "receivedAt",
-      "displayName": "Received At",
-      "type": "dateTime",
-      "default": "",
-      "description": "The new received at field of the card"
-    },
-    {
-      "name": "sort",
-      "displayName": "Sort",
-      "type": "number",
-      "default": 0,
-      "description": "The internally used sort value of a card"
-    },
-    {
-      "name": "spentTime",
-      "displayName": "Spent Time",
-      "type": "number",
-      "default": "",
-      "description": "The new spent time field of the card"
-    },
-    {
-      "name": "startAt",
-      "displayName": "Start At",
-      "type": "dateTime",
-      "default": "",
-      "description": "The new start at field of the card"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a card"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "authorId",
+          "displayName": "Author Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "Update the owner of the card. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "card"
+          ]
+        }
+      }
     },
     {
       "name": "comment",
@@ -379,7 +320,17 @@
       "type": "string",
       "default": "",
       "description": "The comment text",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "cardComment"
+          ]
+        }
+      }
     },
     {
       "name": "commentId",
@@ -387,7 +338,17 @@
       "type": "options",
       "default": "",
       "description": "The ID of the comment to delete. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "cardComment"
+          ]
+        }
+      }
     },
     {
       "name": "items",
@@ -395,7 +356,19 @@
       "type": "string",
       "default": [],
       "description": "Items to be added to the checklist",
-      "required": true
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "checklist"
+          ]
+        }
+      }
     },
     {
       "name": "checklistId",
@@ -403,7 +376,17 @@
       "type": "options",
       "default": "",
       "description": "The ID of the checklist to delete. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "checklist"
+          ]
+        }
+      }
     },
     {
       "name": "checklistItemId",
@@ -411,40 +394,49 @@
       "type": "options",
       "default": "",
       "description": "The ID of the checklistItem item to get. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
-    },
-    {
-      "name": "isFinished",
-      "displayName": "Finished",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the item is checked"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "checklistItem"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Card",
-      "default": null
-    },
-    {
-      "name": "Card Comment",
-      "default": null
-    },
-    {
-      "name": "Checklist",
-      "default": null
-    },
-    {
-      "name": "Checklist Item",
-      "default": null
-    },
-    {
-      "name": "List",
-      "default": null
+      "default": "card",
+      "options": [
+        {
+          "name": "Board",
+          "value": "board"
+        },
+        {
+          "name": "Card",
+          "value": "card"
+        },
+        {
+          "name": "Card Comment",
+          "value": "cardComment"
+        },
+        {
+          "name": "Checklist",
+          "value": "checklist"
+        },
+        {
+          "name": "Checklist Item",
+          "value": "checklistItem"
+        },
+        {
+          "name": "List",
+          "value": "list"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -456,5 +448,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

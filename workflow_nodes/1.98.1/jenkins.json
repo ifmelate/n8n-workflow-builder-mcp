@@ -8,43 +8,73 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Instance",
-      "default": null
-    },
-    {
-      "name": "Job",
-      "default": null
+      "default": "job",
+      "options": [
+        {
+          "name": "Build",
+          "value": "build"
+        },
+        {
+          "name": "Instance",
+          "value": "instance"
+        },
+        {
+          "name": "Job",
+          "value": "job"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Copy a specific job"
-    },
-    {
-      "name": "Create",
-      "default": null,
-      "description": "Create a new job"
-    },
-    {
-      "name": "Trigger",
-      "default": null,
-      "description": "Trigger a specific job"
-    },
-    {
-      "name": "Trigger with Parameters",
-      "default": null,
-      "description": "Trigger a specific job"
+      "default": "trigger",
+      "description": "Copy a specific job",
+      "options": [
+        {
+          "name": "Copy",
+          "value": "copy",
+          "description": "Copy a specific job"
+        },
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new job"
+        },
+        {
+          "name": "Trigger",
+          "value": "trigger",
+          "description": "Trigger a specific job"
+        },
+        {
+          "name": "Trigger with Parameters",
+          "value": "triggerParams",
+          "description": "Trigger a specific job"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "job"
+          ]
+        }
+      }
     },
     {
       "name": "triggerParamsNotice",
       "displayName": "Make sure the job is setup to support triggering with parameters. <a href=\"https://wiki.jenkins.io/display/JENKINS/Parameterized+Build\" target=\"_blank\">More info</a>",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "job"
+          ],
+          "operation": [
+            "triggerParams"
+          ]
+        }
+      }
     },
     {
       "name": "job",
@@ -52,15 +82,41 @@
       "type": "options",
       "default": "",
       "description": "Name of the job. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Parameter",
       "required": true,
-      "options": []
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "job"
+          ],
+          "operation": [
+            "trigger",
+            "triggerParams",
+            "copy"
+          ]
+        }
+      }
     },
     {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": ""
+      "name": "param",
+      "displayName": "Parameters",
+      "type": "fixedCollection",
+      "default": {},
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Parameter",
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "job"
+          ],
+          "operation": [
+            "triggerParams"
+          ]
+        }
+      }
     },
     {
       "name": "newJob",
@@ -68,7 +124,18 @@
       "type": "string",
       "default": "",
       "description": "Name of the new Jenkins job",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "job"
+          ],
+          "operation": [
+            "copy",
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "xml",
@@ -76,67 +143,103 @@
       "type": "string",
       "default": "",
       "description": "XML of Jenkins config",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "job"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "createNotice",
       "displayName": "To get the XML of an existing job, add ‘config.xml’ to the end of the job URL",
       "type": "notice",
       "default": "",
-      "description": "Cancel quiet down state"
-    },
-    {
-      "name": "Quiet Down",
-      "default": null,
-      "description": "Put Jenkins in quiet mode, no builds can be started, Jenkins is ready for shutdown"
-    },
-    {
-      "name": "Restart",
-      "default": null,
-      "description": "Restart Jenkins immediately on environments where it is possible"
-    },
-    {
-      "name": "Safely Restart",
-      "default": null,
-      "description": "Restart Jenkins once no jobs are running on environments where it is possible"
-    },
-    {
-      "name": "Safely Shutdown",
-      "default": null,
-      "description": "Shutdown once no jobs are running"
-    },
-    {
-      "name": "Shutdown",
-      "default": null,
-      "description": "Shutdown Jenkins immediately"
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "job"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "reason",
       "displayName": "Reason",
       "type": "string",
       "default": "",
-      "description": "Freeform reason for quiet down mode"
+      "description": "Freeform reason for quiet down mode",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "instance"
+          ],
+          "operation": [
+            "quietDown"
+          ]
+        }
+      }
     },
     {
       "name": "instanceNotice",
       "displayName": "Instance operation can shutdown Jenkins instance and make it unresponsive. Some commands may not be available depending on instance implementation.",
       "type": "notice",
       "default": "",
-      "description": "List Builds"
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "instance"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "build"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "build"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -168,5 +271,27 @@
       "name": "job",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

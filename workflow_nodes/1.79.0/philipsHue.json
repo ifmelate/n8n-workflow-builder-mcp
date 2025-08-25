@@ -9,8 +9,34 @@
       "displayName": "Light ID",
       "type": "string",
       "default": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "light"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
       "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "light"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
@@ -18,7 +44,23 @@
       "type": "number",
       "default": 100,
       "description": "Max number of results to return",
-      "required": true
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "light"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "on",
@@ -26,7 +68,17 @@
       "type": "boolean",
       "default": true,
       "description": "On/Off state of the light",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "light"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -34,134 +86,69 @@
       "type": "collection",
       "default": {},
       "description": "The light is not performing an alert effect",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Select",
-      "default": null,
-      "description": "The light is performing one breathe cycle"
-    },
-    {
-      "name": "LSelect",
-      "default": null,
-      "description": "The light is performing breathe cycles for 15 seconds or until an \"alert\": \"none\" command is received"
-    },
-    {
-      "name": "bri",
-      "displayName": "Brightness",
-      "type": "number",
-      "default": 100,
-      "description": "The brightness value to set the light to. Brightness is a scale from 1 (the minimum the light is capable of) to 254 (the maximum)."
-    },
-    {
-      "name": "bri_inc",
-      "displayName": "Brightness Increments",
-      "type": "number",
-      "default": 0,
-      "description": "Increments or decrements the value of the brightness. This value is ignored if the Brightness attribute is provided."
-    },
-    {
-      "name": "ct",
-      "displayName": "Color Temperature",
-      "type": "number",
-      "default": 0,
-      "description": "The Mired color temperature of the light. 2012 connected lights are capable of 153 (6500K) to 500 (2000K)."
-    },
-    {
-      "name": "ct_inc",
-      "displayName": "Color Temperature Increments",
-      "type": "number",
-      "default": 0,
-      "description": "Increments or decrements the value of the ct. ct_inc is ignored if the ct attribute is provided."
-    },
-    {
-      "name": "xy",
-      "displayName": "Coordinates",
-      "type": "string",
-      "default": "",
-      "description": "The x and y coordinates of a color in CIE color space. The first entry is the x coordinate and the second entry is the y coordinate. Both x and y are between 0 and 1",
-      "placeholder": "0.64394,0.33069"
-    },
-    {
-      "name": "xy_inc",
-      "displayName": "Coordinates Increments",
-      "type": "string",
-      "default": "",
-      "description": "Increments or decrements the value of the xy. This value is ignored if the Coordinates attribute is provided. Any ongoing color transition is stopped. Max value [0.5, 0.5]",
-      "placeholder": "0.5,0.5"
-    },
-    {
-      "name": "effect",
-      "displayName": "Dynamic Effect",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Color Loop",
-      "default": null
-    },
-    {
-      "name": "hue",
-      "displayName": "Hue",
-      "type": "number",
-      "default": 0,
-      "description": "The hue value to set light to.The hue value is a wrapping value between 0 and 65535. Both 0 and 65535 are red, 25500 is green and 46920 is blue."
-    },
-    {
-      "name": "hue_inc",
-      "displayName": "Hue Increments",
-      "type": "number",
-      "default": 0,
-      "description": "Increments or decrements the value of the hue. Hue Increments is ignored if the Hue attribute is provided."
-    },
-    {
-      "name": "sat",
-      "displayName": "Saturation",
-      "type": "number",
-      "default": 0,
-      "description": "Saturation of the light. 254 is the most saturated (colored) and 0 is the least saturated (white)."
-    },
-    {
-      "name": "sat_inc",
-      "displayName": "Saturation Increments",
-      "type": "number",
-      "default": 0,
-      "description": "Increments or decrements the value of the sat. This value is ignored if the Saturation attribute is provided."
-    },
-    {
-      "name": "transitiontime",
-      "displayName": "Transition Time",
-      "type": "number",
-      "default": 4,
-      "description": "The duration in seconds of the transition from the light’s current state to the new state"
+      "placeholder": "Add Field",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 254
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "light"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Delete a light"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Retrieve a light"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Retrieve many lights"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a light"
+      "default": "update",
+      "description": "Delete a light",
+      "options": [
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a light"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Retrieve a light"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Retrieve many lights"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a light"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "light"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "light",
+      "options": [
+        {
+          "name": "Light",
+          "value": "light"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -173,5 +160,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

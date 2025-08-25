@@ -10,57 +10,125 @@
       "type": "string",
       "default": "",
       "description": "The ID of the admin object for lookup",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "admin"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "admin"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 64,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 64
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "admin"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "admin"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
       "displayName": "Update Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "admin"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a new Onfleet admin"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an Onfleet admin"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many Onfleet admins"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update an Onfleet admin"
+      "default": "getAll",
+      "description": "Create a new Onfleet admin",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new Onfleet admin"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete an Onfleet admin"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many Onfleet admins"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update an Onfleet admin"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "admin"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -68,36 +136,53 @@
       "type": "collection",
       "default": {},
       "placeholder": "Add option",
-      "required": false
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get container information"
-    },
-    {
-      "name": "Update Tasks",
-      "default": null,
-      "description": "Fully replace a container's tasks"
-    },
-    {
-      "name": "Get Delegatee Details",
-      "default": null,
-      "description": "Retrieve the details of an organization with which you are connected"
+      "required": false,
+      "options": [
+        {}
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "container"
+          ],
+          "operation": [
+            "addTask",
+            "updateTask"
+          ]
+        }
+      }
     },
     {
       "name": "getBy",
       "displayName": "Get By",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Phone",
-      "default": null
-    },
-    {
-      "name": "Name",
-      "default": null
+      "default": "id",
+      "description": "The variable that is used for looking up a recipient",
+      "required": true,
+      "options": [
+        {
+          "name": "ID",
+          "value": "id"
+        },
+        {
+          "name": "Phone",
+          "value": "phone"
+        },
+        {
+          "name": "Name",
+          "value": "name"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "recipient"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "name",
@@ -105,7 +190,20 @@
       "type": "string",
       "default": "",
       "description": "The name of the recipient for lookup",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "recipient"
+          ],
+          "operation": [
+            "get"
+          ],
+          "getBy": [
+            "name"
+          ]
+        }
+      }
     },
     {
       "name": "phone",
@@ -113,7 +211,20 @@
       "type": "string",
       "default": "",
       "description": "The phone of the recipient for lookup",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "recipient"
+          ],
+          "operation": [
+            "get"
+          ],
+          "getBy": [
+            "phone"
+          ]
+        }
+      }
     },
     {
       "name": "success",
@@ -121,7 +232,17 @@
       "type": "boolean",
       "default": true,
       "description": "Whether the task's completion was successful",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "complete"
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -129,119 +250,69 @@
       "type": "collection",
       "default": {},
       "description": "The starting time of the range. Tasks created or completed at or after this time will be included.",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "state",
-      "displayName": "State",
-      "type": "multiOptions",
-      "default": null,
-      "options": []
-    },
-    {
-      "name": "Active",
-      "default": null
-    },
-    {
-      "name": "Assigned",
-      "default": null
-    },
-    {
-      "name": "Completed",
-      "default": null
-    },
-    {
-      "name": "Unassigned",
-      "default": null
-    },
-    {
-      "name": "to",
-      "displayName": "To",
-      "type": "dateTime",
-      "default": "",
-      "description": "The ending time of the range. Defaults to current time if not specified."
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "from",
+          "displayName": "From",
+          "type": "dateTime",
+          "default": "",
+          "description": "The starting time of the range. Tasks created or completed at or after this time will be included."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "overrideFields",
       "displayName": "Override Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "includeBarcodes",
-      "displayName": "Include Barcodes",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "includeDependencies",
-      "displayName": "Include Dependencies",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "includeMetadata",
-      "displayName": "Include Metadata",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "recipientNotes",
-      "displayName": "Recipient Notes Override",
-      "type": "string",
-      "default": "",
-      "description": "Override the recipient notes for this task only"
-    },
-    {
-      "name": "recipientSkipSMSNotifications",
-      "displayName": "Recipient Skip SMS Notifications Override",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to override the recipient notification settings for this task"
-    },
-    {
-      "name": "Complete",
-      "default": null,
-      "description": "Force-complete a started Onfleet task"
-    },
-    {
-      "name": "Create",
-      "default": null,
-      "description": "Create a new Onfleet task"
-    },
-    {
-      "name": "scheduleTimeWindow",
-      "displayName": "Schedule Time Window",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Time Window"
-    },
-    {
-      "name": "endTime",
-      "displayName": "End Time",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "taskTimeWindow",
-      "displayName": "Task Time Window",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Time Window"
-    },
-    {
-      "name": "pickUp",
-      "displayName": "Pick Up",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Pick Up",
-      "required": true
-    },
-    {
-      "name": "Get Time Estimates",
-      "default": null,
-      "description": "Get estimated times for upcoming tasks for a team, returns a selected driver"
+      "placeholder": "Add Field",
+      "required": false,
+      "options": [
+        {},
+        {},
+        {
+          "name": "includeBarcodes",
+          "displayName": "Include Barcodes",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "includeDependencies",
+          "displayName": "Include Dependencies",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "includeMetadata",
+          "displayName": "Include Metadata",
+          "type": "boolean",
+          "default": false
+        },
+        {},
+        {},
+        {}
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ],
+          "operation": [
+            "clone"
+          ]
+        }
+      }
     },
     {
       "name": "schedule",
@@ -249,58 +320,65 @@
       "type": "fixedCollection",
       "default": {},
       "placeholder": "Add Schedule",
-      "required": true
-    },
-    {
-      "name": "shifts",
-      "displayName": "Shifts",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Shift",
-      "required": true
-    },
-    {
-      "name": "Get Schedule",
-      "default": null,
-      "description": "Get a specific Onfleet worker schedule"
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "worker"
+          ],
+          "operation": [
+            "setSchedule"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Container",
-      "default": null
-    },
-    {
-      "name": "Destination",
-      "default": null
-    },
-    {
-      "name": "Hub",
-      "default": null
-    },
-    {
-      "name": "Organization",
-      "default": null
-    },
-    {
-      "name": "Recipient",
-      "default": null
-    },
-    {
-      "name": "Task",
-      "default": null
-    },
-    {
-      "name": "Team",
-      "default": null
-    },
-    {
-      "name": "Worker",
-      "default": null
+      "default": "task",
+      "description": "The resource to perform operations on",
+      "options": [
+        {
+          "name": "Admin",
+          "value": "admin"
+        },
+        {
+          "name": "Container",
+          "value": "container"
+        },
+        {
+          "name": "Destination",
+          "value": "destination"
+        },
+        {
+          "name": "Hub",
+          "value": "hub"
+        },
+        {
+          "name": "Organization",
+          "value": "organization"
+        },
+        {
+          "name": "Recipient",
+          "value": "recipient"
+        },
+        {
+          "name": "Task",
+          "value": "task"
+        },
+        {
+          "name": "Team",
+          "value": "team"
+        },
+        {
+          "name": "Worker",
+          "value": "worker"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -312,5 +390,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

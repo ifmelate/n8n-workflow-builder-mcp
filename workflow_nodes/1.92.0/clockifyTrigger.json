@@ -11,6 +11,18 @@
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
       "required": true
+    },
+    {
+      "name": "watchField",
+      "displayName": "Trigger",
+      "type": "options",
+      "default": null,
+      "required": true,
+      "options": [
+        {
+          "name": "New Time Entry"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -22,5 +34,23 @@
       "name": "workspaceId",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

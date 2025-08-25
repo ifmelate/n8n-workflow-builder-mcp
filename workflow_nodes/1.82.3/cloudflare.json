@@ -10,7 +10,20 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "zoneCertificate"
+          ],
+          "operation": [
+            "upload",
+            "getMany",
+            "get",
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "certificate",
@@ -18,76 +31,159 @@
       "type": "string",
       "default": "",
       "description": "The zone's leaf certificate",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "zoneCertificate"
+          ],
+          "operation": [
+            "upload"
+          ]
+        }
+      }
     },
     {
       "name": "privateKey",
       "displayName": "Private Key",
       "type": "string",
       "default": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "zoneCertificate"
+          ],
+          "operation": [
+            "upload"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
       "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "zoneCertificate"
+          ],
+          "operation": [
+            "getMany"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 25,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 50
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "zoneCertificate"
+          ],
+          "operation": [
+            "getMany"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
       "displayName": "Filters",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Expired",
-      "default": null
-    },
-    {
-      "name": "Deleted",
-      "default": null
-    },
-    {
-      "name": "Pending",
-      "default": null
+      "description": "Status of the zone's custom SSL",
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "zoneCertificate"
+          ],
+          "operation": [
+            "getMany"
+          ]
+        }
+      }
     },
     {
       "name": "certificateId",
       "displayName": "Certificate ID",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "zoneCertificate"
+          ],
+          "operation": [
+            "get",
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Delete a certificate"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a certificate"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many certificates"
-    },
-    {
-      "name": "Upload",
-      "default": null,
-      "description": "Upload a certificate"
+      "default": "upload",
+      "description": "Delete a certificate",
+      "options": [
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a certificate"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a certificate"
+        },
+        {
+          "name": "Get Many",
+          "value": "getMany",
+          "description": "Get many certificates"
+        },
+        {
+          "name": "Upload",
+          "value": "upload",
+          "description": "Upload a certificate"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "zoneCertificate"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "zoneCertificate",
+      "options": [
+        {
+          "name": "Zone Certificate",
+          "value": "zoneCertificate"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -99,5 +195,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

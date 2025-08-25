@@ -4,5 +4,29 @@
   "description": "Use a Vector Store as Retriever",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "AiVectorStore"
+    ],
+    "outputs": [
+      "AiRetriever"
+    ],
+    "outputNames": [
+      "Retriever"
+    ],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "AiVectorStore"
+    ],
+    "produces": [
+      "AiRetriever"
+    ]
+  }
 }

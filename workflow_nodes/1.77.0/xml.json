@@ -8,21 +8,48 @@
       "name": "mode",
       "displayName": "Mode",
       "type": "options",
-      "default": null,
-      "description": "Converts data from JSON to XML"
-    },
-    {
-      "name": "XML to JSON",
-      "default": null,
-      "description": "Converts data from XML to JSON"
+      "default": "xmlToJson",
+      "description": "Converts data from JSON to XML",
+      "options": [
+        {
+          "name": "JSON to XML",
+          "value": "jsonToxml",
+          "description": "Converts data from JSON to XML"
+        },
+        {
+          "name": "XML to JSON",
+          "value": "xmlToJson",
+          "description": "Converts data from XML to JSON"
+        }
+      ]
     },
     {
       "name": "xmlNotice",
       "displayName": "If your XML is inside a binary file, use the 'Extract from File' node to convert it to text first",
       "type": "notice",
       "default": "",
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "xmlToJson"
+          ]
+        }
+      }
+    },
+    {
+      "name": "dataPropertyName",
+      "displayName": "Property Name",
+      "type": "string",
+      "default": "data",
       "description": "Name of the property to which to contains the converted XML data",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "jsonToxml"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -30,100 +57,45 @@
       "type": "collection",
       "default": {},
       "description": "Whether to allow using characters from the Unicode surrogate blocks",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "attrkey",
-      "displayName": "Attribute Key",
-      "type": "string",
-      "default": "$",
-      "description": "Prefix that is used to access the attributes"
-    },
-    {
-      "name": "cdata",
-      "displayName": "Cdata",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to wrap text nodes in &lt;![CDATA[ ... ]]&gt; instead of escaping when necessary. Does not add &lt;![CDATA[ ... ]]&gt; if it is not required."
-    },
-    {
-      "name": "charkey",
-      "displayName": "Character Key",
-      "type": "string",
-      "default": "_",
-      "description": "Prefix that is used to access the character content"
-    },
-    {
-      "name": "headless",
-      "displayName": "Headless",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to omit the XML header"
-    },
-    {
-      "name": "rootName",
-      "displayName": "Root Name",
-      "type": "string",
-      "default": "root",
-      "description": "Root element name to be used"
-    },
-    {
-      "name": "dataPropertyName",
-      "displayName": "Property Name",
-      "type": "string",
-      "default": "data",
-      "description": "Name of the property which contains the XML data to convert",
-      "required": true
-    },
-    {
-      "name": "explicitArray",
-      "displayName": "Explicit Array",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to always put child nodes in an array if true; otherwise an array is created only if there is more than one"
-    },
-    {
-      "name": "explicitRoot",
-      "displayName": "Explicit Root",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to set this if you want to get the root node in the resulting object"
-    },
-    {
-      "name": "ignoreAttrs",
-      "displayName": "Ignore Attributes",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to ignore all XML attributes and only create text nodes"
-    },
-    {
-      "name": "mergeAttrs",
-      "displayName": "Merge Attributes",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to merge attributes and child elements as properties of the parent, instead of keying attributes off a child attribute object. This option is ignored if ignoreAttrs is true."
-    },
-    {
-      "name": "normalize",
-      "displayName": "Normalize",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to trim whitespaces inside text nodes"
-    },
-    {
-      "name": "normalizeTags",
-      "displayName": "Normalize Tags",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to normalize all tag names to lowercase"
-    },
-    {
-      "name": "trim",
-      "displayName": "Trim",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to trim the whitespace at the beginning and end of text nodes"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "allowSurrogateChars",
+          "displayName": "Allow Surrogate Chars",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to allow using characters from the Unicode surrogate blocks"
+        },
+        {
+          "name": "attrkey",
+          "displayName": "Attribute Key",
+          "type": "string",
+          "default": "$",
+          "description": "Prefix that is used to access the attributes"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "jsonToxml"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -11,5 +11,31 @@
     1.5
   ],
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "AiMemory"
+    ],
+    "outputNames": [
+      "Memory"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiAgent"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "memory",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent"
+    ],
+    "consumes": [],
+    "produces": [
+      "AiMemory"
+    ]
+  }
 }

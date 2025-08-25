@@ -8,11 +8,18 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": ""
-    },
-    {
-      "name": "Task",
-      "default": null
+      "default": "",
+      "description": "Resource that triggers the webhook",
+      "options": [
+        {
+          "name": "Project",
+          "value": "list"
+        },
+        {
+          "name": "Task",
+          "value": "task"
+        }
+      ]
     },
     {
       "name": "listIds",
@@ -20,7 +27,14 @@
       "type": "string",
       "default": "",
       "description": "Lists IDs, perhaps known better as \"Projects\" separated by a comma (,)",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "list"
+          ]
+        }
+      }
     },
     {
       "name": "taskIds",
@@ -28,7 +42,14 @@
       "type": "string",
       "default": "",
       "description": "Task IDs separated by a comma (,)",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "task"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -48,5 +69,19 @@
       "name": "listIds",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

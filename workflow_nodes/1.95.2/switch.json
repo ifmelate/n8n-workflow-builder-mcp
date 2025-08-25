@@ -8,54 +8,66 @@
       "name": "mode",
       "displayName": "Mode",
       "type": "options",
-      "default": null,
-      "description": "Build a matching rule for each output"
-    },
-    {
-      "name": "Expression",
-      "default": null,
-      "description": "Write an expression to return the output index"
+      "default": "rules",
+      "description": "Build a matching rule for each output",
+      "options": [
+        {
+          "name": "Rules",
+          "value": "rules",
+          "description": "Build a matching rule for each output"
+        },
+        {
+          "name": "Expression",
+          "value": "expression",
+          "description": "Write an expression to return the output index"
+        }
+      ]
     },
     {
       "name": "numberOutputs",
       "displayName": "Number of Outputs",
       "type": "number",
       "default": 4,
-      "description": "How many outputs to create"
+      "description": "How many outputs to create",
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "expression"
+          ]
+        }
+      }
     },
     {
       "name": "output",
       "displayName": "Output Index",
       "type": "number",
       "default": "={{}}",
-      "description": "The output index to send the input item to. Use an expression to calculate which input item should be routed to which output. The expression must return a number."
+      "description": "The output index to send the input item to. Use an expression to calculate which input item should be routed to which output. The expression must return a number.",
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "expression"
+          ]
+        }
+      }
     },
     {
       "name": "rules",
       "displayName": "Routing Rules",
       "type": "fixedCollection",
-      "default": "{\n\t\t\t\t\t\tvalues: [\n\t\t\t\t\t\t\t{\n\t\t\t\t\t\t\t\tconditions: {\n\t\t\t\t\t\t\t\t\toptions: {\n\t\t\t\t\t\t\t\t\t\tcaseSensitive: true,\n\t\t\t\t\t\t\t\t\t\tleftValue: '',\n\t\t\t\t\t\t\t\t\t\ttypeValidation: 'strict',\n\t\t\t\t\t\t\t\t\t}",
-      "placeholder": "Add Routing Rule"
-    },
-    {
-      "name": "values",
-      "displayName": "Values",
-      "type": "filter",
       "default": {},
-      "placeholder": "Add Condition"
-    },
-    {
-      "name": "renameOutput",
-      "displayName": "Rename Output",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "outputKey",
-      "displayName": "Output Name",
-      "type": "string",
-      "default": "",
-      "description": "The label of output to which to send data to if rule matches"
+      "description": "The label of output to which to send data to if rule matches",
+      "placeholder": "Add Routing Rule",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "rules"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -63,29 +75,29 @@
       "type": "collection",
       "default": {},
       "description": "If no rule matches the item will be sent to this output, by default they will be ignored",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "ignoreCase",
-      "displayName": "Ignore Case",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to ignore letter case when evaluating conditions"
-    },
-    {
-      "name": "renameFallbackOutput",
-      "displayName": "Rename Fallback Output",
-      "type": "string",
-      "default": "",
-      "placeholder": "e.g. Fallback"
-    },
-    {
-      "name": "allMatchingOutputs",
-      "displayName": "Send data to all matching outputs",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to send data to all outputs meeting conditions (and not just the first one)"
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "mode": [
+            "rules"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

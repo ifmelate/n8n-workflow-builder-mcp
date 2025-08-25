@@ -8,22 +8,34 @@
       "name": "authentication",
       "displayName": "Credential Type",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Service Account",
-      "default": null
+      "default": "oAuth2",
+      "options": [
+        {
+          "name": "OAuth2 (recommended)",
+          "value": "oAuth2"
+        },
+        {
+          "name": "Service Account",
+          "value": "serviceAccount"
+        }
+      ]
     },
     {
       "name": "triggerOn",
       "displayName": "Trigger On",
       "type": "options",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "Changes Involving a Specific Folder",
-      "default": null
+      "required": true,
+      "options": [
+        {
+          "name": "Changes to a Specific File",
+          "value": "specificFile"
+        },
+        {
+          "name": "Changes Involving a Specific Folder",
+          "value": "specificFolder"
+        }
+      ]
     },
     {
       "name": "fileToWatch",
@@ -31,28 +43,35 @@
       "type": "resourceLocator",
       "default": "{ mode: 'list', value: '' }",
       "placeholder": "Select a file...",
-      "required": true
-    },
-    {
-      "name": "url",
-      "displayName": "Link",
-      "type": "string",
-      "default": null,
-      "placeholder": "https://drive.google.com/file/d/1wroCSfK-hupQIYf_xzeoUEzOhvfTFH2P/edit"
-    },
-    {
-      "name": "id",
-      "displayName": "ID",
-      "type": "string",
-      "default": null,
-      "placeholder": "1anGBg0b5re2VtF2bKu201_a-Vnz5BHq9Y4r-yBDAj5A"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "triggerOn": [
+            "specificFile"
+          ]
+        }
+      }
     },
     {
       "name": "event",
       "displayName": "Watch For",
       "type": "options",
       "default": "fileUpdated",
-      "required": true
+      "description": "When to trigger this node",
+      "required": true,
+      "options": [
+        {
+          "name": "File Updated",
+          "value": "fileUpdated"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "triggerOn": [
+            "specificFile"
+          ]
+        }
+      }
     },
     {
       "name": "folderToWatch",
@@ -60,33 +79,27 @@
       "type": "resourceLocator",
       "default": "{ mode: 'list', value: '' }",
       "placeholder": "Select a folder...",
-      "required": true
-    },
-    {
-      "name": "File Updated",
-      "default": null,
-      "description": "When a file is updated in the watched folder"
-    },
-    {
-      "name": "Folder Created",
-      "default": null,
-      "description": "When a folder is created in the watched folder"
-    },
-    {
-      "name": "Folder Updated",
-      "default": null,
-      "description": "When a folder is updated in the watched folder"
-    },
-    {
-      "name": "Watch Folder Updated",
-      "default": null,
-      "description": "When the watched folder itself is modified"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "triggerOn": [
+            "specificFolder"
+          ]
+        }
+      }
     },
     {
       "name": "asas",
       "displayName": "Changes within subfolders won't trigger this node",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "triggerOn": [
+            "specificFolder"
+          ]
+        }
+      }
     },
     {
       "name": "driveToWatch",
@@ -94,42 +107,30 @@
       "type": "options",
       "default": "root",
       "description": "The drive to monitor. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "triggerOn": [
+            "anyFileFolder"
+          ]
+        }
+      }
     },
     {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
-      "placeholder": "Add option"
-    },
-    {
-      "name": "Audio",
-      "default": null
-    },
-    {
-      "name": "Google Docs",
-      "default": null
-    },
-    {
-      "name": "Google Drawings",
-      "default": null
-    },
-    {
-      "name": "Google Slides",
-      "default": null
-    },
-    {
-      "name": "Google Spreadsheets",
-      "default": null
-    },
-    {
-      "name": "Photos and Images",
-      "default": null
-    },
-    {
-      "name": "Videos",
-      "default": null
+      "description": "Triggers only when the file is this type",
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "event": [
+            "fileCreated",
+            "fileUpdated"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -177,5 +178,19 @@
       "name": "options",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

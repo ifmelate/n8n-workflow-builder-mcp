@@ -8,147 +8,41 @@
   ],
   "properties": [
     {
-      "name": "resource",
-      "displayName": "Resource",
+      "name": "operation",
+      "displayName": "Operation",
       "type": "options",
-      "default": "chat",
-      "description": "The OpenAI resource to use",
-      "required": true,
-      "options": [
-        {
-          "name": "Chat",
-          "value": "chat"
-        },
-        {
-          "name": "Completion",
-          "value": "completion"
-        },
-        {
-          "name": "Image",
-          "value": "image"
-        },
-        {
-          "name": "Embedding",
-          "value": "embedding"
-        },
-        {
-          "name": "Audio",
-          "value": "audio"
-        }
-      ]
-    },
-    {
-      "name": "authentication",
-      "displayName": "Authentication",
-      "type": "options",
-      "default": "apiKey",
-      "description": "Authentication method to use",
-      "options": [
-        {
-          "name": "API Key",
-          "value": "apiKey"
-        }
-      ]
-    },
-    {
-      "name": "prompt",
-      "displayName": "Chat Messages",
-      "type": "collection",
-      "default": null,
-      "options": [
-        {
-          "name": "messages",
-          "displayName": "Messages",
-          "type": "fixedCollection",
-          "typeOptions": {
-            "multipleValues": true
-          },
-          "options": [
-            {
-              "name": "role",
-              "displayName": "Role",
-              "type": "options",
-              "options": [
-                {
-                  "name": "System",
-                  "value": "system"
-                },
-                {
-                  "name": "User",
-                  "value": "user"
-                },
-                {
-                  "name": "Assistant",
-                  "value": "assistant"
-                }
-              ],
-              "default": "user",
-              "description": "The role of the message sender"
-            },
-            {
-              "name": "content",
-              "displayName": "Content",
-              "type": "string",
-              "typeOptions": {
-                "rows": 4
-              },
-              "description": "The content of the message"
-            }
+      "default": "complete",
+      "description": "Create one or more completions for a given text",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "chat"
           ]
         }
-      ],
-      "typeOptions": {
-        "multipleValues": true
       }
-    },
-    {
-      "name": "model",
-      "displayName": "Model",
-      "type": "string",
-      "default": "gpt-3.5-turbo",
-      "description": "The ID of the model to use",
-      "options": [
-        {
-          "name": "gpt-3.5-turbo",
-          "value": "gpt-3.5-turbo"
-        },
-        {
-          "name": "gpt-4",
-          "value": "gpt-4"
-        },
-        {
-          "name": "gpt-4-turbo",
-          "value": "gpt-4-turbo"
-        }
-      ]
-    },
-    {
-      "name": "options",
-      "displayName": "Options",
-      "type": "collection",
-      "default": null,
-      "placeholder": "Add Option",
-      "options": [
-        {
-          "name": "temperature",
-          "displayName": "Temperature",
-          "type": "number",
-          "typeOptions": {
-            "minValue": 0,
-            "maxValue": 2
-          },
-          "default": 1,
-          "description": "Controls randomness: Lowering results in less random completions"
-        },
-        {
-          "name": "max_tokens",
-          "displayName": "Maximum Tokens",
-          "type": "number",
-          "default": 1024,
-          "description": "The maximum number of tokens to generate"
-        }
-      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

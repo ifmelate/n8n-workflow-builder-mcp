@@ -4,5 +4,39 @@
   "description": "Deprecated, use structured output parser",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "AiLanguageModel",
+      "AiOutputParser"
+    ],
+    "outputs": [
+      "AiOutputParser"
+    ],
+    "outputNames": [
+      "Output Parser"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiChain",
+        "AiAgent"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "outputParser",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent",
+      "AiChain"
+    ],
+    "consumes": [
+      "AiLanguageModel",
+      "AiOutputParser"
+    ],
+    "produces": [
+      "AiOutputParser"
+    ]
+  }
 }

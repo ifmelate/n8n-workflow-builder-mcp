@@ -8,11 +8,17 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "User Activity",
-      "default": null
+      "default": "report",
+      "options": [
+        {
+          "name": "Report",
+          "value": "report"
+        },
+        {
+          "name": "User Activity",
+          "value": "userActivity"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -24,5 +30,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

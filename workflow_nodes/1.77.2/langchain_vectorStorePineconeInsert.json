@@ -33,5 +33,26 @@
       "name": "pineconeNamespace",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "vectorStore",
+    "requires": [
+      "AiDocument"
+    ],
+    "optional": [
+      "AiEmbedding"
+    ],
+    "consumedBy": [
+      "AiRetriever",
+      "AiTool"
+    ],
+    "consumes": [],
+    "produces": []
+  }
 }

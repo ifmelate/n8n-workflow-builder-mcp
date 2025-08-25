@@ -25,29 +25,22 @@
       "type": "string",
       "default": "",
       "description": "The message to publish",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "sendInputData": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
+      "description": "QoS subscription level",
       "placeholder": "Add option"
-    },
-    {
-      "name": "Received at Least Once",
-      "default": null
-    },
-    {
-      "name": "Exactly Once",
-      "default": null
-    },
-    {
-      "name": "retain",
-      "displayName": "Retain",
-      "type": "boolean",
-      "default": false,
-      "description": "Normally if a publisher publishes a message to a topic, and no one is subscribed to that topic the message is simply discarded by the broker. However the publisher can tell the broker to keep the last message on that topic by setting the retain flag to true."
     }
   ],
   "credentialsConfig": [
@@ -63,5 +56,19 @@
       "name": "retain",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -6,5 +6,26 @@
     1
   ],
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [
+      "Model"
+    ],
+    "hints": {
+      "connectTo": []
+    }
+  },
+  "wiring": {
+    "role": "model",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent",
+      "AiChain"
+    ],
+    "consumes": [],
+    "produces": []
+  }
 }

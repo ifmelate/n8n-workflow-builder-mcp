@@ -9,99 +9,240 @@
       "displayName": "Issue Key",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issueAttachment"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
     },
     {
       "name": "binaryPropertyName",
       "displayName": "Input Binary Field",
       "type": "string",
       "default": "data",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issueAttachment"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
+    },
+    {
+      "name": "attachmentId",
+      "displayName": "Attachment ID",
+      "type": "string",
+      "default": "",
       "description": "The ID of the attachment",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issueAttachment"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "download",
       "displayName": "Download",
       "type": "boolean",
       "default": false,
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issueAttachment"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "binaryProperty",
       "displayName": "Put Output File in Field",
       "type": "string",
       "default": "data",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issueAttachment"
+          ],
+          "operation": [
+            "get"
+          ],
+          "download": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issueAttachment"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issueAttachment"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Add attachment to issue"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get an attachment"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many attachments"
-    },
-    {
-      "name": "Remove",
-      "default": null,
-      "description": "Remove an attachment"
+      "default": "add",
+      "description": "Add attachment to issue",
+      "options": [
+        {
+          "name": "Add",
+          "value": "add",
+          "description": "Add attachment to issue"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get an attachment"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many attachments"
+        },
+        {
+          "name": "Remove",
+          "value": "remove",
+          "description": "Remove an attachment"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issueAttachment"
+          ]
+        }
+      }
     },
     {
       "name": "jsonParameters",
       "displayName": "JSON Parameters",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issueComment"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
     },
     {
       "name": "comment",
       "displayName": "Comment",
       "type": "string",
       "default": "",
-      "description": "Comment's text"
+      "description": "Comment's text",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issueComment"
+          ],
+          "operation": [
+            "add"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "commentJson",
       "displayName": "Document Format (JSON)",
       "type": "json",
       "default": "",
-      "description": "The Atlassian Document Format (ADF). Online builder can be found <a href=\"https://developer.atlassian.com/cloud/jira/platform/apis/document/playground/\">here</a>."
+      "description": "The Atlassian Document Format (ADF). Online builder can be found <a href=\"https://developer.atlassian.com/cloud/jira/platform/apis/document/playground/\">here</a>.",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issueComment"
+          ],
+          "operation": [
+            "add"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
-      "placeholder": "Add option"
-    },
-    {
-      "name": "wikiMarkup",
-      "displayName": "Use Wiki Markup",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to enable parsing of wikiformatting for this comment. Default is false."
+      "description": "Use expand to include additional information about comments in the response. This parameter accepts Rendered Body, which returns the comment body rendered in HTML.",
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issueComment"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
     },
     {
       "name": "commentId",
@@ -109,22 +250,17 @@
       "type": "string",
       "default": "",
       "description": "The ID of the comment",
-      "required": true
-    },
-    {
-      "name": "orderBy",
-      "displayName": "Order By",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Created Descending",
-      "default": null
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a comment"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issueComment"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "project",
@@ -132,14 +268,17 @@
       "type": "resourceLocator",
       "default": "{ mode: 'list', value: '' }",
       "placeholder": "Select a Project...",
-      "required": true
-    },
-    {
-      "name": "id",
-      "displayName": "ID",
-      "type": "string",
-      "default": null,
-      "placeholder": "10000"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issue"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "issueType",
@@ -147,369 +286,221 @@
       "type": "resourceLocator",
       "default": "{ mode: 'list', value: '' }",
       "placeholder": "Select an Issue Type...",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issue"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "summary",
       "displayName": "Summary",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issue"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "componentIds",
-      "displayName": "Component Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "customFieldsUi",
-      "displayName": "Custom Fields",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Custom Field"
-    },
-    {
-      "name": "fieldValue",
-      "displayName": "Field Value",
-      "type": "string",
-      "default": "",
-      "description": "Value of the field to set"
-    },
-    {
-      "name": "labels",
-      "displayName": "Label Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "serverLabels",
-      "displayName": "Labels",
-      "type": "string",
-      "default": []
-    },
-    {
-      "name": "parentIssueKey",
-      "displayName": "Parent Issue Key",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "priority",
-      "displayName": "Priority",
-      "type": "resourceLocator",
-      "default": "{ mode: 'list', value: '' }",
-      "placeholder": "Select a Priority..."
-    },
-    {
-      "name": "reporter",
-      "displayName": "Reporter",
-      "type": "resourceLocator",
-      "default": "{ mode: 'list', value: '' }",
-      "placeholder": "Select a Reporter..."
-    },
-    {
-      "name": "updateHistory",
-      "displayName": "Update History",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the project in which the issue is created is added to the user's Recently viewed project list, as shown under Projects in Jira"
+      "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issue"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
       "displayName": "Update Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "statusId",
-      "displayName": "Status",
-      "type": "resourceLocator",
-      "default": "{ mode: 'list', value: '' }",
-      "placeholder": "Select a Status..."
+      "description": "Value of the field to set",
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issue"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "deleteSubtasks",
       "displayName": "Delete Subtasks",
       "type": "boolean",
       "default": false,
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issue"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "simplifyOutput",
       "displayName": "Simplify",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return a simplified version of the response instead of the raw data"
-    },
-    {
-      "name": "fields",
-      "displayName": "Fields",
-      "type": "string",
-      "default": "",
-      "description": "A list of fields to return for the issue. This parameter accepts a comma-separated list. Use it to retrieve a subset of fields. Allowed values: <code>*all</code> Returns all fields. <code>*navigable</code> Returns navigable fields. Any issue field, prefixed with a minus to exclude."
-    },
-    {
-      "name": "fieldsByKey",
-      "displayName": "Fields By Key",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether fields in fields are referenced by keys rather than IDs. This parameter is useful where fields have been added by a connect app and a field's key may differ from its ID."
-    },
-    {
-      "name": "properties",
-      "displayName": "Properties",
-      "type": "string",
-      "default": "",
-      "description": "A list of issue properties to return for the issue. This parameter accepts a comma-separated list. Allowed values: <code>*all</code> Returns all issue properties. Any issue property key, prefixed with a minus to exclude. Examples: <code>*all</code> Returns all properties. <code>*all</code>,-prop1 Returns all properties except prop1. <code>prop1,prop2</code> Returns prop1 and prop2 properties. This parameter may be specified multiple times. For example, properties=prop1,prop2& properties=prop3."
-    },
-    {
-      "name": "Editmeta",
-      "default": null,
-      "description": "Returns information about how each field can be edited"
-    },
-    {
-      "name": "Names",
-      "default": null,
-      "description": "Returns the display name of each field"
-    },
-    {
-      "name": "Operations",
-      "default": null,
-      "description": "Returns all possible operations for the issue"
-    },
-    {
-      "name": "Rendered Fields",
-      "default": null,
-      "description": "Returns field values rendered in HTML format"
-    },
-    {
-      "name": "Schema",
-      "default": null,
-      "description": "Returns the schema describing a field type"
-    },
-    {
-      "name": "Transitions",
-      "default": null,
-      "description": "Returns all possible transitions for the issue"
-    },
-    {
-      "name": "Versioned Representations",
-      "default": null,
-      "description": "JSON array containing each version of a field's value"
-    },
-    {
-      "name": "jql",
-      "displayName": "JQL",
-      "type": "string",
-      "default": "",
-      "description": "A JQL expression"
-    },
-    {
-      "name": "subject",
-      "displayName": "Subject",
-      "type": "string",
-      "default": "",
-      "description": "The subject of the email notification for the issue. If this is not specified, then the subject is set to the issue key and summary."
-    },
-    {
-      "name": "textBody",
-      "displayName": "Text Body",
-      "type": "string",
-      "default": "",
-      "description": "The subject of the email notification for the issue. If this is not specified, then the subject is set to the issue key and summary."
-    },
-    {
-      "name": "notificationRecipientsUi",
-      "displayName": "Notification Recipients",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "The recipients of the email notification for the issue",
-      "placeholder": "Add Recipients"
-    },
-    {
-      "name": "assignee",
-      "displayName": "Assignee",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the notification should be sent to the issue's assignees"
-    },
-    {
-      "name": "watchers",
-      "displayName": "Watchers",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the notification should be sent to the issue's assignees"
-    },
-    {
-      "name": "voters",
-      "displayName": "Voters",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the notification should be sent to the issue's voters"
-    },
-    {
-      "name": "users",
-      "displayName": "User Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "List of users to receive the notification. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "groups",
-      "displayName": "Group Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "List of groups to receive the notification. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "notificationRecipientsJson",
-      "displayName": "Notification Recipients",
-      "type": "json",
-      "default": "",
-      "description": "The recipients of the email notification for the issue"
-    },
-    {
-      "name": "notificationRecipientsRestrictionsUi",
-      "displayName": "Notification Recipients Restrictions",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Restricts the notifications to users with the specified permissions",
-      "placeholder": "Add Recipients Restriction"
-    },
-    {
-      "name": "notificationRecipientsRestrictionsJson",
-      "displayName": "Notification Recipients Restrictions",
-      "type": "json",
-      "default": "",
-      "description": "Restricts the notifications to users with the specified permissions",
-      "required": true
-    },
-    {
-      "name": "transitionId",
-      "displayName": "Transition ID",
-      "type": "string",
-      "default": "",
-      "description": "The ID of the transition"
-    },
-    {
-      "name": "skipRemoteOnlyCondition",
-      "displayName": "Skip Remote Only Condition",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether transitions with the condition Hide From User Condition are included in the response"
-    },
-    {
-      "name": "Create",
-      "default": null,
-      "description": "Create a new issue"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an issue"
-    },
-    {
-      "name": "Notify",
-      "default": null,
-      "description": "Create an email notification for an issue and add it to the mail queue"
-    },
-    {
-      "name": "Status",
-      "default": null,
-      "description": "Return either all transitions or a transition that can be performed by the user on an issue, based on the issue's status"
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issue"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "username",
       "displayName": "Username",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "emailAddress",
       "displayName": "Email Address",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "displayName",
       "displayName": "Display Name",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "notification",
-      "displayName": "Notification",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to send the user an email confirmation that they have been added to Jira"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "accountId",
       "displayName": "Account ID",
       "type": "string",
       "default": "",
-      "description": "Account ID of the user to delete"
-    },
-    {
-      "name": "Application Roles",
-      "default": null,
-      "description": "Include details of all the applications the user can access"
+      "description": "Account ID of the user to delete",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "jiraVersion",
       "displayName": "Jira Version",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Server (Self Hosted)",
-      "default": null
-    },
-    {
-      "name": "Server Pat (Self Hosted)",
-      "default": null
+      "default": "cloud",
+      "options": [
+        {
+          "name": "Cloud",
+          "value": "cloud"
+        },
+        {
+          "name": "Server (Self Hosted)",
+          "value": "server"
+        },
+        {
+          "name": "Server Pat (Self Hosted)",
+          "value": "serverPat"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "description": "Creates an issue or, where the option to create subtasks is enabled in Jira, a subtask"
-    },
-    {
-      "name": "Issue Attachment",
-      "default": null,
-      "description": "Add, remove, and get an attachment from an issue"
-    },
-    {
-      "name": "Issue Comment",
-      "default": null,
-      "description": "Get, create, update, and delete a comment from an issue"
-    },
-    {
-      "name": "User",
-      "default": null,
-      "description": "Get, create and delete a user"
+      "default": "issue",
+      "description": "Creates an issue or, where the option to create subtasks is enabled in Jira, a subtask",
+      "options": [
+        {
+          "name": "Issue",
+          "value": "issue",
+          "description": "Creates an issue or, where the option to create subtasks is enabled in Jira, a subtask"
+        },
+        {
+          "name": "Issue Attachment",
+          "value": "issueAttachment",
+          "description": "Add, remove, and get an attachment from an issue"
+        },
+        {
+          "name": "Issue Comment",
+          "value": "issueComment",
+          "description": "Get, create, update, and delete a comment from an issue"
+        },
+        {
+          "name": "User",
+          "value": "user",
+          "description": "Get, create and delete a user"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -525,5 +516,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

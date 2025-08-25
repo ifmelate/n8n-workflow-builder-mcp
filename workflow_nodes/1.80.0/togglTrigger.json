@@ -8,7 +8,14 @@
       "name": "event",
       "displayName": "Event",
       "type": "options",
-      "default": null
+      "default": "newTimeEntry",
+      "required": true,
+      "options": [
+        {
+          "name": "New Time Entry",
+          "value": "newTimeEntry"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -20,5 +27,19 @@
       "name": "event",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

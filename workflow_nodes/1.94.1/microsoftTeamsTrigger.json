@@ -9,34 +9,50 @@
       "displayName": "Trigger On",
       "type": "options",
       "default": "newChannelMessage",
-      "description": "A new channel is created"
-    },
-    {
-      "name": "New Channel Message",
-      "default": null,
-      "description": "A message is posted to a channel"
-    },
-    {
-      "name": "New Chat",
-      "default": null,
-      "description": "A new chat is created"
-    },
-    {
-      "name": "New Chat Message",
-      "default": null,
-      "description": "A message is posted to a chat"
-    },
-    {
-      "name": "New Team Member",
-      "default": null,
-      "description": "A new member is added to a team"
+      "description": "A new channel is created",
+      "options": [
+        {
+          "name": "New Channel",
+          "value": "newChannel",
+          "description": "A new channel is created"
+        },
+        {
+          "name": "New Channel Message",
+          "value": "newChannelMessage",
+          "description": "A message is posted to a channel"
+        },
+        {
+          "name": "New Chat",
+          "value": "newChat",
+          "description": "A new chat is created"
+        },
+        {
+          "name": "New Chat Message",
+          "value": "newChatMessage",
+          "description": "A message is posted to a chat"
+        },
+        {
+          "name": "New Team Member",
+          "value": "newTeamMember",
+          "description": "A new member is added to a team"
+        }
+      ]
     },
     {
       "name": "watchAllTeams",
       "displayName": "Watch All Teams",
       "type": "boolean",
       "default": false,
-      "description": "Whether to watch for the event in all the available teams"
+      "description": "Whether to watch for the event in all the available teams",
+      "displayOptions": {
+        "show": {
+          "event": [
+            "newChannel",
+            "newChannelMessage",
+            "newTeamMember"
+          ]
+        }
+      }
     },
     {
       "name": "teamId",
@@ -45,28 +61,36 @@
       "default": "{\n\t\t\t\t\tmode: 'list',\n\t\t\t\t\tvalue: '',\n\t\t\t\t}",
       "description": "Select a team from the list, enter an ID or a URL",
       "placeholder": "Select a team...",
-      "required": true
-    },
-    {
-      "name": "id",
-      "displayName": "By ID",
-      "type": "string",
-      "default": null,
-      "placeholder": "e.g., 61165b04-e4cc-4026-b43f-926b4e2a7182"
-    },
-    {
-      "name": "url",
-      "displayName": "By URL",
-      "type": "string",
-      "default": null,
-      "placeholder": "e.g., https://teams.microsoft.com/l/team/19%3A=your-team-id&tenantId=..."
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "event": [
+            "newChannel",
+            "newChannelMessage",
+            "newTeamMember"
+          ],
+          "watchAllTeams": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "watchAllChannels",
       "displayName": "Watch All Channels",
       "type": "boolean",
       "default": false,
-      "description": "Whether to watch for the event in all the available channels"
+      "description": "Whether to watch for the event in all the available channels",
+      "displayOptions": {
+        "show": {
+          "event": [
+            "newChannelMessage"
+          ],
+          "watchAllTeams": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "channelId",
@@ -75,14 +99,34 @@
       "default": "{\n\t\t\t\t\tmode: 'list',\n\t\t\t\t\tvalue: '',\n\t\t\t\t}",
       "description": "Select a channel from the list, enter an ID or a URL",
       "placeholder": "Select a channel...",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "event": [
+            "newChannelMessage"
+          ],
+          "watchAllTeams": [
+            false
+          ],
+          "watchAllChannels": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "watchAllChats",
       "displayName": "Watch All Chats",
       "type": "boolean",
       "default": false,
-      "description": "Whether to watch for the event in all the available chats"
+      "description": "Whether to watch for the event in all the available chats",
+      "displayOptions": {
+        "show": {
+          "event": [
+            "newChatMessage"
+          ]
+        }
+      }
     },
     {
       "name": "chatId",
@@ -91,7 +135,17 @@
       "default": "{\n\t\t\t\t\tmode: 'list',\n\t\t\t\t\tvalue: '',\n\t\t\t\t}",
       "description": "Select a chat from the list, enter an ID or a URL",
       "placeholder": "Select a chat...",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "event": [
+            "newChatMessage"
+          ],
+          "watchAllChats": [
+            false
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -119,5 +173,23 @@
       "name": "watchAllChats",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

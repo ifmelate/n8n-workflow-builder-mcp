@@ -14,9 +14,30 @@
       "name": "events",
       "displayName": "Events",
       "type": "hidden",
-      "default": null,
-      "description": "When called by another workflow using Execute Workflow Trigger"
+      "default": "worklfow_call",
+      "description": "When called by another workflow using Execute Workflow Trigger",
+      "options": [
+        {
+          "name": "Workflow Call",
+          "value": "worklfow_call",
+          "description": "When called by another workflow using Execute Workflow Trigger"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

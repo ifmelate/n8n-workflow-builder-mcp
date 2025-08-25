@@ -4,5 +4,23 @@
   "description": "Expose n8n tools as an MCP Server endpoint",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "AiTool"
+    ],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "AiTool"
+    ],
+    "produces": []
+  }
 }

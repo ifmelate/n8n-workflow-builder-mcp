@@ -8,7 +8,13 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
+      "default": "generateSecret",
+      "options": [
+        {
+          "name": "Generate Secret",
+          "value": "generateSecret"
+        }
+      ]
     },
     {
       "name": "options",
@@ -16,53 +22,14 @@
       "type": "collection",
       "default": {},
       "description": "HMAC hashing algorithm. Defaults to SHA1.",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "SHA224",
-      "default": null
-    },
-    {
-      "name": "SHA256",
-      "default": null
-    },
-    {
-      "name": "SHA3-224",
-      "default": null
-    },
-    {
-      "name": "SHA3-256",
-      "default": null
-    },
-    {
-      "name": "SHA3-384",
-      "default": null
-    },
-    {
-      "name": "SHA3-512",
-      "default": null
-    },
-    {
-      "name": "SHA384",
-      "default": null
-    },
-    {
-      "name": "SHA512",
-      "default": null
-    },
-    {
-      "name": "digits",
-      "displayName": "Digits",
-      "type": "number",
-      "default": 6,
-      "description": "Number of digits in the generated TOTP code. Defaults to 6 digits."
-    },
-    {
-      "name": "period",
-      "displayName": "Period",
-      "type": "number",
-      "default": 30,
-      "description": "How many seconds the generated TOTP code is valid for. Defaults to 30 seconds."
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "generateSecret"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -82,5 +49,19 @@
       "name": "digits",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

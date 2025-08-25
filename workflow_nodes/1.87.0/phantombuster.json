@@ -10,7 +10,34 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "agent"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "agent"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
@@ -18,14 +45,40 @@
       "type": "number",
       "default": 25,
       "description": "Max number of results to return",
-      "required": true
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 50
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "agent"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "resolveData",
       "displayName": "Resolve Data",
       "type": "boolean",
       "default": true,
-      "description": "By default the outpout is presented as string. If this option gets activated, it will resolve the data automatically."
+      "description": "By default the outpout is presented as string. If this option gets activated, it will resolve the data automatically.",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getOutput"
+          ],
+          "resource": [
+            "agent"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -33,130 +86,95 @@
       "type": "collection",
       "default": {},
       "description": "If set, the output will be retrieved from the container after the specified previous container ID",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "prevStatus",
-      "displayName": "Prev Status",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Launch Error",
-      "default": null
-    },
-    {
-      "name": "Never Launched",
-      "default": null
-    },
-    {
-      "name": "Running",
-      "default": null
-    },
-    {
-      "name": "Starting",
-      "default": null
-    },
-    {
-      "name": "Unknown",
-      "default": null
-    },
-    {
-      "name": "prevRuntimeEventIndex",
-      "displayName": "Pre Runtime Event Index",
-      "type": "number",
-      "default": 0,
-      "description": "If set, the container's runtime events will be returned in the response starting from the provided previous runtime event index"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "prevContainerId",
+          "displayName": "Prev Container ID",
+          "type": "string",
+          "default": "",
+          "description": "If set, the output will be retrieved from the container after the specified previous container ID"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agent"
+          ],
+          "operation": [
+            "getOutput"
+          ]
+        }
+      }
     },
     {
       "name": "jsonParameters",
       "displayName": "JSON Parameters",
       "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "argumentsUi",
-      "displayName": "Arguments",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Name of the argument key to add",
-      "placeholder": "Add Argument"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Value to set for the argument key"
-    },
-    {
-      "name": "bonusArgumentUi",
-      "displayName": "Bonus Argument",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Name of the argument key to add",
-      "placeholder": "Add Bonus Argument"
-    },
-    {
-      "name": "bonusArgumentJson",
-      "displayName": "Bonus Argument (JSON)",
-      "type": "string",
-      "default": "",
-      "description": "Agent bonus argument. Can either be a JSON string or a plain object. This bonus argument is single-use, it will only be used for the current launch. If present, it will be merged with the original argument, resulting in an effective argument that can be retrieved with buster.argument in the agent’s script."
-    },
-    {
-      "name": "manualLaunch",
-      "displayName": "Manual Launch",
-      "type": "boolean",
       "default": false,
-      "description": "Whether the agent will be considered as \"launched manually\""
-    },
-    {
-      "name": "maxInstanceCount",
-      "displayName": "Max Instance Count",
-      "type": "number",
-      "default": 0,
-      "description": "If set, the agent will only be launched if the number of already running instances is below the specified number"
-    },
-    {
-      "name": "saveArgument",
-      "displayName": "Save Argument",
-      "type": "string",
-      "default": "",
-      "description": "If true, argument will be saved as the default launch options for the agent"
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "launch"
+          ],
+          "resource": [
+            "agent"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Delete an agent by ID"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get an agent by ID"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many agents of the current user's organization"
-    },
-    {
-      "name": "Get Output",
-      "default": null,
-      "description": "Get the output of the most recent container of an agent"
-    },
-    {
-      "name": "Launch",
-      "default": null,
-      "description": "Add an agent to the launch queue"
+      "default": "launch",
+      "description": "Delete an agent by ID",
+      "options": [
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete an agent by ID"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get an agent by ID"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many agents of the current user's organization"
+        },
+        {
+          "name": "Get Output",
+          "value": "getOutput",
+          "description": "Get the output of the most recent container of an agent"
+        },
+        {
+          "name": "Launch",
+          "value": "launch",
+          "description": "Add an agent to the launch queue"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "agent"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "agent",
+      "options": [
+        {
+          "name": "Agent",
+          "value": "agent"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -168,5 +186,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

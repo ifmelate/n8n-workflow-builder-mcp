@@ -8,8 +8,15 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Invoke a function"
+      "default": "invoke",
+      "description": "Invoke a function",
+      "options": [
+        {
+          "name": "Invoke",
+          "value": "invoke",
+          "description": "Invoke a function"
+        }
+      ]
     },
     {
       "name": "function",
@@ -18,7 +25,13 @@
       "default": "",
       "description": "The function you want to invoke. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
       "required": true,
-      "options": []
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "invoke"
+          ]
+        }
+      }
     },
     {
       "name": "qualifier",
@@ -26,26 +39,54 @@
       "type": "string",
       "default": "$LATEST",
       "description": "Specify a version or alias to invoke a published version of the function",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "invoke"
+          ]
+        }
+      }
     },
     {
       "name": "invocationType",
       "displayName": "Invocation Type",
       "type": "options",
-      "default": null,
-      "description": "Invoke the function synchronously and wait for the response"
-    },
-    {
-      "name": "Continue Workflow",
-      "default": null,
-      "description": "Invoke the function and immediately continue the workflow"
+      "default": "RequestResponse",
+      "description": "Invoke the function synchronously and wait for the response",
+      "options": [
+        {
+          "name": "Wait for Results",
+          "value": "RequestResponse",
+          "description": "Invoke the function synchronously and wait for the response"
+        },
+        {
+          "name": "Continue Workflow",
+          "value": "Event",
+          "description": "Invoke the function and immediately continue the workflow"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "invoke"
+          ]
+        }
+      }
     },
     {
       "name": "payload",
       "displayName": "JSON Input",
       "type": "string",
       "default": "",
-      "description": "The JSON that you want to provide to your Lambda function as input"
+      "description": "The JSON that you want to provide to your Lambda function as input",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "invoke"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -65,5 +106,19 @@
       "name": "payload",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

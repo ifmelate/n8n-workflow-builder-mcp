@@ -10,19 +10,34 @@
       "name": "updates",
       "displayName": "Trigger On",
       "type": "multiOptions",
-      "default": null,
-      "description": "When an SMS message is received"
-    },
-    {
-      "name": "New Call",
-      "default": null,
-      "description": "When a call is received"
+      "default": [],
+      "description": "When an SMS message is received",
+      "required": true,
+      "options": [
+        {
+          "name": "New SMS",
+          "value": "com.twilio.messaging.inbound-message.received",
+          "description": "When an SMS message is received"
+        },
+        {
+          "name": "New Call",
+          "value": "com.twilio.voice.insights.call-summary.complete",
+          "description": "When a call is received"
+        }
+      ]
     },
     {
       "name": "callTriggerNotice",
       "displayName": "The 'New Call' event may take up to thirty minutes to be triggered",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "updates": [
+            "com.twilio.voice.insights.call-summary.complete"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -42,5 +57,23 @@
       "name": "callTriggerNotice",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

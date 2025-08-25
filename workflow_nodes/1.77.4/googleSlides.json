@@ -11,48 +11,76 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Service Account",
-      "default": null
+      "default": "serviceAccount",
+      "options": [
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        },
+        {
+          "name": "Service Account",
+          "value": "serviceAccount"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Presentation",
-      "default": null
+      "default": "presentation",
+      "options": [
+        {
+          "name": "Page",
+          "value": "page"
+        },
+        {
+          "name": "Presentation",
+          "value": "presentation"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a presentation"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a presentation"
-    },
-    {
-      "name": "Get Slides",
-      "default": null,
-      "description": "Get presentation slides"
-    },
-    {
-      "name": "Replace Text",
-      "default": null,
-      "description": "Replace text in a presentation"
-    },
-    {
-      "name": "Get Thumbnail",
-      "default": null,
-      "description": "Get a thumbnail"
+      "default": "create",
+      "description": "Create a presentation",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a presentation"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a presentation"
+        },
+        {
+          "name": "Get Slides",
+          "value": "getSlides",
+          "description": "Get presentation slides"
+        },
+        {
+          "name": "Replace Text",
+          "value": "replaceText",
+          "description": "Replace text in a presentation"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "presentation"
+          ]
+        }
+      }
     },
     {
       "name": "title",
@@ -60,7 +88,17 @@
       "type": "string",
       "default": "",
       "description": "Title of the presentation to create",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "presentation"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "presentationId",
@@ -69,21 +107,62 @@
       "default": "",
       "description": "ID of the presentation to retrieve. Found in the presentation URL: <code>https://docs.google.com/presentation/d/PRESENTATION_ID/edit</code>",
       "placeholder": "1wZtNFZ8MO-WKrxhYrOLMvyiqSgFwdSz5vn8_l_7eNqw",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "presentation",
+            "page"
+          ],
+          "operation": [
+            "get",
+            "getThumbnail",
+            "getSlides",
+            "replaceText"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getSlides"
+          ],
+          "resource": [
+            "presentation"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getSlides"
+          ],
+          "resource": [
+            "presentation"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "pageObjectId",
@@ -91,7 +170,18 @@
       "type": "string",
       "default": "",
       "description": "ID of the page object to retrieve",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "page"
+          ],
+          "operation": [
+            "get",
+            "getThumbnail"
+          ]
+        }
+      }
     },
     {
       "name": "textUi",
@@ -99,28 +189,20 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Whether the search should respect case. True : the search is case sensitive. False : the search is case insensitive.",
-      "placeholder": "Add Text"
-    },
-    {
-      "name": "pageObjectIds",
-      "displayName": "Page Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "If non-empty, limits the matches to page elements only on the given pages. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "replaceText",
-      "displayName": "Replace Text",
-      "type": "string",
-      "default": "",
-      "description": "The text that will replace the matched text"
-    },
-    {
-      "name": "text",
-      "displayName": "Text",
-      "type": "string",
-      "default": "",
-      "description": "The text to search for in the shape or table"
+      "placeholder": "Add Text",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "presentation"
+          ],
+          "operation": [
+            "replaceText"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -128,21 +210,63 @@
       "type": "collection",
       "default": {},
       "description": "The revision ID of the presentation required for the write request. If specified and the requiredRevisionId doesn't exactly match the presentation's current revisionId, the request will not be processed and will return a 400 bad request error.",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "revisionId",
+          "displayName": "Revision ID",
+          "type": "string",
+          "default": "",
+          "description": "The revision ID of the presentation required for the write request. If specified and the requiredRevisionId doesn't exactly match the presentation's current revisionId, the request will not be processed and will return a 400 bad request error."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "replaceText"
+          ],
+          "resource": [
+            "presentation"
+          ]
+        }
+      }
     },
     {
       "name": "download",
       "displayName": "Download",
       "type": "boolean",
       "default": false,
-      "description": "Name of the binary property to which to write the data of the read page"
+      "description": "Name of the binary property to which to write the data of the read page",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "page"
+          ],
+          "operation": [
+            "getThumbnail"
+          ]
+        }
+      }
     },
     {
       "name": "binaryProperty",
       "displayName": "Put Output File in Field",
       "type": "string",
       "default": "data",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "page"
+          ],
+          "operation": [
+            "getThumbnail"
+          ],
+          "download": [
+            true
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -182,5 +306,19 @@
       "name": "download",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

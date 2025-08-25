@@ -5,49 +5,135 @@
   "version": 1,
   "properties": [
     {
-      "name": "attachmentName",
-      "displayName": "Attachment Name",
+      "name": "memberId",
+      "displayName": "Member ID",
       "type": "string",
       "default": "",
-      "description": "Resource name of the attachment, in the form \"spaces/*/messages/*/attachments/*\"",
-      "required": true
+      "description": "Member to be retrieved in the form \"spaces/*/members/*\"",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
+    },
+    {
+      "name": "spaceId",
+      "displayName": "Space Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "The name of the space for which to retrieve members, in the form \"spaces/*\". Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Gets the metadata of a message attachment. The attachment data is fetched using the media API."
-    },
-    {
-      "name": "jsonNotice",
-      "displayName": "See <a href=\"https://developers.google.com/chat/how-tos/webhooks\" target=\"_blank\">Google Chat Guide</a> To Webhooks",
-      "type": "notice",
-      "default": ""
-    },
-    {
-      "name": "incomingWebhookUrl",
-      "displayName": "Incoming Webhook URL",
-      "type": "string",
-      "default": "",
-      "description": "URL for the incoming webhook",
-      "required": true
+      "default": "get",
+      "description": "Get a membership",
+      "options": [
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a membership"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many memberships in a space"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "member"
+          ]
+        }
+      }
     },
     {
       "name": "jsonParameters",
       "displayName": "JSON Parameters",
       "type": "boolean",
       "default": false,
-      "description": "Whether to pass the message object as JSON"
+      "description": "Whether to pass the message object as JSON",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "messageUi",
       "displayName": "Message",
       "type": "collection",
-      "default": "{ text: '' }",
-      "description": "The message object",
-      "placeholder": "Add option",
-      "required": true
+      "default": {},
+      "description": "Rich, formatted and interactive cards that can be used to display UI elements such as: formatted texts, buttons, clickable images",
+      "placeholder": "Add Message",
+      "required": true,
+      "options": [
+        {
+          "name": "text",
+          "displayName": "Text",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
+    },
+    {
+      "name": "jsonNotice",
+      "displayName": "See <a href=\"https://developers.google.com/chat/reference/rest/v1/spaces.messages#Message\" target=\"_blank\">Google Chat Guide</a> To Creating Messages",
+      "type": "notice",
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "messageJson",
@@ -55,7 +141,20 @@
       "type": "json",
       "default": "",
       "description": "Message input as JSON Object or JSON String",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "create"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -63,42 +162,33 @@
       "type": "collection",
       "default": {},
       "description": "Thread identifier which groups messages into a single thread. Has no effect if thread field, corresponding to an existing thread, is set in message. Example: spaces/AAAAMpdlehY/threads/MZ8fXhZXGkk.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "resourceName",
-      "displayName": "Resource Name",
-      "type": "string",
-      "default": "",
-      "description": "Name of the media that is being downloaded",
-      "required": true
-    },
-    {
-      "name": "binaryPropertyName",
-      "displayName": "Put Output File in Field",
-      "type": "string",
-      "default": "data",
-      "required": true
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many memberships in a space"
-    },
-    {
-      "name": "spaceId",
-      "displayName": "Space Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Space resource name, in the form \"spaces/*\". Example: spaces/AAAAMpdlehY. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
-    },
-    {
-      "name": "requestId",
-      "displayName": "Request ID",
-      "type": "string",
-      "default": "",
-      "description": "A unique request ID for this message. If a message has already been created in the space with this request ID, the subsequent request will return the existing message and no new message will be created."
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "threadKey",
+          "displayName": "Thread Key",
+          "type": "string",
+          "default": "",
+          "description": "Thread identifier which groups messages into a single thread. Has no effect if thread field, corresponding to an existing thread, is set in message. Example: spaces/AAAAMpdlehY/threads/MZ8fXhZXGkk."
+        },
+        {
+          "name": "requestId",
+          "displayName": "Request ID",
+          "type": "string",
+          "default": "",
+          "description": "A unique request ID for this message. If a message has already been created in the space with this request ID, the subsequent request will return the existing message and no new message will be created."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "messageId",
@@ -106,7 +196,17 @@
       "type": "string",
       "default": "",
       "description": "Resource name of the message to be deleted, in the form \"spaces//messages/\"",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "updateFieldsUi",
@@ -116,8 +216,29 @@
       "description": "Rich, formatted and interactive cards that can be used to display UI elements such as: formatted texts, buttons, clickable images",
       "placeholder": "Add option",
       "required": true,
+      "options": [
+        {
+          "name": "text",
+          "displayName": "Text",
+          "type": "string",
+          "default": ""
+        }
+      ],
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "update"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
       }
     },
     {
@@ -126,41 +247,41 @@
       "type": "json",
       "default": "",
       "description": "Message input as JSON Object or JSON String",
-      "required": true
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a message"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a message"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a message"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ],
+          "operation": [
+            "update"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "Member",
-      "default": null
-    },
-    {
-      "name": "Message",
-      "default": null
-    },
-    {
-      "name": "Space",
-      "default": null
+      "default": "message",
+      "required": true,
+      "options": [
+        {
+          "name": "Member",
+          "value": "member"
+        },
+        {
+          "name": "Message",
+          "value": "message"
+        },
+        {
+          "name": "Space",
+          "value": "space"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -172,5 +293,19 @@
       "name": "resource",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

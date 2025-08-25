@@ -8,23 +8,30 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "description": "Send a direct message to a user"
-    },
-    {
-      "name": "List",
-      "default": null,
-      "description": "Add a user to a list"
-    },
-    {
-      "name": "Tweet",
-      "default": null,
-      "description": "Create, like, search, or delete a tweet"
-    },
-    {
-      "name": "User",
-      "default": null,
-      "description": "Search users by username"
+      "default": "tweet",
+      "description": "Send a direct message to a user",
+      "options": [
+        {
+          "name": "Direct Message",
+          "value": "directMessage",
+          "description": "Send a direct message to a user"
+        },
+        {
+          "name": "List",
+          "value": "list",
+          "description": "Add a user to a list"
+        },
+        {
+          "name": "Tweet",
+          "value": "tweet",
+          "description": "Create, like, search, or delete a tweet"
+        },
+        {
+          "name": "User",
+          "value": "user",
+          "description": "Search users by username"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -36,5 +43,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

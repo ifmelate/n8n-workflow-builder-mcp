@@ -9,74 +9,51 @@
       "displayName": "Account Name",
       "type": "string",
       "default": "",
-      "description": "Name of the account. If a record with this account name exists it will be updated, otherwise a new one will be created.",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "name": "additionalFields",
+      "displayName": "Additional Fields",
+      "type": "collection",
+      "default": {},
+      "description": "Name of the account’s location, e.g. Headquarters or London",
       "placeholder": "Add Field",
-      "required": true
-    },
-    {
-      "name": "Account_Site",
-      "displayName": "Account Site",
-      "type": "string",
-      "default": "",
-      "description": "Name of the account’s location, e.g. Headquarters or London"
-    },
-    {
-      "name": "Account_Type",
-      "displayName": "Account Type Name or ID",
-      "type": "options",
-      "default": [],
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "Annual_Revenue",
-      "displayName": "Annual Revenue",
-      "type": "number",
-      "default": ""
-    },
-    {
-      "name": "Currency",
-      "displayName": "Currency",
-      "type": "options",
-      "default": "USD",
-      "description": "Symbol of the currency in which revenue is generated"
-    },
-    {
-      "name": "Employees",
-      "displayName": "Employees",
-      "type": "number",
-      "default": "",
-      "description": "Number of employees in the account’s company"
-    },
-    {
-      "name": "Exchange_Rate",
-      "displayName": "Exchange Rate",
-      "type": "number",
-      "default": "",
-      "description": "Exchange rate of the default currency to the home currency"
-    },
-    {
-      "name": "Fax",
-      "displayName": "Fax",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Industry",
-      "displayName": "Industry",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Phone",
-      "displayName": "Phone",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Website",
-      "displayName": "Website",
-      "type": "string",
-      "default": ""
+      "options": [
+        {
+          "name": "Account_Number",
+          "displayName": "Account Number",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "Account_Site",
+          "displayName": "Account Site",
+          "type": "string",
+          "default": "",
+          "description": "Name of the account’s location, e.g. Headquarters or London"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "create",
+            "upsert"
+          ]
+        }
+      }
     },
     {
       "name": "accountId",
@@ -84,148 +61,119 @@
       "type": "string",
       "default": "",
       "description": "ID of the account to delete. Can be found at the end of the URL.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
       "displayName": "Update Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Account_Number",
-      "displayName": "Account Number",
-      "type": "string",
-      "default": ""
+      "description": "Name of the account’s location, e.g. Headquarters or London",
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "Account_Name",
+          "displayName": "Account Name",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "Account_Number",
+          "displayName": "Account Number",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "Account_Site",
+          "displayName": "Account Site",
+          "type": "string",
+          "default": "",
+          "description": "Name of the account’s location, e.g. Headquarters or London"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create an account"
-    },
-    {
-      "name": "Create or Update",
-      "default": null,
-      "description": "Create a new record, or update the current one if it already exists (upsert)"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an account"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get an account"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many accounts"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update an account"
+      "default": "create",
+      "description": "Create an account",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create an account"
+        },
+        {
+          "name": "Create or Update",
+          "value": "upsert",
+          "description": "Create a new record, or update the current one if it already exists (upsert)"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete an account"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get an account"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many accounts"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update an account"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "account"
+          ]
+        }
+      }
     },
     {
       "name": "lastName",
       "displayName": "Last Name",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "additionalFields",
-      "displayName": "Additional Fields",
-      "type": "collection",
-      "default": {},
-      "description": "Name of the contact’s assistant",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Department",
-      "displayName": "Department",
-      "type": "string",
-      "default": "",
-      "description": "Company department to which the contact belongs"
-    },
-    {
-      "name": "Description",
-      "displayName": "Description",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Email",
-      "displayName": "Email (Primary)",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Secondary_Email",
-      "displayName": "Email (Secondary)",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "First_Name",
-      "displayName": "First Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Full_Name",
-      "displayName": "Full Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Asst_Phone",
-      "displayName": "Phone (Assistant)",
-      "type": "string",
-      "default": "",
-      "description": "Phone number of the contact’s assistant"
-    },
-    {
-      "name": "Home_Phone",
-      "displayName": "Phone (Home)",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Other_Phone",
-      "displayName": "Phone (Other)",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Salutation",
-      "displayName": "Salutation",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Skype_ID",
-      "displayName": "Skype ID",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Title",
-      "displayName": "Title",
-      "type": "string",
-      "default": "",
-      "description": "Position of the contact at their company"
-    },
-    {
-      "name": "Twitter",
-      "displayName": "Twitter",
-      "type": "string",
-      "default": ""
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "contactId",
@@ -233,62 +181,53 @@
       "type": "string",
       "default": "",
       "description": "ID of the contact to delete",
-      "required": true
-    },
-    {
-      "name": "Last_Name",
-      "displayName": "Last Name",
-      "type": "string",
-      "default": ""
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "dealName",
       "displayName": "Deal Name",
       "type": "string",
       "default": "",
-      "description": "Name of the deal. If a record with this deal name exists it will be updated, otherwise a new one will be created.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deal"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
-      "name": "Closing_Date",
-      "displayName": "Closing Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "Lead_Conversion_Time",
-      "displayName": "Lead Conversion Time",
-      "type": "number",
-      "default": "",
-      "description": "Average number of days to convert the lead into a deal"
-    },
-    {
-      "name": "Next_Step",
-      "displayName": "Next Step",
-      "type": "string",
-      "default": "",
-      "description": "Description of the next step in the sales process"
-    },
-    {
-      "name": "Overall_Sales_Duration",
-      "displayName": "Overall Sales Duration",
-      "type": "number",
-      "default": "",
-      "description": "Average number of days to convert the lead into a deal and to win the deal"
-    },
-    {
-      "name": "Probability",
-      "displayName": "Probability",
-      "type": "number",
-      "default": "",
-      "description": "Probability of deal closure as a percentage. For example, enter 12 for 12%."
-    },
-    {
-      "name": "Sales_Cycle_Duration",
-      "displayName": "Sales Cycle Duration",
-      "type": "number",
-      "default": 0,
-      "description": "Average number of days for the deal to be won"
+      "name": "stage",
+      "displayName": "Stage Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deal"
+          ],
+          "operation": [
+            "create",
+            "upsert"
+          ]
+        }
+      }
     },
     {
       "name": "dealId",
@@ -296,14 +235,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the deal to delete",
-      "required": true
-    },
-    {
-      "name": "Stage",
-      "displayName": "Stage Name or ID",
-      "type": "options",
-      "default": [],
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deal"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "subject",
@@ -311,76 +253,17 @@
       "type": "string",
       "default": "",
       "description": "Subject or title of the invoice",
-      "placeholder": "Add Field",
-      "required": true
-    },
-    {
-      "name": "Adjustment",
-      "displayName": "Adjustment",
-      "type": "number",
-      "default": "",
-      "description": "Adjustment in the grand total, if any"
-    },
-    {
-      "name": "Due_Date",
-      "displayName": "Due Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "Grand_Total",
-      "displayName": "Grand Total",
-      "type": "number",
-      "default": "",
-      "description": "Total amount for the product after deducting tax and discounts"
-    },
-    {
-      "name": "Invoice_Date",
-      "displayName": "Invoice Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "Invoice_Number",
-      "displayName": "Invoice Number",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Sales_Commission",
-      "displayName": "Sales Commission",
-      "type": "number",
-      "default": "",
-      "description": "Commission of sales person on deal closure as a percentage. For example, enter 12 for 12%."
-    },
-    {
-      "name": "Sub_Total",
-      "displayName": "Sub Total",
-      "type": "number",
-      "default": "",
-      "description": "Total amount for the product excluding tax"
-    },
-    {
-      "name": "Tax",
-      "displayName": "Tax",
-      "type": "number",
-      "default": "",
-      "description": "Tax amount as the sum of sales tax and value-added tax"
-    },
-    {
-      "name": "Terms_and_Conditions",
-      "displayName": "Terms and Conditions",
-      "type": "string",
-      "default": "",
-      "description": "Terms and conditions associated with the invoice"
-    },
-    {
-      "name": "invoiceId",
-      "displayName": "Invoice ID",
-      "type": "string",
-      "default": "",
-      "description": "ID of the invoice to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "invoice"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "Product_Details",
@@ -390,14 +273,36 @@
       "placeholder": "Add Field",
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "invoice"
+          ],
+          "operation": [
+            "create",
+            "upsert"
+          ]
+        }
       }
     },
     {
-      "name": "Subject",
-      "displayName": "Subject",
+      "name": "invoiceId",
+      "displayName": "Invoice ID",
       "type": "string",
       "default": "",
-      "description": "Subject or title of the invoice"
+      "description": "ID of the invoice to delete",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "invoice"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "Company",
@@ -405,53 +310,17 @@
       "type": "string",
       "default": "",
       "description": "Company at which the lead works",
-      "required": true
-    },
-    {
-      "name": "Designation",
-      "displayName": "Designation",
-      "type": "string",
-      "default": "",
-      "description": "Position of the lead at their company"
-    },
-    {
-      "name": "Email_Opt_Out",
-      "displayName": "Email Opt Out",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "Industry_Type",
-      "displayName": "Industry Type",
-      "type": "string",
-      "default": "",
-      "description": "Type of industry to which the lead belongs"
-    },
-    {
-      "name": "Lead_Source",
-      "displayName": "Lead Source",
-      "type": "string",
-      "default": "",
-      "description": "Source from which the lead was created"
-    },
-    {
-      "name": "Lead_Status",
-      "displayName": "Lead Status",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Mobile",
-      "displayName": "Mobile",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "No_of_Employees",
-      "displayName": "Number of Employees",
-      "type": "number",
-      "default": "",
-      "description": "Number of employees in the lead’s company"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "lead"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "leadId",
@@ -459,63 +328,34 @@
       "type": "string",
       "default": "",
       "description": "ID of the lead to delete",
-      "required": true
-    },
-    {
-      "name": "Get Fields",
-      "default": null,
-      "description": "Get lead fields"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "lead"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "productName",
       "displayName": "Product Name",
       "type": "string",
       "default": "",
-      "description": "Name of the product. If a record with this product name exists it will be updated, otherwise a new one will be created.",
-      "placeholder": "Add Field",
-      "required": true
-    },
-    {
-      "name": "Manufacturer",
-      "displayName": "Manufacturer",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Product_Active",
-      "displayName": "Product Active",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "Product_Category",
-      "displayName": "Product Category",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Qty_in_Demand",
-      "displayName": "Quantity in Demand",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "Qty_in_Stock",
-      "displayName": "Quantity in Stock",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "Taxable",
-      "displayName": "Taxable",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "Unit_Price",
-      "displayName": "Unit Price",
-      "type": "number",
-      "default": 0
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "product"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "productId",
@@ -523,72 +363,35 @@
       "type": "string",
       "default": "",
       "description": "ID of the product to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "product"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
-      "name": "Billing_Address",
-      "displayName": "Billing Address",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Billing Address Field"
-    },
-    {
-      "name": "Billing_Code",
-      "displayName": "Billing Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Billing_Country",
-      "displayName": "Billing Country",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Billing_State",
-      "displayName": "Billing State",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Billing_Street",
-      "displayName": "Billing Street",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "Carrier",
-      "displayName": "Carrier",
-      "type": "string",
-      "default": "",
-      "description": "Name of the carrier"
-    },
-    {
-      "name": "Discount",
-      "displayName": "Discount",
-      "type": "number",
-      "default": 0,
-      "description": "Discount applied to the purchase order. For example, enter 12 for 12%."
-    },
-    {
-      "name": "PO_Date",
-      "displayName": "PO Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Date on which the purchase order was issued"
-    },
-    {
-      "name": "PO_Number",
-      "displayName": "PO Number",
-      "type": "string",
-      "default": "",
-      "description": "ID of the purchase order after creating a case"
-    },
-    {
-      "name": "Tracking_Number",
-      "displayName": "Tracking Number",
-      "type": "string",
-      "default": ""
+      "name": "vendorId",
+      "displayName": "Vendor Name or ID",
+      "type": "options",
+      "default": [],
+      "description": "ID of the vendor associated with the purchase order. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "purchaseOrder"
+          ],
+          "operation": [
+            "create",
+            "upsert"
+          ]
+        }
+      }
     },
     {
       "name": "purchaseOrderId",
@@ -596,28 +399,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the purchase order to delete",
-      "required": true
-    },
-    {
-      "name": "Quote_Stage",
-      "displayName": "Quote Stage Name or ID",
-      "type": "options",
-      "default": [],
-      "description": "Stage of the quote. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "Team",
-      "displayName": "Team",
-      "type": "string",
-      "default": "",
-      "description": "Team for whom the quote is created"
-    },
-    {
-      "name": "Valid_Till",
-      "displayName": "Valid Till",
-      "type": "dateTime",
-      "default": "",
-      "description": "Date until when the quote is valid"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "purchaseOrder"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "quoteId",
@@ -625,14 +417,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the quote to delete",
-      "required": true
-    },
-    {
-      "name": "SO_Number",
-      "displayName": "Sales Order Number",
-      "type": "string",
-      "default": "",
-      "description": "ID of the sales order after creating a case"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "quote"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "salesOrderId",
@@ -640,72 +435,82 @@
       "type": "string",
       "default": "",
       "description": "ID of the sales order to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "salesOrder"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "vendorName",
       "displayName": "Vendor Name",
       "type": "string",
       "default": "",
-      "description": "Name of the vendor. If a record with this vendor name exists it will be updated, otherwise a new one will be created.",
-      "placeholder": "Add Field",
-      "required": true
-    },
-    {
-      "name": "vendorId",
-      "displayName": "Vendor ID",
-      "type": "string",
-      "default": "",
-      "description": "ID of the vendor to delete",
-      "required": true
-    },
-    {
-      "name": "Vendor_Name",
-      "displayName": "Vendor Name",
-      "type": "string",
-      "default": ""
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "vendor"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Contact",
-      "default": null
-    },
-    {
-      "name": "Deal",
-      "default": null
-    },
-    {
-      "name": "Invoice",
-      "default": null
-    },
-    {
-      "name": "Lead",
-      "default": null
-    },
-    {
-      "name": "Product",
-      "default": null
-    },
-    {
-      "name": "Purchase Order",
-      "default": null
-    },
-    {
-      "name": "Quote",
-      "default": null
-    },
-    {
-      "name": "Sales Order",
-      "default": null
-    },
-    {
-      "name": "Vendor",
-      "default": null
+      "default": "account",
+      "options": [
+        {
+          "name": "Account",
+          "value": "account"
+        },
+        {
+          "name": "Contact",
+          "value": "contact"
+        },
+        {
+          "name": "Deal",
+          "value": "deal"
+        },
+        {
+          "name": "Invoice",
+          "value": "invoice"
+        },
+        {
+          "name": "Lead",
+          "value": "lead"
+        },
+        {
+          "name": "Product",
+          "value": "product"
+        },
+        {
+          "name": "Purchase Order",
+          "value": "purchaseOrder"
+        },
+        {
+          "name": "Quote",
+          "value": "quote"
+        },
+        {
+          "name": "Sales Order",
+          "value": "salesOrder"
+        },
+        {
+          "name": "Vendor",
+          "value": "vendor"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -717,5 +522,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

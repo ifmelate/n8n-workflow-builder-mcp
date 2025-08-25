@@ -8,13 +8,32 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "hidden",
-      "default": null
+      "default": "shipment",
+      "options": [
+        {
+          "name": "Shipment",
+          "value": "shipment"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
+      "default": "get",
+      "options": [
+        {
+          "name": "Get Tracking Details",
+          "value": "get"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "shipment"
+          ]
+        }
+      }
     },
     {
       "name": "trackingNumber",
@@ -29,7 +48,16 @@
       "type": "collection",
       "default": {},
       "description": "DHL will return more detailed information on the shipment when you provide the Recipient's Postal Code - it acts as a verification step",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "recipientPostalCode",
+          "displayName": "Recipient's Postal Code",
+          "type": "string",
+          "default": "",
+          "description": "DHL will return more detailed information on the shipment when you provide the Recipient's Postal Code - it acts as a verification step"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -49,5 +77,27 @@
       "name": "trackingNumber",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

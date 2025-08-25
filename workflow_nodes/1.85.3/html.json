@@ -12,45 +12,89 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Extract HTML Content",
-      "default": null
-    },
-    {
-      "name": "Convert to HTML Table",
-      "default": null
+      "default": "generateHtmlTemplate",
+      "options": [
+        {
+          "name": "Generate HTML Template",
+          "value": "generateHtmlTemplate"
+        },
+        {
+          "name": "Extract HTML Content",
+          "value": "extractHtmlContent"
+        },
+        {
+          "name": "Convert to HTML Table",
+          "value": "convertToHtmlTable"
+        }
+      ]
     },
     {
       "name": "html",
       "displayName": "HTML Template",
       "type": "string",
       "default": null,
-      "description": "HTML template to render"
+      "description": "HTML template to render",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "generateHtmlTemplate"
+          ]
+        }
+      }
     },
     {
       "name": "notice",
       "displayName": "<b>Tips</b>: Type ctrl+space for completions. Use <code>{{ }}</code> for expressions and <code>&lt;style&gt;</code> tags for CSS. JS in <code>&lt;script&gt;</code> tags is included but not executed in n8n.",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "generateHtmlTemplate"
+          ]
+        }
+      }
     },
     {
       "name": "sourceData",
       "displayName": "Source Data",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "JSON",
-      "default": null
+      "default": "json",
+      "description": "If HTML should be read from binary or JSON data",
+      "options": [
+        {
+          "name": "Binary",
+          "value": "binary"
+        },
+        {
+          "name": "JSON",
+          "value": "json"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "extractHtmlContent"
+          ]
+        }
+      }
     },
     {
       "name": "dataPropertyName",
       "displayName": "Input Binary Field",
       "type": "string",
       "default": "data",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "extractHtmlContent"
+          ],
+          "sourceData": [
+            "binary"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -58,61 +102,53 @@
       "type": "collection",
       "default": {},
       "description": "Whether to remove automatically all spaces and newlines from the beginning and end of the values",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "cleanUpText",
-      "displayName": "Clean Up Text",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to remove leading and trailing whitespaces, line breaks (newlines) and condense multiple consecutive whitespaces into a single space"
-    },
-    {
-      "name": "customStyling",
-      "displayName": "Custom Styling",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to use custom styling"
-    },
-    {
-      "name": "caption",
-      "displayName": "Caption",
-      "type": "string",
-      "default": "",
-      "description": "Caption to add to the table"
-    },
-    {
-      "name": "tableAttributes",
-      "displayName": "Table Attributes",
-      "type": "string",
-      "default": "",
-      "description": "Attributes to attach to the table",
-      "placeholder": "e.g. style=\"padding:10px\""
-    },
-    {
-      "name": "headerAttributes",
-      "displayName": "Header Attributes",
-      "type": "string",
-      "default": "",
-      "description": "Attributes to attach to the table header",
-      "placeholder": "e.g. style=\"padding:10px\""
-    },
-    {
-      "name": "rowAttributes",
-      "displayName": "Row Attributes",
-      "type": "string",
-      "default": "",
-      "description": "Attributes to attach to the table row",
-      "placeholder": "e.g. style=\"padding:10px\""
-    },
-    {
-      "name": "cellAttributes",
-      "displayName": "Cell Attributes",
-      "type": "string",
-      "default": "",
-      "description": "Attributes to attach to the table cell",
-      "placeholder": "e.g. style=\"padding:10px\""
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "trimValues",
+          "displayName": "Trim Values",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to remove automatically all spaces and newlines from the beginning and end of the values"
+        },
+        {
+          "name": "cleanUpText",
+          "displayName": "Clean Up Text",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to remove leading and trailing whitespaces, line breaks (newlines) and condense multiple consecutive whitespaces into a single space"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "extractHtmlContent"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

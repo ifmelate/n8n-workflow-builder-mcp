@@ -10,14 +10,58 @@
       "type": "string",
       "default": "",
       "description": "ID of the secure score control profile to retrieve",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "secureScoreControlProfile"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "secureScoreControlProfile"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 1000
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "secureScoreControlProfile"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -25,7 +69,27 @@
       "type": "collection",
       "default": {},
       "description": "<a href=\"https://docs.microsoft.com/en-us/graph/query-parameters#filter-parameter\">Query parameter</a> to filter results by",
-      "placeholder": "Add Filter"
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "filter",
+          "displayName": "Filter Query Parameter",
+          "type": "string",
+          "default": "",
+          "description": "<a href=\"https://docs.microsoft.com/en-us/graph/query-parameters#filter-parameter\">Query parameter</a> to filter results by",
+          "placeholder": "startsWith(id, 'AATP')"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "secureScoreControlProfile"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "provider",
@@ -34,7 +98,17 @@
       "default": "",
       "description": "Name of the provider of the security product or service",
       "placeholder": "SecureScore",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "secureScoreControlProfile"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "vendor",
@@ -43,7 +117,17 @@
       "default": "",
       "description": "Name of the vendor of the security product or service",
       "placeholder": "Microsoft",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "secureScoreControlProfile"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -51,29 +135,44 @@
       "type": "collection",
       "default": {},
       "description": "Analyst driven setting on the control",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Ignored",
-      "default": null
-    },
-    {
-      "name": "Third Party",
-      "default": null
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "secureScoreControlProfile"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Get Many",
-      "default": null
-    },
-    {
-      "name": "Update",
-      "default": null
+      "default": "get",
+      "options": [
+        {
+          "name": "Get",
+          "value": "get"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll"
+        },
+        {
+          "name": "Update",
+          "value": "update"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "secureScoreControlProfile"
+          ]
+        }
+      }
     },
     {
       "name": "secureScoreId",
@@ -81,23 +180,33 @@
       "type": "string",
       "default": "",
       "description": "ID of the secure score to retrieve",
-      "required": true
-    },
-    {
-      "name": "includeControlScores",
-      "displayName": "Include Control Scores",
-      "type": "boolean",
-      "default": false
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "secureScore"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Secure Score Control Profile",
-      "default": null
+      "default": "secureScore",
+      "options": [
+        {
+          "name": "Secure Score",
+          "value": "secureScore"
+        },
+        {
+          "name": "Secure Score Control Profile",
+          "value": "secureScoreControlProfile"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -109,5 +218,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

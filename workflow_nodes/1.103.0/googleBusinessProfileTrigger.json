@@ -9,7 +9,13 @@
       "displayName": "Event",
       "type": "options",
       "default": "reviewAdded",
-      "required": true
+      "required": true,
+      "options": [
+        {
+          "name": "Review Added",
+          "value": "reviewAdded"
+        }
+      ]
     },
     {
       "name": "account",
@@ -17,13 +23,9 @@
       "type": "resourceLocator",
       "default": "{ mode: 'list', value: '' }",
       "description": "The Google Business Profile account",
-      "required": true
-    },
-    {
-      "name": "name",
-      "displayName": "By name",
-      "type": "string",
-      "default": null
+      "placeholder": "e.g. accounts/0123456789",
+      "required": true,
+      "displayOptions": "{ show: { event: ['reviewAdded'] }"
     },
     {
       "name": "location",
@@ -31,7 +33,9 @@
       "type": "resourceLocator",
       "default": "{ mode: 'list', value: '' }",
       "description": "The specific location or business associated with the account",
-      "required": true
+      "placeholder": "e.g. locations/0123456789",
+      "required": true,
+      "displayOptions": "{ show: { event: ['reviewAdded'] }"
     }
   ],
   "credentialsConfig": [
@@ -51,5 +55,23 @@
       "name": "location",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

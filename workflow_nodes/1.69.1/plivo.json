@@ -11,7 +11,17 @@
       "default": "",
       "description": "Plivo Number to send the SMS from",
       "placeholder": "+14156667777",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "to",
@@ -20,7 +30,17 @@
       "default": "",
       "description": "Phone number to send the message to",
       "placeholder": "+14156667778",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "message",
@@ -28,21 +48,55 @@
       "type": "string",
       "default": "",
       "description": "Message to send",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Send an SMS message"
+      "default": "send",
+      "description": "Send an SMS message",
+      "options": [
+        {
+          "name": "Send",
+          "value": "send",
+          "description": "Send an SMS message"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms"
+          ]
+        }
+      }
     },
     {
       "name": "media_urls",
       "displayName": "Media URLs",
       "type": "string",
       "default": "",
-      "description": "Comma-separated list of media URLs of the files from your file server"
+      "description": "Comma-separated list of media URLs of the files from your file server",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "mms"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "answer_method",
@@ -50,11 +104,27 @@
       "type": "options",
       "default": "POST",
       "description": "HTTP verb to be used when invoking the Answer URL",
-      "required": true
-    },
-    {
-      "name": "POST",
-      "default": null
+      "required": true,
+      "options": [
+        {
+          "name": "GET",
+          "value": "GET"
+        },
+        {
+          "name": "POST",
+          "value": "POST"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "call"
+          ],
+          "operation": [
+            "make"
+          ]
+        }
+      }
     },
     {
       "name": "answer_url",
@@ -62,21 +132,38 @@
       "type": "string",
       "default": "",
       "description": "URL to be invoked by Plivo once the call is answered. It should return the XML to handle the call once answered.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "call"
+          ],
+          "operation": [
+            "make"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "MMS",
-      "default": null
-    },
-    {
-      "name": "SMS",
-      "default": null
+      "default": "sms",
+      "required": true,
+      "options": [
+        {
+          "name": "Call",
+          "value": "call"
+        },
+        {
+          "name": "MMS",
+          "value": "mms"
+        },
+        {
+          "name": "SMS",
+          "value": "sms"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -88,5 +175,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

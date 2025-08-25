@@ -11,7 +11,17 @@
       "default": "",
       "description": "The title for the email",
       "placeholder": "admin@example.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "toEmail",
@@ -20,7 +30,17 @@
       "default": "",
       "description": "Email address of the recipient. Multiple ones can be separated by comma.",
       "placeholder": "info@example.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "subject",
@@ -35,20 +55,50 @@
       "displayName": "Text",
       "type": "string",
       "default": "",
-      "description": "Plain text message of email"
+      "description": "Plain text message of email",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "html",
       "displayName": "HTML",
       "type": "string",
       "default": "",
-      "description": "HTML text message of email"
+      "description": "HTML text message of email",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "jsonParameters",
       "displayName": "JSON Parameters",
       "type": "boolean",
-      "default": false
+      "default": false,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -56,83 +106,101 @@
       "type": "collection",
       "default": {},
       "description": "Bcc Email address of the recipient. Multiple ones can be separated by comma.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "ccAddresses",
-      "displayName": "Cc Addresses",
-      "type": "string",
-      "default": "",
-      "description": "Cc Email address of the recipient. Multiple ones can be separated by comma."
-    },
-    {
-      "name": "fromName",
-      "displayName": "From Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "priority",
-      "displayName": "Priority",
-      "type": "number",
-      "default": 2
-    },
-    {
-      "name": "replyTo",
-      "displayName": "Reply To",
-      "type": "string",
-      "default": "",
-      "description": "The reply-to email address. Multiple ones can be separated by comma."
-    },
-    {
-      "name": "templateLanguage",
-      "displayName": "Template Language",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "trackClicks",
-      "displayName": "Track Clicks",
-      "type": "options",
-      "default": null,
-      "description": "Use the values specified in the Mailjet account"
-    },
-    {
-      "name": "Disabled",
-      "default": null,
-      "description": "Disable tracking for this message"
-    },
-    {
-      "name": "Enabled",
-      "default": null,
-      "description": "Enable tracking for this message"
-    },
-    {
-      "name": "trackOpens",
-      "displayName": "Track Opens",
-      "type": "options",
-      "default": null,
-      "description": "Use the values specified in the Mailjet account"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "bccEmail",
+          "displayName": "Bcc Email",
+          "type": "string",
+          "default": "",
+          "description": "Bcc Email address of the recipient. Multiple ones can be separated by comma."
+        },
+        {
+          "name": "ccAddresses",
+          "displayName": "Cc Addresses",
+          "type": "string",
+          "default": "",
+          "description": "Cc Email address of the recipient. Multiple ones can be separated by comma."
+        },
+        {
+          "name": "fromName",
+          "displayName": "From Name",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "priority",
+          "displayName": "Priority",
+          "type": "number",
+          "default": 2
+        },
+        {
+          "name": "replyTo",
+          "displayName": "Reply To",
+          "type": "string",
+          "default": "",
+          "description": "The reply-to email address. Multiple ones can be separated by comma."
+        },
+        {
+          "name": "templateLanguage",
+          "displayName": "Template Language",
+          "type": "boolean",
+          "default": false
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "variablesJson",
       "displayName": "Variables (JSON)",
       "type": "string",
       "default": "",
-      "description": "HTML text message of email"
+      "description": "HTML text message of email",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "send"
+          ],
+          "jsonParameters": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "variablesUi",
       "displayName": "Variables",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Variable"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Variable",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "send"
+          ],
+          "jsonParameters": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "templateId",
@@ -140,26 +208,43 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
-    },
-    {
-      "name": "ccEmail",
-      "displayName": "Cc Email",
-      "type": "string",
-      "default": "",
-      "description": "Cc recipients of the email separated by ,"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ],
+          "operation": [
+            "sendTemplate"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Send a email"
-    },
-    {
-      "name": "Send Template",
-      "default": null,
-      "description": "Send a email template"
+      "default": "send",
+      "description": "Send a email",
+      "options": [
+        {
+          "name": "Send",
+          "value": "send",
+          "description": "Send a email"
+        },
+        {
+          "name": "Send Template",
+          "value": "sendTemplate",
+          "description": "Send a email template"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "email"
+          ]
+        }
+      }
     },
     {
       "name": "from",
@@ -167,7 +252,17 @@
       "type": "string",
       "default": "",
       "description": "Customizable sender name. Should be between 3 and 11 characters in length, only alphanumeric characters are allowed.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "to",
@@ -175,17 +270,33 @@
       "type": "string",
       "default": "",
       "description": "Message recipient. Should be between 3 and 15 characters in length. The number always starts with a plus sign followed by a country code, followed by the number. Phone numbers are expected to comply with the E.164 format.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "sms"
+          ],
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "SMS",
-      "default": null
+      "default": "email",
+      "options": [
+        {
+          "name": "Email",
+          "value": "email"
+        },
+        {
+          "name": "SMS",
+          "value": "sms"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -197,5 +308,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

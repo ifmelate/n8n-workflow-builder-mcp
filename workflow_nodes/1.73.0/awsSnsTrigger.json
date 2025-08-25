@@ -11,19 +11,6 @@
       "default": "{ mode: 'list', value: '' }",
       "placeholder": "Select a topic...",
       "required": true
-    },
-    {
-      "name": "url",
-      "displayName": "By URL",
-      "type": "string",
-      "default": null,
-      "placeholder": "https://us-east-1.console.aws.amazon.com/sns/v3/home?region=us-east-1#/topic/arn:aws:sns:us-east-1:777777777777:your_topic"
-    },
-    {
-      "name": "id",
-      "displayName": "ID",
-      "type": "string",
-      "default": null
     }
   ],
   "credentialsConfig": [
@@ -43,5 +30,19 @@
       "name": "id",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

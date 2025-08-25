@@ -8,22 +8,42 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Article",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
+      "default": "article",
+      "options": [
+        {
+          "name": "All",
+          "value": "all"
+        },
+        {
+          "name": "Article",
+          "value": "article"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Get many items"
+      "default": "getAll",
+      "description": "Get many items",
+      "options": [
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many items"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "all"
+          ]
+        }
+      }
     },
     {
       "name": "articleId",
@@ -31,7 +51,17 @@
       "type": "string",
       "default": "",
       "description": "The ID of the Hacker News article to be returned",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "article"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "username",
@@ -39,21 +69,57 @@
       "type": "string",
       "default": "",
       "description": "The Hacker News user to be returned",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "all"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "all"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -61,40 +127,41 @@
       "type": "collection",
       "default": {},
       "description": "Whether to include all the comments in a Hacker News article",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "tags",
-      "displayName": "Tags",
-      "type": "multiOptions",
-      "default": null,
-      "description": "Returns query results filtered by Ask HN tag"
-    },
-    {
-      "name": "Comment",
-      "default": null,
-      "description": "Returns query results filtered by comment tag"
-    },
-    {
-      "name": "Front Page",
-      "default": null,
-      "description": "Returns query results filtered by Front Page tag"
-    },
-    {
-      "name": "Poll",
-      "default": null,
-      "description": "Returns query results filtered by poll tag"
-    },
-    {
-      "name": "Show HN",
-      "default": null,
-      "description": "Returns query results filtered by Show HN tag"
-    },
-    {
-      "name": "Story",
-      "default": null,
-      "description": "Returns query results filtered by story tag"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "includeComments",
+          "displayName": "Include Comments",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to include all the comments in a Hacker News article"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "article"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

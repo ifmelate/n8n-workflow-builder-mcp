@@ -7,113 +7,101 @@
     {
       "name": "type",
       "displayName": "Resource",
-      "default": "transactional"
-    },
-    {
-      "name": "Marketing",
-      "default": null
-    },
-    {
-      "name": "Transactional",
-      "default": null
+      "type": "options",
+      "default": "transactional",
+      "required": true,
+      "options": [
+        {
+          "name": "Inbound",
+          "value": "inbound"
+        },
+        {
+          "name": "Marketing",
+          "value": "marketing"
+        },
+        {
+          "name": "Transactional",
+          "value": "transactional"
+        }
+      ]
     },
     {
       "name": "events",
       "displayName": "Trigger On",
       "type": "['transactional']",
-      "default": null,
+      "default": [],
       "description": "Triggers when transactional email is blocked",
-      "placeholder": "Add Event"
-    },
-    {
-      "name": "Email Clicked",
-      "default": null,
-      "description": "Triggers when transactional email is clicked"
-    },
-    {
-      "name": "Email Deferred",
-      "default": null,
-      "description": "Triggers when transactional email is deferred"
-    },
-    {
-      "name": "Email Delivered",
-      "default": null,
-      "description": "Triggers when transactional email is delivered"
-    },
-    {
-      "name": "Email Hard Bounce",
-      "default": null,
-      "description": "Triggers when transactional email is hard bounced"
-    },
-    {
-      "name": "Email Invalid",
-      "default": null,
-      "description": "Triggers when transactional email is invalid"
-    },
-    {
-      "name": "Email Marked Spam",
-      "default": null,
-      "description": "Triggers when transactional email is set to spam"
-    },
-    {
-      "name": "Email Opened",
-      "default": null,
-      "description": "Triggers when transactional email is opened"
-    },
-    {
-      "name": "Email Sent",
-      "default": null,
-      "description": "Triggers when transactional email is sent"
-    },
-    {
-      "name": "Email Soft-Bounce",
-      "default": null,
-      "description": "Triggers when transactional email is soft bounced"
-    },
-    {
-      "name": "Email Unique Open",
-      "default": null,
-      "description": "Triggers when transactional email is unique opened"
-    },
-    {
-      "name": "Email Unsubscribed",
-      "default": null,
-      "description": "Triggers when transactional email is unsubscribed"
-    },
-    {
-      "name": "Marketing Email Delivered",
-      "default": null,
-      "description": "Triggers when marketing email is delivered"
-    },
-    {
-      "name": "Marketing Email Hard Bounce",
-      "default": null,
-      "description": "Triggers when marketing email is hard bounced"
-    },
-    {
-      "name": "Marketing Email List Addition",
-      "default": null,
-      "description": "Triggers when marketing email is clicked"
-    },
-    {
-      "name": "Marketing Email Opened",
-      "default": null,
-      "description": "Triggers when marketing email is opened"
-    },
-    {
-      "name": "Marketing Email Soft Bounce",
-      "default": null,
-      "description": "Triggers when marketing email is soft bounced"
-    },
-    {
-      "name": "Marketing Email Spam",
-      "default": null,
-      "description": "Triggers when marketing email is spam"
-    },
-    {
-      "name": "Marketing Email Unsubscribed",
-      "default": null,
-      "description": "Triggers when marketing email is unsubscribed"
+      "placeholder": "Add Event",
+      "required": true,
+      "options": [
+        {
+          "name": "Email Blocked",
+          "value": "blocked",
+          "description": "Triggers when transactional email is blocked"
+        },
+        {
+          "name": "Email Clicked",
+          "value": "click",
+          "description": "Triggers when transactional email is clicked"
+        },
+        {
+          "name": "Email Deferred",
+          "value": "deferred",
+          "description": "Triggers when transactional email is deferred"
+        },
+        {
+          "name": "Email Delivered",
+          "value": "delivered",
+          "description": "Triggers when transactional email is delivered"
+        },
+        {
+          "name": "Email Hard Bounce",
+          "value": "hardBounce",
+          "description": "Triggers when transactional email is hard bounced"
+        },
+        {
+          "name": "Email Invalid",
+          "value": "invalid",
+          "description": "Triggers when transactional email is invalid"
+        },
+        {
+          "name": "Email Marked Spam",
+          "value": "spam",
+          "description": "Triggers when transactional email is set to spam"
+        },
+        {
+          "name": "Email Opened",
+          "value": "opened",
+          "description": "Triggers when transactional email is opened"
+        },
+        {
+          "name": "Email Sent",
+          "value": "request",
+          "description": "Triggers when transactional email is sent"
+        },
+        {
+          "name": "Email Soft-Bounce",
+          "value": "softBounce",
+          "description": "Triggers when transactional email is soft bounced"
+        },
+        {
+          "name": "Email Unique Open",
+          "value": "uniqueOpened",
+          "description": "Triggers when transactional email is unique opened"
+        },
+        {
+          "name": "Email Unsubscribed",
+          "value": "unsubscribed",
+          "description": "Triggers when transactional email is unsubscribed"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "type": [
+            "transactional"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -141,5 +129,19 @@
       "name": "events",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

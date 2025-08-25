@@ -14,26 +14,51 @@
       "displayName": "Query",
       "type": "string",
       "default": "={{ $json.input }}",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "@version": [
+            1
+          ]
+        }
+      }
     },
     {
       "name": "promptType",
       "displayName": "Prompt",
       "type": "options",
-      "default": null,
-      "description": "Looks for an input field called chatInput"
-    },
-    {
-      "name": "Define below",
-      "default": null,
-      "description": "Use an expression to reference data in previous nodes or enter static text"
+      "default": "auto",
+      "description": "Looks for an input field called chatInput",
+      "options": [
+        {
+          "name": "Take from previous node automatically",
+          "value": "auto",
+          "description": "Looks for an input field called chatInput"
+        },
+        {
+          "name": "Define below",
+          "value": "define",
+          "description": "Use an expression to reference data in previous nodes or enter static text"
+        }
+      ],
+      "displayOptions": "{\n\t\t\t\t\thide: {\n\t\t\t\t\t\t'@version': [{ _cnd: { lte: 1.2 }"
     },
     {
       "name": "text",
       "displayName": "Text",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "rows": 2
+      },
+      "displayOptions": {
+        "show": {
+          "promptType": [
+            "define"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -41,7 +66,18 @@
       "type": "collection",
       "default": {},
       "description": "Template string used for the system prompt. This should include the variable `{context}` for the provided context. For text completion models, you should also include the variable `{question}` for the user’s query.",
-      "placeholder": "Add Option"
+      "placeholder": "Add Option",
+      "options": [
+        {
+          "name": "systemPromptTemplate",
+          "displayName": "System Prompt Template",
+          "type": "string",
+          "description": "Template string used for the system prompt. This should include the variable `{context}` for the provided context. For text completion models, you should also include the variable `{question}` for the user’s query."
+        }
+      ],
+      "typeOptions": {
+        "rows": 6
+      }
     }
   ],
   "credentialsConfig": [
@@ -53,5 +89,19 @@
       "name": "text",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

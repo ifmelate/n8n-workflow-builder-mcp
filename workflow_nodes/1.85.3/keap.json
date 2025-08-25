@@ -9,32 +9,60 @@
       "displayName": "Company Name",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "company"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "notes",
-      "displayName": "Notes",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "optInReason",
-      "displayName": "Opt In Reason",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "website",
-      "displayName": "Website",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "emailAddress",
+          "displayName": "Email",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "notes",
+          "displayName": "Notes",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "optInReason",
+          "displayName": "Opt In Reason",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "website",
+          "displayName": "Website",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "company"
+          ]
+        }
+      }
     },
     {
       "name": "addressesUi",
@@ -42,83 +70,95 @@
       "type": "fixedCollection",
       "default": {},
       "description": "ISO Alpha-3 Code",
-      "placeholder": "Add Address"
-    },
-    {
-      "name": "line1",
-      "displayName": "Line 1",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "line2",
-      "displayName": "Line 2",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "locality",
-      "displayName": "Locality",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "postalCode",
-      "displayName": "Postal Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "region",
-      "displayName": "Region",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "zipCode",
-      "displayName": "Zip Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "zipFour",
-      "displayName": "Zip Four",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Address",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "faxesUi",
       "displayName": "Faxes",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Fax"
-    },
-    {
-      "name": "number",
-      "displayName": "Number",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Fax",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "phonesUi",
       "displayName": "Phones",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Phone"
+      "placeholder": "Add Phone",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "company"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 200
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "company"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -126,329 +166,207 @@
       "type": "collection",
       "default": {},
       "description": "Company name to query on",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "order",
-      "displayName": "Order",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "ID",
-      "default": null
-    },
-    {
-      "name": "Name",
-      "default": null
-    },
-    {
-      "name": "orderDirection",
-      "displayName": "Order Direction",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "DES",
-      "default": null
-    },
-    {
-      "name": "fields",
-      "displayName": "Fields",
-      "type": "string",
-      "default": "",
-      "description": "Comma-delimited list of Company properties to include in the response. (Fields such as notes, fax_number and custom_fields aren't included, by default.)."
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "companyName",
+          "displayName": "Company Name",
+          "type": "string",
+          "default": "",
+          "description": "Company name to query on"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "company"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a company"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Retrieve many companies"
+      "default": "create",
+      "description": "Create a company",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a company"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Retrieve many companies"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "company"
+          ]
+        }
+      }
     },
     {
       "name": "duplicateOption",
       "displayName": "Duplicate Option",
       "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "Email And Name",
-      "default": null
-    },
-    {
-      "name": "companyId",
-      "displayName": "Company ID",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "contactType",
-      "displayName": "Contact Type Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "familyName",
-      "displayName": "Family Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "givenName",
-      "displayName": "Given Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "ipAddress",
-      "displayName": "IP Address",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "jobTitle",
-      "displayName": "Job Title",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "leadSourceId",
-      "displayName": "Lead Source ID",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "middleName",
-      "displayName": "Middle Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "ownerId",
-      "displayName": "Owner Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "preferredLocale",
-      "displayName": "Preferred Locale",
-      "type": "string",
-      "default": "",
-      "placeholder": "en"
-    },
-    {
-      "name": "preferredName",
-      "displayName": "Preferred Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "sourceType",
-      "displayName": "Source Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Import",
-      "default": null
-    },
-    {
-      "name": "Landing Page",
-      "default": null
-    },
-    {
-      "name": "Manual",
-      "default": null
-    },
-    {
-      "name": "Other",
-      "default": null
-    },
-    {
-      "name": "Unknown",
-      "default": null
-    },
-    {
-      "name": "spouseName",
-      "displayName": "Spouse Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "timezone",
-      "displayName": "Timezone Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "Shipping",
-      "default": null
-    },
-    {
-      "name": "countryCode",
-      "displayName": "Country Code Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "default": "email",
+      "description": "Performs duplicate checking by one of the following options: Email, EmailAndName. If a match is found using the option provided, the existing contact will be updated.",
+      "required": true,
+      "options": [
+        {
+          "name": "Email",
+          "value": "email"
+        },
+        {
+          "name": "Email And Name",
+          "value": "emailAndName"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "upsert"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "emailsUi",
       "displayName": "Emails",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Email"
-    },
-    {
-      "name": "Email 2",
-      "default": null
-    },
-    {
-      "name": "Email 3",
-      "default": null
-    },
-    {
-      "name": "email",
-      "displayName": "Email",
-      "type": "string",
-      "default": "",
-      "placeholder": "name@email.com"
-    },
-    {
-      "name": "Fax 2",
-      "default": null
-    },
-    {
-      "name": "Phone 2",
-      "default": null
-    },
-    {
-      "name": "Phone 3",
-      "default": null
-    },
-    {
-      "name": "Phone 4",
-      "default": null
-    },
-    {
-      "name": "Phone 5",
-      "default": null
+      "placeholder": "Add Email",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "upsert"
+          ]
+        }
+      }
     },
     {
       "name": "socialAccountsUi",
       "displayName": "Social Accounts",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Social Account"
-    },
-    {
-      "name": "Twitter",
-      "default": null
-    },
-    {
-      "name": "LinkedIn",
-      "default": null
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Social Account",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "upsert"
+          ]
+        }
+      }
     },
     {
       "name": "contactId",
       "displayName": "Contact ID",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "Email",
-      "default": null
-    },
-    {
-      "name": "since",
-      "displayName": "Since",
-      "type": "dateTime",
-      "default": "",
-      "description": "Date to start searching from on LastUpdated"
-    },
-    {
-      "name": "until",
-      "displayName": "Until",
-      "type": "dateTime",
-      "default": "",
-      "description": "Date to search to on LastUpdated"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an contact"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Retrieve an contact"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "userId",
       "displayName": "User Name or ID",
       "type": "options",
       "default": "",
-      "description": "The infusionsoft user to create the note on behalf of. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "title",
-      "displayName": "Title",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "type",
-      "displayName": "Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Call",
-      "default": null
-    },
-    {
-      "name": "Fax",
-      "default": null
-    },
-    {
-      "name": "Letter",
-      "default": null
+      "description": "The infusionsoft user to create the note on behalf of. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "contactNote"
+          ]
+        }
+      }
     },
     {
       "name": "noteId",
       "displayName": "Note ID",
       "type": "string",
       "default": "",
-      "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "contactNote"
+          ]
+        }
+      }
     },
     {
       "name": "filters",
       "displayName": "Filters",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a note"
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "contactId",
+          "displayName": "Contact ID",
+          "type": "number",
+          "default": 0
+        },
+        {
+          "name": "userId",
+          "displayName": "User Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+        }
+      ],
+      "typeOptions": {
+        "minValue": 0
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "contactNote"
+          ]
+        }
+      }
     },
     {
       "name": "tagIds",
@@ -456,335 +374,346 @@
       "type": "multiOptions",
       "default": [],
       "description": "Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "contactTag"
+          ]
+        }
+      }
     },
     {
       "name": "orderDate",
       "displayName": "Order Date",
       "type": "dateTime",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
+      }
     },
     {
       "name": "orderTitle",
       "displayName": "Order Title",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
+      }
     },
     {
       "name": "orderType",
       "displayName": "Order Type",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Online",
-      "default": null
-    },
-    {
-      "name": "promoCodes",
-      "displayName": "Promo Codes",
-      "type": "string",
       "default": "",
-      "description": "Uses multiple strings separated by comma as promo codes. The corresponding discount will be applied to the order."
-    },
-    {
-      "name": "salesAffiliateId",
-      "displayName": "Sales Affiliate ID",
-      "type": "number",
-      "default": 0
+      "required": true,
+      "options": [
+        {
+          "name": "Offline",
+          "value": "offline"
+        },
+        {
+          "name": "Online",
+          "value": "online"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
+      }
     },
     {
       "name": "addressUi",
       "displayName": "Shipping Address",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Address"
-    },
-    {
-      "name": "firstName",
-      "displayName": "First Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "lastName",
-      "displayName": "Last Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "phone",
-      "displayName": "Phone",
-      "type": "string",
-      "default": ""
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "placeholder": "Add Address",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "ecommerceOrder"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "orderItemsUi",
       "displayName": "Order Items",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Order Item"
-    },
-    {
-      "name": "price",
-      "displayName": "Price",
-      "type": "number",
-      "default": 0,
-      "description": "Overridable price of the product, if not specified, the default will be used"
-    },
-    {
-      "name": "product ID",
-      "displayName": "Product ID",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "quantity",
-      "displayName": "Quantity",
-      "type": "number",
-      "default": 1
+      "description": "Overridable price of the product, if not specified, the default will be used",
+      "placeholder": "Add Order Item",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "ecommerceOrder"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "orderId",
       "displayName": "Order ID",
       "type": "string",
       "default": "",
-      "description": "Whether to return all results or only up to a given limit",
-      "required": true
-    },
-    {
-      "name": "paid",
-      "displayName": "Paid",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "productId",
-      "displayName": "Product ID",
-      "type": "number",
-      "default": 0
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "ecommerceOrder"
+          ]
+        }
+      }
     },
     {
       "name": "productName",
       "displayName": "Product Name",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "ecommerceProduct"
+          ]
+        }
+      }
     },
     {
-      "name": "productDesc",
-      "displayName": "Product Description",
+      "name": "productId",
+      "displayName": "Product ID",
       "type": "string",
-      "default": ""
-    },
-    {
-      "name": "productPrice",
-      "displayName": "Product Price",
-      "type": "number",
-      "default": 0
-    },
-    {
-      "name": "productShortDesc",
-      "displayName": "Product Short Desc",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "sku",
-      "displayName": "SKU",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "subscriptionOnly",
-      "displayName": "Subscription Only",
-      "type": "boolean",
-      "default": false
+      "default": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "ecommerceProduct"
+          ]
+        }
+      }
     },
     {
       "name": "sentToAddress",
       "displayName": "Sent To Address",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "createRecord"
+          ],
+          "resource": [
+            "email"
+          ]
+        }
+      }
     },
     {
       "name": "sentFromAddress",
       "displayName": "Sent From Address",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "headers",
-      "displayName": "Headers",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "htmlContent",
-      "displayName": "HTML Content",
-      "type": "string",
-      "default": "",
-      "description": "Base64 encoded HTML"
-    },
-    {
-      "name": "openedDate",
-      "displayName": "Opened Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "originalProvider",
-      "displayName": "Original Provider",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Infusionsoft",
-      "default": null
-    },
-    {
-      "name": "Microsoft",
-      "default": null
-    },
-    {
-      "name": "Google",
-      "default": null
-    },
-    {
-      "name": "originalProviderId",
-      "displayName": "Original Provider ID",
-      "type": "string",
-      "default": "",
-      "description": "Provider ID that sent the email, must be unique when combined with provider. If omitted a UUID without dashes is autogenerated for the record."
-    },
-    {
-      "name": "plainContent",
-      "displayName": "Plain Content",
-      "type": "string",
-      "default": "",
-      "description": "Base64 encoded text"
-    },
-    {
-      "name": "providerSourceId",
-      "displayName": "Provider Source ID",
-      "type": "string",
-      "default": "The email address of the synced email account that generated this message."
-    },
-    {
-      "name": "receivedDate",
-      "displayName": "Received Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "sentDate",
-      "displayName": "Sent Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "sentFromReplyAddress",
-      "displayName": "Sent From Reply Address",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "sentToBccAddresses",
-      "displayName": "Sent To Bcc Addresses",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "sentToCCAddresses",
-      "displayName": "Sent To CC Addresses",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "subject",
-      "displayName": "Subject",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "sinceSentDate",
-      "displayName": "Since Sent Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Emails sent since the provided date, must be present if untilDate is provided"
-    },
-    {
-      "name": "untilSentDate",
-      "displayName": "Until Sent Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Email sent until the provided date"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "createRecord"
+          ],
+          "resource": [
+            "email"
+          ]
+        }
+      }
     },
     {
       "name": "contactIds",
       "displayName": "Contact IDs",
       "type": "string",
       "default": "",
-      "description": "Contact IDs to receive the email. Multiple can be added seperated by comma."
+      "description": "Contact IDs to receive the email. Multiple can be added seperated by comma.",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "email"
+          ]
+        }
+      }
+    },
+    {
+      "name": "subject",
+      "displayName": "Subject",
+      "type": "string",
+      "default": "",
+      "description": "The subject line of the email",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "email"
+          ]
+        }
+      }
     },
     {
       "name": "attachmentsUi",
       "displayName": "Attachments",
       "type": "fixedCollection",
-      "default": "",
+      "default": {},
       "description": "The content of the attachment, encoded in Base64",
-      "placeholder": "Add Attachments"
-    },
-    {
-      "name": "fileName",
-      "displayName": "File Name",
-      "type": "string",
-      "default": "",
-      "description": "The filename of the attached file, including extension"
-    },
-    {
-      "name": "attachmentsBinary",
-      "displayName": "Attachments Binary",
-      "type": "string",
-      "default": "",
-      "description": "Name of the binary properties which contain data which should be added to email as attachment"
-    },
-    {
-      "name": "Send",
-      "default": null,
-      "description": "Send Email"
+      "placeholder": "Add Attachments",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "email"
+          ]
+        }
+      }
     },
     {
       "name": "binaryData",
       "displayName": "Binary File",
       "type": "boolean",
       "default": false,
-      "description": "Whether the data to upload should be taken from binary field"
+      "description": "Whether the data to upload should be taken from binary field",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "upload"
+          ],
+          "resource": [
+            "file"
+          ]
+        }
+      }
     },
     {
       "name": "binaryPropertyName",
       "displayName": "Input Binary Field",
       "type": "string",
       "default": "data",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "upload"
+          ],
+          "resource": [
+            "file"
+          ],
+          "binaryData": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "fileAssociation",
       "displayName": "File Association",
       "type": "options",
-      "default": null
+      "default": "",
+      "required": true,
+      "options": [
+        {
+          "name": "Company",
+          "value": "company"
+        },
+        {
+          "name": "Contact",
+          "value": "contact"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "upload"
+          ],
+          "resource": [
+            "file"
+          ]
+        }
+      }
     },
     {
-      "name": "Contact",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
+      "name": "fileName",
+      "displayName": "File Name",
+      "type": "string",
+      "default": "",
+      "description": "The filename of the attached file, including extension",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "upload"
+          ],
+          "resource": [
+            "file"
+          ],
+          "binaryData": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "fileData",
@@ -792,114 +721,93 @@
       "type": "string",
       "default": "",
       "description": "The content of the attachment, encoded in Base64",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "upload"
+          ],
+          "resource": [
+            "file"
+          ],
+          "binaryData": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "isPublic",
       "displayName": "Is Public",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "upload"
+          ],
+          "resource": [
+            "file"
+          ]
+        }
+      }
     },
     {
-      "name": "permission",
-      "displayName": "Permission",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Company",
-      "default": null
-    },
-    {
-      "name": "Both",
-      "default": null
-    },
-    {
-      "name": "Attachment",
-      "default": null
-    },
-    {
-      "name": "Digital Product",
-      "default": null
-    },
-    {
-      "name": "Funnel",
-      "default": null
-    },
-    {
-      "name": "Hidden",
-      "default": null
-    },
-    {
-      "name": "Image",
-      "default": null
-    },
-    {
-      "name": "Logo Thumnail",
-      "default": null
-    },
-    {
-      "name": "Re Sampled Image",
-      "default": null
-    },
-    {
-      "name": "Style Cart",
-      "default": null
-    },
-    {
-      "name": "Template Thumnail",
-      "default": null
-    },
-    {
-      "name": "Ticket",
-      "default": null
-    },
-    {
-      "name": "Webform",
-      "default": null
-    },
-    {
-      "name": "viewable",
-      "displayName": "Viewable",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Private",
-      "default": null
-    },
-    {
-      "name": "Upload",
-      "default": null,
-      "description": "Upload a file"
+      "name": "fileId",
+      "displayName": "File ID",
+      "type": "string",
+      "default": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "file"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Contact Note",
-      "default": null
-    },
-    {
-      "name": "Contact Tag",
-      "default": null
-    },
-    {
-      "name": "Ecommerce Order",
-      "default": null
-    },
-    {
-      "name": "Ecommerce Product",
-      "default": null
-    },
-    {
-      "name": "File",
-      "default": null
+      "default": "company",
+      "options": [
+        {
+          "name": "Company",
+          "value": "company"
+        },
+        {
+          "name": "Contact",
+          "value": "contact"
+        },
+        {
+          "name": "Contact Note",
+          "value": "contactNote"
+        },
+        {
+          "name": "Contact Tag",
+          "value": "contactTag"
+        },
+        {
+          "name": "Ecommerce Order",
+          "value": "ecommerceOrder"
+        },
+        {
+          "name": "Ecommerce Product",
+          "value": "ecommerceProduct"
+        },
+        {
+          "name": "Email",
+          "value": "email"
+        },
+        {
+          "name": "File",
+          "value": "file"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -911,5 +819,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

@@ -10,7 +10,17 @@
       "type": "string",
       "default": "",
       "description": "The title for the post",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -18,155 +28,47 @@
       "type": "collection",
       "default": {},
       "description": "The ID for the author of the object. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "content",
-      "displayName": "Content",
-      "type": "string",
-      "default": "",
-      "description": "The content for the post"
-    },
-    {
-      "name": "slug",
-      "displayName": "Slug",
-      "type": "string",
-      "default": "",
-      "description": "An alphanumeric identifier for the object unique to its type"
-    },
-    {
-      "name": "password",
-      "displayName": "Password",
-      "type": "string",
-      "default": "",
-      "description": "A password to protect access to the content and excerpt"
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Future",
-      "default": null
-    },
-    {
-      "name": "Pending",
-      "default": null
-    },
-    {
-      "name": "Private",
-      "default": null
-    },
-    {
-      "name": "Publish",
-      "default": null
-    },
-    {
-      "name": "commentStatus",
-      "displayName": "Comment Status",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Close",
-      "default": null
-    },
-    {
-      "name": "pingStatus",
-      "displayName": "Ping Status",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "format",
-      "displayName": "Format",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Audio",
-      "default": null
-    },
-    {
-      "name": "Chat",
-      "default": null
-    },
-    {
-      "name": "Gallery",
-      "default": null
-    },
-    {
-      "name": "Image",
-      "default": null
-    },
-    {
-      "name": "Link",
-      "default": null
-    },
-    {
-      "name": "Quote",
-      "default": null
-    },
-    {
-      "name": "Standard",
-      "default": null
-    },
-    {
-      "name": "Status",
-      "default": null
-    },
-    {
-      "name": "Video",
-      "default": null
-    },
-    {
-      "name": "sticky",
-      "displayName": "Sticky",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether or not the object should be treated as sticky"
-    },
-    {
-      "name": "categories",
-      "displayName": "Category Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "The terms assigned to the object in the category taxonomy. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "tags",
-      "displayName": "Tag Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "The terms assigned to the object in the post_tag taxonomy. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "postTemplate",
-      "displayName": "Template",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Whether site uses elementor page builder"
-    },
-    {
-      "name": "template",
-      "displayName": "Template",
-      "type": "string",
-      "default": "",
-      "description": "The theme file to use"
-    },
-    {
-      "name": "Elementor Canvas",
-      "default": null
-    },
-    {
-      "name": "Elementor Header Footer",
-      "default": null
-    },
-    {
-      "name": "Elementor Theme",
-      "default": null
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "authorId",
+          "displayName": "Author Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "The ID for the author of the object. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        },
+        {
+          "name": "content",
+          "displayName": "Content",
+          "type": "string",
+          "default": "",
+          "description": "The content for the post"
+        },
+        {
+          "name": "slug",
+          "displayName": "Slug",
+          "type": "string",
+          "default": "",
+          "description": "An alphanumeric identifier for the object unique to its type"
+        },
+        {
+          "name": "password",
+          "displayName": "Password",
+          "type": "string",
+          "default": "",
+          "description": "A password to protect access to the content and excerpt"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "postId",
@@ -174,7 +76,17 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for the object",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -182,7 +94,54 @@
       "type": "collection",
       "default": {},
       "description": "The ID for the author of the object. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "authorId",
+          "displayName": "Author Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "The ID for the author of the object. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        },
+        {
+          "name": "title",
+          "displayName": "Title",
+          "type": "string",
+          "default": "",
+          "description": "The title for the post"
+        },
+        {
+          "name": "content",
+          "displayName": "Content",
+          "type": "string",
+          "default": "",
+          "description": "The content for the post"
+        },
+        {
+          "name": "slug",
+          "displayName": "Slug",
+          "type": "string",
+          "default": "",
+          "description": "An alphanumeric identifier for the object unique to its type"
+        },
+        {
+          "name": "password",
+          "displayName": "Password",
+          "type": "string",
+          "default": "",
+          "description": "A password to protect access to the content and excerpt"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -190,176 +149,103 @@
       "type": "collection",
       "default": {},
       "description": "The password for the post if it is password protected",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "context",
-      "displayName": "Context",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Embed",
-      "default": null
-    },
-    {
-      "name": "Edit",
-      "default": null
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "password",
+          "displayName": "Password",
+          "type": "string",
+          "default": "",
+          "description": "The password for the post if it is password protected"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 5,
-      "description": "Max number of results to return"
-    },
-    {
-      "name": "author",
-      "displayName": "Author Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Limit result set to posts assigned to specific authors. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "before",
-      "displayName": "Before",
-      "type": "dateTime",
-      "default": "",
-      "description": "Limit response to posts published before a given ISO8601 compliant date"
-    },
-    {
-      "name": "excludedCategories",
-      "displayName": "Exclude Categories",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Limit result set to all items except those that have the specified term assigned in the categories taxonomy. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "excludedTags",
-      "displayName": "Exclude Tags",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Limit result set to all items except those that have the specified term assigned in the tags taxonomy. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "order",
-      "displayName": "Order",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "DESC",
-      "default": null
-    },
-    {
-      "name": "orderBy",
-      "displayName": "Order By",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Date",
-      "default": null
-    },
-    {
-      "name": "ID",
-      "default": null
-    },
-    {
-      "name": "Include",
-      "default": null
-    },
-    {
-      "name": "Include Slugs",
-      "default": null
-    },
-    {
-      "name": "Modified",
-      "default": null
-    },
-    {
-      "name": "Parent",
-      "default": null
-    },
-    {
-      "name": "Relevance",
-      "default": null
-    },
-    {
-      "name": "Slug",
-      "default": null
-    },
-    {
-      "name": "Title",
-      "default": null
-    },
-    {
-      "name": "search",
-      "displayName": "Search",
-      "type": "string",
-      "default": "",
-      "description": "Limit results to those matching a string"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 10
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a post"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a post"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many posts"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a post"
-    },
-    {
-      "name": "parent",
-      "displayName": "Parent ID",
-      "type": "number",
-      "default": "",
-      "description": "The ID for the parent of the post"
-    },
-    {
-      "name": "pageTemplate",
-      "displayName": "Template",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Whether site uses elementor page builder"
-    },
-    {
-      "name": "menuOrder",
-      "displayName": "Menu Order",
-      "type": "number",
-      "default": 0,
-      "description": "The order of the page in relation to other pages"
-    },
-    {
-      "name": "Closed",
-      "default": null
-    },
-    {
-      "name": "featuredMediaId",
-      "displayName": "Featured Media ID",
-      "type": "number",
-      "default": "",
-      "description": "The ID of the featured media for the page"
+      "default": "create",
+      "description": "Create a post",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a post"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a post"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many posts"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a post"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ]
+        }
+      }
     },
     {
       "name": "pageId",
@@ -367,14 +253,17 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for the object",
-      "required": true
-    },
-    {
-      "name": "page",
-      "displayName": "Page",
-      "type": "number",
-      "default": 1,
-      "description": "Current page of the collection"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "page"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "username",
@@ -382,7 +271,17 @@
       "type": "string",
       "default": "",
       "description": "Login name for the user",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "name",
@@ -390,7 +289,17 @@
       "type": "string",
       "default": "",
       "description": "Display name for the user",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "firstName",
@@ -398,7 +307,17 @@
       "type": "string",
       "default": "",
       "description": "First name for the user",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "lastName",
@@ -406,7 +325,17 @@
       "type": "string",
       "default": "",
       "description": "Last name for the user",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "email",
@@ -415,21 +344,35 @@
       "default": "",
       "description": "The email address for the user",
       "placeholder": "name@email.com",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
-      "name": "description",
-      "displayName": "Description",
+      "name": "password",
+      "displayName": "Password",
       "type": "string",
       "default": "",
-      "description": "Description of the user"
-    },
-    {
-      "name": "nickname",
-      "displayName": "Nickname",
-      "type": "string",
-      "default": "",
-      "description": "The nickname for the user"
+      "description": "Password for the user (never included)",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "userId",
@@ -437,32 +380,17 @@
       "type": "string",
       "default": "",
       "description": "Unique identifier for the user",
-      "required": true
-    },
-    {
-      "name": "url",
-      "displayName": "URL",
-      "type": "string",
-      "default": "",
-      "description": "URL of the user"
-    },
-    {
-      "name": "Name",
-      "default": null
-    },
-    {
-      "name": "Registered Date",
-      "default": null
-    },
-    {
-      "name": "URL",
-      "default": null
-    },
-    {
-      "name": "who",
-      "displayName": "Who",
-      "type": "options",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "reassign",
@@ -470,21 +398,37 @@
       "type": "string",
       "default": "",
       "description": "Reassign the deleted user's posts and links to this user ID",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Page",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
+      "default": "post",
+      "options": [
+        {
+          "name": "Post",
+          "value": "post"
+        },
+        {
+          "name": "Page",
+          "value": "page"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -496,5 +440,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

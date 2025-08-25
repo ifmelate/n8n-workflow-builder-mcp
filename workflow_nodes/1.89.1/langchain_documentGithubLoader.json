@@ -4,5 +4,35 @@
   "description": "Use GitHub data as input to this chain",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "AiTextSplitter",
+      "AiDocument"
+    ],
+    "outputs": [
+      "AiDocument"
+    ],
+    "outputNames": [
+      "Document"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiVectorStore"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "AiTextSplitter",
+      "AiDocument"
+    ],
+    "produces": [
+      "AiDocument"
+    ]
+  }
 }

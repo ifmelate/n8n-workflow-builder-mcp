@@ -10,37 +10,35 @@
       "type": "string",
       "default": "",
       "description": "Enter client name",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "client"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Inactive",
-      "default": null
-    },
-    {
-      "name": "notes",
-      "displayName": "Notes",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "is_vip",
-      "displayName": "VIP",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the client is VIP or not"
-    },
-    {
-      "name": "website",
-      "displayName": "Website",
-      "type": "string",
-      "default": ""
+      "description": "Whether the client is VIP or not",
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "client"
+          ]
+        }
+      }
     },
     {
       "name": "reasign",
@@ -48,21 +46,113 @@
       "type": "boolean",
       "default": false,
       "description": "Whether tickets assigned to client sould be reasigned",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "// \t\t\tresource": [
+            "// \t\t\t\t'client'",
+            "//"
+          ],
+          "// \t\t\toperation": [
+            "// \t\t\t\t'delete'",
+            "//"
+          ]
+        }
+      }
+    },
+    {
+      "name": "reasigmentCliendId",
+      "displayName": "Client ID For Reasigment",
+      "type": "string",
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "// \t\t\tresource": [
+            "// \t\t\t\t'client'",
+            "//"
+          ],
+          "// \t\t\toperation": [
+            "// \t\t\t\t'delete'",
+            "//"
+          ]
+        }
+      }
+    },
+    {
+      "name": "clientId",
+      "displayName": "Client ID",
+      "type": "string",
+      "default": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "client"
+          ],
+          "operation": [
+            "get",
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "simplify",
       "displayName": "Simplify",
       "type": "boolean",
       "default": true,
-      "description": "Whether to return a simplified version of the response instead of the raw data"
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "client"
+          ],
+          "operation": [
+            "get",
+            "getAll"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "client"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 1000
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "client"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -70,71 +160,76 @@
       "type": "collection",
       "default": {},
       "description": "Whether to include active customers in the response",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "All",
-      "default": null,
-      "description": "Whether to include active and inactive customers in the response"
-    },
-    {
-      "name": "Inactive Only",
-      "default": null,
-      "description": "Whether to include inactive Customers in the response"
-    },
-    {
-      "name": "search",
-      "displayName": "Text To Filter By",
-      "type": "string",
-      "default": "",
-      "description": "Filter clients by your search string"
-    },
-    {
-      "name": "clientId",
-      "displayName": "Client ID",
-      "type": "string",
-      "default": "",
-      "required": true
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "client"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
       "displayName": "Update Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": ""
+      "description": "Whether the client is VIP or not",
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "client"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a client"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a client"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a client"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many clients"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a client"
+      "default": "create",
+      "description": "Create a client",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a client"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a client"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a client"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many clients"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a client"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "client"
+          ]
+        }
+      }
     },
     {
       "name": "siteName",
@@ -142,33 +237,52 @@
       "type": "string",
       "default": "",
       "description": "Enter site name",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "site"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "selectOption",
       "displayName": "Select Client by ID",
       "type": "boolean",
       "default": false,
-      "description": "Whether client can be selected by ID"
-    },
-    {
-      "name": "phonenumber",
-      "displayName": "Phone Number",
-      "type": "string",
-      "default": ""
+      "description": "Whether client can be selected by ID",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "site"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "siteId",
       "displayName": "Site ID",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "maincontact_name",
-      "displayName": "Main Contact",
-      "type": "string",
-      "default": ""
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "site"
+          ],
+          "operation": [
+            "delete",
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "ticketType",
@@ -176,7 +290,17 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "ticket"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "summary",
@@ -184,7 +308,17 @@
       "type": "string",
       "default": "",
       "placeholder": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "ticket"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "details",
@@ -192,26 +326,35 @@
       "type": "string",
       "default": "",
       "placeholder": "",
-      "required": true
-    },
-    {
-      "name": "startdate",
-      "displayName": "Start Date",
-      "type": "dateTime",
-      "default": ""
-    },
-    {
-      "name": "targetdate",
-      "displayName": "Target Date",
-      "type": "dateTime",
-      "default": ""
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "ticket"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "ticketId",
       "displayName": "Ticket ID",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "ticket"
+          ],
+          "operation": [
+            "delete",
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "userName",
@@ -219,58 +362,60 @@
       "type": "string",
       "default": "",
       "description": "Enter user name",
-      "required": true
-    },
-    {
-      "name": "password",
-      "displayName": "Password",
-      "type": "string",
-      "default": "",
-      "description": "Your new password must be at least 8 characters long and contain at least one letter, one number or symbol, one upper case character and one lower case character"
-    },
-    {
-      "name": "surname",
-      "displayName": "Surname",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "inactive",
-      "displayName": "User Is Inactive",
-      "type": "boolean",
-      "default": false
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "userId",
       "displayName": "User ID",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "site_id",
-      "displayName": "Site Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "delete",
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Site",
-      "default": null
-    },
-    {
-      "name": "Ticket",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
+      "default": "client",
+      "required": true,
+      "options": [
+        {
+          "name": "Client",
+          "value": "client"
+        },
+        {
+          "name": "Site",
+          "value": "site"
+        },
+        {
+          "name": "Ticket",
+          "value": "ticket"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -282,5 +427,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

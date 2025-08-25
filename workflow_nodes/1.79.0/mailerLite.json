@@ -8,7 +8,13 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "subscriber",
+      "options": [
+        {
+          "name": "Subscriber",
+          "value": "subscriber"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -20,5 +26,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

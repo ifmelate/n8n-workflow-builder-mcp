@@ -10,7 +10,17 @@
       "type": "string",
       "default": "",
       "description": "The name of the alias",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "alias"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "distinctId",
@@ -18,37 +28,59 @@
       "type": "string",
       "default": "",
       "description": "The user's distinct ID",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "alias"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
+      "description": "If not set, it'll automatically be set to the current time",
       "placeholder": "Add Field",
       "typeOptions": {
         "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "alias"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
       }
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "timestamp",
-      "displayName": "Timestamp",
-      "type": "dateTime",
-      "default": "",
-      "description": "If not set, it'll automatically be set to the current time"
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create an alias"
+      "default": "create",
+      "description": "Create an alias",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create an alias"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "alias"
+          ]
+        }
+      }
     },
     {
       "name": "eventName",
@@ -56,57 +88,59 @@
       "type": "string",
       "default": "",
       "description": "The name of the event",
-      "required": true
-    },
-    {
-      "name": "messageId",
-      "displayName": "Message ID",
-      "type": "string",
-      "default": ""
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "name",
       "displayName": "Name",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "contextUi",
-      "displayName": "Context",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Property"
-    },
-    {
-      "name": "propertiesUi",
-      "displayName": "Properties",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Property"
-    },
-    {
-      "name": "Screen",
-      "default": null,
-      "description": "Track a screen"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "track"
+          ],
+          "operation": [
+            "page",
+            "screen"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Event",
-      "default": null
-    },
-    {
-      "name": "Identity",
-      "default": null
-    },
-    {
-      "name": "Track",
-      "default": null
+      "default": "event",
+      "options": [
+        {
+          "name": "Alias",
+          "value": "alias"
+        },
+        {
+          "name": "Event",
+          "value": "event"
+        },
+        {
+          "name": "Identity",
+          "value": "identity"
+        },
+        {
+          "name": "Track",
+          "value": "track"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -118,5 +152,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

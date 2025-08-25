@@ -15,7 +15,10 @@
       "displayName": "Batch Size",
       "type": "number",
       "default": 1,
-      "description": "The number of items to return with each call"
+      "description": "The number of items to return with each call",
+      "typeOptions": {
+        "minValue": 1
+      }
     },
     {
       "name": "options",
@@ -23,8 +26,31 @@
       "type": "collection",
       "default": {},
       "description": "Whether the node will be reset and so with the current input-data newly initialized",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "reset",
+          "displayName": "Reset",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the node will be reset and so with the current input-data newly initialized"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

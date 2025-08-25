@@ -17,19 +17,25 @@
       "displayName": "Event",
       "type": "options",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "Deploy Failed",
-      "default": null
-    },
-    {
-      "name": "Deploy Created",
-      "default": null
-    },
-    {
-      "name": "Form Submitted",
-      "default": null
+      "required": true,
+      "options": [
+        {
+          "name": "Deploy Building",
+          "value": "deployBuilding"
+        },
+        {
+          "name": "Deploy Failed",
+          "value": "deployFailed"
+        },
+        {
+          "name": "Deploy Created",
+          "value": "deployCreated"
+        },
+        {
+          "name": "Form Submitted",
+          "value": "submissionCreated"
+        }
+      ]
     },
     {
       "name": "formId",
@@ -37,14 +43,28 @@
       "type": "options",
       "default": "",
       "description": "Select a form. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "event": [
+            "submissionCreated"
+          ]
+        }
+      }
     },
     {
       "name": "simple",
       "displayName": "Simplify",
       "type": "boolean",
       "default": true,
-      "description": "Whether to return a simplified version of the response instead of the raw data"
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "displayOptions": {
+        "show": {
+          "event": [
+            "submissionCreated"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -64,5 +84,19 @@
       "name": "formId",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

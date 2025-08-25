@@ -17,27 +17,33 @@
       "displayName": "Events",
       "type": "multiOptions",
       "default": [],
-      "required": true
-    },
-    {
-      "name": "Email Opened",
-      "default": null
-    },
-    {
-      "name": "Email Replied",
-      "default": null
-    },
-    {
-      "name": "Email Sent",
-      "default": null
-    },
-    {
-      "name": "Link Clicked",
-      "default": null
-    },
-    {
-      "name": "Unsubscribed Contact",
-      "default": null
+      "required": true,
+      "options": [
+        {
+          "name": "Email Bounced",
+          "value": "bounced"
+        },
+        {
+          "name": "Email Opened",
+          "value": "opened"
+        },
+        {
+          "name": "Email Replied",
+          "value": "replied"
+        },
+        {
+          "name": "Email Sent",
+          "value": "sent"
+        },
+        {
+          "name": "Link Clicked",
+          "value": "clicked"
+        },
+        {
+          "name": "Unsubscribed Contact",
+          "value": "unsubscribed"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -53,5 +59,23 @@
       "name": "campaignId",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

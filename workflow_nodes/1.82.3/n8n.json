@@ -10,66 +10,50 @@
       "type": "collection",
       "default": {},
       "description": "Risk categories to include in the audit",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "Database",
-      "default": null
-    },
-    {
-      "name": "Filesystem",
-      "default": null
-    },
-    {
-      "name": "Instance",
-      "default": null
-    },
-    {
-      "name": "Nodes",
-      "default": null
-    },
-    {
-      "name": "daysAbandonedWorkflow",
-      "displayName": "Days Abandoned Workflow",
-      "type": "number",
-      "default": 90,
-      "description": "Days for a workflow to be considered abandoned if not executed"
+      "placeholder": "Add Filter",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "audit"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
       "default": "get",
-      "description": "Generate a security audit for this n8n instance"
-    },
-    {
-      "name": "Delete",
-      "default": null
-    },
-    {
-      "name": "Get Schema",
-      "default": null
-    },
-    {
-      "name": "Get Many",
-      "default": null
-    },
-    {
-      "name": "Create",
-      "default": null
-    },
-    {
-      "name": "Deactivate",
-      "default": null
-    },
-    {
-      "name": "Get",
-      "default": null
-    },
-    {
-      "name": "Update",
-      "default": null
+      "description": "Generate a security audit for this n8n instance",
+      "options": [
+        {
+          "name": "Generate",
+          "value": "generate",
+          "description": "Generate a security audit for this n8n instance"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "audit"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

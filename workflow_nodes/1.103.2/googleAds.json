@@ -10,7 +10,14 @@
       "type": "string",
       "default": "",
       "placeholder": "9998887777",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "campaign"
+          ]
+        }
+      }
     },
     {
       "name": "clientCustomerId",
@@ -18,7 +25,14 @@
       "type": "string",
       "default": "",
       "placeholder": "6665554444",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "campaign"
+          ]
+        }
+      }
     },
     {
       "name": "campaignId",
@@ -26,7 +40,17 @@
       "type": "string",
       "default": "",
       "description": "ID of the campaign",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "campaign"
+          ]
+        }
+      }
     },
     {
       "name": "additionalOptions",
@@ -34,83 +58,54 @@
       "type": "collection",
       "default": {},
       "description": "Additional options for fetching campaigns",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "Today",
-      "default": null,
-      "description": "Today only"
-    },
-    {
-      "name": "Yesterday",
-      "default": null,
-      "description": "Yesterday only"
-    },
-    {
-      "name": "Last 7 Days",
-      "default": null,
-      "description": "Last 7 days, not including today"
-    },
-    {
-      "name": "Last Business Week",
-      "default": null,
-      "description": "The 5 day business week, Monday through Friday, of the previous business week"
-    },
-    {
-      "name": "This Month",
-      "default": null,
-      "description": "All days in the current month"
-    },
-    {
-      "name": "Last Month",
-      "default": null,
-      "description": "All days in the previous month"
-    },
-    {
-      "name": "Last 14 Days",
-      "default": null,
-      "description": "The last 14 days not including today"
-    },
-    {
-      "name": "Last 30 Days",
-      "default": null,
-      "description": "The last 30 days not including today"
-    },
-    {
-      "name": "campaignStatus",
-      "displayName": "Show Campaigns by Status",
-      "type": "options",
-      "default": null,
-      "description": "Filters campaigns by status"
-    },
-    {
-      "name": "Enabled",
-      "default": null,
-      "description": "Filter only active campaigns"
-    },
-    {
-      "name": "Paused",
-      "default": null,
-      "description": "Filter only paused campaigns"
-    },
-    {
-      "name": "Removed",
-      "default": null,
-      "description": "Filter only removed campaigns"
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "campaign"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
+      "default": "getAll",
       "description": "Get many campaigns linked to the specified account",
-      "options": []
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a specific campaign"
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "campaign"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

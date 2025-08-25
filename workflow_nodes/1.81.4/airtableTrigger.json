@@ -8,15 +8,21 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Access Token",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "airtableApi",
+      "options": [
+        {
+          "name": "API Key",
+          "value": "airtableApi"
+        },
+        {
+          "name": "Access Token",
+          "value": "airtableTokenApi"
+        },
+        {
+          "name": "OAuth2",
+          "value": "airtableOAuth2Api"
+        }
+      ]
     },
     {
       "name": "baseId",
@@ -26,12 +32,6 @@
       "description": "The Airtable Base in which to operate on",
       "placeholder": "https://airtable.com/app12DiScdfes/tblAAAAAAAAAAAAA/viwHdfasdfeieg5p",
       "required": true
-    },
-    {
-      "name": "id",
-      "displayName": "ID",
-      "type": "string",
-      "default": null
     },
     {
       "name": "tableId",
@@ -62,7 +62,14 @@
       "type": "string",
       "default": "",
       "description": "Name of the fields of type 'attachment' that should be downloaded. Multiple ones can be defined separated by comma. Case sensitive.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "downloadAttachments": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -70,21 +77,30 @@
       "type": "collection",
       "default": {},
       "description": "Fields to be included in the response. Multiple ones can be set separated by comma. Example: <code>name, id</code>. By default just the trigger field will be included.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "formula",
-      "displayName": "Formula",
-      "type": "string",
-      "default": "",
-      "description": "Formulas may involve functions, numeric operations, logical operations, and text operations that operate on fields. More info <a href=\"https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference\">here</a>."
-    },
-    {
-      "name": "viewId",
-      "displayName": "View ID",
-      "type": "string",
-      "default": "",
-      "description": "The name or ID of a view in the table. If set, only the records in that view will be returned."
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "fields",
+          "displayName": "Fields",
+          "type": "string",
+          "default": "",
+          "description": "Fields to be included in the response. Multiple ones can be set separated by comma. Example: <code>name, id</code>. By default just the trigger field will be included."
+        },
+        {
+          "name": "formula",
+          "displayName": "Formula",
+          "type": "string",
+          "default": "",
+          "description": "Formulas may involve functions, numeric operations, logical operations, and text operations that operate on fields. More info <a href=\"https://support.airtable.com/hc/en-us/articles/203255215-Formula-Field-Reference\">here</a>."
+        },
+        {
+          "name": "viewId",
+          "displayName": "View ID",
+          "type": "string",
+          "default": "",
+          "description": "The name or ID of a view in the table. If set, only the records in that view will be returned."
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -116,5 +132,19 @@
       "name": "triggerField",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

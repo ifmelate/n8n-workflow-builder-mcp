@@ -8,27 +8,33 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Campaign",
-      "default": null
-    },
-    {
-      "name": "Enrichment",
-      "default": null
-    },
-    {
-      "name": "Lead",
-      "default": null
-    },
-    {
-      "name": "Team",
-      "default": null
-    },
-    {
-      "name": "Unsubscribe",
-      "default": null
+      "default": "activity",
+      "options": [
+        {
+          "name": "Activity",
+          "value": "activity"
+        },
+        {
+          "name": "Campaign",
+          "value": "campaign"
+        },
+        {
+          "name": "Enrichment",
+          "value": "enrich"
+        },
+        {
+          "name": "Lead",
+          "value": "lead"
+        },
+        {
+          "name": "Team",
+          "value": "team"
+        },
+        {
+          "name": "Unsubscribe",
+          "value": "unsubscribe"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -40,5 +46,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

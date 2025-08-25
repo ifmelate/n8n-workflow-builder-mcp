@@ -10,7 +10,17 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "name",
@@ -18,7 +28,17 @@
       "type": "string",
       "default": "",
       "description": "Full name of contact/organisation",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -26,213 +46,87 @@
       "type": "collection",
       "default": {},
       "description": "A user defined account number",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "addressesUi",
-      "displayName": "Addresses",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Address"
-    },
-    {
-      "name": "Street",
-      "default": null
-    },
-    {
-      "name": "line1",
-      "displayName": "Line 1",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "line2",
-      "displayName": "Line 2",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "city",
-      "displayName": "City",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "region",
-      "displayName": "Region",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "postalCode",
-      "displayName": "Postal Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "country",
-      "displayName": "Country",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "attentionTo",
-      "displayName": "Attention To",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "bankAccountDetails",
-      "displayName": "Bank Account Details",
-      "type": "string",
-      "default": "",
-      "description": "Bank account number of contact"
-    },
-    {
-      "name": "contactNumber",
-      "displayName": "Contact Number",
-      "type": "string",
-      "default": "",
-      "description": "This field is read only on the Xero contact screen, used to identify contacts in external systems"
-    },
-    {
-      "name": "contactStatus",
-      "displayName": "Contact Status",
-      "type": "options",
-      "default": null,
-      "description": "The Contact is active and can be used in transactions"
-    },
-    {
-      "name": "Archived",
-      "default": null,
-      "description": "The Contact is archived and can no longer be used in transactions"
-    },
-    {
-      "name": "GDPR Request",
-      "default": null,
-      "description": "The Contact is the subject of a GDPR erasure request"
-    },
-    {
-      "name": "defaultCurrency",
-      "displayName": "Default Currency",
-      "type": "string",
-      "default": "",
-      "description": "Default currency for raising invoices against contact"
-    },
-    {
-      "name": "emailAddress",
-      "displayName": "Email",
-      "type": "string",
-      "default": "",
-      "description": "Email address of contact person (umlauts not supported) (max length = 255)"
-    },
-    {
-      "name": "firstName",
-      "displayName": "First Name",
-      "type": "string",
-      "default": "",
-      "description": "First name of contact person (max length = 255)"
-    },
-    {
-      "name": "lastName",
-      "displayName": "Last Name",
-      "type": "string",
-      "default": "",
-      "description": "Last name of contact person (max length = 255)"
-    },
-    {
-      "name": "phonesUi",
-      "displayName": "Phones",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Phone"
-    },
-    {
-      "name": "DDI",
-      "default": null
-    },
-    {
-      "name": "Mobile",
-      "default": null
-    },
-    {
-      "name": "Fax",
-      "default": null
-    },
-    {
-      "name": "phoneNumber",
-      "displayName": "Number",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "phoneAreaCode",
-      "displayName": "Area Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "phoneCountryCode",
-      "displayName": "Country Code",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "purchasesDefaultAccountCode",
-      "displayName": "Purchase Default Account Code Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "The default purchases account code for contacts. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "salesDefaultAccountCode",
-      "displayName": "Sales Default Account Code Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "The default sales account code for contacts. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "skypeUserName",
-      "displayName": "Skype",
-      "type": "string",
-      "default": "",
-      "description": "Skype user name of contact"
-    },
-    {
-      "name": "taxNumber",
-      "displayName": "Tax Number",
-      "type": "string",
-      "default": "",
-      "description": "Tax number of contact"
-    },
-    {
-      "name": "xeroNetworkKey",
-      "displayName": "Xero Network Key",
-      "type": "string",
-      "default": "",
-      "description": "Store XeroNetworkKey for contacts"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "accountNumber",
+          "displayName": "Account Number",
+          "type": "string",
+          "default": "",
+          "description": "A user defined account number"
+        }
+      ],
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "contactId",
       "displayName": "Contact ID",
       "type": "string",
       "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -240,33 +134,34 @@
       "type": "collection",
       "default": {},
       "description": "Whether contacts with a status of ARCHIVED will be included in the response",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "orderBy",
-      "displayName": "Order By",
-      "type": "string",
-      "default": "",
-      "description": "Order by any element returned",
-      "placeholder": "contactID"
-    },
-    {
-      "name": "sortOrder",
-      "displayName": "Sort Order",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Desc",
-      "default": null
-    },
-    {
-      "name": "where",
-      "displayName": "Where",
-      "type": "string",
-      "default": "",
-      "description": "The where parameter allows you to filter on endpoints and elements that don't have explicit parameters. <a href=\"https://developer.xero.com/documentation/api/requests-and-responses#get-modified\">Examples Here</a>.",
-      "placeholder": "EmailAddress!=null&&EmailAddress.StartsWith(\"boom\")"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "includeArchived",
+          "displayName": "Include Archived",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether contacts with a status of ARCHIVED will be included in the response"
+        },
+        {
+          "name": "orderBy",
+          "displayName": "Order By",
+          "type": "string",
+          "default": "",
+          "description": "Order by any element returned",
+          "placeholder": "contactID"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -274,41 +169,95 @@
       "type": "collection",
       "default": {},
       "description": "A user defined account number",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "accountNumber",
+          "displayName": "Account Number",
+          "type": "string",
+          "default": "",
+          "description": "A user defined account number"
+        }
+      ],
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a contact"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a contact"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many contacts"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a contact"
+      "default": "create",
+      "description": "Create a contact",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a contact"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a contact"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many contacts"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a contact"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "contact"
+          ]
+        }
+      }
     },
     {
       "name": "type",
       "displayName": "Type",
       "type": "options",
-      "default": null,
-      "description": "Accounts Payable or supplier invoice"
-    },
-    {
-      "name": "Sales Invoice",
-      "default": null,
-      "description": "Accounts Receivable or customer invoice"
+      "default": "",
+      "description": "Accounts Payable or supplier invoice",
+      "required": true,
+      "options": [
+        {
+          "name": "Bill",
+          "value": "ACCPAY",
+          "description": "Accounts Payable or supplier invoice"
+        },
+        {
+          "name": "Sales Invoice",
+          "value": "ACCREC",
+          "description": "Accounts Receivable or customer invoice"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "invoice"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "lineItemsUi",
@@ -316,205 +265,54 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Line item data",
-      "placeholder": "Add Line Item"
-    },
-    {
-      "name": "quantity",
-      "displayName": "Quantity",
-      "type": "number",
-      "default": 1,
-      "description": "LineItem Quantity"
-    },
-    {
-      "name": "unitAmount",
-      "displayName": "Unit Amount",
-      "type": "string",
-      "default": "",
-      "description": "Lineitem unit amount. By default, unit amount will be rounded to two decimal places."
-    },
-    {
-      "name": "itemCode",
-      "displayName": "Item Code Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "accountCode",
-      "displayName": "Account Code Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "taxType",
-      "displayName": "Tax Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Tax Exempt",
-      "default": null
-    },
-    {
-      "name": "Tax on Sales",
-      "default": null
-    },
-    {
-      "name": "Sales Tax on Imports",
-      "default": null
-    },
-    {
-      "name": "taxAmount",
-      "displayName": "Tax Amount",
-      "type": "string",
-      "default": "",
-      "description": "The tax amount is auto calculated as a percentage of the line amount based on the tax rate"
-    },
-    {
-      "name": "lineAmount",
-      "displayName": "Line Amount",
-      "type": "string",
-      "default": "",
-      "description": "The line amount reflects the discounted price if a DiscountRate has been used"
-    },
-    {
-      "name": "discountRate",
-      "displayName": "Discount Rate",
-      "type": "string",
-      "default": "",
-      "description": "Percentage discount or discount amount being applied to a line item. Only supported on ACCREC invoices - ACCPAY invoices and credit notes in Xero do not support discounts.",
-      "placeholder": "Add Tracking"
-    },
-    {
-      "name": "currency",
-      "displayName": "Currency Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "currencyRate",
-      "displayName": "Currency Rate",
-      "type": "string",
-      "default": "",
-      "description": "The currency rate for a multicurrency invoice. If no rate is specified, the XE.com day rate is used."
-    },
-    {
-      "name": "date",
-      "displayName": "Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Date invoice was issued - YYYY-MM-DD. If the Date element is not specified it will default to the current date based on the timezone setting of the organisation."
-    },
-    {
-      "name": "dueDate",
-      "displayName": "Due Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Date invoice is due - YYYY-MM-DD"
-    },
-    {
-      "name": "expectedPaymentDate",
-      "displayName": "Expected Payment Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Shown on sales invoices (Accounts Receivable) when this has been set"
-    },
-    {
-      "name": "invoiceNumber",
-      "displayName": "Invoice Number",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "lineAmountType",
-      "displayName": "Line Amount Type",
-      "type": "options",
-      "default": null,
-      "description": "Line items are exclusive of tax"
-    },
-    {
-      "name": "Inclusive",
-      "default": null,
-      "description": "Line items are inclusive tax"
-    },
-    {
-      "name": "NoTax",
-      "default": null,
-      "description": "Line have no tax"
-    },
-    {
-      "name": "plannedPaymentDate",
-      "displayName": "Planned Payment Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Shown on bills (Accounts Payable) when this has been set"
-    },
-    {
-      "name": "reference",
-      "displayName": "Reference",
-      "type": "string",
-      "default": "",
-      "description": "ACCREC only - additional reference number (max length = 255)"
-    },
-    {
-      "name": "sendToContact",
-      "displayName": "Send To Contact",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the invoice in the Xero app should be marked as \"sent\". This can be set only on invoices that have been approved."
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Submitted",
-      "default": null
-    },
-    {
-      "name": "Authorised",
-      "default": null
-    },
-    {
-      "name": "url",
-      "displayName": "URL",
-      "type": "string",
-      "default": "",
-      "description": "URL link to a source document - shown as \"Go to [appName]\" in the Xero app"
+      "placeholder": "Add Line Item",
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "invoice"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "invoiceId",
       "displayName": "Invoice ID",
       "type": "string",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": "",
-      "description": "A line item with just a description"
-    },
-    {
-      "name": "statuses",
-      "displayName": "Statuses",
-      "type": "multiOptions",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "invoice"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Invoice",
-      "default": null
+      "default": "invoice",
+      "options": [
+        {
+          "name": "Contact",
+          "value": "contact"
+        },
+        {
+          "name": "Invoice",
+          "value": "invoice"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -526,5 +324,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

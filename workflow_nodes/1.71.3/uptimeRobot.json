@@ -10,30 +10,57 @@
       "type": "string",
       "default": "",
       "description": "The friendly name of the monitor",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "monitor"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "type",
       "displayName": "Type",
       "type": "options",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "HTTP(S)",
-      "default": null
-    },
-    {
-      "name": "Keyword",
-      "default": null
-    },
-    {
-      "name": "Ping",
-      "default": null
-    },
-    {
-      "name": "Port",
-      "default": null
+      "description": "The type of the monitor",
+      "required": true,
+      "options": [
+        {
+          "name": "Heartbeat",
+          "value": 5
+        },
+        {
+          "name": "HTTP(S)",
+          "value": 1
+        },
+        {
+          "name": "Keyword",
+          "value": 2
+        },
+        {
+          "name": "Ping",
+          "value": 3
+        },
+        {
+          "name": "Port",
+          "value": 4
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "monitor"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "url",
@@ -41,85 +68,17 @@
       "type": "string",
       "default": "",
       "description": "The URL/IP of the monitor",
-      "required": true
-    },
-    {
-      "name": "limit",
-      "displayName": "Limit",
-      "type": "number",
-      "default": 50,
-      "description": "Max number of results to return"
-    },
-    {
-      "name": "filters",
-      "displayName": "Filters",
-      "type": "collection",
-      "default": {},
-      "description": "Whether the alert contacts set for the monitor to be returned",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "logs",
-      "displayName": "Logs",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the logs of each monitor will be returned"
-    },
-    {
-      "name": "mwindow",
-      "displayName": "Maintenance Window",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return the maintenance windows for the monitors"
-    },
-    {
-      "name": "monitors",
-      "displayName": "Monitor IDs",
-      "type": "string",
-      "default": "",
-      "description": "Monitors IDs separated with dash, e.g. 15830-32696-83920"
-    },
-    {
-      "name": "response_times",
-      "displayName": "Response Times",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the response time data of each monitor will be returned"
-    },
-    {
-      "name": "search",
-      "displayName": "Search",
-      "type": "string",
-      "default": "",
-      "description": "A keyword to be matched against URL and friendly name"
-    },
-    {
-      "name": "statuses",
-      "displayName": "Statuses",
-      "type": "multiOptions",
-      "default": []
-    },
-    {
-      "name": "Not Checked Yet",
-      "default": null
-    },
-    {
-      "name": "Up",
-      "default": null
-    },
-    {
-      "name": "Seems Down",
-      "default": null
-    },
-    {
-      "name": "Down",
-      "default": null
-    },
-    {
-      "name": "types",
-      "displayName": "Types",
-      "type": "multiOptions",
-      "default": []
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "monitor"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "id",
@@ -127,7 +86,122 @@
       "type": "string",
       "default": "",
       "description": "The ID of the monitor",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "monitor"
+          ],
+          "operation": [
+            "delete",
+            "reset",
+            "get"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "monitor"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "monitor"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "description": "Whether the alert contacts set for the monitor to be returned",
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "alert_contacts",
+          "displayName": "Alert Contacts",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the alert contacts set for the monitor to be returned"
+        },
+        {
+          "name": "logs",
+          "displayName": "Logs",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the logs of each monitor will be returned"
+        },
+        {
+          "name": "mwindow",
+          "displayName": "Maintenance Window",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to return the maintenance windows for the monitors"
+        },
+        {
+          "name": "monitors",
+          "displayName": "Monitor IDs",
+          "type": "string",
+          "default": "",
+          "description": "Monitors IDs separated with dash, e.g. 15830-32696-83920"
+        },
+        {
+          "name": "response_times",
+          "displayName": "Response Times",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the response time data of each monitor will be returned"
+        },
+        {
+          "name": "search",
+          "displayName": "Search",
+          "type": "string",
+          "default": "",
+          "description": "A keyword to be matched against URL and friendly name"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "monitor"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -135,171 +209,72 @@
       "type": "collection",
       "default": {},
       "description": "The friendly name of the monitor",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "http_auth_type",
-      "displayName": "HTTP Auth Type",
-      "type": "options",
-      "default": ""
-    },
-    {
-      "name": "Digest",
-      "default": null
-    },
-    {
-      "name": "http_method",
-      "displayName": "HTTP Method",
-      "type": "options",
-      "default": ""
-    },
-    {
-      "name": "GET",
-      "default": null
-    },
-    {
-      "name": "HEAD",
-      "default": null
-    },
-    {
-      "name": "OPTIONS",
-      "default": null
-    },
-    {
-      "name": "PATCH",
-      "default": null
-    },
-    {
-      "name": "POST",
-      "default": null
-    },
-    {
-      "name": "PUT",
-      "default": null
-    },
-    {
-      "name": "http_password",
-      "displayName": "HTTP Password",
-      "type": "string",
-      "default": "",
-      "description": "The password used for password-protected web pages"
-    },
-    {
-      "name": "http_username",
-      "displayName": "HTTP Username",
-      "type": "string",
-      "default": "",
-      "description": "The username used for password-protected web pages"
-    },
-    {
-      "name": "interval",
-      "displayName": "Interval",
-      "type": "number",
-      "default": "",
-      "description": "The interval for the monitoring check"
-    },
-    {
-      "name": "port",
-      "displayName": "Port",
-      "type": "number",
-      "default": "",
-      "description": "The monitored port"
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": ""
-    },
-    {
-      "name": "Resume",
-      "default": null
-    },
-    {
-      "name": "sub_type",
-      "displayName": "Sub Type",
-      "type": "options",
-      "default": ""
-    },
-    {
-      "name": "FTP (21)",
-      "default": null
-    },
-    {
-      "name": "HTTP (80)",
-      "default": null
-    },
-    {
-      "name": "HTTPS (443)",
-      "default": null
-    },
-    {
-      "name": "IMAP (143)",
-      "default": null
-    },
-    {
-      "name": "POP3 (110)",
-      "default": null
-    },
-    {
-      "name": "SMTP (25)",
-      "default": null
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "friendly_name",
+          "displayName": "Friendly Name",
+          "type": "string",
+          "default": "",
+          "description": "The friendly name of the monitor"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "monitor"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a monitor"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a monitor"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a monitor"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many monitors"
-    },
-    {
-      "name": "Reset",
-      "default": null,
-      "description": "Reset a monitor"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update a monitor"
-    },
-    {
-      "name": "E-Mail",
-      "default": null
-    },
-    {
-      "name": "Pushbullet",
-      "default": null
-    },
-    {
-      "name": "Pushover",
-      "default": null
-    },
-    {
-      "name": "SMS",
-      "default": null
-    },
-    {
-      "name": "Twitter DM",
-      "default": null
-    },
-    {
-      "name": "Webhook",
-      "default": null
+      "default": "getAll",
+      "description": "Create a monitor",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a monitor"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete a monitor"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a monitor"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many monitors"
+        },
+        {
+          "name": "Reset",
+          "value": "reset",
+          "description": "Reset a monitor"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update a monitor"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "monitor"
+          ]
+        }
+      }
     },
     {
       "name": "value",
@@ -307,7 +282,17 @@
       "type": "string",
       "default": "",
       "description": "The correspondent value for the alert contact type",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "alertContact"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "duration",
@@ -315,55 +300,89 @@
       "type": "number",
       "default": 1,
       "description": "The maintenance window activation period (minutes)",
-      "required": true
-    },
-    {
-      "name": "Daily",
-      "default": null
-    },
-    {
-      "name": "Weekly",
-      "default": null
-    },
-    {
-      "name": "Monthly",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "maintenanceWindow"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "weekDay",
       "displayName": "Week Day",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Tuesday",
-      "default": null
-    },
-    {
-      "name": "Wednesday",
-      "default": null
-    },
-    {
-      "name": "Thursday",
-      "default": null
-    },
-    {
-      "name": "Friday",
-      "default": null
-    },
-    {
-      "name": "Saturday",
-      "default": null
-    },
-    {
-      "name": "Sunday",
-      "default": null
+      "default": "",
+      "options": [
+        {
+          "name": "Monday",
+          "value": 1
+        },
+        {
+          "name": "Tuesday",
+          "value": 2
+        },
+        {
+          "name": "Wednesday",
+          "value": 3
+        },
+        {
+          "name": "Thursday",
+          "value": 4
+        },
+        {
+          "name": "Friday",
+          "value": 5
+        },
+        {
+          "name": "Saturday",
+          "value": 6
+        },
+        {
+          "name": "Sunday",
+          "value": 7
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "maintenanceWindow"
+          ],
+          "operation": [
+            "create"
+          ],
+          "type": [
+            3
+          ]
+        }
+      }
     },
     {
       "name": "monthDay",
       "displayName": "Month Day",
       "type": "number",
-      "default": 1
+      "default": 1,
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 30
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "maintenanceWindow"
+          ],
+          "operation": [
+            "create"
+          ],
+          "type": [
+            4
+          ]
+        }
+      }
     },
     {
       "name": "start_time",
@@ -371,7 +390,35 @@
       "type": "dateTime",
       "default": "",
       "description": "The maintenance window start datetime",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "maintenanceWindow"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "name": "monitors",
+      "displayName": "Monitor IDs",
+      "type": "string",
+      "default": "",
+      "description": "Monitor IDs to be displayed in status page (the values are separated with a dash (-) or 0 for all monitors)",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "publicStatusPage"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -379,61 +426,61 @@
       "type": "collection",
       "default": {},
       "description": "The domain or subdomain that the status page will run on",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "password",
-      "displayName": "Password",
-      "type": "string",
-      "default": "",
-      "description": "The password for the status page"
-    },
-    {
-      "name": "sort",
-      "displayName": "Sort",
-      "type": "options",
-      "default": ""
-    },
-    {
-      "name": "Friendly Name (Z-A)",
-      "default": null
-    },
-    {
-      "name": "Status (Up-Down-Paused)",
-      "default": null
-    },
-    {
-      "name": "Status (Down-Up-Paused)",
-      "default": null
-    },
-    {
-      "name": "friendly_name",
-      "displayName": "Friendly Name",
-      "type": "string",
-      "default": "",
-      "description": "The friendly name of the status page"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "custom_domain",
+          "displayName": "Custom Domain",
+          "type": "string",
+          "default": "",
+          "description": "The domain or subdomain that the status page will run on"
+        },
+        {
+          "name": "password",
+          "displayName": "Password",
+          "type": "string",
+          "default": "",
+          "description": "The password for the status page"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "publicStatusPage"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Alert Contact",
-      "default": null
-    },
-    {
-      "name": "Maintenance Window",
-      "default": null
-    },
-    {
-      "name": "Monitor",
-      "default": null
-    },
-    {
-      "name": "Public Status Page",
-      "default": null
+      "default": "account",
+      "options": [
+        {
+          "name": "Account",
+          "value": "account"
+        },
+        {
+          "name": "Alert Contact",
+          "value": "alertContact"
+        },
+        {
+          "name": "Maintenance Window",
+          "value": "maintenanceWindow"
+        },
+        {
+          "name": "Monitor",
+          "value": "monitor"
+        },
+        {
+          "name": "Public Status Page",
+          "value": "publicStatusPage"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -449,5 +496,19 @@
       "name": "operation",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

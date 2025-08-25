@@ -8,100 +8,106 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "apiToken",
+      "options": [
+        {
+          "name": "API Token",
+          "value": "apiToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Deal",
-      "default": null
-    },
-    {
-      "name": "Deal Activity",
-      "default": null
-    },
-    {
-      "name": "Deal Product",
-      "default": null
-    },
-    {
-      "name": "File",
-      "default": null
-    },
-    {
-      "name": "Lead",
-      "default": null
-    },
-    {
-      "name": "Note",
-      "default": null
-    },
-    {
-      "name": "Organization",
-      "default": null
-    },
-    {
-      "name": "Person",
-      "default": null
-    },
-    {
-      "name": "Product",
-      "default": null
+      "default": "deal",
+      "options": [
+        {
+          "name": "Activity",
+          "value": "activity"
+        },
+        {
+          "name": "Deal",
+          "value": "deal"
+        },
+        {
+          "name": "Deal Activity",
+          "value": "dealActivity"
+        },
+        {
+          "name": "Deal Product",
+          "value": "dealProduct"
+        },
+        {
+          "name": "File",
+          "value": "file"
+        },
+        {
+          "name": "Lead",
+          "value": "lead"
+        },
+        {
+          "name": "Note",
+          "value": "note"
+        },
+        {
+          "name": "Organization",
+          "value": "organization"
+        },
+        {
+          "name": "Person",
+          "value": "person"
+        },
+        {
+          "name": "Product",
+          "value": "product"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create an activity"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an activity"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get data of an activity"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get data of many activities"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update an activity"
-    },
-    {
-      "name": "Duplicate",
-      "default": null,
-      "description": "Duplicate a deal"
-    },
-    {
-      "name": "Search",
-      "default": null,
-      "description": "Search a deal"
-    },
-    {
-      "name": "Remove",
-      "default": null,
-      "description": "Remove a product from a deal"
-    },
-    {
-      "name": "Download",
-      "default": null,
-      "description": "Download a file"
+      "default": "create",
+      "description": "Create an activity",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create an activity"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete an activity"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get data of an activity"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get data of many activities"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update an activity"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "activity"
+          ]
+        }
+      }
     },
     {
       "name": "subject",
@@ -109,17 +115,44 @@
       "type": "string",
       "default": "",
       "description": "The subject of the activity to create",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "activity"
+          ]
+        }
+      }
     },
     {
       "name": "done",
       "displayName": "Done",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Done",
-      "default": null
+      "default": "0",
+      "description": "Whether the activity is done or not",
+      "options": [
+        {
+          "name": "Not Done",
+          "value": "0"
+        },
+        {
+          "name": "Done",
+          "value": "1"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "activity"
+          ]
+        }
+      }
     },
     {
       "name": "type",
@@ -128,7 +161,17 @@
       "default": "",
       "description": "Type of the activity like \"call\", \"meeting\", etc",
       "placeholder": "call",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "activity"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -136,57 +179,64 @@
       "type": "collection",
       "default": {},
       "description": "ID of the deal this activity will be associated with",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "due_date",
-      "displayName": "Due Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Due Date to activity be done YYYY-MM-DD"
-    },
-    {
-      "name": "note",
-      "displayName": "Note",
-      "type": "string",
-      "default": "",
-      "description": "Note of the activity (HTML format)"
-    },
-    {
-      "name": "org_id",
-      "displayName": "Organization Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the organization this activity will be associated with. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "person_id",
-      "displayName": "Person ID",
-      "type": "number",
-      "default": 0,
-      "description": "ID of the person this activity will be associated with"
-    },
-    {
-      "name": "user_id",
-      "displayName": "User Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the active user whom the activity will be assigned to. If omitted, the activity will be assigned to the authorized user. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "customProperties",
-      "displayName": "Custom Properties",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "Adds a custom property to set also values which have not been predefined",
-      "placeholder": "Add Custom Property"
-    },
-    {
-      "name": "value",
-      "displayName": "Property Value",
-      "type": "string",
-      "default": "",
-      "description": "Value of the property to set"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "deal_id",
+          "displayName": "Deal ID",
+          "type": "number",
+          "default": 0,
+          "description": "ID of the deal this activity will be associated with"
+        },
+        {
+          "name": "due_date",
+          "displayName": "Due Date",
+          "type": "dateTime",
+          "default": "",
+          "description": "Due Date to activity be done YYYY-MM-DD"
+        },
+        {
+          "name": "note",
+          "displayName": "Note",
+          "type": "string",
+          "default": "",
+          "description": "Note of the activity (HTML format)"
+        },
+        {
+          "name": "org_id",
+          "displayName": "Organization Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "ID of the organization this activity will be associated with. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        },
+        {
+          "name": "person_id",
+          "displayName": "Person ID",
+          "type": "number",
+          "default": 0,
+          "description": "ID of the person this activity will be associated with"
+        },
+        {
+          "name": "user_id",
+          "displayName": "User Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "ID of the active user whom the activity will be assigned to. If omitted, the activity will be assigned to the authorized user. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        }
+      ],
+      "typeOptions": {
+        "rows": 5
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "activity"
+          ]
+        }
+      }
     },
     {
       "name": "activityId",
@@ -194,7 +244,17 @@
       "type": "number",
       "default": 0,
       "description": "ID of the activity to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "activity"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -202,21 +262,43 @@
       "type": "collection",
       "default": {},
       "description": "Whether the user is set to busy during the activity",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "deal_id",
-      "displayName": "Deal ID",
-      "type": "number",
-      "default": 0,
-      "description": "ID of the deal this activity will be associated with"
-    },
-    {
-      "name": "public_description",
-      "displayName": "Public Description",
-      "type": "string",
-      "default": "",
-      "description": "Additional details about the activity that is synced to your external calendar"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "busy_flag",
+          "displayName": "Busy Flag",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the user is set to busy during the activity"
+        },
+        {
+          "name": "deal_id",
+          "displayName": "Deal ID",
+          "type": "number",
+          "default": 0,
+          "description": "ID of the deal this activity will be associated with"
+        },
+        {
+          "name": "due_date",
+          "displayName": "Due Date",
+          "type": "dateTime",
+          "default": "",
+          "description": "Due Date to activity be done YYYY-MM-DD"
+        }
+      ],
+      "typeOptions": {
+        "rows": 5
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "activity"
+          ]
+        }
+      }
     },
     {
       "name": "title",
@@ -224,69 +306,86 @@
       "type": "string",
       "default": "",
       "description": "The title of the deal to create",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
     },
     {
       "name": "associateWith",
       "displayName": "Associate With",
       "type": "options",
-      "default": null
+      "default": "organization",
+      "description": "Type of entity to link to this deal",
+      "required": true,
+      "options": [
+        {
+          "name": "Organization",
+          "value": "organization"
+        },
+        {
+          "name": "Person",
+          "value": "person"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "deal"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
-      "name": "label",
-      "displayName": "Label Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "lost_reason",
-      "displayName": "Lost Reason",
-      "type": "string",
-      "default": "",
-      "description": "Reason why the deal was lost"
-    },
-    {
-      "name": "probability",
-      "displayName": "Probability",
+      "name": "org_id",
+      "displayName": "Organization ID",
       "type": "number",
       "default": 0,
-      "description": "Deal success probability percentage"
+      "description": "ID of the organization this deal will be associated with",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "deal"
+          ],
+          "associateWith": [
+            "organization"
+          ]
+        }
+      }
     },
     {
-      "name": "stage_id",
-      "displayName": "Stage Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the stage this deal will be placed in a pipeline. If omitted, the deal will be placed in the first stage of the default pipeline. (PIPELINE > STAGE). Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Won",
-      "default": null
-    },
-    {
-      "name": "Lost",
-      "default": null
-    },
-    {
-      "name": "Deleted",
-      "default": null
-    },
-    {
-      "name": "visible_to",
-      "displayName": "Visible To",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Entire Company (Shared)",
-      "default": null
+      "name": "person_id",
+      "displayName": "Person ID",
+      "type": "number",
+      "default": 0,
+      "description": "ID of the person this deal will be associated with",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "deal"
+          ],
+          "associateWith": [
+            "person"
+          ]
+        }
+      }
     },
     {
       "name": "dealId",
@@ -294,7 +393,17 @@
       "type": "number",
       "default": 0,
       "description": "ID of the deal to delete",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
     },
     {
       "name": "productId",
@@ -302,7 +411,17 @@
       "type": "options",
       "default": "",
       "description": "The ID of the product to add to a deal. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "add"
+          ],
+          "resource": [
+            "dealProduct"
+          ]
+        }
+      }
     },
     {
       "name": "item_price",
@@ -310,7 +429,17 @@
       "type": "number",
       "default": 0.0,
       "description": "Price at which to add or update this product in a deal",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "add"
+          ],
+          "resource": [
+            "dealProduct"
+          ]
+        }
+      }
     },
     {
       "name": "quantity",
@@ -318,21 +447,20 @@
       "type": "number",
       "default": 1,
       "description": "How many items of this product to add/update in a deal",
-      "required": true
-    },
-    {
-      "name": "discount_percentage",
-      "displayName": "Discount Percentage",
-      "type": "number",
-      "default": 0,
-      "description": "Percentage of discount to apply"
-    },
-    {
-      "name": "product_variation_id",
-      "displayName": "Product Variation ID",
-      "type": "string",
-      "default": "",
-      "description": "ID of the product variation to use"
+      "required": true,
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "add"
+          ],
+          "resource": [
+            "dealProduct"
+          ]
+        }
+      }
     },
     {
       "name": "productAttachmentId",
@@ -340,258 +468,17 @@
       "type": "options",
       "default": "",
       "description": "ID of the deal-product (the ID of the product attached to the deal). Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
-    },
-    {
-      "name": "exactMatch",
-      "displayName": "Exact Match",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether only full exact matches against the given term are returned. It is not case sensitive."
-    },
-    {
-      "name": "returnAll",
-      "displayName": "Return All",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all results or only up to a given limit"
-    },
-    {
-      "name": "limit",
-      "displayName": "Limit",
-      "type": "number",
-      "default": 100,
-      "description": "Max number of results to return"
-    },
-    {
-      "name": "organizationId",
-      "displayName": "Organization ID",
-      "type": "string",
-      "default": "",
-      "description": "Will filter Deals by the provided Organization ID"
-    },
-    {
-      "name": "personId",
-      "displayName": "Person ID",
-      "type": "string",
-      "default": "",
-      "description": "Will filter Deals by the provided Person ID"
-    },
-    {
-      "name": "fields",
-      "displayName": "Search Fields",
-      "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "Notes",
-      "default": null
-    },
-    {
-      "name": "Title",
-      "default": null
-    },
-    {
-      "name": "binaryPropertyName",
-      "displayName": "Input Binary Field",
-      "type": "string",
-      "default": "data",
-      "placeholder": "",
-      "required": true
-    },
-    {
-      "name": "product_id",
-      "displayName": "Product ID",
-      "type": "number",
-      "default": 0,
-      "description": "ID of the person this file will be associated with"
-    },
-    {
-      "name": "fileId",
-      "displayName": "File ID",
-      "type": "number",
-      "default": 0,
-      "description": "ID of the file to delete",
-      "required": true
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": "",
-      "description": "The updated description of the file"
-    },
-    {
-      "name": "organization_id",
-      "displayName": "Organization ID",
-      "type": "number",
-      "default": 0,
-      "description": "ID of the organization to link to this lead",
-      "required": true
-    },
-    {
-      "name": "label_ids",
-      "displayName": "Label Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "ID of the labels to attach to the lead to create. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "owner_id",
-      "displayName": "Owner Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the user who will own the lead to create. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "currency",
-      "displayName": "Currency",
-      "type": "options",
-      "default": "USD"
-    },
-    {
-      "name": "leadId",
-      "displayName": "Lead ID",
-      "type": "string",
-      "default": "",
-      "description": "ID of the lead to delete",
-      "required": true
-    },
-    {
-      "name": "expected_close_date",
-      "displayName": "Expected Close Date",
-      "type": "dateTime",
-      "default": "",
-      "description": "Date when the lead’s deal is expected to be closed, in ISO-8601 format"
-    },
-    {
-      "name": "content",
-      "displayName": "Content",
-      "type": "string",
-      "default": "",
-      "description": "The content of the note to create",
-      "placeholder": "Add Field",
-      "required": true
-    },
-    {
-      "name": "lead_id",
-      "displayName": "Lead ID",
-      "type": "number",
-      "default": 0,
-      "description": "ID of the lead this note will be associated with"
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": "",
-      "description": "The name of the organization to create",
-      "required": true
-    },
-    {
-      "name": "Custom Fields",
-      "default": null
-    },
-    {
-      "name": "Name",
-      "default": null
-    },
-    {
-      "name": "rawData",
-      "displayName": "RAW Data",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return the data exactly in the way it got received from the API"
-    },
-    {
-      "name": "email",
-      "displayName": "Email",
-      "type": "string",
-      "default": "",
-      "description": "Email of the person",
-      "placeholder": "name@email.com"
-    },
-    {
-      "name": "marketing_status",
-      "displayName": "Marketing Status",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Unsubscribed",
-      "default": null
-    },
-    {
-      "name": "Subscribed",
-      "default": null
-    },
-    {
-      "name": "Archived",
-      "default": null
-    },
-    {
-      "name": "phone",
-      "displayName": "Phone",
-      "type": "string",
-      "default": "",
-      "description": "Phone number of the person"
-    },
-    {
-      "name": "resolveProperties",
-      "displayName": "Resolve Properties",
-      "type": "boolean",
-      "default": false,
-      "description": "By default do custom properties get returned only as ID instead of their actual name. Also option fields contain only the ID instead of their actual value. If this option gets set they get automatically resolved."
-    },
-    {
-      "name": "encodeProperties",
-      "displayName": "Encode Properties",
-      "type": "boolean",
-      "default": false,
-      "description": "By default do custom properties have to be set as ID instead of their actual name. Also option fields have to be set as ID instead of their actual value. If this option gets set they get automatically encoded."
-    },
-    {
-      "name": "exclude",
-      "displayName": "Exclude Activity IDs",
-      "type": "string",
-      "default": "",
-      "description": "A comma-separated Activity IDs, to exclude from result. Ex. 4, 9, 11, ..."
-    },
-    {
-      "name": "filters",
-      "displayName": "Filters",
-      "type": "collection",
-      "default": {},
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "All",
-      "default": null
-    },
-    {
-      "name": "Not Archived",
-      "default": null
-    },
-    {
-      "name": "filterId",
-      "displayName": "Predefined Filter Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "ID of the filter to use. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "firstChar",
-      "displayName": "First Char",
-      "type": "string",
-      "default": "",
-      "description": "If supplied, only persons whose name starts with the specified letter will be returned"
-    },
-    {
-      "name": "sort",
-      "displayName": "Sort",
-      "type": "string",
-      "default": "",
-      "description": "The field names and sorting mode separated by a comma (field_name_1 ASC, field_name_2 DESC). Only first-level field keys are supported (no nested keys)."
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "update"
+          ],
+          "resource": [
+            "dealProduct"
+          ]
+        }
+      }
     },
     {
       "name": "term",
@@ -599,32 +486,297 @@
       "type": "string",
       "default": "",
       "description": "The search term to look for. Minimum 2 characters (or 1 if using exact_match).",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "search"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
     },
     {
-      "name": "includeFields",
-      "displayName": "Include Fields",
+      "name": "exactMatch",
+      "displayName": "Exact Match",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether only full exact matches against the given term are returned. It is not case sensitive.",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "search"
+          ],
+          "resource": [
+            "deal"
+          ]
+        }
+      }
+    },
+    {
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "search"
+          ]
+        }
+      }
+    },
+    {
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 100,
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "search"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
+    },
+    {
+      "name": "binaryPropertyName",
+      "displayName": "Input Binary Field",
+      "type": "string",
+      "default": "data",
+      "placeholder": "",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "file"
+          ]
+        }
+      }
+    },
+    {
+      "name": "fileId",
+      "displayName": "File ID",
+      "type": "number",
+      "default": 0,
+      "description": "ID of the file to delete",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "file"
+          ]
+        }
+      }
+    },
+    {
+      "name": "organization_id",
+      "displayName": "Organization ID",
+      "type": "number",
+      "default": 0,
+      "description": "ID of the organization to link to this lead",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "lead"
+          ],
+          "operation": [
+            "create"
+          ],
+          "associateWith": [
+            "organization"
+          ]
+        }
+      }
+    },
+    {
+      "name": "leadId",
+      "displayName": "Lead ID",
       "type": "string",
       "default": "",
-      "description": "Supports including optional fields in the results which are not provided by default"
+      "description": "ID of the lead to delete",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "lead"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
-      "name": "end_date",
-      "displayName": "End Date",
-      "type": "dateTime",
+      "name": "content",
+      "displayName": "Content",
+      "type": "string",
       "default": "",
-      "description": "Use the Activity due date where you wish to stop fetching Activities from. Insert due date in YYYY-MM-DD format."
+      "description": "The content of the note to create",
+      "required": true,
+      "typeOptions": {
+        "rows": 5
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "note"
+          ]
+        }
+      }
     },
     {
-      "name": "start_date",
-      "displayName": "Star Date",
-      "type": "dateTime",
+      "name": "noteId",
+      "displayName": "Note ID",
+      "type": "number",
+      "default": 0,
+      "description": "ID of the note to delete",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "note"
+          ]
+        }
+      }
+    },
+    {
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
       "default": "",
-      "description": "Use the Activity due date where you wish to begin fetching Activities from. Insert due date in YYYY-MM-DD format."
+      "description": "The name of the organization to create",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "organization"
+          ]
+        }
+      }
     },
     {
-      "name": "Open",
-      "default": null
+      "name": "organizationId",
+      "displayName": "Organization ID",
+      "type": "number",
+      "default": 0,
+      "description": "ID of the organization to delete",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "organization"
+          ]
+        }
+      }
+    },
+    {
+      "name": "personId",
+      "displayName": "Person ID",
+      "type": "number",
+      "default": 0,
+      "description": "ID of the person to delete",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "delete"
+          ],
+          "resource": [
+            "person"
+          ]
+        }
+      }
+    },
+    {
+      "name": "resolveProperties",
+      "displayName": "Resolve Properties",
+      "type": "boolean",
+      "default": false,
+      "description": "By default do custom properties get returned only as ID instead of their actual name. Also option fields contain only the ID instead of their actual value. If this option gets set they get automatically resolved.",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "activity",
+            "deal",
+            "organization",
+            "person",
+            "product"
+          ],
+          "operation": [
+            "get",
+            "getAll"
+          ]
+        }
+      }
+    },
+    {
+      "name": "encodeProperties",
+      "displayName": "Encode Properties",
+      "type": "boolean",
+      "default": false,
+      "description": "By default do custom properties have to be set as ID instead of their actual name. Also option fields have to be set as ID instead of their actual value. If this option gets set they get automatically encoded.",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "activity",
+            "deal",
+            "organization",
+            "person",
+            "product"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
+    },
+    {
+      "name": "filters",
+      "displayName": "Filters",
+      "type": "collection",
+      "default": {},
+      "placeholder": "Add Filter",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "lead"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -856,5 +1008,27 @@
       "name": "user_id",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

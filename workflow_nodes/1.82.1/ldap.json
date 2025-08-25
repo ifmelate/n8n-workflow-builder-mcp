@@ -11,7 +11,29 @@
       "default": "",
       "description": "The distinguished name of the entry to compare",
       "placeholder": "e.g. ou=users,dc=n8n,dc=io",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "compare"
+          ]
+        }
+      }
+    },
+    {
+      "name": "id",
+      "displayName": "Attribute ID",
+      "type": "options",
+      "default": [],
+      "description": "The ID of the attribute to compare",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "compare"
+          ]
+        }
+      }
     },
     {
       "name": "value",
@@ -19,33 +41,48 @@
       "type": "string",
       "default": "",
       "description": "The value to compare",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "compare"
+          ]
+        }
+      }
+    },
+    {
+      "name": "targetDn",
+      "displayName": "New DN",
+      "type": "string",
+      "default": "",
+      "description": "The new distinguished name for the entry",
       "placeholder": "e.g. cn=nathan,ou=users,dc=n8n,dc=io",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "rename"
+          ]
+        }
+      }
     },
     {
       "name": "attributes",
-      "displayName": "Update Attributes",
+      "displayName": "Attributes",
       "type": "fixedCollection",
       "default": {},
-      "description": "Update entry attributes",
-      "placeholder": "Update Attributes",
-      "required": true
-    },
-    {
-      "name": "replace",
-      "displayName": "Replace",
-      "type": "string",
-      "default": "",
-      "description": "The ID of the attribute to replace",
-      "required": true
-    },
-    {
-      "name": "delete",
-      "displayName": "Remove",
-      "type": "string",
-      "default": "",
-      "description": "The ID of the attribute to remove",
-      "required": true
+      "description": "Attributes to add to the entry",
+      "placeholder": "Add Attributes",
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "baseDN",
@@ -54,21 +91,45 @@
       "default": "",
       "description": "The distinguished name of the subtree to search in",
       "placeholder": "e.g. ou=users, dc=n8n, dc=io",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "search"
+          ]
+        }
+      }
     },
     {
       "name": "searchFor",
       "displayName": "Search For",
       "type": "options",
       "default": [],
-      "description": "Directory object class to search for"
+      "description": "Directory object class to search for",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "search"
+          ]
+        }
+      }
     },
     {
       "name": "customFilter",
       "displayName": "Custom Filter",
       "type": "string",
       "default": "(objectclass=*)",
-      "description": "Custom LDAP filter. Escape these chars * ( ) \\\\ with a backslash \"\\\"."
+      "description": "Custom LDAP filter. Escape these chars * ( ) \\\\ with a backslash \"\\\".",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "search"
+          ],
+          "searchFor": [
+            "custom"
+          ]
+        }
+      }
     },
     {
       "name": "attribute",
@@ -76,7 +137,14 @@
       "type": "options",
       "default": [],
       "description": "Attribute to search for",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "search"
+          ]
+        }
+      }
     },
     {
       "name": "searchText",
@@ -84,21 +152,48 @@
       "type": "string",
       "default": "",
       "description": "Text to search for, Use * for a wildcard",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "search"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "search"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 50,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "search"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -106,61 +201,53 @@
       "type": "collection",
       "default": {},
       "description": "Comma-separated list of attributes to return. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "pageSize",
-      "displayName": "Page Size",
-      "type": "number",
-      "default": 1000,
-      "description": "Maximum number of results to request at one time. Set to 0 to disable paging."
-    },
-    {
-      "name": "scope",
-      "displayName": "Scope",
-      "type": "options",
-      "default": "sub",
-      "description": "The set of entries at or below the BaseDN that may be considered potential matches"
-    },
-    {
-      "name": "Single Level",
-      "default": null
-    },
-    {
-      "name": "Whole Subtree",
-      "default": null
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "search"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Compare an attribute"
-    },
-    {
-      "name": "Create",
-      "default": null,
-      "description": "Create a new entry"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an entry"
-    },
-    {
-      "name": "Rename",
-      "default": null,
-      "description": "Rename the DN of an existing entry"
-    },
-    {
-      "name": "Search",
-      "default": null,
-      "description": "Search LDAP"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update attributes"
+      "default": "search",
+      "description": "Compare an attribute",
+      "options": [
+        {
+          "name": "Compare",
+          "value": "compare",
+          "description": "Compare an attribute"
+        },
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a new entry"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete an entry"
+        },
+        {
+          "name": "Rename",
+          "value": "rename",
+          "description": "Rename the DN of an existing entry"
+        },
+        {
+          "name": "Search",
+          "value": "search",
+          "description": "Search LDAP"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update attributes"
+        }
+      ]
     },
     {
       "name": "nodeDebug",
@@ -178,5 +265,19 @@
       "name": "operation",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

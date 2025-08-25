@@ -14,33 +14,33 @@
       "required": true
     },
     {
-      "name": "id",
-      "displayName": "ID",
-      "type": "string",
-      "default": null
-    },
-    {
       "name": "triggerOn",
       "displayName": "Trigger On",
       "type": "options",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "Event Created",
-      "default": null
-    },
-    {
-      "name": "Event Ended",
-      "default": null
-    },
-    {
-      "name": "Event Started",
-      "default": null
-    },
-    {
-      "name": "Event Updated",
-      "default": null
+      "required": true,
+      "options": [
+        {
+          "name": "Event Cancelled",
+          "value": "eventCancelled"
+        },
+        {
+          "name": "Event Created",
+          "value": "eventCreated"
+        },
+        {
+          "name": "Event Ended",
+          "value": "eventEnded"
+        },
+        {
+          "name": "Event Started",
+          "value": "eventStarted"
+        },
+        {
+          "name": "Event Updated",
+          "value": "eventUpdated"
+        }
+      ]
     },
     {
       "name": "options",
@@ -48,7 +48,16 @@
       "type": "collection",
       "default": {},
       "description": "Free text search terms to filter events that match these terms in any field, except for extended properties",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "matchTerm",
+          "displayName": "Match Term",
+          "type": "string",
+          "default": "",
+          "description": "Free text search terms to filter events that match these terms in any field, except for extended properties"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -68,5 +77,19 @@
       "name": "options",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

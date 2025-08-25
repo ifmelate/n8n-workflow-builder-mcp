@@ -8,13 +8,20 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Check whether preview for a given link is available"
-    },
-    {
-      "name": "Preview",
-      "default": null,
-      "description": "Return the preview for a link"
+      "default": "preview",
+      "description": "Check whether preview for a given link is available",
+      "options": [
+        {
+          "name": "Is Available",
+          "value": "isAvailable",
+          "description": "Check whether preview for a given link is available"
+        },
+        {
+          "name": "Preview",
+          "value": "preview",
+          "description": "Return the preview for a link"
+        }
+      ]
     },
     {
       "name": "url",
@@ -37,5 +44,27 @@
       "name": "url",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

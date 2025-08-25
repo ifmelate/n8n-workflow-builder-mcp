@@ -8,23 +8,29 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": "message"
-    },
-    {
-      "name": "Folder",
-      "default": null
-    },
-    {
-      "name": "Folder Message",
-      "default": null
-    },
-    {
-      "name": "Message",
-      "default": null
-    },
-    {
-      "name": "Message Attachment",
-      "default": null
+      "default": "message",
+      "options": [
+        {
+          "name": "Draft",
+          "value": "draft"
+        },
+        {
+          "name": "Folder",
+          "value": "folder"
+        },
+        {
+          "name": "Folder Message",
+          "value": "folderMessage"
+        },
+        {
+          "name": "Message",
+          "value": "message"
+        },
+        {
+          "name": "Message Attachment",
+          "value": "messageAttachment"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -36,5 +42,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

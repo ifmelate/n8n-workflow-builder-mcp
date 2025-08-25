@@ -8,41 +8,53 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "accessToken",
+      "options": [
+        {
+          "name": "Access Token",
+          "value": "accessToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "File",
-      "default": null
-    },
-    {
-      "name": "Message",
-      "default": null
-    },
-    {
-      "name": "Reaction",
-      "default": null
-    },
-    {
-      "name": "Star",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
-    },
-    {
-      "name": "User Group",
-      "default": null
+      "default": "message",
+      "options": [
+        {
+          "name": "Channel",
+          "value": "channel"
+        },
+        {
+          "name": "File",
+          "value": "file"
+        },
+        {
+          "name": "Message",
+          "value": "message"
+        },
+        {
+          "name": "Reaction",
+          "value": "reaction"
+        },
+        {
+          "name": "Star",
+          "value": "star"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        },
+        {
+          "name": "User Group",
+          "value": "userGroup"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -62,5 +74,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

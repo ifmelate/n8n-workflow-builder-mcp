@@ -13,10 +13,11 @@
       "required": true
     },
     {
-      "name": "id",
-      "displayName": "ID",
+      "name": "modelName",
+      "displayName": "Model Name",
       "type": "string",
-      "default": null
+      "default": "gemini-1.5-flash",
+      "description": "The model which will generate the completion. <a href=\"https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models\">Learn more</a>."
     }
   ],
   "credentialsConfig": [
@@ -28,5 +29,33 @@
       "name": "projectId",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "AiLanguageModel"
+    ],
+    "outputNames": [
+      "Model"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiChain",
+        "AiAgent"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "model",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent",
+      "AiChain"
+    ],
+    "consumes": [],
+    "produces": [
+      "AiLanguageModel"
+    ]
+  }
 }

@@ -12,17 +12,29 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Service Account",
-      "default": null
+      "default": "oAuth2",
+      "options": [
+        {
+          "name": "OAuth2 (recommended)",
+          "value": "oAuth2"
+        },
+        {
+          "name": "Service Account",
+          "value": "serviceAccount"
+        }
+      ]
     },
     {
       "name": "event",
       "displayName": "Event",
       "type": "options",
-      "default": "messageReceived"
+      "default": "messageReceived",
+      "options": [
+        {
+          "name": "Message Received",
+          "value": "messageReceived"
+        }
+      ]
     },
     {
       "name": "simple",
@@ -37,50 +49,23 @@
       "type": "collection",
       "default": {},
       "description": "Whether to include messages from SPAM and TRASH in the results",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "includeDrafts",
-      "displayName": "Include Drafts",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to include email drafts in the results"
-    },
-    {
-      "name": "labelIds",
-      "displayName": "Label Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Only return messages with labels that match all of the specified label IDs. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "q",
-      "displayName": "Search",
-      "type": "string",
-      "default": "",
-      "description": "Only return messages matching the specified query",
-      "placeholder": "has:attachment"
-    },
-    {
-      "name": "readStatus",
-      "displayName": "Read Status",
-      "type": "options",
-      "default": "unread"
-    },
-    {
-      "name": "Unread emails only",
-      "default": null
-    },
-    {
-      "name": "Read emails only",
-      "default": null
-    },
-    {
-      "name": "sender",
-      "displayName": "Sender",
-      "type": "string",
-      "default": "",
-      "description": "Sender name or email to filter by"
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "includeSpamTrash",
+          "displayName": "Include Spam and Trash",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to include messages from SPAM and TRASH in the results"
+        },
+        {
+          "name": "includeDrafts",
+          "displayName": "Include Drafts",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to include email drafts in the results"
+        }
+      ]
     },
     {
       "name": "options",
@@ -88,14 +73,30 @@
       "type": "collection",
       "default": {},
       "description": "Prefix for name of the binary property to which to write the attachment. An index starting with 0 will be added. So if name is 'attachment_' the first attachment is saved to 'attachment_0'.",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "downloadAttachments",
-      "displayName": "Download Attachments",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the email's attachments will be downloaded"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "dataPropertyAttachmentsPrefixName",
+          "displayName": "Attachment Prefix",
+          "type": "string",
+          "default": "attachment_",
+          "description": "Prefix for name of the binary property to which to write the attachment. An index starting with 0 will be added. So if name is 'attachment_' the first attachment is saved to 'attachment_0'."
+        },
+        {
+          "name": "downloadAttachments",
+          "displayName": "Download Attachments",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the email's attachments will be downloaded"
+        }
+      ],
+      "displayOptions": {
+        "hide": {
+          "simple": [
+            true
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -123,5 +124,19 @@
       "name": "options",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

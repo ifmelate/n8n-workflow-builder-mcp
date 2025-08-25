@@ -8,12 +8,18 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "Workspace",
-      "default": null
+      "default": "workspace",
+      "required": true,
+      "options": [
+        {
+          "name": "Repository",
+          "value": "repository"
+        },
+        {
+          "name": "Workspace",
+          "value": "workspace"
+        }
+      ]
     },
     {
       "name": "workspace",
@@ -21,7 +27,15 @@
       "type": "options",
       "default": "",
       "description": "The repository of which to listen to the events. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "workspace",
+            "repository"
+          ]
+        }
+      }
     },
     {
       "name": "events",
@@ -30,7 +44,13 @@
       "default": [],
       "description": "The events to listen to. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
       "required": true,
-      "options": []
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "workspace"
+          ]
+        }
+      }
     },
     {
       "name": "repository",
@@ -38,7 +58,14 @@
       "type": "options",
       "default": "",
       "description": "The repository of which to listen to the events. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "repository"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -58,5 +85,23 @@
       "name": "workspace",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

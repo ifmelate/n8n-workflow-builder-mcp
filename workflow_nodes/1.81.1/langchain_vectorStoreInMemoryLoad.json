@@ -4,5 +4,28 @@
   "description": "Load embedded data from an in-memory vector store",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [
+      "Vector Store"
+    ],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "vectorStore",
+    "requires": [
+      "AiDocument"
+    ],
+    "optional": [
+      "AiEmbedding"
+    ],
+    "consumedBy": [
+      "AiRetriever",
+      "AiTool"
+    ],
+    "consumes": [],
+    "produces": []
+  }
 }

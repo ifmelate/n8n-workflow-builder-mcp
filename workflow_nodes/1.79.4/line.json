@@ -9,65 +9,56 @@
       "displayName": "Message",
       "type": "string",
       "default": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "notification"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
+      "description": "HTTP/HTTPS URL. Maximum size of 2048×2048px JPEG.",
       "placeholder": "Add Field",
-      "typeOptions": {
-        "multipleValues": true
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ],
+          "resource": [
+            "notification"
+          ]
+        }
       }
-    },
-    {
-      "name": "imageFullsize",
-      "displayName": "Image Full Size",
-      "type": "string",
-      "default": "",
-      "description": "HTTP/HTTPS URL. Maximum size of 2048×2048px JPEG."
-    },
-    {
-      "name": "imageThumbnail",
-      "displayName": "Image Thumbnail",
-      "type": "string",
-      "default": "",
-      "description": "HTTP/HTTPS URL. Maximum size of 240×240px JPEG."
-    },
-    {
-      "name": "binaryProperty",
-      "displayName": "Input Binary Field",
-      "type": "string",
-      "default": "data"
-    },
-    {
-      "name": "notificationDisabled",
-      "displayName": "Notification Disabled",
-      "type": "boolean",
-      "default": false,
-      "description": "<p>true: The user doesn't receive a push notification when the message is sent.</p><p>false: The user receives a push notification when the message is sent</p>"
-    },
-    {
-      "name": "stickerUi",
-      "displayName": "Sticker",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Sticker"
-    },
-    {
-      "name": "stickerPackageId",
-      "displayName": "Sticker Package ID",
-      "type": "number",
-      "default": "",
-      "description": "Package ID"
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Sends notifications to users or groups"
+      "default": "send",
+      "description": "Sends notifications to users or groups",
+      "options": [
+        {
+          "name": "Send",
+          "value": "send",
+          "description": "Sends notifications to users or groups"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "notification"
+          ]
+        }
+      }
     },
     {
       "name": "notice",
@@ -79,7 +70,13 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "notification",
+      "options": [
+        {
+          "name": "Notification",
+          "value": "notification"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -91,5 +88,19 @@
       "name": "notice",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

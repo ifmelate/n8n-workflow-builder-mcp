@@ -18,5 +18,31 @@
       "description": "Whether to simplify the output to only include the sender and the text"
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main",
+      "AiMemory"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "memory",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent"
+    ],
+    "consumes": [
+      "Main",
+      "AiMemory"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

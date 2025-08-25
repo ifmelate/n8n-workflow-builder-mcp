@@ -10,162 +10,169 @@
       "type": "multiOptions",
       "default": [],
       "description": "The events that can trigger the webhook and whether they are enabled",
-      "required": true
-    },
-    {
-      "name": "Customer Unsubscribe",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Email Attempted",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Email Bounced",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Email Clicked",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Email Converted",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Email Delivered",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Email Drafted",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Email Failed",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Email Opened",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Email Sent",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Email Spammed",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Push Attempted",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Push Bounced",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Push Clicked",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Push Delivered",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Push Drafted",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Push Failed",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Push Opened",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Push Sent",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Slack Attempted",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Slack Clicked",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Slack Drafted",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Slack Failed",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "Slack Sent",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "SMS Attempted",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "SMS Bounced",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "SMS Clicked",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "SMS Delivered",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "SMS Drafted",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "SMS Failed",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
-    },
-    {
-      "name": "SMS Sent",
-      "default": null,
-      "description": "Whether the webhook is triggered when a list member unsubscribes"
+      "required": true,
+      "options": [
+        {
+          "name": "Customer Subscribed",
+          "value": "customer.subscribed",
+          "description": "Whether the webhook is triggered when a list subscriber is added"
+        },
+        {
+          "name": "Customer Unsubscribe",
+          "value": "customer.unsubscribed",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Email Attempted",
+          "value": "email.attempted",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Email Bounced",
+          "value": "email.bounced",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Email Clicked",
+          "value": "email.clicked",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Email Converted",
+          "value": "email.converted",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Email Delivered",
+          "value": "email.delivered",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Email Drafted",
+          "value": "email.drafted",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Email Failed",
+          "value": "email.failed",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Email Opened",
+          "value": "email.opened",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Email Sent",
+          "value": "email.sent",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Email Spammed",
+          "value": "email.spammed",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Push Attempted",
+          "value": "push.attempted",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Push Bounced",
+          "value": "push.bounced",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Push Clicked",
+          "value": "push.clicked",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Push Delivered",
+          "value": "push.delivered",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Push Drafted",
+          "value": "push.drafted",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Push Failed",
+          "value": "push.failed",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Push Opened",
+          "value": "push.opened",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Push Sent",
+          "value": "push.sent",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Slack Attempted",
+          "value": "slack.attempted",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Slack Clicked",
+          "value": "slack.clicked",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Slack Drafted",
+          "value": "slack.drafted",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Slack Failed",
+          "value": "slack.failed",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "Slack Sent",
+          "value": "slack.sent",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "SMS Attempted",
+          "value": "sms.attempted",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "SMS Bounced",
+          "value": "sms.bounced",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "SMS Clicked",
+          "value": "sms.clicked",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "SMS Delivered",
+          "value": "sms.delivered",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "SMS Drafted",
+          "value": "sms.drafted",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "SMS Failed",
+          "value": "sms.failed",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        },
+        {
+          "name": "SMS Sent",
+          "value": "sms.sent",
+          "description": "Whether the webhook is triggered when a list member unsubscribes"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -181,5 +188,19 @@
       "name": "events",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

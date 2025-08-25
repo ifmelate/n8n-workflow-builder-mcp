@@ -16,107 +16,114 @@
       "type": "multiOptions",
       "default": [],
       "description": "Events types",
-      "required": true
-    },
-    {
-      "name": "Alert Created",
-      "default": null,
-      "description": "Triggered when an alert is created"
-    },
-    {
-      "name": "Alert Deleted",
-      "default": null,
-      "description": "Triggered when an alert is deleted"
-    },
-    {
-      "name": "Alert Updated",
-      "default": null,
-      "description": "Triggered when an alert is updated"
-    },
-    {
-      "name": "Case Created",
-      "default": null,
-      "description": "Triggered when a case is created"
-    },
-    {
-      "name": "Case Deleted",
-      "default": null,
-      "description": "Triggered when a case is deleted"
-    },
-    {
-      "name": "Case Updated",
-      "default": null,
-      "description": "Triggered when a case is updated"
-    },
-    {
-      "name": "Comment Created",
-      "default": null,
-      "description": "Triggered when a comment is created"
-    },
-    {
-      "name": "Comment Deleted",
-      "default": null,
-      "description": "Triggered when a comment is deleted"
-    },
-    {
-      "name": "Comment Updated",
-      "default": null,
-      "description": "Triggered when a comment is updated"
-    },
-    {
-      "name": "Observable Created",
-      "default": null,
-      "description": "Triggered when an observable is created"
-    },
-    {
-      "name": "Observable Deleted",
-      "default": null,
-      "description": "Triggered when an observable is deleted"
-    },
-    {
-      "name": "Observable Updated",
-      "default": null,
-      "description": "Triggered when an observable is updated"
-    },
-    {
-      "name": "Page Created",
-      "default": null,
-      "description": "Triggered when an page is created"
-    },
-    {
-      "name": "Page Deleted",
-      "default": null,
-      "description": "Triggered when an page is deleted"
-    },
-    {
-      "name": "Page Updated",
-      "default": null,
-      "description": "Triggered when an page is updated"
-    },
-    {
-      "name": "Task Created",
-      "default": null,
-      "description": "Triggered when a task is created"
-    },
-    {
-      "name": "Task Updated",
-      "default": null,
-      "description": "Triggered when a task is updated"
-    },
-    {
-      "name": "Task Log Created",
-      "default": null,
-      "description": "Triggered when a task log is created"
-    },
-    {
-      "name": "Task Log Deleted",
-      "default": null,
-      "description": "Triggered when a task log is deleted"
-    },
-    {
-      "name": "Task Log Updated",
-      "default": null,
-      "description": "Triggered when a task log is updated"
+      "required": true,
+      "options": [
+        {
+          "name": "*",
+          "value": "*",
+          "description": "Any time any event is triggered (Wildcard Event)"
+        },
+        {
+          "name": "Alert Created",
+          "value": "alert_create",
+          "description": "Triggered when an alert is created"
+        },
+        {
+          "name": "Alert Deleted",
+          "value": "alert_delete",
+          "description": "Triggered when an alert is deleted"
+        },
+        {
+          "name": "Alert Updated",
+          "value": "alert_update",
+          "description": "Triggered when an alert is updated"
+        },
+        {
+          "name": "Case Created",
+          "value": "case_create",
+          "description": "Triggered when a case is created"
+        },
+        {
+          "name": "Case Deleted",
+          "value": "case_delete",
+          "description": "Triggered when a case is deleted"
+        },
+        {
+          "name": "Case Updated",
+          "value": "case_update",
+          "description": "Triggered when a case is updated"
+        },
+        {
+          "name": "Comment Created",
+          "value": "comment_create",
+          "description": "Triggered when a comment is created"
+        },
+        {
+          "name": "Comment Deleted",
+          "value": "comment_delete",
+          "description": "Triggered when a comment is deleted"
+        },
+        {
+          "name": "Comment Updated",
+          "value": "comment_update",
+          "description": "Triggered when a comment is updated"
+        },
+        {
+          "name": "Observable Created",
+          "value": "observable_create",
+          "description": "Triggered when an observable is created"
+        },
+        {
+          "name": "Observable Deleted",
+          "value": "observable_delete",
+          "description": "Triggered when an observable is deleted"
+        },
+        {
+          "name": "Observable Updated",
+          "value": "observable_update",
+          "description": "Triggered when an observable is updated"
+        },
+        {
+          "name": "Page Created",
+          "value": "page_create",
+          "description": "Triggered when an page is created"
+        },
+        {
+          "name": "Page Deleted",
+          "value": "page_delete",
+          "description": "Triggered when an page is deleted"
+        },
+        {
+          "name": "Page Updated",
+          "value": "page_update",
+          "description": "Triggered when an page is updated"
+        },
+        {
+          "name": "Task Created",
+          "value": "task_create",
+          "description": "Triggered when a task is created"
+        },
+        {
+          "name": "Task Updated",
+          "value": "task_update",
+          "description": "Triggered when a task is updated"
+        },
+        {
+          "name": "Task Log Created",
+          "value": "log_create",
+          "description": "Triggered when a task log is created"
+        },
+        {
+          "name": "Task Log Deleted",
+          "value": "log_delete",
+          "description": "Triggered when a task log is deleted"
+        },
+        {
+          "name": "Task Log Updated",
+          "value": "log_update",
+          "description": "Triggered when a task log is updated"
+        }
+      ]
     },
     {
       "name": "filters",
@@ -124,30 +131,10 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Filter any incoming events based on their fields",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "operator",
-      "displayName": "Operator",
-      "type": "options",
-      "default": null,
-      "description": "Field is equal to value"
-    },
-    {
-      "name": "Not Equal",
-      "default": null,
-      "description": "Field is not equal to value"
-    },
-    {
-      "name": "Includes",
-      "default": null,
-      "description": "Field includes value"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Filter",
+      "typeOptions": {
+        "multipleValues": true
+      }
     },
     {
       "name": "options",
@@ -155,8 +142,35 @@
       "type": "collection",
       "default": {},
       "description": "Whether to output data with additional details and omit headers",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "outputOnlyData",
+          "displayName": "Output Only Data",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to output data with additional details and omit headers"
+        }
+      ]
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

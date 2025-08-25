@@ -8,11 +8,18 @@
       "name": "triggerOn",
       "displayName": "Trigger On",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Candidate Moved",
-      "default": null
+      "default": "",
+      "required": true,
+      "options": [
+        {
+          "name": "Candidate Created",
+          "value": "candidateCreated"
+        },
+        {
+          "name": "Candidate Moved",
+          "value": "candidateMoved"
+        }
+      ]
     },
     {
       "name": "filters",
@@ -20,14 +27,23 @@
       "type": "collection",
       "default": {},
       "description": "Get notifications only for one job. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "stage",
-      "displayName": "Stage Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Get notifications for specific stages. e.g. 'hired'. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "job",
+          "displayName": "Job Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "Get notifications only for one job. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        },
+        {
+          "name": "stage",
+          "displayName": "Stage Name or ID",
+          "type": "options",
+          "default": "",
+          "description": "Get notifications for specific stages. e.g. 'hired'. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -47,5 +63,19 @@
       "name": "filters",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

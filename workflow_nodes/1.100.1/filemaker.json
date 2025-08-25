@@ -8,39 +8,41 @@
       "name": "action",
       "displayName": "Action",
       "type": "options",
-      "default": "record"
-    },
-    {
-      "name": "Logout",
-      "default": null
-    },
-    {
-      "name": "Delete Record",
-      "default": null
-    },
-    {
-      "name": "Duplicate Record",
-      "default": null
-    },
-    {
-      "name": "Edit Record",
-      "default": null
-    },
-    {
-      "name": "Find Records",
-      "default": null
-    },
-    {
-      "name": "Get Records",
-      "default": null
-    },
-    {
-      "name": "Get Records By ID",
-      "default": null
-    },
-    {
-      "name": "Perform Script",
-      "default": null
+      "default": "record",
+      "options": [
+        {
+          "name": "Create Record",
+          "value": "create"
+        },
+        {
+          "name": "Delete Record",
+          "value": "delete"
+        },
+        {
+          "name": "Duplicate Record",
+          "value": "duplicate"
+        },
+        {
+          "name": "Edit Record",
+          "value": "edit"
+        },
+        {
+          "name": "Find Records",
+          "value": "find"
+        },
+        {
+          "name": "Get Records",
+          "value": "records"
+        },
+        {
+          "name": "Get Records By ID",
+          "value": "record"
+        },
+        {
+          "name": "Perform Script",
+          "value": "performscript"
+        }
+      ]
     },
     {
       "name": "layout",
@@ -50,7 +52,7 @@
       "description": "FileMaker Layout Name. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
       "placeholder": "Layout Name",
       "required": true,
-      "options": []
+      "displayOptions": "{}"
     },
     {
       "name": "recid",
@@ -59,7 +61,17 @@
       "default": "",
       "description": "Internal Record ID returned by get (recordid)",
       "placeholder": "Record ID",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "action": [
+            "record",
+            "edit",
+            "delete",
+            "duplicate"
+          ]
+        }
+      }
     },
     {
       "name": "offset",
@@ -67,7 +79,15 @@
       "type": "number",
       "default": 1,
       "description": "The record number of the first record in the range of records",
-      "placeholder": "0"
+      "placeholder": "0",
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find",
+            "records"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
@@ -75,14 +95,34 @@
       "type": "number",
       "default": 100,
       "description": "Max number of results to return",
-      "placeholder": "100"
+      "placeholder": "100",
+      "typeOptions": {
+        "minValue": 1
+      },
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find",
+            "records"
+          ]
+        }
+      }
     },
     {
       "name": "getPortals",
       "displayName": "Get Portals",
       "type": "boolean",
       "default": false,
-      "description": "Whether to get portal data as well"
+      "description": "Whether to get portal data as well",
+      "displayOptions": {
+        "show": {
+          "action": [
+            "record",
+            "records",
+            "find"
+          ]
+        }
+      }
     },
     {
       "name": "portals",
@@ -91,7 +131,35 @@
       "default": [],
       "description": "The portal result set to return. Use the portal object name or portal table name. If this parameter is omitted, the API will return all portal objects and records in the layout. For best performance, pass the portal object name or portal table name. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
       "placeholder": "Portals",
-      "options": []
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "action": [
+            "record",
+            "records",
+            "find"
+          ],
+          "getPortals": [
+            true
+          ]
+        }
+      }
+    },
+    {
+      "name": "responseLayout",
+      "displayName": "Response Layout Name or ID",
+      "type": "options",
+      "default": "",
+      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find"
+          ]
+        }
+      }
     },
     {
       "name": "queries",
@@ -99,27 +167,33 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Search Field. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add query"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": "",
-      "description": "Value to search"
-    },
-    {
-      "name": "omit",
-      "displayName": "Omit",
-      "type": "boolean",
-      "default": false
+      "placeholder": "Add query",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find"
+          ]
+        }
+      }
     },
     {
       "name": "setSort",
       "displayName": "Sort Data?",
       "type": "boolean",
       "default": false,
-      "description": "Whether to sort data"
+      "description": "Whether to sort data",
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find",
+            "record",
+            "records"
+          ]
+        }
+      }
     },
     {
       "name": "sortParametersUi",
@@ -127,18 +201,37 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Sort rules",
-      "placeholder": "Add Sort Rules"
-    },
-    {
-      "name": "Descend",
-      "default": null
+      "placeholder": "Add Sort Rules",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "setSort": [
+            true
+          ],
+          "action": [
+            "find",
+            "records"
+          ]
+        }
+      }
     },
     {
       "name": "setScriptBefore",
       "displayName": "Before Find Script",
       "type": "boolean",
       "default": false,
-      "description": "Whether to define a script to be run before the action specified by the API call and after the subsequent sort"
+      "description": "Whether to define a script to be run before the action specified by the API call and after the subsequent sort",
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find",
+            "record",
+            "records"
+          ]
+        }
+      }
     },
     {
       "name": "scriptBefore",
@@ -148,7 +241,18 @@
       "description": "The name of the FileMaker script to be run after the action specified by the API call and after the subsequent sort. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
       "placeholder": "Script Name",
       "required": true,
-      "options": []
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find",
+            "record",
+            "records"
+          ],
+          "setScriptBefore": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "scriptBeforeParam",
@@ -156,14 +260,35 @@
       "type": "string",
       "default": "",
       "description": "A parameter for the FileMaker script",
-      "placeholder": "Script Parameters"
+      "placeholder": "Script Parameters",
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find",
+            "record",
+            "records"
+          ],
+          "setScriptBefore": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "setScriptSort",
       "displayName": "Before Sort Script",
       "type": "boolean",
       "default": false,
-      "description": "Whether to define a script to be run after the action specified by the API call but before the subsequent sort"
+      "description": "Whether to define a script to be run after the action specified by the API call but before the subsequent sort",
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find",
+            "record",
+            "records"
+          ]
+        }
+      }
     },
     {
       "name": "scriptSort",
@@ -173,7 +298,18 @@
       "description": "The name of the FileMaker script to be run after the action specified by the API call but before the subsequent sort. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
       "placeholder": "Script Name",
       "required": true,
-      "options": []
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find",
+            "record",
+            "records"
+          ],
+          "setScriptSort": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "scriptSortParam",
@@ -181,14 +317,35 @@
       "type": "string",
       "default": "",
       "description": "A parameter for the FileMaker script",
-      "placeholder": "Script Parameters"
+      "placeholder": "Script Parameters",
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find",
+            "record",
+            "records"
+          ],
+          "setScriptSort": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "setScriptAfter",
       "displayName": "After Sort Script",
       "type": "boolean",
       "default": false,
-      "description": "Whether to define a script to be run after the action specified by the API call but before the subsequent sort"
+      "description": "Whether to define a script to be run after the action specified by the API call but before the subsequent sort",
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find",
+            "record",
+            "records"
+          ]
+        }
+      }
     },
     {
       "name": "scriptAfter",
@@ -198,7 +355,18 @@
       "description": "The name of the FileMaker script to be run after the action specified by the API call and after the subsequent sort. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
       "placeholder": "Script Name",
       "required": true,
-      "options": []
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find",
+            "record",
+            "records"
+          ],
+          "setScriptAfter": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "scriptAfterParam",
@@ -206,7 +374,33 @@
       "type": "string",
       "default": "",
       "description": "A parameter for the FileMaker script",
-      "placeholder": "Script Parameters"
+      "placeholder": "Script Parameters",
+      "displayOptions": {
+        "show": {
+          "action": [
+            "find",
+            "record",
+            "records"
+          ],
+          "setScriptAfter": [
+            true
+          ]
+        }
+      }
+    },
+    {
+      "name": "modId",
+      "displayName": "Mod ID",
+      "type": "number",
+      "default": "",
+      "description": "The last modification ID. When you use modId, a record is edited only when the modId matches.",
+      "displayOptions": {
+        "show": {
+          "action": [
+            "edit"
+          ]
+        }
+      }
     },
     {
       "name": "fieldsParametersUi",
@@ -214,7 +408,18 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Fields to define",
-      "placeholder": "Add field"
+      "placeholder": "Add field",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "action": [
+            "create",
+            "edit"
+          ]
+        }
+      }
     },
     {
       "name": "script",
@@ -224,7 +429,13 @@
       "description": "The name of the FileMaker script to be run. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
       "placeholder": "Script Name",
       "required": true,
-      "options": []
+      "displayOptions": {
+        "show": {
+          "action": [
+            "performscript"
+          ]
+        }
+      }
     },
     {
       "name": "scriptParam",
@@ -232,7 +443,14 @@
       "type": "string",
       "default": "",
       "description": "A parameter for the FileMaker script",
-      "placeholder": "Script Parameters"
+      "placeholder": "Script Parameters",
+      "displayOptions": {
+        "show": {
+          "action": [
+            "performscript"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -264,5 +482,27 @@
       "name": "script",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

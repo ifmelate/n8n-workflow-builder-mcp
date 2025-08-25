@@ -10,7 +10,17 @@
       "type": "options",
       "default": "",
       "description": "The slug of the organization the events belong to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "projectSlug",
@@ -18,21 +28,51 @@
       "type": "options",
       "default": "",
       "description": "The slug of the project the events belong to. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "full",
       "displayName": "Full",
       "type": "boolean",
       "default": true,
-      "description": "Whether the event payload will include the full event body, including the stack trace"
+      "description": "Whether the event payload will include the full event body, including the stack trace",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "event"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
@@ -40,7 +80,23 @@
       "type": "number",
       "default": 100,
       "description": "Max number of results to return",
-      "required": true
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "getAll"
+          ],
+          "resource": [
+            "event"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "eventId",
@@ -48,19 +104,43 @@
       "type": "string",
       "default": "",
       "description": "The ID of the event to retrieve (either the numeric primary-key or the hexadecimal ID as reported by the raven client)",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Get event by ID"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many events"
+      "default": "get",
+      "description": "Get event by ID",
+      "options": [
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get event by ID"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many events"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "event"
+          ]
+        }
+      }
     },
     {
       "name": "issueId",
@@ -69,7 +149,18 @@
       "default": "",
       "description": "ID of issue to get",
       "placeholder": "1234",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issue"
+          ],
+          "operation": [
+            "get",
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -77,95 +168,61 @@
       "type": "collection",
       "default": {},
       "description": "An optional Sentry structured search query. If not provided, an implied \"is:unresolved\" is assumed. Info <a href=\"https://docs.sentry.io/product/sentry-basics/search/\">here</a>.",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "query",
+          "displayName": "Query",
+          "type": "string",
+          "default": "",
+          "description": "An optional Sentry structured search query. If not provided, an implied \"is:unresolved\" is assumed. Info <a href=\"https://docs.sentry.io/product/sentry-basics/search/\">here</a>."
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "issue"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
-      "name": "statsPeriod",
-      "displayName": "Stats Period",
-      "type": "options",
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
       "default": "",
-      "description": "Time period of stats"
-    },
-    {
-      "name": "24 Hours",
-      "default": null
-    },
-    {
-      "name": "shortIdLookUp",
-      "displayName": "Short ID Lookup",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether short IDs are looked up by this function as well. This can cause the return value of the function to return an event issue of a different project which is why this is an opt-in."
-    },
-    {
-      "name": "hasSeen",
-      "displayName": "Has Seen",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether this API call is invoked with a user context this allows changing of the flag that indicates if the user has seen the event"
-    },
-    {
-      "name": "isBookmarked",
-      "displayName": "Is Bookmarked",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether this API call is invoked with a user context this allows changing of the bookmark flag"
-    },
-    {
-      "name": "isPublic",
-      "displayName": "Is Public",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to set the issue to public or private"
-    },
-    {
-      "name": "isSubscribed",
-      "displayName": "Is Subscribed",
-      "type": "boolean",
-      "default": true
-    },
-    {
-      "name": "status",
-      "displayName": "Status",
-      "type": "options",
-      "default": "",
-      "description": "The new status for the issue"
-    },
-    {
-      "name": "Resolved",
-      "default": null
-    },
-    {
-      "name": "Resolved Next Release",
-      "default": null
-    },
-    {
-      "name": "Unresolved",
-      "default": null
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get issue by ID"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update an issue"
-    },
-    {
-      "name": "owner",
-      "displayName": "Owner",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to restrict results to organizations which you are the owner"
+      "description": "The slug of the organization the team should be created for",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "organization"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "agreeTerms",
       "displayName": "Agree to Terms",
       "type": "boolean",
       "default": false,
-      "description": "Whether you agree to the applicable terms of service and privacy policy of Sentry.io"
+      "description": "Whether you agree to the applicable terms of service and privacy policy of Sentry.io",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "organization"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "organization_slug",
@@ -173,7 +230,17 @@
       "type": "options",
       "default": "",
       "description": "The slug of the organization to update. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "organization"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -181,14 +248,33 @@
       "type": "collection",
       "default": {},
       "description": "The new name of the organization",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "slug",
-      "displayName": "Slug",
-      "type": "string",
-      "default": "",
-      "description": "The new URL slug for this organization"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "name",
+          "displayName": "Name",
+          "type": "string",
+          "default": "",
+          "description": "The new name of the organization"
+        },
+        {
+          "name": "slug",
+          "displayName": "Slug",
+          "type": "string",
+          "default": "",
+          "description": "The new URL slug for this organization"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "organization"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "teamSlug",
@@ -196,48 +282,17 @@
       "type": "options",
       "default": "",
       "description": "The slug of the team to create a new project for. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": "",
-      "description": "The name for the new project",
-      "required": true
-    },
-    {
-      "name": "digestsMaxDelay",
-      "displayName": "Digests Maximum Delay",
-      "type": "number",
-      "default": 1800,
-      "description": "Maximum interval to digest alerts"
-    },
-    {
-      "name": "digestsMinDelay",
-      "displayName": "Digests Minimun Delay",
-      "type": "number",
-      "default": 60,
-      "description": "Minium interval to digest alerts"
-    },
-    {
-      "name": "team",
-      "displayName": "Team",
-      "type": "string",
-      "default": "",
-      "description": "The new team name"
-    },
-    {
-      "name": "platform",
-      "displayName": "Platform",
-      "type": "string",
-      "default": "",
-      "description": "The new platform for the updated project"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a project"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "project"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "version",
@@ -245,7 +300,18 @@
       "type": "string",
       "default": "",
       "description": "The version identifier of the release",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "release"
+          ],
+          "operation": [
+            "get",
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "url",
@@ -253,7 +319,17 @@
       "type": "string",
       "default": "",
       "description": "A URL that points to the release. This can be the path to an online interface to the sourcecode for instance.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "release"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "projects",
@@ -261,144 +337,88 @@
       "type": "multiOptions",
       "default": [],
       "description": "A list of project slugs that are involved in this release. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
-    },
-    {
-      "name": "commits",
-      "displayName": "Commits",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "An optional list of commit data to be associated with the release",
-      "required": true
-    },
-    {
-      "name": "authorEmail",
-      "displayName": "Author Email",
-      "type": "string",
-      "default": "",
-      "description": "Authors email"
-    },
-    {
-      "name": "authorName",
-      "displayName": "Author Name",
-      "type": "string",
-      "default": "",
-      "description": "Name of author"
-    },
-    {
-      "name": "message",
-      "displayName": "Message",
-      "type": "string",
-      "default": "",
-      "description": "Message of commit"
-    },
-    {
-      "name": "patchSet",
-      "displayName": "Patch Set",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "A list of the files that have been changed in the commit. Specifying the patch_set is necessary to power suspect commits and suggested assignees.",
-      "required": true
-    },
-    {
-      "name": "type",
-      "displayName": "Type",
-      "type": "options",
-      "default": "",
-      "description": "The types of changes that happened in that commit"
-    },
-    {
-      "name": "Modify",
-      "default": null
-    },
-    {
-      "name": "repository",
-      "displayName": "Repository",
-      "type": "string",
-      "default": "",
-      "description": "Repository name"
-    },
-    {
-      "name": "timestamp",
-      "displayName": "Timestamp",
-      "type": "dateTime",
-      "default": "",
-      "description": "Timestamp of commit"
-    },
-    {
-      "name": "refs",
-      "displayName": "Refs",
-      "type": "fixedCollection",
-      "default": {},
-      "description": "An optional way to indicate the start and end commits for each repository included in a release",
-      "required": true
-    },
-    {
-      "name": "previousCommit",
-      "displayName": "Previous Commit",
-      "type": "string",
-      "default": "",
-      "description": "The sha of the HEAD of the previous release"
-    },
-    {
-      "name": "dateReleased",
-      "displayName": "Date Released",
-      "type": "dateTime",
-      "default": "",
-      "description": "An optional date that indicates when the release went live. If not provided the current time is assumed."
-    },
-    {
-      "name": "ref",
-      "displayName": "Ref",
-      "type": "string",
-      "default": "",
-      "description": "A URL that points to the release. This can be the path to an online interface to the sourcecode for instance."
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "release"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "sentryVersion",
       "displayName": "Sentry Version",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Server (Self Hosted)",
-      "default": null
+      "default": "cloud",
+      "options": [
+        {
+          "name": "Cloud",
+          "value": "cloud"
+        },
+        {
+          "name": "Server (Self Hosted)",
+          "value": "server"
+        }
+      ]
     },
     {
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "accessToken",
+      "options": [
+        {
+          "name": "Access Token",
+          "value": "accessToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "sentryVersion": [
+            "cloud"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Issue",
-      "default": null
-    },
-    {
-      "name": "Organization",
-      "default": null
-    },
-    {
-      "name": "Project",
-      "default": null
-    },
-    {
-      "name": "Release",
-      "default": null
-    },
-    {
-      "name": "Team",
-      "default": null
+      "default": "event",
+      "options": [
+        {
+          "name": "Event",
+          "value": "event"
+        },
+        {
+          "name": "Issue",
+          "value": "issue"
+        },
+        {
+          "name": "Organization",
+          "value": "organization"
+        },
+        {
+          "name": "Project",
+          "value": "project"
+        },
+        {
+          "name": "Release",
+          "value": "release"
+        },
+        {
+          "name": "Team",
+          "value": "team"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -422,5 +442,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

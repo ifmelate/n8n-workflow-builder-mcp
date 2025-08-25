@@ -13,40 +13,56 @@
       "placeholder": "e.g. topic://sourcename.something"
     },
     {
+      "name": "headerParametersJson",
+      "displayName": "Headers",
+      "type": "json",
+      "default": "",
+      "description": "Header parameters as JSON (flat object). Sent as application_properties in amqp-message meta info."
+    },
+    {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
       "description": "Will be used to pass to the RHEA Backend as container_id",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "dataAsObject",
-      "displayName": "Data as Object",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to send the data as an object"
-    },
-    {
-      "name": "reconnect",
-      "displayName": "Reconnect",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to automatically reconnect if disconnected"
-    },
-    {
-      "name": "reconnectLimit",
-      "displayName": "Reconnect Limit",
-      "type": "number",
-      "default": 50,
-      "description": "Maximum number of reconnect attempts"
-    },
-    {
-      "name": "sendOnlyProperty",
-      "displayName": "Send Property",
-      "type": "string",
-      "default": "",
-      "description": "The only property to send. If empty the whole item will be sent."
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "containerId",
+          "displayName": "Container ID",
+          "type": "string",
+          "default": "",
+          "description": "Will be used to pass to the RHEA Backend as container_id"
+        },
+        {
+          "name": "dataAsObject",
+          "displayName": "Data as Object",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to send the data as an object"
+        },
+        {
+          "name": "reconnect",
+          "displayName": "Reconnect",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to automatically reconnect if disconnected"
+        },
+        {
+          "name": "reconnectLimit",
+          "displayName": "Reconnect Limit",
+          "type": "number",
+          "default": 50,
+          "description": "Maximum number of reconnect attempts"
+        },
+        {
+          "name": "sendOnlyProperty",
+          "displayName": "Send Property",
+          "type": "string",
+          "default": "",
+          "description": "The only property to send. If empty the whole item will be sent."
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -58,5 +74,27 @@
       "name": "sink",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

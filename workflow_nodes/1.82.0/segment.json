@@ -8,7 +8,17 @@
       "name": "userId",
       "displayName": "User ID",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "group"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
     },
     {
       "name": "groupId",
@@ -16,20 +26,37 @@
       "type": "string",
       "default": "",
       "description": "A Group ID is the unique identifier which you recognize a group by in your own database",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "group"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
     },
     {
       "name": "traits",
       "displayName": "Traits",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Trait"
-    },
-    {
-      "name": "value",
-      "displayName": "Value",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Trait",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "group"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
     },
     {
       "name": "context",
@@ -37,136 +64,55 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Whether a user is active",
-      "placeholder": "Add Context"
-    },
-    {
-      "name": "ip",
-      "displayName": "IP",
-      "type": "string",
-      "default": "",
-      "description": "Current user’s IP address"
-    },
-    {
-      "name": "locate",
-      "displayName": "Locale",
-      "type": "string",
-      "default": "",
-      "description": "Locale string for the current user, for example en-US"
-    },
-    {
-      "name": "page",
-      "displayName": "Page",
-      "type": "string",
-      "default": "",
-      "description": "Dictionary of information about the current page in the browser, containing hash, path, referrer, search, title and URL"
-    },
-    {
-      "name": "timezone",
-      "displayName": "Timezone",
-      "type": "string",
-      "default": "",
-      "description": "Timezones are sent as tzdata strings to add user timezone information which might be stripped from the timestamp, for example America/New_York"
-    },
-    {
-      "name": "app",
-      "displayName": "App",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add App"
-    },
-    {
-      "name": "version",
-      "displayName": "Version",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "build",
-      "displayName": "Build",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "campaign",
-      "displayName": "Campaign",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Campaign App"
-    },
-    {
-      "name": "source",
-      "displayName": "Source",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "medium",
-      "displayName": "Medium",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "term",
-      "displayName": "Term",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "content",
-      "displayName": "Content",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "device",
-      "displayName": "Device",
-      "type": "fixedCollection",
-      "default": {},
-      "placeholder": "Add Device"
-    },
-    {
-      "name": "manufacturer",
-      "displayName": "Manufacturer",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "model",
-      "displayName": "Model",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "name",
-      "displayName": "Name",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "type",
-      "displayName": "Type",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Context",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "group"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
     },
     {
       "name": "integrations",
       "displayName": "Integration",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Integration"
-    },
-    {
-      "name": "salesforce",
-      "displayName": "Salesforce",
-      "type": "boolean",
-      "default": false
+      "placeholder": "Add Integration",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "group"
+          ],
+          "operation": [
+            "add"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Add a user to a group"
+      "default": "add",
+      "description": "Add a user to a group",
+      "options": [
+        {
+          "name": "Add",
+          "value": "add",
+          "description": "Add a user to a group"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "group"
+          ]
+        }
+      }
     },
     {
       "name": "event",
@@ -174,36 +120,78 @@
       "type": "string",
       "default": "",
       "description": "Name of the action that a user has performed",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "track"
+          ],
+          "operation": [
+            "event"
+          ]
+        }
+      }
     },
     {
       "name": "properties",
       "displayName": "Properties",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Properties"
+      "placeholder": "Add Properties",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "track"
+          ],
+          "operation": [
+            "event"
+          ]
+        }
+      }
     },
     {
-      "name": "Page",
-      "default": null,
-      "description": "Record page views on your website, along with optional extra information about the page being viewed"
+      "name": "name",
+      "displayName": "Name",
+      "type": "string",
+      "default": "",
+      "description": "Name of the page For example, most sites have a “Signup” page that can be useful to tag, so you can see users as they move through your funnel",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "track"
+          ],
+          "operation": [
+            "page"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "description": "Group lets you associate an identified user with a group"
-    },
-    {
-      "name": "Identify",
-      "default": null,
-      "description": "Identify lets you tie a user to their actions"
-    },
-    {
-      "name": "Track",
-      "default": null,
-      "description": "Track lets you record events"
+      "default": "identify",
+      "description": "Group lets you associate an identified user with a group",
+      "options": [
+        {
+          "name": "Group",
+          "value": "group",
+          "description": "Group lets you associate an identified user with a group"
+        },
+        {
+          "name": "Identify",
+          "value": "identify",
+          "description": "Identify lets you tie a user to their actions"
+        },
+        {
+          "name": "Track",
+          "value": "track",
+          "description": "Track lets you record events"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -215,5 +203,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

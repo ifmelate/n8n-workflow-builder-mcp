@@ -11,7 +11,17 @@
       "default": "",
       "description": "ID of the post to write the comment to. Found in the post URL: <code>/r/[subreddit_name]/comments/[post_id]/[post_title]</code>",
       "placeholder": "l0me7x",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "postComment"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "commentText",
@@ -19,14 +29,52 @@
       "type": "string",
       "default": "",
       "description": "Text of the comment. Markdown supported.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "postComment"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "name": "subreddit",
+      "displayName": "Subreddit",
+      "type": "string",
+      "default": "",
+      "description": "The name of subreddit where the post is",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "postComment"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "postComment"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
@@ -34,8 +82,42 @@
       "type": "number",
       "default": 100,
       "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "postComment"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
+    },
+    {
+      "name": "commentId",
+      "displayName": "Comment ID",
+      "type": "string",
+      "default": "",
+      "description": "ID of the comment to remove. Found in the comment URL:<code>/r/[subreddit_name]/comments/[post_id]/[post_title]/[comment_id]</code>",
       "placeholder": "gla7fmt",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "postComment"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "replyText",
@@ -43,51 +125,84 @@
       "type": "string",
       "default": "",
       "description": "Text of the reply. Markdown supported.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "postComment"
+          ],
+          "operation": [
+            "reply"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
       "default": "create",
-      "description": "Create a top-level comment in a post"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Retrieve many comments in a post"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Remove a comment from a post"
-    },
-    {
-      "name": "Reply",
-      "default": null,
-      "description": "Write a reply to a comment in a post"
-    },
-    {
-      "name": "subreddit",
-      "displayName": "Subreddit",
-      "type": "string",
-      "default": "",
-      "description": "Subreddit to create the post in",
-      "required": true
+      "description": "Create a top-level comment in a post",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a top-level comment in a post"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Retrieve many comments in a post"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Remove a comment from a post"
+        },
+        {
+          "name": "Reply",
+          "value": "reply",
+          "description": "Write a reply to a comment in a post"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "postComment"
+          ]
+        }
+      }
     },
     {
       "name": "kind",
       "displayName": "Kind",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Link Post",
-      "default": null
-    },
-    {
-      "name": "Image Post",
-      "default": null
+      "default": "self",
+      "description": "The kind of the post to create",
+      "options": [
+        {
+          "name": "Text Post",
+          "value": "self"
+        },
+        {
+          "name": "Link Post",
+          "value": "link"
+        },
+        {
+          "name": "Image Post",
+          "value": "image"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "title",
@@ -95,7 +210,17 @@
       "type": "string",
       "default": "",
       "description": "Title of the post, up to 300 characters long",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "url",
@@ -103,7 +228,21 @@
       "type": "string",
       "default": "",
       "description": "URL of the post",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "create"
+          ],
+          "kind": [
+            "link",
+            "image"
+          ]
+        }
+      }
     },
     {
       "name": "text",
@@ -111,7 +250,20 @@
       "type": "string",
       "default": "",
       "description": "Text of the post. Markdown supported.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "create"
+          ],
+          "kind": [
+            "self"
+          ]
+        }
+      }
     },
     {
       "name": "resubmit",
@@ -119,8 +271,20 @@
       "type": "boolean",
       "default": false,
       "description": "Whether the URL will be posted even if it was already posted to the subreddit before. Otherwise, the re-posting will trigger an error.",
-      "placeholder": "gla7fmt",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "create"
+          ],
+          "kind": [
+            "link",
+            "image"
+          ]
+        }
+      }
     },
     {
       "name": "filters",
@@ -128,31 +292,46 @@
       "type": "collection",
       "default": {},
       "description": "Category of the posts to retrieve",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Hot Posts",
-      "default": null
-    },
-    {
-      "name": "New Posts",
-      "default": null
-    },
-    {
-      "name": "Rising Posts",
-      "default": null
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "location",
       "displayName": "Location",
       "type": "options",
       "default": "subreddit",
-      "description": "Location where to search for posts"
-    },
-    {
-      "name": "Subreddit",
-      "default": null,
-      "description": "Search for posts in a specific subreddit"
+      "description": "Location where to search for posts",
+      "options": [
+        {
+          "name": "All Reddit",
+          "value": "allReddit",
+          "description": "Search for posts in all of Reddit"
+        },
+        {
+          "name": "Subreddit",
+          "value": "subreddit",
+          "description": "Search for posts in a specific subreddit"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "search"
+          ]
+        }
+      }
     },
     {
       "name": "keyword",
@@ -160,7 +339,17 @@
       "type": "string",
       "default": "",
       "description": "The keyword for the search",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "search"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -168,33 +357,17 @@
       "type": "collection",
       "default": {},
       "description": "The category to sort results by",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "Hot",
-      "default": null
-    },
-    {
-      "name": "New",
-      "default": null
-    },
-    {
-      "name": "Relevance",
-      "default": null
-    },
-    {
-      "name": "Top",
-      "default": null
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a post from a subreddit"
-    },
-    {
-      "name": "Search",
-      "default": null,
-      "description": "Search posts in a subreddit or in all of Reddit"
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "post"
+          ],
+          "operation": [
+            "search"
+          ]
+        }
+      }
     },
     {
       "name": "details",
@@ -202,37 +375,54 @@
       "type": "options",
       "default": "identity",
       "description": "Details of my account to retrieve",
-      "required": true
-    },
-    {
-      "name": "Friends",
-      "default": null,
-      "description": "Return the friends of the logged-in user"
-    },
-    {
-      "name": "Identity",
-      "default": null,
-      "description": "Return the identity of the logged-in user"
-    },
-    {
-      "name": "Karma",
-      "default": null,
-      "description": "Return the subreddit karma for the logged-in user"
-    },
-    {
-      "name": "Preferences",
-      "default": null,
-      "description": "Return the settings preferences of the logged-in user"
-    },
-    {
-      "name": "Saved",
-      "default": null,
-      "description": "Return the saved posts for the user"
-    },
-    {
-      "name": "Trophies",
-      "default": null,
-      "description": "Return the trophies of the logged-in user"
+      "required": true,
+      "options": [
+        {
+          "name": "Blocked Users",
+          "value": "blockedUsers",
+          "description": "Return the blocked users of the logged-in user"
+        },
+        {
+          "name": "Friends",
+          "value": "friends",
+          "description": "Return the friends of the logged-in user"
+        },
+        {
+          "name": "Identity",
+          "value": "identity",
+          "description": "Return the identity of the logged-in user"
+        },
+        {
+          "name": "Karma",
+          "value": "karma",
+          "description": "Return the subreddit karma for the logged-in user"
+        },
+        {
+          "name": "Preferences",
+          "value": "prefs",
+          "description": "Return the settings preferences of the logged-in user"
+        },
+        {
+          "name": "Saved",
+          "value": "saved",
+          "description": "Return the saved posts for the user"
+        },
+        {
+          "name": "Trophies",
+          "value": "trophies",
+          "description": "Return the trophies of the logged-in user"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "profile"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "content",
@@ -240,18 +430,27 @@
       "type": "options",
       "default": "about",
       "description": "Subreddit content to retrieve",
-      "required": true
-    },
-    {
-      "name": "Rules",
-      "default": null
-    },
-    {
-      "name": "trending",
-      "displayName": "Trending",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to fetch currently trending subreddits in all of Reddit"
+      "required": true,
+      "options": [
+        {
+          "name": "About",
+          "value": "about"
+        },
+        {
+          "name": "Rules",
+          "value": "rules"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "subreddit"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "username",
@@ -259,41 +458,45 @@
       "type": "string",
       "default": "",
       "description": "Reddit ID of the user to retrieve",
-      "required": true
-    },
-    {
-      "name": "Comments",
-      "default": null
-    },
-    {
-      "name": "Gilded",
-      "default": null
-    },
-    {
-      "name": "Overview",
-      "default": null
-    },
-    {
-      "name": "Submitted",
-      "default": null
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Post Comment",
-      "default": null
-    },
-    {
-      "name": "Profile",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
+      "default": "post",
+      "options": [
+        {
+          "name": "Post",
+          "value": "post"
+        },
+        {
+          "name": "Post Comment",
+          "value": "postComment"
+        },
+        {
+          "name": "Profile",
+          "value": "profile"
+        },
+        {
+          "name": "Subreddit",
+          "value": "subreddit"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -305,5 +508,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

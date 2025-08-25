@@ -8,141 +8,182 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "ticket",
+      "options": [
+        {
+          "name": "Ticket",
+          "value": "ticket"
+        }
+      ]
     },
     {
       "name": "field",
       "displayName": "Field",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Group",
-      "default": null
-    },
-    {
-      "name": "Priority",
-      "default": null
-    },
-    {
-      "name": "Status",
-      "default": null
-    },
-    {
-      "name": "Type",
-      "default": null
+      "default": "status",
+      "options": [
+        {
+          "name": "Assignee",
+          "value": "assignee"
+        },
+        {
+          "name": "Group",
+          "value": "group"
+        },
+        {
+          "name": "Priority",
+          "value": "priority"
+        },
+        {
+          "name": "Status",
+          "value": "status"
+        },
+        {
+          "name": "Type",
+          "value": "type"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "ticket"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Changed From",
-      "default": null
-    },
-    {
-      "name": "Changed To",
-      "default": null
-    },
-    {
-      "name": "Greater Than",
-      "default": null
-    },
-    {
-      "name": "Is",
-      "default": null
-    },
-    {
-      "name": "Is Not",
-      "default": null
-    },
-    {
-      "name": "Less Than",
-      "default": null
-    },
-    {
-      "name": "Not Changed",
-      "default": null
-    },
-    {
-      "name": "Not Changed From",
-      "default": null
-    },
-    {
-      "name": "Not Changed To",
-      "default": null
+      "default": "is",
+      "options": [
+        {
+          "name": "Changed",
+          "value": "changed"
+        },
+        {
+          "name": "Changed From",
+          "value": "value_previous"
+        },
+        {
+          "name": "Changed To",
+          "value": "value"
+        },
+        {
+          "name": "Greater Than",
+          "value": "greater_than"
+        },
+        {
+          "name": "Is",
+          "value": "is"
+        },
+        {
+          "name": "Is Not",
+          "value": "is_not"
+        },
+        {
+          "name": "Less Than",
+          "value": "less_than"
+        },
+        {
+          "name": "Not Changed",
+          "value": "not_changed"
+        },
+        {
+          "name": "Not Changed From",
+          "value": "not_value_previous"
+        },
+        {
+          "name": "Not Changed To",
+          "value": "not_value"
+        }
+      ],
+      "displayOptions": {
+        "hide": {
+          "field": [
+            "assignee"
+          ]
+        }
+      }
     },
     {
       "name": "value",
       "displayName": "Value",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "New",
-      "default": null
-    },
-    {
-      "name": "Open",
-      "default": null
-    },
-    {
-      "name": "Pending",
-      "default": null
-    },
-    {
-      "name": "Solved",
-      "default": null
-    },
-    {
-      "name": "Incident",
-      "default": null
-    },
-    {
-      "name": "Problem",
-      "default": null
-    },
-    {
-      "name": "Task",
-      "default": null
-    },
-    {
-      "name": "Normal",
-      "default": null
-    },
-    {
-      "name": "High",
-      "default": null
-    },
-    {
-      "name": "Urgent",
-      "default": null
+      "default": "open",
+      "options": [
+        {
+          "name": "Closed",
+          "value": "closed"
+        },
+        {
+          "name": "New",
+          "value": "new"
+        },
+        {
+          "name": "Open",
+          "value": "open"
+        },
+        {
+          "name": "Pending",
+          "value": "pending"
+        },
+        {
+          "name": "Solved",
+          "value": "solved"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "field": [
+            "status"
+          ]
+        }
+      }
     },
     {
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "apiToken",
+      "options": [
+        {
+          "name": "API Token",
+          "value": "apiToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "service",
       "displayName": "Service",
       "type": "options",
-      "default": null,
-      "required": true
+      "default": "support",
+      "required": true,
+      "options": [
+        {
+          "name": "Support",
+          "value": "support"
+        }
+      ]
     },
     {
       "name": "options",
       "displayName": "Options",
       "type": "collection",
       "default": {},
-      "description": "The fields to return the values of. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "description": "The fields to return the values of. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "placeholder": "Add option",
+      "displayOptions": {
+        "show": {
+          "service": [
+            "support"
+          ]
+        }
+      }
     },
     {
       "name": "conditions",
@@ -150,12 +191,17 @@
       "type": "fixedCollection",
       "default": {},
       "description": "The condition to set",
-      "placeholder": "Add Condition"
-    },
-    {
-      "name": "any",
-      "displayName": "Any",
-      "default": null
+      "placeholder": "Add Condition",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "service": [
+            "support"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -183,5 +229,23 @@
       "name": "conditions",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
 }

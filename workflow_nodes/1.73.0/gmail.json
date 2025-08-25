@@ -8,29 +8,41 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Service Account",
-      "default": null
+      "default": "oAuth2",
+      "options": [
+        {
+          "name": "OAuth2 (recommended)",
+          "value": "oAuth2"
+        },
+        {
+          "name": "Service Account",
+          "value": "serviceAccount"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Label",
-      "default": null
-    },
-    {
-      "name": "Draft",
-      "default": null
-    },
-    {
-      "name": "Thread",
-      "default": null
+      "default": "message",
+      "options": [
+        {
+          "name": "Message",
+          "value": "message"
+        },
+        {
+          "name": "Label",
+          "value": "label"
+        },
+        {
+          "name": "Draft",
+          "value": "draft"
+        },
+        {
+          "name": "Thread",
+          "value": "thread"
+        }
+      ]
     },
     {
       "name": "sendTo",
@@ -62,5 +74,19 @@
       "name": "sendTo",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

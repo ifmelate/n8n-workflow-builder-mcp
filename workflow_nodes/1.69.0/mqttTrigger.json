@@ -17,21 +17,30 @@
       "type": "collection",
       "default": {},
       "description": "Whether to try parse the message to an object",
-      "placeholder": "Add option"
-    },
-    {
-      "name": "onlyMessage",
-      "displayName": "Only Message",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return only the message property"
-    },
-    {
-      "name": "parallelProcessing",
-      "displayName": "Parallel Processing",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to process messages in parallel or by keeping the message in order"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "jsonParseBody",
+          "displayName": "JSON Parse Body",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to try parse the message to an object"
+        },
+        {
+          "name": "onlyMessage",
+          "displayName": "Only Message",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to return only the message property"
+        },
+        {
+          "name": "parallelProcessing",
+          "displayName": "Parallel Processing",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to process messages in parallel or by keeping the message in order"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -43,5 +52,19 @@
       "name": "topics",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -8,11 +8,17 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "accessToken",
+      "options": [
+        {
+          "name": "Access Token",
+          "value": "accessToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "owner",
@@ -36,8 +42,16 @@
       "name": "events",
       "displayName": "Events",
       "type": "multiOptions",
-      "default": null,
-      "description": "Any time any event is triggered (Wildcard Event)"
+      "default": [],
+      "description": "Any time any event is triggered (Wildcard Event)",
+      "required": true,
+      "options": [
+        {
+          "name": "*",
+          "value": "*",
+          "description": "Any time any event is triggered (Wildcard Event)"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -57,5 +71,19 @@
       "name": "owner",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

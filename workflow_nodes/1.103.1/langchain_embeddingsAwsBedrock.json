@@ -4,5 +4,29 @@
   "description": "Use Embeddings AWS Bedrock",
   "version": 1,
   "properties": [],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "AiEmbedding"
+    ],
+    "outputNames": [
+      "Embeddings"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiVectorStore"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "AiEmbedding"
+    ]
+  }
 }

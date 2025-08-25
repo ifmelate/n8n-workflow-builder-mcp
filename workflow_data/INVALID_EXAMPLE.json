@@ -1,0 +1,168 @@
+{
+    "name": "EXAMPLE_INVALID_WORKFLOW",
+    "id": "TEST-INVALID-001",
+    "nodes": [
+        {
+            "id": "a1",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                100,
+                100
+            ],
+            "parameters": {
+                "authentication": "none",
+                "httpMethod": "POST",
+                "path": "callback",
+                "responseMode": "responseNode"
+            },
+            "name": "Webhook"
+        },
+        {
+            "id": "a2",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 1,
+            "position": [
+                300,
+                100
+            ],
+            "parameters": {
+                "language": "javascript",
+                "jsCode": "return $input.item();"
+            },
+            "name": "Preprocess"
+        },
+        {
+            "id": "a3",
+            "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+            "typeVersion": 1,
+            "position": [
+                500,
+                100
+            ],
+            "parameters": {
+                "model": {
+                    "__rl": true,
+                    "value": "openai/gpt-4o",
+                    "mode": "list",
+                    "cachedResultName": "openai/gpt-4o"
+                },
+                "options": {
+                    "temperature": 0.2
+                }
+            },
+            "name": "OpenRouter Chat Model"
+        },
+        {
+            "id": "a4",
+            "type": "@n8n/n8n-nodes-langchain.chainLlm",
+            "typeVersion": 1,
+            "position": [
+                700,
+                100
+            ],
+            "parameters": {
+                "prompt": "Say hello"
+            },
+            "name": "LLM Chain"
+        },
+        {
+            "id": "a5",
+            "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+            "typeVersion": 1,
+            "position": [
+                500,
+                260
+            ],
+            "parameters": {
+                "model": "text-embedding-3-large"
+            },
+            "name": "Embeddings Generator"
+        },
+        {
+            "id": "a6",
+            "type": "@n8n/n8n-nodes-langchain.vectorStoreQdrant",
+            "typeVersion": 1,
+            "position": [
+                700,
+                260
+            ],
+            "parameters": {
+                "mode": "search",
+                "topK": 5
+            },
+            "name": "Qdrant Vector Store"
+        },
+        {
+            "id": "a7",
+            "type": "n8n-nodes-base.postgres",
+            "typeVersion": 2.6,
+            "position": [
+                900,
+                100
+            ],
+            "parameters": {
+                "operation": "insert",
+                "schema": "public",
+                "table": "results"
+            },
+            "name": "Store in DB"
+        }
+    ],
+    "connections": {
+        "Webhook": {
+            "main": [
+                [
+                    {
+                        "node": "Preprocess",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Preprocess": {
+            "main": [
+                [
+                    {
+                        "node": "LLM Chain",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "OpenRouter Chat Model": {
+            "ai_languageModel": [
+                [
+                    {
+                        "node": "LLM Chain",
+                        "type": "ai_languageModel",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "LLM Chain": {
+            "main": [
+                [
+                    {
+                        "node": "Store in DB",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "active": false,
+    "pinData": {},
+    "settings": {
+        "executionOrder": "v1"
+    },
+    "versionId": "TEST-INVALID-001-V1",
+    "meta": {
+        "instanceId": "TEST-INSTANCE"
+    },
+    "tags": []
+}

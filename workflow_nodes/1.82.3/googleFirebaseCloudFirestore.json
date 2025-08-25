@@ -13,7 +13,17 @@
       "type": "options",
       "default": "",
       "description": "As displayed in firebase console URL. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "collection"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "database",
@@ -21,7 +31,17 @@
       "type": "string",
       "default": "(default)",
       "description": "Usually the provided default value will work",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "collection"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
@@ -29,21 +49,62 @@
       "type": "boolean",
       "default": false,
       "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "collection"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "collection"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Get many root collections"
+      "default": "getAll",
+      "description": "Get many root collections",
+      "options": [
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many root collections"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "collection"
+          ]
+        }
+      }
     },
     {
       "name": "collection",
@@ -51,13 +112,33 @@
       "type": "string",
       "default": "",
       "description": "Collection name",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "documentId",
       "displayName": "Document ID",
       "type": "string",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "columns",
@@ -66,7 +147,17 @@
       "default": "",
       "description": "List of attributes to save",
       "placeholder": "productId, modelName, description",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "simple",
@@ -74,7 +165,16 @@
       "type": "boolean",
       "default": true,
       "description": "Whether to return a simplified version of the response instead of the raw data",
-      "required": true
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create"
+          ],
+          "resource": [
+            "document"
+          ]
+        }
+      }
     },
     {
       "name": "updateKey",
@@ -83,7 +183,17 @@
       "default": "",
       "description": "Must correspond to a document ID",
       "placeholder": "documentId",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "upsert"
+          ]
+        }
+      }
     },
     {
       "name": "query",
@@ -91,52 +201,50 @@
       "type": "string",
       "default": "",
       "description": "JSON query to execute",
-      "required": true
-    },
-    {
-      "name": "Create or Update",
-      "default": null,
-      "description": "Create a new document, or update the current one if it already exists (upsert)"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete a document"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a document"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many documents from a collection"
-    },
-    {
-      "name": "Query",
-      "default": null,
-      "description": "Runs a query against your documents"
+      "placeholder": "{\"structuredQuery\": {\"where\": {\"fieldFilter\": {\"field\": {\"fieldPath\": \"age\"},\"op\": \"EQUAL\", \"value\": {\"integerValue\": 28}}}, \"from\": [{\"collectionId\": \"users-collection\"}]}}",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "document"
+          ],
+          "operation": [
+            "query"
+          ]
+        }
+      }
     },
     {
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Service Account",
-      "default": null
+      "default": "googleFirebaseCloudFirestoreOAuth2Api",
+      "options": [
+        {
+          "name": "OAuth2 (recommended)",
+          "value": "googleFirebaseCloudFirestoreOAuth2Api"
+        },
+        {
+          "name": "Service Account",
+          "value": "serviceAccount"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Collection",
-      "default": null
+      "default": "document",
+      "options": [
+        {
+          "name": "Document",
+          "value": "document"
+        },
+        {
+          "name": "Collection",
+          "value": "collection"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -152,5 +260,19 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

@@ -8,15 +8,30 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
+      "default": "getAll",
       "description": "Retrieve data for a specific call",
-      "options": []
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Retrieve a list of calls"
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "call"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

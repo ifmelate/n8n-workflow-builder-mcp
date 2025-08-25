@@ -10,19 +10,43 @@
       "type": "string",
       "default": "",
       "placeholder": "0",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "alerts"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Get specific alert"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many alerts"
+      "default": "getAll",
+      "description": "Get specific alert",
+      "options": [
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get specific alert"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many alerts"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "alerts"
+          ]
+        }
+      }
     },
     {
       "name": "databaseId",
@@ -30,35 +54,61 @@
       "type": "string",
       "default": "",
       "placeholder": "0",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "databases"
+          ],
+          "operation": [
+            "getFields"
+          ]
+        }
+      }
     },
     {
       "name": "engine",
       "displayName": "Engine",
       "type": "options",
-      "default": null,
+      "default": "postgres",
       "placeholder": "PostgreSQL",
-      "required": true
-    },
-    {
-      "name": "MongoDB",
-      "default": null
-    },
-    {
-      "name": "Mysql",
-      "default": null
-    },
-    {
-      "name": "PostgreSQL",
-      "default": null
-    },
-    {
-      "name": "Redshift",
-      "default": null
-    },
-    {
-      "name": "Sqlite",
-      "default": null
+      "required": true,
+      "options": [
+        {
+          "name": "H2",
+          "value": "h2"
+        },
+        {
+          "name": "MongoDB",
+          "value": "mongo"
+        },
+        {
+          "name": "Mysql",
+          "value": "mysql"
+        },
+        {
+          "name": "PostgreSQL",
+          "value": "postgres"
+        },
+        {
+          "name": "Redshift",
+          "value": "redshift"
+        },
+        {
+          "name": "Sqlite",
+          "value": "sqlite"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "databases"
+          ],
+          "operation": [
+            "addNewDatasource"
+          ]
+        }
+      }
     },
     {
       "name": "host",
@@ -66,7 +116,23 @@
       "type": "string",
       "default": "",
       "placeholder": "localhost:5432",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "databases"
+          ],
+          "operation": [
+            "addNewDatasource"
+          ],
+          "engine": [
+            "postgres",
+            "redshift",
+            "mysql",
+            "mongo"
+          ]
+        }
+      }
     },
     {
       "name": "name",
@@ -74,7 +140,17 @@
       "type": "string",
       "default": "",
       "placeholder": "Database 1",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "databases"
+          ],
+          "operation": [
+            "addNewDatasource"
+          ]
+        }
+      }
     },
     {
       "name": "port",
@@ -82,7 +158,23 @@
       "type": "number",
       "default": 5432,
       "placeholder": "5432",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "databases"
+          ],
+          "operation": [
+            "addNewDatasource"
+          ],
+          "engine": [
+            "postgres",
+            "redshift",
+            "mysql",
+            "mongo"
+          ]
+        }
+      }
     },
     {
       "name": "user",
@@ -90,7 +182,23 @@
       "type": "string",
       "default": "",
       "placeholder": "Admin",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "databases"
+          ],
+          "operation": [
+            "addNewDatasource"
+          ],
+          "engine": [
+            "postgres",
+            "redshift",
+            "mysql",
+            "mongo"
+          ]
+        }
+      }
     },
     {
       "name": "password",
@@ -98,14 +206,46 @@
       "type": "string",
       "default": "",
       "placeholder": "password",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "databases"
+          ],
+          "operation": [
+            "addNewDatasource"
+          ],
+          "engine": [
+            "postgres",
+            "redshift",
+            "mysql",
+            "mongo"
+          ]
+        }
+      }
     },
     {
       "name": "dbName",
       "displayName": "Database Name",
       "type": "string",
       "default": "",
-      "placeholder": "Users"
+      "placeholder": "Users",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "databases"
+          ],
+          "operation": [
+            "addNewDatasource"
+          ],
+          "engine": [
+            "postgres",
+            "redshift",
+            "mysql",
+            "mongo"
+          ]
+        }
+      }
     },
     {
       "name": "filePath",
@@ -113,26 +253,55 @@
       "type": "string",
       "default": "",
       "placeholder": "file:/Users/admin/Desktop/Users",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "databases"
+          ],
+          "operation": [
+            "addNewDatasource"
+          ],
+          "engine": [
+            "h2",
+            "sqlite"
+          ]
+        }
+      }
     },
     {
       "name": "fullSync",
       "displayName": "Full Sync",
       "type": "boolean",
       "default": true,
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "databases"
+          ],
+          "operation": [
+            "addNewDatasource"
+          ]
+        }
+      }
     },
     {
       "name": "simple",
       "displayName": "Simplify",
       "type": "boolean",
-      "default": null,
-      "description": "Whether to return a simplified version of the response instead of the raw data"
-    },
-    {
-      "name": "Get Fields",
-      "default": null,
-      "description": "Get fields from database"
+      "default": true,
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "databases"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "metricId",
@@ -140,7 +309,17 @@
       "type": "string",
       "default": "",
       "placeholder": "0",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "metrics"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "questionId",
@@ -148,28 +327,72 @@
       "type": "string",
       "default": "",
       "placeholder": "0",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "questions"
+          ],
+          "operation": [
+            "get",
+            "resultData"
+          ]
+        }
+      }
     },
     {
       "name": "format",
       "displayName": "Format",
       "type": "options",
-      "default": null,
-      "required": true
-    },
-    {
-      "name": "JSON",
-      "default": null
-    },
-    {
-      "name": "XLSX",
-      "default": null
-    },
-    {
-      "name": "Result Data",
-      "default": null,
-      "description": "Return the result of the question to a specific file format"
+      "default": "csv",
+      "required": true,
+      "options": [
+        {
+          "name": "CSV",
+          "value": "csv"
+        },
+        {
+          "name": "JSON",
+          "value": "json"
+        },
+        {
+          "name": "XLSX",
+          "value": "xlsx"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "questions"
+          ],
+          "operation": [
+            "resultData"
+          ]
+        }
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

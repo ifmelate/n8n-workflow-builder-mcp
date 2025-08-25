@@ -11,16 +11,36 @@
       "default": {},
       "description": "Rules to map workflow data to specific models",
       "placeholder": "Add Rule",
-      "required": true
-    },
-    {
-      "name": "conditions",
-      "displayName": "Conditions",
-      "type": "filter",
-      "default": {},
-      "description": "Conditions that must be met to select this model",
-      "placeholder": "Add Condition"
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "AiLanguageModel"
+    ],
+    "outputs": [
+      "AiLanguageModel"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "model",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent",
+      "AiChain"
+    ],
+    "consumes": [
+      "AiLanguageModel"
+    ],
+    "produces": [
+      "AiLanguageModel"
+    ]
+  }
 }

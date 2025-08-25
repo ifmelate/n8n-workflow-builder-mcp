@@ -12,12 +12,6 @@
       "placeholder": "Add Code"
     },
     {
-      "name": "supplyData",
-      "displayName": "Supply Data",
-      "type": "string",
-      "default": null
-    },
-    {
       "name": "notice",
       "displayName": "You can import LangChain and use all available functionality. Debug by using <code>console.log()</code> statements and viewing their output in the browser console.",
       "type": "notice",
@@ -30,23 +24,10 @@
       "default": {},
       "description": "The input to add",
       "placeholder": "Add Input",
-      "required": true
-    },
-    {
-      "name": "maxConnections",
-      "displayName": "Max Connections",
-      "type": "number",
-      "default": null,
-      "description": "How many nodes of this type are allowed to be connected. Set it to -1 for unlimited.",
-      "required": true
-    },
-    {
-      "name": "required",
-      "displayName": "Required",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether the input needs a connection",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      }
     },
     {
       "name": "outputs",
@@ -55,8 +36,25 @@
       "default": {},
       "description": "The output to add",
       "placeholder": "Add Output",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "multipleValues": true
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

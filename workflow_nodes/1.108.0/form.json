@@ -1,0 +1,56 @@
+{
+  "nodeType": "n8n-nodes-base.form",
+  "displayName": "n8n Form",
+  "description": "Generate webforms in n8n and pass their responses to the workflow",
+  "version": [
+    1,
+    2.3
+  ],
+  "properties": [
+    {
+      "name": "triggerNotice",
+      "displayName": "An n8n Form Trigger node must be set up before this node",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "operation",
+      "displayName": "Page Type",
+      "type": "options",
+      "default": "page",
+      "options": [
+        {
+          "name": "Next Form Page",
+          "value": "page"
+        },
+        {
+          "name": "Form Ending",
+          "value": "completion"
+        }
+      ]
+    }
+  ],
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
+}

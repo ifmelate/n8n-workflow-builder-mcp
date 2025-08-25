@@ -16,8 +16,15 @@
       "name": "event",
       "displayName": "Event",
       "type": "options",
-      "default": null,
-      "description": "Trigger on newly created rows"
+      "default": "rowCreated",
+      "description": "Trigger on newly created rows",
+      "options": [
+        {
+          "name": "Row Created",
+          "value": "rowCreated",
+          "description": "Trigger on newly created rows"
+        }
+      ]
     },
     {
       "name": "simple",
@@ -40,5 +47,19 @@
       "name": "simple",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

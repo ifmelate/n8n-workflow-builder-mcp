@@ -44,14 +44,53 @@ const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour cache TTL
  * 
  * @returns {Promise<Array>} Array of node information objects
  */
+const compareSemver = (a, b) => {
+    const normalize = v => v.replace(/^v/i, '');
+    const pa = normalize(a).split('.').map(n => parseInt(n, 10) || 0);
+    const pb = normalize(b).split('.').map(n => parseInt(n, 10) || 0);
+    const len = Math.max(pa.length, pb.length);
+    for (let i = 0; i < len; i++) {
+        const na = pa[i] ?? 0;
+        const nb = pb[i] ?? 0;
+        if (na !== nb) return na - nb;
+    }
+    return 0;
+};
+
 const scanWorkflowNodes = async () => {
     const workflowNodesDir = path.join(process.cwd(), 'workflow_nodes');
     try {
         logger.debug('Scanning workflow_nodes directory for node definitions');
-        const files = await fs.readdir(workflowNodesDir);
+        let entries;
+        try {
+            entries = await fs.readdir(workflowNodesDir, { withFileTypes: true });
+        } catch (_) {
+            // Fallback for environments/tests mocking fs without Dirent support
+            const names = await fs.readdir(workflowNodesDir);
+            entries = names.map(name => ({ name, isFile: () => name.endsWith('.json'), isDirectory: () => !name.endsWith('.json') }));
+        }
+        // Handle mocks that return string names even when withFileTypes is requested
+        if (Array.isArray(entries) && entries.length > 0 && typeof entries[0] === 'string') {
+            const names = entries;
+            entries = names.map(name => ({ name, isFile: () => name.endsWith('.json'), isDirectory: () => !name.endsWith('.json') }));
+        }
 
-        // Filter for JSON files only
-        const jsonFiles = files.filter(file => file.endsWith('.json'));
+        // Determine whether we have a flat structure or versioned subdirectories
+        const topLevelJson = entries.filter(e => e.isFile && e.isFile() && e.name.endsWith('.json')).map(e => e.name);
+        let scanDir = workflowNodesDir;
+        let jsonFiles = topLevelJson;
+
+        if (jsonFiles.length === 0) {
+            const versionDirs = entries.filter(e => e.isDirectory && e.isDirectory()).map(e => e.name);
+            if (versionDirs.length > 0) {
+                const latest = versionDirs.slice().sort((a, b) => compareSemver(b, a))[0];
+                scanDir = path.join(workflowNodesDir, latest);
+                const versionFiles = await fs.readdir(scanDir);
+                jsonFiles = versionFiles.filter(f => f.endsWith('.json'));
+                logger.debug(`Detected versioned nodes at ${latest}; using ${jsonFiles.length} files`);
+            }
+        }
+
         logger.debug(`Found ${jsonFiles.length} node definition files`);
 
         // Create a map of normalized filename -> actual filename with original casing
@@ -67,7 +106,7 @@ const scanWorkflowNodes = async () => {
         // Process each file
         const nodesPromises = jsonFiles.map(async (file) => {
             try {
-                const filePath = path.join(workflowNodesDir, file);
+                const filePath = path.join(scanDir, file);
                 const content = await fs.readFile(filePath, 'utf8');
                 const nodeData = JSON.parse(content);
 

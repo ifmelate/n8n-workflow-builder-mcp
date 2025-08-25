@@ -10,7 +10,33 @@
       "type": "options",
       "default": "",
       "description": "Form ID (e.g. aSAvYreNzVEkrWg5Gdcvg). Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "file"
+          ]
+        }
+      }
+    },
+    {
+      "name": "fileId",
+      "displayName": "File ID",
+      "type": "string",
+      "default": "",
+      "description": "Uid of the file (should start with \"af\" e.g. \"afQoJxA4kmKEXVpkH6SYbhb\"",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "file"
+          ],
+          "operation": [
+            "delete",
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "binaryPropertyName",
@@ -18,7 +44,17 @@
       "type": "string",
       "default": "data",
       "description": "Name of the binary property to write the file into",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "file"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "download",
@@ -26,18 +62,44 @@
       "type": "boolean",
       "default": false,
       "description": "Whether to download the file content into a binary property",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "file"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "fileMode",
       "displayName": "File Upload Mode",
       "type": "options",
       "default": "binary",
-      "required": true
-    },
-    {
-      "name": "URL",
-      "default": null
+      "required": true,
+      "options": [
+        {
+          "name": "Binary File",
+          "value": "binary"
+        },
+        {
+          "name": "URL",
+          "value": "url"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "file"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "fileUrl",
@@ -45,36 +107,97 @@
       "type": "string",
       "default": "",
       "description": "HTTP(s) link to the file to upload",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "file"
+          ],
+          "operation": [
+            "create"
+          ],
+          "fileMode": [
+            "url"
+          ]
+        }
+      }
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Create a file"
+      "default": "get",
+      "description": "Create a file",
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Create a file"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete file"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a file content"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many files"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "file"
+          ]
+        }
+      }
     },
     {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete file"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a file content"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many files"
+      "name": "returnAll",
+      "displayName": "Return All",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to return all results or only up to a given limit",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "form"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 1000,
-      "description": "Max number of results to return"
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "maxValue": 3000
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "form"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -83,31 +206,16 @@
       "default": {},
       "description": "Whether to sort by descending order",
       "placeholder": "Add option",
-      "typeOptions": {
-        "multipleValues": true
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "form"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
       }
-    },
-    {
-      "name": "ordering",
-      "displayName": "Order By",
-      "type": "options",
-      "default": "date_modified"
-    },
-    {
-      "name": "Date Modified",
-      "default": null
-    },
-    {
-      "name": "Name",
-      "default": null
-    },
-    {
-      "name": "Owner Username",
-      "default": null
-    },
-    {
-      "name": "Subscribers Count",
-      "default": null
     },
     {
       "name": "filters",
@@ -115,12 +223,26 @@
       "type": "collection",
       "default": {},
       "description": "A text search query based on form data - e.g. \"owner__username:meg AND name__icontains:quixotic\" - see <a href=\"https://github.com/kobotoolbox/kpi#searching\" target=\"_blank\">docs</a> for more details",
-      "placeholder": "Add Filter"
-    },
-    {
-      "name": "Redeploy",
-      "default": null,
-      "description": "Redeploy Current Form Version"
+      "placeholder": "Add Filter",
+      "options": [
+        {
+          "name": "filter",
+          "displayName": "Filter",
+          "type": "string",
+          "default": "asset_type:survey",
+          "description": "A text search query based on form data - e.g. \"owner__username:meg AND name__icontains:quixotic\" - see <a href=\"https://github.com/kobotoolbox/kpi#searching\" target=\"_blank\">docs</a> for more details"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "form"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "hookId",
@@ -128,56 +250,107 @@
       "type": "string",
       "default": "",
       "description": "Hook ID (starts with h, e.g. hVehywQ2oXPYGHJHKtqth4)",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "hook"
+          ],
+          "operation": [
+            "get",
+            "retryOne",
+            "retryAll",
+            "getLogs"
+          ]
+        }
+      }
     },
     {
-      "name": "returnAll",
-      "displayName": "Return All",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to return all results or only up to a given limit",
-      "required": true
+      "name": "logId",
+      "displayName": "Hook Log ID",
+      "type": "string",
+      "default": "",
+      "description": "Hook log ID (starts with hl, e.g. hlSbGKaUKzTVNoWEVMYbLHe)",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "hook"
+          ],
+          "operation": [
+            "retryOne"
+          ]
+        }
+      }
     },
     {
-      "name": "Failed",
-      "default": null
-    },
-    {
-      "name": "Pending",
-      "default": null
-    },
-    {
-      "name": "Success",
-      "default": null
+      "name": "status",
+      "displayName": "Log Status",
+      "type": "options",
+      "default": "",
+      "description": "Only retrieve logs with a specific status",
+      "options": [
+        {
+          "name": "All",
+          "value": ""
+        },
+        {
+          "name": "Failed",
+          "value": "0"
+        },
+        {
+          "name": "Pending",
+          "value": "1"
+        },
+        {
+          "name": "Success",
+          "value": "2"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "hook"
+          ],
+          "operation": [
+            "getLogs"
+          ]
+        }
+      }
     },
     {
       "name": "startDate",
       "displayName": "Start Date",
       "type": "dateTime",
       "default": "",
-      "description": "Minimum date for the hook log to retrieve"
+      "description": "Minimum date for the hook log to retrieve",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "hook"
+          ],
+          "operation": [
+            "getLogs"
+          ]
+        }
+      }
     },
     {
       "name": "endDate",
       "displayName": "End Date",
       "type": "dateTime",
       "default": "",
-      "description": "Maximum date for the hook log to retrieve"
-    },
-    {
-      "name": "Logs",
-      "default": null,
-      "description": "Get hook logs"
-    },
-    {
-      "name": "Retry All",
-      "default": null,
-      "description": "Retry all failed attempts for a given hook"
-    },
-    {
-      "name": "Retry One",
-      "default": null,
-      "description": "Retry a specific hook"
+      "description": "Maximum date for the hook log to retrieve",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "hook"
+          ],
+          "operation": [
+            "getLogs"
+          ]
+        }
+      }
     },
     {
       "name": "submissionId",
@@ -185,143 +358,141 @@
       "type": "string",
       "default": "",
       "description": "Submission ID (number, e.g. 245128)",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "submission"
+          ],
+          "operation": [
+            "get",
+            "delete",
+            "getValidation",
+            "setValidation"
+          ]
+        }
+      }
     },
     {
       "name": "validationStatus",
       "displayName": "Validation Status",
       "type": "options",
       "default": "",
-      "required": true
-    },
-    {
-      "name": "Not Approved",
-      "default": null
-    },
-    {
-      "name": "On Hold",
-      "default": null
+      "description": "Desired Validation Status",
+      "required": true,
+      "options": [
+        {
+          "name": "Approved",
+          "value": "validation_status_approved"
+        },
+        {
+          "name": "Not Approved",
+          "value": "validation_status_not_approved"
+        },
+        {
+          "name": "On Hold",
+          "value": "validation_status_on_hold"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "submission"
+          ],
+          "operation": [
+            "setValidation"
+          ]
+        }
+      }
     },
     {
       "name": "filterType",
       "displayName": "Filter",
       "type": "options",
-      "default": "none"
-    },
-    {
-      "name": "JSON",
-      "default": null
+      "default": "none",
+      "options": [
+        {
+          "name": "None",
+          "value": "none"
+        },
+        {
+          "name": "JSON",
+          "value": "json"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "submission"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
       "name": "jsonNotice",
       "displayName": "See <a href=\"https://github.com/SEL-Columbia/formhub/wiki/Formhub-Access-Points-(API)#api-parameters\" target=\"_blank\">Formhub API docs</a> to creating filters, using the MongoDB JSON format - e.g. {\"_submission_time\":{\"$lt\":\"2021-10-01T01:02:03\"}}",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "submission"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "filterType": [
+            "json"
+          ]
+        }
+      }
     },
     {
       "name": "filterJson",
       "displayName": "Filters (JSON)",
       "type": "string",
-      "default": ""
-    },
-    {
-      "name": "binaryNamingScheme",
-      "displayName": "Attachments Naming Scheme",
-      "type": "options",
-      "default": "sequence"
-    },
-    {
-      "name": "Use Original Form Question ID",
-      "default": null
-    },
-    {
-      "name": "dataPropertyAttachmentsPrefixName",
-      "displayName": "Attachments Prefix",
-      "type": "string",
-      "default": "attachment_",
-      "description": "Prefix for name of the binary property to which to write the attachments. An index starting with 0 will be added. So if name is \"attachment_\" the first attachment is saved to \"attachment_0\""
-    },
-    {
-      "name": "fields",
-      "displayName": "Fields to Retrieve",
-      "type": "string",
       "default": "",
-      "description": "Comma-separated list of fields to retrieve (e.g. _submission_time,_submitted_by). If left blank, all fields are retrieved."
-    },
-    {
-      "name": "version",
-      "displayName": "File Size",
-      "type": "options",
-      "default": "download_url",
-      "description": "Attachment size to retrieve, if multiple versions are available"
-    },
-    {
-      "name": "Small",
-      "default": null
-    },
-    {
-      "name": "Medium",
-      "default": null
-    },
-    {
-      "name": "Large",
-      "default": null
-    },
-    {
-      "name": "selectMask",
-      "displayName": "Multiselect Mask",
-      "type": "string",
-      "default": "select_*",
-      "description": "Comma-separated list of wildcard-style selectors for fields that should be treated as multiselect fields, i.e. parsed as arrays."
-    },
-    {
-      "name": "numberMask",
-      "displayName": "Number Mask",
-      "type": "string",
-      "default": "n_*, f_*",
-      "description": "Comma-separated list of wildcard-style selectors for fields that should be treated as numbers"
-    },
-    {
-      "name": "reformat",
-      "displayName": "Reformat",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to apply some reformatting to the submission data, such as parsing GeoJSON coordinates"
-    },
-    {
-      "name": "sort",
-      "displayName": "Sort",
-      "type": "json",
-      "default": "",
-      "description": "Sort predicates, in MongoDB JSON format (e.g. {\"_submission_time\":1})"
-    },
-    {
-      "name": "Get Validation Status",
-      "default": null,
-      "description": "Get the validation status for the submission"
-    },
-    {
-      "name": "Update Validation Status",
-      "default": null,
-      "description": "Set the validation status of the submission"
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "submission"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "filterType": [
+            "json"
+          ]
+        }
+      }
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Form",
-      "default": null
-    },
-    {
-      "name": "Hook",
-      "default": null
-    },
-    {
-      "name": "Submission",
-      "default": null
+      "default": "submission",
+      "required": true,
+      "options": [
+        {
+          "name": "File",
+          "value": "file"
+        },
+        {
+          "name": "Form",
+          "value": "form"
+        },
+        {
+          "name": "Hook",
+          "value": "hook"
+        },
+        {
+          "name": "Submission",
+          "value": "submission"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -333,5 +504,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

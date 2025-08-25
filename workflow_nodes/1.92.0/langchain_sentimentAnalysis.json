@@ -10,13 +10,23 @@
       "type": "string",
       "default": "",
       "description": "Use an expression to reference data in previous nodes or enter static text",
-      "required": true
+      "required": true,
+      "typeOptions": {
+        "rows": 2
+      }
     },
     {
       "name": "detailedResultsNotice",
       "displayName": "Sentiment scores are LLM-generated estimates, not statistically rigorous measurements. They may be inconsistent across runs and should be used as rough indicators only.",
       "type": "notice",
-      "default": ""
+      "default": "",
+      "displayOptions": {
+        "show": {
+          "/options.includeDetailedResults": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -24,43 +34,59 @@
       "type": "collection",
       "default": {},
       "description": "A comma-separated list of categories to analyze",
-      "placeholder": "Add Option"
-    },
-    {
-      "name": "systemPromptTemplate",
-      "displayName": "System Prompt Template",
-      "type": "string",
-      "default": null,
-      "description": "String to use directly as the system prompt template"
-    },
-    {
-      "name": "includeDetailedResults",
-      "displayName": "Include Detailed Results",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to include sentiment strength and confidence scores in the output"
-    },
-    {
-      "name": "enableAutoFixing",
-      "displayName": "Enable Auto-Fixing",
-      "type": "boolean",
-      "default": true,
-      "description": "Whether to enable auto-fixing (may trigger an additional LLM call if output is broken)"
-    },
-    {
-      "name": "batching",
-      "displayName": "Batch Processing",
-      "type": "collection",
-      "default": {},
-      "description": "Batch processing options for rate limiting"
-    },
-    {
-      "name": "delayBetweenBatches",
-      "displayName": "Delay Between Batches",
-      "type": "number",
-      "default": 0,
-      "description": "Delay in milliseconds between batches. This is useful for rate limiting."
+      "placeholder": "Add Option",
+      "options": [
+        {
+          "name": "categories",
+          "displayName": "Sentiment Categories",
+          "type": "string",
+          "description": "A comma-separated list of categories to analyze"
+        },
+        {
+          "name": "systemPromptTemplate",
+          "displayName": "System Prompt Template",
+          "type": "string",
+          "description": "String to use directly as the system prompt template"
+        },
+        {
+          "name": "includeDetailedResults",
+          "displayName": "Include Detailed Results",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to include sentiment strength and confidence scores in the output"
+        },
+        {
+          "name": "enableAutoFixing",
+          "displayName": "Enable Auto-Fixing",
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to enable auto-fixing (may trigger an additional LLM call if output is broken)"
+        }
+      ],
+      "typeOptions": {
+        "rows": 2
+      }
     }
   ],
-  "credentialsConfig": []
+  "credentialsConfig": [],
+  "io": {
+    "inputs": [
+      "Main",
+      "AiLanguageModel"
+    ],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main",
+      "AiLanguageModel"
+    ],
+    "produces": []
+  }
 }

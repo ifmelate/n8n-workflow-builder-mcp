@@ -8,14 +8,8 @@
       "name": "modelName",
       "displayName": "Model",
       "type": "options",
-      "default": null,
+      "default": "models/gemini-2.5-flash",
       "description": "The model which will generate the completion. <a href=\"https://developers.generativeai.google/api/rest/generativelanguage/models/list\">Learn more</a>."
-    },
-    {
-      "name": "={{$responseItem.name}}",
-      "type": "setKeyValue",
-      "default": null,
-      "description": "={{$responseItem.description}}"
     }
   ],
   "credentialsConfig": [
@@ -27,5 +21,33 @@
       "name": "modelName",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "AiLanguageModel"
+    ],
+    "outputNames": [
+      "Model"
+    ],
+    "hints": {
+      "connectTo": [
+        "AiChain",
+        "AiAgent"
+      ]
+    }
+  },
+  "wiring": {
+    "role": "model",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [
+      "AiAgent",
+      "AiChain"
+    ],
+    "consumes": [],
+    "produces": [
+      "AiLanguageModel"
+    ]
+  }
 }

@@ -5,32 +5,53 @@
   "version": 1,
   "properties": [
     {
-      "name": "twakeVersion",
-      "displayName": "Twake Version",
-      "type": "options",
-      "default": "cloud",
-      "options": []
-    },
-    {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null,
-      "description": "Send data to the message app"
+      "default": "message",
+      "description": "Send data to the message app",
+      "options": [
+        {
+          "name": "Message",
+          "value": "message",
+          "description": "Send data to the message app"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Send a message"
+      "default": "send",
+      "description": "Send a message",
+      "options": [
+        {
+          "name": "Send",
+          "value": "send",
+          "description": "Send a message"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "message"
+          ]
+        }
+      }
     },
     {
       "name": "channelId",
       "displayName": "Channel Name or ID",
       "type": "options",
       "default": "",
-      "description": "Channel's ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "description": "Channel's ID. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "content",
@@ -38,7 +59,14 @@
       "type": "string",
       "default": "",
       "description": "Message content",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -46,13 +74,29 @@
       "type": "collection",
       "default": {},
       "description": "URL of the image/icon",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "senderName",
-      "displayName": "Sender Name",
-      "type": "string",
-      "default": ""
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "senderIcon",
+          "displayName": "Sender Icon",
+          "type": "string",
+          "default": "",
+          "description": "URL of the image/icon"
+        },
+        {
+          "name": "senderName",
+          "displayName": "Sender Name",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "send"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -72,5 +116,19 @@
       "name": "channelId",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

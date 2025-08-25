@@ -8,47 +8,88 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Private Key",
-      "default": null
+      "default": "password",
+      "options": [
+        {
+          "name": "Password",
+          "value": "password"
+        },
+        {
+          "name": "Private Key",
+          "value": "privateKey"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "File",
-      "default": null
+      "default": "command",
+      "options": [
+        {
+          "name": "Command",
+          "value": "command"
+        },
+        {
+          "name": "File",
+          "value": "file"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Execute a command"
+      "default": "execute",
+      "description": "Execute a command",
+      "options": [
+        {
+          "name": "Execute",
+          "value": "execute",
+          "description": "Execute a command"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "command"
+          ]
+        }
+      }
     },
     {
       "name": "command",
       "displayName": "Command",
       "type": "string",
       "default": "",
-      "description": "The command to be executed on a remote device"
+      "description": "The command to be executed on a remote device",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "command"
+          ],
+          "operation": [
+            "execute"
+          ]
+        }
+      }
     },
     {
       "name": "cwd",
       "displayName": "Working Directory",
       "type": "string",
       "default": "/",
-      "required": true
-    },
-    {
-      "name": "Upload",
-      "default": null,
-      "description": "Upload a file"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "command"
+          ],
+          "operation": [
+            "execute"
+          ]
+        }
+      }
     },
     {
       "name": "binaryPropertyName",
@@ -56,7 +97,17 @@
       "type": "string",
       "default": "data",
       "placeholder": "",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "upload"
+          ],
+          "resource": [
+            "file"
+          ]
+        }
+      }
     },
     {
       "name": "path",
@@ -65,7 +116,17 @@
       "default": "",
       "description": "The directory to upload the file to. The name of the file does not need to be specified, it's taken from the binary data file name. To override this behavior, set the parameter \"File Name\" under options.",
       "placeholder": "/home/user",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "file"
+          ],
+          "operation": [
+            "upload"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -73,7 +134,27 @@
       "type": "collection",
       "default": {},
       "description": "Overrides the binary data file name",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "fileName",
+          "displayName": "File Name",
+          "type": "string",
+          "default": "",
+          "description": "Overrides the binary data file name"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "file"
+          ],
+          "operation": [
+            "upload",
+            "download"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -101,5 +182,19 @@
       "name": "binaryPropertyName",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

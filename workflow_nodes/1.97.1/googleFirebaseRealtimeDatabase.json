@@ -16,28 +16,36 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Write data to a database"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete data from a database"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get a record from a database"
-    },
-    {
-      "name": "Push",
-      "default": null,
-      "description": "Append to a list of data"
-    },
-    {
-      "name": "Update",
-      "default": null,
-      "description": "Update item on a database"
+      "default": "create",
+      "description": "Write data to a database",
+      "required": true,
+      "options": [
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Write data to a database"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete data from a database"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get a record from a database"
+        },
+        {
+          "name": "Push",
+          "value": "push",
+          "description": "Append to a list of data"
+        },
+        {
+          "name": "Update",
+          "value": "update",
+          "description": "Update item on a database"
+        }
+      ]
     },
     {
       "name": "path",
@@ -46,7 +54,14 @@
       "default": "",
       "description": "Object path on database. Do not append .json.",
       "placeholder": "e.g. /app/users",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "hide": {
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "attributes",
@@ -55,7 +70,16 @@
       "default": "",
       "description": "Attributes to save",
       "placeholder": "age, name, city",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "create",
+            "push",
+            "update"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -71,5 +95,27 @@
       "name": "path",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

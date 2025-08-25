@@ -8,7 +8,13 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null
+      "default": "analyzeExpense",
+      "options": [
+        {
+          "name": "Analyze Receipt or Invoice",
+          "value": "analyzeExpense"
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -16,14 +22,28 @@
       "type": "string",
       "default": "data",
       "description": "The name of the input field containing the binary file data to be uploaded. Supported file types: PNG, JPEG.",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyzeExpense"
+          ]
+        }
+      }
     },
     {
       "name": "simple",
       "displayName": "Simplify",
       "type": "boolean",
       "default": true,
-      "description": "Whether to return a simplified version of the response instead of the raw data"
+      "description": "Whether to return a simplified version of the response instead of the raw data",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "analyzeExpense"
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -39,5 +59,19 @@
       "name": "binaryPropertyName",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

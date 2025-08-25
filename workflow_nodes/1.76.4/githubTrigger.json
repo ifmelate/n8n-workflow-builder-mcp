@@ -14,11 +14,17 @@
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "accessToken",
+      "options": [
+        {
+          "name": "Access Token",
+          "value": "accessToken"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "owner",
@@ -27,20 +33,6 @@
       "default": "{ mode: 'list', value: '' }",
       "placeholder": "Select an owner...",
       "required": true
-    },
-    {
-      "name": "url",
-      "displayName": "Link",
-      "type": "string",
-      "default": null,
-      "placeholder": "e.g. https://github.com/n8n-io"
-    },
-    {
-      "name": "name",
-      "displayName": "By Name",
-      "type": "string",
-      "default": null,
-      "placeholder": "e.g. n8n-io"
     },
     {
       "name": "repository",
@@ -54,218 +46,226 @@
       "name": "events",
       "displayName": "Events",
       "type": "multiOptions",
-      "default": null,
-      "description": "Any time any event is triggered (Wildcard Event)"
-    },
-    {
-      "name": "Check Run",
-      "default": null,
-      "description": "Triggered when a check run is created, rerequested, completed, or has a requested_action"
-    },
-    {
-      "name": "Check Suite",
-      "default": null,
-      "description": "Triggered when a check suite is completed, requested, or rerequested"
-    },
-    {
-      "name": "Commit Comment",
-      "default": null,
-      "description": "Triggered when a commit comment is created"
-    },
-    {
-      "name": "Create",
-      "default": null,
-      "description": "Represents a created repository, branch, or tag"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Represents a deleted branch or tag"
-    },
-    {
-      "name": "Deploy Key",
-      "default": null,
-      "description": "Triggered when a deploy key is added or removed from a repository"
-    },
-    {
-      "name": "Deployment",
-      "default": null,
-      "description": "Represents a deployment"
-    },
-    {
-      "name": "Deployment Status",
-      "default": null,
-      "description": "Represents a deployment status"
-    },
-    {
-      "name": "Fork",
-      "default": null,
-      "description": "Triggered when a user forks a repository"
-    },
-    {
-      "name": "Github App Authorization",
-      "default": null,
-      "description": "Triggered when someone revokes their authorization of a GitHub App"
-    },
-    {
-      "name": "Gollum",
-      "default": null,
-      "description": "Triggered when a Wiki page is created or updated"
-    },
-    {
-      "name": "Installation",
-      "default": null,
-      "description": "Triggered when someone installs (created), uninstalls (deleted), or accepts new permissions (new_permissions_accepted) for a GitHub App. When a GitHub App owner requests new permissions, the person who installed the GitHub App must accept the new permissions request."
-    },
-    {
-      "name": "Installation Repositories",
-      "default": null,
-      "description": "Triggered when a repository is added or removed from an installation"
-    },
-    {
-      "name": "Issue Comment",
-      "default": null,
-      "description": "Triggered when an issue comment is created, edited, or deleted"
-    },
-    {
-      "name": "Issues",
-      "default": null,
-      "description": "Triggered when an issue is opened, edited, deleted, transferred, pinned, unpinned, closed, reopened, assigned, unassigned, labeled, unlabeled, locked, unlocked, milestoned, or demilestoned"
-    },
-    {
-      "name": "Label",
-      "default": null,
-      "description": "Triggered when a repository's label is created, edited, or deleted"
-    },
-    {
-      "name": "Marketplace Purchase",
-      "default": null,
-      "description": "Triggered when someone purchases a GitHub Marketplace plan, cancels their plan, upgrades their plan (effective immediately), downgrades a plan that remains pending until the end of the billing cycle, or cancels a pending plan change"
-    },
-    {
-      "name": "Member",
-      "default": null,
-      "description": "Triggered when a user accepts an invitation or is removed as a collaborator to a repository, or has their permissions changed"
-    },
-    {
-      "name": "Membership",
-      "default": null,
-      "description": "Triggered when a user is added or removed from a team. Organization hooks only."
-    },
-    {
-      "name": "Meta",
-      "default": null,
-      "description": "Triggered when the webhook that this event is configured on is deleted"
-    },
-    {
-      "name": "Milestone",
-      "default": null,
-      "description": "Triggered when a milestone is created, closed, opened, edited, or deleted"
-    },
-    {
-      "name": "Org Block",
-      "default": null,
-      "description": "Triggered when an organization blocks or unblocks a user. Organization hooks only."
-    },
-    {
-      "name": "Organization",
-      "default": null,
-      "description": "Triggered when an organization is deleted and renamed, and when a user is added, removed, or invited to an organization. Organization hooks only."
-    },
-    {
-      "name": "Page Build",
-      "default": null,
-      "description": "Triggered on push to a GitHub Pages enabled branch (gh-pages for project pages, master for user and organization pages)"
-    },
-    {
-      "name": "Project",
-      "default": null,
-      "description": "Triggered when a project is created, updated, closed, reopened, or deleted"
-    },
-    {
-      "name": "Project Card",
-      "default": null,
-      "description": "Triggered when a project card is created, edited, moved, converted to an issue, or deleted"
-    },
-    {
-      "name": "Project Column",
-      "default": null,
-      "description": "Triggered when a project column is created, updated, moved, or deleted"
-    },
-    {
-      "name": "Public",
-      "default": null,
-      "description": "Triggered when a private repository is open sourced"
-    },
-    {
-      "name": "Pull Request",
-      "default": null,
-      "description": "Triggered when a pull request is assigned, unassigned, labeled, unlabeled, opened, edited, closed, reopened, synchronize, ready_for_review, locked, unlocked, a pull request review is requested, or a review request is removed"
-    },
-    {
-      "name": "Pull Request Review",
-      "default": null,
-      "description": "Triggered when a pull request review is submitted into a non-pending state, the body is edited, or the review is dismissed"
-    },
-    {
-      "name": "Pull Request Review Comment",
-      "default": null,
-      "description": "Triggered when a comment on a pull request's unified diff is created, edited, or deleted (in the Files Changed tab)"
-    },
-    {
-      "name": "Push",
-      "default": null,
-      "description": "Triggered on a push to a repository branch. Branch pushes and repository tag pushes also trigger webhook push events. This is the default event."
-    },
-    {
-      "name": "Release",
-      "default": null,
-      "description": "Triggered when a release is published, unpublished, created, edited, deleted, or prereleased"
-    },
-    {
-      "name": "Repository",
-      "default": null,
-      "description": "Triggered when a repository is created, archived, unarchived, renamed, edited, transferred, made public, or made private. Organization hooks are also triggered when a repository is deleted."
-    },
-    {
-      "name": "Repository Import",
-      "default": null,
-      "description": "Triggered when a successful, cancelled, or failed repository import finishes for a GitHub organization or a personal repository"
-    },
-    {
-      "name": "Repository Vulnerability Alert",
-      "default": null,
-      "description": "Triggered when a security alert is created, dismissed, or resolved"
-    },
-    {
-      "name": "Security Advisory",
-      "default": null,
-      "description": "Triggered when a new security advisory is published, updated, or withdrawn"
-    },
-    {
-      "name": "Star",
-      "default": null,
-      "description": "Triggered when a star is added or removed from a repository"
-    },
-    {
-      "name": "Status",
-      "default": null,
-      "description": "Triggered when the status of a Git commit changes"
-    },
-    {
-      "name": "Team",
-      "default": null,
-      "description": "Triggered when an organization's team is created, deleted, edited, added_to_repository, or removed_from_repository. Organization hooks only."
-    },
-    {
-      "name": "Team Add",
-      "default": null,
-      "description": "Triggered when a repository is added to a team"
-    },
-    {
-      "name": "Watch",
-      "default": null,
-      "description": "Triggered when someone stars a repository"
+      "default": [],
+      "description": "Any time any event is triggered (Wildcard Event)",
+      "required": true,
+      "options": [
+        {
+          "name": "*",
+          "value": "*",
+          "description": "Any time any event is triggered (Wildcard Event)"
+        },
+        {
+          "name": "Check Run",
+          "value": "check_run",
+          "description": "Triggered when a check run is created, rerequested, completed, or has a requested_action"
+        },
+        {
+          "name": "Check Suite",
+          "value": "check_suite",
+          "description": "Triggered when a check suite is completed, requested, or rerequested"
+        },
+        {
+          "name": "Commit Comment",
+          "value": "commit_comment",
+          "description": "Triggered when a commit comment is created"
+        },
+        {
+          "name": "Create",
+          "value": "create",
+          "description": "Represents a created repository, branch, or tag"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Represents a deleted branch or tag"
+        },
+        {
+          "name": "Deploy Key",
+          "value": "deploy_key",
+          "description": "Triggered when a deploy key is added or removed from a repository"
+        },
+        {
+          "name": "Deployment",
+          "value": "deployment",
+          "description": "Represents a deployment"
+        },
+        {
+          "name": "Deployment Status",
+          "value": "deployment_status",
+          "description": "Represents a deployment status"
+        },
+        {
+          "name": "Fork",
+          "value": "fork",
+          "description": "Triggered when a user forks a repository"
+        },
+        {
+          "name": "Github App Authorization",
+          "value": "github_app_authorization",
+          "description": "Triggered when someone revokes their authorization of a GitHub App"
+        },
+        {
+          "name": "Gollum",
+          "value": "gollum",
+          "description": "Triggered when a Wiki page is created or updated"
+        },
+        {
+          "name": "Installation",
+          "value": "installation",
+          "description": "Triggered when someone installs (created), uninstalls (deleted), or accepts new permissions (new_permissions_accepted) for a GitHub App. When a GitHub App owner requests new permissions, the person who installed the GitHub App must accept the new permissions request."
+        },
+        {
+          "name": "Installation Repositories",
+          "value": "installation_repositories",
+          "description": "Triggered when a repository is added or removed from an installation"
+        },
+        {
+          "name": "Issue Comment",
+          "value": "issue_comment",
+          "description": "Triggered when an issue comment is created, edited, or deleted"
+        },
+        {
+          "name": "Issues",
+          "value": "issues",
+          "description": "Triggered when an issue is opened, edited, deleted, transferred, pinned, unpinned, closed, reopened, assigned, unassigned, labeled, unlabeled, locked, unlocked, milestoned, or demilestoned"
+        },
+        {
+          "name": "Label",
+          "value": "label",
+          "description": "Triggered when a repository's label is created, edited, or deleted"
+        },
+        {
+          "name": "Marketplace Purchase",
+          "value": "marketplace_purchase",
+          "description": "Triggered when someone purchases a GitHub Marketplace plan, cancels their plan, upgrades their plan (effective immediately), downgrades a plan that remains pending until the end of the billing cycle, or cancels a pending plan change"
+        },
+        {
+          "name": "Member",
+          "value": "member",
+          "description": "Triggered when a user accepts an invitation or is removed as a collaborator to a repository, or has their permissions changed"
+        },
+        {
+          "name": "Membership",
+          "value": "membership",
+          "description": "Triggered when a user is added or removed from a team. Organization hooks only."
+        },
+        {
+          "name": "Meta",
+          "value": "meta",
+          "description": "Triggered when the webhook that this event is configured on is deleted"
+        },
+        {
+          "name": "Milestone",
+          "value": "milestone",
+          "description": "Triggered when a milestone is created, closed, opened, edited, or deleted"
+        },
+        {
+          "name": "Org Block",
+          "value": "org_block",
+          "description": "Triggered when an organization blocks or unblocks a user. Organization hooks only."
+        },
+        {
+          "name": "Organization",
+          "value": "organization",
+          "description": "Triggered when an organization is deleted and renamed, and when a user is added, removed, or invited to an organization. Organization hooks only."
+        },
+        {
+          "name": "Page Build",
+          "value": "page_build",
+          "description": "Triggered on push to a GitHub Pages enabled branch (gh-pages for project pages, master for user and organization pages)"
+        },
+        {
+          "name": "Project",
+          "value": "project",
+          "description": "Triggered when a project is created, updated, closed, reopened, or deleted"
+        },
+        {
+          "name": "Project Card",
+          "value": "project_card",
+          "description": "Triggered when a project card is created, edited, moved, converted to an issue, or deleted"
+        },
+        {
+          "name": "Project Column",
+          "value": "project_column",
+          "description": "Triggered when a project column is created, updated, moved, or deleted"
+        },
+        {
+          "name": "Public",
+          "value": "public",
+          "description": "Triggered when a private repository is open sourced"
+        },
+        {
+          "name": "Pull Request",
+          "value": "pull_request",
+          "description": "Triggered when a pull request is assigned, unassigned, labeled, unlabeled, opened, edited, closed, reopened, synchronize, ready_for_review, locked, unlocked, a pull request review is requested, or a review request is removed"
+        },
+        {
+          "name": "Pull Request Review",
+          "value": "pull_request_review",
+          "description": "Triggered when a pull request review is submitted into a non-pending state, the body is edited, or the review is dismissed"
+        },
+        {
+          "name": "Pull Request Review Comment",
+          "value": "pull_request_review_comment",
+          "description": "Triggered when a comment on a pull request's unified diff is created, edited, or deleted (in the Files Changed tab)"
+        },
+        {
+          "name": "Push",
+          "value": "push",
+          "description": "Triggered on a push to a repository branch. Branch pushes and repository tag pushes also trigger webhook push events. This is the default event."
+        },
+        {
+          "name": "Release",
+          "value": "release",
+          "description": "Triggered when a release is published, unpublished, created, edited, deleted, or prereleased"
+        },
+        {
+          "name": "Repository",
+          "value": "repository",
+          "description": "Triggered when a repository is created, archived, unarchived, renamed, edited, transferred, made public, or made private. Organization hooks are also triggered when a repository is deleted."
+        },
+        {
+          "name": "Repository Import",
+          "value": "repository_import",
+          "description": "Triggered when a successful, cancelled, or failed repository import finishes for a GitHub organization or a personal repository"
+        },
+        {
+          "name": "Repository Vulnerability Alert",
+          "value": "repository_vulnerability_alert",
+          "description": "Triggered when a security alert is created, dismissed, or resolved"
+        },
+        {
+          "name": "Security Advisory",
+          "value": "security_advisory",
+          "description": "Triggered when a new security advisory is published, updated, or withdrawn"
+        },
+        {
+          "name": "Star",
+          "value": "star",
+          "description": "Triggered when a star is added or removed from a repository"
+        },
+        {
+          "name": "Status",
+          "value": "status",
+          "description": "Triggered when the status of a Git commit changes"
+        },
+        {
+          "name": "Team",
+          "value": "team",
+          "description": "Triggered when an organization's team is created, deleted, edited, added_to_repository, or removed_from_repository. Organization hooks only."
+        },
+        {
+          "name": "Team Add",
+          "value": "team_add",
+          "description": "Triggered when a repository is added to a team"
+        },
+        {
+          "name": "Watch",
+          "value": "watch",
+          "description": "Triggered when someone stars a repository"
+        }
+      ]
     },
     {
       "name": "options",
@@ -273,7 +273,16 @@
       "type": "collection",
       "default": {},
       "description": "Whether the SSL certificate of the n8n host be verified by GitHub when delivering payloads",
-      "placeholder": "Add option"
+      "placeholder": "Add option",
+      "options": [
+        {
+          "name": "insecureSSL",
+          "displayName": "Insecure SSL",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the SSL certificate of the n8n host be verified by GitHub when delivering payloads"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -313,5 +322,19 @@
       "name": "options",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

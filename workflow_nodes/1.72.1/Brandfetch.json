@@ -8,28 +8,35 @@
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Return a company's colors"
-    },
-    {
-      "name": "Company",
-      "default": null,
-      "description": "Return a company's data"
-    },
-    {
-      "name": "Font",
-      "default": null,
-      "description": "Return a company's fonts"
-    },
-    {
-      "name": "Industry",
-      "default": null,
-      "description": "Return a company's industry"
-    },
-    {
-      "name": "Logo",
-      "default": null,
-      "description": "Return a company's logo & icon"
+      "default": "logo",
+      "description": "Return a company's colors",
+      "options": [
+        {
+          "name": "Color",
+          "value": "color",
+          "description": "Return a company's colors"
+        },
+        {
+          "name": "Company",
+          "value": "company",
+          "description": "Return a company's data"
+        },
+        {
+          "name": "Font",
+          "value": "font",
+          "description": "Return a company's fonts"
+        },
+        {
+          "name": "Industry",
+          "value": "industry",
+          "description": "Return a company's industry"
+        },
+        {
+          "name": "Logo",
+          "value": "logo",
+          "description": "Return a company's logo & icon"
+        }
+      ]
     },
     {
       "name": "domain",
@@ -45,23 +52,69 @@
       "type": "boolean",
       "default": false,
       "description": "Name of the binary property to which to write the data of the read file",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "logo"
+          ]
+        }
+      }
     },
     {
       "name": "imageTypes",
       "displayName": "Image Type",
       "type": "multiOptions",
-      "default": null
+      "default": "['logo', 'icon']",
+      "required": true,
+      "options": [
+        {
+          "name": "Icon",
+          "value": "icon"
+        },
+        {
+          "name": "Logo",
+          "value": "logo"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "logo"
+          ],
+          "download": [
+            true
+          ]
+        }
+      }
     },
     {
       "name": "imageFormats",
       "displayName": "Image Format",
       "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "SVG",
-      "default": null
+      "default": "['png']",
+      "description": "The image format in which the logo should be returned as",
+      "required": true,
+      "options": [
+        {
+          "name": "PNG",
+          "value": "png"
+        },
+        {
+          "name": "SVG",
+          "value": "svg"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "logo"
+          ],
+          "download": [
+            true
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -81,5 +134,19 @@
       "name": "imageFormats",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": []
+  }
 }

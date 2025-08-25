@@ -8,29 +8,49 @@
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
+      "default": "forum",
+      "options": [
+        {
+          "name": "Forum",
+          "value": "forum"
+        }
+      ]
     },
     {
       "name": "operation",
       "displayName": "Operation",
       "type": "options",
-      "default": null,
-      "description": "Return forum details"
-    },
-    {
-      "name": "Get All Categories",
-      "default": null,
-      "description": "Return a list of categories within a forum"
-    },
-    {
-      "name": "Get All Threads",
-      "default": null,
-      "description": "Return a list of threads within a forum"
-    },
-    {
-      "name": "Get All Posts",
-      "default": null,
-      "description": "Return a list of posts within a forum"
+      "default": "get",
+      "description": "Return forum details",
+      "options": [
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Return forum details"
+        },
+        {
+          "name": "Get All Categories",
+          "value": "getCategories",
+          "description": "Return a list of categories within a forum"
+        },
+        {
+          "name": "Get All Threads",
+          "value": "getThreads",
+          "description": "Return a list of threads within a forum"
+        },
+        {
+          "name": "Get All Posts",
+          "value": "getPosts",
+          "description": "Return a list of posts within a forum"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "forum"
+          ]
+        }
+      }
     },
     {
       "name": "id",
@@ -38,155 +58,76 @@
       "type": "string",
       "default": "",
       "description": "The short name(aka ID) of the forum to get",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "forum"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
       "displayName": "Additional Fields",
       "type": "collection",
       "default": {},
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "followsForum",
-      "default": null
-    },
-    {
-      "name": "forumCanDisableAds",
-      "default": null
-    },
-    {
-      "name": "forumDaysAlive",
-      "default": null
-    },
-    {
-      "name": "forumFeatures",
-      "default": null
-    },
-    {
-      "name": "forumForumCategory",
-      "default": null
-    },
-    {
-      "name": "forumIntegration",
-      "default": null
-    },
-    {
-      "name": "forumNewPolicy",
-      "default": null
-    },
-    {
-      "name": "forumPermissions",
-      "default": null
-    },
-    {
-      "name": "related",
-      "displayName": "Related",
-      "type": "multiOptions",
-      "default": null
+      "description": "You may specify relations to include with your response",
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "operation": [
+            "get"
+          ],
+          "resource": [
+            "forum"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "forum"
+          ],
+          "operation": [
+            "getPosts"
+          ]
+        }
+      }
     },
     {
       "name": "limit",
       "displayName": "Limit",
       "type": "number",
       "default": 100,
-      "description": "Max number of results to return"
-    },
-    {
-      "name": "Has_Link",
-      "default": null
-    },
-    {
-      "name": "Has_Low_Rep_Author",
-      "default": null
-    },
-    {
-      "name": "Has_Media",
-      "default": null
-    },
-    {
-      "name": "Is_Anonymous",
-      "default": null
-    },
-    {
-      "name": "Is_At_Flag_Limit",
-      "default": null
-    },
-    {
-      "name": "Is_Flagged",
-      "default": null
-    },
-    {
-      "name": "Is_Toxic",
-      "default": null
-    },
-    {
-      "name": "Modified_By_Rule",
-      "default": null
-    },
-    {
-      "name": "No_Issue",
-      "default": null
-    },
-    {
-      "name": "Shadow_Banned",
-      "default": null
-    },
-    {
-      "name": "include",
-      "displayName": "Include",
-      "type": "multiOptions",
-      "default": null
-    },
-    {
-      "name": "order",
-      "displayName": "Order",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "DESC",
-      "default": null
-    },
-    {
-      "name": "query",
-      "displayName": "Query",
-      "type": "string",
-      "default": "",
-      "description": "You may specify query forChoices: asc, desc your response"
-    },
-    {
-      "name": "since",
-      "displayName": "Since",
-      "type": "dateTime",
-      "default": "",
-      "description": "Unix timestamp (or ISO datetime standard)"
-    },
-    {
-      "name": "Forum",
-      "default": null
-    },
-    {
-      "name": "Open",
-      "default": null
-    },
-    {
-      "name": "Killed",
-      "default": null
-    },
-    {
-      "name": "thread",
-      "displayName": "Thread",
-      "type": "string",
-      "default": "",
-      "description": "Looks up a thread by ID. You may pass us the \"ident\" query type instead of an ID by including \"forum\". You may pass us the \"link\" query type to filter by URL. You must pass the \"forum\" if you do not have the Pro API Access addon."
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 100
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "forum"
+          ],
+          "operation": [
+            "getPosts"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     }
   ],
   "credentialsConfig": [
@@ -250,5 +191,27 @@
       "name": "since",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

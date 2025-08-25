@@ -10,7 +10,36 @@
       "type": "options",
       "default": "",
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attachment"
+          ],
+          "operation": [
+            "upload",
+            "getAll"
+          ]
+        }
+      }
+    },
+    {
+      "name": "id",
+      "displayName": "Table Record ID",
+      "type": "string",
+      "default": "",
+      "description": "Sys_id of the record in the table specified in Table Name that you want to attach the file to",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attachment"
+          ],
+          "operation": [
+            "upload"
+          ]
+        }
+      }
     },
     {
       "name": "inputDataFieldName",
@@ -18,7 +47,17 @@
       "type": "string",
       "default": "data",
       "description": "Name of the binary property that contains the data to upload",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attachment"
+          ],
+          "operation": [
+            "upload"
+          ]
+        }
+      }
     },
     {
       "name": "options",
@@ -26,7 +65,26 @@
       "type": "collection",
       "default": {},
       "description": "Name to give the attachment",
-      "placeholder": "Add Field"
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "file_name",
+          "displayName": "File Name for the Attachment",
+          "type": "string",
+          "default": "",
+          "description": "Name to give the attachment"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attachment"
+          ],
+          "operation": [
+            "upload"
+          ]
+        }
+      }
     },
     {
       "name": "attachmentId",
@@ -34,85 +92,133 @@
       "type": "string",
       "default": "",
       "description": "Sys_id value of the attachment to delete",
-      "required": true
-    },
-    {
-      "name": "limit",
-      "displayName": "Limit",
-      "type": "number",
-      "default": 50,
-      "description": "Max number of results to return"
-    },
-    {
-      "name": "download",
-      "displayName": "Download Attachments",
-      "type": "boolean",
-      "default": false,
-      "required": true
-    },
-    {
-      "name": "outputField",
-      "displayName": "Output Field",
-      "type": "string",
-      "default": "data",
-      "description": "Field name where downloaded data will be placed"
-    },
-    {
-      "name": "operation",
-      "displayName": "Operation",
-      "type": "options",
-      "default": null,
-      "description": "Upload an attachment to a specific table record"
-    },
-    {
-      "name": "Delete",
-      "default": null,
-      "description": "Delete an attachment"
-    },
-    {
-      "name": "Get",
-      "default": null,
-      "description": "Get an attachment"
-    },
-    {
-      "name": "Get Many",
-      "default": null,
-      "description": "Get many attachments on a table"
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attachment"
+          ],
+          "operation": [
+            "delete"
+          ]
+        }
+      }
     },
     {
       "name": "returnAll",
       "displayName": "Return All",
       "type": "boolean",
       "default": false,
-      "description": "Whether to return all results or only up to a given limit"
+      "description": "Whether to return all results or only up to a given limit",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attachment"
+          ],
+          "operation": [
+            "getAll"
+          ]
+        }
+      }
     },
     {
-      "name": "sysparm_fields",
-      "displayName": "Field Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "A list of fields to return. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
+      "name": "limit",
+      "displayName": "Limit",
+      "type": "number",
+      "default": 50,
+      "description": "Max number of results to return",
+      "typeOptions": {
+        "minValue": 1,
+        "maxValue": 500
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attachment"
+          ],
+          "operation": [
+            "getAll"
+          ],
+          "returnAll": [
+            false
+          ]
+        }
+      }
     },
     {
-      "name": "sysparm_query",
-      "displayName": "Filter",
+      "name": "download",
+      "displayName": "Download Attachments",
+      "type": "boolean",
+      "default": false,
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attachment"
+          ],
+          "operation": [
+            "get",
+            "getAll"
+          ]
+        }
+      }
+    },
+    {
+      "name": "outputField",
+      "displayName": "Output Field",
       "type": "string",
-      "default": "",
-      "description": "An encoded query string used to filter the results. <a href=\"https://developer.servicenow.com/dev.do#!/learn/learning-plans/quebec/servicenow_application_developer/app_store_learnv2_rest_quebec_more_about_query_parameters\">More info</a>."
+      "default": "data",
+      "description": "Field name where downloaded data will be placed",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attachment"
+          ],
+          "operation": [
+            "get",
+            "getAll"
+          ],
+          "download": [
+            true
+          ]
+        }
+      }
     },
     {
-      "name": "sysparm_display_value",
-      "displayName": "Return Values",
+      "name": "operation",
+      "displayName": "Operation",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Both",
-      "default": null
-    },
-    {
-      "name": "Display Values",
-      "default": null
+      "default": "upload",
+      "description": "Upload an attachment to a specific table record",
+      "options": [
+        {
+          "name": "Upload",
+          "value": "upload",
+          "description": "Upload an attachment to a specific table record"
+        },
+        {
+          "name": "Delete",
+          "value": "delete",
+          "description": "Delete an attachment"
+        },
+        {
+          "name": "Get",
+          "value": "get",
+          "description": "Get an attachment"
+        },
+        {
+          "name": "Get Many",
+          "value": "getAll",
+          "description": "Get many attachments on a table"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "attachment"
+          ]
+        }
+      }
     },
     {
       "name": "short_description",
@@ -120,7 +226,17 @@
       "type": "string",
       "default": "",
       "description": "Short description of the incident",
-      "required": true
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "incident"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "additionalFields",
@@ -128,123 +244,17 @@
       "type": "collection",
       "default": {},
       "description": "Which user is the incident assigned to. Requires the selection of an assignment group. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "assignment_group",
-      "displayName": "Assignment Group Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "The assignment group of the incident. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "business_service",
-      "displayName": "Business Service Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>"
-    },
-    {
-      "name": "caller_id",
-      "displayName": "Caller ID",
-      "type": "string",
-      "default": "",
-      "description": "The unique identifier of the caller of the incident"
-    },
-    {
-      "name": "category",
-      "displayName": "Category Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "The category of the incident. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "close_notes",
-      "displayName": "Close Notes",
-      "type": "string",
-      "default": "",
-      "description": "The close notes for the incident"
-    },
-    {
-      "name": "cmdb_ci",
-      "displayName": "Configuration Item Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Configuration Items, 'cmdb_ci' in metadata. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "contact_type",
-      "displayName": "Contact Type",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Phone",
-      "default": null
-    },
-    {
-      "name": "Self Service",
-      "default": null
-    },
-    {
-      "name": "Walk In",
-      "default": null
-    },
-    {
-      "name": "description",
-      "displayName": "Description",
-      "type": "string",
-      "default": "",
-      "description": "The description of the incident"
-    },
-    {
-      "name": "impact",
-      "displayName": "Impact",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "Medium",
-      "default": null
-    },
-    {
-      "name": "High",
-      "default": null
-    },
-    {
-      "name": "close_code",
-      "displayName": "Resolution Code Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "The resolution code of the incident, 'close_code' in metadata. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "state",
-      "displayName": "State Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "The state of the incident. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "subcategory",
-      "displayName": "Subcategory Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "The subcategory of the incident. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "urgency",
-      "displayName": "Urgency",
-      "type": "options",
-      "default": null
-    },
-    {
-      "name": "id",
-      "displayName": "Incident ID",
-      "type": "string",
-      "default": "",
-      "description": "Unique identifier of the incident",
-      "required": true
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "incident"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "updateFields",
@@ -252,49 +262,71 @@
       "type": "collection",
       "default": {},
       "description": "Which user is the incident assigned to. Requires the selection of an assignment group. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>.",
-      "placeholder": "Add Field"
-    },
-    {
-      "name": "hold_reason",
-      "displayName": "On Hold Reason Name or ID",
-      "type": "options",
-      "default": "",
-      "description": "The on hold reason for the incident. It applies if the state is <code>On Hold</code>. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "work_notes",
-      "displayName": "Work Notes",
-      "type": "string",
-      "default": "",
-      "description": "Work notes for the incident"
-    },
-    {
-      "name": "Update",
-      "default": null
+      "placeholder": "Add Field",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "incident"
+          ],
+          "operation": [
+            "update"
+          ]
+        }
+      }
     },
     {
       "name": "dataToSend",
       "displayName": "Data to Send",
       "type": "options",
-      "default": null,
-      "description": "Use when node input names match destination field names"
-    },
-    {
-      "name": "Define Below for Each Column",
-      "default": null,
-      "description": "Set the value for each destination column"
-    },
-    {
-      "name": "Nothing",
-      "default": null,
-      "description": "Don't send any column data"
+      "default": "columns",
+      "description": "Use when node input names match destination field names",
+      "options": [
+        {
+          "name": "Auto-Map Input Data to Columns",
+          "value": "mapInput",
+          "description": "Use when node input names match destination field names"
+        },
+        {
+          "name": "Define Below for Each Column",
+          "value": "columns",
+          "description": "Set the value for each destination column"
+        },
+        {
+          "name": "Nothing",
+          "value": "nothing",
+          "description": "Don't send any column data"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "tableRecord"
+          ],
+          "operation": [
+            "create"
+          ]
+        }
+      }
     },
     {
       "name": "inputsToIgnore",
       "displayName": "Inputs to Ignore",
       "type": "string",
       "default": "",
-      "description": "List of input properties to avoid sending, separated by commas. Leave empty to send all inputs."
+      "description": "List of input properties to avoid sending, separated by commas. Leave empty to send all inputs.",
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "tableRecord"
+          ],
+          "operation": [
+            "create"
+          ],
+          "dataToSend": [
+            "mapInput"
+          ]
+        }
+      }
     },
     {
       "name": "fieldsToSend",
@@ -302,229 +334,137 @@
       "type": "fixedCollection",
       "default": {},
       "description": "Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>",
-      "placeholder": "Add field to send"
+      "placeholder": "Add field to send",
+      "typeOptions": {
+        "multipleValues": true
+      },
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "tableRecord"
+          ],
+          "operation": [
+            "create"
+          ],
+          "dataToSend": [
+            "columns"
+          ]
+        }
+      }
     },
     {
-      "name": "value",
-      "displayName": "Field Value",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "building",
-      "displayName": "Building",
-      "type": "string",
-      "default": "",
-      "description": "The Building address"
-    },
-    {
-      "name": "city",
-      "displayName": "City",
-      "type": "string",
-      "default": "",
-      "description": "City of the user"
-    },
-    {
-      "name": "company",
-      "displayName": "Company",
-      "type": "string",
-      "default": "",
-      "description": "The name of the company for the user"
-    },
-    {
-      "name": "country",
-      "displayName": "Country",
-      "type": "string",
-      "default": "",
-      "description": "Country of the user"
-    },
-    {
-      "name": "department",
-      "displayName": "Department",
-      "type": "string",
-      "default": "",
-      "description": "Department of the user"
-    },
-    {
-      "name": "email",
-      "displayName": "Email",
-      "type": "string",
-      "default": "",
-      "description": "The email address associated with the user",
-      "placeholder": "name@email.com"
-    },
-    {
-      "name": "first_name",
-      "displayName": "First Name",
-      "type": "string",
-      "default": "",
-      "description": "The first name of the user"
-    },
-    {
-      "name": "gender",
-      "displayName": "Gender",
-      "type": "string",
-      "default": "",
-      "description": "The gender of the user"
-    },
-    {
-      "name": "home_phone",
-      "displayName": "Home Phone",
-      "type": "string",
-      "default": "",
-      "description": "Home phone of the user"
-    },
-    {
-      "name": "last_name",
-      "displayName": "Last Name",
-      "type": "string",
-      "default": "",
-      "description": "The last name of the user"
-    },
-    {
-      "name": "location",
-      "displayName": "Location",
-      "type": "string",
-      "default": "",
-      "description": "Location of the user"
-    },
-    {
-      "name": "manager",
-      "displayName": "Manager",
-      "type": "string",
-      "default": "",
-      "description": "Manager of the user"
-    },
-    {
-      "name": "middle_name",
-      "displayName": "Middle Name",
-      "type": "string",
-      "default": "",
-      "description": "The middle name of the user"
-    },
-    {
-      "name": "mobile_phone",
-      "displayName": "Mobile Phone",
-      "type": "string",
-      "default": "",
-      "description": "Mobile phone number of the user"
-    },
-    {
-      "name": "user_password",
-      "displayName": "Password",
-      "type": "string",
-      "default": "",
-      "description": "The user's password"
-    },
-    {
-      "name": "password_needs_reset",
-      "displayName": "Password Needs Reset",
-      "type": "boolean",
-      "default": false,
-      "description": "Whether to require a password reset when the user logs in"
-    },
-    {
-      "name": "phone",
-      "displayName": "Phone",
-      "type": "string",
-      "default": "",
-      "description": "The main phone number of the user"
-    },
-    {
-      "name": "roles",
-      "displayName": "Role Names or IDs",
-      "type": "multiOptions",
-      "default": [],
-      "description": "Roles of the user. Choose from the list, or specify IDs using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
-    },
-    {
-      "name": "source",
-      "displayName": "Source",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "street",
-      "displayName": "Street",
-      "type": "string",
-      "default": "",
-      "description": "Street information for the user separated by comma"
+      "name": "getOption",
+      "displayName": "Retrieve Identifier",
+      "type": "options",
+      "default": "id",
+      "description": "Unique identifier of the user",
+      "required": true,
+      "options": [
+        {
+          "name": "ID",
+          "value": "id"
+        },
+        {
+          "name": "Username",
+          "value": "user_name"
+        }
+      ],
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "get"
+          ]
+        }
+      }
     },
     {
       "name": "user_name",
       "displayName": "Username",
       "type": "string",
       "default": "",
-      "description": "A username associated with the user (e.g. user_name.123)"
-    },
-    {
-      "name": "zip",
-      "displayName": "Zip Code",
-      "type": "string",
-      "default": "",
-      "description": "Zip code for the user"
-    },
-    {
-      "name": "getOption",
-      "displayName": "Retrieve Identifier",
-      "type": "options",
-      "default": "id"
-    },
-    {
-      "name": "Username",
-      "default": null
+      "description": "Unique identifier of the user",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "resource": [
+            "user"
+          ],
+          "operation": [
+            "get"
+          ],
+          "getOption": [
+            "user_name"
+          ]
+        }
+      }
     },
     {
       "name": "authentication",
       "displayName": "Authentication",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "OAuth2",
-      "default": null
+      "default": "oAuth2",
+      "description": "Authentication method to use",
+      "options": [
+        {
+          "name": "Basic Auth",
+          "value": "basicAuth"
+        },
+        {
+          "name": "OAuth2",
+          "value": "oAuth2"
+        }
+      ]
     },
     {
       "name": "resource",
       "displayName": "Resource",
       "type": "options",
-      "default": null
-    },
-    {
-      "name": "Business Service",
-      "default": null
-    },
-    {
-      "name": "Configuration Item",
-      "default": null
-    },
-    {
-      "name": "Department",
-      "default": null
-    },
-    {
-      "name": "Dictionary",
-      "default": null
-    },
-    {
-      "name": "Incident",
-      "default": null
-    },
-    {
-      "name": "Table Record",
-      "default": null
-    },
-    {
-      "name": "User",
-      "default": null
-    },
-    {
-      "name": "User Group",
-      "default": null
-    },
-    {
-      "name": "User Role",
-      "default": null
+      "default": "user",
+      "options": [
+        {
+          "name": "Attachment",
+          "value": "attachment"
+        },
+        {
+          "name": "Business Service",
+          "value": "businessService"
+        },
+        {
+          "name": "Configuration Item",
+          "value": "configurationItems"
+        },
+        {
+          "name": "Department",
+          "value": "department"
+        },
+        {
+          "name": "Dictionary",
+          "value": "dictionary"
+        },
+        {
+          "name": "Incident",
+          "value": "incident"
+        },
+        {
+          "name": "Table Record",
+          "value": "tableRecord"
+        },
+        {
+          "name": "User",
+          "value": "user"
+        },
+        {
+          "name": "User Group",
+          "value": "userGroup"
+        },
+        {
+          "name": "User Role",
+          "value": "userRole"
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -540,5 +480,27 @@
       "name": "resource",
       "required": false
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }

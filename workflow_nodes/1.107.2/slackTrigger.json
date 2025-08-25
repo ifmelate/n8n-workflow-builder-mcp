@@ -1,0 +1,175 @@
+{
+  "nodeType": "n8n-nodes-base.slackTrigger",
+  "displayName": "Slack Trigger",
+  "description": "Handle Slack events via webhooks",
+  "version": 1,
+  "properties": [
+    {
+      "name": "authentication",
+      "displayName": "Authentication",
+      "type": "hidden",
+      "default": "accessToken"
+    },
+    {
+      "name": "notice",
+      "displayName": "Set up a webhook in your Slack app to enable this node. <a href=\"https://docs.n8n.io/integrations/builtin/trigger-nodes/n8n-nodes-base.slacktrigger/#configure-a-webhook-in-slack\" target=\"_blank\">More info</a>. We also recommend setting up a <a href=\"https://docs.n8n.io/integrations/builtin/trigger-nodes/n8n-nodes-base.slacktrigger/#verify-the-webhook\" target=\"_blank\">signing secret</a> to ensure the authenticity of requests.",
+      "type": "notice",
+      "default": ""
+    },
+    {
+      "name": "trigger",
+      "displayName": "Trigger On",
+      "type": "multiOptions",
+      "default": [],
+      "description": "Triggers on any event",
+      "options": [
+        {
+          "name": "Any Event",
+          "value": "any_event",
+          "description": "Triggers on any event"
+        },
+        {
+          "name": "Bot / App Mention",
+          "value": "app_mention",
+          "description": "When your bot or app is mentioned in a channel the app is added to"
+        },
+        {
+          "name": "File Made Public",
+          "value": "file_public",
+          "description": "When a file is made public"
+        },
+        {
+          "name": "File Shared",
+          "value": "file_share",
+          "description": "When a file is shared in a channel the app is added to"
+        },
+        {
+          "name": "New Message Posted to Channel",
+          "value": "message",
+          "description": "When a message is posted to a channel the app is added to"
+        },
+        {
+          "name": "New Public Channel Created",
+          "value": "channel_created",
+          "description": "When a new public channel is created"
+        },
+        {
+          "name": "New User",
+          "value": "team_join",
+          "description": "When a new user is added to Slack"
+        },
+        {
+          "name": "Reaction Added",
+          "value": "reaction_added",
+          "description": "When a reaction is added to a message the app is added to"
+        }
+      ]
+    },
+    {
+      "name": "watchWorkspace",
+      "displayName": "Watch Whole Workspace",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to watch for the event in the whole workspace, rather than a specific channel",
+      "displayOptions": {
+        "show": {
+          "trigger": [
+            "any_event",
+            "message",
+            "reaction_added",
+            "file_share",
+            "app_mention"
+          ]
+        }
+      }
+    },
+    {
+      "name": "channelId",
+      "displayName": "Channel to Watch",
+      "type": "resourceLocator",
+      "default": "{ mode: 'list', value: '' }",
+      "description": "The Slack channel to listen to events from. Applies to events: Bot/App mention, File Shared, New Message Posted on Channel, Reaction Added.",
+      "placeholder": "Select a channel...",
+      "required": true,
+      "displayOptions": {
+        "show": {
+          "watchWorkspace": [
+            false
+          ]
+        }
+      }
+    },
+    {
+      "name": "downloadFiles",
+      "displayName": "Download Files",
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to download the files and add it to the output",
+      "displayOptions": {
+        "show": {
+          "trigger": [
+            "any_event",
+            "file_share"
+          ]
+        }
+      }
+    },
+    {
+      "name": "options",
+      "displayName": "Options",
+      "type": "collection",
+      "default": {},
+      "description": "Whether to resolve the IDs to their respective names and return them",
+      "placeholder": "Add Field",
+      "options": [
+        {
+          "name": "resolveIds",
+          "displayName": "Resolve IDs",
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to resolve the IDs to their respective names and return them"
+        }
+      ]
+    }
+  ],
+  "credentialsConfig": [
+    {
+      "name": "slackApi",
+      "required": true
+    },
+    {
+      "name": "authentication",
+      "required": false
+    },
+    {
+      "name": "watchWorkspace",
+      "required": true
+    },
+    {
+      "name": "url",
+      "required": false
+    },
+    {
+      "name": "downloadFiles",
+      "required": false
+    }
+  ],
+  "io": {
+    "inputs": [],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [],
+    "produces": [
+      "Main"
+    ]
+  }
+}

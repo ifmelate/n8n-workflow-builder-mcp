@@ -51,14 +51,20 @@
       "displayName": "Text",
       "type": "string",
       "default": "",
-      "description": "Plain text message of email"
+      "description": "Plain text message of email",
+      "typeOptions": {
+        "rows": 5
+      }
     },
     {
       "name": "html",
       "displayName": "HTML",
       "type": "string",
       "default": "",
-      "description": "HTML text message of email"
+      "description": "HTML text message of email",
+      "typeOptions": {
+        "rows": 5
+      }
     },
     {
       "name": "attachments",
@@ -77,5 +83,27 @@
       "name": "fromEmail",
       "required": true
     }
-  ]
+  ],
+  "io": {
+    "inputs": [
+      "Main"
+    ],
+    "outputs": [
+      "Main"
+    ],
+    "outputNames": [],
+    "hints": {}
+  },
+  "wiring": {
+    "role": "generic",
+    "requires": [],
+    "optional": [],
+    "consumedBy": [],
+    "consumes": [
+      "Main"
+    ],
+    "produces": [
+      "Main"
+    ]
+  }
 }
