@@ -43,3 +43,31 @@ export async function ensureWorkflowDir(): Promise<void> {
 }
 
 
+// Best-effort workspace autodetection when a tool receives only workflow_name
+// Tries common environment-provided working directories and, if a matching
+// workflow file is found, updates the global WORKSPACE_DIR accordingly.
+export async function tryDetectWorkspaceForName(workflowName: string): Promise<string | null> {
+    const sanitizedName = workflowName.replace(/[^a-z0-9_.-]/gi, '_');
+    const candidates: Array<string | undefined> = [
+        process.env.INIT_CWD,
+        process.env.PWD,
+    ];
+
+    for (const dir of candidates) {
+        if (!dir) continue;
+        try {
+            const absDir = path.resolve(dir);
+            const candidateFile = path.join(absDir, WORKFLOW_DATA_DIR_NAME, `${sanitizedName}.json`);
+            const stat = await fs.stat(candidateFile).catch(() => null);
+            if (stat && stat.isFile()) {
+                setWorkspaceDir(absDir);
+                return candidateFile;
+            }
+        } catch {
+            // ignore and continue
+        }
+    }
+    return null;
+}
+
+

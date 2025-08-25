@@ -43,15 +43,22 @@ function normalizeNodeTypeAndVersion(inputType, inputVersion) {
         finalTypeVersion = Number(inputVersion);
     }
     else {
-        if (Array.isArray(versionSource)) {
-            const numericVersions = versionSource.map(v => Number(v)).filter(v => !isNaN(v));
-            finalTypeVersion = numericVersions.length > 0 ? Math.max(...numericVersions) : 1;
+        // Choose the highest version we know for the node. If running under a specific
+        // n8n version with known supported nodes, clamp to the highest compatible one.
+        const preferredMax = Array.isArray(versionSource)
+            ? Math.max(...versionSource.map(v => Number(v)).filter(v => !isNaN(v)))
+            : Number(versionSource);
+        let candidate = Number.isFinite(preferredMax) ? preferredMax : 1;
+        const info = (0, versioning_1.getN8nVersionInfo)();
+        const supported = info?.supportedNodes.get((nodeInfoCache.get(lowerInputType)?.officialType) || finalNodeType);
+        if (supported && supported.size > 0) {
+            // pick the highest supported version <= candidate
+            const supportedList = Array.from(supported).map(v => Number(v)).filter(v => !isNaN(v));
+            supportedList.sort((a, b) => b - a);
+            const matched = supportedList.find(v => v <= candidate) ?? supportedList[0];
+            candidate = matched ?? candidate;
         }
-        else {
-            finalTypeVersion = Number(versionSource);
-        }
-        if (isNaN(finalTypeVersion))
-            finalTypeVersion = 1;
+        finalTypeVersion = Number.isFinite(candidate) ? candidate : 1;
     }
     return { finalNodeType, finalTypeVersion };
 }
@@ -116,13 +123,19 @@ async function loadNodesFromDirectory(directory) {
                     const nodeDefinition = JSON.parse(fileContent);
                     if (nodeDefinition.nodeType) {
                         const officialType = nodeDefinition.nodeType;
-                        const version = nodeDefinition.version || 1;
-                        nodeInfoCache.set(officialType.toLowerCase(), { officialType, version });
+                        // Normalize stored version to a number where possible to align with compatibility checks
+                        const rawVersion = nodeDefinition.version ?? 1;
+                        const normalizedVersion = Array.isArray(rawVersion)
+                            ? rawVersion
+                                .map((v) => typeof v === 'number' ? v : parseFloat(String(v)))
+                                .filter((v) => !Number.isNaN(v))
+                            : (typeof rawVersion === 'number' ? rawVersion : parseFloat(String(rawVersion)));
+                        nodeInfoCache.set(officialType.toLowerCase(), { officialType, version: normalizedVersion });
                         const prefix = "n8n-nodes-base.";
                         if (officialType.startsWith(prefix)) {
                             const baseName = officialType.substring(prefix.length);
                             if (baseName)
-                                nodeInfoCache.set(baseName.toLowerCase(), { officialType, version });
+                                nodeInfoCache.set(baseName.toLowerCase(), { officialType, version: normalizedVersion });
                         }
                     }
                 }

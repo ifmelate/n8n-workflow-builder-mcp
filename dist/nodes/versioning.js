@@ -63,9 +63,13 @@ async function initializeN8nVersionSupport() {
                         const nodeDefinition = JSON.parse(nodeContent);
                         if (nodeDefinition.nodeType && nodeDefinition.version) {
                             const nodeType = nodeDefinition.nodeType;
-                            const versions = Array.isArray(nodeDefinition.version)
+                            // Normalize version(s) to numbers (n8n JSON sometimes stores them as strings like "4.2")
+                            const rawVersions = Array.isArray(nodeDefinition.version)
                                 ? nodeDefinition.version
                                 : [nodeDefinition.version];
+                            const versions = rawVersions
+                                .map((v) => typeof v === 'number' ? v : parseFloat(String(v)))
+                                .filter((v) => !Number.isNaN(v));
                             if (!supportedNodes.has(nodeType)) {
                                 supportedNodes.set(nodeType, new Set());
                             }
