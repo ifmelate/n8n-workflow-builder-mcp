@@ -107,7 +107,24 @@
             "detectEntities"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "text"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "detectSentiment",
+            "detectEntities"
+          ]
+        }
+      ]
     },
     {
       "name": "text",
@@ -121,7 +138,16 @@
             "text"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "text"
+          ]
+        }
+      ]
     },
     {
       "name": "simple",
@@ -138,7 +164,23 @@
             "detectDominantLanguage"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "text"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "detectDominantLanguage"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -165,7 +207,26 @@
             "detectEntities"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "endpointArn": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "text"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "detectEntities"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -211,5 +272,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

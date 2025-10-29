@@ -20,7 +20,16 @@
             3
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "version",
+          "values": [
+            3
+          ]
+        }
+      ]
     },
     {
       "name": "projectId",
@@ -35,7 +44,16 @@
             3
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "version",
+          "values": [
+            3
+          ]
+        }
+      ]
     },
     {
       "name": "table",
@@ -51,7 +69,17 @@
             3
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "version",
+          "values": [
+            2,
+            3
+          ]
+        }
+      ]
     },
     {
       "name": "primaryKey",
@@ -87,7 +115,25 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "version",
+          "values": [
+            1,
+            2
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "customPrimaryKey",
@@ -108,7 +154,32 @@
             "custom"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "version",
+          "values": [
+            1,
+            2
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete",
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "primaryKey",
+          "values": [
+            "custom"
+          ]
+        }
+      ]
     },
     {
       "name": "id",
@@ -129,7 +200,26 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "version",
+          "values": [
+            1,
+            2
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete",
+            "get",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -143,7 +233,16 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -164,7 +263,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "downloadAttachments",
@@ -178,7 +293,16 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "downloadFieldNames",
@@ -196,7 +320,23 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "downloadAttachments",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -221,7 +361,19 @@
             "getAll"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "viewId": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "dataToSend",
@@ -248,7 +400,17 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "info",
@@ -261,7 +423,16 @@
             "autoMapInputData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "dataToSend",
+          "values": [
+            "autoMapInputData"
+          ]
+        }
+      ]
     },
     {
       "name": "inputsToIgnore",
@@ -280,7 +451,24 @@
             "autoMapInputData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "dataToSend",
+          "values": [
+            "autoMapInputData"
+          ]
+        }
+      ]
     },
     {
       "name": "fieldsUi",
@@ -302,7 +490,28 @@
             "defineBelow"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fieldName": "",
+        "binaryData": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "dataToSend",
+          "values": [
+            "defineBelow"
+          ]
+        }
+      ]
     },
     {
       "name": "authentication",
@@ -345,7 +554,16 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -398,7 +616,16 @@
             "row"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "row"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -456,5 +683,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

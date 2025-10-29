@@ -37,6 +37,7 @@ export interface INodePropertyDescription {
     default?: unknown;
     required?: boolean;
     displayOptions?: unknown;
+    visibilityRulesNormalized?: Array<{ effect: 'show' | 'hide'; key: string; values: unknown[] }>;
     options?: Array<{ name: string; value: unknown }>;
     typeOptions?: Record<string, unknown>;
 }
@@ -132,6 +133,10 @@ function applyDefaultParameters(node: INode, nodeType: INodeType) {
         const isRequiredResourceLocator = prop.required === true && String(prop.type || '').toLowerCase() === 'resourcelocator';
         if (isRequiredResourceLocator) continue;
 
+        const isVisible = evaluateDisplayOptions(prop.displayOptions, node.parameters || {}) &&
+            evaluateVisibilityRulesNormalized(prop.visibilityRulesNormalized as any, node.parameters || {}, node.typeVersion);
+        if (!isVisible) continue;
+
         if (!(name in (node.parameters || {})) && Object.prototype.hasOwnProperty.call(prop, 'default')) {
             node.parameters[name] = prop.default as any;
         }
@@ -176,6 +181,51 @@ function evaluateDisplayOptions(displayOptions: unknown, params: INodeParameters
     return true;
 }
 
+// Evaluate normalized visibility rules found in node JSONs (preferred over raw displayOptions)
+function evaluateVisibilityRulesNormalized(
+    rules: Array<{ effect: 'show' | 'hide'; key: string; values: unknown[] }> | undefined,
+    params: INodeParameters,
+    nodeTypeVersion?: number,
+): boolean {
+    if (!Array.isArray(rules) || rules.length === 0) return true;
+
+    const getValue = (key: string): unknown => {
+        if (!key) return undefined;
+        if (key === '@version') return nodeTypeVersion;
+        const normalized = key.startsWith('/') ? key.slice(1) : key;
+        return (params as any)[normalized];
+    };
+
+    const showRules = rules.filter((r) => r && r.effect === 'show');
+    const hideRules = rules.filter((r) => r && r.effect === 'hide');
+
+    const toComparable = (x: unknown): unknown => {
+        if (typeof x === 'number') return x;
+        const n = parseFloat(String(x));
+        return Number.isNaN(n) ? x : n;
+    };
+
+    const matches = (key: string, expected: unknown[]): boolean => {
+        const val = getValue(key);
+        const candidates = Array.isArray(val) ? val : [val];
+        const lhs = candidates.map(toComparable);
+        const rhs = (expected || []).map(toComparable);
+        return lhs.some((v) => rhs.some((e) => e === v));
+    };
+
+    if (showRules.length > 0) {
+        for (const r of showRules) {
+            if (!matches(r.key, r.values || [])) return false;
+        }
+    }
+
+    for (const r of hideRules) {
+        if (matches(r.key, r.values || [])) return false;
+    }
+
+    return true;
+}
+
 export type NodeValidationIssue = {
     code: string;
     message: string;
@@ -186,10 +236,11 @@ export function validateNodeAgainstDefinition(node: INode, nodeType: INodeType):
     const issues: NodeValidationIssue[] = [];
     const properties = nodeType.description?.properties || [];
 
-    // required parameters (respect simple displayOptions)
+    // required parameters (respect simple displayOptions and normalized visibility)
     for (const prop of properties) {
         if (!prop.required) continue;
-        const visible = evaluateDisplayOptions(prop.displayOptions, node.parameters || {});
+        const visible = evaluateDisplayOptions(prop.displayOptions, node.parameters || {}) &&
+            evaluateVisibilityRulesNormalized(prop.visibilityRulesNormalized, node.parameters || {}, node.typeVersion);
         if (!visible) continue;
         const value = (node.parameters || {})[prop.name];
         if (isEmpty(value)) {
@@ -197,10 +248,11 @@ export function validateNodeAgainstDefinition(node: INode, nodeType: INodeType):
         }
     }
 
-    // fixedCollection option validation
+    // fixedCollection option validation (respect visibility)
     for (const prop of properties) {
         if (prop.type !== 'fixedCollection') continue;
-        const visible = evaluateDisplayOptions(prop.displayOptions, node.parameters || {});
+        const visible = evaluateDisplayOptions(prop.displayOptions, node.parameters || {}) &&
+            evaluateVisibilityRulesNormalized(prop.visibilityRulesNormalized, node.parameters || {}, node.typeVersion);
         if (!visible) continue;
         const value = (node.parameters || {})[prop.name] as Record<string, unknown> | undefined;
         if (value === undefined) continue;
@@ -450,19 +502,47 @@ export function validateAndNormalizeWorkflow(
     let startNode: string | undefined;
     const incomingMain = new Set<string>(Object.keys(connectionsByDestination).filter((k) => (connectionsByDestination[k] || {}).hasOwnProperty('main')));
 
+    // Helper: identify trigger-like node types (webhook, explicit *trigger*, schedule/cron)
+    const isTriggerType = (t: string): boolean => {
+        const tl = String(t || '').toLowerCase();
+        return tl.includes('trigger') || tl.includes('webhook') || tl.includes('schedule') || tl.includes('cron');
+    };
+
     // Prefer explicit trigger nodes as start when present
     const triggerCandidates = Object.keys(nodesByName)
-        .filter((n) => String((nodesByName[n]?.type || '')).toLowerCase().includes('trigger') && nodesByName[n].disabled !== true);
+        .filter((n) => isTriggerType(nodesByName[n]?.type) && nodesByName[n].disabled !== true);
     if (triggerCandidates.length > 0) {
-        // Prefer chatTrigger if multiple
-        const chatTrigger = triggerCandidates.find((n) => String((nodesByName[n]?.type || '')).toLowerCase().includes('chattrigger'));
-        startNode = chatTrigger || triggerCandidates[0];
+        // Prefer chatTrigger, then webhook, then first
+        const preferChat = triggerCandidates.find((n) => String((nodesByName[n]?.type || '')).toLowerCase().includes('chattrigger'));
+        const preferWebhook = triggerCandidates.find((n) => String((nodesByName[n]?.type || '')).toLowerCase().includes('webhook'));
+        startNode = preferChat || preferWebhook || triggerCandidates[0];
     }
 
+    // Helper: does a node have at least one outgoing main connection?
+    const hasOutgoingMain = (name: string): boolean => {
+        const byType = connectionsBySource[name] || {};
+        const groups = (byType as any).main || [];
+        for (const group of groups || []) {
+            for (const conn of group || []) {
+                if (conn) return true;
+            }
+        }
+        return false;
+    };
+
     if (!startNode) {
-        // Fallback: pick a head to continue connectivity analysis
+        // Fallback: choose a head with no incoming main AND with outgoing main
         for (const name of Object.keys(nodesByName)) {
-            if (!incomingMain.has(name) && nodesByName[name].disabled !== true) {
+            if (!incomingMain.has(name) && nodesByName[name].disabled !== true && hasOutgoingMain(name)) {
+                startNode = name;
+                break;
+            }
+        }
+    }
+    if (!startNode) {
+        // Secondary fallback: any node that has outgoing main
+        for (const name of Object.keys(nodesByName)) {
+            if (nodesByName[name].disabled !== true && hasOutgoingMain(name)) {
                 startNode = name;
                 break;
             }
@@ -509,6 +589,24 @@ export class SimpleNodeTypes implements INodeTypes {
         const key = candidates[0];
         return key ? this.registry.get(key) : undefined;
     }
+}
+
+
+/**
+ * Helper: collect missing required parameter names per node from a ValidationReport
+ */
+export function collectMissingParameters(report: ValidationReport): Record<string, string[]> {
+    const out: Record<string, string[]> = {};
+    if (!report.nodeIssues) return out;
+    for (const [nodeName, issues] of Object.entries(report.nodeIssues)) {
+        for (const issue of issues || []) {
+            if (issue.code === 'missing_parameter' && issue.property) {
+                if (!out[nodeName]) out[nodeName] = [];
+                out[nodeName].push(issue.property);
+            }
+        }
+    }
+    return out;
 }
 
 

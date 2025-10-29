@@ -80,7 +80,11 @@
       "typeOptions": {
         "multipleValues": true
       },
-      "displayOptions": "{\n\t\t\t\t\tshow: { '@version': [{ _cnd: { gte: 1.1 }"
+      "displayOptions": "{\n\t\t\t\t\tshow: { '@version': [{ _cnd: { gte: 1.1 }",
+      "structureTemplate": {
+        "name": "",
+        "type": null
+      }
     }
   ],
   "credentialsConfig": [],
@@ -101,5 +105,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

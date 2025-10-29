@@ -67,7 +67,16 @@
             "formSubscribe"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "formSubscribe"
+          ]
+        }
+      ]
     },
     {
       "name": "courseId",
@@ -83,7 +92,17 @@
             "courseComplete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "courseSubscribe",
+            "courseComplete"
+          ]
+        }
+      ]
     },
     {
       "name": "link",
@@ -98,7 +117,16 @@
             "linkClick"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "linkClick"
+          ]
+        }
+      ]
     },
     {
       "name": "productId",
@@ -112,7 +140,16 @@
             "productPurchase"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "productPurchase"
+          ]
+        }
+      ]
     },
     {
       "name": "tagId",
@@ -128,7 +165,17 @@
             "tagRemove"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "tagAdd",
+            "tagRemove"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -166,5 +213,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

@@ -19,7 +19,23 @@
             "contact"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -37,7 +53,31 @@
             "contact"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "city": "",
+        "country_id": null,
+        "state_id": null,
+        "street": "",
+        "street2": "",
+        "zip": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        }
+      ]
     },
     {
       "name": "contactId",
@@ -55,7 +95,24 @@
             "contact"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -72,7 +129,23 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -96,7 +169,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -115,7 +211,24 @@
             "contact"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll",
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -133,7 +246,31 @@
             "contact"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "city": "",
+        "country_id": null,
+        "state_id": null,
+        "street": "",
+        "street2": "",
+        "zip": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -174,7 +311,16 @@
             "contact"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        }
+      ]
     },
     {
       "name": "fieldsToCreateOrUpdate",
@@ -195,7 +341,27 @@
             "custom"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fieldName": null,
+        "fieldValue": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "custom"
+          ]
+        }
+      ]
     },
     {
       "name": "customResourceId",
@@ -213,7 +379,24 @@
             "custom"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "custom"
+          ]
+        }
+      ]
     },
     {
       "name": "filterRequest",
@@ -234,7 +417,23 @@
             "custom"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "custom"
+          ]
+        }
+      ]
     },
     {
       "name": "customResource",
@@ -248,7 +447,16 @@
             "custom"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "custom"
+          ]
+        }
+      ]
     },
     {
       "name": "memo",
@@ -265,7 +473,23 @@
             "note"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "note"
+          ]
+        }
+      ]
     },
     {
       "name": "noteId",
@@ -283,7 +507,24 @@
             "note"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "note"
+          ]
+        }
+      ]
     },
     {
       "name": "opportunityName",
@@ -300,7 +541,23 @@
             "opportunity"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "opportunity"
+          ]
+        }
+      ]
     },
     {
       "name": "opportunityId",
@@ -318,7 +575,24 @@
             "opportunity"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "opportunity"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -376,5 +650,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

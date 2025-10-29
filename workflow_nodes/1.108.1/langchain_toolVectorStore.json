@@ -39,5 +39,7 @@
     "produces": [
       "AiTool"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: AiVectorStore, AiLanguageModel",
+  "outputHints": "Emits outputs: AiTool"
 }

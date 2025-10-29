@@ -86,7 +86,18 @@
           "default": false,
           "description": "Whether this message be sent as a Text To Speech message"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "allowedMentions": null,
+        "attachments": null,
+        "avatarUrl": "",
+        "components": null,
+        "embeds": null,
+        "flags": 0,
+        "payloadJson": null,
+        "username": "",
+        "tts": false
+      }
     }
   ],
   "credentialsConfig": [],

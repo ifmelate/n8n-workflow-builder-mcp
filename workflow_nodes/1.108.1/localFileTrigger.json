@@ -33,7 +33,16 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "triggerOn",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "events",
@@ -75,7 +84,16 @@
             "folder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "triggerOn",
+          "values": [
+            "folder"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -114,7 +132,13 @@
           "default": true,
           "description": "Whether to ignore existing files/folders to not trigger an event"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "awaitWriteFinish": false,
+        "followSymlinks": false,
+        "ignored": "",
+        "ignoreInitial": false
+      }
     }
   ],
   "credentialsConfig": [],
@@ -135,5 +159,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

@@ -54,7 +54,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "multipleMethods",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "path",
@@ -75,7 +84,16 @@
             "responseNode"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "responseMode",
+          "values": [
+            "responseNode"
+          ]
+        }
+      ]
     },
     {
       "name": "webhookStreamingNotice",
@@ -88,7 +106,16 @@
             "streaming"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "responseMode",
+          "values": [
+            "streaming"
+          ]
+        }
+      ]
     },
     {
       "name": "contentTypeNotice",
@@ -101,7 +128,16 @@
             "onReceived"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "responseMode",
+          "values": [
+            "onReceived"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],

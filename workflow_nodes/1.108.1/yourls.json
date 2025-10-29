@@ -20,7 +20,23 @@
             "shorten"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "url"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "shorten"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -53,7 +69,27 @@
             "shorten"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "keyword": "",
+        "title": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "url"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "shorten"
+          ]
+        }
+      ]
     },
     {
       "name": "shortUrl",
@@ -71,7 +107,23 @@
             "expand"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "url"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "expand"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -102,7 +154,16 @@
             "url"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "url"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -148,5 +209,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

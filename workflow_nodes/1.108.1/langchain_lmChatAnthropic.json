@@ -37,5 +37,6 @@
     "produces": [
       "AiLanguageModel"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: AiLanguageModel"
 }

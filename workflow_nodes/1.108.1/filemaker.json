@@ -71,7 +71,19 @@
             "duplicate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "record",
+            "edit",
+            "delete",
+            "duplicate"
+          ]
+        }
+      ]
     },
     {
       "name": "offset",
@@ -87,7 +99,17 @@
             "records"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find",
+            "records"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -106,7 +128,17 @@
             "records"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find",
+            "records"
+          ]
+        }
+      ]
     },
     {
       "name": "getPortals",
@@ -122,7 +154,18 @@
             "find"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "record",
+            "records",
+            "find"
+          ]
+        }
+      ]
     },
     {
       "name": "portals",
@@ -145,7 +188,25 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "record",
+            "records",
+            "find"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "getPortals",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "responseLayout",
@@ -159,7 +220,16 @@
             "find"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find"
+          ]
+        }
+      ]
     },
     {
       "name": "queries",
@@ -177,7 +247,16 @@
             "find"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find"
+          ]
+        }
+      ]
     },
     {
       "name": "setSort",
@@ -193,7 +272,18 @@
             "records"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find",
+            "record",
+            "records"
+          ]
+        }
+      ]
     },
     {
       "name": "sortParametersUi",
@@ -215,7 +305,24 @@
             "records"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "setSort",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find",
+            "records"
+          ]
+        }
+      ]
     },
     {
       "name": "setScriptBefore",
@@ -231,7 +338,18 @@
             "records"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find",
+            "record",
+            "records"
+          ]
+        }
+      ]
     },
     {
       "name": "scriptBefore",
@@ -252,7 +370,25 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find",
+            "record",
+            "records"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "setScriptBefore",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "scriptBeforeParam",
@@ -272,7 +408,25 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find",
+            "record",
+            "records"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "setScriptBefore",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "setScriptSort",
@@ -288,7 +442,18 @@
             "records"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find",
+            "record",
+            "records"
+          ]
+        }
+      ]
     },
     {
       "name": "scriptSort",
@@ -309,7 +474,25 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find",
+            "record",
+            "records"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "setScriptSort",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "scriptSortParam",
@@ -329,7 +512,25 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find",
+            "record",
+            "records"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "setScriptSort",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "setScriptAfter",
@@ -345,7 +546,18 @@
             "records"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find",
+            "record",
+            "records"
+          ]
+        }
+      ]
     },
     {
       "name": "scriptAfter",
@@ -366,7 +578,25 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find",
+            "record",
+            "records"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "setScriptAfter",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "scriptAfterParam",
@@ -386,7 +616,25 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "find",
+            "record",
+            "records"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "setScriptAfter",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "modId",
@@ -400,7 +648,16 @@
             "edit"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "edit"
+          ]
+        }
+      ]
     },
     {
       "name": "fieldsParametersUi",
@@ -419,7 +676,17 @@
             "edit"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "create",
+            "edit"
+          ]
+        }
+      ]
     },
     {
       "name": "script",
@@ -435,7 +702,16 @@
             "performscript"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "performscript"
+          ]
+        }
+      ]
     },
     {
       "name": "scriptParam",
@@ -450,7 +726,16 @@
             "performscript"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "performscript"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -504,5 +789,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

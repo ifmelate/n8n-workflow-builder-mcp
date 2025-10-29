@@ -66,7 +66,11 @@
           "default": false,
           "description": "Whether to include email drafts in the results"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "includeSpamTrash": false,
+        "includeDrafts": false
+      }
     },
     {
       "name": "options",
@@ -97,7 +101,20 @@
             true
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "dataPropertyAttachmentsPrefixName": "",
+        "downloadAttachments": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "hide",
+          "key": "simple",
+          "values": [
+            true
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -143,5 +160,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

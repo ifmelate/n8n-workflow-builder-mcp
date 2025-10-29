@@ -19,7 +19,23 @@
             "salesOrder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "salesOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -43,7 +59,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "salesOrder"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -99,7 +138,30 @@
             "salesOrder"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "customerId": "",
+        "customerCode": "",
+        "endDate": null,
+        "modifiedSince": null,
+        "orderNumber": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "salesOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -120,7 +182,16 @@
             "salesOrder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "salesOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "productId",
@@ -136,7 +207,23 @@
             "stockOnHand"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "stockOnHand"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -186,5 +273,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

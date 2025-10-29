@@ -71,7 +71,16 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "propertyName",
@@ -86,7 +95,16 @@
             "get"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "keyType",
@@ -127,7 +145,16 @@
             "get"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -151,7 +178,19 @@
             "get"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "dotNotation": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "expire",
@@ -165,7 +204,16 @@
             "incr"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "incr"
+          ]
+        }
+      ]
     },
     {
       "name": "ttl",
@@ -185,7 +233,23 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "incr"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "expire",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "keyPattern",
@@ -200,7 +264,16 @@
             "keys"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "keys"
+          ]
+        }
+      ]
     },
     {
       "name": "getValues",
@@ -214,7 +287,16 @@
             "keys"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "keys"
+          ]
+        }
+      ]
     },
     {
       "name": "value",
@@ -228,7 +310,16 @@
             "set"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "set"
+          ]
+        }
+      ]
     },
     {
       "name": "valueIsJSON",
@@ -242,7 +333,16 @@
             "hash"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "keyType",
+          "values": [
+            "hash"
+          ]
+        }
+      ]
     },
     {
       "name": "channel",
@@ -257,7 +357,16 @@
             "publish"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "publish"
+          ]
+        }
+      ]
     },
     {
       "name": "messageData",
@@ -272,7 +381,16 @@
             "publish"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "publish"
+          ]
+        }
+      ]
     },
     {
       "name": "list",
@@ -288,7 +406,17 @@
             "pop"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "push",
+            "pop"
+          ]
+        }
+      ]
     },
     {
       "name": "tail",
@@ -303,7 +431,17 @@
             "pop"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "push",
+            "pop"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -353,5 +491,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

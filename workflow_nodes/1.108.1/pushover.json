@@ -33,7 +33,16 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "userKey",
@@ -51,7 +60,23 @@
             "push"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "push"
+          ]
+        }
+      ]
     },
     {
       "name": "message",
@@ -69,7 +94,23 @@
             "push"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "push"
+          ]
+        }
+      ]
     },
     {
       "name": "priority",
@@ -106,7 +147,23 @@
             "push"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "push"
+          ]
+        }
+      ]
     },
     {
       "name": "retry",
@@ -130,7 +187,30 @@
             2
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "push"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "priority",
+          "values": [
+            2
+          ]
+        }
+      ]
     },
     {
       "name": "expire",
@@ -155,7 +235,30 @@
             2
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "push"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "priority",
+          "values": [
+            2
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -173,7 +276,26 @@
             "push"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "binaryPropertyName": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "push"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -223,5 +345,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

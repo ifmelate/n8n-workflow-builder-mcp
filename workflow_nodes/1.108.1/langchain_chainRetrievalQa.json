@@ -24,7 +24,16 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     },
     {
       "name": "text",
@@ -42,7 +51,16 @@
             "define"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "promptType",
+          "values": [
+            "define"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -88,5 +106,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main, AiLanguageModel, AiRetriever",
+  "outputHints": "Emits outputs: Main"
 }

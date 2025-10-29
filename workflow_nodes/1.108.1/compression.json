@@ -40,7 +40,16 @@
             "compress"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "compress"
+          ]
+        }
+      ]
     },
     {
       "name": "outputFormat",
@@ -67,7 +76,23 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "compress"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     },
     {
       "name": "fileName",
@@ -86,7 +111,23 @@
             "zip"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "compress"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "outputFormat",
+          "values": [
+            "zip"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyOutput",
@@ -102,7 +143,23 @@
             "compress"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "outputFormat",
+          "values": [
+            "zip"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "compress"
+          ]
+        }
+      ]
     },
     {
       "name": "outputPrefix",
@@ -123,7 +180,30 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "compress"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "outputFormat",
+          "values": [
+            "gzip"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -148,5 +228,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

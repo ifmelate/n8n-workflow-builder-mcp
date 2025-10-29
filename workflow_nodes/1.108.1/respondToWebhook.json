@@ -36,7 +36,16 @@
             "jwt"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "respondWith",
+          "values": [
+            "jwt"
+          ]
+        }
+      ]
     },
     {
       "name": "webhookNotice",
@@ -51,7 +60,18 @@
             "jwt"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "respondWith",
+          "values": [
+            "json",
+            "text",
+            "jwt"
+          ]
+        }
+      ]
     },
     {
       "name": "redirectURL",
@@ -67,7 +87,16 @@
             "redirect"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "respondWith",
+          "values": [
+            "redirect"
+          ]
+        }
+      ]
     },
     {
       "name": "responseBody",
@@ -84,7 +113,16 @@
             "json"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "respondWith",
+          "values": [
+            "json"
+          ]
+        }
+      ]
     },
     {
       "name": "payload",
@@ -101,7 +139,16 @@
             "jwt"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "respondWith",
+          "values": [
+            "jwt"
+          ]
+        }
+      ]
     },
     {
       "name": "responseDataSource",
@@ -127,7 +174,16 @@
             "binary"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "respondWith",
+          "values": [
+            "binary"
+          ]
+        }
+      ]
     },
     {
       "name": "inputFieldName",
@@ -145,7 +201,23 @@
             "set"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "respondWith",
+          "values": [
+            "binary"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "responseDataSource",
+          "values": [
+            "set"
+          ]
+        }
+      ]
     },
     {
       "name": "contentTypeNotice",
@@ -158,7 +230,16 @@
             "text"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "respondWith",
+          "values": [
+            "text"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -187,7 +268,20 @@
             "firstIncomingItem"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "responseCode": 0
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/respondWith",
+          "values": [
+            "allIncomingItems",
+            "firstIncomingItem"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -233,5 +327,6 @@
       "Main"
     ],
     "produces": []
-  }
+  },
+  "inputHints": "Accepts inputs: Main"
 }

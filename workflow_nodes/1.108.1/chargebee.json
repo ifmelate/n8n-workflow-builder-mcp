@@ -43,7 +43,16 @@
             "customer"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        }
+      ]
     },
     {
       "name": "properties",
@@ -109,7 +118,31 @@
             "customer"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "id": "",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "phone": "",
+        "company": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        }
+      ]
     },
     {
       "name": "maxResults",
@@ -130,7 +163,23 @@
             "invoice"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "invoice"
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -151,7 +200,23 @@
             "invoice"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "invoice"
+          ]
+        }
+      ]
     },
     {
       "name": "invoiceId",
@@ -169,7 +234,23 @@
             "invoice"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "pdfUrl"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "invoice"
+          ]
+        }
+      ]
     },
     {
       "name": "subscriptionId",
@@ -187,7 +268,23 @@
             "subscription"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "cancel"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "subscription"
+          ]
+        }
+      ]
     },
     {
       "name": "endOfTerm",
@@ -204,7 +301,23 @@
             "subscription"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "cancel"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "subscription"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -274,5 +387,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

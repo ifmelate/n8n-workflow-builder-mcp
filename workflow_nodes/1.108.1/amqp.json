@@ -62,7 +62,14 @@
           "default": "",
           "description": "The only property to send. If empty the whole item will be sent."
         }
-      ]
+      ],
+      "structureTemplate": {
+        "containerId": "",
+        "dataAsObject": false,
+        "reconnect": false,
+        "reconnectLimit": 0,
+        "sendOnlyProperty": ""
+      }
     }
   ],
   "credentialsConfig": [
@@ -96,5 +103,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

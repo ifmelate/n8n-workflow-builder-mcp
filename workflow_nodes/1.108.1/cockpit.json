@@ -17,7 +17,16 @@
             "collection"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "collection"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -34,7 +43,23 @@
             "collection"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "collection"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -58,7 +83,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "collection"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -130,7 +178,32 @@
             "getAll"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fields": "",
+        "filter": null,
+        "language": "",
+        "populate": false,
+        "rawData": false,
+        "skip": 0,
+        "sort": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "collection"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "id",
@@ -147,7 +220,23 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "collection"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "jsonDataFields",
@@ -165,7 +254,24 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "collection"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "dataFieldsJson",
@@ -186,7 +292,31 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "jsonDataFields",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "collection"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "dataFieldsUi",
@@ -210,7 +340,35 @@
             "update"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "name": "",
+        "value": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "jsonDataFields",
+          "values": [
+            false
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "collection"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -241,7 +399,16 @@
             "collection"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "collection"
+          ]
+        }
+      ]
     },
     {
       "name": "form",
@@ -256,7 +423,16 @@
             "form"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "form"
+          ]
+        }
+      ]
     },
     {
       "name": "singleton",
@@ -271,7 +447,16 @@
             "singleton"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "singleton"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -325,5 +510,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

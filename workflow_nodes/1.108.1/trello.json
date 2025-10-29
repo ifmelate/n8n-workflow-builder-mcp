@@ -24,7 +24,26 @@
             "attachment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete",
+            "create",
+            "get",
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "attachment"
+          ]
+        }
+      ]
     },
     {
       "name": "url",
@@ -42,7 +61,23 @@
             "attachment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "attachment"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -77,7 +112,27 @@
             "attachment"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "mimeType": "",
+        "name": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "attachment"
+          ]
+        }
+      ]
     },
     {
       "name": "id",
@@ -95,7 +150,23 @@
             "attachment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "attachment"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -131,7 +202,16 @@
             "attachment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "attachment"
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -150,7 +230,23 @@
             "board"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "board"
+          ]
+        }
+      ]
     },
     {
       "name": "description",
@@ -167,7 +263,23 @@
             "board"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "board"
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -222,7 +334,30 @@
             "board"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "closed": false,
+        "desc": "",
+        "name": "",
+        "idOrganization": "",
+        "subscribed": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "board"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -239,7 +374,23 @@
             "boardMember"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "boardMember"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -262,7 +413,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "boardMember"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "idMember",
@@ -280,7 +454,23 @@
             "boardMember"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "boardMember"
+          ]
+        }
+      ]
     },
     {
       "name": "type",
@@ -315,7 +505,23 @@
             "boardMember"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "boardMember"
+          ]
+        }
+      ]
     },
     {
       "name": "email",
@@ -334,7 +540,23 @@
             "boardMember"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "invite"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "boardMember"
+          ]
+        }
+      ]
     },
     {
       "name": "text",
@@ -352,7 +574,23 @@
             "cardComment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "cardComment"
+          ]
+        }
+      ]
     },
     {
       "name": "commentId",
@@ -370,7 +608,23 @@
             "cardComment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "cardComment"
+          ]
+        }
+      ]
     },
     {
       "name": "listId",
@@ -388,7 +642,23 @@
             "card"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "card"
+          ]
+        }
+      ]
     },
     {
       "name": "checklistId",
@@ -406,7 +676,23 @@
             "checklist"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "createCheckItem"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "checklist"
+          ]
+        }
+      ]
     },
     {
       "name": "checkItemId",
@@ -424,7 +710,23 @@
             "checklist"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "deleteCheckItem"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "checklist"
+          ]
+        }
+      ]
     },
     {
       "name": "boardId",
@@ -444,7 +746,24 @@
             "label"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "label"
+          ]
+        }
+      ]
     },
     {
       "name": "color",
@@ -508,7 +827,23 @@
             "label"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "label"
+          ]
+        }
+      ]
     },
     {
       "name": "archive",
@@ -525,7 +860,23 @@
             "list"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "archive"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "list"
+          ]
+        }
+      ]
     },
     {
       "name": "idBoard",
@@ -543,7 +894,23 @@
             "list"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "list"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -617,5 +984,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

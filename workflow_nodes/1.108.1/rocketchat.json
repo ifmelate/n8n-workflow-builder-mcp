@@ -35,7 +35,16 @@
             "chat"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "chat"
+          ]
+        }
+      ]
     },
     {
       "name": "channel",
@@ -53,7 +62,23 @@
             "postMessage"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "chat"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "postMessage"
+          ]
+        }
+      ]
     },
     {
       "name": "text",
@@ -70,7 +95,23 @@
             "postMessage"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "chat"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "postMessage"
+          ]
+        }
+      ]
     },
     {
       "name": "jsonParameters",
@@ -86,7 +127,23 @@
             "postMessage"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "chat"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "postMessage"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -127,7 +184,28 @@
             "postMessage"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "alias": "",
+        "avatar": "",
+        "emoji": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "chat"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "postMessage"
+          ]
+        }
+      ]
     },
     {
       "name": "attachments",
@@ -261,7 +339,47 @@
             false
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "color": null,
+        "text": "",
+        "ts": null,
+        "thumbUrl": "",
+        "messageLink": "",
+        "collapsed": false,
+        "authorName": "",
+        "authorLink": "",
+        "authorIcon": "",
+        "title": "",
+        "titleLink": "",
+        "titleLinkDownload": false,
+        "imageUrl": "",
+        "audioUrl": "",
+        "videoUrl": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "chat"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "postMessage"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "jsonParameters",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "attachmentsJson",
@@ -280,7 +398,30 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "chat"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "postMessage"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "jsonParameters",
+          "values": [
+            true
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -330,5 +471,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

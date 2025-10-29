@@ -20,7 +20,23 @@
             "execute"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "analyzer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "execute"
+          ]
+        }
+      ]
     },
     {
       "name": "observableType",
@@ -38,7 +54,23 @@
             "execute"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "analyzer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "execute"
+          ]
+        }
+      ]
     },
     {
       "name": "observableValue",
@@ -56,7 +88,23 @@
             "execute"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "analyzer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "execute"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -76,7 +124,30 @@
             "execute"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "observableType",
+          "values": [
+            "file"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "analyzer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "execute"
+          ]
+        }
+      ]
     },
     {
       "name": "tlp",
@@ -107,7 +178,23 @@
             "execute"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "analyzer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "execute"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -141,7 +228,27 @@
             "execute"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "force": false,
+        "timeout": 0
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "analyzer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "execute"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -163,7 +270,16 @@
             "analyzer"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "analyzer"
+          ]
+        }
+      ]
     },
     {
       "name": "jobId",
@@ -182,7 +298,24 @@
             "report"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "job"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "report"
+          ]
+        }
+      ]
     },
     {
       "name": "responder",
@@ -197,7 +330,16 @@
             "responder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "responder"
+          ]
+        }
+      ]
     },
     {
       "name": "entityType",
@@ -212,7 +354,16 @@
             "responder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "responder"
+          ]
+        }
+      ]
     },
     {
       "name": "jsonObject",
@@ -226,7 +377,16 @@
             "responder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "responder"
+          ]
+        }
+      ]
     },
     {
       "name": "objectData",
@@ -243,7 +403,23 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "responder"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "jsonObject",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "parameters",
@@ -264,7 +440,35 @@
             "case"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "description": "",
+        "flag": false,
+        "owner": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "responder"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "jsonObject",
+          "values": [
+            false
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "entityType",
+          "values": [
+            "case"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -320,5 +524,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

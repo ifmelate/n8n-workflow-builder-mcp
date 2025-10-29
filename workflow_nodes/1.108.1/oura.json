@@ -23,7 +23,16 @@
             "profile"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "profile"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -37,7 +46,16 @@
             "summary"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "summary"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -58,7 +76,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "summary"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -89,7 +123,20 @@
             "summary"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "end": null,
+        "start": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "summary"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -139,5 +186,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

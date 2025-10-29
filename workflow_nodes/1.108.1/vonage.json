@@ -33,7 +33,16 @@
             "sms"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        }
+      ]
     },
     {
       "name": "from",
@@ -50,7 +59,23 @@
             "send"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        }
+      ]
     },
     {
       "name": "to",
@@ -67,7 +92,23 @@
             "send"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        }
+      ]
     },
     {
       "name": "message",
@@ -84,7 +125,23 @@
             "send"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -125,7 +182,28 @@
             "send"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "account-ref": "",
+        "callback": "",
+        "client-ref": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -171,5 +249,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

@@ -70,9 +70,21 @@ async function loadKnownNodeBaseTypes() {
         let searchDirs = [];
         if (versionDirs.length > 0) {
             const targetVersion = (0, versioning_1.getCurrentN8nVersion)() || versionDirs.sort((a, b) => compareSemver(b, a))[0];
-            const bestMatchVersion = findBestMatchingVersion(targetVersion, versionDirs);
-            const versionToUse = bestMatchVersion || versionDirs.sort((a, b) => parseFloat(b) - parseFloat(a))[0];
-            searchDirs = [path_1.default.join(workflowNodesDir, versionToUse)];
+            const candidates = versionDirs.slice().sort((a, b) => compareSemver(b, a));
+            const preferred = findBestMatchingVersion(targetVersion, versionDirs) || candidates[0];
+            // Choose first version directory that actually contains JSON files; fallback to next best
+            let chosen = null;
+            for (const v of [preferred, ...candidates.filter(v => v !== preferred)]) {
+                try {
+                    const files = await promises_1.default.readdir(path_1.default.join(workflowNodesDir, v));
+                    if (files.some(f => f.endsWith('.json'))) {
+                        chosen = v;
+                        break;
+                    }
+                }
+                catch { }
+            }
+            searchDirs = [path_1.default.join(workflowNodesDir, chosen || preferred)];
         }
         else {
             searchDirs = [workflowNodesDir];

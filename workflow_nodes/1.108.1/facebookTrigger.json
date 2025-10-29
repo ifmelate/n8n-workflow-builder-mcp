@@ -23,7 +23,16 @@
             "whatsappBusinessAccount"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "object",
+          "values": [
+            "whatsappBusinessAccount"
+          ]
+        }
+      ]
     },
     {
       "name": "object",
@@ -112,7 +121,10 @@
           "default": true,
           "description": "Whether change notifications should include the new values"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "includeValues": false
+      }
     }
   ],
   "credentialsConfig": [
@@ -150,5 +162,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

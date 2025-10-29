@@ -22,5 +22,6 @@
       "Main"
     ],
     "produces": []
-  }
+  },
+  "inputHints": "Accepts inputs: Main"
 }

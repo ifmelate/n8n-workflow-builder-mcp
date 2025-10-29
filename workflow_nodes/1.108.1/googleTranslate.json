@@ -28,7 +28,16 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -61,7 +70,16 @@
             "language"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "language"
+          ]
+        }
+      ]
     },
     {
       "name": "text",
@@ -76,7 +94,16 @@
             "translate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "translate"
+          ]
+        }
+      ]
     },
     {
       "name": "translateTo",
@@ -91,7 +118,16 @@
             "translate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "translate"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -141,5 +177,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

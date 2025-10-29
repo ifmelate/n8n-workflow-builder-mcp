@@ -17,8 +17,11 @@ alwaysApply: false
   - `edit_node(workflow_name, node_id, node_type?, node_name?, position?, parameters?, typeVersion?, webhookId?, workflow_path?, connect_from?, connect_to?)`
   - `delete_node(workflow_name, node_id, workflow_path?)`
   - `add_connection(workflow_name, source_node_id, source_node_output_name, target_node_id, target_node_input_name, target_node_input_index?)`
-  - `add_ai_connections(workflow_name, agent_node_id, model_node_id?, tool_node_ids?, memory_node_id?)`
-  - `validate_workflow(workflow_name, workflow_path?)`
+  - `add_ai_connections(workflow_name, agent_node_id, model_node_id?, tool_node_ids?, memory_node_id?, embeddings_node_id?, vector_store_node_id?, vector_insert_node_id?, vector_tool_node_id?, dry_run?, idempotency_key?)`
+  - `compose_ai_workflow(workflow_name, plan, dry_run?, idempotency_key?)`
+  - `validate_workflow(workflow_name, workflow_path?, strict_main_chain?, dry_run?)`
+  - `connect_main_chain(workflow_name, workflow_path?, dry_run?, idempotency_key?)`
+  - `list_template_examples(node_type?, template_name?, limit?, cursor?)`
 
 - **Quick-start recipes**
   - **Create a new workflow**
@@ -98,7 +101,12 @@ alwaysApply: false
       "agent_node_id": "<AGENT_ID>",
       "model_node_id": "<MODEL_ID>",
       "tool_node_ids": ["<TOOL_ID_1>", "<TOOL_ID_2>"],
-      "memory_node_id": "<MEMORY_ID>"
+      "memory_node_id": "<MEMORY_ID>",
+      "embeddings_node_id": "<EMBEDDINGS_ID>",
+      "vector_store_node_id": "<VECTOR_STORE_ID>",
+      "vector_tool_node_id": "<VECTOR_TOOL_ID>",
+      "dry_run": false,
+      "idempotency_key": "optional-key-for-safe-retries"
     }
     ```
   - **Add a node and connect immediately (from existing → new)**
@@ -133,6 +141,18 @@ alwaysApply: false
     }
     ```
 
+  - **Find examples from templates (new)**
+    ```json
+    { "node_type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory", "limit": 10 }
+    ```
+    - Or filter by a specific template:
+    ```json
+    { "template_name": "rag_example.json" }
+    ```
+    - Response fields:
+      - `examples[]`: `{ template, node: { name, type, parameterPreview }, connections: { outgoingByType, incomingByType } }`
+      - Use `parameterPreview` to seed add_node.parameters, and use the connection summaries to decide add_connection wiring.
+
 - **DO**
   - **Initialize workspace**: Always call `create_workflow` first to set `workspace_dir` and create the target JSON file in `workflow_data/`.
   - **Discover before adding**: Use `list_available_nodes` (optionally with `search_term` and `n8n_version`) to choose a supported `node_type` and version.
@@ -141,7 +161,11 @@ alwaysApply: false
   - **Attach nodes at creation/edit**: Prefer the `connect_from`/`connect_to` options on `add_node`/`edit_node` to ensure new nodes are connected to the main chain.
   - **Check version support**: If a node or version is unsupported, consult `get_n8n_version_info()` and re-query `list_available_nodes(n8n_version=...)`.
   - **Verify after changes**: Call `validate_workflow` to confirm nodes and connections are persisted as expected.
-  - **Prefer `add_ai_connections` for AI graphs**: It applies correct port naming conventions for model/tool/memory → agent wiring.
+  - **Prefer `add_ai_connections` for AI graphs**: It applies correct port naming conventions for model/tool/memory → agent wiring with enhanced RAG support.
+  - **Use dry_run for safe planning**: Test changes with `dry_run: true` before applying them.
+  - **Leverage idempotency keys**: Use `idempotency_key` for safe retries and deduplication.
+  - **Use auto-fix tools**: When validation fails, use `connect_main_chain` to automatically create main workflow connections.
+  - **Follow structured responses**: Tools now return structured JSON with correlation IDs, change tracking, usage info, and suggested actions.
   - Add the start node first; connect each subsequent node on `main`.
   - Attach AI components (model/tool/memory) to the agent via AI handles, but keep the agent on the main chain.
   - Use minimal, necessary branches and rejoin them promptly.
@@ -390,6 +414,48 @@ alwaysApply: false
     - Where possible, converge to one terminal node; use `Merge`/`IF`/`Switch` patterns so branches rejoin before termination.
   - **Rewire safely**
     - Use `add_connection` to fix gaps; avoid leaving intermediate nodes detached while editing.
+
+
+
+- **Response Format Example**
+  ```json
+  {
+    "success": true,
+    "correlationId": "uuid-12345",
+    "timestamp": "2025-01-01T12:00:00Z",
+    "data": {
+      "workflowName": "my_workflow",
+      "connectionsCreated": 3
+    },
+    "changes": [
+      {
+        "type": "created",
+        "target": "Model → Agent",
+        "details": {
+          "fromOutput": "ai_languageModel",
+          "toInput": "ai_languageModel"
+        }
+      }
+    ],
+    "usage": {
+      "connectionsCreated": 3,
+      "connectionsSkipped": 1
+    },
+    "suggestedActions": [
+      {
+        "type": "add_connection",
+        "title": "Connect trigger to agent",
+        "params": {
+          "workflow_name": "my_workflow",
+          "source_node_id": "trigger_123",
+          "source_node_output_name": "main",
+          "target_node_id": "agent_456",
+          "target_node_input_name": "main"
+        }
+      }
+    ]
+  }
+  ```
 
 
 

@@ -32,7 +32,25 @@
             "coin"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "marketChart",
+            "price"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        }
+      ]
     },
     {
       "name": "coinId",
@@ -51,7 +69,23 @@
             "coin"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        }
+      ]
     },
     {
       "name": "baseCurrency",
@@ -69,7 +103,23 @@
             "coin"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "candlestick"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        }
+      ]
     },
     {
       "name": "baseCurrencies",
@@ -91,7 +141,30 @@
             "coinId"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "price"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "searchBy",
+          "values": [
+            "coinId"
+          ]
+        }
+      ]
     },
     {
       "name": "platformId",
@@ -120,7 +193,32 @@
             "contractAddress"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "marketChart",
+            "price"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "searchBy",
+          "values": [
+            "contractAddress"
+          ]
+        }
+      ]
     },
     {
       "name": "contractAddress",
@@ -142,7 +240,31 @@
             "contractAddress"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "marketChart"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "searchBy",
+          "values": [
+            "contractAddress"
+          ]
+        }
+      ]
     },
     {
       "name": "contractAddresses",
@@ -163,7 +285,30 @@
             "contractAddress"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "price"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "searchBy",
+          "values": [
+            "contractAddress"
+          ]
+        }
+      ]
     },
     {
       "name": "quoteCurrency",
@@ -182,7 +327,24 @@
             "coin"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "candlestick",
+            "marketChart"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        }
+      ]
     },
     {
       "name": "quoteCurrencies",
@@ -200,7 +362,23 @@
             "coin"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "price"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        }
+      ]
     },
     {
       "name": "days",
@@ -253,7 +431,24 @@
             "coin"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "marketChart",
+            "candlestick"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        }
+      ]
     },
     {
       "name": "date",
@@ -271,7 +466,23 @@
             "coin"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "history"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -290,7 +501,25 @@
             "coin"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll",
+            "market",
+            "ticker"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -316,7 +545,32 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll",
+            "market",
+            "ticker"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -344,7 +598,26 @@
             "market"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "ids": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "market"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -400,7 +673,16 @@
             "coin"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "coin"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -441,5 +723,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

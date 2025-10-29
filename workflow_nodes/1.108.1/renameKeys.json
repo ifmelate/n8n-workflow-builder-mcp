@@ -13,6 +13,10 @@
       "placeholder": "Add new key",
       "typeOptions": {
         "multipleValues": true
+      },
+      "structureTemplate": {
+        "currentKey": "",
+        "newKey": ""
       }
     },
     {
@@ -24,6 +28,9 @@
       "placeholder": "Add option",
       "typeOptions": {
         "multipleValues": true
+      },
+      "structureTemplate": {
+        "regExNotice": null
       }
     }
   ],
@@ -49,5 +56,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

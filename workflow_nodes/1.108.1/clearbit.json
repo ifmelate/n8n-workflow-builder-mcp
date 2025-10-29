@@ -20,7 +20,23 @@
             "enrich"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "enrich"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -68,7 +84,29 @@
             "enrich"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "companyName": "",
+        "facebook": "",
+        "linkedin": "",
+        "twitter": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "enrich"
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -86,7 +124,23 @@
             "autocomplete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "autocomplete"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -112,7 +166,16 @@
             "company"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        }
+      ]
     },
     {
       "name": "email",
@@ -131,7 +194,23 @@
             "enrich"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "person"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "enrich"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -184,5 +263,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

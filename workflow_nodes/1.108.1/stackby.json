@@ -60,7 +60,17 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "read",
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -74,7 +84,16 @@
             "list"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -95,7 +114,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -120,7 +155,19 @@
             "list"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "view": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        }
+      ]
     },
     {
       "name": "columns",
@@ -136,7 +183,16 @@
             "append"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "append"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -178,5 +234,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

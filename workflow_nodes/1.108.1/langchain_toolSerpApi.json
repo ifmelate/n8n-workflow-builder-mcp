@@ -30,5 +30,6 @@
     "produces": [
       "AiTool"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: AiTool"
 }

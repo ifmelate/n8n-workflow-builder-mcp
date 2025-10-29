@@ -36,7 +36,20 @@
             "aggregateIndividualFields"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fieldToAggregate": "",
+        "renameField": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "aggregate",
+          "values": [
+            "aggregateIndividualFields"
+          ]
+        }
+      ]
     },
     {
       "name": "destinationFieldName",
@@ -50,7 +63,16 @@
             "aggregateAllItemData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "aggregate",
+          "values": [
+            "aggregateAllItemData"
+          ]
+        }
+      ]
     },
     {
       "name": "include",
@@ -77,7 +99,16 @@
             "aggregateAllItemData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "aggregate",
+          "values": [
+            "aggregateAllItemData"
+          ]
+        }
+      ]
     },
     {
       "name": "fieldsToExclude",
@@ -94,7 +125,23 @@
             "allFieldsExcept"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "aggregate",
+          "values": [
+            "aggregateAllItemData"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "include",
+          "values": [
+            "allFieldsExcept"
+          ]
+        }
+      ]
     },
     {
       "name": "fieldsToInclude",
@@ -111,7 +158,23 @@
             "specifiedFields"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "aggregate",
+          "values": [
+            "aggregateAllItemData"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "include",
+          "values": [
+            "specifiedFields"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -126,7 +189,16 @@
             "aggregateAllItemData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "hide",
+          "key": "/aggregate",
+          "values": [
+            "aggregateAllItemData"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -151,5 +223,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

@@ -24,7 +24,27 @@
             "getScorePlan"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getScorecard",
+            "getFactor",
+            "getFactorHistorical",
+            "getHistoricalScore",
+            "getScorePlan"
+          ]
+        }
+      ]
     },
     {
       "name": "score",
@@ -42,7 +62,23 @@
             "getScorePlan"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getScorePlan"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -62,7 +98,26 @@
             "getScorePlan"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getFactor",
+            "getFactorHistorical",
+            "getHistoricalScore",
+            "getScorePlan"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -89,7 +144,33 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getFactor",
+            "getFactorHistorical",
+            "getHistoricalScore",
+            "getScorePlan"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "simple",
@@ -107,7 +188,24 @@
             "getHistoricalScore"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getFactorHistorical",
+            "getHistoricalScore"
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -142,7 +240,27 @@
             "getFactor"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "severity": "",
+        "severity_in": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getFactor"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -177,7 +295,28 @@
             "getHistoricalScore"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "date_from": null,
+        "date_to": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getFactorHistorical",
+            "getHistoricalScore"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -219,7 +358,16 @@
             "company"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        }
+      ]
     },
     {
       "name": "industry",
@@ -260,7 +408,25 @@
             "getFactorHistorical"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "industry"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getScore",
+            "getFactor",
+            "getFactorHistorical"
+          ]
+        }
+      ]
     },
     {
       "name": "email",
@@ -278,7 +444,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "invite"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "firstName",
@@ -295,7 +477,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "invite"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "lastName",
@@ -312,7 +510,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "invite"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "message",
@@ -330,7 +544,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "invite"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -410,7 +640,34 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "days_to_resolve_issue": 0,
+        "domain": "",
+        "grade_to_maintain": "",
+        "is_organization_point_of_contact": false,
+        "issue_desc": "",
+        "issue_title": "",
+        "issue_type": "",
+        "sendme_copy": false,
+        "target_url": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "invite"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "portfolioId",
@@ -429,7 +686,25 @@
             "remove"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "portfolioCompany"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll",
+            "add",
+            "remove"
+          ]
+        }
+      ]
     },
     {
       "name": "domain",
@@ -448,7 +723,24 @@
             "remove"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "portfolioCompany"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add",
+            "remove"
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -467,7 +759,24 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "portfolio"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "description",
@@ -484,7 +793,24 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "portfolio"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "privacy",
@@ -519,7 +845,24 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "portfolio"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "report",
@@ -570,7 +913,23 @@
             "generate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "report"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "generate"
+          ]
+        }
+      ]
     },
     {
       "name": "branding",
@@ -604,7 +963,31 @@
             "summary"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "report"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "generate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "report",
+          "values": [
+            "detailed",
+            "summary"
+          ]
+        }
+      ]
     },
     {
       "name": "date",
@@ -624,7 +1007,30 @@
             "events-json"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "report"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "generate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "report",
+          "values": [
+            "events-json"
+          ]
+        }
+      ]
     },
     {
       "name": "url",
@@ -642,7 +1048,23 @@
             "download"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "report"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "download"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -659,7 +1081,23 @@
             "download"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "report"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "download"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -726,5 +1164,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

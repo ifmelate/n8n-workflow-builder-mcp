@@ -19,7 +19,23 @@
             "meeting"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "meeting"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -70,7 +86,29 @@
             "meeting"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "agenda": "",
+        "duration": 0,
+        "password": "",
+        "scheduleFor": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "meeting"
+          ]
+        }
+      ]
     },
     {
       "name": "meetingId",
@@ -88,7 +126,23 @@
             "meeting"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "meeting"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -105,7 +159,23 @@
             "meeting"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "meeting"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -129,7 +199,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "meeting"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -147,7 +240,23 @@
             "meeting"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "meeting"
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -198,7 +307,29 @@
             "meeting"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "agenda": "",
+        "duration": 0,
+        "password": "",
+        "scheduleFor": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "meeting"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -239,7 +370,16 @@
             "meeting"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "meeting"
+          ]
+        }
+      ]
     },
     {
       "name": "authentication",
@@ -305,5 +445,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

@@ -77,7 +77,10 @@
           "default": false,
           "description": "Whether to delete the current subscription"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "delete": false
+      }
     }
   ],
   "credentialsConfig": [
@@ -119,5 +122,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

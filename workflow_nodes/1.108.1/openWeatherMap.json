@@ -86,7 +86,16 @@
             "cityName"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "locationSelection",
+          "values": [
+            "cityName"
+          ]
+        }
+      ]
     },
     {
       "name": "cityId",
@@ -101,7 +110,16 @@
             "cityId"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "locationSelection",
+          "values": [
+            "cityId"
+          ]
+        }
+      ]
     },
     {
       "name": "latitude",
@@ -117,7 +135,16 @@
             "coordinates"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "locationSelection",
+          "values": [
+            "coordinates"
+          ]
+        }
+      ]
     },
     {
       "name": "longitude",
@@ -133,7 +160,16 @@
             "coordinates"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "locationSelection",
+          "values": [
+            "coordinates"
+          ]
+        }
+      ]
     },
     {
       "name": "zipCode",
@@ -149,7 +185,16 @@
             "zipCode"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "locationSelection",
+          "values": [
+            "zipCode"
+          ]
+        }
+      ]
     },
     {
       "name": "language",
@@ -203,5 +248,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

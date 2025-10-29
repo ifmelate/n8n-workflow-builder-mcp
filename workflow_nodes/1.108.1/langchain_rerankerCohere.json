@@ -26,5 +26,6 @@
     "produces": [
       "AiReranker"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: AiReranker"
 }

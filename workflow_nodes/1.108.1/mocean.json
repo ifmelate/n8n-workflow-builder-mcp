@@ -40,7 +40,17 @@
             "voice"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms",
+            "voice"
+          ]
+        }
+      ]
     },
     {
       "name": "from",
@@ -60,7 +70,24 @@
             "voice"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms",
+            "voice"
+          ]
+        }
+      ]
     },
     {
       "name": "to",
@@ -80,7 +107,24 @@
             "voice"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms",
+            "voice"
+          ]
+        }
+      ]
     },
     {
       "name": "language",
@@ -118,7 +162,23 @@
             "voice"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "voice"
+          ]
+        }
+      ]
     },
     {
       "name": "message",
@@ -138,7 +198,24 @@
             "voice"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms",
+            "voice"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -164,7 +241,26 @@
             "sms"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "dlrUrl": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -210,5 +306,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

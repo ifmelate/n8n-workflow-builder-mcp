@@ -71,7 +71,23 @@
             "splitOutItems"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "splitOutItems"
+          ]
+        }
+      ]
     },
     {
       "name": "include",
@@ -102,7 +118,23 @@
             "splitOutItems"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "splitOutItems"
+          ]
+        }
+      ]
     },
     {
       "name": "fieldsToInclude",
@@ -126,7 +158,33 @@
             "selectedOtherFields"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fieldName": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "splitOutItems"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "include",
+          "values": [
+            "selectedOtherFields"
+          ]
+        }
+      ]
     },
     {
       "name": "aggregate",
@@ -152,7 +210,23 @@
             "aggregateItems"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "aggregateItems"
+          ]
+        }
+      ]
     },
     {
       "name": "fieldsToAggregate",
@@ -176,7 +250,34 @@
             "aggregateIndividualFields"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fieldToAggregate": "",
+        "renameField": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "aggregateItems"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "aggregate",
+          "values": [
+            "aggregateIndividualFields"
+          ]
+        }
+      ]
     },
     {
       "name": "destinationFieldName",
@@ -196,7 +297,30 @@
             "aggregateAllItemData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "aggregateItems"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "aggregate",
+          "values": [
+            "aggregateAllItemData"
+          ]
+        }
+      ]
     },
     {
       "name": "fieldsToExclude",
@@ -223,7 +347,40 @@
             "allFieldsExcept"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fieldName": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "aggregateItems"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "aggregate",
+          "values": [
+            "aggregateAllItemData"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "include",
+          "values": [
+            "allFieldsExcept"
+          ]
+        }
+      ]
     },
     {
       "name": "compare",
@@ -254,7 +411,23 @@
             "removeDuplicates"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "removeDuplicates"
+          ]
+        }
+      ]
     },
     {
       "name": "fieldsToCompare",
@@ -278,7 +451,33 @@
             "selectedFields"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fieldName": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "removeDuplicates"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "compare",
+          "values": [
+            "selectedFields"
+          ]
+        }
+      ]
     },
     {
       "name": "type",
@@ -309,7 +508,23 @@
             "sort"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sort"
+          ]
+        }
+      ]
     },
     {
       "name": "sortFieldsUi",
@@ -334,7 +549,33 @@
             "simple"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fieldName": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sort"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "type",
+          "values": [
+            "simple"
+          ]
+        }
+      ]
     },
     {
       "name": "code",
@@ -357,7 +598,30 @@
             "code"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sort"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "type",
+          "values": [
+            "code"
+          ]
+        }
+      ]
     },
     {
       "name": "maxItems",
@@ -377,7 +641,23 @@
             "limit"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "limit"
+          ]
+        }
+      ]
     },
     {
       "name": "keep",
@@ -404,7 +684,23 @@
             "limit"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "limit"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -442,7 +738,35 @@
             "selectedFields"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "removeOtherFields": false,
+        "disableDotNotation": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "itemList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "removeDuplicates"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "compare",
+          "values": [
+            "allFieldsExcept",
+            "selectedFields"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [

@@ -8,7 +8,6 @@
     },
     "files": [
         "dist/",
-        "workflow_nodes/",
         "README.md",
         "LICENSE"
     ],
@@ -24,7 +23,9 @@
         "test": "jest",
         "test:langchain": "mocha tests/unit/langchain-llm-format.test.js",
         "mcp": "node n8n-workflow-mcp.js",
-        "build": "tsc"
+        "build": "tsc",
+        "build:nodes-db": "node scripts/build-nodes-db.js --source ./workflow_nodes",
+        "rebuild:nodes-db": "node scripts/build-nodes-db.js --source ./workflow_nodes --full-rebuild"
     },
     "keywords": [
         "n8n",
@@ -40,6 +41,7 @@
         "abort-controller": "^3.0.0",
         "ajv": "^8.12.0",
         "ajv-formats": "^3.0.1",
+        "better-sqlite3": "^9.6.0",
         "cors": "^2.8.5",
         "dotenv": "^16.3.1",
         "express": "^4.18.2",
@@ -51,6 +53,8 @@
         "zod": "^3.24.4"
     },
     "devDependencies": {
+        "@jest/globals": "^30.0.5",
+        "@types/better-sqlite3": "^7.6.13",
         "@types/node": "^20.0.0",
         "chai": "^4.5.0",
         "eslint": "^8.46.0",
@@ -60,6 +64,8 @@
         "prettier": "^3.0.1",
         "sinon": "^20.0.0",
         "supertest": "^7.1.1",
+        "ts-jest": "^29.4.1",
+        "ts-node": "^10.9.2",
         "typescript": "^5.0.0"
     }
 }

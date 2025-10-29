@@ -2,6 +2,39 @@
 "use strict";
 // N8N Workflow Builder MCP Server
 // Using the official MCP SDK as required
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -18,6 +51,9 @@ const id_1 = require("./utils/id");
 const llm_1 = require("./utils/llm");
 const versioning_1 = require("./nodes/versioning");
 const cache_1 = require("./nodes/cache");
+const nodesDb_1 = require("./utils/nodesDb");
+const connectMainChain = __importStar(require("./mcp/tools/connectMainChain"));
+const listTemplateExamples = __importStar(require("./mcp/tools/listTemplateExamples"));
 // Log initial workspace
 console.error(`[DEBUG] Default workspace directory: ${(0, workspace_1.getWorkspaceDir)()}`);
 // Initialize supported N8N versions and their node capabilities
@@ -450,83 +486,26 @@ server.tool("add_node", "Add a node to an n8n workflow", addNodeParamsSchema.sha
         if (Object.keys(nodeCredentials).length > 0) {
             newNode.credentials = nodeCredentials;
         }
-        // Pre-validate before persisting
+        // Pre-validate before persisting (node-scoped only; do not fail on unrelated issues)
         try {
             const nodeTypes = await (0, nodeTypesLoader_1.loadNodeTypesForCurrentVersion)(path_1.default.resolve(__dirname, '../workflow_nodes'), (0, versioning_1.getCurrentN8nVersion)());
             const tentative = { ...workflow, nodes: [...workflow.nodes, newNode] };
             const preReport = (0, workflowValidator_1.validateAndNormalizeWorkflow)(tentative, nodeTypes);
-            // Filter out credential issues from blocking validation (for add operations)
-            const hasBlockingIssues = preReport.nodeIssues && Object.values(preReport.nodeIssues).some((arr) => Array.isArray(arr) && arr.some((issue) => issue.code && issue.code !== 'missing_credentials'));
-            // Only fail validation if there are actual errors OR non-credential blocking issues
-            if (!preReport.ok || (preReport.errors && preReport.errors.length > 0) || hasBlockingIssues) {
-                console.warn('[WARN] Blocking validation on add_node:', { errors: preReport.errors, nodeIssues: preReport.nodeIssues });
-                // Sanitize validation payload to avoid leaking transient node IDs when creation fails
-                const idsToRedact = [newNode.id];
-                const redactText = (text) => {
-                    if (typeof text !== 'string')
-                        return text;
-                    let out = text;
-                    for (const id of idsToRedact) {
-                        if (id && typeof id === 'string') {
-                            out = out.split(id).join('[redacted]');
-                        }
-                    }
-                    return out;
-                };
-                const sanitizeWarnings = (warnings) => {
-                    if (!Array.isArray(warnings))
-                        return warnings;
-                    return warnings.map((w) => {
-                        const copy = { ...w };
-                        if (copy.message)
-                            copy.message = redactText(copy.message);
-                        if (copy.details && typeof copy.details === 'object') {
-                            copy.details = { ...copy.details };
-                            if (idsToRedact.includes(copy.details.nodeId))
-                                delete copy.details.nodeId;
-                        }
-                        return copy;
-                    });
-                };
-                const sanitizeErrors = (errors) => {
-                    if (!Array.isArray(errors))
-                        return errors;
-                    return errors.map((e) => {
-                        if (typeof e === 'string')
-                            return redactText(e);
-                        if (e && typeof e === 'object') {
-                            const ec = { ...e };
-                            if (ec.message)
-                                ec.message = redactText(ec.message);
-                            return ec;
-                        }
-                        return e;
-                    });
-                };
-                const sanitizeNodeIssues = (nodeIssues) => {
-                    if (!nodeIssues || typeof nodeIssues !== 'object')
-                        return nodeIssues;
-                    const out = {};
-                    for (const [nodeName, issues] of Object.entries(nodeIssues)) {
-                        out[nodeName] = Array.isArray(issues)
-                            ? issues.map((iss) => {
-                                const ic = { ...iss };
-                                if (ic.message)
-                                    ic.message = redactText(ic.message);
-                                return ic;
-                            })
-                            : issues;
-                    }
-                    return out;
-                };
-                const sanitizedValidation = {
-                    ok: preReport.ok,
-                    errors: sanitizeErrors(preReport.errors),
-                    warnings: sanitizeWarnings(preReport.warnings),
-                    nodeIssues: sanitizeNodeIssues(preReport.nodeIssues)
-                };
-                return { content: [{ type: "text", text: JSON.stringify({ success: false, error: "Validation failed for node creation", validation: sanitizedValidation }) }] };
-            }
+            const buildLocalValidation = (report, nodeName) => {
+                const allErrors = Array.isArray(report?.errors) ? report.errors : [];
+                const allWarnings = Array.isArray(report?.warnings) ? report.warnings : [];
+                const nodeErrors = allErrors.filter((e) => e && e.nodeName === nodeName);
+                const nodeWarnings = allWarnings.filter((w) => w && w.nodeName === nodeName);
+                const nodeIssuesArr = report?.nodeIssues?.[nodeName];
+                const blockingIssues = Array.isArray(nodeIssuesArr)
+                    ? nodeIssuesArr.filter((iss) => iss && iss.code && iss.code !== 'missing_credentials')
+                    : [];
+                const ok = nodeErrors.length === 0 && blockingIssues.length === 0;
+                const nodeIssues = nodeIssuesArr ? { [nodeName]: nodeIssuesArr } : undefined;
+                return { ok, errors: nodeErrors, warnings: nodeWarnings, nodeIssues };
+            };
+            const local = buildLocalValidation(preReport, newNode.name);
+            console.error('[DEBUG] add_node local pre-validation:', local);
         }
         catch (e) {
             console.warn('[WARN] Pre-write validation step errored in add_node:', e?.message || e);
@@ -589,20 +568,30 @@ server.tool("add_node", "Add a node to an n8n workflow", addNodeParamsSchema.sha
         catch (e) {
             console.warn('[WARN] Optional wiring in add_node failed:', e?.message || e);
         }
-        // Validate after modification
+        // Validate after modification (node-scoped only)
         try {
             const nodeTypes = await (0, nodeTypesLoader_1.loadNodeTypesForCurrentVersion)(path_1.default.resolve(__dirname, '../workflow_nodes'), (0, versioning_1.getCurrentN8nVersion)());
             const report = (0, workflowValidator_1.validateAndNormalizeWorkflow)(workflow, nodeTypes);
-            if (!report.ok || (report.warnings && report.warnings.length > 0)) {
-                if (!report.ok)
-                    console.warn('[WARN] Workflow validation failed after add_node', report.errors);
-                return { content: [{ type: "text", text: JSON.stringify({ success: true, node: newNode, workflowId: workflow.id, createdConnections, validation: { ok: report.ok, errors: report.errors, warnings: report.warnings, nodeIssues: report.nodeIssues } }) }] };
-            }
+            const buildLocalValidation = (report, nodeName) => {
+                const allErrors = Array.isArray(report?.errors) ? report.errors : [];
+                const allWarnings = Array.isArray(report?.warnings) ? report.warnings : [];
+                const nodeErrors = allErrors.filter((e) => e && e.nodeName === nodeName);
+                const nodeWarnings = allWarnings.filter((w) => w && w.nodeName === nodeName);
+                const nodeIssuesArr = report?.nodeIssues?.[nodeName];
+                const blockingIssues = Array.isArray(nodeIssuesArr)
+                    ? nodeIssuesArr.filter((iss) => iss && iss.code && iss.code !== 'missing_credentials')
+                    : [];
+                const ok = nodeErrors.length === 0 && blockingIssues.length === 0;
+                const nodeIssues = nodeIssuesArr ? { [nodeName]: nodeIssuesArr } : undefined;
+                return { ok, errors: nodeErrors, warnings: nodeWarnings, nodeIssues };
+            };
+            const local = buildLocalValidation(report, newNode.name);
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, node: newNode, workflowId: workflow.id, createdConnections, localValidation: local }) }] };
         }
         catch (e) {
             console.warn('[WARN] Validation step errored after add_node:', e?.message || e);
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, node: newNode, workflowId: workflow.id, createdConnections }) }] };
         }
-        return { content: [{ type: "text", text: JSON.stringify({ success: true, node: newNode, workflowId: workflow.id, createdConnections }) }] };
     }
     catch (error) {
         console.error("[ERROR] Failed to add node:", error);
@@ -765,18 +754,26 @@ server.tool("edit_node", "Edit an existing node in a workflow", editNodeParamsSc
         catch (e) {
             console.warn('[WARN] Could not inject credential placeholders during edit_node:', e?.message || e);
         }
-        // Pre-validate before persisting
+        // Pre-validate before persisting (node-scoped only; do not fail on unrelated issues)
         try {
             const nodeTypes = await (0, nodeTypesLoader_1.loadNodeTypesForCurrentVersion)(path_1.default.resolve(__dirname, '../workflow_nodes'), (0, versioning_1.getCurrentN8nVersion)());
             const tentative = { ...workflow, nodes: workflow.nodes.map((n, i) => i === nodeIndex ? nodeToEdit : n) };
             const preReport = (0, workflowValidator_1.validateAndNormalizeWorkflow)(tentative, nodeTypes);
-            // Filter out credential issues from blocking validation (for edit operations)
-            const hasBlockingIssues = preReport.nodeIssues && Object.values(preReport.nodeIssues).some((arr) => Array.isArray(arr) && arr.some((issue) => issue.code && issue.code !== 'missing_credentials'));
-            // Only fail validation if there are actual errors OR non-credential blocking issues
-            if (!preReport.ok || (preReport.errors && preReport.errors.length > 0) || hasBlockingIssues) {
-                console.warn('[WARN] Blocking validation on edit_node:', { errors: preReport.errors, nodeIssues: preReport.nodeIssues });
-                return { content: [{ type: "text", text: JSON.stringify({ success: false, error: "Validation failed for node edit", validation: { ok: preReport.ok, errors: preReport.errors, warnings: preReport.warnings, nodeIssues: preReport.nodeIssues } }) }] };
-            }
+            const buildLocalValidation = (report, nodeName) => {
+                const allErrors = Array.isArray(report?.errors) ? report.errors : [];
+                const allWarnings = Array.isArray(report?.warnings) ? report.warnings : [];
+                const nodeErrors = allErrors.filter((e) => e && e.nodeName === nodeName);
+                const nodeWarnings = allWarnings.filter((w) => w && w.nodeName === nodeName);
+                const nodeIssuesArr = report?.nodeIssues?.[nodeName];
+                const blockingIssues = Array.isArray(nodeIssuesArr)
+                    ? nodeIssuesArr.filter((iss) => iss && iss.code && iss.code !== 'missing_credentials')
+                    : [];
+                const ok = nodeErrors.length === 0 && blockingIssues.length === 0;
+                const nodeIssues = nodeIssuesArr ? { [nodeName]: nodeIssuesArr } : undefined;
+                return { ok, errors: nodeErrors, warnings: nodeWarnings, nodeIssues };
+            };
+            const local = buildLocalValidation(preReport, nodeToEdit.name);
+            console.error('[DEBUG] edit_node local pre-validation:', local);
         }
         catch (e) {
             console.warn('[WARN] Pre-write validation step errored in edit_node:', e?.message || e);
@@ -839,20 +836,30 @@ server.tool("edit_node", "Edit an existing node in a workflow", editNodeParamsSc
         catch (e) {
             console.warn('[WARN] Optional wiring in edit_node failed:', e?.message || e);
         }
-        // Validate after modification
+        // Validate after modification (node-scoped only)
         try {
             const nodeTypes = await (0, nodeTypesLoader_1.loadNodeTypesForCurrentVersion)(path_1.default.resolve(__dirname, '../workflow_nodes'), (0, versioning_1.getCurrentN8nVersion)());
             const report = (0, workflowValidator_1.validateAndNormalizeWorkflow)(workflow, nodeTypes);
-            if (!report.ok || (report.warnings && report.warnings.length > 0)) {
-                if (!report.ok)
-                    console.warn('[WARN] Workflow validation failed after edit_node', report.errors);
-                return { content: [{ type: "text", text: JSON.stringify({ success: true, node: nodeToEdit, createdConnections, validation: { ok: report.ok, errors: report.errors, warnings: report.warnings, nodeIssues: report.nodeIssues } }) }] };
-            }
+            const buildLocalValidation = (report, nodeName) => {
+                const allErrors = Array.isArray(report?.errors) ? report.errors : [];
+                const allWarnings = Array.isArray(report?.warnings) ? report.warnings : [];
+                const nodeErrors = allErrors.filter((e) => e && e.nodeName === nodeName);
+                const nodeWarnings = allWarnings.filter((w) => w && w.nodeName === nodeName);
+                const nodeIssuesArr = report?.nodeIssues?.[nodeName];
+                const blockingIssues = Array.isArray(nodeIssuesArr)
+                    ? nodeIssuesArr.filter((iss) => iss && iss.code && iss.code !== 'missing_credentials')
+                    : [];
+                const ok = nodeErrors.length === 0 && blockingIssues.length === 0;
+                const nodeIssues = nodeIssuesArr ? { [nodeName]: nodeIssuesArr } : undefined;
+                return { ok, errors: nodeErrors, warnings: nodeWarnings, nodeIssues };
+            };
+            const local = buildLocalValidation(report, nodeToEdit.name);
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, node: nodeToEdit, createdConnections, localValidation: local }) }] };
         }
         catch (e) {
             console.warn('[WARN] Validation step errored after edit_node:', e?.message || e);
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, node: nodeToEdit, createdConnections }) }] };
         }
-        return { content: [{ type: "text", text: JSON.stringify({ success: true, node: nodeToEdit, createdConnections }) }] };
     }
     catch (error) {
         console.error("[ERROR] Failed to edit node:", error);
@@ -1308,18 +1315,18 @@ server.tool("add_ai_connections", "Wire AI model, tools, and memory to an agent"
                 }
             }
         }
-        // Embeddings → Vector Store (ai_embeddings)
+        // Embeddings → Vector Store (ai_embedding)
         if (embeddingsNode && vectorStoreNode) {
             const fromName = embeddingsNode.name;
             const toName = vectorStoreNode.name;
             if (!workflow.connections[fromName])
                 workflow.connections[fromName] = {};
-            if (!workflow.connections[fromName]["ai_embeddings"])
-                workflow.connections[fromName]["ai_embeddings"] = [];
-            const exists = workflow.connections[fromName]["ai_embeddings"].some((group) => Array.isArray(group) && group.some((d) => d && d.node === toName && d.type === "ai_embeddings"));
+            if (!workflow.connections[fromName]["ai_embedding"])
+                workflow.connections[fromName]["ai_embedding"] = [];
+            const exists = workflow.connections[fromName]["ai_embedding"].some((group) => Array.isArray(group) && group.some((d) => d && d.node === toName && d.type === "ai_embedding"));
             if (!exists) {
-                workflow.connections[fromName]["ai_embeddings"].push([{ node: toName, type: "ai_embeddings", index: 0 }]);
-                console.error(`[DEBUG] Added embeddings connection from ${fromName} to ${toName} (ai_embeddings)`);
+                workflow.connections[fromName]["ai_embedding"].push([{ node: toName, type: "ai_embedding", index: 0 }]);
+                console.error(`[DEBUG] Added embeddings connection from ${fromName} to ${toName} (ai_embedding)`);
             }
         }
         // Vector Store → Vector Insert (ai_document)
@@ -1401,9 +1408,9 @@ server.tool("add_ai_connections", "Wire AI model, tools, and memory to an agent"
         if (embeddingsNode && vectorStoreNode) {
             connectionsSummary.push({
                 from: `${embeddingsNode.name} (${embeddings_node_id})`,
-                fromOutput: "ai_embeddings",
+                fromOutput: "ai_embedding",
                 to: `${vectorStoreNode.name} (${vector_store_node_id})`,
-                toInput: "ai_embeddings"
+                toInput: "ai_embedding"
             });
         }
         if (vectorStoreNode && vectorInsertNode) {
@@ -2351,19 +2358,24 @@ server.tool("validate_workflow", "Validate a workflow file against known node sc
         return { content: [{ type: "text", text: JSON.stringify({ success: false, error: "Failed to validate workflow: " + error.message }) }] };
     }
 });
+// Connect Main Chain (auto-build main path)
+server.tool(connectMainChain.toolName, connectMainChain.description, connectMainChain.paramsSchema.shape, connectMainChain.handler);
+// List Template Examples (examples from free_templates)
+server.tool(listTemplateExamples.toolName, listTemplateExamples.description, listTemplateExamples.paramsSchema.shape, listTemplateExamples.handler);
 // Create and configure the transport
 const transport = new stdio_js_1.StdioServerTransport();
 // Start the server
 async function main() {
     try {
-        // Note: loadKnownNodeBaseTypes uses resolvePath, which depends on WORKSPACE_DIR.
-        // WORKSPACE_DIR is typically set by create_workflow. 
-        // If called before create_workflow, it might use process.cwd() or fail if workflow_nodes isn't there.
-        // This is a known limitation for now; ideally, WORKSPACE_DIR is configured at MCP server init more globally.
-        await (0, cache_1.loadKnownNodeBaseTypes)(); // Attempt to load node types at startup
-        await (0, versioning_1.initializeN8nVersionSupport)(); // Initialize N8N version support
-        const detectedVersion = await (0, versioning_1.detectN8nVersion)(); // Detect the current N8N version
-        await (0, versioning_1.setN8nVersion)(detectedVersion || "1.30.0"); // Set the current N8N version
+        // Initialize version support and establish current n8n version first
+        // If DB source is enabled, materialize first so directories exist for version detection
+        await (0, nodesDb_1.materializeIfConfigured)();
+        await (0, versioning_1.initializeN8nVersionSupport)();
+        const detectedVersion = await (0, versioning_1.detectN8nVersion)();
+        await (0, versioning_1.setN8nVersion)(detectedVersion || "1.30.0");
+        // Now load node base types from the (possibly materialized) filesystem
+        await (0, cache_1.loadKnownNodeBaseTypes)();
+        await (0, cache_1.updateNodeCacheForVersion)();
         await server.connect(transport);
         console.error("[DEBUG] N8N Workflow Builder MCP Server started (TypeScript version)");
         // Debugging tool schemas might need update if params changed significantly for other tools
@@ -2374,7 +2386,9 @@ async function main() {
             add_node: addNodeParamsSchema,
             edit_node: editNodeParamsSchema,
             delete_node: deleteNodeParamsSchema,
-            add_connection: addConnectionParamsSchema
+            add_connection: addConnectionParamsSchema,
+            connect_main_chain: connectMainChain.paramsSchema,
+            list_template_examples: listTemplateExamples.paramsSchema
         };
         const manuallyConstructedToolList = Object.entries(toolSchemasForDebug).map(([name, schema]) => {
             let toolDefinition = { name };

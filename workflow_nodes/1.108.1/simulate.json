@@ -39,7 +39,16 @@
             "specify"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "output",
+          "values": [
+            "specify"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -64,5 +73,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

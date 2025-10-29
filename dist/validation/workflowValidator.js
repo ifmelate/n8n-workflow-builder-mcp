@@ -46,6 +46,10 @@ function applyDefaultParameters(node, nodeType) {
         const isRequiredResourceLocator = prop.required === true && String(prop.type || '').toLowerCase() === 'resourcelocator';
         if (isRequiredResourceLocator)
             continue;
+        const isVisible = evaluateDisplayOptions(prop.displayOptions, node.parameters || {}) &&
+            evaluateVisibilityRulesNormalized(prop.visibilityRulesNormalized, node.parameters || {}, node.typeVersion);
+        if (!isVisible)
+            continue;
         if (!(name in (node.parameters || {})) && Object.prototype.hasOwnProperty.call(prop, 'default')) {
             node.parameters[name] = prop.default;
         }
@@ -87,14 +91,54 @@ function evaluateDisplayOptions(displayOptions, params) {
     }
     return true;
 }
+// Evaluate normalized visibility rules found in node JSONs (preferred over raw displayOptions)
+function evaluateVisibilityRulesNormalized(rules, params, nodeTypeVersion) {
+    if (!Array.isArray(rules) || rules.length === 0)
+        return true;
+    const getValue = (key) => {
+        if (!key)
+            return undefined;
+        if (key === '@version')
+            return nodeTypeVersion;
+        const normalized = key.startsWith('/') ? key.slice(1) : key;
+        return params[normalized];
+    };
+    const showRules = rules.filter((r) => r && r.effect === 'show');
+    const hideRules = rules.filter((r) => r && r.effect === 'hide');
+    const toComparable = (x) => {
+        if (typeof x === 'number')
+            return x;
+        const n = parseFloat(String(x));
+        return Number.isNaN(n) ? x : n;
+    };
+    const matches = (key, expected) => {
+        const val = getValue(key);
+        const candidates = Array.isArray(val) ? val : [val];
+        const lhs = candidates.map(toComparable);
+        const rhs = (expected || []).map(toComparable);
+        return lhs.some((v) => rhs.some((e) => e === v));
+    };
+    if (showRules.length > 0) {
+        for (const r of showRules) {
+            if (!matches(r.key, r.values || []))
+                return false;
+        }
+    }
+    for (const r of hideRules) {
+        if (matches(r.key, r.values || []))
+            return false;
+    }
+    return true;
+}
 function validateNodeAgainstDefinition(node, nodeType) {
     const issues = [];
     const properties = nodeType.description?.properties || [];
-    // required parameters (respect simple displayOptions)
+    // required parameters (respect simple displayOptions and normalized visibility)
     for (const prop of properties) {
         if (!prop.required)
             continue;
-        const visible = evaluateDisplayOptions(prop.displayOptions, node.parameters || {});
+        const visible = evaluateDisplayOptions(prop.displayOptions, node.parameters || {}) &&
+            evaluateVisibilityRulesNormalized(prop.visibilityRulesNormalized, node.parameters || {}, node.typeVersion);
         if (!visible)
             continue;
         const value = (node.parameters || {})[prop.name];
@@ -102,11 +146,12 @@ function validateNodeAgainstDefinition(node, nodeType) {
             issues.push({ code: 'missing_parameter', message: `Parameter "${prop.displayName || prop.name}" is required.`, property: prop.name });
         }
     }
-    // fixedCollection option validation
+    // fixedCollection option validation (respect visibility)
     for (const prop of properties) {
         if (prop.type !== 'fixedCollection')
             continue;
-        const visible = evaluateDisplayOptions(prop.displayOptions, node.parameters || {});
+        const visible = evaluateDisplayOptions(prop.displayOptions, node.parameters || {}) &&
+            evaluateVisibilityRulesNormalized(prop.visibilityRulesNormalized, node.parameters || {}, node.typeVersion);
         if (!visible)
             continue;
         const value = (node.parameters || {})[prop.name];
@@ -348,18 +393,45 @@ function validateAndNormalizeWorkflow(raw, nodeTypes) {
     }
     let startNode;
     const incomingMain = new Set(Object.keys(connectionsByDestination).filter((k) => (connectionsByDestination[k] || {}).hasOwnProperty('main')));
+    // Helper: identify trigger-like node types (webhook, explicit *trigger*, schedule/cron)
+    const isTriggerType = (t) => {
+        const tl = String(t || '').toLowerCase();
+        return tl.includes('trigger') || tl.includes('webhook') || tl.includes('schedule') || tl.includes('cron');
+    };
     // Prefer explicit trigger nodes as start when present
     const triggerCandidates = Object.keys(nodesByName)
-        .filter((n) => String((nodesByName[n]?.type || '')).toLowerCase().includes('trigger') && nodesByName[n].disabled !== true);
+        .filter((n) => isTriggerType(nodesByName[n]?.type) && nodesByName[n].disabled !== true);
     if (triggerCandidates.length > 0) {
-        // Prefer chatTrigger if multiple
-        const chatTrigger = triggerCandidates.find((n) => String((nodesByName[n]?.type || '')).toLowerCase().includes('chattrigger'));
-        startNode = chatTrigger || triggerCandidates[0];
+        // Prefer chatTrigger, then webhook, then first
+        const preferChat = triggerCandidates.find((n) => String((nodesByName[n]?.type || '')).toLowerCase().includes('chattrigger'));
+        const preferWebhook = triggerCandidates.find((n) => String((nodesByName[n]?.type || '')).toLowerCase().includes('webhook'));
+        startNode = preferChat || preferWebhook || triggerCandidates[0];
+    }
+    // Helper: does a node have at least one outgoing main connection?
+    const hasOutgoingMain = (name) => {
+        const byType = connectionsBySource[name] || {};
+        const groups = byType.main || [];
+        for (const group of groups || []) {
+            for (const conn of group || []) {
+                if (conn)
+                    return true;
+            }
+        }
+        return false;
+    };
+    if (!startNode) {
+        // Fallback: choose a head with no incoming main AND with outgoing main
+        for (const name of Object.keys(nodesByName)) {
+            if (!incomingMain.has(name) && nodesByName[name].disabled !== true && hasOutgoingMain(name)) {
+                startNode = name;
+                break;
+            }
+        }
     }
     if (!startNode) {
-        // Fallback: pick a head to continue connectivity analysis
+        // Secondary fallback: any node that has outgoing main
         for (const name of Object.keys(nodesByName)) {
-            if (!incomingMain.has(name) && nodesByName[name].disabled !== true) {
+            if (nodesByName[name].disabled !== true && hasOutgoingMain(name)) {
                 startNode = name;
                 break;
             }

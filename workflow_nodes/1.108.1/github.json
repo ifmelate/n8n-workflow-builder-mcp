@@ -82,7 +82,16 @@
             "organization"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "organization"
+          ]
+        }
+      ]
     },
     {
       "name": "webhookNotice",
@@ -98,7 +107,23 @@
             "dispatchAndWait"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "workflow"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "dispatchAndWait"
+          ]
+        }
+      ]
     },
     {
       "name": "owner",
@@ -113,7 +138,16 @@
             "invite"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "hide",
+          "key": "operation",
+          "values": [
+            "invite"
+          ]
+        }
+      ]
     },
     {
       "name": "repository",
@@ -132,7 +166,24 @@
             "getRepositories"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "hide",
+          "key": "resource",
+          "values": [
+            "user",
+            "organization"
+          ]
+        },
+        {
+          "effect": "hide",
+          "key": "operation",
+          "values": [
+            "getRepositories"
+          ]
+        }
+      ]
     },
     {
       "name": "workflowId",
@@ -156,7 +207,28 @@
             "enable"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "workflow"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "disable",
+            "dispatch",
+            "dispatchAndWait",
+            "get",
+            "getUsage",
+            "enable"
+          ]
+        }
+      ]
     },
     {
       "name": "ref",
@@ -183,7 +255,24 @@
             "dispatchAndWait"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "workflow"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "dispatch",
+            "dispatchAndWait"
+          ]
+        }
+      ]
     },
     {
       "name": "filePath",
@@ -199,7 +288,16 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryData",
@@ -218,7 +316,24 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "edit"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "fileContent",
@@ -241,7 +356,31 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "binaryData",
+          "values": [
+            false
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "edit"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -263,7 +402,31 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "binaryData",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "edit"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "commitMessage",
@@ -282,7 +445,25 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "delete",
+            "edit"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalParameters",
@@ -302,7 +483,29 @@
             "file"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "name": "",
+        "email": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "delete",
+            "edit"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "asBinaryProperty",
@@ -319,7 +522,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "title",
@@ -337,7 +556,23 @@
             "issue"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "issue"
+          ]
+        }
+      ]
     },
     {
       "name": "body",
@@ -357,7 +592,23 @@
             "issue"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "issue"
+          ]
+        }
+      ]
     },
     {
       "name": "labels",
@@ -386,7 +637,26 @@
             "issue"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "label": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "issue"
+          ]
+        }
+      ]
     },
     {
       "name": "assignees",
@@ -415,7 +685,26 @@
             "issue"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "assignee": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "issue"
+          ]
+        }
+      ]
     },
     {
       "name": "issueNumber",
@@ -433,7 +722,23 @@
             "issue"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "createComment"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "issue"
+          ]
+        }
+      ]
     },
     {
       "name": "editFields",
@@ -450,7 +755,23 @@
             "issue"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "edit"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "issue"
+          ]
+        }
+      ]
     },
     {
       "name": "lockReason",
@@ -489,7 +810,23 @@
             "issue"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "lock"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "issue"
+          ]
+        }
+      ]
     },
     {
       "name": "releaseTag",
@@ -507,7 +844,23 @@
             "release"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "release"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -561,7 +914,30 @@
             "release"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "name": "",
+        "body": "",
+        "draft": false,
+        "prerelease": false,
+        "target_commitish": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "release"
+          ]
+        }
+      ]
     },
     {
       "name": "release_id",
@@ -580,7 +956,25 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "release"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "delete",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -597,7 +991,23 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "release"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -621,7 +1031,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "release"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "getRepositoryIssuesFilters",
@@ -675,7 +1108,30 @@
             "repository"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "assignee": "",
+        "creator": "",
+        "mentioned": "",
+        "labels": "",
+        "since": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getIssues"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "repository"
+          ]
+        }
+      ]
     },
     {
       "name": "getRepositoryPullRequestsFilters",
@@ -692,7 +1148,23 @@
             "repository"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getPullRequests"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "repository"
+          ]
+        }
+      ]
     },
     {
       "name": "pullRequestNumber",
@@ -711,7 +1183,24 @@
             "review"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "review"
+          ]
+        }
+      ]
     },
     {
       "name": "reviewId",
@@ -730,7 +1219,24 @@
             "review"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "review"
+          ]
+        }
+      ]
     },
     {
       "name": "event",
@@ -769,7 +1275,23 @@
             "review"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "review"
+          ]
+        }
+      ]
     },
     {
       "name": "organization",
@@ -787,7 +1309,23 @@
             "user"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "invite"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        }
+      ]
     },
     {
       "name": "email",
@@ -806,7 +1344,23 @@
             "user"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "invite"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -1000,5 +1554,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

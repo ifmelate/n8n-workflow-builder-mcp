@@ -76,7 +76,16 @@
             "hash"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "hash"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryData",
@@ -92,7 +101,17 @@
             "hmac"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "hash",
+            "hmac"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -111,7 +130,24 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "hash",
+            "hmac"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "binaryData",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "value",
@@ -129,7 +165,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "hash"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "binaryData",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "dataPropertyName",
@@ -144,7 +196,16 @@
             "hash"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "hash"
+          ]
+        }
+      ]
     },
     {
       "name": "encoding",
@@ -168,7 +229,16 @@
             "hash"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "hash"
+          ]
+        }
+      ]
     },
     {
       "name": "secret",
@@ -182,7 +252,16 @@
             "hmac"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "hmac"
+          ]
+        }
+      ]
     },
     {
       "name": "algorithm",
@@ -197,7 +276,16 @@
             "sign"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "sign"
+          ]
+        }
+      ]
     },
     {
       "name": "privateKey",
@@ -212,7 +300,16 @@
             "sign"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "sign"
+          ]
+        }
+      ]
     },
     {
       "name": "encodingType",
@@ -245,7 +342,16 @@
             "generate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "generate"
+          ]
+        }
+      ]
     },
     {
       "name": "stringLength",
@@ -264,7 +370,25 @@
             "hex"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "action",
+          "values": [
+            "generate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "encodingType",
+          "values": [
+            "ascii",
+            "base64",
+            "hex"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -289,5 +413,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

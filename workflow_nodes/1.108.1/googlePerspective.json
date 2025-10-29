@@ -28,7 +28,16 @@
             "analyzeComment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "analyzeComment"
+          ]
+        }
+      ]
     },
     {
       "name": "requestedAttributesUi",
@@ -47,7 +56,16 @@
             "analyzeComment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "analyzeComment"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -71,7 +89,19 @@
             "analyzeComment"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "languages": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "analyzeComment"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -117,5 +147,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

@@ -52,7 +52,16 @@
             "fileCreated"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "fileCreated"
+          ]
+        }
+      ]
     },
     {
       "name": "watch",
@@ -83,7 +92,16 @@
             "fileUpdated"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "fileUpdated"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -107,7 +125,19 @@
             "selectedFolder"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "folderChild": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "watch",
+          "values": [
+            "selectedFolder"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -133,5 +163,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

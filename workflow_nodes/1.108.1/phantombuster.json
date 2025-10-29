@@ -20,7 +20,23 @@
             "agent"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "agent"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -37,7 +53,23 @@
             "agent"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "agent"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -61,7 +93,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "agent"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "resolveData",
@@ -78,7 +133,23 @@
             "agent"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getOutput"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "agent"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -105,7 +176,26 @@
             "getOutput"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "prevContainerId": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "agent"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getOutput"
+          ]
+        }
+      ]
     },
     {
       "name": "jsonParameters",
@@ -121,7 +211,23 @@
             "agent"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "launch"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "agent"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -162,7 +268,16 @@
             "agent"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "agent"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -208,5 +323,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

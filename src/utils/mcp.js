@@ -1,5 +1,5 @@
 /**
- * MCP Utilities
+ * MCP Utilities (CommonJS version for legacy middleware)
  * 
  * Utilities for MCP protocol handling
  */
@@ -82,4 +82,4 @@ module.exports = {
     createSuccessResponse,
     createErrorResponse,
     parseToolName
-}; 
+};

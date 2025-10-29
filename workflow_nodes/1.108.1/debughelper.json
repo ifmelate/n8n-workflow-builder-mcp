@@ -58,7 +58,16 @@
             "throwError"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "category",
+          "values": [
+            "throwError"
+          ]
+        }
+      ]
     },
     {
       "name": "throwErrorMessage",
@@ -72,7 +81,16 @@
             "throwError"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "category",
+          "values": [
+            "throwError"
+          ]
+        }
+      ]
     },
     {
       "name": "memorySizeValue",
@@ -86,7 +104,16 @@
             "oom"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "category",
+          "values": [
+            "oom"
+          ]
+        }
+      ]
     },
     {
       "name": "randomDataType",
@@ -149,7 +176,16 @@
             "randomData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "category",
+          "values": [
+            "randomData"
+          ]
+        }
+      ]
     },
     {
       "name": "nanoidAlphabet",
@@ -166,7 +202,23 @@
             "nanoid"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "category",
+          "values": [
+            "randomData"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "randomDataType",
+          "values": [
+            "nanoid"
+          ]
+        }
+      ]
     },
     {
       "name": "nanoidLength",
@@ -183,7 +235,23 @@
             "nanoid"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "category",
+          "values": [
+            "randomData"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "randomDataType",
+          "values": [
+            "nanoid"
+          ]
+        }
+      ]
     },
     {
       "name": "randomDataSeed",
@@ -198,7 +266,16 @@
             "randomData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "category",
+          "values": [
+            "randomData"
+          ]
+        }
+      ]
     },
     {
       "name": "randomDataCount",
@@ -212,7 +289,16 @@
             "randomData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "category",
+          "values": [
+            "randomData"
+          ]
+        }
+      ]
     },
     {
       "name": "randomDataSingleArray",
@@ -226,7 +312,16 @@
             "randomData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "category",
+          "values": [
+            "randomData"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -268,5 +363,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

@@ -28,5 +28,6 @@
     "produces": [
       "AiTextSplitter"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: AiTextSplitter"
 }

@@ -7,6 +7,7 @@ exports.loadNodeTypesFromDir = loadNodeTypesFromDir;
 exports.loadNodeTypesForCurrentVersion = loadNodeTypesForCurrentVersion;
 const promises_1 = __importDefault(require("fs/promises"));
 const path_1 = __importDefault(require("path"));
+const nodesDb_1 = require("../utils/nodesDb");
 const workflowValidator_1 = require("./workflowValidator");
 async function loadNodeTypesFromDir(dir) {
     const reg = new workflowValidator_1.SimpleNodeTypes();
@@ -44,6 +45,12 @@ async function loadNodeTypesFromDir(dir) {
 }
 async function loadNodeTypesForCurrentVersion(workflowNodesRoot, version) {
     const root = workflowNodesRoot;
+    // Always ensure the requested/best version is materialized from DB first.
+    try {
+        const preferred = version || undefined;
+        await (0, nodesDb_1.materializeBestVersion)(preferred);
+    }
+    catch { }
     if (!version || version === 'latest') {
         return loadNodeTypesFromDir(root);
     }

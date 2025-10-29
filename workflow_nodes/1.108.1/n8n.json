@@ -17,7 +17,16 @@
             "audit"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "audit"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -38,7 +47,16 @@
             "audit"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "audit"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -63,5 +81,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

@@ -45,7 +45,16 @@
             "executeQuery"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "executeQuery"
+          ]
+        }
+      ]
     },
     {
       "name": "schema",
@@ -60,7 +69,16 @@
             "insert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "insert"
+          ]
+        }
+      ]
     },
     {
       "name": "table",
@@ -75,7 +93,16 @@
             "insert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "insert"
+          ]
+        }
+      ]
     },
     {
       "name": "columns",
@@ -90,7 +117,16 @@
             "insert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "insert"
+          ]
+        }
+      ]
     },
     {
       "name": "updateKey",
@@ -105,7 +141,16 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "returnFields",
@@ -120,7 +165,17 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "insert",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -135,7 +190,16 @@
             "executeQuery"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/operation",
+          "values": [
+            "executeQuery"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -177,5 +241,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

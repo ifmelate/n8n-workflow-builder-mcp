@@ -58,7 +58,16 @@
             "website"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "website"
+          ]
+        }
+      ]
     },
     {
       "name": "link",
@@ -76,7 +85,23 @@
             "website"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "pdf"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "website"
+          ]
+        }
+      ]
     },
     {
       "name": "download",
@@ -94,7 +119,23 @@
             "website"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "pdf"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "website"
+          ]
+        }
+      ]
     },
     {
       "name": "output",
@@ -115,7 +156,30 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "pdf"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "website"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "download",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -133,7 +197,23 @@
             "pdf"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "website"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "pdf"
+          ]
+        }
+      ]
     },
     {
       "name": "message",
@@ -151,7 +231,23 @@
             "utility"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "qrCode"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "utility"
+          ]
+        }
+      ]
     },
     {
       "name": "profileName",
@@ -169,7 +265,23 @@
             "socialProfile"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "instagramProfile"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "socialProfile"
+          ]
+        }
+      ]
     },
     {
       "name": "artistName",
@@ -187,7 +299,23 @@
             "socialProfile"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "spotifyArtistProfile"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "socialProfile"
+          ]
+        }
+      ]
     },
     {
       "name": "value",
@@ -205,7 +333,23 @@
             "information"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "exchangeRate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "information"
+          ]
+        }
+      ]
     },
     {
       "name": "fromCurrency",
@@ -223,7 +367,23 @@
             "information"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "exchangeRate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "information"
+          ]
+        }
+      ]
     },
     {
       "name": "toCurrency",
@@ -241,7 +401,23 @@
             "information"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "exchangeRate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "information"
+          ]
+        }
+      ]
     },
     {
       "name": "emailAddress",
@@ -258,7 +434,23 @@
             "utility"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "validateEmail"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "utility"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -340,5 +532,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

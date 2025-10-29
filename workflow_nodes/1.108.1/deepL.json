@@ -17,7 +17,16 @@
             "translate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "translate"
+          ]
+        }
+      ]
     },
     {
       "name": "translateTo",
@@ -32,7 +41,16 @@
             "translate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "translate"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -49,7 +67,10 @@
           "default": "",
           "description": "Language to translate from. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
         }
-      ]
+      ],
+      "structureTemplate": {
+        "sourceLang": null
+      }
     },
     {
       "name": "resource",
@@ -82,7 +103,16 @@
             "language"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "language"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -120,5 +150,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

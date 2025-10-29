@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { materializeBestVersion } from '../utils/nodesDb';
 import { SimpleNodeTypes } from './workflowValidator';
 
 export async function loadNodeTypesFromDir(dir: string): Promise<SimpleNodeTypes> {
@@ -33,6 +34,11 @@ export async function loadNodeTypesFromDir(dir: string): Promise<SimpleNodeTypes
 
 export async function loadNodeTypesForCurrentVersion(workflowNodesRoot: string, version: string | null | undefined): Promise<SimpleNodeTypes> {
     const root = workflowNodesRoot;
+    // Always ensure the requested/best version is materialized from DB first.
+    try {
+        const preferred = version || undefined;
+        await materializeBestVersion(preferred);
+    } catch { }
     if (!version || version === 'latest') {
         return loadNodeTypesFromDir(root);
     }

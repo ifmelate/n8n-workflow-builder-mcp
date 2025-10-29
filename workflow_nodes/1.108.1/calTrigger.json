@@ -58,7 +58,16 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -89,7 +98,12 @@
           "default": "",
           "description": "Template to customize the webhook payload"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "appId": "",
+        "eventTypeId": null,
+        "payloadTemplate": ""
+      }
     }
   ],
   "credentialsConfig": [
@@ -135,5 +149,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

@@ -21,7 +21,16 @@
             "contact.propertyChange"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "name",
+          "values": [
+            "contact.propertyChange"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -39,6 +48,9 @@
       ],
       "typeOptions": {
         "minValue": 5
+      },
+      "structureTemplate": {
+        "maxConcurrentRequests": 0
       }
     }
   ],
@@ -81,5 +93,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

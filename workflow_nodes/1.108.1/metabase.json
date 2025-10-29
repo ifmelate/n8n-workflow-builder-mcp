@@ -20,7 +20,23 @@
             "get"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "alerts"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -46,7 +62,16 @@
             "alerts"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "alerts"
+          ]
+        }
+      ]
     },
     {
       "name": "databaseId",
@@ -64,7 +89,23 @@
             "getFields"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "databases"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getFields"
+          ]
+        }
+      ]
     },
     {
       "name": "engine",
@@ -108,7 +149,23 @@
             "addNewDatasource"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "databases"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "addNewDatasource"
+          ]
+        }
+      ]
     },
     {
       "name": "host",
@@ -132,7 +189,33 @@
             "mongo"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "databases"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "addNewDatasource"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "engine",
+          "values": [
+            "postgres",
+            "redshift",
+            "mysql",
+            "mongo"
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -150,7 +233,23 @@
             "addNewDatasource"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "databases"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "addNewDatasource"
+          ]
+        }
+      ]
     },
     {
       "name": "port",
@@ -174,7 +273,33 @@
             "mongo"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "databases"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "addNewDatasource"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "engine",
+          "values": [
+            "postgres",
+            "redshift",
+            "mysql",
+            "mongo"
+          ]
+        }
+      ]
     },
     {
       "name": "user",
@@ -198,7 +323,33 @@
             "mongo"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "databases"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "addNewDatasource"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "engine",
+          "values": [
+            "postgres",
+            "redshift",
+            "mysql",
+            "mongo"
+          ]
+        }
+      ]
     },
     {
       "name": "password",
@@ -222,7 +373,33 @@
             "mongo"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "databases"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "addNewDatasource"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "engine",
+          "values": [
+            "postgres",
+            "redshift",
+            "mysql",
+            "mongo"
+          ]
+        }
+      ]
     },
     {
       "name": "dbName",
@@ -245,7 +422,33 @@
             "mongo"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "databases"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "addNewDatasource"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "engine",
+          "values": [
+            "postgres",
+            "redshift",
+            "mysql",
+            "mongo"
+          ]
+        }
+      ]
     },
     {
       "name": "filePath",
@@ -267,7 +470,31 @@
             "sqlite"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "databases"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "addNewDatasource"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "engine",
+          "values": [
+            "h2",
+            "sqlite"
+          ]
+        }
+      ]
     },
     {
       "name": "fullSync",
@@ -284,7 +511,23 @@
             "addNewDatasource"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "databases"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "addNewDatasource"
+          ]
+        }
+      ]
     },
     {
       "name": "simple",
@@ -301,7 +544,23 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "databases"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "metricId",
@@ -319,7 +578,23 @@
             "get"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "metrics"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "questionId",
@@ -338,7 +613,24 @@
             "resultData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "questions"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "resultData"
+          ]
+        }
+      ]
     },
     {
       "name": "format",
@@ -369,7 +661,23 @@
             "resultData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "questions"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "resultData"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -394,5 +702,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

@@ -31,7 +31,16 @@
             "apiKey"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "authentication",
+          "values": [
+            "apiKey"
+          ]
+        }
+      ]
     },
     {
       "name": "scope",
@@ -113,5 +122,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

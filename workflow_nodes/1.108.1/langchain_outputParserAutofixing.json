@@ -38,5 +38,7 @@
     "produces": [
       "AiOutputParser"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: AiLanguageModel, AiOutputParser",
+  "outputHints": "Emits outputs: AiOutputParser"
 }

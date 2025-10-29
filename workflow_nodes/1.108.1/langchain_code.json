@@ -9,7 +9,10 @@
       "displayName": "Code",
       "type": "fixedCollection",
       "default": {},
-      "placeholder": "Add Code"
+      "placeholder": "Add Code",
+      "structureTemplate": {
+        "code": ""
+      }
     },
     {
       "name": "notice",

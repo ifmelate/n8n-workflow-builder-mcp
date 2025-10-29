@@ -43,7 +43,16 @@
             "list"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "list"
+          ]
+        }
+      ]
     },
     {
       "name": "type",
@@ -70,7 +79,16 @@
             "item"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        }
+      ]
     },
     {
       "name": "list",
@@ -85,7 +103,16 @@
             "item"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        }
+      ]
     },
     {
       "name": "first_name",
@@ -106,7 +133,30 @@
             "PEOPLE"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "type",
+          "values": [
+            "PEOPLE"
+          ]
+        }
+      ]
     },
     {
       "name": "last_name",
@@ -127,7 +177,30 @@
             "PEOPLE"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "type",
+          "values": [
+            "PEOPLE"
+          ]
+        }
+      ]
     },
     {
       "name": "company_name",
@@ -147,7 +220,30 @@
             "COMPANY"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "type",
+          "values": [
+            "COMPANY"
+          ]
+        }
+      ]
     },
     {
       "name": "peopleAdditionalFields",
@@ -225,7 +321,40 @@
             "PEOPLE"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "full_name": "",
+        "email": "",
+        "company_name": "",
+        "current_position": "",
+        "domain": "",
+        "linkedin_url": "",
+        "location": "",
+        "contact_id": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "type",
+          "values": [
+            "PEOPLE"
+          ]
+        }
+      ]
     },
     {
       "name": "companyAdditionalFields",
@@ -275,7 +404,36 @@
             "COMPANY"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "linkedin_url": "",
+        "domain": "",
+        "location": "",
+        "contact_id": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "type",
+          "values": [
+            "COMPANY"
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -294,7 +452,23 @@
             "list"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "list"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -352,5 +526,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

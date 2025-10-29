@@ -49,7 +49,16 @@
             "ticket"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ticket"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -104,7 +113,16 @@
             "assignee"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "hide",
+          "key": "field",
+          "values": [
+            "assignee"
+          ]
+        }
+      ]
     },
     {
       "name": "value",
@@ -139,7 +157,16 @@
             "status"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "field",
+          "values": [
+            "status"
+          ]
+        }
+      ]
     },
     {
       "name": "authentication",
@@ -183,7 +210,16 @@
             "support"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "service",
+          "values": [
+            "support"
+          ]
+        }
+      ]
     },
     {
       "name": "conditions",
@@ -201,7 +237,16 @@
             "support"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "service",
+          "values": [
+            "support"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -247,5 +292,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

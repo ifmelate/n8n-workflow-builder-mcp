@@ -52,7 +52,17 @@
             "nodeInputBinary"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/operationMode",
+          "values": [
+            "nodeInputJson",
+            "nodeInputBinary"
+          ]
+        }
+      ]
     },
     {
       "name": "chunkSize",
@@ -66,7 +76,16 @@
             "simple"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/chunkingMode",
+          "values": [
+            "simple"
+          ]
+        }
+      ]
     },
     {
       "name": "chunkOverlap",
@@ -80,7 +99,16 @@
             "simple"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/chunkingMode",
+          "values": [
+            "simple"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -95,7 +123,16 @@
             "nodeInputBinary"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/operationMode",
+          "values": [
+            "nodeInputBinary"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [

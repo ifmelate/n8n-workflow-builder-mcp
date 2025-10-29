@@ -107,7 +107,23 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "requestMethod",
+          "values": [
+            "POST"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     },
     {
       "name": "query",
@@ -135,7 +151,23 @@
             "POST"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "requestFormat",
+          "values": [
+            "json"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "requestMethod",
+          "values": [
+            "POST"
+          ]
+        }
+      ]
     },
     {
       "name": "operationName",
@@ -152,7 +184,23 @@
             "POST"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "requestFormat",
+          "values": [
+            "json"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "requestMethod",
+          "values": [
+            "POST"
+          ]
+        }
+      ]
     },
     {
       "name": "responseFormat",
@@ -184,7 +232,16 @@
             "string"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "responseFormat",
+          "values": [
+            "string"
+          ]
+        }
+      ]
     },
     {
       "name": "headerParametersUi",
@@ -195,6 +252,10 @@
       "placeholder": "Add Header",
       "typeOptions": {
         "multipleValues": true
+      },
+      "structureTemplate": {
+        "name": "",
+        "value": ""
       }
     }
   ],
@@ -249,5 +310,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

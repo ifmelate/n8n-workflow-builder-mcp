@@ -49,7 +49,17 @@
             "updatedRow"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "newRow",
+            "updatedRow"
+          ]
+        }
+      ]
     },
     {
       "name": "assetColumn",
@@ -64,7 +74,16 @@
             "newAsset"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "newAsset"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -89,7 +108,20 @@
             "updatedRow"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "simple": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/event",
+          "values": [
+            "newRow",
+            "updatedRow"
+          ]
+        }
+      ]
     },
     {
       "name": "notice",

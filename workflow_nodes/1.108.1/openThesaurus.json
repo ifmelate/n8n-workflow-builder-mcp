@@ -31,7 +31,16 @@
             "getSynonyms"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getSynonyms"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -107,7 +116,26 @@
             "getSynonyms"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "baseform": false,
+        "similar": false,
+        "startswith": false,
+        "substring": false,
+        "substringFromResults": 0,
+        "substringMaxResults": 0,
+        "subsynsets": false,
+        "supersynsets": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getSynonyms"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -132,5 +160,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

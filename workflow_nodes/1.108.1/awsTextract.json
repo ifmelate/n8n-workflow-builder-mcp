@@ -29,7 +29,16 @@
             "analyzeExpense"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "analyzeExpense"
+          ]
+        }
+      ]
     },
     {
       "name": "simple",
@@ -43,7 +52,16 @@
             "analyzeExpense"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "analyzeExpense"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -81,5 +99,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

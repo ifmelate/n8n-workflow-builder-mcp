@@ -19,7 +19,23 @@
             "accountContact"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "accountContact"
+          ]
+        }
+      ]
     },
     {
       "name": "contact",
@@ -36,7 +52,23 @@
             "accountContact"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "accountContact"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -63,7 +95,26 @@
             "accountContact"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "jobTitle": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "accountContact"
+          ]
+        }
+      ]
     },
     {
       "name": "accountContactId",
@@ -81,7 +132,23 @@
             "accountContact"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "accountContact"
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -108,7 +175,26 @@
             "accountContact"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "jobTitle": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "accountContact"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -139,7 +225,16 @@
             "accountContact"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "accountContact"
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -157,7 +252,23 @@
             "account"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "account"
+          ]
+        }
+      ]
     },
     {
       "name": "accountId",
@@ -175,7 +286,23 @@
             "account"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "account"
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -202,7 +329,26 @@
             "account"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "search": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "account"
+          ]
+        }
+      ]
     },
     {
       "name": "service",
@@ -220,7 +366,23 @@
             "connection"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "connection"
+          ]
+        }
+      ]
     },
     {
       "name": "externalid",
@@ -238,7 +400,23 @@
             "connection"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "connection"
+          ]
+        }
+      ]
     },
     {
       "name": "logoUrl",
@@ -256,7 +434,23 @@
             "connection"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "connection"
+          ]
+        }
+      ]
     },
     {
       "name": "linkUrl",
@@ -274,7 +468,23 @@
             "connection"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "connection"
+          ]
+        }
+      ]
     },
     {
       "name": "connectionId",
@@ -292,7 +502,23 @@
             "connection"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "connection"
+          ]
+        }
+      ]
     },
     {
       "name": "email",
@@ -311,7 +537,23 @@
             "contact"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        }
+      ]
     },
     {
       "name": "updateIfExists",
@@ -328,7 +570,23 @@
             "contact"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        }
+      ]
     },
     {
       "name": "contactId",
@@ -346,7 +604,23 @@
             "contact"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        }
+      ]
     },
     {
       "name": "listId",
@@ -363,7 +637,23 @@
             "contactList"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contactList"
+          ]
+        }
+      ]
     },
     {
       "name": "tagId",
@@ -381,7 +671,23 @@
             "contactTag"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contactTag"
+          ]
+        }
+      ]
     },
     {
       "name": "contactTagId",
@@ -399,7 +705,23 @@
             "contactTag"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "remove"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contactTag"
+          ]
+        }
+      ]
     },
     {
       "name": "title",
@@ -417,7 +739,23 @@
             "deal"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        }
+      ]
     },
     {
       "name": "value",
@@ -435,7 +773,23 @@
             "deal"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        }
+      ]
     },
     {
       "name": "currency",
@@ -453,7 +807,23 @@
             "deal"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        }
+      ]
     },
     {
       "name": "group",
@@ -470,7 +840,23 @@
             "deal"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        }
+      ]
     },
     {
       "name": "stage",
@@ -487,7 +873,23 @@
             "deal"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        }
+      ]
     },
     {
       "name": "owner",
@@ -504,7 +906,23 @@
             "deal"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        }
+      ]
     },
     {
       "name": "dealId",
@@ -522,7 +940,23 @@
             "deal"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        }
+      ]
     },
     {
       "name": "dealNote",
@@ -540,7 +974,23 @@
             "deal"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "createNote"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        }
+      ]
     },
     {
       "name": "dealNoteId",
@@ -558,7 +1008,23 @@
             "deal"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "updateNote"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        }
+      ]
     },
     {
       "name": "connectionid",
@@ -576,7 +1042,23 @@
             "ecommerceCustomer"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceCustomer"
+          ]
+        }
+      ]
     },
     {
       "name": "ecommerceCustomerId",
@@ -594,7 +1076,23 @@
             "ecommerceCustomer"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceCustomer"
+          ]
+        }
+      ]
     },
     {
       "name": "externalcheckoutid",
@@ -611,7 +1109,23 @@
             "ecommerceOrder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "source",
@@ -629,7 +1143,23 @@
             "ecommerceOrder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "totalPrice",
@@ -647,7 +1177,23 @@
             "ecommerceOrder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "customerid",
@@ -665,7 +1211,23 @@
             "ecommerceOrder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "externalCreatedDate",
@@ -683,7 +1245,23 @@
             "ecommerceOrder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "abandonedDate",
@@ -700,7 +1278,23 @@
             "ecommerceOrder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "orderProducts",
@@ -786,7 +1380,34 @@
             "ecommerceOrder"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "name": "",
+        "price": 0,
+        "quantity": 0,
+        "externalid": "",
+        "category": "",
+        "sku": "",
+        "description": "",
+        "imageUrl": "",
+        "productUrl": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "orderId",
@@ -803,7 +1424,23 @@
             "ecommerceOrder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "procuctId",
@@ -820,7 +1457,23 @@
             "ecommerceOrderProducts"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getByProductId"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrderProducts"
+          ]
+        }
+      ]
     },
     {
       "name": "tagType",
@@ -850,7 +1503,23 @@
             "tag"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "tag"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -940,5 +1609,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

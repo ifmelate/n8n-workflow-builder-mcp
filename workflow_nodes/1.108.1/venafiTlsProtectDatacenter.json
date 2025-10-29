@@ -19,7 +19,23 @@
             "certificate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        }
+      ]
     },
     {
       "name": "Subject",
@@ -36,7 +52,23 @@
             "certificate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -73,7 +105,27 @@
             "certificate"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "Approvers": "",
+        "CADN": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        }
+      ]
     },
     {
       "name": "certificateDn",
@@ -90,7 +142,23 @@
             "certificate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "download"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        }
+      ]
     },
     {
       "name": "includePrivateKey",
@@ -106,7 +174,23 @@
             "download"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "download"
+          ]
+        }
+      ]
     },
     {
       "name": "password",
@@ -126,7 +210,30 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "download"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "includePrivateKey",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "binaryProperty",
@@ -144,7 +251,23 @@
             "certificate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "download"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        }
+      ]
     },
     {
       "name": "certificateId",
@@ -163,7 +286,24 @@
             "certificate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -180,7 +320,23 @@
             "certificate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getMany"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -204,7 +360,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getMany"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -222,7 +401,23 @@
             "certificate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getMany"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        }
+      ]
     },
     {
       "name": "certificateDN",
@@ -240,7 +435,23 @@
             "certificate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "renew"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -286,7 +497,16 @@
             "certificate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        }
+      ]
     },
     {
       "name": "policyDn",
@@ -304,7 +524,23 @@
             "policy"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "policy"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -354,5 +590,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

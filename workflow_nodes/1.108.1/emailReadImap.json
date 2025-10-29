@@ -39,7 +39,16 @@
             "simple"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "format",
+          "values": [
+            "simple"
+          ]
+        }
+      ]
     },
     {
       "name": "format",
@@ -77,7 +86,16 @@
             "resolved"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "format",
+          "values": [
+            "resolved"
+          ]
+        }
+      ]
     },
     {
       "name": "options",

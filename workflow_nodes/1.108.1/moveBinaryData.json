@@ -38,7 +38,16 @@
             "binaryToJson"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "binaryToJson"
+          ]
+        }
+      ]
     },
     {
       "name": "sourceKey",
@@ -54,7 +63,16 @@
             "binaryToJson"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "binaryToJson"
+          ]
+        }
+      ]
     },
     {
       "name": "destinationKey",
@@ -73,7 +91,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "binaryToJson"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "setAllData",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "convertAllData",
@@ -87,7 +121,16 @@
             "jsonToBinary"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "jsonToBinary"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -103,7 +146,23 @@
           ],
           "encoding": "bomAware"
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/mode",
+          "values": [
+            "jsonToBinary"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "encoding",
+          "values": [
+            "bomAware"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -128,5 +187,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

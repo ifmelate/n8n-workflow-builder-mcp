@@ -37,7 +37,16 @@
             "com.twilio.voice.insights.call-summary.complete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "updates",
+          "values": [
+            "com.twilio.voice.insights.call-summary.complete"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -75,5 +84,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

@@ -33,7 +33,11 @@
           "default": false,
           "description": "Whether to call this hook only the first time this activity happened"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "campaignId": null,
+        "isFirst": false
+      }
     }
   ],
   "credentialsConfig": [
@@ -67,5 +71,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

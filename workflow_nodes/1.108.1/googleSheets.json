@@ -99,7 +99,23 @@
             "update"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "mappingMode": "autoMapInputData",
+        "value": {
+          "values": []
+        }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "append",
+            "update"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],

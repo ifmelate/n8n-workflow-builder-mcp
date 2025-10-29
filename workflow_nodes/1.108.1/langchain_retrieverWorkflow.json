@@ -57,7 +57,16 @@
             "parameter"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "source",
+          "values": [
+            "parameter"
+          ]
+        }
+      ]
     },
     {
       "name": "fields",
@@ -75,7 +84,16 @@
             "stringValue"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "type",
+          "values": [
+            "stringValue"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -96,5 +114,6 @@
     "produces": [
       "AiRetriever"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: AiRetriever"
 }

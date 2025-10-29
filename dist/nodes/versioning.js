@@ -11,6 +11,7 @@ exports.detectN8nVersion = detectN8nVersion;
 exports.setN8nVersion = setN8nVersion;
 const promises_1 = __importDefault(require("fs/promises"));
 const path_1 = __importDefault(require("path"));
+const constants_1 = require("../utils/constants");
 let currentN8nVersion = null;
 let n8nVersionInfo = null;
 let supportedN8nVersions = new Map();
@@ -53,6 +54,8 @@ async function initializeN8nVersionSupport() {
             try {
                 const nodeFiles = await promises_1.default.readdir(versionPath);
                 const jsonFiles = nodeFiles.filter(file => file.endsWith('.json'));
+                if (jsonFiles.length === 0)
+                    continue; // skip empty version dirs
                 let langchainCount = 0;
                 let aiCount = 0;
                 let triggerCount = 0;
@@ -108,11 +111,13 @@ async function initializeN8nVersionSupport() {
             catch {
                 // version dir read failure
             }
-            versionMappings[versionDir] = {
-                version: versionDir,
-                supportedNodes,
-                capabilities: Array.from(capabilities)
-            };
+            if (supportedNodes.size > 0) {
+                versionMappings[versionDir] = {
+                    version: versionDir,
+                    supportedNodes,
+                    capabilities: Array.from(capabilities)
+                };
+            }
         }
     }
     catch {
@@ -197,7 +202,7 @@ async function detectN8nVersion() {
         catch { }
     }
     const latestVersion = Array.from(supportedN8nVersions.keys()).sort((a, b) => compareSemver(b, a))[0];
-    return latestVersion || "1.104.1";
+    return latestVersion || constants_1.DEFAULT_N8N_VERSION_FALLBACK;
 }
 async function setN8nVersion(version) {
     // Prefer exact, otherwise choose best matching lower/equal version from available directories.

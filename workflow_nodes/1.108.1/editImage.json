@@ -101,7 +101,19 @@
             "multiStep"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "operation": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "multiStep"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -125,7 +137,19 @@
             "information"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fileName": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "hide",
+          "key": "operation",
+          "values": [
+            "information"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -150,5 +174,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

@@ -20,7 +20,23 @@
             "conversation"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "conversation"
+          ]
+        }
+      ]
     },
     {
       "name": "status",
@@ -52,7 +68,23 @@
             "conversation"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "conversation"
+          ]
+        }
+      ]
     },
     {
       "name": "subject",
@@ -70,7 +102,23 @@
             "conversation"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "conversation"
+          ]
+        }
+      ]
     },
     {
       "name": "type",
@@ -102,7 +150,23 @@
             "conversation"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "conversation"
+          ]
+        }
+      ]
     },
     {
       "name": "resolveData",
@@ -119,7 +183,23 @@
             "conversation"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "conversation"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -186,7 +266,32 @@
             "conversation"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "assignTo": 0,
+        "autoReply": false,
+        "closedAt": null,
+        "createdAt": null,
+        "customerEmail": "",
+        "customerId": 0,
+        "imported": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "conversation"
+          ]
+        }
+      ]
     },
     {
       "name": "threadsUi",
@@ -207,7 +312,23 @@
             "conversation"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "conversation"
+          ]
+        }
+      ]
     },
     {
       "name": "conversationId",
@@ -224,7 +345,23 @@
             "get"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "conversation"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -241,7 +378,23 @@
             "conversation"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "conversation"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -264,7 +417,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "conversation"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -294,7 +470,26 @@
             "getAll"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "assignTo": 0
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "conversation"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -330,7 +525,16 @@
             "conversation"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "conversation"
+          ]
+        }
+      ]
     },
     {
       "name": "addressUi",
@@ -348,7 +552,31 @@
             "customer"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "line1": "",
+        "line2": "",
+        "city": "",
+        "state": "",
+        "country": null,
+        "postalCode": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        }
+      ]
     },
     {
       "name": "chatsUi",
@@ -369,7 +597,23 @@
             "customer"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        }
+      ]
     },
     {
       "name": "emailsUi",
@@ -390,7 +634,23 @@
             "customer"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        }
+      ]
     },
     {
       "name": "phonesUi",
@@ -411,7 +671,23 @@
             "customer"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        }
+      ]
     },
     {
       "name": "socialProfilesUi",
@@ -432,7 +708,23 @@
             "customer"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        }
+      ]
     },
     {
       "name": "websitesUi",
@@ -453,7 +745,26 @@
             "customer"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "value": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        }
+      ]
     },
     {
       "name": "customerId",
@@ -470,7 +781,23 @@
             "get"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -507,7 +834,27 @@
             "customer"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "age": 0,
+        "firstName": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        }
+      ]
     },
     {
       "name": "text",
@@ -525,7 +872,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "thread"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "attachmentsUi",
@@ -546,7 +909,28 @@
             "thread"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fileName": "",
+        "mimeType": "",
+        "data": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "thread"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -604,5 +988,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

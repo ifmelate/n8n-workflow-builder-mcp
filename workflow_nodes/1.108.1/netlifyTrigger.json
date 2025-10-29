@@ -50,7 +50,16 @@
             "submissionCreated"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "submissionCreated"
+          ]
+        }
+      ]
     },
     {
       "name": "simple",
@@ -64,7 +73,16 @@
             "submissionCreated"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "submissionCreated"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -102,5 +120,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

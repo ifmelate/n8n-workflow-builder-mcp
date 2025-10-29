@@ -36,7 +36,10 @@
           "default": false,
           "description": "Whether to append to an existing file"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "append": false
+      }
     }
   ],
   "credentialsConfig": [],
@@ -61,5 +64,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

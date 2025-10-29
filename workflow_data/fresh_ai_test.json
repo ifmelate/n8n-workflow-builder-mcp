@@ -1,0 +1,51 @@
+{
+  "name": "fresh_ai_test",
+  "id": "DRqGXFIukkHXmDxX",
+  "nodes": [
+    {
+      "id": "fb177d1b-ac97-45e5-9aa0-b271797142d1",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        100,
+        100
+      ],
+      "parameters": {},
+      "name": "Test Embeddings"
+    },
+    {
+      "id": "aa068766-ef82-451c-8db9-373ad2e977c0",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1,
+      "position": [
+        300,
+        100
+      ],
+      "parameters": {},
+      "name": "Test Vector Store"
+    }
+  ],
+  "connections": {
+    "Test Embeddings": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Test Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f1d3b423-3180-46cf-8652-5ebc83c7986e",
+  "meta": {
+    "instanceId": "7973300d387ffc7a2cdf2f20b4d08e162b604caa15c60c7f698c814dc97f4a30"
+  },
+  "tags": []
+}

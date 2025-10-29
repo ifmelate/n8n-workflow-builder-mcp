@@ -29,7 +29,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/options.includeDetailedResults",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -68,6 +77,12 @@
       ],
       "typeOptions": {
         "rows": 2
+      },
+      "structureTemplate": {
+        "categories": "",
+        "systemPromptTemplate": "",
+        "includeDetailedResults": false,
+        "enableAutoFixing": false
       }
     }
   ],
@@ -91,5 +106,6 @@
       "AiLanguageModel"
     ],
     "produces": []
-  }
+  },
+  "inputHints": "Accepts inputs: Main, AiLanguageModel"
 }

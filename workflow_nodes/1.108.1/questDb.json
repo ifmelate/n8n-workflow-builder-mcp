@@ -37,7 +37,16 @@
             "executeQuery"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "executeQuery"
+          ]
+        }
+      ]
     },
     {
       "name": "schema",
@@ -51,7 +60,16 @@
             "insert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "insert"
+          ]
+        }
+      ]
     },
     {
       "name": "table",
@@ -66,7 +84,16 @@
             "insert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "insert"
+          ]
+        }
+      ]
     },
     {
       "name": "columns",
@@ -81,7 +108,16 @@
             "insert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "insert"
+          ]
+        }
+      ]
     },
     {
       "name": "returnFields",
@@ -95,7 +131,16 @@
             "insert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "insert"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -110,7 +155,16 @@
             "executeQuery"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "executeQuery"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -156,5 +210,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

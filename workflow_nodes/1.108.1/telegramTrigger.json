@@ -140,7 +140,13 @@
           "default": "",
           "description": "The user IDs to restrict the trigger to. Multiple can be defined separated by comma."
         }
-      ]
+      ],
+      "structureTemplate": {
+        "download": false,
+        "imageSize": "small",
+        "chatIds": "",
+        "userIds": ""
+      }
     }
   ],
   "credentialsConfig": [

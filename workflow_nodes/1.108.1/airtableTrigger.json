@@ -69,7 +69,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "downloadAttachments",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -100,7 +109,12 @@
           "default": "",
           "description": "The name or ID of a view in the table. If set, only the records in that view will be returned."
         }
-      ]
+      ],
+      "structureTemplate": {
+        "fields": "",
+        "formula": "",
+        "viewId": ""
+      }
     }
   ],
   "credentialsConfig": [
@@ -150,5 +164,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

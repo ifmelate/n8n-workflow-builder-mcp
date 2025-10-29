@@ -31,7 +31,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "encrypted",
+          "values": [
+            true
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -56,5 +65,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

@@ -282,7 +282,10 @@
           "default": false,
           "description": "Whether the SSL certificate of the n8n host be verified by GitHub when delivering payloads"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "insecureSSL": false
+      }
     }
   ],
   "credentialsConfig": [
@@ -340,5 +343,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

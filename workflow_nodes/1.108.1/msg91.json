@@ -35,7 +35,16 @@
             "sms"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        }
+      ]
     },
     {
       "name": "from",
@@ -54,7 +63,23 @@
             "sms"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        }
+      ]
     },
     {
       "name": "to",
@@ -73,7 +98,23 @@
             "sms"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        }
+      ]
     },
     {
       "name": "message",
@@ -91,7 +132,23 @@
             "sms"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -133,5 +190,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

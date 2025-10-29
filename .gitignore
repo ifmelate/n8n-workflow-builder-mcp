@@ -1,3 +1,17 @@
+# Ignore local materialized node versions and DB cache
+workflow_nodes/**
+!workflow_nodes/.keep
+
+*.sqlite
+*.sqlite-journal
+*.db
+
+# Node
+node_modules/
+dist/
+.DS_Store
+logs/*.log
+
 # Dependency directories
 node_modules/
 npm-debug.log

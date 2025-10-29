@@ -35,5 +35,6 @@
     "produces": [
       "AiMemory"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: AiMemory"
 }

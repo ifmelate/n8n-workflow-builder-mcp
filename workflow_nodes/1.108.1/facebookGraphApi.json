@@ -192,7 +192,17 @@
             "PUT"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "httpRequestMethod",
+          "values": [
+            "POST",
+            "PUT"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -207,7 +217,16 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "hide",
+          "key": "sendBinaryData",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -225,7 +244,19 @@
             "GET"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "name": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/httpRequestMethod",
+          "values": [
+            "GET"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -279,5 +310,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

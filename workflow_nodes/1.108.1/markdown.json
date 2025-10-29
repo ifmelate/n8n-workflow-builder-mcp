@@ -36,7 +36,16 @@
             "htmlToMarkdown"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "htmlToMarkdown"
+          ]
+        }
+      ]
     },
     {
       "name": "markdown",
@@ -51,7 +60,16 @@
             "markdownToHtml"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "markdownToHtml"
+          ]
+        }
+      ]
     },
     {
       "name": "destinationKey",
@@ -68,7 +86,17 @@
             "htmlToMarkdown"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "markdownToHtml",
+            "htmlToMarkdown"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -106,7 +134,21 @@
             "htmlToMarkdown"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "bulletMarker": "",
+        "codeFence": "",
+        "emDelimiter": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "htmlToMarkdown"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -160,5 +202,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

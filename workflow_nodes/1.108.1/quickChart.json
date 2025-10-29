@@ -44,7 +44,19 @@
             "manually"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "label": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "labelsMode",
+          "values": [
+            "manually"
+          ]
+        }
+      ]
     },
     {
       "name": "labelsArray",
@@ -60,7 +72,16 @@
             "array"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "labelsMode",
+          "values": [
+            "array"
+          ]
+        }
+      ]
     },
     {
       "name": "data",
@@ -106,7 +127,20 @@
         "show": {
           "/chartType": "HORIZONTAL_CHARTS"
         }
-      }
+      },
+      "structureTemplate": {
+        "backgroundColor": null,
+        "devicePixelRatio": 0
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/chartType",
+          "values": [
+            "HORIZONTAL_CHARTS"
+          ]
+        }
+      ]
     },
     {
       "name": "datasetOptions",
@@ -149,7 +183,22 @@
         "show": {
           "/chartType": "Fill_CHARTS"
         }
-      }
+      },
+      "structureTemplate": {
+        "backgroundColor": null,
+        "borderColor": null,
+        "fill": false,
+        "label": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/chartType",
+          "values": [
+            "Fill_CHARTS"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -174,5 +223,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

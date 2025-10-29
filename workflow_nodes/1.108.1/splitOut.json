@@ -47,7 +47,16 @@
             "selectedOtherFields"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "include",
+          "values": [
+            "selectedOtherFields"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -78,7 +87,12 @@
           "default": false,
           "description": "Whether to include the binary data in the new items"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "disableDotNotation": false,
+        "destinationFieldName": "",
+        "includeBinary": false
+      }
     }
   ],
   "credentialsConfig": [],
@@ -103,5 +117,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

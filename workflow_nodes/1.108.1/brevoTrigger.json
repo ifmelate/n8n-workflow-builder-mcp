@@ -101,7 +101,16 @@
             "transactional"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "type",
+          "values": [
+            "transactional"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -147,5 +156,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

@@ -40,7 +40,16 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -71,7 +80,20 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "displayName": "",
+        "fifoTopic": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "topic",
@@ -87,7 +109,17 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "publish",
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "subject",
@@ -102,7 +134,16 @@
             "publish"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "publish"
+          ]
+        }
+      ]
     },
     {
       "name": "message",
@@ -117,7 +158,16 @@
             "publish"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "publish"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -167,5 +217,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }
