@@ -7,6 +7,7 @@
 const jwt = require('jsonwebtoken');
 const { logger } = require('../utils/logger');
 const { createErrorResponse } = require('../utils/mcp');
+const { HEADER_MCP_VERSION, MCP_PROTOCOL_VERSION, SecurityEventTypes, ErrorCodes } = require('../utils/constants');
 const { logSecurityEvent } = require('../utils/securityLogger');
 
 // Get API key from environment
@@ -79,7 +80,7 @@ const apiKeyAuth = (req, res, next) => {
     if (isRateLimited(ip)) {
         const errorResponse = createErrorResponse(
             'Too many failed attempts',
-            'RATE_LIMITED',
+            ErrorCodes.RATE_LIMITED,
             429
         );
         return res.status(errorResponse.status).json({ error: errorResponse.error });
@@ -89,7 +90,7 @@ const apiKeyAuth = (req, res, next) => {
         trackFailedAttempt(ip);
         logSecurityEvent({
             level: 'warn',
-            eventType: 'authentication_failure',
+            eventType: SecurityEventTypes.authentication_failure,
             ip,
             details: {
                 reason: 'Missing API key',
@@ -99,7 +100,7 @@ const apiKeyAuth = (req, res, next) => {
 
         const errorResponse = createErrorResponse(
             'API key required',
-            'MISSING_API_KEY',
+            ErrorCodes.MISSING_API_KEY,
             401
         );
         return res.status(errorResponse.status).json({ error: errorResponse.error });
@@ -109,7 +110,7 @@ const apiKeyAuth = (req, res, next) => {
         trackFailedAttempt(ip);
         logSecurityEvent({
             level: 'warn',
-            eventType: 'authentication_failure',
+            eventType: SecurityEventTypes.authentication_failure,
             ip,
             details: {
                 reason: 'Invalid API key',
@@ -119,7 +120,7 @@ const apiKeyAuth = (req, res, next) => {
 
         const errorResponse = createErrorResponse(
             'Invalid API key',
-            'INVALID_API_KEY',
+            ErrorCodes.INVALID_API_KEY,
             401
         );
         return res.status(errorResponse.status).json({ error: errorResponse.error });
@@ -148,7 +149,7 @@ const jwtAuth = (req, res, next) => {
     if (isRateLimited(ip)) {
         const errorResponse = createErrorResponse(
             'Too many failed attempts',
-            'RATE_LIMITED',
+            ErrorCodes.RATE_LIMITED,
             429
         );
         return res.status(errorResponse.status).json({ error: errorResponse.error });
@@ -158,7 +159,7 @@ const jwtAuth = (req, res, next) => {
         trackFailedAttempt(ip);
         const errorResponse = createErrorResponse(
             'JWT token required',
-            'MISSING_JWT_TOKEN',
+            ErrorCodes.MISSING_JWT_TOKEN,
             401
         );
         return res.status(errorResponse.status).json({ error: errorResponse.error });
@@ -169,7 +170,7 @@ const jwtAuth = (req, res, next) => {
         trackFailedAttempt(ip);
         const errorResponse = createErrorResponse(
             'JWT token required',
-            'MISSING_JWT_TOKEN',
+            ErrorCodes.MISSING_JWT_TOKEN,
             401
         );
         return res.status(errorResponse.status).json({ error: errorResponse.error });
@@ -220,7 +221,7 @@ const jwtAuth = (req, res, next) => {
  */
 const authenticate = (req, res, next) => {
     // Set MCP version header
-    res.setHeader('X-MCP-Version', '1.0');
+    res.setHeader(HEADER_MCP_VERSION, MCP_PROTOCOL_VERSION);
 
     // Skip authentication in development if configured
     if (process.env.NODE_ENV === 'development' && process.env.SKIP_AUTH === 'true') {
@@ -257,7 +258,7 @@ const authenticate = (req, res, next) => {
 
         const errorResponse = createErrorResponse(
             'Authentication required',
-            'AUTHENTICATION_REQUIRED',
+            ErrorCodes.AUTHENTICATION_REQUIRED,
             401
         );
         return res.status(errorResponse.status).json({ error: errorResponse.error });
