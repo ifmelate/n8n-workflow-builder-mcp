@@ -17,7 +17,16 @@
             "item"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        }
+      ]
     },
     {
       "name": "dataToSend",
@@ -43,7 +52,16 @@
             "upsert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upsert"
+          ]
+        }
+      ]
     },
     {
       "name": "inputsToIgnore",
@@ -61,7 +79,23 @@
             "autoMapInputData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upsert"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "dataToSend",
+          "values": [
+            "autoMapInputData"
+          ]
+        }
+      ]
     },
     {
       "name": "fieldsUi",
@@ -81,7 +115,27 @@
             "defineBelow"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fieldId": "",
+        "fieldValue": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upsert"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "dataToSend",
+          "values": [
+            "defineBelow"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -104,7 +158,26 @@
             "upsert"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "attribute": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upsert"
+          ]
+        }
+      ]
     },
     {
       "name": "returnValues",
@@ -133,7 +206,23 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "keysUi",
@@ -154,7 +243,26 @@
             "delete"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "key": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "simple",
@@ -174,7 +282,30 @@
             "ALL_OLD"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnValues",
+          "values": [
+            "ALL_OLD"
+          ]
+        }
+      ]
     },
     {
       "name": "select",
@@ -206,7 +337,23 @@
             "get"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "scan",
@@ -223,7 +370,23 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "filterExpression",
@@ -237,7 +400,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "scan",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "keyConditionExpression",
@@ -259,7 +431,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "scan",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "eavUi",
@@ -282,7 +477,26 @@
             "getAll"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "attribute": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -299,7 +513,23 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -320,7 +550,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -357,7 +603,27 @@
             "getAll"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "indexName": "",
+        "projectionExpression": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -393,7 +659,16 @@
             "item"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "item"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -439,5 +714,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

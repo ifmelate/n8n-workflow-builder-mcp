@@ -21,7 +21,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "firstname",
@@ -39,7 +55,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "lastname",
@@ -57,7 +89,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -74,7 +122,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "customerId",
@@ -91,7 +155,23 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "firstName",
@@ -107,7 +187,23 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "lastName",
@@ -123,7 +219,23 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "website_id",
@@ -140,7 +252,23 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -157,7 +285,23 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -174,7 +318,23 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -198,7 +358,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -239,7 +422,16 @@
             "customer"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "customer"
+          ]
+        }
+      ]
     },
     {
       "name": "orderId",
@@ -256,7 +448,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "invoice"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "sku",
@@ -275,7 +483,24 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "product"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -292,7 +517,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "product"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "attributeSetId",
@@ -309,7 +550,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "product"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "price",
@@ -325,7 +582,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "product"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -383,5 +656,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

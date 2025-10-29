@@ -99,7 +99,16 @@
             "player"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "player"
+          ]
+        }
+      ]
     },
     {
       "name": "id",
@@ -118,7 +127,23 @@
             "startMusic"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "player"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "startMusic"
+          ]
+        }
+      ]
     },
     {
       "name": "query",
@@ -136,7 +161,23 @@
             "search"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "album"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        }
+      ]
     },
     {
       "name": "country",
@@ -155,7 +196,23 @@
             "getTopTracks"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "artist"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getTopTracks"
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -174,7 +231,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "playlist"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -209,7 +282,27 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "description": "",
+        "public": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "playlist"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "trackID",
@@ -229,7 +322,24 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "playlist"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add",
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -260,7 +370,36 @@
             "recentlyPlayed"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "album",
+            "artist",
+            "library",
+            "myData",
+            "playlist",
+            "track",
+            "player"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getTracks",
+            "getAlbums",
+            "getUserPlaylists",
+            "getNewReleases",
+            "getLikedTracks",
+            "getFollowingArtists",
+            "search",
+            "recentlyPlayed"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -294,7 +433,39 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "album",
+            "artist",
+            "library",
+            "playlist",
+            "track"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getTracks",
+            "getAlbums",
+            "getUserPlaylists",
+            "getNewReleases",
+            "getLikedTracks",
+            "search"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "volumePercent",
@@ -316,7 +487,23 @@
             "volume"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "player"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "volume"
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -343,7 +530,26 @@
             "getNewReleases"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "country": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "album"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getNewReleases"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -421,5 +627,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

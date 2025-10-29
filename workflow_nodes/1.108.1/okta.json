@@ -23,7 +23,25 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "update",
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "firstName",
@@ -41,7 +59,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "lastName",
@@ -59,7 +93,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "login",
@@ -77,7 +127,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "email",
@@ -95,7 +161,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "activate",
@@ -112,7 +194,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "getCreateFields",
@@ -129,7 +227,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "getUpdateFields",
@@ -146,7 +260,23 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "searchQuery",
@@ -163,7 +293,23 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -187,7 +333,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -204,7 +373,23 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "simplify",
@@ -222,7 +407,24 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "sendEmail",
@@ -239,7 +441,23 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -253,7 +471,16 @@
             "user"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -278,5 +505,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

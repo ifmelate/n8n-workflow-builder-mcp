@@ -65,7 +65,16 @@
             "charge"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "charge"
+          ]
+        }
+      ]
     },
     {
       "name": "goalName",
@@ -80,7 +89,16 @@
             "datapoint"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "datapoint"
+          ]
+        }
+      ]
     },
     {
       "name": "amount",
@@ -98,7 +116,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "charge"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "datapoints",
@@ -117,7 +151,23 @@
             "createAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "datapoint"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "createAll"
+          ]
+        }
+      ]
     },
     {
       "name": "slug",
@@ -135,7 +185,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "goal"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "title",
@@ -153,7 +219,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "goal"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "goal_type",
@@ -201,7 +283,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "goal"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "gunits",
@@ -219,7 +317,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "goal"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -236,7 +350,23 @@
             "datapoint"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "datapoint"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -260,7 +390,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "datapoint"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "value",
@@ -279,7 +432,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "datapoint"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "datapointId",
@@ -298,7 +467,25 @@
             "get"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "datapoint"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update",
+            "delete",
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -340,7 +527,28 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "comment": "",
+        "timestamp": null,
+        "requestid": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "datapoint"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -404,7 +612,31 @@
             "update"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "title": "",
+        "yaxis": "",
+        "tmin": "",
+        "tmax": "",
+        "secret": false,
+        "datapublic": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "goal"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -435,7 +667,26 @@
             "getAll"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "sort": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "datapoint"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -545,5 +796,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

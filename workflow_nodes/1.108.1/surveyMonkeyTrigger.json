@@ -112,7 +112,16 @@
             "survey"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "objectType",
+          "values": [
+            "survey"
+          ]
+        }
+      ]
     },
     {
       "name": "surveyIds",
@@ -127,7 +136,16 @@
             "survey"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "objectType",
+          "values": [
+            "survey"
+          ]
+        }
+      ]
     },
     {
       "name": "surveyId",
@@ -142,7 +160,16 @@
             "collector"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "objectType",
+          "values": [
+            "collector"
+          ]
+        }
+      ]
     },
     {
       "name": "collectorIds",
@@ -157,7 +184,16 @@
             "collector"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "objectType",
+          "values": [
+            "collector"
+          ]
+        }
+      ]
     },
     {
       "name": "resolveData",
@@ -171,7 +207,16 @@
             "response_completed"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "response_completed"
+          ]
+        }
+      ]
     },
     {
       "name": "onlyAnswers",
@@ -188,7 +233,23 @@
             "response_completed"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resolveData",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "response_completed"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -238,5 +299,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

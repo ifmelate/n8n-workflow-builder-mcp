@@ -58,7 +58,16 @@
             "form"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resume",
+          "values": [
+            "form"
+          ]
+        }
+      ]
     },
     {
       "name": "dateTime",
@@ -73,7 +82,16 @@
             "specificTime"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resume",
+          "values": [
+            "specificTime"
+          ]
+        }
+      ]
     },
     {
       "name": "webhookNotice",
@@ -99,7 +117,16 @@
             "form"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resume",
+          "values": [
+            "form"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -124,5 +151,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

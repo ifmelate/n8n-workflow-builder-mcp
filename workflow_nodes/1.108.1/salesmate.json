@@ -19,7 +19,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "owner",
@@ -37,7 +53,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "type",
@@ -55,7 +87,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "rawData",
@@ -72,7 +120,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -134,7 +198,31 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "description": "",
+        "tags": "",
+        "dueDate": null,
+        "duration": 0,
+        "isCalendarInvite": false,
+        "isCompleted": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "id",
@@ -151,7 +239,23 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -231,7 +335,34 @@
             "update"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "title": "",
+        "type": "",
+        "owner": "",
+        "description": "",
+        "tags": "",
+        "dueDate": null,
+        "duration": 0,
+        "isCalendarInvite": false,
+        "isCompleted": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -248,7 +379,23 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -272,7 +419,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "jsonParameters",
@@ -288,7 +458,23 @@
             "activity"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -322,7 +508,27 @@
             "getAll"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fields": "",
+        "sortBy": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "filtersJson",
@@ -341,7 +547,30 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "jsonParameters",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -362,7 +591,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "jsonParameters",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -403,7 +655,16 @@
             "activity"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -420,7 +681,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "primaryContact",
@@ -438,7 +715,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "pipeline",
@@ -461,7 +754,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "status",
@@ -492,7 +801,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "stage",
@@ -531,7 +856,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "currency",
@@ -548,7 +889,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -602,5 +959,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

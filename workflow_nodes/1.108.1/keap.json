@@ -19,7 +19,23 @@
             "company"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -62,7 +78,29 @@
             "company"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "emailAddress": "",
+        "notes": "",
+        "optInReason": "",
+        "website": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        }
+      ]
     },
     {
       "name": "addressesUi",
@@ -80,7 +118,33 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "countryCode": "",
+        "line1": "",
+        "line2": "",
+        "locality": "",
+        "postalCode": "",
+        "region": "",
+        "zipCode": "",
+        "zipFour": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "faxesUi",
@@ -97,7 +161,27 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "type": "",
+        "number": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "phonesUi",
@@ -117,7 +201,27 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "type": "",
+        "number": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -134,7 +238,23 @@
             "company"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -158,7 +278,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -185,7 +328,26 @@
             "company"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "companyName": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -211,7 +373,16 @@
             "company"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        }
+      ]
     },
     {
       "name": "duplicateOption",
@@ -239,7 +410,23 @@
             "contact"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upsert"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        }
+      ]
     },
     {
       "name": "emailsUi",
@@ -259,7 +446,23 @@
             "upsert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upsert"
+          ]
+        }
+      ]
     },
     {
       "name": "socialAccountsUi",
@@ -279,7 +482,23 @@
             "upsert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upsert"
+          ]
+        }
+      ]
     },
     {
       "name": "contactId",
@@ -296,7 +515,23 @@
             "contact"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        }
+      ]
     },
     {
       "name": "userId",
@@ -313,7 +548,23 @@
             "contactNote"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contactNote"
+          ]
+        }
+      ]
     },
     {
       "name": "noteId",
@@ -330,7 +581,23 @@
             "contactNote"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contactNote"
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -366,7 +633,27 @@
             "contactNote"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "contactId": 0,
+        "userId": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contactNote"
+          ]
+        }
+      ]
     },
     {
       "name": "tagIds",
@@ -384,7 +671,23 @@
             "contactTag"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contactTag"
+          ]
+        }
+      ]
     },
     {
       "name": "orderDate",
@@ -401,7 +704,23 @@
             "ecommerceOrder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "orderTitle",
@@ -418,7 +737,23 @@
             "ecommerceOrder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "orderType",
@@ -445,7 +780,23 @@
             "ecommerceOrder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "addressUi",
@@ -463,7 +814,37 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "company": "",
+        "countryCode": null,
+        "firstName": "",
+        "middleName": "",
+        "lastName": "",
+        "line1": "",
+        "line2": "",
+        "locality": "",
+        "region": "",
+        "zipCode": "",
+        "zipFour": "",
+        "phone": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "orderItemsUi",
@@ -484,7 +865,29 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "description": "",
+        "price": 0,
+        "product ID": 0,
+        "quantity": 0
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "orderId",
@@ -501,7 +904,23 @@
             "ecommerceOrder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceOrder"
+          ]
+        }
+      ]
     },
     {
       "name": "productName",
@@ -518,7 +937,23 @@
             "ecommerceProduct"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceProduct"
+          ]
+        }
+      ]
     },
     {
       "name": "productId",
@@ -535,7 +970,23 @@
             "ecommerceProduct"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "ecommerceProduct"
+          ]
+        }
+      ]
     },
     {
       "name": "sentToAddress",
@@ -552,7 +1003,23 @@
             "email"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "createRecord"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        }
+      ]
     },
     {
       "name": "sentFromAddress",
@@ -569,7 +1036,23 @@
             "email"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "createRecord"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        }
+      ]
     },
     {
       "name": "contactIds",
@@ -586,7 +1069,23 @@
             "email"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        }
+      ]
     },
     {
       "name": "subject",
@@ -603,7 +1102,23 @@
             "email"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        }
+      ]
     },
     {
       "name": "attachmentsUi",
@@ -624,7 +1139,27 @@
             "email"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fileData": "",
+        "fileName": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryData",
@@ -641,7 +1176,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -661,7 +1212,30 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "binaryData",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "fileAssociation",
@@ -692,7 +1266,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "fileName",
@@ -713,7 +1303,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "binaryData",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "fileData",
@@ -734,7 +1347,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "binaryData",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "isPublic",
@@ -750,7 +1386,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "fileId",
@@ -767,7 +1419,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -841,5 +1509,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

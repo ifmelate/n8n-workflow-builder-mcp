@@ -42,7 +42,16 @@
             "executeQuery"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "executeQuery"
+          ]
+        }
+      ]
     },
     {
       "name": "table",
@@ -57,7 +66,16 @@
             "insert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "insert"
+          ]
+        }
+      ]
     },
     {
       "name": "columns",
@@ -72,7 +90,16 @@
             "insert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "insert"
+          ]
+        }
+      ]
     },
     {
       "name": "updateKey",
@@ -87,7 +114,16 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -125,5 +161,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

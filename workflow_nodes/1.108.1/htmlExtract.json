@@ -33,7 +33,16 @@
             "binary"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sourceData",
+          "values": [
+            "binary"
+          ]
+        }
+      ]
     },
     {
       "name": "extractionValues",
@@ -51,7 +60,20 @@
             "attribute"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "key": "",
+        "cssSelector": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "returnValue",
+          "values": [
+            "attribute"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -68,7 +90,10 @@
           "default": true,
           "description": "Whether to remove automatically all spaces and newlines from the beginning and end of the values"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "trimValues": false
+      }
     }
   ],
   "credentialsConfig": [],
@@ -93,5 +118,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

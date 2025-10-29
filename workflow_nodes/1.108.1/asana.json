@@ -80,7 +80,16 @@
             "subtask"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "subtask"
+          ]
+        }
+      ]
     },
     {
       "name": "taskId",
@@ -98,7 +107,23 @@
             "subtask"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "subtask"
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -116,7 +141,23 @@
             "subtask"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "subtask"
+          ]
+        }
+      ]
     },
     {
       "name": "otherProperties",
@@ -143,7 +184,26 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "assignee": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "subtask"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -160,7 +220,23 @@
             "subtask"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "subtask"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -184,7 +260,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "subtask"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -202,7 +301,23 @@
             "subtask"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "subtask"
+          ]
+        }
+      ]
     },
     {
       "name": "workspace",
@@ -220,7 +335,23 @@
             "task"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "task"
+          ]
+        }
+      ]
     },
     {
       "name": "id",
@@ -238,7 +369,23 @@
             "task"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "task"
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -265,7 +412,26 @@
             "task"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "assignee": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "task"
+          ]
+        }
+      ]
     },
     {
       "name": "projectId",
@@ -283,7 +449,23 @@
             "task"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "move"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "task"
+          ]
+        }
+      ]
     },
     {
       "name": "section",
@@ -301,7 +483,23 @@
             "task"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "move"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "task"
+          ]
+        }
+      ]
     },
     {
       "name": "searchTaskProperties",
@@ -338,7 +536,27 @@
             "task"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "completed": false,
+        "text": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "task"
+          ]
+        }
+      ]
     },
     {
       "name": "isTextHtml",
@@ -355,7 +573,23 @@
             "taskComment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "taskComment"
+          ]
+        }
+      ]
     },
     {
       "name": "text",
@@ -376,7 +610,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "taskComment"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "isTextHtml",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -403,7 +660,26 @@
             "taskComment"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "is_pinned": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "taskComment"
+          ]
+        }
+      ]
     },
     {
       "name": "project",
@@ -421,7 +697,23 @@
             "taskProject"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "taskProject"
+          ]
+        }
+      ]
     },
     {
       "name": "tag",
@@ -439,7 +731,23 @@
             "taskTag"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "taskTag"
+          ]
+        }
+      ]
     },
     {
       "name": "userId",
@@ -457,7 +765,23 @@
             "user"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        }
+      ]
     },
     {
       "name": "team",
@@ -474,7 +798,23 @@
             "project"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "project"
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -529,7 +869,30 @@
             "update"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "color": null,
+        "due_on": null,
+        "name": "",
+        "notes": "",
+        "owner": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "project"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -647,5 +1010,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

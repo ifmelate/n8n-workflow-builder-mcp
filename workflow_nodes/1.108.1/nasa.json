@@ -91,7 +91,16 @@
             "astronomyPictureOfTheDay"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "astronomyPictureOfTheDay"
+          ]
+        }
+      ]
     },
     {
       "name": "asteroidId",
@@ -110,7 +119,23 @@
             "get"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "asteroidNeoLookup"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -137,7 +162,26 @@
             "get"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "includeCloseApproachData": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "asteroidNeoLookup"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "download",
@@ -151,7 +195,16 @@
             "astronomyPictureOfTheDay"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "astronomyPictureOfTheDay"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -171,7 +224,30 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "astronomyPictureOfTheDay"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "download",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "lat",
@@ -190,7 +266,24 @@
             "get"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "earthImagery",
+            "earthAssets"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "lon",
@@ -209,7 +302,24 @@
             "get"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "earthImagery",
+            "earthAssets"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -223,7 +333,16 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -243,7 +362,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -385,5 +520,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

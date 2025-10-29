@@ -29,7 +29,16 @@
             "generateSecret"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "generateSecret"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -71,5 +80,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

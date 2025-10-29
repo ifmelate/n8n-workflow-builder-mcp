@@ -40,7 +40,16 @@
             "generateHtmlTemplate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "generateHtmlTemplate"
+          ]
+        }
+      ]
     },
     {
       "name": "notice",
@@ -53,7 +62,16 @@
             "generateHtmlTemplate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "generateHtmlTemplate"
+          ]
+        }
+      ]
     },
     {
       "name": "sourceData",
@@ -77,7 +95,16 @@
             "extractHtmlContent"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "extractHtmlContent"
+          ]
+        }
+      ]
     },
     {
       "name": "dataPropertyName",
@@ -94,7 +121,23 @@
             "binary"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "extractHtmlContent"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "sourceData",
+          "values": [
+            "binary"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -125,7 +168,20 @@
             "extractHtmlContent"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "trimValues": false,
+        "cleanUpText": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "extractHtmlContent"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -150,5 +206,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

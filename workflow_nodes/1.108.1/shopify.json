@@ -20,7 +20,35 @@
             "order"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "firstName": "",
+        "lastName": "",
+        "company": "",
+        "country": "",
+        "address1": "",
+        "address2": "",
+        "city": "",
+        "province": "",
+        "zip": "",
+        "phone": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "order"
+          ]
+        }
+      ]
     },
     {
       "name": "limeItemsUi",
@@ -41,7 +69,31 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "productId": null,
+        "variantId": "",
+        "title": "",
+        "grams": "",
+        "quantity": 0,
+        "price": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "order"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "orderId",
@@ -58,7 +110,23 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "order"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -85,7 +153,26 @@
             "order"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fields": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "order"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -102,7 +189,23 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "order"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -126,7 +229,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "order"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -168,7 +294,28 @@
             "order"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "email": "",
+        "locationId": null,
+        "note": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "order"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -209,7 +356,16 @@
             "order"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "order"
+          ]
+        }
+      ]
     },
     {
       "name": "title",
@@ -228,7 +384,23 @@
             "product"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "product"
+          ]
+        }
+      ]
     },
     {
       "name": "productId",
@@ -245,7 +417,23 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "product"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "apiVersion",
@@ -325,5 +513,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

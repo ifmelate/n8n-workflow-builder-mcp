@@ -20,7 +20,23 @@
             "track"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "event"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "track"
+          ]
+        }
+      ]
     },
     {
       "name": "email",
@@ -38,7 +54,23 @@
             "track"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "event"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "track"
+          ]
+        }
+      ]
     },
     {
       "name": "eventName",
@@ -56,7 +88,23 @@
             "track"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "event"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "track"
+          ]
+        }
+      ]
     },
     {
       "name": "jsonParameters",
@@ -72,7 +120,23 @@
             "track"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "event"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "track"
+          ]
+        }
+      ]
     },
     {
       "name": "dataAttributesUi",
@@ -96,7 +160,34 @@
             false
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "key": "",
+        "value": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "event"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "track"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "jsonParameters",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "extraAttributesUi",
@@ -120,7 +211,34 @@
             false
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "key": "",
+        "value": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "event"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "track"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "jsonParameters",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "dataAttributesJson",
@@ -140,7 +258,30 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "event"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "track"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "jsonParameters",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "extraAttributesJson",
@@ -160,7 +301,30 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "event"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "track"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "jsonParameters",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -181,7 +345,16 @@
             "event"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "event"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -209,7 +382,26 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "email": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "newId",
@@ -227,7 +419,23 @@
             "alias"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "alias"
+          ]
+        }
+      ]
     },
     {
       "name": "tags",
@@ -245,7 +453,23 @@
             "addTags"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "addTags"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -298,5 +522,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

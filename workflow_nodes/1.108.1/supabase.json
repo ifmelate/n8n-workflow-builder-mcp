@@ -24,7 +24,27 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "row"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "delete",
+            "get",
+            "getAll",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "Any Select Condition",
@@ -58,7 +78,24 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "row"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "inputsToIgnore",
@@ -80,7 +117,31 @@
             "autoMapInputData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "row"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "dataToSend",
+          "values": [
+            "autoMapInputData"
+          ]
+        }
+      ]
     },
     {
       "name": "fieldsUi",
@@ -105,7 +166,31 @@
             "defineBelow"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "row"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "dataToSend",
+          "values": [
+            "defineBelow"
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -126,7 +211,23 @@
             "get"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "row"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -143,7 +244,23 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "row"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -166,7 +283,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "row"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -207,7 +347,16 @@
             "row"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "row"
+          ]
+        }
+      ]
     },
     {
       "name": "useCustomSchema",
@@ -268,5 +417,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

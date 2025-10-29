@@ -35,7 +35,16 @@
             "expression"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "expression"
+          ]
+        }
+      ]
     },
     {
       "name": "output",
@@ -49,7 +58,16 @@
             "expression"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "expression"
+          ]
+        }
+      ]
     },
     {
       "name": "rules",
@@ -67,7 +85,16 @@
             "rules"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "rules"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -82,7 +109,16 @@
             "rules"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "rules"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],

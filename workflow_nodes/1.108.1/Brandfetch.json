@@ -59,7 +59,16 @@
             "logo"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "logo"
+          ]
+        }
+      ]
     },
     {
       "name": "imageTypes",
@@ -86,7 +95,23 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "logo"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "download",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "imageFormats",
@@ -114,7 +139,23 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "logo"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "download",
+          "values": [
+            true
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -156,5 +197,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

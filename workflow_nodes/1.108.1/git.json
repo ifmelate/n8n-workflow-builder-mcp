@@ -18,7 +18,16 @@
             "addConfig"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "addConfig"
+          ]
+        }
+      ]
     },
     {
       "name": "value",
@@ -34,7 +43,16 @@
             "addConfig"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "addConfig"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -49,7 +67,16 @@
             "addConfig"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "addConfig"
+          ]
+        }
+      ]
     },
     {
       "name": "pathsToAdd",
@@ -65,7 +92,16 @@
             "add"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        }
+      ]
     },
     {
       "name": "sourceRepository",
@@ -81,7 +117,16 @@
             "clone"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "clone"
+          ]
+        }
+      ]
     },
     {
       "name": "message",
@@ -95,7 +140,16 @@
             "commit"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "commit"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -109,7 +163,16 @@
             "log"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "log"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -130,7 +193,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "log"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -145,7 +224,16 @@
             "tag"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "tag"
+          ]
+        }
+      ]
     },
     {
       "name": "authentication",
@@ -170,7 +258,17 @@
             "push"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "clone",
+            "push"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -260,7 +358,16 @@
             "clone"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "hide",
+          "key": "operation",
+          "values": [
+            "clone"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -298,5 +405,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

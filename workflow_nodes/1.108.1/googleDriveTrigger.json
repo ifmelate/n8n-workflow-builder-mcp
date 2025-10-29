@@ -50,7 +50,16 @@
             "specificFile"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "triggerOn",
+          "values": [
+            "specificFile"
+          ]
+        }
+      ]
     },
     {
       "name": "event",
@@ -71,7 +80,16 @@
             "specificFile"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "triggerOn",
+          "values": [
+            "specificFile"
+          ]
+        }
+      ]
     },
     {
       "name": "folderToWatch",
@@ -86,7 +104,16 @@
             "specificFolder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "triggerOn",
+          "values": [
+            "specificFolder"
+          ]
+        }
+      ]
     },
     {
       "name": "asas",
@@ -99,7 +126,16 @@
             "specificFolder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "triggerOn",
+          "values": [
+            "specificFolder"
+          ]
+        }
+      ]
     },
     {
       "name": "driveToWatch",
@@ -114,7 +150,16 @@
             "anyFileFolder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "triggerOn",
+          "values": [
+            "anyFileFolder"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -130,7 +175,17 @@
             "fileUpdated"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "fileCreated",
+            "fileUpdated"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -196,5 +251,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

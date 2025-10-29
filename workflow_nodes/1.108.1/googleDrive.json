@@ -25,7 +25,16 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -96,7 +105,16 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "fileId",
@@ -119,7 +137,27 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "download",
+            "copy",
+            "update",
+            "delete",
+            "share"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -136,7 +174,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "download"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -154,7 +208,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "download"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "useQueryString",
@@ -171,7 +241,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "queryString",
@@ -192,7 +278,30 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "useQueryString",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -213,7 +322,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "queryFilters",
@@ -237,7 +362,30 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "useQueryString",
+          "values": [
+            false
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "permissionsUi",
@@ -256,7 +404,24 @@
             "share"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file",
+            "folder"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "share"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryData",
@@ -273,7 +438,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "fileContent",
@@ -294,7 +475,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "binaryData",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -356,7 +560,31 @@
             "file"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fileName": "",
+        "keepRevisionForever": false,
+        "trashed": false,
+        "ocrLanguage": "",
+        "parentId": "",
+        "useContentAsIndexableText": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -375,7 +603,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "resolveData",
@@ -392,7 +636,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "parents",
@@ -412,7 +672,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "driveId",
@@ -433,7 +709,25 @@
             "drive"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete",
+            "get",
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "drive"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -450,7 +744,23 @@
             "drive"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "drive"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [

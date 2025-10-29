@@ -26,7 +26,19 @@
             "min"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "hide",
+          "key": "aggregation",
+          "values": [
+            "countUnique",
+            "count",
+            "max",
+            "min"
+          ]
+        }
+      ]
     },
     {
       "name": "fieldsToSplitBy",
@@ -41,7 +53,16 @@
             "singleItem"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "hide",
+          "key": "/options.outputFormat",
+          "values": [
+            "singleItem"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -75,5 +96,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

@@ -40,7 +40,30 @@
             "post"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "postAs",
+          "values": [
+            "person"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "post"
+          ]
+        }
+      ]
     },
     {
       "name": "organization",
@@ -61,7 +84,30 @@
             "post"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "postAs",
+          "values": [
+            "organization"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "post"
+          ]
+        }
+      ]
     },
     {
       "name": "text",
@@ -78,7 +124,23 @@
             "post"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "post"
+          ]
+        }
+      ]
     },
     {
       "name": "shareMediaCategory",
@@ -112,7 +174,23 @@
             "post"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "post"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -132,7 +210,30 @@
             "IMAGE"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "post"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "shareMediaCategory",
+          "values": [
+            "IMAGE"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -150,7 +251,23 @@
             "post"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "post"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -171,7 +288,16 @@
             "post"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "post"
+          ]
+        }
+      ]
     },
     {
       "name": "authentication",
@@ -237,5 +363,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

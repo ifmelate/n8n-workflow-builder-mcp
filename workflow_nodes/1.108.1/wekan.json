@@ -21,7 +21,23 @@
             "board"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "board"
+          ]
+        }
+      ]
     },
     {
       "name": "owner",
@@ -39,7 +55,23 @@
             "board"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "board"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -73,7 +105,27 @@
             "board"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "isActive": false,
+        "isAdmin": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "board"
+          ]
+        }
+      ]
     },
     {
       "name": "boardId",
@@ -91,7 +143,23 @@
             "board"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "board"
+          ]
+        }
+      ]
     },
     {
       "name": "IdUser",
@@ -109,7 +177,23 @@
             "board"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "board"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -126,7 +210,23 @@
             "board"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "board"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -150,7 +250,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "board"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -186,7 +309,16 @@
             "board"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "board"
+          ]
+        }
+      ]
     },
     {
       "name": "listId",
@@ -204,7 +336,23 @@
             "cardComment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "cardComment"
+          ]
+        }
+      ]
     },
     {
       "name": "cardId",
@@ -222,7 +370,23 @@
             "cardComment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "cardComment"
+          ]
+        }
+      ]
     },
     {
       "name": "authorId",
@@ -240,7 +404,23 @@
             "cardComment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "cardComment"
+          ]
+        }
+      ]
     },
     {
       "name": "comment",
@@ -258,7 +438,23 @@
             "cardComment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "cardComment"
+          ]
+        }
+      ]
     },
     {
       "name": "commentId",
@@ -276,7 +472,23 @@
             "cardComment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "cardComment"
+          ]
+        }
+      ]
     },
     {
       "name": "swimlaneId",
@@ -294,7 +506,23 @@
             "card"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "card"
+          ]
+        }
+      ]
     },
     {
       "name": "fromObject",
@@ -321,7 +549,23 @@
             "card"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "card"
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -348,7 +592,26 @@
             "card"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "authorId": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "card"
+          ]
+        }
+      ]
     },
     {
       "name": "items",
@@ -368,7 +631,23 @@
             "checklist"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "checklist"
+          ]
+        }
+      ]
     },
     {
       "name": "checklistId",
@@ -386,7 +665,23 @@
             "checklist"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "checklist"
+          ]
+        }
+      ]
     },
     {
       "name": "checklistItemId",
@@ -404,7 +699,23 @@
             "checklistItem"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "checklistItem"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -470,5 +781,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

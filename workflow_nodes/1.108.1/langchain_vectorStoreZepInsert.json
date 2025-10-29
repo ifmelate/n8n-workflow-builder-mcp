@@ -45,7 +45,11 @@
           "default": true,
           "description": "Whether to automatically embed documents when they are added"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "embeddingDimensions": 0,
+        "isAutoEmbedded": false
+      }
     }
   ],
   "credentialsConfig": [
@@ -90,5 +94,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main, AiDocument, AiEmbedding",
+  "outputHints": "Emits outputs: Main"
 }

@@ -23,7 +23,16 @@
             "attachmentAction"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "attachmentAction"
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -42,7 +51,24 @@
             "deleted"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/resource",
+          "values": [
+            "message"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "/event",
+          "values": [
+            "created",
+            "deleted"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -88,5 +114,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

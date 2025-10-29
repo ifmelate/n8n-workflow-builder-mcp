@@ -20,7 +20,23 @@
             "track"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "event"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "track"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -57,7 +73,27 @@
             "track"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "campaignId": "",
+        "createdAt": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "event"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "track"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -78,7 +114,16 @@
             "event"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "event"
+          ]
+        }
+      ]
     },
     {
       "name": "identifier",
@@ -106,7 +151,23 @@
             "upsert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upsert"
+          ]
+        }
+      ]
     },
     {
       "name": "value",
@@ -123,7 +184,23 @@
             "upsert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upsert"
+          ]
+        }
+      ]
     },
     {
       "name": "preferUserId",
@@ -144,7 +221,30 @@
             "userId"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upsert"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "identifier",
+          "values": [
+            "userId"
+          ]
+        }
+      ]
     },
     {
       "name": "by",
@@ -172,7 +272,23 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "userId",
@@ -193,7 +309,30 @@
             "userId"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "by",
+          "values": [
+            "userId"
+          ]
+        }
+      ]
     },
     {
       "name": "email",
@@ -215,7 +354,30 @@
             "email"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "user"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "by",
+          "values": [
+            "email"
+          ]
+        }
+      ]
     },
     {
       "name": "listId",
@@ -233,7 +395,23 @@
             "add"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "userList"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -287,5 +465,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

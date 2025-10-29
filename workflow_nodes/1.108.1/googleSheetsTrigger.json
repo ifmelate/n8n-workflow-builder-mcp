@@ -64,7 +64,16 @@
             "rowAdded"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "hide",
+          "key": "event",
+          "values": [
+            "rowAdded"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -80,7 +89,17 @@
             "rowUpdate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/event",
+          "values": [
+            "anyUpdate",
+            "rowUpdate"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -134,5 +153,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

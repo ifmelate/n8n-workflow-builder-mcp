@@ -42,7 +42,19 @@
             "simple"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fieldName": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "type",
+          "values": [
+            "simple"
+          ]
+        }
+      ]
     },
     {
       "name": "code",
@@ -59,7 +71,16 @@
             "code"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "type",
+          "values": [
+            "code"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -83,7 +104,19 @@
             "simple"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "disableDotNotation": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "type",
+          "values": [
+            "simple"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -108,5 +141,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

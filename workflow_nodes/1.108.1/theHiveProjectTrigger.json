@@ -134,6 +134,9 @@
       "placeholder": "Add Filter",
       "typeOptions": {
         "multipleValues": true
+      },
+      "structureTemplate": {
+        "field": ""
       }
     },
     {
@@ -151,7 +154,10 @@
           "default": false,
           "description": "Whether to output data with additional details and omit headers"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "outputOnlyData": false
+      }
     }
   ],
   "credentialsConfig": [],
@@ -172,5 +178,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

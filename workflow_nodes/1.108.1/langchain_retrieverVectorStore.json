@@ -28,5 +28,7 @@
     "produces": [
       "AiRetriever"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: AiVectorStore",
+  "outputHints": "Emits outputs: AiRetriever"
 }

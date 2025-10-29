@@ -51,7 +51,23 @@
             "fetchRequest"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "fetchRequest"
+          ]
+        }
+      ]
     },
     {
       "name": "email",
@@ -68,7 +84,23 @@
             "enrich"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "enrich"
+          ]
+        }
+      ]
     },
     {
       "name": "simplify",
@@ -85,7 +117,23 @@
             "enrich"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "enrich"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -164,7 +212,35 @@
             "enrich"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "num_siren": "",
+        "siret": "",
+        "company": "",
+        "country": "",
+        "first_name": "",
+        "full_name": "",
+        "last_name": "",
+        "linkedin": "",
+        "phone": "",
+        "website": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "enrich"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -185,7 +261,23 @@
             "enrich"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "contact"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "enrich"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -231,5 +323,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

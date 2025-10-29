@@ -40,7 +40,16 @@
             "alert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "alert"
+          ]
+        }
+      ]
     },
     {
       "name": "message",
@@ -57,7 +66,23 @@
             "alert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "alert"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -76,7 +101,26 @@
             "alert"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "property": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "alert"
+          ]
+        }
+      ]
     },
     {
       "name": "externalId",
@@ -93,7 +137,23 @@
             "alert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "resolve"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "alert"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -151,5 +211,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

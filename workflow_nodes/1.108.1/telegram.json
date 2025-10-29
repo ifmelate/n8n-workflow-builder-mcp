@@ -76,7 +76,16 @@
             "chat"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "chat"
+          ]
+        }
+      ]
     },
     {
       "name": "chatId",
@@ -113,7 +122,42 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "administrators",
+            "deleteMessage",
+            "get",
+            "leave",
+            "member",
+            "pinChatMessage",
+            "setDescription",
+            "setTitle",
+            "sendAnimation",
+            "sendAudio",
+            "sendChatAction",
+            "sendDocument",
+            "sendLocation",
+            "sendMessage",
+            "sendMediaGroup",
+            "sendPhoto",
+            "sendSticker",
+            "sendVideo",
+            "unpinChatMessage"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "chat",
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "messageId",
@@ -131,7 +175,23 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "deleteMessage"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -158,7 +218,26 @@
             "message"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "disable_notification": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "pinChatMessage"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "userId",
@@ -176,7 +255,23 @@
             "chat"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "member"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "chat"
+          ]
+        }
+      ]
     },
     {
       "name": "description",
@@ -194,7 +289,23 @@
             "chat"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "setDescription"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "chat"
+          ]
+        }
+      ]
     },
     {
       "name": "title",
@@ -212,7 +323,23 @@
             "chat"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "setTitle"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "chat"
+          ]
+        }
+      ]
     },
     {
       "name": "queryId",
@@ -230,7 +357,23 @@
             "callback"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "answerQuery"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "callback"
+          ]
+        }
+      ]
     },
     {
       "name": "results",
@@ -248,7 +391,23 @@
             "callback"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "answerInlineQuery"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "callback"
+          ]
+        }
+      ]
     },
     {
       "name": "fileId",
@@ -266,7 +425,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "download",
@@ -283,7 +458,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "messageType",
@@ -310,7 +501,23 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "editMessageText"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryData",
@@ -333,7 +540,28 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sendAnimation",
+            "sendAudio",
+            "sendDocument",
+            "sendPhoto",
+            "sendVideo",
+            "sendSticker"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -360,7 +588,35 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sendAnimation",
+            "sendAudio",
+            "sendDocument",
+            "sendPhoto",
+            "sendVideo",
+            "sendSticker"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "binaryData",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "inlineMessageId",
@@ -381,7 +637,30 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "messageType",
+          "values": [
+            "inlineMessage"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "editMessageText"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "replyMarkup",
@@ -408,7 +687,23 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "editMessageText"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "file",
@@ -428,7 +723,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sendAnimation"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "binaryData",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "action",
@@ -487,7 +805,23 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sendChatAction"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "latitude",
@@ -508,7 +842,23 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sendLocation"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "longitude",
@@ -529,7 +879,23 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sendLocation"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "media",
@@ -550,7 +916,23 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sendMediaGroup"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "text",
@@ -569,7 +951,24 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "editMessageText",
+            "sendMessage"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "forceReply",
@@ -603,7 +1002,27 @@
             "message"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "force_reply": false,
+        "selective": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "replyMarkup",
+          "values": [
+            "forceReply"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "inlineKeyboard",
@@ -624,7 +1043,23 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "replyMarkup",
+          "values": [
+            "inlineKeyboard"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "replyKeyboard",
@@ -642,7 +1077,16 @@
             "replyKeyboard"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "replyMarkup",
+          "values": [
+            "replyKeyboard"
+          ]
+        }
+      ]
     },
     {
       "name": "replyKeyboardOptions",
@@ -680,7 +1124,21 @@
             "replyKeyboard"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "resize_keyboard": false,
+        "one_time_keyboard": false,
+        "selective": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "replyMarkup",
+          "values": [
+            "replyKeyboard"
+          ]
+        }
+      ]
     },
     {
       "name": "replyKeyboardRemove",
@@ -711,7 +1169,20 @@
             "replyKeyboardRemove"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "remove_keyboard": false,
+        "selective": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "replyMarkup",
+          "values": [
+            "replyKeyboardRemove"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -833,5 +1304,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

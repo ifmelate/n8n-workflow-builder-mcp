@@ -18,7 +18,16 @@
             "javaScript"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "language",
+          "values": [
+            "javaScript"
+          ]
+        }
+      ]
     },
     {
       "name": "mode",
@@ -50,7 +59,16 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -75,5 +93,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

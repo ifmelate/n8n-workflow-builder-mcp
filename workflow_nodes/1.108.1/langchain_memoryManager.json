@@ -55,7 +55,16 @@
             "insert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "insert"
+          ]
+        }
+      ]
     },
     {
       "name": "deleteMode",
@@ -81,7 +90,16 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "messages",
@@ -100,7 +118,16 @@
             "insert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "insert"
+          ]
+        }
+      ]
     },
     {
       "name": "lastMessagesCount",
@@ -117,7 +144,23 @@
             "lastN"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "deleteMode",
+          "values": [
+            "lastN"
+          ]
+        }
+      ]
     },
     {
       "name": "simplifyOutput",
@@ -131,7 +174,16 @@
             "load"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "load"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -155,7 +207,19 @@
             "load"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "groupMessages": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "load"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -184,5 +248,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main, AiMemory",
+  "outputHints": "Emits outputs: Main"
 }

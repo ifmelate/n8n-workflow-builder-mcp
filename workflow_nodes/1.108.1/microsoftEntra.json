@@ -16,7 +16,16 @@
             "group"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "group"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -41,5 +50,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

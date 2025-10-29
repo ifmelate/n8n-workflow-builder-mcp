@@ -31,7 +31,16 @@
             "translate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "translate"
+          ]
+        }
+      ]
     },
     {
       "name": "translateTo",
@@ -46,7 +55,16 @@
             "translate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "translate"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -83,7 +101,21 @@
             "translate"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "from": null,
+        "platform": "",
+        "translateMode": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "translate"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -121,5 +153,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

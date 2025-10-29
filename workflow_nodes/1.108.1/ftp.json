@@ -69,7 +69,16 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -93,7 +102,19 @@
             "delete"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "folder": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -107,7 +128,16 @@
             "download"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "download"
+          ]
+        }
+      ]
     },
     {
       "name": "oldPath",
@@ -122,7 +152,16 @@
             "rename"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "rename"
+          ]
+        }
+      ]
     },
     {
       "name": "newPath",
@@ -137,7 +176,16 @@
             "rename"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "rename"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryData",
@@ -151,7 +199,16 @@
             "upload"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        }
+      ]
     },
     {
       "name": "fileContent",
@@ -168,7 +225,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "binaryData",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "recursive",
@@ -183,7 +256,16 @@
             "list"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -237,5 +319,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

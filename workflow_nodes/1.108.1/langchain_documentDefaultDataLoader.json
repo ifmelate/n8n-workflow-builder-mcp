@@ -31,5 +31,7 @@
     "produces": [
       "AiDocument"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: AiTextSplitter",
+  "outputHints": "Emits outputs: AiDocument"
 }

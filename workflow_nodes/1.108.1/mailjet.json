@@ -21,7 +21,23 @@
             "send"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        }
+      ]
     },
     {
       "name": "toEmail",
@@ -40,7 +56,23 @@
             "send"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        }
+      ]
     },
     {
       "name": "subject",
@@ -65,7 +97,23 @@
             "send"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        }
+      ]
     },
     {
       "name": "html",
@@ -82,7 +130,23 @@
             "send"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        }
+      ]
     },
     {
       "name": "jsonParameters",
@@ -98,7 +162,23 @@
             "send"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -157,7 +237,31 @@
             "send"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "bccEmail": "",
+        "ccAddresses": "",
+        "fromName": "",
+        "priority": 0,
+        "replyTo": "",
+        "templateLanguage": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        }
+      ]
     },
     {
       "name": "variablesJson",
@@ -177,7 +281,30 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "jsonParameters",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "variablesUi",
@@ -200,7 +327,34 @@
             false
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "name": "",
+        "value": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "jsonParameters",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "templateId",
@@ -218,7 +372,23 @@
             "sendTemplate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sendTemplate"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -244,7 +414,16 @@
             "email"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "email"
+          ]
+        }
+      ]
     },
     {
       "name": "from",
@@ -262,7 +441,23 @@
             "send"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        }
+      ]
     },
     {
       "name": "to",
@@ -280,7 +475,23 @@
             "send"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -330,5 +541,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

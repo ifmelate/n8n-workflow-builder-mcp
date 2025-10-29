@@ -54,7 +54,27 @@
             }
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "retrieve-as-tool"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            {
+              "_cnd": {
+                "lte": 1.2
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "toolDescription",
@@ -73,7 +93,16 @@
             "retrieve-as-tool"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "retrieve-as-tool"
+          ]
+        }
+      ]
     },
     {
       "name": "embeddingBatchSize",
@@ -94,7 +123,27 @@
             }
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "insert"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            {
+              "_cnd": {
+                "gte": 1.1
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "name": "prompt",
@@ -109,7 +158,16 @@
             "load"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "load"
+          ]
+        }
+      ]
     },
     {
       "name": "topK",
@@ -124,7 +182,17 @@
             "retrieve-as-tool"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "load",
+            "retrieve-as-tool"
+          ]
+        }
+      ]
     },
     {
       "name": "includeDocumentMetadata",
@@ -139,7 +207,17 @@
             "retrieve-as-tool"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "load",
+            "retrieve-as-tool"
+          ]
+        }
+      ]
     },
     {
       "name": "useReranker",
@@ -155,7 +233,18 @@
             "retrieve-as-tool"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "load",
+            "retrieve",
+            "retrieve-as-tool"
+          ]
+        }
+      ]
     },
     {
       "name": "id",
@@ -170,7 +259,16 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -194,7 +292,19 @@
             "insert"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "clearNamespace": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "insert"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],

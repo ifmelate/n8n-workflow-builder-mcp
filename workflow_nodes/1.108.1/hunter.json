@@ -41,7 +41,16 @@
             "domainSearch"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "domainSearch"
+          ]
+        }
+      ]
     },
     {
       "name": "onlyEmails",
@@ -55,7 +64,16 @@
             "domainSearch"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "domainSearch"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -69,7 +87,16 @@
             "domainSearch"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "domainSearch"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -90,7 +117,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "domainSearch"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -104,7 +147,16 @@
             "domainSearch"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "domainSearch"
+          ]
+        }
+      ]
     },
     {
       "name": "firstname",
@@ -119,7 +171,16 @@
             "emailFinder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "emailFinder"
+          ]
+        }
+      ]
     },
     {
       "name": "lastname",
@@ -134,7 +195,16 @@
             "emailFinder"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "emailFinder"
+          ]
+        }
+      ]
     },
     {
       "name": "email",
@@ -150,7 +220,16 @@
             "emailVerifier"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "emailVerifier"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -200,5 +279,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

@@ -81,7 +81,20 @@
             "app_mention"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "trigger",
+          "values": [
+            "any_event",
+            "message",
+            "reaction_added",
+            "file_share",
+            "app_mention"
+          ]
+        }
+      ]
     },
     {
       "name": "channelId",
@@ -97,7 +110,16 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "watchWorkspace",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "downloadFiles",
@@ -112,7 +134,17 @@
             "file_share"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "trigger",
+          "values": [
+            "any_event",
+            "file_share"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -129,7 +161,10 @@
           "default": false,
           "description": "Whether to resolve the IDs to their respective names and return them"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "resolveIds": false
+      }
     }
   ],
   "credentialsConfig": [
@@ -171,5 +206,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

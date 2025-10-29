@@ -20,7 +20,23 @@
             "profile"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "profile"
+          ]
+        }
+      ]
     },
     {
       "name": "sendResume",
@@ -37,7 +53,23 @@
             "profile"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "profile"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -56,7 +88,30 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "profile"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "sendResume",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -74,7 +129,23 @@
             "profile"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "profile"
+          ]
+        }
+      ]
     },
     {
       "name": "text",
@@ -94,7 +165,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "profile"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "sendResume",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -125,7 +219,16 @@
             "profile"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "profile"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -171,5 +274,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

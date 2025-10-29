@@ -31,7 +31,16 @@
             "media"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "media"
+          ]
+        }
+      ]
     },
     {
       "name": "phoneNumberId",
@@ -50,7 +59,23 @@
             "media"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "mediaUpload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "media"
+          ]
+        }
+      ]
     },
     {
       "name": "mediaPropertyName",
@@ -68,7 +93,23 @@
             "media"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "mediaUpload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "media"
+          ]
+        }
+      ]
     },
     {
       "name": "mediaGetId",
@@ -86,7 +127,23 @@
             "media"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "mediaUrlGet"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "media"
+          ]
+        }
+      ]
     },
     {
       "name": "mediaDeleteId",
@@ -104,7 +161,23 @@
             "media"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "mediaDelete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "media"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -131,7 +204,26 @@
             "mediaUpload"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "mediaFileName": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "media"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "mediaUpload"
+          ]
+        }
+      ]
     },
     {
       "name": "messagingProduct",
@@ -144,7 +236,16 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "recipientPhoneNumber",
@@ -159,7 +260,16 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "messageType",
@@ -207,7 +317,23 @@
             "send"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -225,7 +351,23 @@
             "contacts"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "messageType",
+          "values": [
+            "contacts"
+          ]
+        }
+      ]
     },
     {
       "name": "longitude",
@@ -249,7 +391,30 @@
             "location"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "messageType",
+          "values": [
+            "location"
+          ]
+        }
+      ]
     },
     {
       "name": "latitude",
@@ -273,7 +438,30 @@
             "location"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "messageType",
+          "values": [
+            "location"
+          ]
+        }
+      ]
     },
     {
       "name": "textBody",
@@ -294,7 +482,30 @@
             "text"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "messageType",
+          "values": [
+            "text"
+          ]
+        }
+      ]
     },
     {
       "name": "mediaPath",
@@ -328,7 +539,23 @@
             "audio"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "messageType",
+          "values": [
+            "audio"
+          ]
+        }
+      ]
     },
     {
       "name": "mediaLink",
@@ -346,7 +573,30 @@
             "useMediaLink"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "messageType",
+          "values": [
+            "mediaTypes"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "mediaPath",
+          "values": [
+            "useMediaLink"
+          ]
+        }
+      ]
     },
     {
       "name": "mediaId",
@@ -364,7 +614,30 @@
             "useMediaId"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "messageType",
+          "values": [
+            "mediaTypes"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "mediaPath",
+          "values": [
+            "useMediaId"
+          ]
+        }
+      ]
     },
     {
       "name": "mediaFilename",
@@ -385,7 +658,30 @@
             "useMediaId"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "messageType",
+          "values": [
+            "document"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "mediaPath",
+          "values": [
+            "useMediaId"
+          ]
+        }
+      ]
     },
     {
       "name": "template",
@@ -403,7 +699,23 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sendTemplate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "components",
@@ -424,7 +736,23 @@
             "message"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sendTemplate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "message"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -470,5 +798,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

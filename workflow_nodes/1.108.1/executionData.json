@@ -40,7 +40,20 @@
             "save"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "key": "",
+        "value": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "save"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -65,5 +78,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

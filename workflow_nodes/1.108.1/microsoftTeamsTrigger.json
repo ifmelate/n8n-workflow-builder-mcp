@@ -52,7 +52,18 @@
             "newTeamMember"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "newChannel",
+            "newChannelMessage",
+            "newTeamMember"
+          ]
+        }
+      ]
     },
     {
       "name": "teamId",
@@ -73,7 +84,25 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "newChannel",
+            "newChannelMessage",
+            "newTeamMember"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "watchAllTeams",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "watchAllChannels",
@@ -90,7 +119,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "newChannelMessage"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "watchAllTeams",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "channelId",
@@ -112,7 +157,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "newChannelMessage"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "watchAllTeams",
+          "values": [
+            false
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "watchAllChannels",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "watchAllChats",
@@ -126,7 +194,16 @@
             "newChatMessage"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "newChatMessage"
+          ]
+        }
+      ]
     },
     {
       "name": "chatId",
@@ -145,7 +222,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "newChatMessage"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "watchAllChats",
+          "values": [
+            false
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -191,5 +284,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

@@ -31,7 +31,16 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendInputData",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "jsonParameters",
@@ -60,7 +69,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "useSchemaRegistry",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "useKey",
@@ -83,7 +101,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "useKey",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "eventName",
@@ -98,7 +125,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "useSchemaRegistry",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "headersUi",
@@ -115,7 +151,20 @@
             false
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "key": "",
+        "value": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "jsonParameters",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "headerParametersJson",
@@ -129,7 +178,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "jsonParameters",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -160,7 +218,12 @@
           "default": 30000,
           "description": "The time to await a response in ms"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "acks": false,
+        "compression": false,
+        "timeout": 0
+      }
     }
   ],
   "credentialsConfig": [
@@ -198,5 +261,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

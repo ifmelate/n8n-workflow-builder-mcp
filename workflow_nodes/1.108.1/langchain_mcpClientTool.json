@@ -21,7 +21,16 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     },
     {
       "name": "endpointUrl",
@@ -84,7 +93,17 @@
             "bearerAuth"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "authentication",
+          "values": [
+            "headerAuth",
+            "bearerAuth"
+          ]
+        }
+      ]
     },
     {
       "name": "include",
@@ -122,7 +141,16 @@
             "selected"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "include",
+          "values": [
+            "selected"
+          ]
+        }
+      ]
     },
     {
       "name": "excludeTools",
@@ -136,7 +164,16 @@
             "except"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "include",
+          "values": [
+            "except"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -156,6 +193,9 @@
       ],
       "typeOptions": {
         "minValue": 1
+      },
+      "structureTemplate": {
+        "timeout": 0
       }
     }
   ],
@@ -208,5 +248,6 @@
     "produces": [
       "AiTool"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: AiTool"
 }

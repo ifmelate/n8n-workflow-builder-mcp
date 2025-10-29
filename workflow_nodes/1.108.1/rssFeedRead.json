@@ -38,7 +38,11 @@
           "default": false,
           "description": "Whether to ignore SSL/TLS certificate issues or not"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "customFields": "",
+        "ignoreSSL": false
+      }
     }
   ],
   "credentialsConfig": [],
@@ -63,5 +67,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

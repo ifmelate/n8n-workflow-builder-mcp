@@ -35,7 +35,16 @@
             "new"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/mode",
+          "values": [
+            "new"
+          ]
+        }
+      ]
     },
     {
       "name": "instructions",
@@ -52,7 +61,16 @@
             "new"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/mode",
+          "values": [
+            "new"
+          ]
+        }
+      ]
     },
     {
       "name": "model",
@@ -67,7 +85,16 @@
             "new"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/mode",
+          "values": [
+            "new"
+          ]
+        }
+      ]
     },
     {
       "name": "assistantId",
@@ -82,7 +109,16 @@
             "existing"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/mode",
+          "values": [
+            "existing"
+          ]
+        }
+      ]
     },
     {
       "name": "text",
@@ -96,7 +132,16 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     },
     {
       "name": "nativeTools",
@@ -149,7 +194,12 @@
           "default": 10000,
           "description": "Maximum amount of time a request is allowed to take in milliseconds"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "baseURL": "",
+        "maxRetries": 0,
+        "timeout": 0
+      }
     }
   ],
   "credentialsConfig": [
@@ -207,5 +257,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main, AiTool",
+  "outputHints": "Emits outputs: Main"
 }

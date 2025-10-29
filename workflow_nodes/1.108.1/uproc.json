@@ -36,7 +36,29 @@
             "text"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "dataWebhook": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "group",
+          "values": [
+            "audio",
+            "communication",
+            "company",
+            "finance",
+            "geographic",
+            "image",
+            "internet",
+            "personal",
+            "product",
+            "security",
+            "text"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -70,5 +92,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

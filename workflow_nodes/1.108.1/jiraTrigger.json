@@ -57,7 +57,16 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     },
     {
       "name": "events",
@@ -252,7 +261,11 @@
           "description": "You can specify a JQL query to send only events triggered by matching issues. The JQL filter only applies to events under the Issue and Comment columns.",
           "placeholder": "Project = JRA AND resolution = Fixed"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "excludeBody": false,
+        "filter": ""
+      }
     }
   ],
   "credentialsConfig": [
@@ -302,5 +315,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

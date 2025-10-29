@@ -73,7 +73,23 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "source",
+          "values": [
+            "database"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     },
     {
       "name": "workflowPath",
@@ -89,7 +105,16 @@
             "localFile"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "source",
+          "values": [
+            "localFile"
+          ]
+        }
+      ]
     },
     {
       "name": "workflowJson",
@@ -107,7 +132,16 @@
             "parameter"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "source",
+          "values": [
+            "parameter"
+          ]
+        }
+      ]
     },
     {
       "name": "workflowUrl",
@@ -123,7 +157,16 @@
             "url"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "source",
+          "values": [
+            "url"
+          ]
+        }
+      ]
     },
     {
       "name": "executeWorkflowNotice",
@@ -174,7 +217,10 @@
           "default": true,
           "description": "Whether the main workflow should wait for the sub-workflow to complete its execution before proceeding"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "waitForSubWorkflow": false
+      }
     }
   ],
   "credentialsConfig": [],
@@ -199,5 +245,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

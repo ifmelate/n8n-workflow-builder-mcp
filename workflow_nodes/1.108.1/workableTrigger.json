@@ -43,7 +43,11 @@
           "default": "",
           "description": "Get notifications for specific stages. e.g. 'hired'. Choose from the list, or specify an ID using an <a href=\"https://docs.n8n.io/code/expressions/\">expression</a>."
         }
-      ]
+      ],
+      "structureTemplate": {
+        "job": null,
+        "stage": null
+      }
     }
   ],
   "credentialsConfig": [
@@ -81,5 +85,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

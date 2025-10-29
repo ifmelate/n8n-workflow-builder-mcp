@@ -107,7 +107,16 @@
             "activity"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        }
+      ]
     },
     {
       "name": "subject",
@@ -125,7 +134,23 @@
             "activity"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        }
+      ]
     },
     {
       "name": "done",
@@ -152,7 +177,23 @@
             "activity"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        }
+      ]
     },
     {
       "name": "type",
@@ -171,7 +212,23 @@
             "activity"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -236,7 +293,31 @@
             "activity"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "deal_id": 0,
+        "due_date": null,
+        "note": "",
+        "org_id": null,
+        "person_id": 0,
+        "user_id": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        }
+      ]
     },
     {
       "name": "activityId",
@@ -254,7 +335,23 @@
             "activity"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -298,7 +395,28 @@
             "activity"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "busy_flag": false,
+        "deal_id": 0,
+        "due_date": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        }
+      ]
     },
     {
       "name": "title",
@@ -316,7 +434,23 @@
             "deal"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        }
+      ]
     },
     {
       "name": "associateWith",
@@ -344,7 +478,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "org_id",
@@ -365,7 +515,30 @@
             "organization"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "associateWith",
+          "values": [
+            "organization"
+          ]
+        }
+      ]
     },
     {
       "name": "person_id",
@@ -385,7 +558,30 @@
             "person"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "associateWith",
+          "values": [
+            "person"
+          ]
+        }
+      ]
     },
     {
       "name": "dealId",
@@ -403,7 +599,23 @@
             "deal"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        }
+      ]
     },
     {
       "name": "productId",
@@ -421,7 +633,23 @@
             "dealProduct"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "dealProduct"
+          ]
+        }
+      ]
     },
     {
       "name": "item_price",
@@ -439,7 +667,23 @@
             "dealProduct"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "dealProduct"
+          ]
+        }
+      ]
     },
     {
       "name": "quantity",
@@ -460,7 +704,23 @@
             "dealProduct"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "dealProduct"
+          ]
+        }
+      ]
     },
     {
       "name": "productAttachmentId",
@@ -478,7 +738,23 @@
             "dealProduct"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "dealProduct"
+          ]
+        }
+      ]
     },
     {
       "name": "term",
@@ -496,7 +772,23 @@
             "deal"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        }
+      ]
     },
     {
       "name": "exactMatch",
@@ -513,7 +805,23 @@
             "deal"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "deal"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -527,7 +835,16 @@
             "search"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -548,7 +865,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -566,7 +899,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "fileId",
@@ -584,7 +933,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "organization_id",
@@ -605,7 +970,30 @@
             "organization"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "lead"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "associateWith",
+          "values": [
+            "organization"
+          ]
+        }
+      ]
     },
     {
       "name": "leadId",
@@ -623,7 +1011,23 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "lead"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "content",
@@ -644,7 +1048,23 @@
             "note"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "note"
+          ]
+        }
+      ]
     },
     {
       "name": "noteId",
@@ -662,7 +1082,23 @@
             "note"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "note"
+          ]
+        }
+      ]
     },
     {
       "name": "name",
@@ -680,7 +1116,23 @@
             "organization"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "organization"
+          ]
+        }
+      ]
     },
     {
       "name": "organizationId",
@@ -698,7 +1150,23 @@
             "organization"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "organization"
+          ]
+        }
+      ]
     },
     {
       "name": "personId",
@@ -716,7 +1184,23 @@
             "person"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "person"
+          ]
+        }
+      ]
     },
     {
       "name": "resolveProperties",
@@ -738,7 +1222,28 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity",
+            "deal",
+            "organization",
+            "person",
+            "product"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "encodeProperties",
@@ -759,7 +1264,27 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity",
+            "deal",
+            "organization",
+            "person",
+            "product"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -776,7 +1301,23 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "lead"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -1030,5 +1571,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

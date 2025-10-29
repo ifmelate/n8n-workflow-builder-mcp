@@ -57,7 +57,10 @@
           "default": "",
           "description": "Free text search terms to filter events that match these terms in any field, except for extended properties"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "matchTerm": ""
+      }
     }
   ],
   "credentialsConfig": [
@@ -95,5 +98,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

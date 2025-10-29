@@ -19,7 +19,23 @@
             "push"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "push"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -123,7 +139,37 @@
             "push"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "channelName": "",
+        "expirationStamp": null,
+        "iOSDeepLink": "",
+        "link": "",
+        "openInHomeFeed": false,
+        "openLinkInApp": false,
+        "pushToEmails": "",
+        "pushToFollowers": "",
+        "pushToPhoneNumbers": "",
+        "schedule": null,
+        "subtitle": "",
+        "pushTitle": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "push"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -144,7 +190,16 @@
             "push"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "push"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -190,5 +245,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

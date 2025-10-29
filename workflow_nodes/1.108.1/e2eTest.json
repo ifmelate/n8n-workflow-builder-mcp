@@ -43,7 +43,16 @@
             "remoteOptions"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "remoteOptions"
+          ]
+        }
+      ]
     },
     {
       "name": "rlc",
@@ -58,7 +67,16 @@
             "resourceLocator"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "resourceLocator"
+          ]
+        }
+      ]
     },
     {
       "name": "resourceMapper",
@@ -72,7 +90,16 @@
             "resourceMapper"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "resourceMapper"
+          ]
+        }
+      ]
     },
     {
       "name": "otherField",
@@ -103,5 +130,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

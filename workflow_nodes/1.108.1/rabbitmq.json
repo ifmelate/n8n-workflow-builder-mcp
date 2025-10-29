@@ -28,7 +28,16 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     },
     {
       "name": "deleteMessage",
@@ -41,7 +50,16 @@
             "deleteMessage"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "deleteMessage"
+          ]
+        }
+      ]
     },
     {
       "name": "mode",
@@ -67,7 +85,16 @@
             "deleteMessage"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "hide",
+          "key": "operation",
+          "values": [
+            "deleteMessage"
+          ]
+        }
+      ]
     },
     {
       "name": "queue",
@@ -82,7 +109,16 @@
             "queue"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "queue"
+          ]
+        }
+      ]
     },
     {
       "name": "exchange",
@@ -97,7 +133,16 @@
             "exchange"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "exchange"
+          ]
+        }
+      ]
     },
     {
       "name": "exchangeType",
@@ -133,7 +178,16 @@
             "exchange"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "exchange"
+          ]
+        }
+      ]
     },
     {
       "name": "routingKey",
@@ -148,7 +202,16 @@
             "exchange"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "exchange"
+          ]
+        }
+      ]
     },
     {
       "name": "sendInputData",
@@ -162,7 +225,16 @@
             "sendMessage"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sendMessage"
+          ]
+        }
+      ]
     },
     {
       "name": "message",
@@ -176,7 +248,16 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendInputData",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -194,7 +275,20 @@
             "sendMessage"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "key": "",
+        "value": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sendMessage"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -248,5 +342,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

@@ -19,7 +19,23 @@
             "enrich"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "enrich"
+          ]
+        }
+      ]
     },
     {
       "name": "domain",
@@ -36,7 +52,23 @@
             "enrich"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "enrich"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -55,7 +87,16 @@
             "company"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "company"
+          ]
+        }
+      ]
     },
     {
       "name": "email",
@@ -73,7 +114,23 @@
             "enrich"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "person"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "enrich"
+          ]
+        }
+      ]
     },
     {
       "name": "firstname",
@@ -90,7 +147,23 @@
             "enrich"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "person"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "enrich"
+          ]
+        }
+      ]
     },
     {
       "name": "lastname",
@@ -107,7 +180,23 @@
             "enrich"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "person"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "enrich"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -160,5 +249,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

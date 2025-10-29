@@ -19,7 +19,23 @@
             "notification"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "notification"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -37,7 +53,26 @@
             "notification"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "binaryData": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "notification"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -58,7 +93,16 @@
             "notification"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "notification"
+          ]
+        }
+      ]
     },
     {
       "name": "notice",
@@ -110,5 +154,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

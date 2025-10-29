@@ -30,7 +30,16 @@
             "seconds"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "field",
+          "values": [
+            "seconds"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -51,5 +60,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

@@ -17,7 +17,16 @@
             "campaign"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "campaign"
+          ]
+        }
+      ]
     },
     {
       "name": "clientCustomerId",
@@ -32,7 +41,16 @@
             "campaign"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "campaign"
+          ]
+        }
+      ]
     },
     {
       "name": "campaignId",
@@ -50,7 +68,23 @@
             "campaign"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "campaign"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalOptions",
@@ -68,7 +102,23 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "campaign"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -82,7 +132,16 @@
             "campaign"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "campaign"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -107,5 +166,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

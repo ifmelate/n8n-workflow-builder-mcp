@@ -39,7 +39,16 @@
             "sms"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        }
+      ]
     },
     {
       "name": "from",
@@ -60,7 +69,25 @@
             "call"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send",
+            "make"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms",
+            "call"
+          ]
+        }
+      ]
     },
     {
       "name": "to",
@@ -81,7 +108,25 @@
             "call"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send",
+            "make"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms",
+            "call"
+          ]
+        }
+      ]
     },
     {
       "name": "toWhatsapp",
@@ -98,7 +143,23 @@
             "sms"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        }
+      ]
     },
     {
       "name": "message",
@@ -116,7 +177,23 @@
             "sms"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "send"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "sms"
+          ]
+        }
+      ]
     },
     {
       "name": "twiml",
@@ -133,7 +210,23 @@
             "call"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "make"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "call"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -150,7 +243,10 @@
           "default": "",
           "description": "Status Callbacks allow you to receive events related to the REST resources managed by Twilio: Rooms, Recordings and Compositions"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "statusCallback": ""
+      }
     }
   ],
   "credentialsConfig": [
@@ -196,5 +292,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

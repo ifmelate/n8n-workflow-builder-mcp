@@ -33,7 +33,16 @@
             "document"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "document"
+          ]
+        }
+      ]
     },
     {
       "name": "source",
@@ -58,7 +67,16 @@
             "analyzeSentiment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "analyzeSentiment"
+          ]
+        }
+      ]
     },
     {
       "name": "content",
@@ -76,7 +94,23 @@
             "content"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "analyzeSentiment"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "source",
+          "values": [
+            "content"
+          ]
+        }
+      ]
     },
     {
       "name": "gcsContentUri",
@@ -94,7 +128,23 @@
             "gcsContentUri"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "analyzeSentiment"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "source",
+          "values": [
+            "gcsContentUri"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -109,7 +159,16 @@
             "analyzeSentiment"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "analyzeSentiment"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -163,5 +222,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

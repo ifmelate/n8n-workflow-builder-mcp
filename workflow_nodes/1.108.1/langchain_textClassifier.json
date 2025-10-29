@@ -28,6 +28,10 @@
       "required": true,
       "typeOptions": {
         "multipleValues": true
+      },
+      "structureTemplate": {
+        "category": "",
+        "description": ""
       }
     },
     {
@@ -47,6 +51,9 @@
       ],
       "typeOptions": {
         "rows": 6
+      },
+      "structureTemplate": {
+        "multiClass": false
       }
     }
   ],
@@ -70,5 +77,6 @@
       "AiLanguageModel"
     ],
     "produces": []
-  }
+  },
+  "inputHints": "Accepts inputs: Main, AiLanguageModel"
 }

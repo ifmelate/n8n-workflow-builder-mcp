@@ -58,5 +58,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main, AiDocument, AiEmbedding",
+  "outputHints": "Emits outputs: Main"
 }

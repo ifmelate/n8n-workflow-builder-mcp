@@ -31,7 +31,25 @@
             "pipeline"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "getAll",
+            "trigger"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "pipeline"
+          ]
+        }
+      ]
     },
     {
       "name": "projectSlug",
@@ -51,7 +69,25 @@
             "pipeline"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "getAll",
+            "trigger"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "pipeline"
+          ]
+        }
+      ]
     },
     {
       "name": "pipelineNumber",
@@ -71,7 +107,23 @@
             "pipeline"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "pipeline"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -88,7 +140,23 @@
             "pipeline"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "pipeline"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -112,7 +180,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "pipeline"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -139,7 +230,26 @@
             "getAll"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "branch": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "pipeline"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -173,7 +283,27 @@
             "trigger"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "branch": "",
+        "tag": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "pipeline"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "trigger"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -204,7 +334,16 @@
             "pipeline"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "pipeline"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -250,5 +389,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

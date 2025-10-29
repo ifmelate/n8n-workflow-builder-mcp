@@ -35,7 +35,17 @@
             "repository"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "workspace",
+            "repository"
+          ]
+        }
+      ]
     },
     {
       "name": "events",
@@ -50,7 +60,16 @@
             "workspace"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "workspace"
+          ]
+        }
+      ]
     },
     {
       "name": "repository",
@@ -65,7 +84,16 @@
             "repository"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "repository"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -103,5 +131,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

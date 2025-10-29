@@ -44,5 +44,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main, AiMemory",
+  "outputHints": "Emits outputs: Main"
 }

@@ -23,7 +23,26 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "zoneCertificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload",
+            "getMany",
+            "get",
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "certificate",
@@ -41,7 +60,23 @@
             "upload"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "zoneCertificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        }
+      ]
     },
     {
       "name": "privateKey",
@@ -58,7 +93,23 @@
             "upload"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "zoneCertificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -75,7 +126,23 @@
             "getMany"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "zoneCertificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getMany"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -99,7 +166,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "zoneCertificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getMany"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -117,7 +207,23 @@
             "getMany"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "zoneCertificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getMany"
+          ]
+        }
+      ]
     },
     {
       "name": "certificateId",
@@ -135,7 +241,24 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "zoneCertificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -171,7 +294,16 @@
             "zoneCertificate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "zoneCertificate"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -217,5 +349,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

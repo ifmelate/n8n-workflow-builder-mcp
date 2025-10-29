@@ -28,7 +28,16 @@
             1
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "@version",
+          "values": [
+            1
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -74,7 +83,16 @@
             "bookshelf"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "bookshelf"
+          ]
+        }
+      ]
     },
     {
       "name": "myLibrary",
@@ -93,7 +111,25 @@
             "bookshelfVolume"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "bookshelf",
+            "bookshelfVolume"
+          ]
+        }
+      ]
     },
     {
       "name": "searchQuery",
@@ -111,7 +147,23 @@
             "volume"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "volume"
+          ]
+        }
+      ]
     },
     {
       "name": "userId",
@@ -131,7 +183,25 @@
             "bookshelfVolume"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "bookshelf",
+            "bookshelfVolume"
+          ]
+        }
+      ]
     },
     {
       "name": "shelfId",
@@ -154,7 +224,28 @@
             "bookshelfVolume"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get",
+            "add",
+            "clear",
+            "move",
+            "remove"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "bookshelf",
+            "bookshelfVolume"
+          ]
+        }
+      ]
     },
     {
       "name": "volumeId",
@@ -176,7 +267,27 @@
             "volume"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add",
+            "move",
+            "remove",
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "bookshelfVolume",
+            "volume"
+          ]
+        }
+      ]
     },
     {
       "name": "volumePosition",
@@ -194,7 +305,23 @@
             "bookshelfVolume"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "move"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "bookshelfVolume"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -208,7 +335,16 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -229,7 +365,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -287,5 +439,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

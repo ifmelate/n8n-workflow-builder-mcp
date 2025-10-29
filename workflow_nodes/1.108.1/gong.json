@@ -16,7 +16,16 @@
             "call"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "call"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -41,5 +50,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

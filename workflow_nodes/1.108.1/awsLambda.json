@@ -31,7 +31,16 @@
             "invoke"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "invoke"
+          ]
+        }
+      ]
     },
     {
       "name": "qualifier",
@@ -46,7 +55,16 @@
             "invoke"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "invoke"
+          ]
+        }
+      ]
     },
     {
       "name": "invocationType",
@@ -72,7 +90,16 @@
             "invoke"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "invoke"
+          ]
+        }
+      ]
     },
     {
       "name": "payload",
@@ -86,7 +113,16 @@
             "invoke"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "invoke"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -128,5 +164,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

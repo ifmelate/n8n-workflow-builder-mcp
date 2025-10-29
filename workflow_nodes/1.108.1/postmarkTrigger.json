@@ -56,7 +56,16 @@
             "open"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "events",
+          "values": [
+            "open"
+          ]
+        }
+      ]
     },
     {
       "name": "includeContent",
@@ -71,7 +80,17 @@
             "spamComplaint"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "events",
+          "values": [
+            "bounce",
+            "spamComplaint"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -109,5 +128,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

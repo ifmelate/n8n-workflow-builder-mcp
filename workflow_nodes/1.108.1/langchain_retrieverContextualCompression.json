@@ -28,5 +28,7 @@
     "produces": [
       "AiRetriever"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: AiLanguageModel, AiRetriever",
+  "outputHints": "Emits outputs: AiRetriever"
 }

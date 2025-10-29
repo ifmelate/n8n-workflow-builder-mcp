@@ -19,7 +19,16 @@
             "chat"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "chat"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -44,5 +53,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

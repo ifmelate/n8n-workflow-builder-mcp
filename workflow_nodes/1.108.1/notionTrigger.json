@@ -42,7 +42,17 @@
             "pagedUpdatedInDatabase"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "pageAddedToDatabase",
+            "pagedUpdatedInDatabase"
+          ]
+        }
+      ]
     },
     {
       "name": "simple",
@@ -57,7 +67,17 @@
             "pagedUpdatedInDatabase"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "event",
+          "values": [
+            "pageAddedToDatabase",
+            "pagedUpdatedInDatabase"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -99,5 +119,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

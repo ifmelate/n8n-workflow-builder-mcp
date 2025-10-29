@@ -35,7 +35,16 @@
             "airtableApi"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "authentication",
+          "values": [
+            "airtableApi"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -100,7 +109,16 @@
             "append"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "append"
+          ]
+        }
+      ]
     },
     {
       "name": "fields",
@@ -122,7 +140,23 @@
             "append"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "addAllFields",
+          "values": [
+            false
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "append"
+          ]
+        }
+      ]
     },
     {
       "name": "id",
@@ -137,7 +171,16 @@
             "delete"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -151,7 +194,16 @@
             "list"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -172,7 +224,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "downloadAttachments",
@@ -186,7 +254,16 @@
             "list"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        }
+      ]
     },
     {
       "name": "downloadFieldNames",
@@ -204,7 +281,23 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "downloadAttachments",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "additionalOptions",
@@ -222,7 +315,19 @@
             "list"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "field": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "list"
+          ]
+        }
+      ]
     },
     {
       "name": "updateAllFields",
@@ -236,7 +341,16 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -266,7 +380,21 @@
             "update"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "bulkSize": 0
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "append",
+            "delete",
+            "update"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [

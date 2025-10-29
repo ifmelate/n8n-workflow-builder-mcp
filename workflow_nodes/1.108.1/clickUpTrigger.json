@@ -180,7 +180,13 @@
           "type": "string",
           "default": ""
         }
-      ]
+      ],
+      "structureTemplate": {
+        "folderId": "",
+        "listId": "",
+        "spaceId": "",
+        "taskId": ""
+      }
     }
   ],
   "credentialsConfig": [
@@ -222,5 +228,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

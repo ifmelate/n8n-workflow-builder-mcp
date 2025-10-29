@@ -62,7 +62,23 @@
             "channel"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "channel"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -79,7 +95,23 @@
             "channel"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "channel"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -103,7 +135,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "channel"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -151,7 +206,29 @@
             "channel"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "categoryId": "",
+        "forUsername": "",
+        "id": "",
+        "managedByMe": false
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "channel"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -185,7 +262,27 @@
             "channel"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "h1": null,
+        "onBehalfOfContentOwner": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "channel"
+          ]
+        }
+      ]
     },
     {
       "name": "channelId",
@@ -203,7 +300,23 @@
             "channel"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "channel"
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -221,7 +334,23 @@
             "channel"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "channel"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryProperty",
@@ -238,7 +367,23 @@
             "channel"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "uploadBanner"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "channel"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -274,7 +419,16 @@
             "channel"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "channel"
+          ]
+        }
+      ]
     },
     {
       "name": "title",
@@ -292,7 +446,23 @@
             "playlist"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "playlist"
+          ]
+        }
+      ]
     },
     {
       "name": "playlistId",
@@ -309,7 +479,23 @@
             "playlist"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "playlist"
+          ]
+        }
+      ]
     },
     {
       "name": "videoId",
@@ -326,7 +512,23 @@
             "playlistItem"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "add"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "playlistItem"
+          ]
+        }
+      ]
     },
     {
       "name": "playlistItemId",
@@ -343,7 +545,23 @@
             "playlistItem"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "playlistItem"
+          ]
+        }
+      ]
     },
     {
       "name": "regionCode",
@@ -361,7 +579,23 @@
             "videoCategory"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "videoCategory"
+          ]
+        }
+      ]
     },
     {
       "name": "categoryId",
@@ -378,7 +612,23 @@
             "video"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "video"
+          ]
+        }
+      ]
     },
     {
       "name": "rating",
@@ -412,7 +662,23 @@
             "video"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "rate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "video"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -474,5 +740,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

@@ -25,7 +25,16 @@
             "certificate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        }
+      ]
     },
     {
       "name": "certificateFileName",
@@ -43,7 +52,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "certificateFormat",
@@ -71,7 +96,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "certificateType",
@@ -111,7 +152,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "certificateRequestFileName",
@@ -129,7 +186,23 @@
             "certificate"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        }
+      ]
     },
     {
       "name": "caCertificateFileName",
@@ -152,7 +225,32 @@
             "CLNT_CERT"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "certificateType",
+          "values": [
+            "INTM_CERT",
+            "SRVR_CERT",
+            "CLNT_CERT"
+          ]
+        }
+      ]
     },
     {
       "name": "caCertificateFileFormat",
@@ -185,7 +283,32 @@
             "CLNT_CERT"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "certificateType",
+          "values": [
+            "INTM_CERT",
+            "SRVR_CERT",
+            "CLNT_CERT"
+          ]
+        }
+      ]
     },
     {
       "name": "caPrivateKeyFileName",
@@ -208,7 +331,32 @@
             "CLNT_CERT"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "certificateType",
+          "values": [
+            "INTM_CERT",
+            "SRVR_CERT",
+            "CLNT_CERT"
+          ]
+        }
+      ]
     },
     {
       "name": "caPrivateKeyFileFormat",
@@ -241,7 +389,32 @@
             "CLNT_CERT"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "certificateType",
+          "values": [
+            "INTM_CERT",
+            "SRVR_CERT",
+            "CLNT_CERT"
+          ]
+        }
+      ]
     },
     {
       "name": "privateKeyFileName",
@@ -262,7 +435,30 @@
             "ROOT_CERT"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "certificateType",
+          "values": [
+            "ROOT_CERT"
+          ]
+        }
+      ]
     },
     {
       "name": "caSerialFileNumber",
@@ -285,7 +481,32 @@
             "CLNT_CERT"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "certificateType",
+          "values": [
+            "INTM_CERT",
+            "SRVR_CERT",
+            "CLNT_CERT"
+          ]
+        }
+      ]
     },
     {
       "name": "privateKeyFormat",
@@ -316,7 +537,30 @@
             "ROOT_CERT"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "certificateType",
+          "values": [
+            "ROOT_CERT"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -334,7 +578,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "certificateKeyPairName",
@@ -352,7 +612,23 @@
             "install"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "install"
+          ]
+        }
+      ]
     },
     {
       "name": "password",
@@ -373,7 +649,30 @@
             "PEM"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "install"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "certificateFormat",
+          "values": [
+            "PEM"
+          ]
+        }
+      ]
     },
     {
       "name": "notifyExpiration",
@@ -391,7 +690,23 @@
             "install"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "install"
+          ]
+        }
+      ]
     },
     {
       "name": "notificationPeriod",
@@ -416,7 +731,30 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "install"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "notifyExpiration",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "certificateBundle",
@@ -436,7 +774,30 @@
             "PEM"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "certificate"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "install"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "certificateFormat",
+          "values": [
+            "PEM"
+          ]
+        }
+      ]
     },
     {
       "name": "fileLocation",
@@ -453,7 +814,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryProperty",
@@ -471,7 +848,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -498,7 +891,26 @@
             "file"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fileName": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "fileName",
@@ -517,7 +929,24 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete",
+            "download"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -567,5 +996,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

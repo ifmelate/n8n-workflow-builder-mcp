@@ -32,5 +32,6 @@
     "produces": [
       "AiEmbedding"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: AiEmbedding"
 }

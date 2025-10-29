@@ -33,7 +33,16 @@
             "get"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        }
+      ]
     },
     {
       "name": "dataToSend",
@@ -60,7 +69,17 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "inputsToIgnore",
@@ -79,7 +98,24 @@
             "autoMapInputData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "dataToSend",
+          "values": [
+            "autoMapInputData"
+          ]
+        }
+      ]
     },
     {
       "name": "fieldsUi",
@@ -101,7 +137,24 @@
             "defineBelow"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create",
+            "update"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "dataToSend",
+          "values": [
+            "defineBelow"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -115,7 +168,16 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -136,7 +198,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "additionalOptions",
@@ -154,7 +232,16 @@
             "getAll"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "resource",
@@ -207,7 +294,16 @@
             "row"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "row"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -245,5 +341,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

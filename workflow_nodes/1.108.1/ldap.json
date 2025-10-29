@@ -18,7 +18,16 @@
             "compare"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "compare"
+          ]
+        }
+      ]
     },
     {
       "name": "id",
@@ -33,7 +42,16 @@
             "compare"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "compare"
+          ]
+        }
+      ]
     },
     {
       "name": "value",
@@ -47,7 +65,16 @@
             "compare"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "compare"
+          ]
+        }
+      ]
     },
     {
       "name": "targetDn",
@@ -63,7 +90,16 @@
             "rename"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "rename"
+          ]
+        }
+      ]
     },
     {
       "name": "attributes",
@@ -82,7 +118,20 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "id": "",
+        "value": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "baseDN",
@@ -98,7 +147,16 @@
             "search"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        }
+      ]
     },
     {
       "name": "searchFor",
@@ -112,7 +170,16 @@
             "search"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        }
+      ]
     },
     {
       "name": "customFilter",
@@ -129,7 +196,23 @@
             "custom"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "searchFor",
+          "values": [
+            "custom"
+          ]
+        }
+      ]
     },
     {
       "name": "attribute",
@@ -144,7 +227,16 @@
             "search"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        }
+      ]
     },
     {
       "name": "searchText",
@@ -159,7 +251,16 @@
             "search"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -173,7 +274,16 @@
             "search"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -193,7 +303,23 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -208,7 +334,16 @@
             "search"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "search"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -287,5 +422,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

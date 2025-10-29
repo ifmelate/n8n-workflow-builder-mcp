@@ -20,7 +20,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "memberId",
@@ -37,7 +53,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "title",
@@ -54,7 +86,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "additionalFields",
@@ -116,7 +164,31 @@
             "create"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "activityType": null,
+        "description": "",
+        "key": "",
+        "link": "",
+        "linkText": "",
+        "occurredAt": null
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "returnAll",
@@ -133,7 +205,23 @@
             "activity"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        }
+      ]
     },
     {
       "name": "limit",
@@ -157,7 +245,30 @@
             false
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "returnAll",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "filters",
@@ -184,7 +295,26 @@
             "getAll"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "memberId": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "operation",
@@ -210,7 +340,16 @@
             "activity"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "activity"
+          ]
+        }
+      ]
     },
     {
       "name": "resolveIdentities",
@@ -227,7 +366,23 @@
             "member"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "get"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "member"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -254,7 +409,26 @@
             "getAll"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "sort": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "member"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        }
+      ]
     },
     {
       "name": "source",
@@ -290,7 +464,23 @@
             "lookup"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "member"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "lookup"
+          ]
+        }
+      ]
     },
     {
       "name": "searchBy",
@@ -322,7 +512,32 @@
             "twitter"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "member"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "lookup"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "source",
+          "values": [
+            "discourse",
+            "github",
+            "twitter"
+          ]
+        }
+      ]
     },
     {
       "name": "id",
@@ -348,7 +563,39 @@
             "twitter"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "member"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "lookup"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "searchBy",
+          "values": [
+            "id"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "source",
+          "values": [
+            "discourse",
+            "github",
+            "twitter"
+          ]
+        }
+      ]
     },
     {
       "name": "username",
@@ -374,7 +621,39 @@
             "twitter"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "member"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "lookup"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "searchBy",
+          "values": [
+            "username"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "source",
+          "values": [
+            "discourse",
+            "github",
+            "twitter"
+          ]
+        }
+      ]
     },
     {
       "name": "email",
@@ -396,7 +675,30 @@
             "email"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "member"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "lookup"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "source",
+          "values": [
+            "email"
+          ]
+        }
+      ]
     },
     {
       "name": "host",
@@ -416,7 +718,30 @@
             "discourse"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "member"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "lookup"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "source",
+          "values": [
+            "discourse"
+          ]
+        }
+      ]
     },
     {
       "name": "updateFields",
@@ -516,7 +841,38 @@
             "update"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "bio": "",
+        "birthday": null,
+        "company": "",
+        "location": "",
+        "name": "",
+        "pronouns": "",
+        "shippingAddress": "",
+        "slug": "",
+        "tagsToAdd": "",
+        "tagList": "",
+        "tShirt": "",
+        "teammate": false,
+        "url": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "member"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "identityUi",
@@ -535,7 +891,23 @@
             "upsert"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "member"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upsert"
+          ]
+        }
+      ]
     },
     {
       "name": "note",
@@ -552,7 +924,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "note"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "resolveMember",
@@ -568,7 +956,23 @@
             "note"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "getAll"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "note"
+          ]
+        }
+      ]
     },
     {
       "name": "noteId",
@@ -585,7 +989,23 @@
             "update"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "note"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "update"
+          ]
+        }
+      ]
     },
     {
       "name": "url",
@@ -603,7 +1023,23 @@
             "create"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "post"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "create"
+          ]
+        }
+      ]
     },
     {
       "name": "postId",
@@ -620,7 +1056,23 @@
             "post"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "delete"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "post"
+          ]
+        }
+      ]
     },
     {
       "name": "deprecated",
@@ -688,5 +1140,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

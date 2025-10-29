@@ -55,7 +55,16 @@
             "command"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "command"
+          ]
+        }
+      ]
     },
     {
       "name": "command",
@@ -72,7 +81,23 @@
             "execute"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "command"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "execute"
+          ]
+        }
+      ]
     },
     {
       "name": "cwd",
@@ -89,7 +114,23 @@
             "execute"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "command"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "execute"
+          ]
+        }
+      ]
     },
     {
       "name": "binaryPropertyName",
@@ -107,7 +148,23 @@
             "file"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        }
+      ]
     },
     {
       "name": "path",
@@ -126,7 +183,23 @@
             "upload"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -154,7 +227,27 @@
             "download"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "fileName": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "resource",
+          "values": [
+            "file"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "upload",
+            "download"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -204,5 +297,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

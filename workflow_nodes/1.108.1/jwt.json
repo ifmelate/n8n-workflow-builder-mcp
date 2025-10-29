@@ -36,7 +36,16 @@
             "sign"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sign"
+          ]
+        }
+      ]
     },
     {
       "name": "claims",
@@ -105,7 +114,31 @@
             false
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "audience": "",
+        "expiresIn": 0,
+        "issuer": "",
+        "jwtid": "",
+        "notBefore": 0,
+        "subject": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sign"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "useJson",
+          "values": [
+            false
+          ]
+        }
+      ]
     },
     {
       "name": "claimsJson",
@@ -125,7 +158,23 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "sign"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "useJson",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "token",
@@ -141,7 +190,17 @@
             "decode"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "operation",
+          "values": [
+            "verify",
+            "decode"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -160,7 +219,17 @@
             "decode"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/operation",
+          "values": [
+            "verify",
+            "decode"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [
@@ -202,5 +271,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

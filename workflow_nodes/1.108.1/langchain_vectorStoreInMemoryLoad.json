@@ -35,5 +35,7 @@
     "produces": [
       "AiVectorStore"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: AiEmbedding",
+  "outputHints": "Emits outputs: AiVectorStore"
 }

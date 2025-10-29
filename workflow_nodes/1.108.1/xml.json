@@ -34,7 +34,16 @@
             "xmlToJson"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "xmlToJson"
+          ]
+        }
+      ]
     },
     {
       "name": "dataPropertyName",
@@ -49,7 +58,16 @@
             "jsonToxml"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "jsonToxml"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -80,7 +98,20 @@
             "jsonToxml"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "allowSurrogateChars": false,
+        "attrkey": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "mode",
+          "values": [
+            "jsonToxml"
+          ]
+        }
+      ]
     }
   ],
   "credentialsConfig": [],
@@ -105,5 +136,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: Main",
+  "outputHints": "Emits outputs: Main"
 }

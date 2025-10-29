@@ -40,7 +40,12 @@
           "default": true,
           "description": "Whether to process messages in parallel or by keeping the message in order"
         }
-      ]
+      ],
+      "structureTemplate": {
+        "jsonParseBody": false,
+        "onlyMessage": false,
+        "parallelProcessing": false
+      }
     }
   ],
   "credentialsConfig": [
@@ -70,5 +75,6 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: Main"
 }

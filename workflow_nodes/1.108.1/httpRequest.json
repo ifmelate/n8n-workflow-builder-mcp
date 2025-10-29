@@ -91,7 +91,16 @@
             "predefinedCredentialType"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "authentication",
+          "values": [
+            "predefinedCredentialType"
+          ]
+        }
+      ]
     },
     {
       "name": "googleApiWarning",
@@ -104,7 +113,16 @@
             "googleApi"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "nodeCredentialType",
+          "values": [
+            "googleApi"
+          ]
+        }
+      ]
     },
     {
       "name": "genericAuthType",
@@ -118,7 +136,16 @@
             "genericCredentialType"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "authentication",
+          "values": [
+            "genericCredentialType"
+          ]
+        }
+      ]
     },
     {
       "name": "provideSslCertificates",
@@ -137,7 +164,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "provideSslCertificates",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "sslCertificate",
@@ -150,7 +186,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "provideSslCertificates",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "sendQuery",
@@ -180,7 +225,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendQuery",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "queryParameters",
@@ -200,7 +254,27 @@
             "keypair"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "name": "",
+        "value": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendQuery",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "specifyQuery",
+          "values": [
+            "keypair"
+          ]
+        }
+      ]
     },
     {
       "name": "jsonQuery",
@@ -216,7 +290,23 @@
             "json"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendQuery",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "specifyQuery",
+          "values": [
+            "json"
+          ]
+        }
+      ]
     },
     {
       "name": "sendHeaders",
@@ -246,7 +336,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendHeaders",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "headerParameters",
@@ -266,7 +365,27 @@
             "keypair"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "name": "",
+        "value": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendHeaders",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "specifyHeaders",
+          "values": [
+            "keypair"
+          ]
+        }
+      ]
     },
     {
       "name": "jsonHeaders",
@@ -282,7 +401,23 @@
             "json"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendHeaders",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "specifyHeaders",
+          "values": [
+            "json"
+          ]
+        }
+      ]
     },
     {
       "name": "sendBody",
@@ -325,7 +460,16 @@
             true
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendBody",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "specifyBody",
@@ -352,7 +496,23 @@
             "json"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendBody",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "contentType",
+          "values": [
+            "json"
+          ]
+        }
+      ]
     },
     {
       "name": "bodyParameters",
@@ -376,7 +536,34 @@
             "keypair"
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "name": "",
+        "value": ""
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendBody",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "contentType",
+          "values": [
+            "json"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "specifyBody",
+          "values": [
+            "keypair"
+          ]
+        }
+      ]
     },
     {
       "name": "jsonBody",
@@ -395,7 +582,30 @@
             "json"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendBody",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "contentType",
+          "values": [
+            "json"
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "specifyBody",
+          "values": [
+            "json"
+          ]
+        }
+      ]
     },
     {
       "name": "body",
@@ -412,7 +622,23 @@
             "string"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendBody",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "specifyBody",
+          "values": [
+            "string"
+          ]
+        }
+      ]
     },
     {
       "name": "inputDataFieldName",
@@ -429,7 +655,23 @@
             "binaryData"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendBody",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "contentType",
+          "values": [
+            "binaryData"
+          ]
+        }
+      ]
     },
     {
       "name": "rawContentType",
@@ -446,7 +688,23 @@
             "raw"
           ]
         }
-      }
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "sendBody",
+          "values": [
+            true
+          ]
+        },
+        {
+          "effect": "show",
+          "key": "contentType",
+          "values": [
+            "raw"
+          ]
+        }
+      ]
     },
     {
       "name": "options",
@@ -462,7 +720,20 @@
             true
           ]
         }
-      }
+      },
+      "structureTemplate": {
+        "batchSize": 0,
+        "batchInterval": 0
+      },
+      "visibilityRulesNormalized": [
+        {
+          "effect": "show",
+          "key": "/sendQuery",
+          "values": [
+            true
+          ]
+        }
+      ]
     },
     {
       "name": "infoMessage",
@@ -490,5 +761,6 @@
     "consumedBy": [],
     "consumes": [],
     "produces": []
-  }
+  },
+  "outputHints": "Returns statusCode, headers, and body as JSON; may include binary data if enabled."
 }

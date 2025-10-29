@@ -92,6 +92,16 @@
       "typeOptions": {
         "minValue": -2,
         "maxValue": 2
+      },
+      "structureTemplate": {
+        "baseURL": "",
+        "frequencyPenalty": 0,
+        "maxTokens": 0,
+        "presencePenalty": 0,
+        "temperature": 0,
+        "timeout": 0,
+        "maxRetries": 0,
+        "topP": 0
       }
     }
   ],
@@ -135,5 +145,6 @@
     "produces": [
       "AiLanguageModel"
     ]
-  }
+  },
+  "outputHints": "Emits outputs: AiLanguageModel"
 }

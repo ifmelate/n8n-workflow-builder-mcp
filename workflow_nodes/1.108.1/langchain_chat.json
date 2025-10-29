@@ -38,7 +38,10 @@
           "type": "boolean",
           "default": false
         }
-      ]
+      ],
+      "structureTemplate": {
+        "memoryConnection": false
+      }
     }
   ],
   "credentialsConfig": [],
@@ -65,5 +68,7 @@
     "produces": [
       "Main"
     ]
-  }
+  },
+  "inputHints": "Accepts inputs: AiMemory",
+  "outputHints": "Emits outputs: Main"
 }
