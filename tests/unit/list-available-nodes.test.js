@@ -248,9 +248,16 @@ describe('List Available Nodes', () => {
             expect(result.success).toBe(true);
             expect(result.currentN8nVersion).toBeTruthy();
 
-            // Since the mock uses a hardcoded getCurrentN8nVersion that returns '1.103.0',
-            // we should expect that version when no specific version is provided
-            expect(result.currentN8nVersion).toBe('1.103.0');
+            // Expect to use the highest available semver directory when current version isn't present
+            const parse = (v) => v.split('.').map(n => parseInt(n, 10) || 0);
+            const highest = availableVersions.slice().sort((a, b) => {
+                const [a0, a1, a2] = parse(a);
+                const [b0, b1, b2] = parse(b);
+                if (a0 !== b0) return b0 - a0;
+                if (a1 !== b1) return b1 - a1;
+                return b2 - a2;
+            })[0];
+            expect(result.currentN8nVersion).toBe(highest);
         });
     });
 
