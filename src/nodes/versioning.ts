@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
+import { DEFAULT_N8N_VERSION_FALLBACK } from '../utils/constants';
 
 export interface N8nVersionInfo {
     version: string;
@@ -57,6 +58,7 @@ export async function initializeN8nVersionSupport(): Promise<void> {
             try {
                 const nodeFiles = await fs.readdir(versionPath);
                 const jsonFiles = nodeFiles.filter(file => file.endsWith('.json'));
+                if (jsonFiles.length === 0) continue; // skip empty version dirs
 
                 let langchainCount = 0;
                 let aiCount = 0;
@@ -118,11 +120,13 @@ export async function initializeN8nVersionSupport(): Promise<void> {
                 // version dir read failure
             }
 
-            versionMappings[versionDir] = {
-                version: versionDir,
-                supportedNodes,
-                capabilities: Array.from(capabilities)
-            };
+            if (supportedNodes.size > 0) {
+                versionMappings[versionDir] = {
+                    version: versionDir,
+                    supportedNodes,
+                    capabilities: Array.from(capabilities)
+                };
+            }
         }
     } catch {
         // fallback flat directory
@@ -199,7 +203,7 @@ export async function detectN8nVersion(): Promise<string | null> {
         } catch { }
     }
     const latestVersion = Array.from(supportedN8nVersions.keys()).sort((a, b) => compareSemver(b, a))[0];
-    return latestVersion || "1.104.1";
+    return latestVersion || DEFAULT_N8N_VERSION_FALLBACK;
 }
 
 export async function setN8nVersion(version: string): Promise<void> {
