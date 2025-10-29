@@ -1,0 +1,316 @@
+{
+  "name": "proper_complex_ai_rag",
+  "id": "raBow7uKxvhDv0Yy",
+  "nodes": [
+    {
+      "id": "6ac8c184-920a-422e-8ec0-92ac5e46f9b6",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1,
+      "position": [
+        80,
+        80
+      ],
+      "parameters": {},
+      "name": "Chat Trigger",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "sJeuzmMy376oKVnt",
+          "name": "httpBasicAuth-placeholder"
+        }
+      }
+    },
+    {
+      "id": "809380da-23ec-42f2-8d49-70ef30aaeef2",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.1,
+      "position": [
+        600,
+        80
+      ],
+      "parameters": {},
+      "name": "AI Agent"
+    },
+    {
+      "id": "834bf28b-f56a-4888-8c34-5a71ce4dcd06",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1,
+      "position": [
+        200,
+        -50
+      ],
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        }
+      },
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "id": "9bb2fc5d-1ab3-433f-842d-b65f92488d86",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1,
+      "position": [
+        200,
+        200
+      ],
+      "parameters": {
+        "maxTokenLimit": 2000
+      },
+      "name": "Conversation Memory"
+    },
+    {
+      "id": "6eb5f849-10f5-4829-9214-6bf51cb7fc98",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1,
+      "position": [
+        200,
+        -200
+      ],
+      "parameters": {
+        "model": "text-embedding-3-small"
+      },
+      "name": "OpenAI Embeddings"
+    },
+    {
+      "id": "bb6aa0d7-8c81-4ec7-9947-6d27053ee320",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1,
+      "position": [
+        400,
+        -150
+      ],
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolName": "knowledge_base",
+        "toolDescription": "Search the knowledge base for relevant information"
+      },
+      "name": "Vector Store"
+    },
+    {
+      "id": "2790a58a-b6c2-4598-ba14-8fd71c9c5ea5",
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        400,
+        80
+      ],
+      "parameters": {},
+      "name": "Vector QA Tool"
+    },
+    {
+      "id": "420349d8-63df-4627-9d63-b8463a9f46e6",
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        200,
+        -350
+      ],
+      "parameters": {},
+      "name": "Document Loader"
+    },
+    {
+      "id": "6bf4db02-5be9-4221-b655-ced8c26ccfe9",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1,
+      "position": [
+        200,
+        350
+      ],
+      "parameters": {},
+      "name": "Code Tool"
+    },
+    {
+      "id": "c118e974-21fa-47cb-b71d-75ae2ea21b37",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemoryInsert",
+      "typeVersion": 1,
+      "position": [
+        520,
+        -200
+      ],
+      "parameters": {
+        "memoryKey": "kb_mem"
+      },
+      "name": "Vector Store Insert"
+    }
+  ],
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Vector QA Tool",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ],
+      "main": [
+        [
+          {
+            "node": "Conversation Memory",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conversation Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ],
+      "main": [
+        [
+          {
+            "node": "OpenAI Embeddings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Embeddings": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ],
+      "main": [
+        [
+          {
+            "node": "Document Loader",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Vector QA Tool",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ],
+      "ai_document": [
+        [
+          {
+            "node": "Vector Store Insert",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ],
+      "main": [
+        [
+          {
+            "node": "Vector QA Tool",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OpenAI Chat Model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Document Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Vector Store",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ],
+      "main": [
+        [
+          {
+            "node": "Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vector QA Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ],
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d37b3803-acd3-41e5-9673-cc3cd7ef3b95",
+  "meta": {
+    "instanceId": "ae6e615a7a410500c469bb44d45d225e4cf02c81120675e921f99d84f4001033"
+  },
+  "tags": []
+}

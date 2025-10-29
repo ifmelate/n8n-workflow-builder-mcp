@@ -1,0 +1,27 @@
+{
+  "name": "test_embeddings_fix",
+  "nodes": [
+    {
+      "id": "emb-1",
+      "name": "OpenAI Embeddings",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "parameters": {}
+    },
+    {
+      "id": "vec-1",
+      "name": "Vector Store",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "parameters": {}
+    },
+    {
+      "id": "agent-1",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "parameters": {}
+    }
+  ],
+  "connections": {}
+}
