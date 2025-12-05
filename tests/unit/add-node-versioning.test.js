@@ -23,7 +23,26 @@ function chooseHighestSupported(nodeSupportedSet) {
 }
 
 describe('Add Node Versioning (dataset verification and selection)', () => {
-    const version = '1.103.0';
+    let version;
+
+    beforeAll(async () => {
+        const root = path.resolve(__dirname, '../../workflow_nodes');
+        try {
+            const entries = await fs.readdir(root, { withFileTypes: true });
+            const dirs = entries.filter(e => e.isDirectory()).map(e => e.name);
+            const parse = (v) => v.split('.').map(n => parseInt(n, 10) || 0);
+            dirs.sort((a, b) => {
+                const [a0, a1, a2] = parse(a);
+                const [b0, b1, b2] = parse(b);
+                if (a0 !== b0) return b0 - a0;
+                if (a1 !== b1) return b1 - a1;
+                return b2 - a2;
+            });
+            version = dirs[0];
+        } catch {
+            version = '1.108.1';
+        }
+    });
 
     it('should have correct version for If node (2.2)', async () => {
         const def = await readNodeDef(version, 'if.json');

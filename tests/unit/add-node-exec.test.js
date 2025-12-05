@@ -27,7 +27,26 @@ async function getNodeVersionFromDefs(version, type) {
 }
 
 describe('add_node version normalization (simulated)', () => {
-    const n8nVersion = '1.103.0';
+    let n8nVersion;
+
+    beforeAll(async () => {
+        const root = path.resolve(__dirname, '../../workflow_nodes');
+        try {
+            const entries = await fs.readdir(root, { withFileTypes: true });
+            const dirs = entries.filter(e => e.isDirectory()).map(e => e.name);
+            const parse = (v) => v.split('.').map(n => parseInt(n, 10) || 0);
+            dirs.sort((a, b) => {
+                const [a0, a1, a2] = parse(a);
+                const [b0, b1, b2] = parse(b);
+                if (a0 !== b0) return b0 - a0;
+                if (a1 !== b1) return b1 - a1;
+                return b2 - a2;
+            });
+            n8nVersion = dirs[0];
+        } catch {
+            n8nVersion = '1.108.1';
+        }
+    });
 
     it('httpRequest should resolve to 4.2', async () => {
         const finalType = normalizeNodeType('httpRequest');
