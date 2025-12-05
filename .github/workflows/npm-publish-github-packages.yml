@@ -26,6 +26,7 @@ jobs:
           node-version: "18.x"
           registry-url: "https://registry.npmjs.org"
       - run: npm install
+      - run: npm run build
 
       - name: Get version from package.json
         id: version
