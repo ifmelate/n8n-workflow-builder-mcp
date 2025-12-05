@@ -1,6 +1,6 @@
 {
     "name": "n8n-workflow-builder-mcp",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "MCP server for building n8n workflows",
     "main": "dist/index.js",
     "bin": {
@@ -24,6 +24,7 @@
         "test:langchain": "mocha tests/unit/langchain-llm-format.test.js",
         "mcp": "node n8n-workflow-mcp.js",
         "build": "tsc",
+        "postbuild": "chmod +x dist/index.js",
         "build:nodes-db": "node scripts/build-nodes-db.js --source ./node_definitions",
         "rebuild:nodes-db": "node scripts/build-nodes-db.js --source ./node_definitions --full-rebuild"
     },
