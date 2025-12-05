@@ -1,16 +1,41 @@
 /**
- * MCP Utilities (CommonJS version for legacy middleware)
+ * MCP Utilities
  * 
  * Utilities for MCP protocol handling
  */
 
+export interface ToolDefinition {
+    name: string;
+    description: string;
+    input_schema: Record<string, unknown>;
+    output_schema?: Record<string, unknown>;
+}
+
+export interface FormattedToolDefinition {
+    name: string;
+    description: string;
+    parameters: Record<string, unknown>;
+    returns?: Record<string, unknown>;
+}
+
+export interface SuccessResponse {
+    status: number;
+    data: unknown;
+}
+
+export interface ErrorResponse {
+    status: number;
+    error: {
+        message: string;
+        code: string;
+        details: Record<string, unknown>;
+    };
+}
+
 /**
  * Format tool definitions for MCP response
- * 
- * @param {Object} tools - Tool definitions object
- * @returns {Array} - Array of formatted tool definitions
  */
-const formatToolDefinitions = (tools) => {
+export const formatToolDefinitions = (tools: Record<string, ToolDefinition>): FormattedToolDefinition[] => {
     return Object.keys(tools).map(key => {
         const tool = tools[key];
         return {
@@ -24,12 +49,8 @@ const formatToolDefinitions = (tools) => {
 
 /**
  * Create a standardized success response
- * 
- * @param {Object} data - Response data
- * @param {number} status - HTTP status code (default: 200)
- * @returns {Object} - Formatted response object
  */
-const createSuccessResponse = (data, status = 200) => {
+export const createSuccessResponse = (data: unknown, status: number = 200): SuccessResponse => {
     return {
         status,
         data
@@ -38,14 +59,13 @@ const createSuccessResponse = (data, status = 200) => {
 
 /**
  * Create a standardized error response
- * 
- * @param {string} message - Error message
- * @param {string} code - Error code
- * @param {number} status - HTTP status code (default: 400)
- * @param {Object} details - Additional error details
- * @returns {Object} - Formatted error response
  */
-const createErrorResponse = (message, code = 'ERROR', status = 400, details = {}) => {
+export const createErrorResponse = (
+    message: string,
+    code: string = 'ERROR',
+    status: number = 400,
+    details: Record<string, unknown> = {}
+): ErrorResponse => {
     return {
         status,
         error: {
@@ -58,11 +78,8 @@ const createErrorResponse = (message, code = 'ERROR', status = 400, details = {}
 
 /**
  * Parse tool name from request to standardized format
- * 
- * @param {string} name - Tool name from request
- * @returns {string} - Standardized tool name
  */
-const parseToolName = (name) => {
+export const parseToolName = (name: string | null | undefined): string | null => {
     if (!name) return null;
 
     // Handle different tool naming conventions
@@ -75,11 +92,4 @@ const parseToolName = (name) => {
     parsedName = parsedName.replace(/([a-z])([A-Z])/g, '$1_$2').toLowerCase();
 
     return parsedName;
-};
-
-module.exports = {
-    formatToolDefinitions,
-    createSuccessResponse,
-    createErrorResponse,
-    parseToolName
 };

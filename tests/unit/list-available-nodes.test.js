@@ -13,7 +13,7 @@ async function mockListAvailableNodes(params, workflowNodesRootDir) {
     // Mock getCurrentN8nVersion - in real implementation this comes from versioning.ts
     const getCurrentN8nVersion = () => '1.103.0';
 
-    let effectiveVersion = n8n_version || getCurrentN8nVersion() || undefined;
+    let effectiveVersion = n8n_version || undefined;
     let workflowNodesDir = workflowNodesRootDir;
 
     try {
@@ -21,12 +21,12 @@ async function mockListAvailableNodes(params, workflowNodesRootDir) {
         const versionDirs = entries.filter(e => e.isDirectory()).map(e => e.name);
 
         if (versionDirs.length > 0) {
-            const targetVersion = n8n_version || getCurrentN8nVersion();
-            if (targetVersion && versionDirs.includes(targetVersion)) {
-                workflowNodesDir = path.join(workflowNodesRootDir, targetVersion);
-                effectiveVersion = targetVersion;
-            } else if (!targetVersion) {
-                // No target specified: choose highest semver directory
+            if (n8n_version && versionDirs.includes(n8n_version)) {
+                // Exact version requested and found
+                workflowNodesDir = path.join(workflowNodesRootDir, n8n_version);
+                effectiveVersion = n8n_version;
+            } else if (!n8n_version) {
+                // No version specified: choose highest semver directory
                 const parse = (v) => v.split('.').map(n => parseInt(n, 10) || 0);
                 versionDirs.sort((a, b) => {
                     const [a0, a1, a2] = parse(a);
@@ -248,9 +248,16 @@ describe('List Available Nodes', () => {
             expect(result.success).toBe(true);
             expect(result.currentN8nVersion).toBeTruthy();
 
-            // Since the mock uses a hardcoded getCurrentN8nVersion that returns '1.103.0',
-            // we should expect that version when no specific version is provided
-            expect(result.currentN8nVersion).toBe('1.103.0');
+            // Expect to use the highest available semver directory when current version isn't present
+            const parse = (v) => v.split('.').map(n => parseInt(n, 10) || 0);
+            const highest = availableVersions.slice().sort((a, b) => {
+                const [a0, a1, a2] = parse(a);
+                const [b0, b1, b2] = parse(b);
+                if (a0 !== b0) return b0 - a0;
+                if (a1 !== b1) return b1 - a1;
+                return b2 - a2;
+            })[0];
+            expect(result.currentN8nVersion).toBe(highest);
         });
     });
 

@@ -8,7 +8,7 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { z } from 'zod';
 import fs from 'fs/promises';
 import path from 'path';
-import { validateAndNormalizeWorkflow } from './validation/workflowValidator';
+import { validateAndNormalizeWorkflow, collectMissingParameters } from './validation/workflowValidator';
 import { loadNodeTypesForCurrentVersion } from './validation/nodeTypesLoader';
 import { Workflow, N8nWorkflow, N8nWorkflowNode, N8nConnections, N8nConnectionDetail } from './types/n8n';
 import { ensureWorkflowDir, ensureWorkflowParentDir, resolvePath, resolveWorkflowPath, WORKFLOW_DATA_DIR_NAME, WORKFLOWS_FILE_NAME, setWorkspaceDir, getWorkspaceDir, tryDetectWorkspaceForName } from './utils/workspace';
@@ -16,6 +16,9 @@ import { generateInstanceId, generateN8nId, generateUUID } from './utils/id';
 import { normalizeLLMParameters } from './utils/llm';
 import { initializeN8nVersionSupport, detectN8nVersion, setN8nVersion, getSupportedN8nVersions, getCurrentN8nVersion, getN8nVersionInfo } from './nodes/versioning';
 import { loadKnownNodeBaseTypes, normalizeNodeTypeAndVersion, isNodeTypeSupported, updateNodeCacheForVersion, getNodeInfoCache } from './nodes/cache';
+import { materializeIfConfigured } from './utils/nodesDb';
+import * as connectMainChain from './mcp/tools/connectMainChain';
+import * as listTemplateExamples from './mcp/tools/listTemplateExamples';
 
 // Log initial workspace
 console.error(`[DEBUG] Default workspace directory: ${getWorkspaceDir()}`);
@@ -521,78 +524,26 @@ server.tool(
             if (Object.keys(nodeCredentials).length > 0) {
                 (newNode as any).credentials = nodeCredentials;
             }
-            // Pre-validate before persisting
+            // Pre-validate before persisting (node-scoped only; do not fail on unrelated issues)
             try {
                 const nodeTypes = await loadNodeTypesForCurrentVersion(path.resolve(__dirname, '../workflow_nodes'), getCurrentN8nVersion());
                 const tentative = { ...workflow, nodes: [...workflow.nodes, newNode] };
                 const preReport = validateAndNormalizeWorkflow(tentative as any, nodeTypes);
-                // Filter out credential issues from blocking validation (for add operations)
-                const hasBlockingIssues = preReport.nodeIssues && Object.values(preReport.nodeIssues).some((arr: any) =>
-                    Array.isArray(arr) && arr.some((issue: any) =>
-                        issue.code && issue.code !== 'missing_credentials'
-                    )
-                );
-                // Only fail validation if there are actual errors OR non-credential blocking issues
-                if (!preReport.ok || (preReport.errors && preReport.errors.length > 0) || hasBlockingIssues) {
-                    console.warn('[WARN] Blocking validation on add_node:', { errors: preReport.errors, nodeIssues: preReport.nodeIssues });
-                    // Sanitize validation payload to avoid leaking transient node IDs when creation fails
-                    const idsToRedact = [newNode.id];
-                    const redactText = (text: any) => {
-                        if (typeof text !== 'string') return text;
-                        let out = text;
-                        for (const id of idsToRedact) {
-                            if (id && typeof id === 'string') {
-                                out = out.split(id).join('[redacted]');
-                            }
-                        }
-                        return out;
-                    };
-                    const sanitizeWarnings = (warnings: any) => {
-                        if (!Array.isArray(warnings)) return warnings;
-                        return warnings.map((w: any) => {
-                            const copy: any = { ...w };
-                            if (copy.message) copy.message = redactText(copy.message);
-                            if (copy.details && typeof copy.details === 'object') {
-                                copy.details = { ...copy.details };
-                                if (idsToRedact.includes(copy.details.nodeId)) delete copy.details.nodeId;
-                            }
-                            return copy;
-                        });
-                    };
-                    const sanitizeErrors = (errors: any) => {
-                        if (!Array.isArray(errors)) return errors;
-                        return errors.map((e: any) => {
-                            if (typeof e === 'string') return redactText(e);
-                            if (e && typeof e === 'object') {
-                                const ec: any = { ...e };
-                                if (ec.message) ec.message = redactText(ec.message);
-                                return ec;
-                            }
-                            return e;
-                        });
-                    };
-                    const sanitizeNodeIssues = (nodeIssues: any) => {
-                        if (!nodeIssues || typeof nodeIssues !== 'object') return nodeIssues;
-                        const out: any = {};
-                        for (const [nodeName, issues] of Object.entries(nodeIssues)) {
-                            out[nodeName] = Array.isArray(issues)
-                                ? (issues as any[]).map((iss: any) => {
-                                    const ic: any = { ...iss };
-                                    if (ic.message) ic.message = redactText(ic.message);
-                                    return ic;
-                                })
-                                : issues;
-                        }
-                        return out;
-                    };
-                    const sanitizedValidation = {
-                        ok: preReport.ok,
-                        errors: sanitizeErrors(preReport.errors),
-                        warnings: sanitizeWarnings(preReport.warnings),
-                        nodeIssues: sanitizeNodeIssues(preReport.nodeIssues)
-                    };
-                    return { content: [{ type: "text", text: JSON.stringify({ success: false, error: "Validation failed for node creation", validation: sanitizedValidation }) }] };
-                }
+                const buildLocalValidation = (report: any, nodeName: string) => {
+                    const allErrors = Array.isArray(report?.errors) ? report.errors : [];
+                    const allWarnings = Array.isArray(report?.warnings) ? report.warnings : [];
+                    const nodeErrors = allErrors.filter((e: any) => e && e.nodeName === nodeName);
+                    const nodeWarnings = allWarnings.filter((w: any) => w && w.nodeName === nodeName);
+                    const nodeIssuesArr: any[] | undefined = report?.nodeIssues?.[nodeName];
+                    const blockingIssues = Array.isArray(nodeIssuesArr)
+                        ? nodeIssuesArr.filter((iss: any) => iss && iss.code && iss.code !== 'missing_credentials')
+                        : [];
+                    const ok = nodeErrors.length === 0 && blockingIssues.length === 0;
+                    const nodeIssues = nodeIssuesArr ? { [nodeName]: nodeIssuesArr } : undefined;
+                    return { ok, errors: nodeErrors, warnings: nodeWarnings, nodeIssues };
+                };
+                const local = buildLocalValidation(preReport, newNode.name);
+                console.error('[DEBUG] add_node local pre-validation:', local);
             } catch (e: any) {
                 console.warn('[WARN] Pre-write validation step errored in add_node:', e?.message || e);
             }
@@ -648,18 +599,29 @@ server.tool(
             } catch (e: any) {
                 console.warn('[WARN] Optional wiring in add_node failed:', e?.message || e);
             }
-            // Validate after modification
+            // Validate after modification (node-scoped only)
             try {
                 const nodeTypes = await loadNodeTypesForCurrentVersion(path.resolve(__dirname, '../workflow_nodes'), getCurrentN8nVersion());
                 const report = validateAndNormalizeWorkflow(workflow as any, nodeTypes);
-                if (!report.ok || (report.warnings && report.warnings.length > 0)) {
-                    if (!report.ok) console.warn('[WARN] Workflow validation failed after add_node', report.errors);
-                    return { content: [{ type: "text", text: JSON.stringify({ success: true, node: newNode, workflowId: workflow.id, createdConnections, validation: { ok: report.ok, errors: report.errors, warnings: report.warnings, nodeIssues: report.nodeIssues } }) }] };
-                }
+                const buildLocalValidation = (report: any, nodeName: string) => {
+                    const allErrors = Array.isArray(report?.errors) ? report.errors : [];
+                    const allWarnings = Array.isArray(report?.warnings) ? report.warnings : [];
+                    const nodeErrors = allErrors.filter((e: any) => e && e.nodeName === nodeName);
+                    const nodeWarnings = allWarnings.filter((w: any) => w && w.nodeName === nodeName);
+                    const nodeIssuesArr: any[] | undefined = report?.nodeIssues?.[nodeName];
+                    const blockingIssues = Array.isArray(nodeIssuesArr)
+                        ? nodeIssuesArr.filter((iss: any) => iss && iss.code && iss.code !== 'missing_credentials')
+                        : [];
+                    const ok = nodeErrors.length === 0 && blockingIssues.length === 0;
+                    const nodeIssues = nodeIssuesArr ? { [nodeName]: nodeIssuesArr } : undefined;
+                    return { ok, errors: nodeErrors, warnings: nodeWarnings, nodeIssues };
+                };
+                const local = buildLocalValidation(report, newNode.name);
+                return { content: [{ type: "text", text: JSON.stringify({ success: true, node: newNode, workflowId: workflow.id, createdConnections, localValidation: local }) }] };
             } catch (e: any) {
                 console.warn('[WARN] Validation step errored after add_node:', e?.message || e);
+                return { content: [{ type: "text", text: JSON.stringify({ success: true, node: newNode, workflowId: workflow.id, createdConnections }) }] };
             }
-            return { content: [{ type: "text", text: JSON.stringify({ success: true, node: newNode, workflowId: workflow.id, createdConnections }) }] };
         } catch (error: any) {
             console.error("[ERROR] Failed to add node:", error);
             return { content: [{ type: "text", text: JSON.stringify({ success: false, error: "Failed to add node: " + error.message }) }] };
@@ -837,22 +799,26 @@ server.tool(
                 console.warn('[WARN] Could not inject credential placeholders during edit_node:', (e as any)?.message || e);
             }
 
-            // Pre-validate before persisting
+            // Pre-validate before persisting (node-scoped only; do not fail on unrelated issues)
             try {
                 const nodeTypes = await loadNodeTypesForCurrentVersion(path.resolve(__dirname, '../workflow_nodes'), getCurrentN8nVersion());
                 const tentative = { ...workflow, nodes: workflow.nodes.map((n, i) => i === nodeIndex ? nodeToEdit : n) };
                 const preReport = validateAndNormalizeWorkflow(tentative as any, nodeTypes);
-                // Filter out credential issues from blocking validation (for edit operations)
-                const hasBlockingIssues = preReport.nodeIssues && Object.values(preReport.nodeIssues).some((arr: any) =>
-                    Array.isArray(arr) && arr.some((issue: any) =>
-                        issue.code && issue.code !== 'missing_credentials'
-                    )
-                );
-                // Only fail validation if there are actual errors OR non-credential blocking issues
-                if (!preReport.ok || (preReport.errors && preReport.errors.length > 0) || hasBlockingIssues) {
-                    console.warn('[WARN] Blocking validation on edit_node:', { errors: preReport.errors, nodeIssues: preReport.nodeIssues });
-                    return { content: [{ type: "text", text: JSON.stringify({ success: false, error: "Validation failed for node edit", validation: { ok: preReport.ok, errors: preReport.errors, warnings: preReport.warnings, nodeIssues: preReport.nodeIssues } }) }] };
-                }
+                const buildLocalValidation = (report: any, nodeName: string) => {
+                    const allErrors = Array.isArray(report?.errors) ? report.errors : [];
+                    const allWarnings = Array.isArray(report?.warnings) ? report.warnings : [];
+                    const nodeErrors = allErrors.filter((e: any) => e && e.nodeName === nodeName);
+                    const nodeWarnings = allWarnings.filter((w: any) => w && w.nodeName === nodeName);
+                    const nodeIssuesArr: any[] | undefined = report?.nodeIssues?.[nodeName];
+                    const blockingIssues = Array.isArray(nodeIssuesArr)
+                        ? nodeIssuesArr.filter((iss: any) => iss && iss.code && iss.code !== 'missing_credentials')
+                        : [];
+                    const ok = nodeErrors.length === 0 && blockingIssues.length === 0;
+                    const nodeIssues = nodeIssuesArr ? { [nodeName]: nodeIssuesArr } : undefined;
+                    return { ok, errors: nodeErrors, warnings: nodeWarnings, nodeIssues };
+                };
+                const local = buildLocalValidation(preReport, nodeToEdit.name);
+                console.error('[DEBUG] edit_node local pre-validation:', local);
             } catch (e: any) {
                 console.warn('[WARN] Pre-write validation step errored in edit_node:', e?.message || e);
             }
@@ -908,18 +874,29 @@ server.tool(
             } catch (e: any) {
                 console.warn('[WARN] Optional wiring in edit_node failed:', e?.message || e);
             }
-            // Validate after modification
+            // Validate after modification (node-scoped only)
             try {
                 const nodeTypes = await loadNodeTypesForCurrentVersion(path.resolve(__dirname, '../workflow_nodes'), getCurrentN8nVersion());
                 const report = validateAndNormalizeWorkflow(workflow as any, nodeTypes);
-                if (!report.ok || (report.warnings && report.warnings.length > 0)) {
-                    if (!report.ok) console.warn('[WARN] Workflow validation failed after edit_node', report.errors);
-                    return { content: [{ type: "text", text: JSON.stringify({ success: true, node: nodeToEdit, createdConnections, validation: { ok: report.ok, errors: report.errors, warnings: report.warnings, nodeIssues: report.nodeIssues } }) }] };
-                }
+                const buildLocalValidation = (report: any, nodeName: string) => {
+                    const allErrors = Array.isArray(report?.errors) ? report.errors : [];
+                    const allWarnings = Array.isArray(report?.warnings) ? report.warnings : [];
+                    const nodeErrors = allErrors.filter((e: any) => e && e.nodeName === nodeName);
+                    const nodeWarnings = allWarnings.filter((w: any) => w && w.nodeName === nodeName);
+                    const nodeIssuesArr: any[] | undefined = report?.nodeIssues?.[nodeName];
+                    const blockingIssues = Array.isArray(nodeIssuesArr)
+                        ? nodeIssuesArr.filter((iss: any) => iss && iss.code && iss.code !== 'missing_credentials')
+                        : [];
+                    const ok = nodeErrors.length === 0 && blockingIssues.length === 0;
+                    const nodeIssues = nodeIssuesArr ? { [nodeName]: nodeIssuesArr } : undefined;
+                    return { ok, errors: nodeErrors, warnings: nodeWarnings, nodeIssues };
+                };
+                const local = buildLocalValidation(report, nodeToEdit.name);
+                return { content: [{ type: "text", text: JSON.stringify({ success: true, node: nodeToEdit, createdConnections, localValidation: local }) }] };
             } catch (e: any) {
                 console.warn('[WARN] Validation step errored after edit_node:', e?.message || e);
+                return { content: [{ type: "text", text: JSON.stringify({ success: true, node: nodeToEdit, createdConnections }) }] };
             }
-            return { content: [{ type: "text", text: JSON.stringify({ success: true, node: nodeToEdit, createdConnections }) }] };
         } catch (error: any) {
             console.error("[ERROR] Failed to edit node:", error);
             return { content: [{ type: "text", text: JSON.stringify({ success: false, error: "Failed to edit node: " + error.message }) }] };
@@ -1444,16 +1421,16 @@ server.tool(
                 }
             }
 
-            // Embeddings → Vector Store (ai_embeddings)
+            // Embeddings → Vector Store (ai_embedding)
             if (embeddingsNode && vectorStoreNode) {
                 const fromName = embeddingsNode.name;
                 const toName = vectorStoreNode.name;
                 if (!workflow.connections[fromName]) workflow.connections[fromName] = {} as any;
-                if (!workflow.connections[fromName]["ai_embeddings"]) workflow.connections[fromName]["ai_embeddings"] = [] as any;
-                const exists = (workflow.connections[fromName]["ai_embeddings"] as any[]).some((group: any[]) => Array.isArray(group) && group.some((d: any) => d && d.node === toName && d.type === "ai_embeddings"));
+                if (!workflow.connections[fromName]["ai_embedding"]) workflow.connections[fromName]["ai_embedding"] = [] as any;
+                const exists = (workflow.connections[fromName]["ai_embedding"] as any[]).some((group: any[]) => Array.isArray(group) && group.some((d: any) => d && d.node === toName && d.type === "ai_embedding"));
                 if (!exists) {
-                    (workflow.connections[fromName]["ai_embeddings"] as any[]).push([{ node: toName, type: "ai_embeddings", index: 0 }]);
-                    console.error(`[DEBUG] Added embeddings connection from ${fromName} to ${toName} (ai_embeddings)`);
+                    (workflow.connections[fromName]["ai_embedding"] as any[]).push([{ node: toName, type: "ai_embedding", index: 0 }]);
+                    console.error(`[DEBUG] Added embeddings connection from ${fromName} to ${toName} (ai_embedding)`);
                 }
             }
 
@@ -1538,9 +1515,9 @@ server.tool(
             if (embeddingsNode && vectorStoreNode) {
                 connectionsSummary.push({
                     from: `${embeddingsNode.name} (${embeddings_node_id})`,
-                    fromOutput: "ai_embeddings",
+                    fromOutput: "ai_embedding",
                     to: `${vectorStoreNode.name} (${vector_store_node_id})`,
-                    toInput: "ai_embeddings"
+                    toInput: "ai_embedding"
                 });
             }
 
@@ -2536,20 +2513,535 @@ server.tool(
     }
 );
 
+// ------------------------------------------------------------
+// Plan/Review/Apply workflow editing (two-phase editing flow)
+// ------------------------------------------------------------
+
+// Shared types
+type PlannedNode = {
+    temp_id?: string;
+    node_type: string;
+    node_name?: string;
+    typeVersion?: number;
+    parameters?: Record<string, any>;
+    position?: { x: number; y: number };
+};
+
+type PlannedConnection = {
+    from: string; // node name or id (prefer name)
+    to: string;   // node name or id (prefer name)
+    output?: string; // default 'main'
+    input?: string;  // default 'main'
+    input_index?: number; // default 0
+};
+
+const planWorkflowParamsSchema = z.object({
+    workflow_name: z.string().describe("Target workflow name"),
+    workspace_dir: z.string().optional().describe("Optional workspace directory. If omitted, auto-detect is attempted."),
+    intent: z.string().optional().describe("High-level intent for planning (free text)"),
+    target: z.object({
+        nodes: z.array(z.object({
+            node_type: z.string(),
+            node_name: z.string().optional(),
+            typeVersion: z.number().optional(),
+            parameters: z.record(z.any()).optional(),
+            position: z.object({ x: z.number(), y: z.number() }).optional()
+        })).default([]),
+        connections: z.array(z.object({
+            from: z.string(),
+            to: z.string(),
+            output: z.string().optional(),
+            input: z.string().optional(),
+            input_index: z.number().optional()
+        })).default([])
+    }).optional()
+});
+
+// Helper: ensure a unique node name in a workflow given a base name
+function ensureUniqueNodeName(existing: Array<{ name: string }>, base: string): string {
+    const taken = new Set(existing.map(n => (n.name || '').toLowerCase()));
+    if (!taken.has(base.toLowerCase())) return base;
+    let i = 2;
+    while (taken.has(`${base} ${i}`.toLowerCase())) i++;
+    return `${base} ${i}`;
+}
+
+// Helper: build a minimal parameter skeleton from node definition
+async function buildParameterSkeleton(nodeTypeName: string, typeVersion: number | undefined) {
+    try {
+        const workflowNodesRootDir = path.resolve(__dirname, '../workflow_nodes');
+        const nodeTypes = await loadNodeTypesForCurrentVersion(workflowNodesRootDir, getCurrentN8nVersion() || undefined);
+        const def = nodeTypes.getByNameAndVersion(nodeTypeName, typeVersion);
+        const props: Array<any> = (def as any)?.description?.properties || [];
+        const out: Record<string, any> = {};
+        for (const p of props) {
+            const isRequired = p?.required === true;
+            // Respect visibility rules when possible by skipping here; final validation will apply defaults again
+            if (isRequired) {
+                if (Object.prototype.hasOwnProperty.call(p, 'default')) out[p.name] = p.default;
+                else out[p.name] = null; // placeholder for LLM to fill
+            }
+        }
+        return out;
+    } catch {
+        return {} as Record<string, any>;
+    }
+}
+
+server.tool(
+    "plan_workflow",
+    "Create a non-destructive plan (nodes and connections) to update a workflow. Does not write files.",
+    planWorkflowParamsSchema.shape,
+    async (params: z.infer<typeof planWorkflowParamsSchema>, _extra: any) => {
+        console.error("[DEBUG] plan_workflow called with:", params);
+        const { workflow_name, workspace_dir } = params;
+        try {
+            if (workspace_dir) {
+                const st = await fs.stat(workspace_dir);
+                if (!st.isDirectory()) {
+                    return { content: [{ type: "text", text: JSON.stringify({ success: false, error: "workspace_dir is not a directory" }) }] };
+                }
+                setWorkspaceDir(workspace_dir);
+            }
+
+            // Normalize nodes and add parameter skeletons
+            const nodesInput: PlannedNode[] = params.target?.nodes || [];
+            const normalizedNodes = [] as Array<PlannedNode & { resolved_type: string; resolved_version: number; suggested_parameters: Record<string, any> }>;
+            for (const n of nodesInput) {
+                const { finalNodeType, finalTypeVersion } = normalizeNodeTypeAndVersion(n.node_type, n.typeVersion);
+                const suggested = await buildParameterSkeleton(finalNodeType, finalTypeVersion);
+                normalizedNodes.push({
+                    ...n,
+                    resolved_type: finalNodeType,
+                    resolved_version: finalTypeVersion,
+                    suggested_parameters: suggested
+                });
+            }
+
+            const connections = (params.target?.connections || []).map(c => ({
+                from: c.from,
+                to: c.to,
+                output: c.output || 'main',
+                input: c.input || 'main',
+                input_index: Number.isFinite(c.input_index as any) ? (c.input_index as number) : 0
+            }));
+
+            const plan = {
+                nodes_to_add: normalizedNodes.map(n => ({
+                    temp_id: n.temp_id || undefined,
+                    node_type: n.resolved_type,
+                    typeVersion: n.resolved_version,
+                    node_name: n.node_name,
+                    position: n.position || { x: 200, y: 200 },
+                    parameters: n.parameters || n.suggested_parameters
+                })),
+                connections_to_add: connections,
+                notes: params.intent ? ["intent:" + params.intent] : []
+            };
+
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, plan }) }] };
+        } catch (error: any) {
+            console.error("[ERROR] plan_workflow failed:", error);
+            return { content: [{ type: "text", text: JSON.stringify({ success: false, error: error.message }) }] };
+        }
+    }
+);
+
+const reviewWorkflowPlanParamsSchema = z.object({
+    workflow_name: z.string(),
+    workflow_path: z.string().optional(),
+    plan: z.object({
+        nodes_to_add: z.array(z.object({
+            node_type: z.string(),
+            node_name: z.string().optional(),
+            typeVersion: z.number().optional(),
+            position: z.object({ x: z.number(), y: z.number() }).optional(),
+            parameters: z.record(z.any()).optional()
+        })).default([]),
+        connections_to_add: z.array(z.object({
+            from: z.string(),
+            to: z.string(),
+            output: z.string().optional(),
+            input: z.string().optional(),
+            input_index: z.number().optional()
+        })).default([])
+    })
+});
+
+server.tool(
+    "review_workflow_plan",
+    "Apply a plan in-memory and return validation errors, warnings, and suggested fixes. Does not write files.",
+    reviewWorkflowPlanParamsSchema.shape,
+    async (params: z.infer<typeof reviewWorkflowPlanParamsSchema>, _extra: any) => {
+        console.error("[DEBUG] review_workflow_plan called with:", params.workflow_name);
+        try {
+            let filePath = resolveWorkflowPath(params.workflow_name, params.workflow_path);
+            try {
+                if (!params.workflow_path) {
+                    await fs.access(filePath).catch(async () => {
+                        const detected = await tryDetectWorkspaceForName(params.workflow_name);
+                        if (detected) filePath = detected;
+                    });
+                }
+            } catch { }
+
+            let base: N8nWorkflow | null = null;
+            try {
+                const raw = await fs.readFile(filePath, 'utf8');
+                base = JSON.parse(raw) as N8nWorkflow;
+            } catch { /* non-existent is fine -> start new */ }
+
+            const working: N8nWorkflow = base || {
+                name: params.workflow_name,
+                id: generateN8nId(),
+                nodes: [],
+                connections: {},
+                active: false,
+                pinData: {},
+                settings: { executionOrder: "v1" },
+                versionId: generateUUID(),
+                meta: { instanceId: generateInstanceId() },
+                tags: []
+            };
+
+            // Apply nodes
+            for (const n of params.plan.nodes_to_add || []) {
+                const { finalNodeType, finalTypeVersion } = normalizeNodeTypeAndVersion(n.node_type, n.typeVersion);
+                const nameBase = n.node_name || finalNodeType.split('.').pop() || 'Node';
+                const uniqueName = ensureUniqueNodeName(working.nodes, nameBase);
+                const nodeId = generateN8nId();
+                working.nodes.push({
+                    id: nodeId,
+                    name: uniqueName,
+                    type: finalNodeType,
+                    typeVersion: finalTypeVersion,
+                    position: [n.position?.x || 200, n.position?.y || 200],
+                    parameters: { ...(n.parameters || {}) }
+                } as any);
+            }
+
+            // Helper to ensure connection structure
+            const ensureConn = (srcName: string, out: string) => {
+                if (!working.connections) (working as any).connections = {};
+                if (!working.connections[srcName]) (working.connections as any)[srcName] = {} as any;
+                if (!working.connections[srcName][out]) (working.connections[srcName][out] = []);
+            };
+
+            // Build name map
+            const nameById = new Map<string, string>(working.nodes.map(n => [n.id, (n as any).name]));
+
+            // Apply connections
+            for (const c of params.plan.connections_to_add || []) {
+                const out = c.output || 'main';
+                const inp = c.input || 'main';
+                const idx = Number.isFinite(c.input_index as any) ? (c.input_index as number) : 0;
+                const srcName = nameById.get(c.from) || c.from;
+                const dstName = nameById.get(c.to) || c.to;
+                ensureConn(srcName, out);
+                (working.connections as any)[srcName][out].push([{ node: dstName, type: inp, index: idx }]);
+            }
+
+            // Validate
+            const nodeTypes = await loadNodeTypesForCurrentVersion(path.resolve(__dirname, '../workflow_nodes'), getCurrentN8nVersion());
+            const report = validateAndNormalizeWorkflow(working as any, nodeTypes);
+
+            // Summarize issues per node for quick fixes
+            const missingMap = collectMissingParameters(report);
+            const missing: Array<{ node: string; property: string }> = Object.entries(missingMap).flatMap(([node, props]) => props.map(p => ({ node, property: p })));
+
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, validation: report, missing_parameters: missing }) }] };
+        } catch (error: any) {
+            console.error("[ERROR] review_workflow_plan failed:", error);
+            return { content: [{ type: "text", text: JSON.stringify({ success: false, error: error.message }) }] };
+        }
+    }
+);
+
+const applyWorkflowPlanParamsSchema = z.object({
+    workflow_name: z.string(),
+    workflow_path: z.string().optional(),
+    plan: reviewWorkflowPlanParamsSchema.shape.plan
+});
+
+async function writeFileAtomic(filePath: string, data: string): Promise<void> {
+    const dir = path.dirname(filePath);
+    await fs.mkdir(dir, { recursive: true });
+    const tmp = path.join(dir, `.tmp-${Date.now()}-${Math.random().toString(36).slice(2)}.json`);
+    await fs.writeFile(tmp, data);
+    await fs.rename(tmp, filePath);
+}
+
+server.tool(
+    "apply_workflow_plan",
+    "Apply a previously reviewed plan to the workflow on disk (atomic write).",
+    applyWorkflowPlanParamsSchema.shape,
+    async (params: z.infer<typeof applyWorkflowPlanParamsSchema>, _extra: any) => {
+        console.error("[DEBUG] apply_workflow_plan called with:", params.workflow_name);
+        try {
+            let filePath = resolveWorkflowPath(params.workflow_name, params.workflow_path);
+            try {
+                if (!params.workflow_path) {
+                    await fs.access(filePath).catch(async () => {
+                        const detected = await tryDetectWorkspaceForName(params.workflow_name);
+                        if (detected) filePath = detected;
+                    });
+                } else {
+                    await ensureWorkflowParentDir(filePath);
+                }
+            } catch { }
+
+            let working: N8nWorkflow;
+            try {
+                const raw = await fs.readFile(filePath, 'utf8');
+                working = JSON.parse(raw) as N8nWorkflow;
+            } catch {
+                // Create a new workflow if not present
+                working = {
+                    name: params.workflow_name,
+                    id: generateN8nId(),
+                    nodes: [],
+                    connections: {},
+                    active: false,
+                    pinData: {},
+                    settings: { executionOrder: "v1" },
+                    versionId: generateUUID(),
+                    meta: { instanceId: generateInstanceId() },
+                    tags: []
+                };
+            }
+
+            // Add nodes
+            const added: Array<{ id: string; name: string; type: string }> = [];
+            for (const n of params.plan.nodes_to_add || []) {
+                const { finalNodeType, finalTypeVersion } = normalizeNodeTypeAndVersion(n.node_type, n.typeVersion);
+                const baseName = n.node_name || finalNodeType.split('.').pop() || 'Node';
+                const name = ensureUniqueNodeName(working.nodes, baseName);
+                const id = generateN8nId();
+                (working.nodes as any).push({
+                    id,
+                    name,
+                    type: finalNodeType,
+                    typeVersion: finalTypeVersion,
+                    position: [n.position?.x || 200, n.position?.y || 200],
+                    parameters: { ...(n.parameters || {}) }
+                });
+                added.push({ id, name, type: finalNodeType });
+            }
+
+            // Map: provided from/to may be names or ids from previous steps; normalize to names
+            const nameById = new Map<string, string>((working.nodes as any).map((x: any) => [x.id, x.name]));
+            const ensureConn = (srcName: string, out: string) => {
+                if (!working.connections) (working as any).connections = {};
+                if (!working.connections[srcName]) (working.connections as any)[srcName] = {} as any;
+                if (!working.connections[srcName][out]) (working.connections[srcName][out] = []);
+            };
+
+            for (const c of params.plan.connections_to_add || []) {
+                const srcName = nameById.get(c.from) || c.from;
+                const dstName = nameById.get(c.to) || c.to;
+                const out = c.output || 'main';
+                const inp = c.input || 'main';
+                const idx = Number.isFinite(c.input_index as any) ? (c.input_index as number) : 0;
+                ensureConn(srcName, out);
+                (working.connections as any)[srcName][out].push([{ node: dstName, type: inp, index: idx }]);
+            }
+
+            // Validate before writing
+            const nodeTypes = await loadNodeTypesForCurrentVersion(path.resolve(__dirname, '../workflow_nodes'), getCurrentN8nVersion());
+            const report = validateAndNormalizeWorkflow(working as any, nodeTypes);
+            if (!report.ok) {
+                return { content: [{ type: "text", text: JSON.stringify({ success: false, error: "Validation failed", details: { errors: report.errors, warnings: report.warnings } }) }] };
+            }
+
+            // Write history snapshot if file exists
+            try {
+                const prev = await fs.readFile(filePath, 'utf8');
+                const base = path.basename(filePath, '.json');
+                const histDir = path.join(path.dirname(filePath), '.history', base);
+                await fs.mkdir(histDir, { recursive: true });
+                const histFile = path.join(histDir, `${Date.now()}.json`);
+                await fs.writeFile(histFile, prev);
+            } catch { /* ignore if no previous file */ }
+
+            await writeFileAtomic(filePath, JSON.stringify(working, null, 2));
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, filePath, added_nodes: added, warnings: report.warnings }) }] };
+        } catch (error: any) {
+            console.error("[ERROR] apply_workflow_plan failed:", error);
+            return { content: [{ type: "text", text: JSON.stringify({ success: false, error: error.message }) }] };
+        }
+    }
+);
+
+// ------------------------------------------------------------
+// Parameter scaffolding and auto-correction helpers/tools
+// ------------------------------------------------------------
+
+const suggestNodeParamsParamsSchema = z.object({
+    node_type: z.string(),
+    typeVersion: z.number().optional(),
+    existing_parameters: z.record(z.any()).optional()
+});
+
+server.tool(
+    "suggest_node_params",
+    "Suggest minimal valid parameters for a node type using defaults and required fields.",
+    suggestNodeParamsParamsSchema.shape,
+    async (params: z.infer<typeof suggestNodeParamsParamsSchema>, _extra: any) => {
+        try {
+            const { finalNodeType, finalTypeVersion } = normalizeNodeTypeAndVersion(params.node_type, params.typeVersion);
+            const skeleton = await buildParameterSkeleton(finalNodeType, finalTypeVersion);
+            const merged = { ...skeleton, ...(params.existing_parameters || {}) };
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, node_type: finalNodeType, typeVersion: finalTypeVersion, suggested_parameters: merged }) }] };
+        } catch (error: any) {
+            return { content: [{ type: "text", text: JSON.stringify({ success: false, error: error.message }) }] };
+        }
+    }
+);
+
+const listMissingParamsParamsSchema = z.object({
+    node_type: z.string(),
+    typeVersion: z.number().optional(),
+    parameters: z.record(z.any()).default({})
+});
+
+server.tool(
+    "list_missing_parameters",
+    "List required parameters missing for a node considering visibility rules.",
+    listMissingParamsParamsSchema.shape,
+    async (params: z.infer<typeof listMissingParamsParamsSchema>, _extra: any) => {
+        try {
+            const { finalNodeType, finalTypeVersion } = normalizeNodeTypeAndVersion(params.node_type, params.typeVersion);
+            const nodeId = generateN8nId();
+            const nodeName = (finalNodeType.split('.').pop() || 'Node') + ' 1';
+            const provisional: N8nWorkflow = {
+                name: 'tmp',
+                id: generateN8nId(),
+                nodes: [{ id: nodeId, name: nodeName, type: finalNodeType, typeVersion: finalTypeVersion, position: [200, 200], parameters: params.parameters }] as any,
+                connections: {},
+                active: false,
+                pinData: {},
+                settings: { executionOrder: "v1" },
+                versionId: generateUUID(),
+                meta: { instanceId: generateInstanceId() },
+                tags: []
+            };
+            const nodeTypes = await loadNodeTypesForCurrentVersion(path.resolve(__dirname, '../workflow_nodes'), getCurrentN8nVersion());
+            const report = validateAndNormalizeWorkflow(provisional as any, nodeTypes);
+            const issues = (report.nodeIssues && report.nodeIssues[nodeName]) || [];
+            const missing = issues.filter(i => i.code === 'missing_parameter' && i.property).map(i => i.property) as string[];
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, missing_parameters: missing }) }] };
+        } catch (error: any) {
+            return { content: [{ type: "text", text: JSON.stringify({ success: false, error: error.message }) }] };
+        }
+    }
+);
+
+const fixNodeParamsParamsSchema = z.object({
+    node_type: z.string(),
+    typeVersion: z.number().optional(),
+    parameters: z.record(z.any()).default({})
+});
+
+server.tool(
+    "fix_node_params",
+    "Return parameters with defaults applied for required fields that are missing.",
+    fixNodeParamsParamsSchema.shape,
+    async (params: z.infer<typeof fixNodeParamsParamsSchema>, _extra: any) => {
+        try {
+            const { finalNodeType, finalTypeVersion } = normalizeNodeTypeAndVersion(params.node_type, params.typeVersion);
+            const skeleton = await buildParameterSkeleton(finalNodeType, finalTypeVersion);
+            const merged = { ...skeleton, ...(params.parameters || {}) };
+            // Validate to report remaining issues
+            const nodeId = generateN8nId();
+            const nodeName = (finalNodeType.split('.').pop() || 'Node') + ' 1';
+            const provisional: N8nWorkflow = {
+                name: 'tmp', id: generateN8nId(), nodes: [{ id: nodeId, name: nodeName, type: finalNodeType, typeVersion: finalTypeVersion, position: [200,200], parameters: merged }] as any,
+                connections: {}, active: false, pinData: {}, settings: { executionOrder: "v1" }, versionId: generateUUID(), meta: { instanceId: generateInstanceId() }, tags: []
+            };
+            const nodeTypes = await loadNodeTypesForCurrentVersion(path.resolve(__dirname, '../workflow_nodes'), getCurrentN8nVersion());
+            const report = validateAndNormalizeWorkflow(provisional as any, nodeTypes);
+            const issues = (report.nodeIssues && report.nodeIssues[nodeName]) || [];
+            return { content: [{ type: "text", text: JSON.stringify({ success: true, corrected_parameters: merged, issues }) }] };
+        } catch (error: any) {
+            return { content: [{ type: "text", text: JSON.stringify({ success: false, error: error.message }) }] };
+        }
+    }
+);
+
+// Connect Main Chain (auto-build main path)
+server.tool(
+    connectMainChain.toolName,
+    connectMainChain.description,
+    connectMainChain.paramsSchema.shape,
+    connectMainChain.handler
+);
+
+// List Template Examples (examples from free_templates)
+server.tool(
+    listTemplateExamples.toolName,
+    listTemplateExamples.description,
+    listTemplateExamples.paramsSchema.shape,
+    listTemplateExamples.handler
+);
+
 // Create and configure the transport
 const transport = new StdioServerTransport();
 
 // Start the server
 async function main(): Promise<void> {
     try {
-        // Note: loadKnownNodeBaseTypes uses resolvePath, which depends on WORKSPACE_DIR.
-        // WORKSPACE_DIR is typically set by create_workflow. 
-        // If called before create_workflow, it might use process.cwd() or fail if workflow_nodes isn't there.
-        // This is a known limitation for now; ideally, WORKSPACE_DIR is configured at MCP server init more globally.
-        await loadKnownNodeBaseTypes(); // Attempt to load node types at startup
-        await initializeN8nVersionSupport(); // Initialize N8N version support
-        const detectedVersion = await detectN8nVersion(); // Detect the current N8N version
-        await setN8nVersion(detectedVersion || "1.30.0"); // Set the current N8N version
+        // Initialize version support and establish current n8n version first
+        // If DB source is enabled, materialize first so directories exist for version detection
+        await materializeIfConfigured();
+
+        await initializeN8nVersionSupport();
+        const detectedVersion = await detectN8nVersion();
+        await setN8nVersion(detectedVersion || "1.30.0");
+
+        // Now load node base types from the (possibly materialized) filesystem
+        await loadKnownNodeBaseTypes();
+        await updateNodeCacheForVersion();
+
+        // Register resources when supported by SDK
+        try {
+            const anyServer: any = server as any;
+            if (typeof anyServer.resource === 'function') {
+                // List workflows resource
+                anyServer.resource(
+                    "n8n/workflows",
+                    "List available n8n workflows (JSON)",
+                    async () => {
+                        try {
+                            await ensureWorkflowDir();
+                            const dir = resolvePath(WORKFLOW_DATA_DIR_NAME);
+                            const files = (await fs.readdir(dir)).filter(f => f.endsWith('.json') && f !== WORKFLOWS_FILE_NAME);
+                            const items: Array<{ name: string; path: string }> = files.map(f => ({ name: f.replace(/\.json$/i, ''), path: path.join(dir, f) }));
+                            return { mimeType: "application/json", text: JSON.stringify({ workflows: items }, null, 2) };
+                        } catch (e: any) {
+                            return { mimeType: "application/json", text: JSON.stringify({ error: e?.message || String(e) }, null, 2) };
+                        }
+                    }
+                );
+
+                // List node types resource
+                anyServer.resource(
+                    "n8n/node-types",
+                    "List available node types (JSON)",
+                    async () => {
+                        try {
+                            const nodeTypes = Array.from(getNodeInfoCache().values()).map(v => v.officialType).sort();
+                            return { mimeType: "application/json", text: JSON.stringify({ node_types: nodeTypes }, null, 2) };
+                        } catch (e: any) {
+                            return { mimeType: "application/json", text: JSON.stringify({ error: e?.message || String(e) }, null, 2) };
+                        }
+                    }
+                );
+            } else {
+                console.error('[DEBUG] server.resource not available in this SDK version; skipping resources');
+            }
+        } catch (e) {
+            console.error('[WARN] Failed to register resources:', (e as any)?.message || e);
+        }
 
         await server.connect(transport);
         console.error("[DEBUG] N8N Workflow Builder MCP Server started (TypeScript version)");
@@ -2562,7 +3054,15 @@ async function main(): Promise<void> {
             add_node: addNodeParamsSchema,
             edit_node: editNodeParamsSchema,
             delete_node: deleteNodeParamsSchema,
-            add_connection: addConnectionParamsSchema
+            add_connection: addConnectionParamsSchema,
+            plan_workflow: planWorkflowParamsSchema,
+            review_workflow_plan: reviewWorkflowPlanParamsSchema,
+            apply_workflow_plan: applyWorkflowPlanParamsSchema,
+            suggest_node_params: suggestNodeParamsParamsSchema,
+            list_missing_parameters: listMissingParamsParamsSchema,
+            fix_node_params: fixNodeParamsParamsSchema,
+            connect_main_chain: connectMainChain.paramsSchema,
+            list_template_examples: listTemplateExamples.paramsSchema
         };
 
         const manuallyConstructedToolList = Object.entries(toolSchemasForDebug).map(([name, schema]) => {

@@ -27,27 +27,46 @@ async function getNodeVersionFromDefs(version, type) {
 }
 
 describe('add_node version normalization (simulated)', () => {
-    const n8nVersion = '1.103.0';
+    let n8nVersion;
 
-    it('httpRequest should resolve to 4.2', async () => {
+    beforeAll(async () => {
+        const root = path.resolve(__dirname, '../../workflow_nodes');
+        try {
+            const entries = await fs.readdir(root, { withFileTypes: true });
+            const dirs = entries.filter(e => e.isDirectory()).map(e => e.name);
+            const parse = (v) => v.split('.').map(n => parseInt(n, 10) || 0);
+            dirs.sort((a, b) => {
+                const [a0, a1, a2] = parse(a);
+                const [b0, b1, b2] = parse(b);
+                if (a0 !== b0) return b0 - a0;
+                if (a1 !== b1) return b1 - a1;
+                return b2 - a2;
+            });
+            n8nVersion = dirs[0];
+        } catch {
+            n8nVersion = '1.108.1';
+        }
+    });
+
+    it('httpRequest should resolve to 4.3', async () => {
         const finalType = normalizeNodeType('httpRequest');
         const ver = await getNodeVersionFromDefs(n8nVersion, finalType);
         expect(finalType).toBe('n8n-nodes-base.httpRequest');
-        expect(ver).toBeCloseTo(4.2, 5);
+        expect(ver).toBeCloseTo(4.3, 5);
     });
 
-    it('if should resolve to 2.2', async () => {
+    it('if should resolve to 2.3', async () => {
         const finalType = normalizeNodeType('if');
         const ver = await getNodeVersionFromDefs(n8nVersion, finalType);
         expect(finalType).toBe('n8n-nodes-base.if');
-        expect(ver).toBeCloseTo(2.2, 5);
+        expect(ver).toBeCloseTo(2.3, 5);
     });
 
-    it('switch should resolve to 3.2', async () => {
+    it('switch should resolve to 3.4', async () => {
         const finalType = normalizeNodeType('switch');
         const ver = await getNodeVersionFromDefs(n8nVersion, finalType);
         expect(finalType).toBe('n8n-nodes-base.switch');
-        expect(ver).toBeCloseTo(3.2, 5);
+        expect(ver).toBeCloseTo(3.4, 5);
     });
 
     it('merge should resolve to 3.2', async () => {
