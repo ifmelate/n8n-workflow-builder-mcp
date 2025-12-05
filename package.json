@@ -24,8 +24,8 @@
         "test:langchain": "mocha tests/unit/langchain-llm-format.test.js",
         "mcp": "node n8n-workflow-mcp.js",
         "build": "tsc",
-        "build:nodes-db": "node scripts/build-nodes-db.js --source ./workflow_nodes",
-        "rebuild:nodes-db": "node scripts/build-nodes-db.js --source ./workflow_nodes --full-rebuild"
+        "build:nodes-db": "node scripts/build-nodes-db.js --source ./node_definitions",
+        "rebuild:nodes-db": "node scripts/build-nodes-db.js --source ./node_definitions --full-rebuild"
     },
     "keywords": [
         "n8n",

@@ -48,25 +48,25 @@ describe('add_node version normalization (simulated)', () => {
         }
     });
 
-    it('httpRequest should resolve to 4.2', async () => {
+    it('httpRequest should resolve to 4.3', async () => {
         const finalType = normalizeNodeType('httpRequest');
         const ver = await getNodeVersionFromDefs(n8nVersion, finalType);
         expect(finalType).toBe('n8n-nodes-base.httpRequest');
-        expect(ver).toBeCloseTo(4.2, 5);
+        expect(ver).toBeCloseTo(4.3, 5);
     });
 
-    it('if should resolve to 2.2', async () => {
+    it('if should resolve to 2.3', async () => {
         const finalType = normalizeNodeType('if');
         const ver = await getNodeVersionFromDefs(n8nVersion, finalType);
         expect(finalType).toBe('n8n-nodes-base.if');
-        expect(ver).toBeCloseTo(2.2, 5);
+        expect(ver).toBeCloseTo(2.3, 5);
     });
 
-    it('switch should resolve to 3.2', async () => {
+    it('switch should resolve to 3.4', async () => {
         const finalType = normalizeNodeType('switch');
         const ver = await getNodeVersionFromDefs(n8nVersion, finalType);
         expect(finalType).toBe('n8n-nodes-base.switch');
-        expect(ver).toBeCloseTo(3.2, 5);
+        expect(ver).toBeCloseTo(3.4, 5);
     });
 
     it('merge should resolve to 3.2', async () => {

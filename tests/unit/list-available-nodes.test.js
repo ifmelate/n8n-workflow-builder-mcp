@@ -13,7 +13,7 @@ async function mockListAvailableNodes(params, workflowNodesRootDir) {
     // Mock getCurrentN8nVersion - in real implementation this comes from versioning.ts
     const getCurrentN8nVersion = () => '1.103.0';
 
-    let effectiveVersion = n8n_version || getCurrentN8nVersion() || undefined;
+    let effectiveVersion = n8n_version || undefined;
     let workflowNodesDir = workflowNodesRootDir;
 
     try {
@@ -21,12 +21,12 @@ async function mockListAvailableNodes(params, workflowNodesRootDir) {
         const versionDirs = entries.filter(e => e.isDirectory()).map(e => e.name);
 
         if (versionDirs.length > 0) {
-            const targetVersion = n8n_version || getCurrentN8nVersion();
-            if (targetVersion && versionDirs.includes(targetVersion)) {
-                workflowNodesDir = path.join(workflowNodesRootDir, targetVersion);
-                effectiveVersion = targetVersion;
-            } else if (!targetVersion) {
-                // No target specified: choose highest semver directory
+            if (n8n_version && versionDirs.includes(n8n_version)) {
+                // Exact version requested and found
+                workflowNodesDir = path.join(workflowNodesRootDir, n8n_version);
+                effectiveVersion = n8n_version;
+            } else if (!n8n_version) {
+                // No version specified: choose highest semver directory
                 const parse = (v) => v.split('.').map(n => parseInt(n, 10) || 0);
                 versionDirs.sort((a, b) => {
                     const [a0, a1, a2] = parse(a);

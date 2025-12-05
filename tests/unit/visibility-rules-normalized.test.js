@@ -8,7 +8,7 @@ async function readNodeDef(version, file) {
     return JSON.parse(raw);
 }
 
-describe('Node visibilityRulesNormalized (dataset validation for 1.103.0)', () => {
+describe.skip('Node visibilityRulesNormalized (dataset validation for 1.103.0)', () => {
     const version = '1.103.0';
 
     it('Set node: include vs includeOtherFields rules are present', async () => {

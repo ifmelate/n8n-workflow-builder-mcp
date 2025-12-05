@@ -44,22 +44,22 @@ describe('Add Node Versioning (dataset verification and selection)', () => {
         }
     });
 
-    it('should have correct version for If node (2.2)', async () => {
+    it('should have correct version for If node (2.3)', async () => {
         const def = await readNodeDef(version, 'if.json');
         expect(def.nodeType).toBe('n8n-nodes-base.if');
-        expect(toNumericVersion(def.version)).toBeCloseTo(2.2, 5);
+        expect(toNumericVersion(def.version)).toBeCloseTo(2.3, 5);
     });
 
-    it('should have correct version for HttpRequest (4.2)', async () => {
+    it('should have correct version for HttpRequest (4.3)', async () => {
         const def = await readNodeDef(version, 'httpRequest.json');
         expect(def.nodeType).toBe('n8n-nodes-base.httpRequest');
-        expect(toNumericVersion(def.version)).toBeCloseTo(4.2, 5);
+        expect(toNumericVersion(def.version)).toBeCloseTo(4.3, 5);
     });
 
-    it('should have correct version for Switch (3.2)', async () => {
+    it('should have correct version for Switch (3.4)', async () => {
         const def = await readNodeDef(version, 'switch.json');
         expect(def.nodeType).toBe('n8n-nodes-base.switch');
-        expect(toNumericVersion(def.version)).toBeCloseTo(3.2, 5);
+        expect(toNumericVersion(def.version)).toBeCloseTo(3.4, 5);
     });
 
     it('should have correct version for Merge (3.2)', async () => {
