@@ -1,22 +1,32 @@
 import fs from 'fs/promises';
+import fssync from 'fs';
 import path from 'path';
 import os from 'os';
+import zlib from 'zlib';
 import Database from 'better-sqlite3';
 import { getCurrentN8nVersion } from '../nodes/versioning';
 
 /**
  * Environment helpers for nodes DB and cache settings.
  */
+function getBundledDbPath(): string | null {
+    // Bundled catalog shipped inside the package next to compiled output (dist/catalog.sqlite).
+    const candidate = path.resolve(__dirname, '..', 'catalog.sqlite');
+    return fssync.existsSync(candidate) ? candidate : null;
+}
+
 function getNodesDbPath(): string | null {
     const envPath = process.env.N8N_NODES_DB_PATH?.trim();
     if (envPath && envPath.length > 0) {
         return path.resolve(envPath);
     }
-    // Default under user cache dir
     const home = os.homedir();
-    if (!home) return null;
-    const defaultDir = path.join(home, '.cache', 'n8n-nodes');
-    return path.join(defaultDir, 'catalog.sqlite');
+    if (home) {
+        const userDb = path.join(home, '.cache', 'n8n-nodes', 'catalog.sqlite');
+        if (fssync.existsSync(userDb)) return userDb;
+    }
+    // Fall back to catalog bundled inside the npm package.
+    return getBundledDbPath();
 }
 
 function getWorkflowNodesRootDir(): string {
@@ -62,12 +72,48 @@ function readVersionMeta(db: Database.Database, version: string): NodesDbVersion
     }
 }
 
+interface RawNodeRow {
+    id: string;
+    version: string;
+    nodeType: string;
+    baseName: string | null;
+    typeVersion: string | number | null;
+    filename: string;
+    raw?: string;
+    gz?: Buffer;
+}
+
+function tableHasColumn(db: Database.Database, table: string, column: string): boolean {
+    try {
+        const info = db.prepare(`PRAGMA table_info('${table}')`).all() as Array<{ name: string }>;
+        return info.some(r => r.name === column);
+    } catch {
+        return false;
+    }
+}
+
 function* iterateNodes(db: Database.Database, version: string): Generator<NodesDbNodeRow> {
-    const stmt = db.prepare(
-        'SELECT id, version, nodeType, baseName, typeVersion, filename, raw FROM nodes WHERE version = ?'
-    );
-    for (const row of stmt.iterate(version)) {
-        yield row as NodesDbNodeRow;
+    // New schema (dedup+gzip): nodes joins blobs via sha256; blob stores gzipped JSON.
+    // Legacy schema: nodes has a raw TEXT column. Support both for forward compatibility.
+    const legacy = tableHasColumn(db, 'nodes', 'raw');
+    const sql = legacy
+        ? 'SELECT id, version, nodeType, baseName, typeVersion, filename, raw FROM nodes WHERE version = ?'
+        : 'SELECT n.id, n.version, n.nodeType, n.baseName, n.typeVersion, n.filename, b.gz FROM nodes n JOIN blobs b ON b.sha256 = n.sha256 WHERE n.version = ?';
+    const stmt = db.prepare(sql);
+    for (const raw of stmt.iterate(version)) {
+        const row = raw as RawNodeRow;
+        const rawText = legacy
+            ? (row.raw ?? '')
+            : zlib.gunzipSync(row.gz as Buffer).toString('utf8');
+        yield {
+            id: row.id,
+            version: row.version,
+            nodeType: row.nodeType,
+            baseName: row.baseName,
+            typeVersion: row.typeVersion,
+            filename: row.filename,
+            raw: rawText,
+        };
     }
 }
 

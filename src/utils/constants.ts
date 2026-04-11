@@ -17,7 +17,7 @@ export const MCP_PROTOCOL_VERSION = '1.0';
 export const HEADER_MCP_VERSION = 'X-MCP-Version';
 
 // Keep a single fallback for n8n versioning logic if ever needed by callers
-export const DEFAULT_N8N_VERSION_FALLBACK = '1.104.1';
+export const DEFAULT_N8N_VERSION_FALLBACK = '1.123.2';
 
 // Optional: canonical tool names to avoid typos
 export const ToolNames = {

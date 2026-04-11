@@ -48,11 +48,11 @@ describe('add_node version normalization (simulated)', () => {
         }
     });
 
-    it('httpRequest should resolve to 4.3', async () => {
+    it('httpRequest should resolve to 4.4', async () => {
         const finalType = normalizeNodeType('httpRequest');
         const ver = await getNodeVersionFromDefs(n8nVersion, finalType);
         expect(finalType).toBe('n8n-nodes-base.httpRequest');
-        expect(ver).toBeCloseTo(4.3, 5);
+        expect(ver).toBeCloseTo(4.4, 5);
     });
 
     it('if should resolve to 2.3', async () => {

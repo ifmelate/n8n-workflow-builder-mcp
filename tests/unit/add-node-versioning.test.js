@@ -50,10 +50,10 @@ describe('Add Node Versioning (dataset verification and selection)', () => {
         expect(toNumericVersion(def.version)).toBeCloseTo(2.3, 5);
     });
 
-    it('should have correct version for HttpRequest (4.3)', async () => {
+    it('should have correct version for HttpRequest (4.4)', async () => {
         const def = await readNodeDef(version, 'httpRequest.json');
         expect(def.nodeType).toBe('n8n-nodes-base.httpRequest');
-        expect(toNumericVersion(def.version)).toBeCloseTo(4.3, 5);
+        expect(toNumericVersion(def.version)).toBeCloseTo(4.4, 5);
     });
 
     it('should have correct version for Switch (3.4)', async () => {

@@ -5,6 +5,8 @@ workflow_nodes/**
 *.sqlite
 *.sqlite-journal
 *.db
+# The shipped nodes catalog at repo root is the published source of truth.
+!/catalog.sqlite
 
 # Node
 node_modules/
@@ -43,6 +45,7 @@ Thumbs.db
 # Editor directories and files
 .idea/
 .vscode/
+.claude/
 *.suo
 *.ntvs*
 *.njsproj
