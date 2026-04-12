@@ -56,7 +56,9 @@ export interface N8nWorkflow {
     nodes: N8nWorkflowNode[];
     pinData: Record<string, any>;
     connections: N8nConnections;
-    active: boolean;
+    // n8n 1.x toggles activation via this field. In n8n 2.x workflows use
+    // Draft/Published state managed server-side and this field is absent.
+    active?: boolean;
     settings: N8nWorkflowSettings;
     versionId: string;
     meta?: N8nWorkflowMeta;

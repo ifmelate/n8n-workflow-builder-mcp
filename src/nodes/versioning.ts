@@ -19,6 +19,27 @@ export function getCurrentN8nVersion(): string | null {
     return currentN8nVersion;
 }
 
+export function getN8nMajorVersion(): number | null {
+    const v = currentN8nVersion;
+    if (!v) return null;
+    const major = parseInt(v.replace(/^v/i, '').split('.')[0], 10);
+    return Number.isFinite(major) ? major : null;
+}
+
+export function isN8n2xOrLater(): boolean {
+    const major = getN8nMajorVersion();
+    return major !== null && major >= 2;
+}
+
+// n8n 1.x needs `active: false` on new workflow JSON. n8n 2.x replaced this
+// with server-side Draft/Published state and rejects the field. Spread this
+// helper into new workflow objects so the shape adapts to the detected
+// instance. Callers on older versions or with no detection still get 1.x
+// behavior, which is the safe default.
+export function workflowActivationDefaults(): { active?: boolean } {
+    return isN8n2xOrLater() ? {} : { active: false };
+}
+
 export function getN8nVersionInfo(): N8nVersionInfo | null {
     return n8nVersionInfo;
 }

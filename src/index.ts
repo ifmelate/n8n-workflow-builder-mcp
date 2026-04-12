@@ -14,7 +14,7 @@ import { Workflow, N8nWorkflow, N8nWorkflowNode, N8nConnections, N8nConnectionDe
 import { ensureWorkflowDir, ensureWorkflowParentDir, resolvePath, resolveWorkflowPath, WORKFLOW_DATA_DIR_NAME, WORKFLOWS_FILE_NAME, setWorkspaceDir, getWorkspaceDir, tryDetectWorkspaceForName } from './utils/workspace';
 import { generateInstanceId, generateN8nId, generateUUID } from './utils/id';
 import { normalizeLLMParameters } from './utils/llm';
-import { initializeN8nVersionSupport, detectN8nVersion, setN8nVersion, getSupportedN8nVersions, getCurrentN8nVersion, getN8nVersionInfo } from './nodes/versioning';
+import { initializeN8nVersionSupport, detectN8nVersion, setN8nVersion, getSupportedN8nVersions, getCurrentN8nVersion, getN8nVersionInfo, workflowActivationDefaults } from './nodes/versioning';
 import { loadKnownNodeBaseTypes, normalizeNodeTypeAndVersion, isNodeTypeSupported, updateNodeCacheForVersion, getNodeInfoCache } from './nodes/cache';
 import { materializeIfConfigured } from './utils/nodesDb';
 import * as connectMainChain from './mcp/tools/connectMainChain';
@@ -223,7 +223,7 @@ server.tool(
                 id: generateN8nId(), // e.g., "Y6sBMxxyJQtgCCBQ"
                 nodes: [], // Initialize with empty nodes array
                 connections: {}, // Initialize with empty connections object
-                active: false,
+                ...workflowActivationDefaults(),
                 pinData: {},
                 settings: {
                     executionOrder: "v1"
@@ -1614,7 +1614,7 @@ server.tool(
                 workflow = JSON.parse(raw);
             } catch (e: any) {
                 // Create minimal workflow if missing
-                workflow = { name: workflow_name, id: generateUUID(), nodes: [], connections: {}, active: false, pinData: {}, settings: { executionOrder: 'v1' }, versionId: generateUUID(), meta: { instanceId: generateUUID() }, tags: [] } as any;
+                workflow = { name: workflow_name, id: generateUUID(), nodes: [], connections: {}, ...workflowActivationDefaults(), pinData: {}, settings: { executionOrder: 'v1' }, versionId: generateUUID(), meta: { instanceId: generateUUID() }, tags: [] } as any;
             }
 
             // Helper to add a node with normalization
@@ -2696,7 +2696,7 @@ server.tool(
                 id: generateN8nId(),
                 nodes: [],
                 connections: {},
-                active: false,
+                ...workflowActivationDefaults(),
                 pinData: {},
                 settings: { executionOrder: "v1" },
                 versionId: generateUUID(),
@@ -2801,7 +2801,7 @@ server.tool(
                     id: generateN8nId(),
                     nodes: [],
                     connections: {},
-                    active: false,
+                    ...workflowActivationDefaults(),
                     pinData: {},
                     settings: { executionOrder: "v1" },
                     versionId: generateUUID(),
@@ -2918,7 +2918,7 @@ server.tool(
                 id: generateN8nId(),
                 nodes: [{ id: nodeId, name: nodeName, type: finalNodeType, typeVersion: finalTypeVersion, position: [200, 200], parameters: params.parameters }] as any,
                 connections: {},
-                active: false,
+                ...workflowActivationDefaults(),
                 pinData: {},
                 settings: { executionOrder: "v1" },
                 versionId: generateUUID(),
@@ -2956,7 +2956,7 @@ server.tool(
             const nodeName = (finalNodeType.split('.').pop() || 'Node') + ' 1';
             const provisional: N8nWorkflow = {
                 name: 'tmp', id: generateN8nId(), nodes: [{ id: nodeId, name: nodeName, type: finalNodeType, typeVersion: finalTypeVersion, position: [200,200], parameters: merged }] as any,
-                connections: {}, active: false, pinData: {}, settings: { executionOrder: "v1" }, versionId: generateUUID(), meta: { instanceId: generateInstanceId() }, tags: []
+                connections: {}, ...workflowActivationDefaults(), pinData: {}, settings: { executionOrder: "v1" }, versionId: generateUUID(), meta: { instanceId: generateInstanceId() }, tags: []
             };
             const nodeTypes = await loadNodeTypesForCurrentVersion(path.resolve(__dirname, '../workflow_nodes'), getCurrentN8nVersion());
             const report = validateAndNormalizeWorkflow(provisional as any, nodeTypes);

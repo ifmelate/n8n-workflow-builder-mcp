@@ -8,7 +8,7 @@ import { normalizeNodeTypeAndVersion } from '../../nodes/cache';
 import { ToolNames, ErrorCodes } from '../../utils/constants';
 import { validateAndNormalizeWorkflow } from '../../validation/workflowValidator';
 import { loadNodeTypesForCurrentVersion } from '../../validation/nodeTypesLoader';
-import { getCurrentN8nVersion } from '../../nodes/versioning';
+import { getCurrentN8nVersion, workflowActivationDefaults } from '../../nodes/versioning';
 import { wireAiConnections, createAgentWiringConnections, saveWorkflow, NodeConnectionTypes } from '../../tools/wiringService';
 import { createSuccessResponse, createErrorResponse, createUsageInfo, createActionPlan } from '../../utils/responses';
 import { v4 as uuidv4 } from 'uuid';
@@ -61,7 +61,7 @@ export async function handler(params: Params, _extra: any): Promise<Result> {
             workflow = JSON.parse(raw);
         } catch (e: any) {
             // Create minimal workflow if missing
-            workflow = { name: workflow_name, id: generateUUID(), nodes: [], connections: {}, active: false, pinData: {}, settings: { executionOrder: 'v1' }, versionId: generateUUID(), meta: { instanceId: generateUUID() }, tags: [] } as any;
+            workflow = { name: workflow_name, id: generateUUID(), nodes: [], connections: {}, ...workflowActivationDefaults(), pinData: {}, settings: { executionOrder: 'v1' }, versionId: generateUUID(), meta: { instanceId: generateUUID() }, tags: [] } as any;
         }
 
         // Helper to add a node with normalization
