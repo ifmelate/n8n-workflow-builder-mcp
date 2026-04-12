@@ -63,7 +63,9 @@ export function normalizeNodeTypeAndVersion(inputType: string, inputVersion?: nu
 }
 
 export async function loadKnownNodeBaseTypes(): Promise<void> {
-    const workflowNodesDir = path.resolve(__dirname, '../workflow_nodes');
+    // When compiled, this file lives in dist/nodes/cache.js — go up two levels
+    // to reach the project root, matching the path in versioning.ts.
+    const workflowNodesDir = path.resolve(__dirname, '../../workflow_nodes');
     try {
         const entries = await fs.readdir(workflowNodesDir, { withFileTypes: true });
         const versionDirs = entries.filter(entry => entry.isDirectory()).map(entry => entry.name);
@@ -138,9 +140,15 @@ async function loadNodesFromDirectory(directory: string): Promise<void> {
                                 .filter((v: number) => !Number.isNaN(v))
                             : (typeof rawVersion === 'number' ? rawVersion : parseFloat(String(rawVersion)));
                         nodeInfoCache.set(officialType.toLowerCase(), { officialType, version: normalizedVersion });
+                        // Register short-name aliases so users can type just "chatTrigger"
+                        // instead of the full "@n8n/n8n-nodes-langchain.chatTrigger".
                         const prefix = "n8n-nodes-base.";
+                        const langchainPrefix = "@n8n/n8n-nodes-langchain.";
                         if (officialType.startsWith(prefix)) {
                             const baseName = officialType.substring(prefix.length);
+                            if (baseName) nodeInfoCache.set(baseName.toLowerCase(), { officialType, version: normalizedVersion });
+                        } else if (officialType.startsWith(langchainPrefix)) {
+                            const baseName = officialType.substring(langchainPrefix.length);
                             if (baseName) nodeInfoCache.set(baseName.toLowerCase(), { officialType, version: normalizedVersion });
                         }
                     }
