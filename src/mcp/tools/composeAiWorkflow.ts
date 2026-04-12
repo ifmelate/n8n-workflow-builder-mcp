@@ -2,7 +2,7 @@ import { z } from 'zod';
 import fs from 'fs/promises';
 import path from 'path';
 import { N8nWorkflow, N8nWorkflowNode } from '../../types/n8n';
-import { ensureWorkflowDir, resolvePath, WORKFLOW_DATA_DIR_NAME } from '../../utils/workspace';
+import { ensureWorkflowDir, resolveWorkflowPath, WORKFLOW_DATA_DIR_NAME } from '../../utils/workspace';
 import { generateUUID, generateN8nId } from '../../utils/id';
 import { normalizeNodeTypeAndVersion } from '../../nodes/cache';
 import { ToolNames, ErrorCodes } from '../../utils/constants';
@@ -54,7 +54,7 @@ export async function handler(params: Params, _extra: any): Promise<Result> {
     try {
         // Step 1: ensure workflow exists (create if missing)
         await ensureWorkflowDir();
-        const filePath = resolvePath(path.join(WORKFLOW_DATA_DIR_NAME, `${workflow_name.replace(/[^a-z0-9_.-]/gi, '_')}.json`));
+        const filePath = resolveWorkflowPath(workflow_name);
         let workflow: N8nWorkflow;
         try {
             const raw = await fs.readFile(filePath, 'utf8');
