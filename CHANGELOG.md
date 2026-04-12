@@ -5,6 +5,49 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-04-12
+
+### n8n 2.x Support & Bundled Node Catalog
+
+This release adds full n8n 2.x compatibility, ships a working node catalog with the npm package (previously broken), and fixes multiple bugs found during integration testing against a live n8n 2.6.2 instance.
+
+### Added
+
+- **Bundled SQLite node catalog** — npm package now ships `dist/catalog.sqlite` with all node definitions. Previously users got an empty catalog and tools like `list_available_nodes` returned nothing.
+- **Content-addressed dedup + gzip** in catalog DB — 475 MB raw JSON compressed to ~34 MB SQLite (52x dedup ratio, per-row gzip). Schema: `blobs(sha256, gz, len)` + `nodes(id, version, sha256)`.
+- **n8n 2.6.2 node catalog** — 532 nodes scraped and added. Full version coverage from 1.86.0 through 2.6.2 (229 versions).
+- **Version-aware workflow activation** — `workflowActivationDefaults()` helper omits `active` field for n8n 2.x (where it's read-only) and includes `active: false` for 1.x.
+- **`isN8n2xOrLater()`** / **`getN8nMajorVersion()`** helpers in versioning module.
+- **Langchain short-name aliases** — type `chatTrigger` instead of `@n8n/n8n-nodes-langchain.chatTrigger`. Also reverse aliases for tool nodes: `httpRequestTool` -> `toolHttpRequest`.
+- **Unknown node type warnings** — `add_node` now warns when a type isn't found in the catalog (still allows add for community nodes).
+- **`bundle-nodes-db.js`** postbuild script — copies catalog to `dist/` automatically.
+- **DB fallback chain** — runtime checks: `N8N_NODES_DB_PATH` env -> `~/.cache/n8n-nodes/catalog.sqlite` -> bundled `dist/catalog.sqlite`.
+- **Legacy schema auto-migration** — `build-nodes-db.js` detects old `raw TEXT` schema and migrates to dedup+gzip in-place.
+
+### Fixed
+
+- **CRITICAL: Node cache was always empty** — `loadKnownNodeBaseTypes()` resolved `__dirname/../workflow_nodes` (= `dist/workflow_nodes/`, doesn't exist) instead of `../../workflow_nodes`. All node types fell through to `n8n-nodes-base.*` prefix with `typeVersion: 1`. Fixed path to match `versioning.ts`.
+- **CRITICAL: Langchain nodes got wrong prefix** — Without cache, `chatTrigger` resolved to `n8n-nodes-base.chatTrigger` instead of `@n8n/n8n-nodes-langchain.chatTrigger`. Root cause was the empty cache above.
+- **`active: false` rejected by n8n 2.x** — n8n 2.6.2 returns `400 "request/body/active is read-only"` when `active` is present in workflow creation. All 8 workflow-creation sites now use `...workflowActivationDefaults()`.
+- **`compose_ai_workflow` node duplication** — repeated calls created 2x-3x duplicate nodes. Added name-based dedup in both the inline handler (index.ts, the real one) and modular handler.
+- **Filename sanitization mismatch** — `create_workflow` used aggressive regex (`/[^a-z0-9_.-]/gi`) while `resolveWorkflowPath` used `sanitizeFilename()` (preserves spaces). Unified to use `sanitizeFilename` everywhere.
+- **Validator false-positive on AI sub-nodes** — `node_not_in_main_chain` error for nodes connected via AI handles (ai_languageModel, ai_memory, etc.). Now uses extended reachability graph that traverses all connection types.
+- **`httpRequestTool` not found** — LLMs guess `httpRequestTool` but catalog stores `toolHttpRequest`. Added reverse aliases for all `tool*` langchain nodes.
+
+### Changed
+
+- `DEFAULT_N8N_VERSION_FALLBACK` bumped from `1.104.1` to `1.123.2`.
+- `N8nWorkflow.active` field changed from `boolean` to `boolean | undefined` (optional).
+- `package.json` `files` now includes `dist/catalog.sqlite`.
+- Tests updated: `httpRequest` expected typeVersion `4.3` -> `4.4` (reflects 2.6.2 catalog).
+
+## [1.0.2] - 2025-12-10
+
+### Patch release
+
+- Fix: add build step to npm publish workflow
+- Update version to 1.0.2
+
 ## [1.0.0] - 2025-12-05
 
 ### 🎉 Major Release: Database-Backed Node Management & Modular Architecture
@@ -195,4 +238,5 @@ This release represents a major architectural refactor that migrates from file-b
 ## [0.1.8] - Previous Release
 
 Previous version before major refactor. See git history for details.
+
 
