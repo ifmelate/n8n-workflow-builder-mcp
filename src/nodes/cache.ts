@@ -149,7 +149,16 @@ async function loadNodesFromDirectory(directory: string): Promise<void> {
                             if (baseName) nodeInfoCache.set(baseName.toLowerCase(), { officialType, version: normalizedVersion });
                         } else if (officialType.startsWith(langchainPrefix)) {
                             const baseName = officialType.substring(langchainPrefix.length);
-                            if (baseName) nodeInfoCache.set(baseName.toLowerCase(), { officialType, version: normalizedVersion });
+                            if (baseName) {
+                                nodeInfoCache.set(baseName.toLowerCase(), { officialType, version: normalizedVersion });
+                                // LLMs often guess "httpRequestTool" instead of "toolHttpRequest".
+                                // Register reversed alias: toolFoo → fooTool.
+                                if (baseName.startsWith('tool') && baseName.length > 4) {
+                                    const inner = baseName.substring(4); // e.g. "HttpRequest"
+                                    const reversed = inner.charAt(0).toLowerCase() + inner.slice(1) + 'Tool'; // "httpRequestTool"
+                                    nodeInfoCache.set(reversed.toLowerCase(), { officialType, version: normalizedVersion });
+                                }
+                            }
                         }
                     }
                 } catch {
