@@ -176,9 +176,9 @@ export async function handler(params: Params, _extra: any) {
                     }
                 }
 
-                // Always strict now; multiple chains are not allowed
-                const strictMainOnly = true;
-                const targetSet = strictMainOnly ? reachableMain : reachableExtended;
+                // Use extended reachability: nodes attached via AI handles (ai_languageModel,
+                // ai_memory, ai_embeddings, etc.) are considered part of the main chain.
+                const targetSet = reachableExtended;
 
                 // Any enabled node not in targetSet is disconnected from main chain → error
                 for (const [name, node] of Object.entries(nodesByName)) {

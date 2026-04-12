@@ -424,6 +424,18 @@ server.tool(
             // Normalize the node type and resolve to a compatible typeVersion automatically
             const { finalNodeType, finalTypeVersion } = normalizeNodeTypeAndVersion(params.node_type, params.typeVersion);
             let resolvedVersion = finalTypeVersion;
+            const addNodeWarnings: string[] = [];
+
+            // Check if the node type exists in the loaded catalog at all
+            const knownInCatalog = getNodeInfoCache().has(params.node_type.toLowerCase())
+                || getNodeInfoCache().has(finalNodeType.toLowerCase())
+                || (getN8nVersionInfo()?.supportedNodes.has(finalNodeType) ?? false);
+            if (!knownInCatalog) {
+                addNodeWarnings.push(
+                    `Node type '${finalNodeType}' was not found in the n8n ${getCurrentN8nVersion() || 'unknown'} node catalog. ` +
+                    `The node will be added but may not be valid. Use 'list_available_nodes' to find valid node types.`
+                );
+            }
 
             // Check if node type is supported in current N8N version
             if (!isNodeTypeSupported(finalNodeType, finalTypeVersion)) {
@@ -615,10 +627,10 @@ server.tool(
                     return { ok, errors: nodeErrors, warnings: nodeWarnings, nodeIssues };
                 };
                 const local = buildLocalValidation(report, newNode.name);
-                return { content: [{ type: "text", text: JSON.stringify({ success: true, node: newNode, workflowId: workflow.id, createdConnections, localValidation: local }) }] };
+                return { content: [{ type: "text", text: JSON.stringify({ success: true, node: newNode, workflowId: workflow.id, createdConnections, localValidation: local, ...(addNodeWarnings.length > 0 ? { warnings: addNodeWarnings } : {}) }) }] };
             } catch (e: any) {
                 console.warn('[WARN] Validation step errored after add_node:', e?.message || e);
-                return { content: [{ type: "text", text: JSON.stringify({ success: true, node: newNode, workflowId: workflow.id, createdConnections }) }] };
+                return { content: [{ type: "text", text: JSON.stringify({ success: true, node: newNode, workflowId: workflow.id, createdConnections, ...(addNodeWarnings.length > 0 ? { warnings: addNodeWarnings } : {}) }) }] };
             }
         } catch (error: any) {
             console.error("[ERROR] Failed to add node:", error);
@@ -2262,9 +2274,9 @@ server.tool(
                         }
                     }
 
-                    // Always strict now; multiple chains are not allowed
-                    const strictMainOnly = true;
-                    const targetSet = strictMainOnly ? reachableMain : reachableExtended;
+                    // Use extended reachability: nodes attached via AI handles (ai_languageModel,
+                    // ai_memory, ai_embeddings, etc.) are considered part of the main chain.
+                    const targetSet = reachableExtended;
 
                     // Any enabled node not in targetSet is disconnected from main chain → error
                     for (const [name, node] of Object.entries(nodesByName)) {
