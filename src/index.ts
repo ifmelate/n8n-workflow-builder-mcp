@@ -1663,11 +1663,20 @@ server.tool(
             const vtool = plan.vector_tool ? await addNode(plan.vector_tool.node_type, plan.vector_tool.node_name, plan.vector_tool.parameters, positions.vtool) : null;
             const extraTools: N8nWorkflowNode[] = [];
             if (Array.isArray(plan.tools)) {
-                for (const t of plan.tools) extraTools.push(await addNode(t.node_type, t.node_name || t.node_type.split('.').pop() || 'Tool', t.parameters));
+                let toolX = 640;
+                for (const t of plan.tools) {
+                    extraTools.push(await addNode(t.node_type, t.node_name || t.node_type.split('.').pop() || 'Tool', t.parameters, { x: toolX, y: 240 }));
+                    toolX += 200;
+                }
+            }
+            // Auto-create toolVectorStore bridge when vector_store exists but vector_tool wasn't provided
+            let effectiveVtool = vtool;
+            if (vstore && !vtool && agent) {
+                effectiveVtool = await addNode('@n8n/n8n-nodes-langchain.toolVectorStore', 'Vector Store Tool', undefined, positions.vtool);
             }
 
             // Step 3: wire standard connections
-            const toolIds = [...(vtool ? [vtool.id] : []), ...extraTools.map(t => t.id)];
+            const toolIds = [...(effectiveVtool ? [effectiveVtool.id] : []), ...extraTools.map(t => t.id)];
             await fs.writeFile(filePath, JSON.stringify(workflow, null, 2));
 
             // Re-load to use shared connection routine
@@ -1726,9 +1735,13 @@ server.tool(
                 await connect(memory, 'ai_memory', agent, 'ai_memory');
                 await connect(embeddings, 'ai_embeddings', vstore, 'ai_embeddings');
                 await connect(vstore, 'ai_document', vinsert, 'ai_document');
-                await connect(vstore, 'ai_vectorStore', vtool, 'ai_vectorStore');
-                await connect(model, 'ai_languageModel', vtool, 'ai_languageModel');
-                await connect(vtool, 'ai_tool', agent, 'ai_tool');
+                await connect(vstore, 'ai_vectorStore', effectiveVtool, 'ai_vectorStore');
+                await connect(model, 'ai_languageModel', effectiveVtool, 'ai_languageModel');
+                await connect(effectiveVtool, 'ai_tool', agent, 'ai_tool');
+                // Wire extra tools (from plan.tools[]) to agent
+                for (const tool of extraTools) {
+                    await connect(tool, 'ai_tool', agent, 'ai_tool');
+                }
                 await connect(trigger, 'main', agent, 'main');
 
                 return { success: true };
