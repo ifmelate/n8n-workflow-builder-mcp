@@ -11,7 +11,7 @@ import path from 'path';
 import { validateAndNormalizeWorkflow, collectMissingParameters } from './validation/workflowValidator';
 import { loadNodeTypesForCurrentVersion } from './validation/nodeTypesLoader';
 import { Workflow, N8nWorkflow, N8nWorkflowNode, N8nConnections, N8nConnectionDetail } from './types/n8n';
-import { ensureWorkflowDir, ensureWorkflowParentDir, resolvePath, resolveWorkflowPath, WORKFLOW_DATA_DIR_NAME, WORKFLOWS_FILE_NAME, setWorkspaceDir, getWorkspaceDir, tryDetectWorkspaceForName } from './utils/workspace';
+import { ensureWorkflowDir, ensureWorkflowParentDir, resolvePath, resolveWorkflowPath, sanitizeFilename, WORKFLOW_DATA_DIR_NAME, WORKFLOWS_FILE_NAME, setWorkspaceDir, getWorkspaceDir, tryDetectWorkspaceForName } from './utils/workspace';
 import { generateInstanceId, generateN8nId, generateUUID } from './utils/id';
 import { normalizeLLMParameters } from './utils/llm';
 import { initializeN8nVersionSupport, detectN8nVersion, setN8nVersion, getSupportedN8nVersions, getCurrentN8nVersion, getN8nVersionInfo, workflowActivationDefaults } from './nodes/versioning';
@@ -235,9 +235,7 @@ server.tool(
                 tags: []
             };
 
-            // Sanitize workflowName for filename or ensure it's safe.
-            // For now, using directly. Consider a sanitization function for production.
-            const filename = `${workflowName.replace(/[^a-z0-9_.-]/gi, '_')}.json`;
+            const filename = `${sanitizeFilename(workflowName)}.json`;
             const filePath = resolvePath(path.join(WORKFLOW_DATA_DIR_NAME, filename));
 
             await fs.writeFile(filePath, JSON.stringify(newN8nWorkflow, null, 2));
@@ -1607,7 +1605,7 @@ server.tool(
         try {
             // Step 1: ensure workflow exists (create if missing)
             await ensureWorkflowDir();
-            const filePath = resolvePath(path.join(WORKFLOW_DATA_DIR_NAME, `${workflow_name.replace(/[^a-z0-9_.-]/gi, '_')}.json`));
+            const filePath = resolvePath(path.join(WORKFLOW_DATA_DIR_NAME, `${sanitizeFilename(workflow_name)}.json`));
             let workflow: N8nWorkflow;
             try {
                 const raw = await fs.readFile(filePath, 'utf8');

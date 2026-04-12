@@ -37,7 +37,7 @@ export function setWorkspaceDir(dir: string): void {
 /**
  * Sanitize a filename to prevent directory traversal and other security issues
  */
-function sanitizeFilename(filename: string): string {
+export function sanitizeFilename(filename: string): string {
     return filename
         // Remove any path separators
         .replace(/[/\\]/g, '_')
