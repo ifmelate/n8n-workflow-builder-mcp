@@ -1627,8 +1627,12 @@ server.tool(
                 workflow = { name: workflow_name, id: generateUUID(), nodes: [], connections: {}, ...workflowActivationDefaults(), pinData: {}, settings: { executionOrder: 'v1' }, versionId: generateUUID(), meta: { instanceId: generateUUID() }, tags: [] } as any;
             }
 
-            // Helper to add a node with normalization
+            // Helper to add a node with normalization. Idempotent: if a node with
+            // the same name exists, return it instead of duplicating.
             const addNode = async (nodeType: string, nodeName: string, parameters?: Record<string, any>, position?: { x: number, y: number }): Promise<N8nWorkflowNode> => {
+                const existing = workflow.nodes.find(n => n.name === nodeName);
+                if (existing) return existing as N8nWorkflowNode;
+
                 const { finalNodeType, finalTypeVersion } = normalizeNodeTypeAndVersion(nodeType);
                 const node: any = {
                     id: generateN8nId(),
