@@ -7,6 +7,19 @@ A Model Context Protocol (MCP) server for building and manipulating n8n workflow
   <img width="380" height="200" src="https://glama.ai/mcp/servers/@ifmelate/n8n-workflow-builder-mcp/badge" alt="n8n-workflow-builder-mcp MCP server" />
 </a>
 
+## Is this the right MCP server for you?
+
+This server writes n8n workflow **JSON files locally**. It doesn't need a running n8n instance, and it picks node versions from a bundled catalog that covers n8n 1.86.0 – 2.6.2.
+
+**Use this server if you:**
+- want to generate workflow files offline and import them yourself (or commit them to git)
+- are on an older self-hosted n8n and need workflows whose node `typeVersion`s your instance actually supports. Set `N8N_VERSION` to match it.
+
+**Consider an alternative if you:**
+- want the AI to build, test and run workflows directly in your n8n instance. Use n8n's built-in [instance-level MCP server](https://docs.n8n.io/build/ways-of-building-workflows/connect-to-n8n-mcp-server).
+- want a large node documentation and template library with deployment through the n8n API. Use [czlonkowski/n8n-mcp](https://github.com/czlonkowski/n8n-mcp).
+- need nodes added in n8n after 2.6.2. They aren't in the bundled catalog yet.
+
 # DEMO VIDEO:
 [![Watch the video](https://github.com/user-attachments/assets/53706f62-7e99-449f-8537-0ce951c727e1)](https://youtu.be/MKEVLM5QmPA?si=8SJQAcYGeAIuhaBm)
 
@@ -31,6 +44,8 @@ A Model Context Protocol (MCP) server for building and manipulating n8n workflow
 ## Installation & Setup
 
 ### Getting your n8n API Key
+
+The API key is optional. The server only uses `N8N_API_URL`/`N8N_API_KEY` to detect your n8n version. To work fully offline, skip them and set `N8N_VERSION` (e.g. `N8N_VERSION=1.123.2`) instead.
 
 1. Open your n8n instance in a browser
 2. Go to **Settings > API Keys**
